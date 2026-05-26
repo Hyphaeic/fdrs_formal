@@ -1,0 +1,38 @@
+# Lean / Lake build artifacts and dependency caches
+/.lake/
+.lake/
+build/
+lakefile.olean
+
+# Generated dependency-graph media — regenerate with `scripts/fdrs-rebuild`.
+# Tracked formalization metadata is the YAML in data/, not the rendered graphs.
+data/*.dot
+data/*.svg
+data/*.mp4
+docs/*.dot
+docs/*.svg
+
+# Python
+__pycache__/
+*.py[cod]
+*.egg-info/
+.venv/
+venv/
+.env
+
+# Agent / local tool config
+.claude/
+.agents/
+.codex/
+
+# Editor / OS junk
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+.DS_Store
+Thumbs.db
+
+# Local logs / scratch
+*.log

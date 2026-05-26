@@ -1,0 +1,90 @@
+#!/usr/bin/env python3
+"""CI consistency checker for FDRS project.
+
+Exits non-zero if:
+- Axiom count in code differs from index
+- Sorry count differs from index
+- Index is older than any .lean file
+- Any axiom : True stubs exist (warning only)
+"""
+
+import sys
+import os
+from pathlib import Path
+from datetime import datetime
+
+sys.path.insert(0, str(Path(__file__).resolve().parent))
+
+try:
+    import yaml
+except ImportError:
+    print("FAIL: PyYAML not installed", file=sys.stderr)
+    sys.exit(1)
+
+
+def main():
+    project_root = Path(__file__).resolve().parent.parent
+    index_path = project_root / "data" / "fdrs-index.yaml"
+    errors = []
+    warnings = []
+
+    # Check index exists
+    if not index_path.exists():
+        print("FAIL: data/fdrs-index.yaml not found. Run: python3 scripts/fdrs_index.py")
+        sys.exit(1)
+
+    with open(index_path) as f:
+        index = yaml.safe_load(f)
+
+    # Check index freshness
+    lean_dir = project_root / "FdrsFormal"
+    lean_files = list(lean_dir.rglob("*.lean"))
+    index_mtime = index_path.stat().st_mtime
+
+    stale_files = [f for f in lean_files if f.stat().st_mtime > index_mtime]
+    if stale_files:
+        warnings.append(f"Index is older than {len(stale_files)} .lean files. Run: python3 scripts/fdrs_index.py")
+
+    # Live scan
+    from lean_scan import scan_project
+    scan = scan_project(project_root)
+
+    # Check axiom count
+    idx_axioms = index['lean_summary']['total_axioms']
+    live_axioms = len(scan.axioms)
+    if idx_axioms != live_axioms:
+        errors.append(f"Axiom count mismatch: index={idx_axioms}, live={live_axioms}")
+
+    # Check sorry count
+    idx_sorries = index['lean_summary']['total_sorries']
+    live_sorries = len(scan.sorries)
+    if idx_sorries != live_sorries:
+        errors.append(f"Sorry count mismatch: index={idx_sorries}, live={live_sorries}")
+
+    # Check file count
+    idx_files = index['lean_summary']['total_files']
+    live_files = scan.total_files
+    if idx_files != live_files:
+        errors.append(f"File count mismatch: index={idx_files}, live={live_files}")
+
+    # Check True stubs
+    true_stubs = [a for a in scan.axioms if a.is_true_stub]
+    if true_stubs:
+        warnings.append(f"{len(true_stubs)} axiom True stubs found")
+
+    # Report
+    if warnings:
+        for w in warnings:
+            print(f"WARNING: {w}")
+
+    if errors:
+        for e in errors:
+            print(f"FAIL: {e}")
+        sys.exit(1)
+    else:
+        print(f"OK: {live_files} files, {live_axioms} axioms, {live_sorries} sorries")
+        sys.exit(0)
+
+
+if __name__ == "__main__":
+    main()

@@ -1,0 +1,519 @@
+#!/usr/bin/env python3
+"""FDRS project status CLI.
+
+Usage:
+  scripts/fdrs-summary                  # Overall status dashboard
+  scripts/fdrs-summary --definitions    # All definitions
+  scripts/fdrs-summary --theorems       # All theorems
+  scripts/fdrs-summary --axioms         # All axiom declarations
+  scripts/fdrs-summary --sorries        # All sorry occurrences
+  scripts/fdrs-summary --stubs          # All declaration stubs (True:=trivial etc.)
+  scripts/fdrs-summary --orphaned       # Spec items with no Lean file
+  scripts/fdrs-summary --phase 3        # All items in Phase 3
+  scripts/fdrs-summary --status axiom   # Filter by status
+  scripts/fdrs-summary --check          # Verify index matches live code
+  scripts/fdrs-summary --spec-index     # Generate docs/fdrs-index.md
+  scripts/fdrs-summary --notation       # Generate docs/notation.md
+  scripts/fdrs-summary --rebuild        # Regenerate data/fdrs-index.yaml first
+  scripts/fdrs-summary --frontier       # All items ready to prove now
+  scripts/fdrs-summary --next 5         # Top N highest-impact frontier items
+  scripts/fdrs-summary --blocked        # Items nearest the frontier but blocked
+  scripts/fdrs-summary --item-graph     # Generate item-level dependency SVG
+  scripts/fdrs-summary --prompt ID      # Generate specialist proof prompt
+"""
+
+import argparse
+import sys
+import os
+from pathlib import Path
+
+# Ensure scripts/ is on path
+sys.path.insert(0, str(Path(__file__).resolve().parent))
+
+try:
+    import yaml
+except ImportError:
+    print("Error: PyYAML required. Install with: pip install pyyaml", file=sys.stderr)
+    sys.exit(1)
+
+
+def load_index(project_root: Path) -> dict:
+    index_path = project_root / "data" / "fdrs-index.yaml"
+    if not index_path.exists():
+        print("Index not found. Generating...", file=sys.stderr)
+        from fdrs_index import build_index
+        index = build_index(project_root)
+        index_path.parent.mkdir(parents=True, exist_ok=True)
+        with open(index_path, 'w') as f:
+            yaml.dump(index, f, default_flow_style=False, sort_keys=False, allow_unicode=True, width=120)
+        return index
+
+    with open(index_path) as f:
+        return yaml.safe_load(f)
+
+
+def rebuild_index(project_root: Path) -> dict:
+    from fdrs_index import build_index
+    index = build_index(project_root)
+    index_path = project_root / "data" / "fdrs-index.yaml"
+    index_path.parent.mkdir(parents=True, exist_ok=True)
+    with open(index_path, 'w') as f:
+        yaml.dump(index, f, default_flow_style=False, sort_keys=False, allow_unicode=True, width=120)
+    print(f"Rebuilt {index_path}", file=sys.stderr)
+    return index
+
+
+def dashboard(index: dict):
+    """Print overall status dashboard."""
+    meta = index['metadata']
+    ls = index['lean_summary']
+    items = index['items']
+
+    print("=" * 60)
+    print("  FDRS Project Status")
+    print("=" * 60)
+    print()
+    print(f"  Spec items:   {meta['total_items']}")
+    print(f"  Spec lines:   {meta['spec_lines']} (docs/fdrs.md)")
+    print()
+    print(f"  Lean files:   {ls['total_files']}")
+    print(f"  Axioms:       {ls['total_axioms']} ({ls['axioms_true']} True stubs)")
+    print(f"  Sorries:      {ls['total_sorries']}")
+    print(f"  Theorems:     {ls['total_theorems']}")
+    print(f"  Definitions:  {ls['total_defs']}")
+    print(f"  Lemmas:       {ls['total_lemmas']}")
+    if 'total_stubs' in ls:
+        sk = ls.get('stubs_by_kind', {})
+        print(f"  Decl stubs:   {ls['total_stubs']} "
+              f"({sk.get('true_trivial',0)} True:=trivial, "
+              f"{sk.get('prop_true',0)} Prop:=True, "
+              f"{sk.get('zero_impl',0)} fun_=>_0)")
+    print()
+
+    # Status breakdown
+    status = meta.get('status_summary', {})
+    print("  Spec item coverage:")
+    for s in ['proven', 'partial', 'stub', 'axiom', 'sorry', 'missing']:
+        count = status.get(s, 0)
+        if count == 0 and s in ('stub', 'partial') and s not in status:
+            continue  # Don't show row if not present (old index)
+        pct = count / meta['total_items'] * 100 if meta['total_items'] else 0
+        bar = "#" * int(pct / 2)
+        print(f"    {s:8s}: {count:4d} ({pct:5.1f}%) {bar}")
+    print()
+
+    # Phase breakdown
+    phases: dict[int, dict[str, int]] = {}
+    for item in items:
+        p = item['phase']
+        s = item['status']
+        phases.setdefault(p, {}).setdefault(s, 0)
+        phases[p][s] = phases[p].get(s, 0) + 1
+
+    print("  By phase:")
+    print(f"  {'Phase':>7s}  {'Total':>5s}  {'Proven':>6s}  {'Partial':>7s}  {'Stub':>5s}  {'Axiom':>6s}  {'Sorry':>6s}  {'Missing':>7s}")
+    for p in sorted(phases):
+        counts = phases[p]
+        total = sum(counts.values())
+        print(f"  {p:>7d}  {total:>5d}  {counts.get('proven',0):>6d}  {counts.get('partial',0):>7d}  {counts.get('stub',0):>5d}  {counts.get('axiom',0):>6d}  {counts.get('sorry',0):>6d}  {counts.get('missing',0):>7d}")
+    print()
+
+    # Sorry details
+    if ls.get('sorry_files'):
+        print("  Sorries:")
+        for s in ls['sorry_files']:
+            print(f"    {s['file']}:{s['line']}")
+    print()
+    print(f"  Generated: {meta['generated_at']}")
+
+
+def list_items(index: dict, type_filter=None, phase_filter=None, status_filter=None, orphaned=False):
+    """List items with optional filters."""
+    items = index['items']
+
+    for item in items:
+        if type_filter and item['type'] != type_filter:
+            continue
+        if phase_filter is not None and item['phase'] != phase_filter:
+            continue
+        if status_filter and item['status'] != status_filter:
+            continue
+        if orphaned and item['lean_files']:
+            continue
+
+        lean_info = ""
+        if item['lean_files']:
+            first = item['lean_files'][0]
+            lean_info = f"  → {first['path']}"
+        else:
+            lean_info = "  (no Lean file)"
+
+        status_sym = {'proven': '✅', 'partial': '🔶', 'stub': '🟠', 'axiom': '🔵', 'sorry': '🟡', 'missing': '❌'}.get(item['status'], '?')
+
+        print(f"  {status_sym} {item['id']:40s}  L{item['line']:5d}  {item['type']:12s}  {item.get('title','')[:40]}{lean_info}")
+
+
+def list_axioms(index: dict):
+    """List all axiom declarations from Lean scan."""
+    ls = index['lean_summary']
+    # We need the full scan data - load from lean_scan
+    from lean_scan import scan_project
+    project_root = Path(__file__).resolve().parent.parent
+    scan = scan_project(project_root)
+
+    print(f"Axiom declarations: {len(scan.axioms)} ({sum(1 for a in scan.axioms if a.is_true_stub)} True stubs)")
+    print()
+    for a in scan.axioms:
+        stub = " [TRUE STUB]" if a.is_true_stub else ""
+        print(f"  {a.file}:{a.line}  {a.name}{stub}")
+
+
+def list_sorries(index: dict):
+    """List all sorry occurrences."""
+    ls = index['lean_summary']
+    sorry_files = ls.get('sorry_files', [])
+    print(f"Sorry occurrences: {ls['total_sorries']}")
+    print()
+    for s in sorry_files:
+        print(f"  {s['file']}:{s['line']}")
+        if s.get('context'):
+            for line in s['context'].split('\n'):
+                print(f"    {line}")
+            print()
+
+
+def list_stubs(index: dict):
+    """List all stub declarations from Lean scan."""
+    from lean_scan import scan_project
+    project_root = Path(__file__).resolve().parent.parent
+    scan = scan_project(project_root)
+
+    stubs = [d for d in scan.declarations if d.stub_kind is not None]
+    print(f"Declaration stubs: {len(stubs)}")
+    print(f"  True:=trivial: {sum(1 for d in stubs if d.stub_kind == 'true_trivial')}")
+    print(f"  Prop:=True:    {sum(1 for d in stubs if d.stub_kind == 'prop_true')}")
+    print(f"  fun_=>_0:      {sum(1 for d in stubs if d.stub_kind == 'zero_impl')}")
+    print()
+    for d in stubs:
+        print(f"  {d.file}:{d.line}  {d.kind} {d.name}  [{d.stub_kind}]")
+
+
+def check_consistency(index: dict, project_root: Path) -> bool:
+    """Verify index matches live code. Returns True if consistent."""
+    from lean_scan import scan_project
+    scan = scan_project(project_root)
+
+    ok = True
+
+    idx_axioms = index['lean_summary']['total_axioms']
+    live_axioms = len(scan.axioms)
+    if idx_axioms != live_axioms:
+        print(f"MISMATCH: Index says {idx_axioms} axioms, live code has {live_axioms}")
+        ok = False
+
+    idx_sorries = index['lean_summary']['total_sorries']
+    live_sorries = len(scan.sorries)
+    if idx_sorries != live_sorries:
+        print(f"MISMATCH: Index says {idx_sorries} sorries, live code has {live_sorries}")
+        ok = False
+
+    idx_files = index['lean_summary']['total_files']
+    live_files = scan.total_files
+    if idx_files != live_files:
+        print(f"MISMATCH: Index says {idx_files} files, live code has {live_files}")
+        ok = False
+
+    # Check for axiom : True stubs
+    true_stubs = [a for a in scan.axioms if a.is_true_stub]
+    if true_stubs:
+        print(f"WARNING: {len(true_stubs)} axiom True stubs found:")
+        for a in true_stubs[:5]:
+            print(f"  {a.file}:{a.line}  {a.name}")
+        if len(true_stubs) > 5:
+            print(f"  ... and {len(true_stubs) - 5} more")
+
+    # Check for declaration stubs (True := trivial, Prop := True, fun _ => 0)
+    decl_stubs = [d for d in scan.declarations if d.stub_kind is not None]
+    if decl_stubs:
+        print(f"WARNING: {len(decl_stubs)} declaration stubs found "
+              f"({sum(1 for d in decl_stubs if d.stub_kind == 'true_trivial')} true_trivial, "
+              f"{sum(1 for d in decl_stubs if d.stub_kind == 'prop_true')} prop_true, "
+              f"{sum(1 for d in decl_stubs if d.stub_kind == 'zero_impl')} zero_impl)")
+        for d in decl_stubs[:10]:
+            print(f"  {d.file}:{d.line}  {d.kind} {d.name} [{d.stub_kind}]")
+        if len(decl_stubs) > 10:
+            print(f"  ... and {len(decl_stubs) - 10} more")
+
+    if ok:
+        print("OK: Index is consistent with live code")
+    return ok
+
+
+def generate_spec_index(index: dict, project_root: Path):
+    """Generate docs/fdrs-index.md."""
+    items = index['items']
+    meta = index['metadata']
+
+    lines = [
+        "# FDRS Specification Index",
+        "",
+        f"Auto-generated from `data/fdrs-index.yaml` ({meta['generated_at']})",
+        "",
+        f"**{meta['total_items']} items** from `docs/fdrs.md` ({meta['spec_lines']} lines)",
+        "",
+        "Status: " + " | ".join(f"{k}: {v}" for k, v in sorted(meta.get('status_summary', {}).items())),
+        "",
+    ]
+
+    current_phase = None
+    for item in items:
+        if item['phase'] != current_phase:
+            current_phase = item['phase']
+            lines.append(f"## Phase {current_phase}")
+            lines.append("")
+            lines.append(f"| ID | Type | Number | Title | Line | Status | Lean File |")
+            lines.append(f"|---|---|---|---|---|---|---|")
+
+        status_sym = {'proven': '✅', 'partial': '🔶', 'stub': '🟠', 'axiom': '🔵', 'sorry': '🟡', 'missing': '❌'}.get(item['status'], '?')
+        lean_file = item['lean_files'][0]['path'] if item['lean_files'] else '-'
+        title = item.get('title', '')[:50]
+        lines.append(f"| {item['id']} | {item['type']} | {item.get('global_num', '')} | {title} | {item['line']} | {status_sym} {item['status']} | {lean_file} |")
+
+    lines.append("")
+
+    output = project_root / "docs" / "fdrs-index.md"
+    output.write_text('\n'.join(lines))
+    print(f"Generated {output} ({len(items)} items)")
+
+
+def generate_notation(project_root: Path):
+    """Generate docs/notation.md from Lean scan."""
+    from lean_scan import scan_project
+    from fdrs_parse import parse_fdrs
+
+    scan = scan_project(project_root)
+    items = parse_fdrs(project_root / "docs" / "fdrs.md")
+
+    lines = [
+        "# FDRS Notation Reference",
+        "",
+        "Auto-generated from Lean source files.",
+        "",
+        "## Lean Notations",
+        "",
+        "| Symbol | Expansion | File | Line | Scoped |",
+        "|--------|-----------|------|------|--------|",
+    ]
+
+    for n in sorted(scan.notations, key=lambda x: x.symbol):
+        scoped = "✓" if n.scoped else ""
+        symbol = n.symbol.replace('|', '\\|')
+        expansion = n.expansion.replace('|', '\\|')[:60]
+        lines.append(f"| `{symbol}` | `{expansion}` | {n.file} | {n.line} | {scoped} |")
+
+    lines.extend([
+        "",
+        "## Key Mathematical Symbols",
+        "",
+        "| Symbol | Meaning | fdrs.md Ref |",
+        "|--------|---------|-------------|",
+        "| b_i | Radix at position i | Phase 1, Section 1 |",
+        "| D_i | Digit alphabet {0,...,b_i-1} | Phase 1, Section 1 |",
+        "| B_m | Cumulative radix product | Phase 1, Section 1 |",
+        "| R^(k) | Finite mixed-radix space | Def 2.1 |",
+        "| R^(∞)_fin | Direct-limit space | Def 3.1 |",
+        "| R̂ | Completed mixed-radix space | Def 5.1 |",
+        "| T(x) | Tick operator | Def 4.1 |",
+        "| δ(x,y) | Ultrametric distance | Def 5.3 |",
+        "| U(s) | Cylinder set at prefix s | Def 5.2 |",
+        "| π_L | Prefix projection to depth L | Def 1.1 (Phase 1 Frag 2) |",
+        "| r_L | Prefix residue / value | Def 1.2 (Phase 1 Frag 2) |",
+        "| P_L | Block projection operator | Phase 2 |",
+        "| Δ_L | Detail operator | Phase 2 |",
+        "| 𝕋(V) | Mixed-radix tensor space | Phase 2 |",
+        "| ε | Dirichlet identity | Phase 3 |",
+        "| μ | Möbius function | Phase 3 |",
+        "| v_p | p-adic valuation | Phase 3 |",
+        "| ω | Radix function (variable) | Phase 5 |",
+        "| β_ω(s) | Odometer weight | Phase 5 |",
+        "| δ_ω | Radix-induced ultrametric | Phase 6 |",
+        "| Ω | Extended radix oracle | Phase 7 |",
+        "| 𝒢 | Timeline graph | Phase 8 |",
+        "| ρ | Routing function | Phase 8 |",
+        "",
+    ])
+
+    output = project_root / "docs" / "notation.md"
+    output.write_text('\n'.join(lines))
+    print(f"Generated {output}")
+
+
+def show_frontier(project_root: Path, limit: int = None):
+    """Print the proof frontier — items ready to prove now."""
+    from fdrs_graph import build_dag, compute_frontier, _transitive_rdep_count
+
+    dag = build_dag(project_root)
+    frontier = compute_frontier(dag)
+
+    if limit:
+        frontier = frontier[:limit]
+
+    count = len(frontier)
+    label = f"Top {count} Frontier Items" if limit else f"Proof Frontier ({count} items ready)"
+    print(f"{label}:")
+    print()
+    print(f"  {'#':>3s}  {'ID':<25s}  {'Type':<12s}  {'Phase':>5s}  {'Title':<30s}  Downstream")
+    print(f"  {'—'*3}  {'—'*25}  {'—'*12}  {'—'*5}  {'—'*30}  {'—'*12}")
+
+    for i, node in enumerate(frontier, 1):
+        downstream = _transitive_rdep_count(dag, node.id)
+        title = node.title[:30] if len(node.title) <= 30 else node.title[:27] + "..."
+        print(f"  {i:3d}  {node.id:<25s}  {node.type:<12s}  {node.phase:5d}  {title:<30s}  → unblocks {downstream}")
+
+    if not frontier:
+        print("  (no items on the frontier — all items are either proven or blocked)")
+
+
+def show_blocked(project_root: Path):
+    """Print items closest to the frontier but not yet unblocked."""
+    from fdrs_graph import build_dag, compute_blocked
+
+    dag = build_dag(project_root)
+    blocked = compute_blocked(dag)
+
+    print(f"Blocked Items ({len(blocked)} items, nearest to frontier first):")
+    print()
+    print(f"  {'ID':<25s}  Waiting on")
+    print(f"  {'—'*25}  {'—'*50}")
+
+    for node, unproven in blocked[:40]:  # cap display at 40
+        waiting = ", ".join(f"{u.id} ({u.status})" for u in unproven[:5])
+        if len(unproven) > 5:
+            waiting += f", ... +{len(unproven) - 5} more"
+        print(f"  {node.id:<25s}  {waiting}")
+
+    if len(blocked) > 40:
+        print(f"  ... and {len(blocked) - 40} more blocked items")
+
+
+def generate_item_graph(project_root: Path, phase: int = None):
+    """Generate item-level dependency graph SVG."""
+    from fdrs_graph import build_dag, render_item_dot
+
+    dag = build_dag(project_root)
+    data_dir = project_root / "data"
+    data_dir.mkdir(parents=True, exist_ok=True)
+
+    if phase is not None:
+        output = data_dir / f"item-graph-phase-{phase}.svg"
+    else:
+        output = data_dir / "item-graph.svg"
+
+    render_item_dot(dag, output, phase=phase)
+
+
+def show_prompt(project_root: Path, item_id: str):
+    """Generate and print a specialist proof prompt."""
+    from fdrs_graph import build_dag
+    from fdrs_prompt import generate_prompt
+
+    dag = build_dag(project_root)
+    if item_id not in dag:
+        print(f"Error: item '{item_id}' not found in the DAG", file=sys.stderr)
+        sys.exit(1)
+
+    prompt = generate_prompt(item_id, dag, project_root)
+    print(prompt)
+
+
+def main():
+    parser = argparse.ArgumentParser(description="FDRS project status CLI")
+    parser.add_argument('--definitions', action='store_true', help='List all definitions')
+    parser.add_argument('--theorems', action='store_true', help='List all theorems')
+    parser.add_argument('--axioms', action='store_true', help='List all axiom declarations')
+    parser.add_argument('--sorries', action='store_true', help='List all sorry occurrences')
+    parser.add_argument('--stubs', action='store_true', help='List all declaration stubs')
+    parser.add_argument('--orphaned', action='store_true', help='List spec items with no Lean file')
+    parser.add_argument('--phase', type=int, help='Filter by phase number')
+    parser.add_argument('--status', choices=['proven', 'partial', 'stub', 'axiom', 'sorry', 'missing'], help='Filter by status')
+    parser.add_argument('--check', action='store_true', help='Verify index matches live code')
+    parser.add_argument('--spec-index', action='store_true', help='Generate docs/fdrs-index.md')
+    parser.add_argument('--notation', action='store_true', help='Generate docs/notation.md')
+    parser.add_argument('--rebuild', action='store_true', help='Rebuild index first')
+    parser.add_argument('--frontier', action='store_true', help='Show all items ready to prove')
+    parser.add_argument('--next', type=int, nargs='?', const=5, metavar='N', help='Show top N frontier items (default 5)')
+    parser.add_argument('--blocked', action='store_true', help='Show items nearest the frontier but blocked')
+    parser.add_argument('--item-graph', action='store_true', help='Generate item-level dependency graph SVG')
+    parser.add_argument('--prompt', type=str, metavar='ITEM_ID', help='Generate specialist proof prompt for an item')
+
+    args = parser.parse_args()
+
+    project_root = Path(__file__).resolve().parent.parent
+
+    if args.rebuild:
+        index = rebuild_index(project_root)
+    else:
+        index = load_index(project_root)
+
+    if args.check:
+        ok = check_consistency(index, project_root)
+        sys.exit(0 if ok else 1)
+
+    if args.spec_index:
+        generate_spec_index(index, project_root)
+        return
+
+    if args.notation:
+        generate_notation(project_root)
+        return
+
+    if args.frontier:
+        show_frontier(project_root)
+        return
+
+    if args.next is not None:
+        show_frontier(project_root, limit=args.next)
+        return
+
+    if args.blocked:
+        show_blocked(project_root)
+        return
+
+    if args.item_graph:
+        generate_item_graph(project_root, phase=args.phase)
+        return
+
+    if args.prompt:
+        show_prompt(project_root, args.prompt)
+        return
+
+    if args.axioms:
+        list_axioms(index)
+        return
+
+    if args.sorries:
+        list_sorries(index)
+        return
+
+    if args.stubs:
+        list_stubs(index)
+        return
+
+    # Filter-based listing
+    type_filter = None
+    if args.definitions:
+        type_filter = 'definition'
+    elif args.theorems:
+        type_filter = 'theorem'
+
+    if type_filter or args.phase is not None or args.status or args.orphaned:
+        list_items(index, type_filter=type_filter, phase_filter=args.phase,
+                   status_filter=args.status, orphaned=args.orphaned)
+        return
+
+    # Default: dashboard
+    dashboard(index)
+
+
+if __name__ == "__main__":
+    main()

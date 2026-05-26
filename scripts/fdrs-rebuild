@@ -1,0 +1,54 @@
+#!/usr/bin/env python3
+"""Regenerate all FDRS derived artifacts from fdrs.md + .lean sources.
+
+Pipeline:
+  1. fdrs_index.py      — scan .lean files → data/fdrs-index.yaml
+  2. fdrs_deps.py        — parse fdrs.md refs → data/item-deps.yaml, data/file-deps.yaml
+  3. fdrs_lean_deps.py   — (optional) Lean env introspection → data/item-deps-lean.yaml
+  4. fdrs_graph.py        — render → data/item-graph*.dot/svg
+  5. fdrs-summary --spec-index — render → docs/fdrs-index.md
+  6. fdrs_notation.py    — render → docs/notation.md
+"""
+
+import subprocess
+import sys
+from pathlib import Path
+
+SCRIPTS = Path(__file__).resolve().parent
+
+# (command, label, required)
+STEPS = [
+    ([sys.executable, str(SCRIPTS / "fdrs_index.py")], "fdrs_index.py", True),
+    ([sys.executable, str(SCRIPTS / "fdrs_deps.py")], "fdrs_deps.py", True),
+    ([sys.executable, str(SCRIPTS / "fdrs_lean_deps.py")], "fdrs_lean_deps.py", False),
+    ([sys.executable, str(SCRIPTS / "fdrs_graph.py")], "fdrs_graph.py", True),
+    ([sys.executable, str(SCRIPTS / "fdrs-summary"), "--spec-index"], "fdrs-summary --spec-index", True),
+    ([sys.executable, str(SCRIPTS / "fdrs_notation.py")], "fdrs_notation.py", True),
+]
+
+
+def main():
+    failed = False
+    for cmd, label, required in STEPS:
+        print(f"\n{'─'*60}")
+        print(f"  {label}{'  (optional)' if not required else ''}")
+        print(f"{'─'*60}")
+        result = subprocess.run(cmd, cwd=SCRIPTS.parent)
+        if result.returncode != 0:
+            if required:
+                print(f"\n✗ {label} failed (exit {result.returncode})", file=sys.stderr)
+                failed = True
+                break
+            else:
+                print(f"  ⊘ skipped (run `lake build` first to enable)")
+
+    print(f"\n{'─'*60}")
+    if failed:
+        print("  Pipeline failed.")
+        sys.exit(1)
+    else:
+        print("  All artifacts rebuilt.")
+
+
+if __name__ == "__main__":
+    main()

@@ -1,0 +1,33 @@
+/-
+Copyright 2026 Hyphaeic SPC.
+
+Licensed under the Hyphaeic Public License, Version 1.0 (the
+"License"); you may not use this file except in compliance with
+the License. You may obtain a copy of the License at
+
+https://github.com/hyphaeic/hpl
+
+Unless required by applicable law or agreed to in writing, software
+distributed under the License is distributed on an "AS IS" BASIS,
+WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or
+implied. See the License for the specific language governing
+permissions and limitations under the License.
+
+# Sibling Uniformity Module
+
+Aggregator for the sibling uniformity condition.
+
+## Contents
+
+- `Definition`: Definition 57 - SU condition
+- `WellDefined`: Proposition 87 - Constant block sizes
+
+## References
+
+- fdrs.md, Phase 5-6, Section 1 (lines 4683-4720)
+- DEPENDENCY_BASED_STRUCTURE.md, Modes/VariableRadix/SiblingUniformity
+- Paper: Fragment 5.4
+-/
+
+import FdrsFormal.Modes.VariableRadix.SiblingUniformity.Definition
+import FdrsFormal.Modes.VariableRadix.SiblingUniformity.WellDefined

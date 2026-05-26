@@ -1,0 +1,26 @@
+/-
+Copyright 2026 Hyphaeic SPC.
+
+Licensed under the Hyphaeic Public License, Version 1.0 (the
+"License"); you may not use this file except in compliance with
+the License. You may obtain a copy of the License at
+
+https://github.com/hyphaeic/hpl
+
+Unless required by applicable law or agreed to in writing, software
+distributed under the License is distributed on an "AS IS" BASIS,
+WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or
+implied. See the License for the specific language governing
+permissions and limitations under the License.
+
+# Multi-Metric Observer Complex
+
+Aggregator for multi-metric observer structures.
+
+## References
+- fdrs.md, Phase 6, Section 6.5 (lines 5340-5382)
+-/
+
+import FdrsFormal.Modes.VariableRadix.MultiMetric.ObserverComplex
+import FdrsFormal.Modes.VariableRadix.MultiMetric.Projection
+import FdrsFormal.Modes.VariableRadix.MultiMetric.Residual

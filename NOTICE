@@ -1,0 +1,85 @@
+================================================================================
+FDRS Formal
+Hyphaeic Public License, Version 1.0
+================================================================================
+
+Copyright 2026 Hyphaeic SPC.
+
+This project is licensed under the Hyphaeic Public License, Version 1.0.
+https://github.com/hyphaeic/hpl
+
+================================================================================
+LICENSOR PARAMETERS
+================================================================================
+
+LICENSOR JURISDICTION
+---------------------
+All disputes arising from this License shall be governed by the laws of,
+and adjudicated in the courts of:
+
+    State of Washington, United States
+
+
+CONTACT ADDRESS
+---------------
+Notices required under Section 4.7 (Affirmative Obligations) shall be
+sent to:
+
+    legal@hyphaeic.com
+
+
+COMMERCIAL ROYALTY AMOUNT
+-------------------------
+In the event of License conversion under Section 4.4.1, the stipulated
+commercial value of this Work is:
+
+    $50,000 USD per calendar month
+
+
+PRE-APPROVED AUDITORS
+---------------------
+If no auditors are listed, Section 4.3.2(b) or 4.3.2(c) shall apply.
+
+
+================================================================================
+REGISTRY INFORMATION
+================================================================================
+
+This Work is not registered with the HPL Enforcement Registry.
+
+
+================================================================================
+ENFORCEMENT RIGHTS ASSIGNMENT
+================================================================================
+
+Enforcement rights under this License have not been assigned.
+
+
+================================================================================
+THIRD-PARTY COMPONENTS
+================================================================================
+
+This project includes the following third-party components:
+
+Mathlib4
+    License: Apache 2.0
+    Source: https://github.com/leanprover-community/mathlib4
+
+Lean 4
+    License: Apache 2.0
+    Source: https://github.com/leanprover/lean4
+
+
+================================================================================
+ADDITIONAL LICENSOR NOTES
+================================================================================
+
+This project is a Lean 4 formalization of Function-Defined Radix Systems
+(FDRS). The mathematical specification lives in docs/fdrs.md. The Lean
+code in FdrsFormal/ constitutes the licensed Work.
+
+The specification document (docs/fdrs.md) and tooling scripts (scripts/)
+are included as part of the Work and subject to the same license terms.
+
+
+================================================================================
