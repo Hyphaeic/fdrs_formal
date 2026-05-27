@@ -61,7 +61,7 @@ Source count for synchronization point.
 
 Placeholder: actual count depends on routing graph structure.
 -/
-def synchronizationSourceCount (_timeline _cylinder : ℕ) : ℕ := 0
+def synchronizationSourceCount_placeholder (_timeline _cylinder : ℕ) : ℕ := 0
 
 /-!
 ## Join Semantics

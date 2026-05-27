@@ -68,7 +68,7 @@ Construct a RadixLaw from an abstract ultrametric satisfying the conditions.
 
 The radix at prefix s is the branching factor (number of children).
 -/
-noncomputable def radixLawFromUltrametric (δ : AbstractUltrametric)
+noncomputable def radixLawFromUltrametric_placeholder (δ : AbstractUltrametric)
     (hcc : True) -- cylinder correspondence placeholder
     (hmr : True) -- monotone refinement placeholder
     (hfb : True) -- finite branching placeholder
@@ -79,9 +79,9 @@ noncomputable def radixLawFromUltrametric (δ : AbstractUltrametric)
 /--
 The constructed RadixLaw is sibling uniform.
 -/
-theorem radixLawFromUltrametric_su (δ : AbstractUltrametric)
+theorem radixLawFromUltrametric_su_placeholder (δ : AbstractUltrametric)
     (hcc : True) (hmr : True) (hfb : True) (k : ℕ) :
-    isSiblingUniform (radixLawFromUltrametric δ hcc hmr hfb) k :=
+    isSiblingUniform (radixLawFromUltrametric_placeholder δ hcc hmr hfb) k :=
   -- The placeholder radix is constant 2, which is position-only
   positionOnly_siblingUniform _ k (fun _ _ _ => rfl)
 
@@ -95,7 +95,7 @@ then there exists an SU radix function ω such that δ = δ_ω.
 
 This is the inverse direction: given the conditions, construct ω.
 -/
-theorem theoremB_sufficiency (δ : AbstractUltrametric)
+theorem theoremB_sufficiency_placeholder (δ : AbstractUltrametric)
     (hcc : True) -- Cylinder correspondence (placeholder for proper type)
     (hmr : True) -- Monotone refinement (placeholder for proper type)
     (hfb : True) -- Finite branching (placeholder for proper type)
@@ -105,9 +105,9 @@ theorem theoremB_sufficiency (δ : AbstractUltrametric)
       -- INFRASTRUCTURE PLACEHOLDER: Should state δ = δ_ω (metric recovery).
       -- Needs: proper ultrametric ↔ radix law correspondence with metric equality.
       True := by
-  use radixLawFromUltrametric δ hcc hmr hfb
+  use radixLawFromUltrametric_placeholder δ hcc hmr hfb
   constructor
-  · exact radixLawFromUltrametric_su δ hcc hmr hfb
+  · exact radixLawFromUltrametric_su_placeholder δ hcc hmr hfb
   · trivial
 
 /-!

@@ -66,7 +66,7 @@ Design problem: find radix law satisfying desired metric properties.
 
 **Axiomatized**: Existence and construction of solution radix law.
 -/
-theorem ultrametricDesignProblem (_P : MetricProperties) : ∃ ω : RadixLaw, True :=
+theorem ultrametricDesignProblem_placeholder (_P : MetricProperties) : ∃ ω : RadixLaw, True :=
   ⟨⟨fun _ => 2, fun _ => le_refl 2⟩, trivial⟩
 
 /--
@@ -86,7 +86,7 @@ Optimal design variant: minimize cost subject to constraints.
 
 **Axiomatized**: Requires formalizing cost functionals and optimization.
 -/
-theorem optimalDesign (_P : MetricProperties) (_cost : RadixLaw → ℝ) :
+theorem optimalDesign_placeholder (_P : MetricProperties) (_cost : RadixLaw → ℝ) :
   ∃ ω : RadixLaw, True :=
   ⟨⟨fun _ => 2, fun _ => le_refl 2⟩, trivial⟩
 

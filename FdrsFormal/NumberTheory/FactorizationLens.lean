@@ -26,15 +26,13 @@ Dual filtration structure: additive (cylinders) vs multiplicative (valuations).
 ## Mathematical References
 
 - fdrs.md, Phase 3 Fragment 4 (lines 2228-2476)
-- Paper §8.1-8.2, Definition 8.2
-- DEPENDENCY_BASED_STRUCTURE.md, Tier 13
 
 ## Status
 
-🔵 **STUB** - Axioms created (2026-01-21)
-- Factorization decomposition: ✅ Defined
-- Fiberwise locality: ✅ Axiomatized
-- Ready for: Multiplicative structure proofs or accept as foundations
+Built and machine-checked against Mathlib; the early "axiomatized/STUB" labels are
+obsolete (this module has no axioms). Run `python3 scripts/fdrs-summary` for the live,
+authoritative status — axioms, sorries, and any remaining scaffold declarations —
+rather than relying on counts written here.
 -/
 
 import FdrsFormal.NumberTheory.FactorizationLens.Definition

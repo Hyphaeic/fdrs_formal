@@ -1,10 +1,10 @@
 # FDRS Specification Index
 
-Auto-generated from `data/fdrs-index.yaml` (2026-05-26T14:58:49.801635)
+Auto-generated from `data/fdrs-index.yaml` (2026-05-27T13:03:06.402159)
 
 **433 items** from `docs/fdrs.md` (7922 lines)
 
-Status: proven: 433
+Status: excluded: 7 | proven: 411 | scaffold: 15
 
 ## Phase 1
 
@@ -56,7 +56,7 @@ Status: proven: 433
 | proposition_15 | proposition | 15 | finite block coordinate representation | 597 | ✅ proven | FdrsFormal/FunctionSpaces.lean |
 | definition_20 | definition | 20 | refinement embeddings | 607 | ✅ proven | FdrsFormal/FunctionSpaces.lean |
 | definition_21 | definition | 21 | uniform product measure | 621 | ✅ proven | FdrsFormal/FunctionSpaces.lean |
-| definition_22 | definition | 22 | block projection (P_L | 628 | ✅ proven | FdrsFormal/FunctionSpaces.lean |
+| definition_22 | definition | 22 | block projection (P_L | 628 | 🟠 scaffold | FdrsFormal/FunctionSpaces.lean |
 | proposition_16 | proposition | 16 | projection / tower properties | 640 | ✅ proven | FdrsFormal/FunctionSpaces.lean |
 | proposition_17 | proposition | 17 | compatibility with block coordinates | 650 | ✅ proven | FdrsFormal/FunctionSpaces.lean |
 | definition_23 | definition | 23 | detail operators | 660 | ✅ proven | FdrsFormal/FunctionSpaces.lean |
@@ -100,13 +100,13 @@ Status: proven: 433
 | theorem_10 | theorem | 10 | Tick pullback commutes with all block projections | 1253 | ✅ proven | FdrsFormal/FunctionSpaces.lean |
 | corollary_7 | corollary | 7 | scale invariance under Tick | 1266 | ✅ proven | FdrsFormal/FunctionSpaces.lean |
 | lemma_3 | lemma | 3 | existence of a mean-zero orthonormal contrast basi | 1306 | ✅ proven | FdrsFormal/FunctionSpaces/Haar.lean |
-| definition_35 | definition | 35 | global mixed-radix Haar atoms | 1330 | ✅ proven | FdrsFormal/FunctionSpaces/Haar.lean |
-| theorem_11 | theorem | 11 | orthonormal basis | 1346 | ✅ proven | FdrsFormal/FunctionSpaces/Haar.lean |
-| definition_36 | definition | 36 | support level of a basis atom | 1358 | ✅ proven | FdrsFormal/FunctionSpaces/Haar.lean |
-| proposition_33 | proposition | 33 | how (P^{(k | 1366 | ✅ proven | FdrsFormal/FunctionSpaces/Haar.lean |
-| corollary_8 | corollary | 8 | explicit description of scale subspaces (D_L | 1379 | ✅ proven | FdrsFormal/FunctionSpaces/Haar.lean |
-| theorem_12 | theorem | 12 | diagonal-by-scale structure in Haar coordinates | 1405 | ✅ proven | FdrsFormal/FunctionSpaces/Haar.lean |
-| corollary_9 | corollary | 9 | commutant algebra is a direct product of full matr | 1415 | ✅ proven | FdrsFormal/FunctionSpaces/Haar.lean |
+| definition_35 | definition | 35 | global mixed-radix Haar atoms | 1330 | ⚪ excluded | FdrsFormal/FunctionSpaces/Haar.lean |
+| theorem_11 | theorem | 11 | orthonormal basis | 1346 | ⚪ excluded | FdrsFormal/FunctionSpaces/Haar.lean |
+| definition_36 | definition | 36 | support level of a basis atom | 1358 | ⚪ excluded | FdrsFormal/FunctionSpaces/Haar.lean |
+| proposition_33 | proposition | 33 | how (P^{(k | 1366 | ⚪ excluded | FdrsFormal/FunctionSpaces/Haar.lean |
+| corollary_8 | corollary | 8 | explicit description of scale subspaces (D_L | 1379 | ⚪ excluded | FdrsFormal/FunctionSpaces/Haar.lean |
+| theorem_12 | theorem | 12 | diagonal-by-scale structure in Haar coordinates | 1405 | ⚪ excluded | FdrsFormal/FunctionSpaces/Haar.lean |
+| corollary_9 | corollary | 9 | commutant algebra is a direct product of full matr | 1415 | ⚪ excluded | FdrsFormal/FunctionSpaces/Haar.lean |
 | gate_1 | gate | 1 | Scale projections | 1440 | ✅ proven | FdrsFormal/FunctionSpaces/Commutant/OperatorAlgebra.lean |
 | gate_2 | gate | 2 | Cylinder gates (phase-locked activation | 1448 | ✅ proven | FdrsFormal/FunctionSpaces/Commutant/OperatorAlgebra.lean |
 | definition_37 | definition | 37 | digit permutation operator | 1480 | ✅ proven | FdrsFormal/FunctionSpaces/Commutant/OperatorAlgebra.lean |
@@ -222,7 +222,7 @@ Status: proven: 433
 
 | ID | Type | Number | Title | Line | Status | Lean File |
 |---|---|---|---|---|---|---|
-| definition_57 | definition | 57 | branching function / radix law | 3956 | ✅ proven | FdrsFormal/Modes/VariableRadix/Basic/Basic.lean |
+| definition_57 | definition | 57 | branching function / radix law | 3956 | 🟠 scaffold | FdrsFormal/Modes/VariableRadix/Basic/Basic.lean |
 | definition_58 | definition | 58 | cylinder sets | 4000 | ✅ proven | FdrsFormal/Integration/ThreeLineMediator/CoupledSystem.lean |
 | definition_59 | definition | 59 | prefix metric | 4010 | ✅ proven | FdrsFormal/Modes/VariableRadix/InducedUltrametric/Definition.lean |
 | proposition_80 | proposition | 80 | ultrametric | 4021 | ✅ proven | FdrsFormal/Modes/VariableRadix/InducedUltrametric/Axioms.lean |
@@ -280,7 +280,7 @@ Status: proven: 433
 | theorem_41 | theorem | 41 | Metric spectrum forms a preorder | 5228 | ✅ proven | FdrsFormal/Modes/VariableRadix/MetricComparison.lean |
 | definition_82 | definition | 82 | Multi-metric observer complex | 5342 | ✅ proven | FdrsFormal/Modes/VariableRadix/MultiMetric.lean |
 | definition_83 | definition | 83 | Metric projection | 5357 | ✅ proven | FdrsFormal/Modes/VariableRadix/MultiMetric.lean |
-| theorem_42 | theorem | 42 | Residual as metric discrepancy | 5369 | ✅ proven | FdrsFormal/Modes/VariableRadix/MultiMetric.lean |
+| theorem_42 | theorem | 42 | Residual as metric discrepancy | 5369 | 🟠 scaffold | FdrsFormal/Modes/VariableRadix/MultiMetric.lean |
 | theorem_43 | theorem | 43 | Realizability criterion for ultrametrics | 5385 | ✅ proven | FdrsFormal/Modes/VariableRadix/MultiMetric/ObserverComplex.lean |
 | corollary_28 | corollary | 28 | Non-realizable ultrametrics | 5406 | ✅ proven | FdrsFormal/Modes/VariableRadix/MultiMetric/Projection.lean |
 | theorem_44 | theorem | 44 | Locality bounds under designed metrics | 5417 | ✅ proven | FdrsFormal/Modes/VariableRadix/MultiMetric/Residual.lean |
@@ -298,7 +298,7 @@ Status: proven: 433
 | definition_84 | definition | 84 | Context space | 5481 | ✅ proven | FdrsFormal/Modes/ContextDependent/Basic/Basic.lean |
 | definition_85 | definition | 85 | Extended radix oracle | 5499 | ✅ proven | FdrsFormal/Modes/ContextDependent/Basic/Basic.lean |
 | definition_86 | definition | 86 | Contextual sibling uniformity - CSU | 5511 | ✅ proven | FdrsFormal/Modes/ContextDependent/Basic/Basic.lean |
-| definition_87 | definition | 87 | Context-indexed mixed-radix family | 5523 | ✅ proven | FdrsFormal/Modes/ContextDependent/Basic/Basic.lean |
+| definition_87 | definition | 87 | Context-indexed mixed-radix family | 5523 | 🟠 scaffold | FdrsFormal/Modes/ContextDependent/Basic/Basic.lean |
 | definition_88 | definition | 88 | Context dynamics | 5540 | ✅ proven | FdrsFormal/Modes/ContextDependent/Evolution/ContextDynamics.lean |
 | definition_89 | definition | 89 | Stateful context-dependent system | 5552 | ✅ proven | FdrsFormal/Modes/ContextDependent/Evolution/Evolution.lean |
 | definition_90 | definition | 90 | Trace of a stateful system | 5576 | ✅ proven | FdrsFormal/Modes/ContextDependent/Evolution/Evolution.lean |
@@ -353,13 +353,13 @@ Status: proven: 433
 | theorem_51 | theorem | 51 | Injection preserves CSU | 6098 | ✅ proven | FdrsFormal/Composition.lean |
 | definition_119 | definition | 119 | Routing dependency graph | 6112 | ✅ proven | FdrsFormal/Composition.lean |
 | definition_120 | definition | 120 | Acyclic routing | 6123 | ✅ proven | FdrsFormal/Composition.lean |
-| theorem_52 | theorem | 52 | Acyclic routing implies deadlock-freedom | 6131 | ✅ proven | FdrsFormal/Composition.lean |
-| definition_121 | definition | 121 | Routing depth | 6151 | ✅ proven | FdrsFormal/Composition.lean |
-| proposition_108 | proposition | 108 | Finite routing depth | 6161 | ✅ proven | FdrsFormal/Composition.lean |
-| definition_122 | definition | 122 | Local timeline operation cost | 6173 | ✅ proven | FdrsFormal/Composition.lean |
-| definition_123 | definition | 123 | Routing operation overhead | 6183 | ✅ proven | FdrsFormal/Composition.lean |
-| theorem_53 | theorem | 53 | Composite timing bound - Main Result | 6196 | ✅ proven | FdrsFormal/Composition.lean |
-| corollary_29 | corollary | 29 | Static routing compile-time bound | 6217 | ✅ proven | FdrsFormal/Composition.lean |
+| theorem_52 | theorem | 52 | Acyclic routing implies deadlock-freedom | 6131 | 🟠 scaffold | FdrsFormal/Composition.lean |
+| definition_121 | definition | 121 | Routing depth | 6151 | 🟠 scaffold | FdrsFormal/Composition.lean |
+| proposition_108 | proposition | 108 | Finite routing depth | 6161 | 🟠 scaffold | FdrsFormal/Composition.lean |
+| definition_122 | definition | 122 | Local timeline operation cost | 6173 | 🟠 scaffold | FdrsFormal/Composition.lean |
+| definition_123 | definition | 123 | Routing operation overhead | 6183 | 🟠 scaffold | FdrsFormal/Composition.lean |
+| theorem_53 | theorem | 53 | Composite timing bound - Main Result | 6196 | 🟠 scaffold | FdrsFormal/Composition.lean |
+| corollary_29 | corollary | 29 | Static routing compile-time bound | 6217 | 🟠 scaffold | FdrsFormal/Composition.lean |
 | definition_124 | definition | 124 | Timeline lifecycle states | 6239 | ✅ proven | FdrsFormal/Composition.lean |
 | definition_125 | definition | 125 | Spawn operation | 6251 | ✅ proven | FdrsFormal/Composition.lean |
 | definition_126 | definition | 126 | Terminate operation | 6265 | ✅ proven | FdrsFormal/Composition.lean |
@@ -375,19 +375,19 @@ Status: proven: 433
 | definition_133 | definition | 133 | Verified routing specification | 6408 | ✅ proven | FdrsFormal/Composition.lean |
 | definition_134 | definition | 134 | Routed observer complex | 6420 | ✅ proven | FdrsFormal/Composition.lean |
 | theorem_56 | theorem | 56 | Observer complex as special case of routing | 6435 | ✅ proven | FdrsFormal/Composition.lean |
-| theorem_57 | theorem | 57 | Residual payload as junction accumulation | 6447 | ✅ proven | FdrsFormal/Composition.lean |
+| theorem_57 | theorem | 57 | Residual payload as junction accumulation | 6447 | 🟠 scaffold | FdrsFormal/Composition.lean |
 | example_2 | example | 2 | Multi-Timeline RTOS Architecture | 6463 | ✅ proven | FdrsFormal/Composition.lean |
 | example_3 | example | 3 | Interrupt as Timeline Injection | 6490 | ✅ proven | FdrsFormal/Composition.lean |
 | example_4 | example | 4 | Dynamic Task Spawning | 6525 | ✅ proven | FdrsFormal/Composition.lean |
 | proposition_110 | proposition | 110 | Injection preserves CSU | 6550 | ✅ proven | FdrsFormal/Composition/DeadlockAnalysis/Definition.lean |
 | proposition_111 | proposition | 111 | Acyclic routing ⟹ deadlock-free | 6552 | ✅ proven | FdrsFormal/Composition/DeadlockAnalysis/Definition.lean |
 | proposition_112 | proposition | 112 | Finite depth under acyclicity | 6554 | ✅ proven | FdrsFormal/Composition/DeadlockAnalysis/Definition.lean |
-| proposition_113 | proposition | 113 | Composite timing bound | 6556 | ✅ proven | FdrsFormal/Composition/DeadlockAnalysis/Definition.lean |
-| proposition_114 | proposition | 114 | Static routing compile-time bound | 6558 | ✅ proven | FdrsFormal/Composition/DeadlockAnalysis/Definition.lean |
+| proposition_113 | proposition | 113 | Composite timing bound | 6556 | 🟠 scaffold | FdrsFormal/Composition/DeadlockAnalysis/Definition.lean |
+| proposition_114 | proposition | 114 | Static routing compile-time bound | 6558 | 🟠 scaffold | FdrsFormal/Composition/DeadlockAnalysis/Definition.lean |
 | proposition_115 | proposition | 115 | Bounded spawn timing preservation | 6560 | ✅ proven | FdrsFormal/Composition/DeadlockAnalysis/Definition.lean |
 | proposition_116 | proposition | 116 | Multicast-join duality | 6562 | ✅ proven | FdrsFormal/Composition/DeadlockAnalysis/Definition.lean |
 | proposition_117 | proposition | 117 | Observer complex embedding | 6564 | ✅ proven | FdrsFormal/Composition/DeadlockAnalysis/Definition.lean |
-| proposition_118 | proposition | 118 | Compile-time verification | 6566 | ✅ proven | FdrsFormal/Composition/DeadlockAnalysis/Definition.lean |
+| proposition_118 | proposition | 118 | Compile-time verification | 6566 | 🟠 scaffold | FdrsFormal/Composition/DeadlockAnalysis/Definition.lean |
 | proposition_119 | proposition | 119 | Residual as undelivered accumulation | 6568 | ✅ proven | FdrsFormal/Composition/DeadlockAnalysis/Definition.lean |
 ## Phase 9
 

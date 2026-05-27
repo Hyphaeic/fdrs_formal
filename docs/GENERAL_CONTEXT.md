@@ -76,9 +76,17 @@ regenerable). Run `scripts/fdrs-rebuild` locally to produce them.
 | `missing` | No Lean declaration found for the item. |
 
 At the **declaration** level the tooling also counts raw `sorry`s and stub kinds
-(`True := trivial`, `Prop := True`, `fun _ => 0`) independently of item matching. Use
-`--sorries` and `--stubs` for the exact, current list — these are the figures to trust
-over any count written into prose (which goes stale quickly).
+(`True := trivial`, `Prop := True`, `fun _ => 0`) independently of item matching. These
+declaration-level counts (`--sorries`, `--stubs`) are the reliable signal for the state
+of the code.
+
+The item-level classification, by contrast, is a rough navigation aid, not a scorecard.
+It matches spec-item titles to declaration names heuristically and **falls back to
+`proven` when it finds no match**, so the item-level coverage percentage tends to
+over-report. Don't treat it as a pass/fail headline: a high "proven" count does not mean
+every prose claim is fully formalized — a theorem can compile while stating a weaker or
+building-block form of its spec item. When it matters, read the `.lean` source and check
+`#print axioms` on the specific result.
 
 ## Conventions when contributing
 

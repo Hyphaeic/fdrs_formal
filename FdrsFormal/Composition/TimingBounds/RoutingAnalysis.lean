@@ -48,7 +48,7 @@ For source points (no incoming edges): depth_ρ(T, s) = 0.
 
 **Axiomatized**: Requires routing graph structure.
 -/
-def routingDepth (_timeline : ℕ) (_cylPrefix : List ℕ) : ℕ := 0
+def routingDepth_placeholder (_timeline : ℕ) (_cylPrefix : List ℕ) : ℕ := 0
 
 /-! ## Proposition 108: Finite routing depth -/
 
@@ -63,7 +63,7 @@ If routing is acyclic and G_ρ is finite, then:
 **Axiomatized**: Requires acyclicity proof and finite graph assumption.
 -/
 theorem finiteRoutingDepth (_numTimelines : ℕ) :
-    ∃ D : ℕ, ∀ t p, routingDepth t p ≤ D :=
+    ∃ D : ℕ, ∀ t p, routingDepth_placeholder t p ≤ D :=
   ⟨0, fun _ _ => Nat.le_refl _⟩
 
 /-! ## Definition 122: Local timeline operation cost -/
@@ -77,7 +77,7 @@ where f is a cost model.
 
 **Axiomatized**: Parameterized by cost model.
 -/
-def localTimelineCost (_timeline : ℕ) (_depth : ℕ) : ℕ := 0
+def localTimelineCost_placeholder (_timeline : ℕ) (_depth : ℕ) : ℕ := 0
 
 /-! ## Definition 123: Routing operation overhead -/
 
@@ -92,7 +92,7 @@ and Cost_{φ_i} is payload transformation cost.
 
 **Axiomatized**: Depends on routing function fanout.
 -/
-def routingOverheadCost (_timeline : ℕ) (_cylPrefix : List ℕ) : ℕ := 0
+def routingOverheadCost_placeholder (_timeline : ℕ) (_cylPrefix : List ℕ) : ℕ := 0
 
 /-! ## Theorem 53: Composite timing bound -/
 
@@ -109,7 +109,7 @@ Within each layer, timelines process in parallel. Layer latencies compose additi
 
 **Axiomatized**: Main composition timing result; requires full routing infrastructure.
 -/
-theorem compositeTimingBound (_timeline : ℕ) (_cylPrefix : List ℕ) (_D : ℕ) :
+theorem compositeTimingBound_placeholder (_timeline : ℕ) (_cylPrefix : List ℕ) (_D : ℕ) :
     ∃ bound : ℕ, True := ⟨0, trivial⟩
 
 /-! ## Corollary 29: Static routing compile-time bound -/
@@ -125,7 +125,7 @@ computable at compile time.
 
 **Axiomatized**: Computability claim over static routing specifications.
 -/
-theorem staticRoutingCompileTimeBound :
+theorem staticRoutingCompileTimeBound_placeholder :
     ∀ numTimelines : ℕ, ∃ bound : ℕ, True :=
   fun _ => ⟨0, trivial⟩
 

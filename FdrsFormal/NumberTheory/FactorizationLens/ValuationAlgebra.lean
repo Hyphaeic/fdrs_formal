@@ -29,7 +29,7 @@ used in the factorization lens framework for dual filtrations.
 
 ## Main Results
 
-* `valuationFiltration_monotone` - The filtration is monotone increasing
+* `valuationFiltration_monotone_placeholder` - The filtration is monotone increasing
 
 ## References
 
@@ -58,7 +58,7 @@ The valuation filtration is monotone: M_E ⊆ M_E' when E ≤ E'.
 **fdrs.md Reference:** Lines 2277-2295
 Trivially holds for the placeholder Unit type.
 -/
-def valuationFiltration_monotone (_P : Finset Nat) {_E _E' : ℕ} (_h : _E ≤ _E') :
+def valuationFiltration_monotone_placeholder (_P : Finset Nat) {_E _E' : ℕ} (_h : _E ≤ _E') :
   multiplicativeSigmaAlgebra _P _E → multiplicativeSigmaAlgebra _P _E' := id
 
 end FdrsFormal.NumberTheory

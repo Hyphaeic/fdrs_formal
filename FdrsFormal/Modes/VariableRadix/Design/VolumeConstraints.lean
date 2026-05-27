@@ -74,7 +74,7 @@ Under consistency, a radix law always exists (constant radix 2 satisfies the typ
 The full correspondence V ↦ ω with β_ω = V requires computing ω(s) = V(s++[0])/V(s)
 and rounding to natural numbers, which we leave to future work.
 -/
-theorem volumeToPrescribedRadix (_V : VolumeFunction) (_hV : isConsistent _V) :
+theorem volumeToPrescribedRadix_placeholder (_V : VolumeFunction) (_hV : isConsistent _V) :
     ∃ _ω : RadixLaw, True :=
   ⟨⟨fun _ => 2, fun _ => le_refl 2⟩, trivial⟩
 

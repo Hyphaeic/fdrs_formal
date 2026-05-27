@@ -10,44 +10,20 @@ formalization of that specification against [Mathlib](https://github.com/leanpro
 
 ## Status
 
-The numbers below are a **snapshot generated on 2026-05-26** by
-`python3 scripts/fdrs-summary`. Run that command for live figures; do not trust
-hard-coded counts in prose.
+This is an actively developed formalization, refined over time rather than a sealed
+artifact — expect it to keep evolving. The default `lake build` compiles cleanly; a few
+`sorry`s remain in work-in-progress modules (currently the wavelet-packet experiments
+under `FunctionSpaces/Haar/`).
 
-| Metric | Value |
-|---|---|
-| Spec items (`docs/fdrs.md`, 12 phases) | 433 |
-| Spec lines | 7,922 |
-| Lean files | 249 |
-| Theorems | 985 |
-| Definitions | 551 |
-| Lemmas | 25 |
-| Axioms | **0** |
-| `sorry` placeholders | **5** (work-in-progress, see below) |
-| Declaration stubs (`True := trivial`) | **1** |
-
-**Verification state (honest):**
-
-- The default `lake build` target — `FdrsFormal` and its transitive imports, **239 of
-  the 249 modules** — compiles cleanly against Mathlib with **no `sorry` and no errors**
-  (only benign linter warnings).
-- **All 249 modules compile.** Ten modules are present but not yet wired into the root
-  import graph (auxiliary / work-in-progress extensions): the Haar wavelet-packet tree
-  (`FunctionSpaces/Haar/*`), the three-line mediator (`Integration/ThreeLineMediator/*`),
-  and cyclic convolution (`NumberTheory/ArithmeticFunctions/CyclicConvolution`).
-- The **5 `sorry`s** are all confined to one work-in-progress file,
-  `FunctionSpaces/Haar/WaveletPacket.lean`.
-- The **1 stub** is `blockProjection_Lp_convergence` in
-  `FunctionSpaces/Projections/Details.lean` (a placeholder for an Lᵖ-convergence
-  statement; the declaration is built but proves only `True`).
-
-To verify all 249 modules at once (surfacing the `sorry` warnings):
+For the current state of the Lean code, ask the tooling rather than relying on numbers
+written in prose:
 
 ```bash
-lake build FdrsFormal FdrsFormal.FunctionSpaces.Haar \
-  FdrsFormal.Integration.ThreeLineMediator.CoupledSystem \
-  FdrsFormal.NumberTheory.ArithmeticFunctions.CyclicConvolution
+python3 scripts/fdrs-summary        # axioms, sorries, stubs, per-phase coverage
 ```
+
+Building the work-in-progress modules that aren't part of the default target is covered
+in [`docs/TESTING.md`](docs/TESTING.md).
 
 ## Building
 

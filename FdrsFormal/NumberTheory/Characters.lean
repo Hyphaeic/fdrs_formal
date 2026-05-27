@@ -26,15 +26,13 @@ Additive and multiplicative (Dirichlet) characters with orthogonality and CRT.
 ## Mathematical References
 
 - fdrs.md, Phase 3 Fragment 2 (lines 1769-1942)
-- DEPENDENCY_BASED_STRUCTURE.md, Tier 11-12
 
 ## Status
 
-🔵 **STUB** - Axioms created (2026-01-21)
-- Additive character orthogonality: ✅ Axiomatized
-- Dirichlet character orthogonality: ✅ Axiomatized
-- CRT factorization: ✅ Axiomatized
-- Ready for: Character theory proofs or accept as Fourier foundations
+Built and machine-checked against Mathlib; the early "axiomatized/STUB" labels are
+obsolete (this module has no axioms). Run `python3 scripts/fdrs-summary` for the live,
+authoritative status — axioms, sorries, and any remaining scaffold declarations —
+rather than relying on counts written here.
 -/
 
 import FdrsFormal.NumberTheory.Characters.AdditiveCharacters

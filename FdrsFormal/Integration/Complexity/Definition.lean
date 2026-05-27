@@ -65,7 +65,7 @@ Touch complexity: size of the touch set.
 Note: For finite touch sets, this would be the cardinality.
 We return 0 as a placeholder; concrete operations override this.
 -/
-def touchComplexity (op : (ℕ → α) → (ℕ → α)) (n : ℕ) : ℕ :=
+def touchComplexity_placeholder (op : (ℕ → α) → (ℕ → α)) (n : ℕ) : ℕ :=
   0  -- Placeholder: concrete operations specify their touch complexity
 
 /-!
@@ -160,7 +160,7 @@ Note: This is an abstract characterization of parallel depth.
 Concrete operations would specify their dependency DAG.
 We return 0 as a placeholder; concrete operations override this.
 -/
-def circuitDepth (op : (ℕ → α) → (ℕ → α)) : ℕ :=
+def circuitDepth_placeholder (op : (ℕ → α) → (ℕ → α)) : ℕ :=
   0  -- Placeholder: concrete operations specify their circuit depth
 
 /--

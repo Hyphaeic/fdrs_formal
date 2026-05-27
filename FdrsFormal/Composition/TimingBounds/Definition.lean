@@ -205,7 +205,7 @@ FDRS programs are schedulable: a trivial schedule always exists.
 
 **fdrs.md**: Earliest Deadline First scheduling works for FDRS.
 -/
-theorem fdrs_schedulable : ∃ s : Schedule, True :=
+theorem fdrs_schedulable_placeholder : ∃ s : Schedule, True :=
   ⟨trivialSchedule, trivial⟩
 
 /-!

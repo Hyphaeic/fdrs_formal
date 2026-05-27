@@ -47,9 +47,11 @@ Phase 2.4 from fdrs.md (Lines 1279-1564) - Mixed-radix Haar wavelets:
 
 ## Status
 
-🔵 **AXIOMATIZED** - All definitions present with axiom stubs.
-Core structural results stated; proofs deferred (advanced topic requiring
-deeper measure theory and representation theory integration).
+The contrast basis and Haar orthonormality results are proved; the wavelet-packet tree
+(`WaveletPacket`) is work in progress and still contains `sorry`s. This module is not
+imported by the root `FdrsFormal` module, so it is not part of the default `lake build`
+(build it explicitly with `lake build FdrsFormal.FunctionSpaces.Haar`). Run
+`python3 scripts/fdrs-summary` for the live, authoritative status.
 
 ## References
 

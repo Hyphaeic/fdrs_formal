@@ -37,12 +37,18 @@ class Declaration:
     name: str
     file: str
     line: int
-    stub_kind: Optional[str] = None  # None=genuine, "true_trivial", "prop_true", "zero_impl"
+    stub_kind: Optional[str] = None  # legacy: None | "true_trivial" | "prop_true" | "zero_impl"
+    # Scaffold = a declaration that compiles but whose statement/model is vacuous,
+    # placeholder, constantized, or deliberately weakened (superset of stub_kind).
+    scaffold_kind: Optional[str] = None  # None | true_concl | exists_true | and_true
+                                         #      | vacuous_hyp | decidable_true | const_model
+    scaffold_severity: Optional[str] = None  # None | "high" (claims FDRS spec content) | "low"
 
     def to_dict(self):
         d = asdict(self)
-        if d['stub_kind'] is None:
-            del d['stub_kind']
+        for k in ('stub_kind', 'scaffold_kind', 'scaffold_severity'):
+            if d.get(k) is None:
+                del d[k]
         return d
 
 
@@ -93,6 +99,7 @@ class LeanScanResult:
 
     def to_dict(self):
         stubs = [d for d in self.declarations if d.stub_kind is not None]
+        scaffolds = [d for d in self.declarations if d.scaffold_kind is not None]
         return {
             'total_files': self.total_files,
             'total_axioms': len(self.axioms),
@@ -107,11 +114,18 @@ class LeanScanResult:
                 'prop_true': sum(1 for d in stubs if d.stub_kind == 'prop_true'),
                 'zero_impl': sum(1 for d in stubs if d.stub_kind == 'zero_impl'),
             },
+            'total_scaffold': len(scaffolds),
+            'scaffold_by_severity': {
+                'high': sum(1 for d in scaffolds if d.scaffold_severity == 'high'),
+                'low': sum(1 for d in scaffolds if d.scaffold_severity == 'low'),
+            },
+            'scaffold_by_kind': _count_by(scaffolds, lambda d: d.scaffold_kind),
             'total_notations': len(self.notations),
             'axioms': [a.to_dict() for a in self.axioms],
             'sorries': [s.to_dict() for s in self.sorries],
             'sorry_files': self._sorry_files(),
             'stubs': [d.to_dict() for d in stubs],
+            'scaffold': [d.to_dict() for d in scaffolds],
             'notations': [n.to_dict() for n in self.notations],
             'fdrs_refs': [r.to_dict() for r in self.fdrs_refs],
             'imports': [i.to_dict() for i in self.imports],
@@ -140,6 +154,28 @@ RE_FDRS_LINES = re.compile(r'lines?\s+(\d+)\s*[-–to]+\s*(\d+)', re.IGNORECASE)
 
 # True-stub detection
 RE_TRUE_TYPE = re.compile(r':\s*(?:.*→\s*)?True\b|:\s*(?:.*→\s*)?Decidable\s+True')
+
+# Scaffold detection. A scaffold pattern only escalates to "high" severity (the
+# public-claim problem) when the surrounding name/doc actually claims FDRS spec
+# content — a numbered result, an fdrs.md citation, or a placeholder marker.
+# Otherwise it is "low" (likely an internal marker / toy example), and an explicit
+# `@scaffold-ok` comment exempts a declaration entirely.
+_SPEC_CLAIM_RE = re.compile(
+    r'fdrs\.md'
+    r'|(?:Theorem|Definition|Proposition|Corollary|Lemma)\s+\d'   # numbered result
+    r'|THEOREM\s+[A-Z0-9]'                                          # THEOREM B, etc.
+    r'|Main Result|Axiomatiz|INFRASTRUCTURE|PLACEHOLDER|[Pp]laceholder|\bSTUB\b|scaffold',
+    re.IGNORECASE,
+)
+_SCAFFOLD_ALLOW_RE = re.compile(r'@scaffold-ok')
+
+
+def _count_by(items, key):
+    counts: dict = {}
+    for it in items:
+        k = key(it)
+        counts[k] = counts.get(k, 0) + 1
+    return counts
 
 # Top-level constructs that signal end of a declaration body
 _DECL_STOP_PREFIXES = (
@@ -232,6 +268,87 @@ def _detect_stub_kind(lines: list[str], start_idx: int, kind: str) -> Optional[s
         return "zero_impl"
 
     return None
+
+
+def _preceding_doc(lines: list[str], start_idx: int) -> str:
+    """Collect the contiguous comment/docstring block immediately above a declaration.
+
+    Walks upward from start_idx-1, gathering non-blank comment/doc lines and stopping
+    at a blank line or at code belonging to a previous declaration. Used only to judge
+    scaffold *severity* (does the doc claim FDRS spec content?), so approximate is fine.
+    """
+    out = []
+    j = start_idx - 1
+    _code_starts = ('theorem ', 'def ', 'lemma ', 'noncomputable ', 'instance ',
+                    'abbrev ', 'structure ', 'class ', 'inductive ', 'end ',
+                    'namespace ', 'section ')
+    while j >= 0:
+        s = lines[j].strip()
+        if s == '':
+            break
+        is_comment = (s.startswith('--') or s.startswith('/-') or s.startswith('*')
+                      or s.endswith('-/') or '/-' in s or '-/' in s)
+        if not is_comment:
+            # Code line: if it looks like a previous decl/body, stop.
+            if ':=' in s or any(s.startswith(p) for p in _code_starts):
+                break
+        out.append(s)
+        j -= 1
+    return '\n'.join(reversed(out))
+
+
+def _detect_scaffold(lines: list[str], start_idx: int, kind: str) -> tuple[Optional[str], Optional[str]]:
+    """Detect whether a declaration is a scaffold (vacuous/placeholder/constantized).
+
+    Returns (scaffold_kind, severity) or (None, None). Conservative: statement-level
+    vacuity (True conclusion, ∃…,True, ∧ True, `(_ : True)` hypotheses, `Decidable True`)
+    is always flagged; def-body constantization (`:= 0`, `fun _ => k`, identity) is flagged
+    only when the doc claims spec content, so ordinary structural definitions are spared.
+    Severity is "high" when the name/doc claims FDRS spec content, else "low".
+    """
+    if kind not in ('theorem', 'lemma', 'def', 'abbrev'):
+        return (None, None)
+
+    parts = _collect_decl_parts(lines, start_idx)
+    if parts is None:
+        return (None, None)
+    type_part, body_raw = parts
+    body = ' '.join(body_raw.split())
+
+    doc = _preceding_doc(lines, start_idx)
+    header = lines[start_idx] if start_idx < len(lines) else ''
+    if _SCAFFOLD_ALLOW_RE.search(doc) or _SCAFFOLD_ALLOW_RE.search(header):
+        return (None, None)
+
+    # Severity keys on the *docstring* (does it present this as FDRS spec content?),
+    # not the identifier — otherwise a `_placeholder` suffix would self-trigger.
+    spec_claim = bool(_SPEC_CLAIM_RE.search(doc))
+    sev = 'high' if spec_claim else 'low'
+
+    # --- Statement-level vacuity (any kind) ---
+    if re.search(r'\([^()]*:\s*True\s*\)', type_part):
+        return ('vacuous_hyp', sev)
+    if re.search(r'Decidable\s+True\b', type_part):
+        return ('decidable_true', sev)
+    if re.search(r':\s*True\s*$', type_part.rstrip()):
+        return ('true_concl', sev)
+    has_exists = '∃' in type_part
+    trailing_true = bool(re.search(r',\s*True\s*\)?\s*$', type_part.rstrip()))
+    and_true = bool(re.search(r'∧\s*True\b', type_part))
+    if has_exists and (trailing_true or and_true):
+        return ('exists_true', sev)
+    if and_true:
+        return ('and_true', sev)
+
+    # --- Def-body constantization (gated on a spec/placeholder claim) ---
+    if kind in ('def', 'abbrev') and spec_claim:
+        const_zero = bool(re.match(r'^0$', body) or re.match(r'^fun[\s\w_]+=>\s*0$', body))
+        const_lit = bool(re.match(r'^\d+$', body) or re.match(r'^fun[\s\w_]+=>\s*\d+$', body))
+        noop_id = bool(re.match(r'^id$', body) or re.match(r'^fun\s+(\w+)\s*=>\s*\1$', body))
+        if const_zero or const_lit or noop_id:
+            return ('const_model', 'high')
+
+    return (None, None)
 
 
 def scan_file(filepath: Path, rel_path: str) -> tuple[
@@ -328,7 +445,10 @@ def scan_file(filepath: Path, rel_path: str) -> tuple[
             kind = m.group(1).replace('noncomputable ', '')
             name = m.group(2)
             stub_kind = _detect_stub_kind(lines, lineno_0, kind)
-            decls.append(Declaration(kind=kind, name=name, file=rel_path, line=lineno, stub_kind=stub_kind))
+            sc_kind, sc_sev = _detect_scaffold(lines, lineno_0, kind)
+            decls.append(Declaration(kind=kind, name=name, file=rel_path, line=lineno,
+                                     stub_kind=stub_kind, scaffold_kind=sc_kind,
+                                     scaffold_severity=sc_sev))
             continue
 
         # Infix/prefix/postfix notations
@@ -429,6 +549,9 @@ def main():
               f"{sum(1 for d in stubs if d.stub_kind == 'true_trivial')} True:=trivial, "
               f"{sum(1 for d in stubs if d.stub_kind == 'prop_true')} Prop:=True, "
               f"{sum(1 for d in stubs if d.stub_kind == 'zero_impl')} fun_=>_0)")
+        scaffolds = [d for d in result.declarations if d.scaffold_kind is not None]
+        n_high = sum(1 for d in scaffolds if d.scaffold_severity == 'high')
+        print(f"  Scaffold:  {len(scaffolds)} ({n_high} high / {len(scaffolds) - n_high} low)")
         print(f"  Notations: {len(result.notations)}")
         print(f"  fdrs.md refs: {len(result.fdrs_refs)}")
         print(f"  Imports:   {len(result.imports)}")
@@ -442,6 +565,12 @@ def main():
             print(f"\nStub declarations:")
             for d in stubs:
                 print(f"  {d.file}:{d.line}  {d.kind} {d.name}  [{d.stub_kind}]")
+
+        if "--scaffold" in sys.argv:
+            scaffolds = [d for d in result.declarations if d.scaffold_kind is not None]
+            print(f"\nScaffold declarations ({len(scaffolds)}):")
+            for d in sorted(scaffolds, key=lambda x: (x.scaffold_severity != 'high', x.file, x.line)):
+                print(f"  [{d.scaffold_severity:>4s}] {d.file}:{d.line}  {d.kind} {d.name}  [{d.scaffold_kind}]")
 
     return result
 

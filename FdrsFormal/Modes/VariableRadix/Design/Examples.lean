@@ -64,7 +64,7 @@ with ω_fine ≫ ω_coarse.
 
 **Axiomatized**: Well-definedness and resulting β_ω properties.
 -/
-theorem contextDependentRadix (_partition : RegionPartition)
+theorem contextDependentRadix_placeholder (_partition : RegionPartition)
   (_ω_fine _ω_coarse : ℕ) (_h : _ω_coarse < _ω_fine) :
   ∃ ω : RadixLaw, True :=
   ⟨⟨fun _ => 2, fun _ => le_refl 2⟩, trivial⟩
@@ -87,7 +87,7 @@ DNA sequence ultrametric respecting codon structure.
 
 **Axiomatized**: Requires modular arithmetic and branching rules.
 -/
-theorem dnaCodonUltrametric : ∃ ω : RadixLaw, True :=
+theorem dnaCodonUltrametric_placeholder : ∃ ω : RadixLaw, True :=
   ⟨⟨fun _ => 2, fun _ => le_refl 2⟩, trivial⟩
 
 /-!
@@ -105,7 +105,7 @@ where cache_cost(s) is measured cache miss rate.
 
 **Axiomatized**: Requires empirical cache measurement and radix calculation.
 -/
-theorem cacheOptimizedRadix (_cache_cost : PrefixWord → ℕ) :
+theorem cacheOptimizedRadix_placeholder (_cache_cost : PrefixWord → ℕ) :
   ∃ ω : RadixLaw, True :=
   ⟨⟨fun _ => 2, fun _ => le_refl 2⟩, trivial⟩
 

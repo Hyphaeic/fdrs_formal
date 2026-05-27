@@ -60,7 +60,7 @@ Residual payload as logarithm of metric discrepancy.
 
 **Axiomatized**: Requires formalizing timeline state evolution and projection.
 -/
-theorem residualAsMetricDiscrepancy (_obs : MultiMetricObserver) (_n : ℕ) :
+theorem residualAsMetricDiscrepancy_placeholder (_obs : MultiMetricObserver) (_n : ℕ) :
   ∃ _payload : ℝ, True := ⟨0, trivial⟩
 
 /--

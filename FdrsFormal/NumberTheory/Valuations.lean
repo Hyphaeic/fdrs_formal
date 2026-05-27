@@ -25,15 +25,13 @@ p-adic valuations, divisibility projectors, and squarefree filtering.
 ## Mathematical References
 
 - fdrs.md, Phase 3 Fragment 3 (lines 2044-2142)
-- DEPENDENCY_BASED_STRUCTURE.md, Tier 12
 
 ## Status
 
-🔵 **STUB** - Axioms created (2026-01-21)
-- Valuation projectors: ✅ Defined
-- Idempotence/orthogonality: ✅ Axiomatized
-- Squarefree factorization: ✅ Axiomatized
-- Ready for: p-adic theory proofs or accept as foundations
+Built and machine-checked against Mathlib; the early "axiomatized/STUB" labels are
+obsolete (this module has no axioms). Run `python3 scripts/fdrs-summary` for the live,
+authoritative status — axioms, sorries, and any remaining scaffold declarations —
+rather than relying on counts written here.
 -/
 
 import FdrsFormal.NumberTheory.Valuations.Definition

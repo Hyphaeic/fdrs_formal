@@ -34,20 +34,15 @@ Implements **Phase 2** from fdrs.md (lines 533-1278):
 
 ## Status
 
-✅ **COMPLETE** (2026-01-23)
-- Basic/: ✅ Complete (0 open proofs)
-- Measure/: 🔵 Axiomatized (4 axioms - Kolmogorov extension)
-- Projections/: ✅ Complete (0 open proofs, 13 axioms)
-- LocalOperators/: ✅ Complete (0 open proofs)
-- Commutant/: ✅ Complete (0 open proofs, 24 axioms)
-
-**Total**: 0 open proofs, ~41 axioms (all documented with proof sketches)
+Built and machine-checked against Mathlib; the earlier "axiomatized / N axioms" status
+is obsolete (this module has no axioms). One Lᵖ-convergence result in `Projections/`
+remains a placeholder (`blockProjection_Lp_convergence_placeholder`). Run
+`python3 scripts/fdrs-summary` for the live, authoritative status — axioms, sorries,
+and scaffold declarations — rather than relying on counts written here.
 
 ## References
 
 - fdrs.md, Phase 2 (lines 533-1278)
-- DEPENDENCY_BASED_STRUCTURE.md, Tier 6-9
-- THEOREM_MAPPING.md, FunctionSpaces sections
 -/
 
 import FdrsFormal.FunctionSpaces.Basic

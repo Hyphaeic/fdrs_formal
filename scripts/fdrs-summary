@@ -69,61 +69,67 @@ def dashboard(index: dict):
     ls = index['lean_summary']
     items = index['items']
 
-    print("=" * 60)
+    print("=" * 64)
     print("  FDRS Project Status")
-    print("=" * 60)
+    print("=" * 64)
     print()
-    print(f"  Spec items:   {meta['total_items']}")
-    print(f"  Spec lines:   {meta['spec_lines']} (docs/fdrs.md)")
-    print()
-    print(f"  Lean files:   {ls['total_files']}")
-    print(f"  Axioms:       {ls['total_axioms']} ({ls['axioms_true']} True stubs)")
-    print(f"  Sorries:      {ls['total_sorries']}")
-    print(f"  Theorems:     {ls['total_theorems']}")
-    print(f"  Definitions:  {ls['total_defs']}")
-    print(f"  Lemmas:       {ls['total_lemmas']}")
-    if 'total_stubs' in ls:
-        sk = ls.get('stubs_by_kind', {})
-        print(f"  Decl stubs:   {ls['total_stubs']} "
-              f"({sk.get('true_trivial',0)} True:=trivial, "
-              f"{sk.get('prop_true',0)} Prop:=True, "
-              f"{sk.get('zero_impl',0)} fun_=>_0)")
+    print(f"  Spec items: {meta['total_items']}   Spec lines: {meta['spec_lines']} (docs/fdrs.md)")
+    print(f"  Lean files: {ls['total_files']}   Theorems: {ls['total_theorems']}   "
+          f"Defs: {ls['total_defs']}   Lemmas: {ls['total_lemmas']}")
     print()
 
-    # Status breakdown
+    # --- Declaration-level facts: exact, not dependent on item↔Lean matching ---
+    sv = ls.get('scaffold_by_severity', {})
+    print("  Declaration-level facts (authoritative — exact counts from live code):")
+    print(f"    Axioms:   {ls['total_axioms']}")
+    print(f"    Sorries:  {ls['total_sorries']}")
+    print(f"    Scaffold: {ls.get('total_scaffold', 0)}  "
+          f"({sv.get('high', 0)} high — name/doc claims FDRS spec content / {sv.get('low', 0)} low)")
+    print(f"    Modules outside default build (excluded): {len(ls.get('excluded_modules', []))}")
+    print(f"    Files with stale status comments:         {len(ls.get('stale_doc_risks', []))}")
+    print()
+
+    # --- Spec-item coverage: approximate (matching is heuristic) ---
     status = meta.get('status_summary', {})
-    print("  Spec item coverage:")
-    for s in ['proven', 'partial', 'stub', 'axiom', 'sorry', 'missing']:
+    print("  Spec-item coverage (approximate — item↔Lean matching is heuristic;")
+    print("  the declaration-level facts above are the reliable signal):")
+    for s in ['proven', 'scaffold', 'wip', 'excluded', 'axiom', 'partial', 'stub', 'sorry', 'missing']:
         count = status.get(s, 0)
-        if count == 0 and s in ('stub', 'partial') and s not in status:
-            continue  # Don't show row if not present (old index)
+        if count == 0 and s not in status:
+            continue
         pct = count / meta['total_items'] * 100 if meta['total_items'] else 0
         bar = "#" * int(pct / 2)
-        print(f"    {s:8s}: {count:4d} ({pct:5.1f}%) {bar}")
+        print(f"    {s:9s}: {count:4d} ({pct:5.1f}%) {bar}")
     print()
 
     # Phase breakdown
     phases: dict[int, dict[str, int]] = {}
     for item in items:
-        p = item['phase']
-        s = item['status']
-        phases.setdefault(p, {}).setdefault(s, 0)
-        phases[p][s] = phases[p].get(s, 0) + 1
+        phases.setdefault(item['phase'], {}).setdefault(item['status'], 0)
+        phases[item['phase']][item['status']] += 1
 
     print("  By phase:")
-    print(f"  {'Phase':>7s}  {'Total':>5s}  {'Proven':>6s}  {'Partial':>7s}  {'Stub':>5s}  {'Axiom':>6s}  {'Sorry':>6s}  {'Missing':>7s}")
+    print(f"  {'Phase':>7s}  {'Total':>5s}  {'Proven':>6s}  {'Scaffold':>8s}  {'Excluded':>8s}  {'Wip':>4s}  {'Missing':>7s}")
     for p in sorted(phases):
-        counts = phases[p]
-        total = sum(counts.values())
-        print(f"  {p:>7d}  {total:>5d}  {counts.get('proven',0):>6d}  {counts.get('partial',0):>7d}  {counts.get('stub',0):>5d}  {counts.get('axiom',0):>6d}  {counts.get('sorry',0):>6d}  {counts.get('missing',0):>7d}")
+        c = phases[p]
+        total = sum(c.values())
+        print(f"  {p:>7d}  {total:>5d}  {c.get('proven',0):>6d}  {c.get('scaffold',0):>8d}  "
+              f"{c.get('excluded',0):>8d}  {c.get('wip',0):>4d}  {c.get('missing',0):>7d}")
     print()
 
-    # Sorry details
     if ls.get('sorry_files'):
         print("  Sorries:")
         for s in ls['sorry_files']:
             print(f"    {s['file']}:{s['line']}")
-    print()
+        print()
+
+    if ls.get('stale_doc_risks'):
+        print("  Stale status comments (claim axioms/stubs the live code no longer has):")
+        for r in ls['stale_doc_risks']:
+            print(f"    {r['file']}")
+        print()
+
+    print("  `fdrs-summary --scaffold` lists every scaffold declaration.")
     print(f"  Generated: {meta['generated_at']}")
 
 
@@ -148,7 +154,7 @@ def list_items(index: dict, type_filter=None, phase_filter=None, status_filter=N
         else:
             lean_info = "  (no Lean file)"
 
-        status_sym = {'proven': '✅', 'partial': '🔶', 'stub': '🟠', 'axiom': '🔵', 'sorry': '🟡', 'missing': '❌'}.get(item['status'], '?')
+        status_sym = {'proven': '✅', 'scaffold': '🟠', 'wip': '🟡', 'excluded': '⚪', 'partial': '🔶', 'stub': '🟠', 'axiom': '🔵', 'sorry': '🟡', 'missing': '❌'}.get(item['status'], '?')
 
         print(f"  {status_sym} {item['id']:40s}  L{item['line']:5d}  {item['type']:12s}  {item.get('title','')[:40]}{lean_info}")
 
@@ -198,6 +204,23 @@ def list_stubs(index: dict):
         print(f"  {d.file}:{d.line}  {d.kind} {d.name}  [{d.stub_kind}]")
 
 
+def list_scaffold(index: dict):
+    """List all scaffold declarations (vacuous/placeholder/constantized) from the scan."""
+    from lean_scan import scan_project
+    project_root = Path(__file__).resolve().parent.parent
+    scan = scan_project(project_root)
+
+    scaffolds = [d for d in scan.declarations if getattr(d, 'scaffold_kind', None) is not None]
+    n_high = sum(1 for d in scaffolds if d.scaffold_severity == 'high')
+    print(f"Scaffold declarations: {len(scaffolds)} ({n_high} high / {len(scaffolds) - n_high} low)")
+    print("  high = the declaration name/doc claims FDRS spec content (the public-claim risk)")
+    print("  kinds: true_concl | exists_true | and_true | vacuous_hyp | decidable_true | const_model")
+    print()
+    for d in sorted(scaffolds, key=lambda x: (x.scaffold_severity != 'high', x.file, x.line)):
+        print(f"  [{(d.scaffold_severity or '?'):>4s}] {d.file}:{d.line}  "
+              f"{d.kind} {d.name}  [{d.scaffold_kind}]")
+
+
 def check_consistency(index: dict, project_root: Path) -> bool:
     """Verify index matches live code. Returns True if consistent."""
     from lean_scan import scan_project
@@ -244,6 +267,20 @@ def check_consistency(index: dict, project_root: Path) -> bool:
         if len(decl_stubs) > 10:
             print(f"  ... and {len(decl_stubs) - 10} more")
 
+    # Scaffold declarations (vacuous/placeholder/constantized — superset of stubs)
+    scaffolds = [d for d in scan.declarations if getattr(d, 'scaffold_kind', None) is not None]
+    if scaffolds:
+        n_high = sum(1 for d in scaffolds if d.scaffold_severity == 'high')
+        print(f"WARNING: {len(scaffolds)} scaffold declarations "
+              f"({n_high} high-severity — name/doc claims FDRS spec content). Run --scaffold for the list.")
+
+    # Stale status comments (claim axioms/stubs the live code no longer has)
+    stale = index['lean_summary'].get('stale_doc_risks', [])
+    if stale:
+        print(f"WARNING: {len(stale)} files have stale status comments contradicting live code:")
+        for r in stale:
+            print(f"  {r['file']}  ({r['claims'][0][:60]})")
+
     if ok:
         print("OK: Index is consistent with live code")
     return ok
@@ -274,7 +311,7 @@ def generate_spec_index(index: dict, project_root: Path):
             lines.append(f"| ID | Type | Number | Title | Line | Status | Lean File |")
             lines.append(f"|---|---|---|---|---|---|---|")
 
-        status_sym = {'proven': '✅', 'partial': '🔶', 'stub': '🟠', 'axiom': '🔵', 'sorry': '🟡', 'missing': '❌'}.get(item['status'], '?')
+        status_sym = {'proven': '✅', 'scaffold': '🟠', 'wip': '🟡', 'excluded': '⚪', 'partial': '🔶', 'stub': '🟠', 'axiom': '🔵', 'sorry': '🟡', 'missing': '❌'}.get(item['status'], '?')
         lean_file = item['lean_files'][0]['path'] if item['lean_files'] else '-'
         title = item.get('title', '')[:50]
         lines.append(f"| {item['id']} | {item['type']} | {item.get('global_num', '')} | {title} | {item['line']} | {status_sym} {item['status']} | {lean_file} |")
@@ -433,9 +470,10 @@ def main():
     parser.add_argument('--axioms', action='store_true', help='List all axiom declarations')
     parser.add_argument('--sorries', action='store_true', help='List all sorry occurrences')
     parser.add_argument('--stubs', action='store_true', help='List all declaration stubs')
+    parser.add_argument('--scaffold', action='store_true', help='List all scaffold declarations (vacuous/placeholder)')
     parser.add_argument('--orphaned', action='store_true', help='List spec items with no Lean file')
     parser.add_argument('--phase', type=int, help='Filter by phase number')
-    parser.add_argument('--status', choices=['proven', 'partial', 'stub', 'axiom', 'sorry', 'missing'], help='Filter by status')
+    parser.add_argument('--status', choices=['proven', 'scaffold', 'wip', 'excluded', 'partial', 'stub', 'axiom', 'sorry', 'missing'], help='Filter by status')
     parser.add_argument('--check', action='store_true', help='Verify index matches live code')
     parser.add_argument('--spec-index', action='store_true', help='Generate docs/fdrs-index.md')
     parser.add_argument('--notation', action='store_true', help='Generate docs/notation.md')
@@ -497,6 +535,10 @@ def main():
 
     if args.stubs:
         list_stubs(index)
+        return
+
+    if args.scaffold:
+        list_scaffold(index)
         return
 
     # Filter-based listing

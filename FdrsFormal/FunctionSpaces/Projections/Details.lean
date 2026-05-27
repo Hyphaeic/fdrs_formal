@@ -526,7 +526,7 @@ applied to the filtration (ℱ_L).
 -/
 -- INFRASTRUCTURE PLACEHOLDER: L^p martingale convergence theorem.
 -- Needs: Bochner integral on CompletedSpace, MeasureSpace instance, L^p topology.
-theorem blockProjection_Lp_convergence (p : ℝ) (hp : 1 ≤ p)
+theorem blockProjection_Lp_convergence_placeholder (p : ℝ) (hp : 1 ≤ p)
     (f : CompletedSpace b → V) :
     True := by trivial
 

@@ -54,7 +54,7 @@ Acyclicity is decidable at compile time.
 
 **Axiomatized**: Requires routing graph construction from spec.
 -/
-def acyclicity_decidable (_spec : RoutingSpecification) : Decidable True :=
+def acyclicity_decidable_placeholder (_spec : RoutingSpecification) : Decidable True :=
   Decidable.isTrue trivial
 
 /--
@@ -66,7 +66,7 @@ Bounded fanout is decidable.
 
 **Axiomatized**: Straightforward scan.
 -/
-def bounded_fanout_decidable (_spec : RoutingSpecification) : Decidable True :=
+def bounded_fanout_decidable_placeholder (_spec : RoutingSpecification) : Decidable True :=
   Decidable.isTrue trivial
 
 /--
@@ -78,7 +78,7 @@ Bounded routing depth is decidable.
 
 **Axiomatized**: Standard graph algorithm.
 -/
-def bounded_depth_decidable (_spec : RoutingSpecification) : Decidable True :=
+def bounded_depth_decidable_placeholder (_spec : RoutingSpecification) : Decidable True :=
   Decidable.isTrue trivial
 
 /--
@@ -90,7 +90,7 @@ Reachability is decidable.
 
 **Axiomatized**: Graph traversal algorithm.
 -/
-def reachability_decidable (_spec : RoutingSpecification)
+def reachability_decidable_placeholder (_spec : RoutingSpecification)
   (_source _target : ℕ × ℕ) : Decidable True :=
   Decidable.isTrue trivial
 
@@ -103,7 +103,7 @@ Deadlock freedom is decidable.
 
 **Axiomatized**: Cycle detection.
 -/
-def deadlock_freedom_decidable (_spec : RoutingSpecification) : Decidable True :=
+def deadlock_freedom_decidable_placeholder (_spec : RoutingSpecification) : Decidable True :=
   Decidable.isTrue trivial
 
 /--
@@ -116,15 +116,15 @@ trivially true since each check is `Decidable True`, but captures the intent
 that these properties are computable from the specification.
 -/
 def compile_time_properties_decidable (spec : RoutingSpecification) : Prop :=
-  (acyclicity_decidable spec).decide = true ∧
-  (bounded_fanout_decidable spec).decide = true ∧
-  (bounded_depth_decidable spec).decide = true ∧
-  (deadlock_freedom_decidable spec).decide = true
+  (acyclicity_decidable_placeholder spec).decide = true ∧
+  (bounded_fanout_decidable_placeholder spec).decide = true ∧
+  (bounded_depth_decidable_placeholder spec).decide = true ∧
+  (deadlock_freedom_decidable_placeholder spec).decide = true
 
 /-- All compile-time properties are decidable for any specification. -/
 theorem compile_time_properties_decidable_holds (spec : RoutingSpecification) :
     compile_time_properties_decidable spec := by
-  simp [compile_time_properties_decidable, acyclicity_decidable, bounded_fanout_decidable,
-    bounded_depth_decidable, deadlock_freedom_decidable]
+  simp [compile_time_properties_decidable, acyclicity_decidable_placeholder, bounded_fanout_decidable_placeholder,
+    bounded_depth_decidable_placeholder, deadlock_freedom_decidable_placeholder]
 
 end FdrsFormal.Composition.Verification

@@ -26,15 +26,13 @@ Arithmetic functions f : ℕ≥1 → ℂ with Dirichlet convolution.
 ## Mathematical References
 
 - fdrs.md, Phase 3 Fragment 1 (lines 1594-1756)
-- DEPENDENCY_BASED_STRUCTURE.md, Tier 10-11
 
 ## Status
 
-🔵 **STUB** - Definitions and axioms created (2026-01-21)
-- Core definitions: ✅ Created
-- Dirichlet algebra axioms: ✅ Documented
-- Möbius inversion axioms: ✅ Documented
-- Ready for: Proofs or accept as ANT foundations
+Built and machine-checked against Mathlib; the early "axiomatized/STUB" labels are
+obsolete (this module has no axioms). Run `python3 scripts/fdrs-summary` for the live,
+authoritative status — axioms, sorries, and any remaining scaffold declarations —
+rather than relying on counts written here.
 -/
 
 import FdrsFormal.NumberTheory.ArithmeticFunctions.Definition

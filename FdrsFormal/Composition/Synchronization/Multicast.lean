@@ -58,7 +58,7 @@ Fanout count: number of targets for a multicast.
 
 Placeholder: actual fanout depends on routing function.
 -/
-def multicastFanout (_sourceTimeline _sourceCylinder : ℕ) : ℕ := 0
+def multicastFanout_placeholder (_sourceTimeline _sourceCylinder : ℕ) : ℕ := 0
 
 /--
 Multicast example: timer overflow.

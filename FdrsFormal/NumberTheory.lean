@@ -22,7 +22,7 @@ Analytic number theory integrated with mixed-radix systems.
 This module imports arithmetic functions, Dirichlet convolution, characters,
 valuations, and factorization lens theory into the mixed-radix framework.
 
-**Key results** (all axiomatized with proofs):
+**Key results**:
 - Dirichlet algebra: Commutative, associative, unital
 - Möbius inversion: Classical inversion formula
 - Character orthogonality: Additive and multiplicative
@@ -69,35 +69,19 @@ Implements **Phase 3** from fdrs.md (lines 1594-2476):
 
 ## Dependencies
 
-**Requires**: Core, Operations, FunctionSpaces (Tier 0-9) ✅ All complete
+**Requires**: Core, Operations, FunctionSpaces. **Enables**: the Integration module
+(runtime algebra and programs).
 
-**Enables**: Integration module (Tier 14-17) - runtime algebra and programs
+## Status
 
-## Build Status
-
-🔵 **STUBBED** - Created 2026-01-21
-- 10 files created
-- ~15 axioms with comprehensive documentation
-- All build successfully
-- Zero sorries (pure axioms)
-
-## Next Steps
-
-**Option A** - Accept as ANT foundations:
-- These are standard number theory results (Hardy & Wright level)
-- Mathlib has similar results, just different API
-- Focus on Integration module (more novel content)
-
-**Option B** - Prove using mathlib:
-- Connect to Nat.ArithmeticFunction
-- Prove using mathlib character theory
-- Estimated: 200-400 lines total
+Built and machine-checked against Mathlib. The early "axiomatized/STUB" labels are
+obsolete — these results are proved (see, e.g., Proposition 51 below). Run
+`python3 scripts/fdrs-summary` for the live, authoritative status (axioms, sorries,
+scaffold); counts are intentionally not hard-coded here.
 
 ## References
 
 - fdrs.md, Phase 3 (lines 1594-2476)
-- DEPENDENCY_BASED_STRUCTURE.md, Tier 10-13
-- THEOREM_MAPPING.md, NumberTheory section
 -/
 
 import FdrsFormal.NumberTheory.ArithmeticFunctions

@@ -49,7 +49,7 @@ Exponential growth: β_ω(s) ~ c^{|s|}
 
 **Axiomatized**: Construction and asymptotic verification.
 -/
-theorem exponentialGrowthRadix (_c : ℕ) (_hc : 2 ≤ _c) :
+theorem exponentialGrowthRadix_placeholder (_c : ℕ) (_hc : 2 ≤ _c) :
   ∃ ω : RadixLaw, True  -- ∀ s, ω.radix s = c (simplified - needs proper formulation)
   := ⟨⟨fun _ => 2, fun _ => le_refl 2⟩, trivial⟩
 
@@ -62,7 +62,7 @@ Polynomial growth: β_ω(s) ~ |s|^α
 
 **Axiomatized**: Construction requires careful coefficient tuning.
 -/
-theorem polynomialGrowthRadix (_α : ℝ) (_hα : 0 < _α) :
+theorem polynomialGrowthRadix_placeholder (_α : ℝ) (_hα : 0 < _α) :
   ∃ ω : RadixLaw, True  -- Asymptotic ~ |s|^α (to be formalized)
   := ⟨⟨fun _ => 2, fun _ => le_refl 2⟩, trivial⟩
 
@@ -79,7 +79,7 @@ Factorial growth: β_ω(s) ~ |s|!
 
 **Axiomatized**: Needs factorial characterization.
 -/
-theorem factorialGrowthRadix : ∃ ω : RadixLaw, True  -- ∀ s, ω.radix s = s.length + 1
+theorem factorialGrowthRadix_placeholder : ∃ ω : RadixLaw, True  -- ∀ s, ω.radix s = s.length + 1
   := ⟨⟨fun _ => 2, fun _ => le_refl 2⟩, trivial⟩
 
 end FdrsFormal.Modes.VariableRadix.Design

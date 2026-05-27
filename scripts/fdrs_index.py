@@ -90,16 +90,146 @@ def _find_item_decls(item: 'SpecItem', decls: list[Declaration]) -> list[Declara
     return [d for d, _ in scored[:5]]
 
 
+def _decl_scaffold(d: Declaration) -> bool:
+    return getattr(d, 'scaffold_kind', None) is not None or d.stub_kind is not None
+
+
+def _decl_genuine(d: Declaration) -> bool:
+    return d.stub_kind is None and getattr(d, 'scaffold_kind', None) is None
+
+
 def _classify_decls(decls: list[Declaration]) -> tuple[bool, bool]:
-    """Return (has_genuine, has_stub) for a list of declarations."""
-    has_genuine = any(d.stub_kind is None for d in decls)
-    has_stub = any(d.stub_kind is not None for d in decls)
-    return has_genuine, has_stub
+    """Return (has_genuine, has_scaffold) for a list of declarations."""
+    return any(_decl_genuine(d) for d in decls), any(_decl_scaffold(d) for d in decls)
+
+
+def _item_status(has_lean: bool, has_genuine: bool, has_scaffold: bool,
+                 has_sorry: bool, has_axiom: bool, in_root: bool) -> str:
+    """Compute item status under the publication-readiness category model.
+
+    Precedence is conservative — a scaffold or sorry anywhere associated with the
+    item prevents a `proven` label, and genuine content that lives only outside the
+    root build is reported as `excluded` rather than `proven`.
+    """
+    if not has_lean:
+        return 'missing'
+    if has_sorry:
+        return 'wip'
+    if has_scaffold:
+        return 'scaffold'
+    if has_genuine:
+        return 'proven' if in_root else 'excluded'
+    if has_axiom:
+        return 'axiom'
+    return 'missing'
+
+
+def _file_to_module(f: str) -> str:
+    return f[:-5].replace('/', '.') if f.endswith('.lean') else f
+
+
+def _module_to_file(m: str) -> str:
+    return m.replace('.', '/') + '.lean'
+
+
+def _root_reachable_files(scan: LeanScanResult, project_root: Path) -> set[str]:
+    """Files reachable by import from the root module `FdrsFormal` (the default build).
+
+    Modules present in the tree but not in this set compile only when named
+    explicitly; items living solely in them are reported as `excluded`.
+    """
+    adj: dict[str, set[str]] = {}
+    for imp in scan.imports:
+        adj.setdefault(_file_to_module(imp.source_file), set()).add(imp.imported_module)
+
+    roots = ['FdrsFormal']
+    root_file = project_root / 'FdrsFormal.lean'
+    if root_file.exists():
+        for line in root_file.read_text().splitlines():
+            m = re.match(r'^\s*import\s+(FdrsFormal\S*)', line)
+            if m:
+                roots.append(m.group(1))
+
+    seen: set[str] = set()
+    stack = list(roots)
+    while stack:
+        mod = stack.pop()
+        if mod in seen:
+            continue
+        seen.add(mod)
+        stack.extend(d for d in adj.get(mod, ()) if d not in seen)
+    return {_module_to_file(m) for m in seen}
+
+
+_STALE_CLAIM_RE = re.compile(
+    r'[1-9]\d*\s+axioms?\b|axioms?\s+created|pure axioms|axiom\s+stub|🔵',
+    re.IGNORECASE,
+)
+
+
+def _detect_stale_docs(scan: LeanScanResult, project_root: Path) -> list[dict]:
+    """Flag files whose comments claim axioms/stubs that no longer exist in live code.
+
+    Conservative: only fires while the repo has zero live axioms, so any comment
+    asserting N>0 axioms / 'axiomatized' / 'STUB' is provably stale.
+    """
+    if len(scan.axioms) != 0:
+        return []
+    risks: list[dict] = []
+    lean_dir = project_root / 'FdrsFormal'
+    files = sorted(lean_dir.rglob('*.lean'))
+    extra = project_root / 'FdrsFormal.lean'
+    if extra.exists():
+        files.append(extra)
+    for fp in files:
+        try:
+            text = fp.read_text()
+        except Exception:
+            continue
+        hits = [(i + 1, ln.strip()) for i, ln in enumerate(text.splitlines())
+                if _STALE_CLAIM_RE.search(ln)]
+        if hits:
+            risks.append({
+                'file': str(fp.relative_to(project_root)),
+                'lines': [h[0] for h in hits[:6]],
+                'claims': [h[1][:90] for h in hits[:6]],
+            })
+    return risks
+
+
+def _link_scaffold_items(index_items: list[dict], scaffold_decls: list[Declaration]) -> int:
+    """Reverse pass: map each scaffold *declaration* to the spec item it most likely
+    names (by declaration-name ↔ item-title word overlap) and ensure that item is not
+    labelled `proven`.
+
+    The forward matcher links items to files coarsely (often the aggregator), so a
+    scaffold declaration's item can slip through as `proven`. This corrects that using
+    the *exact* scaffold set. Only downgrades proven→scaffold (never the reverse), and
+    records the linking declaration for traceability.
+    """
+    title_index = [(it, _title_words(it['title'])) for it in index_items if it.get('title')]
+    downgraded = 0
+    for d in scaffold_decls:
+        dwords = _name_words(d.name)
+        if not dwords:
+            continue
+        best, best_ov = None, 1  # require ≥ 2 overlapping words
+        for it, tw in title_index:
+            ov = len(dwords & tw)
+            if ov > best_ov:
+                best, best_ov = it, ov
+        if best is not None:
+            best.setdefault('scaffold_decls', []).append(f"{d.file}:{d.line} {d.name}")
+            if best['status'] == 'proven':
+                best['status'] = 'scaffold'
+                downgraded += 1
+    return downgraded
 
 
 def match_items_to_lean(
     items: list[SpecItem],
     scan: LeanScanResult,
+    root_files: set[str],
 ) -> dict[str, dict]:
     """Match spec items to Lean declarations. Returns item_id -> match_info."""
     matches: dict[str, dict] = {}
@@ -156,28 +286,25 @@ def match_items_to_lean(
                     if g: has_genuine_proof = True
                     if s: has_stub = True
                 else:
-                    # No item-specific match; assume proven if file has any
-                    # genuine declarations (don't blame this item for stubs
-                    # that might belong to other items in the same file)
-                    if any(d.stub_kind is None for d in fp_decls) and fp not in sorry_files:
+                    # No item-specific name match: the file-level fallback provides
+                    # proof evidence only. Scaffold/wip is attributed solely via the
+                    # specific declaration matches above, so a genuine item is never
+                    # mislabelled just for sharing a file/phase with a scaffold; the
+                    # exact scaffold set is reported separately at declaration level.
+                    if any(_decl_genuine(d) for d in fp_decls):
                         has_genuine_proof = True
 
-            status = "missing"
-            if has_genuine_proof and has_stub:
-                status = "partial"
-            elif has_genuine_proof:
-                status = "proven"
-            elif has_stub:
-                status = "stub"
-            elif has_sorry:
-                status = "sorry"
-            elif has_axiom:
-                status = "axiom"
-
+            in_root = any(lf['path'] in root_files for lf in lean_files)
+            status = _item_status(
+                has_lean=bool(lean_files),
+                has_genuine=has_genuine_proof, has_scaffold=has_stub,
+                has_sorry=has_sorry, has_axiom=has_axiom, in_root=in_root,
+            )
             matches[item.id] = {
                 'lean_files': lean_files,
                 'status': status,
                 'match_method': 'line_range',
+                'in_root_build': in_root,
             }
 
     # Strategy 2: phase/fragment matching for unmatched items
@@ -230,29 +357,23 @@ def match_items_to_lean(
                     if g: has_genuine_proof = True
                     if s: has_stub = True
                 else:
-                    # No item-specific match; assume proven if file has any
-                    # genuine declarations (don't blame this item for stubs
-                    # that might belong to other items in the same file)
-                    if any(d.stub_kind is None for d in fp_decls):
+                    # No item-specific name match: fallback provides proof evidence only
+                    # (scaffold/wip is attributed via specific declaration matches).
+                    if any(_decl_genuine(d) for d in fp_decls):
                         has_genuine_proof = True
 
             if lean_files:
-                status = "missing"
-                if has_genuine_proof and has_stub:
-                    status = "partial"
-                elif has_genuine_proof:
-                    status = "proven"
-                elif has_stub:
-                    status = "stub"
-                elif has_sorry:
-                    status = "sorry"
-                elif has_axiom:
-                    status = "axiom"
-
+                in_root = any(lf['path'] in root_files for lf in lean_files)
+                status = _item_status(
+                    has_lean=True,
+                    has_genuine=has_genuine_proof, has_scaffold=has_stub,
+                    has_sorry=has_sorry, has_axiom=has_axiom, in_root=in_root,
+                )
                 matches[item.id] = {
                     'lean_files': lean_files[:5],  # Cap at 5 files
                     'status': status,
                     'match_method': 'phase_fragment',
+                    'in_root_build': in_root,
                 }
 
     # Strategy 3: fuzzy name matching for remaining unmatched
@@ -286,30 +407,32 @@ def match_items_to_lean(
                 matched_decl_names = [name for name, _ in best]
                 lean_files = []
                 has_genuine = False
-                has_stub = False
+                has_scaffold = False
+                has_sorry = False
                 for d in scan.declarations:
                     if d.name in matched_decl_names:
                         lean_files.append({
                             'path': d.file,
                             'declarations': [d.name],
                         })
-                        if d.stub_kind is None:
+                        if _decl_genuine(d):
                             has_genuine = True
-                        else:
-                            has_stub = True
+                        if _decl_scaffold(d):
+                            has_scaffold = True
+                        if d.file in sorry_files:
+                            has_sorry = True
 
-                if has_genuine and has_stub:
-                    status = "partial"
-                elif has_genuine:
-                    status = "proven"
-                elif has_stub:
-                    status = "stub"
-                else:
-                    status = "missing"
+                in_root = any(lf['path'] in root_files for lf in lean_files)
+                status = _item_status(
+                    has_lean=bool(lean_files),
+                    has_genuine=has_genuine, has_scaffold=has_scaffold,
+                    has_sorry=has_sorry, has_axiom=False, in_root=in_root,
+                )
                 matches[item.id] = {
                     'lean_files': lean_files[:3],
                     'status': status,
                     'match_method': 'fuzzy_name',
+                    'in_root_build': in_root,
                 }
             else:
                 matches[item.id] = {'lean_files': [], 'status': 'missing', 'match_method': 'none'}
@@ -326,7 +449,9 @@ def build_index(project_root: Path) -> dict:
 
     items = parse_fdrs(fdrs_path)
     scan = scan_project(project_root)
-    matches = match_items_to_lean(items, scan)
+    root_files = _root_reachable_files(scan, project_root)
+    matches = match_items_to_lean(items, scan, root_files)
+    stale_docs = _detect_stale_docs(scan, project_root)
 
     # Build items list
     index_items = []
@@ -340,6 +465,7 @@ def build_index(project_root: Path) -> dict:
             'title': item.title,
             'line': item.line,
             'status': match_info['status'],
+            'in_root_build': match_info.get('in_root_build', True),
             'lean_files': match_info['lean_files'],
         }
         if item.fragment:
@@ -348,11 +474,18 @@ def build_index(project_root: Path) -> dict:
             entry['section'] = item.section
         index_items.append(entry)
 
-    # Status counts
+    scaffold_decls = [d for d in scan.declarations if getattr(d, 'scaffold_kind', None) is not None]
+    # Reverse pass: a scaffold declaration's owning spec item must not read 'proven'.
+    _link_scaffold_items(index_items, scaffold_decls)
+
+    # Status counts (after the reverse pass)
     status_counts = {}
     for item in index_items:
         s = item['status']
         status_counts[s] = status_counts.get(s, 0) + 1
+
+    all_files = {d.file for d in scan.declarations} | {imp.source_file for imp in scan.imports}
+    excluded_modules = sorted(f for f in all_files if f not in root_files)
 
     index = {
         'metadata': {
@@ -361,6 +494,14 @@ def build_index(project_root: Path) -> dict:
             'generated_at': datetime.datetime.now().isoformat(),
             'total_items': len(index_items),
             'status_summary': status_counts,
+            'status_legend': {
+                'proven': 'meaningful statement, no sorry/axiom/scaffold, in the default build',
+                'scaffold': 'compiles but vacuous/placeholder/constantized/weakened',
+                'wip': 'contains a sorry',
+                'excluded': 'genuine, but only in modules outside the default root build',
+                'axiom': 'backed by an axiom',
+                'missing': 'no matched Lean declaration',
+            },
         },
         'items': index_items,
         'lean_summary': {
@@ -381,6 +522,18 @@ def build_index(project_root: Path) -> dict:
                 'prop_true': sum(1 for d in scan.declarations if d.stub_kind == 'prop_true'),
                 'zero_impl': sum(1 for d in scan.declarations if d.stub_kind == 'zero_impl'),
             },
+            'total_scaffold': len(scaffold_decls),
+            'scaffold_by_severity': {
+                'high': sum(1 for d in scaffold_decls if d.scaffold_severity == 'high'),
+                'low': sum(1 for d in scaffold_decls if d.scaffold_severity == 'low'),
+            },
+            'scaffold_declarations': [
+                {'file': d.file, 'line': d.line, 'kind': d.kind, 'name': d.name,
+                 'scaffold_kind': d.scaffold_kind, 'severity': d.scaffold_severity}
+                for d in scaffold_decls
+            ],
+            'excluded_modules': excluded_modules,
+            'stale_doc_risks': stale_docs,
         },
     }
 
@@ -406,6 +559,10 @@ def main():
     print(f"  Axioms: {ls['total_axioms']} ({ls['axioms_true']} True stubs)")
     print(f"  Sorries: {ls['total_sorries']}")
     print(f"  Declaration stubs: {ls['total_stubs']} ({ls['stubs_by_kind']})")
+    sv = ls['scaffold_by_severity']
+    print(f"  Scaffold declarations: {ls['total_scaffold']} ({sv['high']} high / {sv['low']} low)")
+    print(f"  Excluded (non-root) modules: {len(ls['excluded_modules'])}")
+    print(f"  Stale-doc-risk files: {len(ls['stale_doc_risks'])}")
 
 
 if __name__ == "__main__":

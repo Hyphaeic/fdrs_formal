@@ -54,7 +54,7 @@ Undelivered residue at a junction at time t.
 
 **Axiomatized**: Requires junction state tracking.
 -/
-def undeliveredResidue (_sourceTimeline _sourceCylinder _targetTimeline : ℕ) (_time : ℕ) : ℕ := 0
+def undeliveredResidue_placeholder (_sourceTimeline _sourceCylinder _targetTimeline : ℕ) (_time : ℕ) : ℕ := 0
 
 /--
 Residual payload as sum over junctions.
@@ -68,7 +68,7 @@ Residual payload as sum over junctions.
 
 **Axiomatized**: Requires junction set enumeration and queue state.
 -/
-theorem residualPayload_as_junction_sum (_sourceTimeline _targetTimeline _time : ℕ) :
+theorem residualPayload_as_junction_sum_placeholder (_sourceTimeline _targetTimeline _time : ℕ) :
   ∃ payload : ℕ, True := ⟨0, trivial⟩
 
 /--
@@ -78,7 +78,7 @@ when no junctions are active (all information has been delivered).
 **fdrs.md line 6457**: Payload = information between timelines.
 -/
 def residual_is_in_flight_information : Prop :=
-  ∀ source target time, undeliveredResidue source 0 target time = 0
+  ∀ source target time, undeliveredResidue_placeholder source 0 target time = 0
 
 /-- In the stub model, all residue is trivially zero (no actual injection). -/
 theorem residual_is_in_flight_information_holds : residual_is_in_flight_information :=
