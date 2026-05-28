@@ -40,6 +40,8 @@ import FdrsFormal.Composition.Synchronization.Multicast
 
 namespace FdrsFormal.Composition.Synchronization
 
+open FdrsFormal.Composition.Verification
+
 /-!
 ## Synchronization Points
 -/
@@ -57,11 +59,11 @@ def isSynchronizationPoint (sourceCount : ℕ → ℕ → ℕ) (timeline cylinde
 /--
 Source count for synchronization point.
 
-**fdrs.md line 6332**: |{sources}| for synchronization.
-
-Placeholder: actual count depends on routing graph structure.
+**fdrs.md line 6332**: `|{(A, s_A) : ((A, s_A), (T, s)) ∈ E_{G_ρ}}|`, the number
+of *distinct* source junctions with an edge into `(timeline, cylinder)` in `G_ρ`.
 -/
-def synchronizationSourceCount_placeholder (_timeline _cylinder : ℕ) : ℕ := 0
+def synchronizationSourceCount (spec : RoutingSpecification) (timeline cylinder : ℕ) : ℕ :=
+  (RoutingGraph.predecessors spec (timeline, cylinder)).dedup.length
 
 /-!
 ## Join Semantics

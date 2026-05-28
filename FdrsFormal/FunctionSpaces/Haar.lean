@@ -47,10 +47,10 @@ Phase 2.4 from fdrs.md (Lines 1279-1564) - Mixed-radix Haar wavelets:
 
 ## Status
 
-The contrast basis and Haar orthonormality results are proved; the wavelet-packet tree
-(`WaveletPacket`) is work in progress and still contains `sorry`s. This module is not
-imported by the root `FdrsFormal` module, so it is not part of the default `lake build`
-(build it explicitly with `lake build FdrsFormal.FunctionSpaces.Haar`). Run
+The full module — contrast basis, Haar orthonormality, and the wavelet-packet tree
+(`WaveletPacket`, including the closed-form `basisEval_eq_prod` and the
+`packetBasis_orthogonal` / `packetBasis_norm_sq` lemmas) — is fully proved and
+axiom-clean, and is part of the default `lake build`. Run
 `python3 scripts/fdrs-summary` for the live, authoritative status.
 
 ## References

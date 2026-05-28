@@ -56,18 +56,26 @@ structure RegionPartition where
 Construction of context-dependent radix law.
 
 **fdrs.md lines 5305-5310**:
-  ω(s) = ω_fine if s ∈ Critical
+  ω(s) = ω_fine   if s ∈ Critical
   ω(s) = ω_coarse if s ∈ Coarse
 with ω_fine ≫ ω_coarse.
 
-**Application**: Biological systems, query-adaptive databases.
+The piecewise law `ω(s) = if s ∈ Critical then ω_fine else ω_coarse` is a valid
+radix law (both branches `≥ 2`) realizing fine resolution on critical regions and
+coarse elsewhere.
 
-**Axiomatized**: Well-definedness and resulting β_ω properties.
+**Application**: Biological systems, query-adaptive databases.
 -/
-theorem contextDependentRadix_placeholder (_partition : RegionPartition)
-  (_ω_fine _ω_coarse : ℕ) (_h : _ω_coarse < _ω_fine) :
-  ∃ ω : RadixLaw, True :=
-  ⟨⟨fun _ => 2, fun _ => le_refl 2⟩, trivial⟩
+theorem contextDependentRadix (partition : RegionPartition)
+    (ω_fine ω_coarse : ℕ) (hcoarse : 2 ≤ ω_coarse) (h : ω_coarse < ω_fine) :
+    ∃ ω : RadixLaw, (∀ s ∈ partition.critical, ω.radix s = ω_fine) ∧
+                    (∀ s, s ∉ partition.critical → ω.radix s = ω_coarse) := by
+  classical
+  refine ⟨⟨fun s => if s ∈ partition.critical then ω_fine else ω_coarse, fun s => ?_⟩, ?_, ?_⟩
+  · show 2 ≤ (if s ∈ partition.critical then ω_fine else ω_coarse)
+    split <;> omega
+  · intro s hs; simp [hs]
+  · intro s hs; simp [hs]
 
 /-!
 ## DNA Sequence Ultrametric
@@ -85,10 +93,22 @@ DNA sequence ultrametric respecting codon structure.
 
 **Biological interpretation**: Reflects functional distance, not just edit distance.
 
-**Axiomatized**: Requires modular arithmetic and branching rules.
+The branching law `ω(s) = if (3 ≤ |s| ∧ |s| % 3 = 0) then 64 else 4` realizes this:
+coarse (64) exactly at codon boundaries, fine (4) within codons and on incomplete codons.
 -/
-theorem dnaCodonUltrametric_placeholder : ∃ ω : RadixLaw, True :=
-  ⟨⟨fun _ => 2, fun _ => le_refl 2⟩, trivial⟩
+theorem dnaCodonUltrametric :
+    ∃ ω : RadixLaw,
+      (∀ s, 3 ≤ s.length → s.length % 3 = 0 → ω.radix s = 64) ∧
+      (∀ s, (s.length < 3 ∨ s.length % 3 ≠ 0) → ω.radix s = 4) := by
+  refine ⟨⟨fun s => if 3 ≤ s.length ∧ s.length % 3 = 0 then 64 else 4, fun s => ?_⟩, ?_, ?_⟩
+  · show 2 ≤ (if 3 ≤ s.length ∧ s.length % 3 = 0 then (64 : ℕ) else 4)
+    split <;> omega
+  · intro s h1 h2
+    show (if 3 ≤ s.length ∧ s.length % 3 = 0 then (64 : ℕ) else 4) = 64
+    split <;> omega
+  · intro s h
+    show (if 3 ≤ s.length ∧ s.length % 3 = 0 then (64 : ℕ) else 4) = 4
+    split <;> omega
 
 /-!
 ## Cache-Optimized Ultrametric
@@ -103,10 +123,11 @@ where cache_cost(s) is measured cache miss rate.
 
 **Result**: δ_ω-locality directly corresponds to cache efficiency.
 
-**Axiomatized**: Requires empirical cache measurement and radix calculation.
+The radix `ω(s) = cache_cost(s) + 2` is driven by the measured cache cost at `s`
+(higher cost ⇒ larger branching ⇒ finer resolution there), always a valid radix `≥ 2`.
 -/
-theorem cacheOptimizedRadix_placeholder (_cache_cost : PrefixWord → ℕ) :
-  ∃ ω : RadixLaw, True :=
-  ⟨⟨fun _ => 2, fun _ => le_refl 2⟩, trivial⟩
+theorem cacheOptimizedRadix (cache_cost : PrefixWord → ℕ) :
+    ∃ ω : RadixLaw, ∀ s, ω.radix s = cache_cost s + 2 :=
+  ⟨⟨fun s => cache_cost s + 2, fun _ => Nat.le_add_left 2 _⟩, fun _ => rfl⟩
 
 end FdrsFormal.Modes.VariableRadix.Design

@@ -201,12 +201,19 @@ def trivialSchedule : Schedule :=
   { startTime := fun _ => 0 }
 
 /--
-FDRS programs are schedulable: a trivial schedule always exists.
+FDRS programs are schedulable: whenever every operation's worst-case execution
+time fits within its deadline, a feasible schedule exists.
 
-**fdrs.md**: Earliest Deadline First scheduling works for FDRS.
+**fdrs.md**: Earliest Deadline First scheduling works for FDRS. Concretely, when
+`wcet(op) ≤ deadline(op)` for all `op`, the all-at-time-`0` schedule already meets
+every deadline, so the feasibility problem is solvable.
 -/
-theorem fdrs_schedulable_placeholder : ∃ s : Schedule, True :=
-  ⟨trivialSchedule, trivial⟩
+theorem fdrs_schedulable (tm : TimingModel) (deadlines : ℕ → ℕ)
+    (h : ∀ op, (tm op).wcet ≤ deadlines op) :
+    ∃ s : Schedule, isFeasible tm s deadlines := by
+  refine ⟨trivialSchedule, ?_⟩
+  intro op
+  simpa [trivialSchedule] using h op
 
 /-!
 ## Latency Bounds

@@ -37,6 +37,7 @@ Logarithm converts multiplicative discrepancy to additive payload.
 
 import FdrsFormal.Modes.VariableRadix.MultiMetric.ObserverComplex
 import FdrsFormal.Modes.VariableRadix.MultiMetric.Projection
+import Mathlib.Analysis.SpecialFunctions.Log.Basic
 
 namespace FdrsFormal.Modes.VariableRadix.MultiMetric
 
@@ -45,23 +46,49 @@ namespace FdrsFormal.Modes.VariableRadix.MultiMetric
 -/
 
 /--
-Residual payload as logarithm of metric discrepancy.
-
-**fdrs.md Theorem 42 (lines 5369-5378)**:
-  payload(n) = log(δ_{ω_I}(τ_n, τ_{n+1}) / π_B^*δ_{ω_B}(τ_n, τ_{n+1}))
-
-**Proof sketch**:
-- Intrinsic distance δ_{ω_I} reflects full composite state change
-- Projected distance π_B^*δ_{ω_B} reflects only what B observes
-- Ratio quantifies information B cannot capture
-- Log converts to additive payload measure
-
-**Mathlib lemmas**: `Real.log`, metric space properties
-
-**Axiomatized**: Requires formalizing timeline state evolution and projection.
+The residual payload at step `n`: the logarithm of the metric discrepancy ratio
+between the intrinsic composite `I`-distance and the pullback of `B`'s distance
+via the projection `π_B`. Captures Theorem 42's right-hand side as a concrete
+(noncomputable) real number.
 -/
-theorem residualAsMetricDiscrepancy_placeholder (_obs : MultiMetricObserver) (_n : ℕ) :
-  ∃ _payload : ℝ, True := ⟨0, trivial⟩
+noncomputable def residualPayload {α β : Type*}
+    (τ : ℕ → α) (πB : α → β) (δI : α → α → ℝ) (δB : β → β → ℝ) (n : ℕ) : ℝ :=
+  Real.log (δI (τ n) (τ (n + 1)) / δB (πB (τ n)) (πB (τ (n + 1))))
+
+/--
+**fdrs.md**: Theorem 42 (Residual as metric discrepancy) [§6.5.3 · Phase 6] (lines 5369-5378)
+
+For an interpreter state evolution `τ : ℕ → ℛ_I`, a timeline projection
+`π_B : ℛ_I → ℛ_B` (Definition 83), and the intrinsic and projected metrics
+`δ_{ω_I}` and `δ_{ω_B}`, there is a residual payload at step `n` given by
+
+  `payload(n) = log(δ_{ω_I}(τ_n, τ_{n+1}) / π_B^* δ_{ω_B}(τ_n, τ_{n+1}))`,
+
+where the pullback is `π_B^* δ_{ω_B}(x, y) = δ_{ω_B}(π_B(x), π_B(y))`.
+
+This quantifies the "distance information" lost when projecting from the
+composite metric to `B`'s metric — when the intrinsic distance exceeds the
+pullback, the payload is positive; when they agree, it is zero
+(`residualPayload_eq_zero_of_eq`).
+-/
+theorem residualAsMetricDiscrepancy {α β : Type*}
+    (τ : ℕ → α) (πB : α → β) (δI : α → α → ℝ) (δB : β → β → ℝ) (n : ℕ) :
+    ∃ payload : ℝ,
+      payload = Real.log (δI (τ n) (τ (n + 1)) / δB (πB (τ n)) (πB (τ (n + 1)))) :=
+  ⟨residualPayload τ πB δI δB n, rfl⟩
+
+/-- Companion to Theorem 42: the residual payload vanishes whenever the
+intrinsic distance equals the pullback distance — no information is lost when
+the two metrics agree on the step `(τ_n, τ_{n+1})`. -/
+theorem residualPayload_eq_zero_of_eq {α β : Type*}
+    (τ : ℕ → α) (πB : α → β) (δI : α → α → ℝ) (δB : β → β → ℝ) (n : ℕ)
+    (h : δI (τ n) (τ (n + 1)) = δB (πB (τ n)) (πB (τ (n + 1)))) :
+    residualPayload τ πB δI δB n = 0 := by
+  unfold residualPayload
+  rw [h]
+  by_cases hx : δB (πB (τ n)) (πB (τ (n + 1))) = 0
+  · rw [hx, zero_div, Real.log_zero]
+  · rw [div_self hx, Real.log_one]
 
 /--
 Payload measures information loss under projection.

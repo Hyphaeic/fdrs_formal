@@ -42,6 +42,7 @@ import FdrsFormal.Composition.TimelineGraphs.Identifiers
 import FdrsFormal.Composition.Routing.Definition
 import FdrsFormal.Composition.Routing.Events
 import FdrsFormal.Composition.DeadlockAnalysis.Definition
+import FdrsFormal.Composition.RoutingGraph.Graph
 import FdrsFormal.Composition.TimingBounds.Definition
 import FdrsFormal.Composition.TimingBounds.RoutingAnalysis
 

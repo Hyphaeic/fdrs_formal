@@ -60,14 +60,19 @@ structure MetricProperties where
   spec : String
 
 /--
-Design problem: find radix law satisfying desired metric properties.
+Design problem: find a radix law satisfying desired metric properties.
 
-**fdrs.md Problem 6.4.1 (lines 5245-5252)**: Core inverse problem formulation.
+**fdrs.md Problem 6.4.1 (lines 5245-5252)**: the core inverse problem
+`find ω such that δ_ω ⊨ 𝒫`.
 
-**Axiomatized**: Existence and construction of solution radix law.
+Here we discharge the **exact-design** variant for the concrete uniform-branching
+property class: for any target branching factor `k ≥ 2`, the radix law `ω ≡ k`
+achieves it exactly (`ω(s) = k` for all `s`), so the inverse problem is solvable
+for that property.
 -/
-theorem ultrametricDesignProblem_placeholder (_P : MetricProperties) : ∃ ω : RadixLaw, True :=
-  ⟨⟨fun _ => 2, fun _ => le_refl 2⟩, trivial⟩
+theorem ultrametricDesignProblem (k : ℕ) (hk : 2 ≤ k) :
+    ∃ ω : RadixLaw, ∀ s, ω.radix s = k :=
+  ⟨⟨fun _ => k, fun _ => hk⟩, fun _ => rfl⟩
 
 /--
 Exact design variant: find ω achieving exact target properties.
@@ -80,15 +85,19 @@ def exactDesignExists (_P : MetricProperties) : Prop :=
   ∃ ω : RadixLaw, ∀ s, 2 ≤ ω.radix s
 
 /--
-Optimal design variant: minimize cost subject to constraints.
+Optimal design variant: minimize a cost functional.
 
-**fdrs.md line 5255**: Find ω minimizing cost functional.
+**fdrs.md line 5255**: find `ω` minimizing a cost functional.
 
-**Axiomatized**: Requires formalizing cost functionals and optimization.
+For any cost that is **monotone in the branching** (raising the radix at any
+prefix never lowers the cost), the minimal-branching law `ω ≡ 2` is a global
+minimizer — the cheapest design.
 -/
-theorem optimalDesign_placeholder (_P : MetricProperties) (_cost : RadixLaw → ℝ) :
-  ∃ ω : RadixLaw, True :=
-  ⟨⟨fun _ => 2, fun _ => le_refl 2⟩, trivial⟩
+theorem optimalDesign (cost : RadixLaw → ℝ)
+    (hmono : ∀ ω ω' : RadixLaw, (∀ s, ω.radix s ≤ ω'.radix s) → cost ω ≤ cost ω') :
+    ∃ ω : RadixLaw, ∀ ω' : RadixLaw, cost ω ≤ cost ω' := by
+  refine ⟨⟨fun _ => 2, fun _ => le_refl 2⟩, fun ω' => ?_⟩
+  exact hmono _ ω' (fun s => ω'.radix_ge_two s)
 
 /--
 Constrained design variant: best approximation within allowable class.

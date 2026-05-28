@@ -66,16 +66,21 @@ def isConsistent (V : VolumeFunction) : Prop :=
   ∀ (s : PrefixWord) (d e : ℕ), V.volume (s ++ [d]) = V.volume (s ++ [e])
 
 /--
-Construction of radix law from consistent volume function.
+Construction of radix law from a consistent volume function.
 
-**fdrs.md lines 5268-5270**: ω(s) = V(s∥d) / V(s) (constant over siblings).
+**fdrs.md lines 5268-5270**: `ω(s) = V(s∥d) / V(s)`, constant over siblings `d`.
 
-Under consistency, a radix law always exists (constant radix 2 satisfies the type).
-The full correspondence V ↦ ω with β_ω = V requires computing ω(s) = V(s++[0])/V(s)
-and rounding to natural numbers, which we leave to future work.
+When the prescribed sibling-ratio is an integer radix `r(s) ≥ 2`
+(`V(s ++ [0]) = r(s) · V(s)`), the radix law `ω := r` realizes the volume function:
+for **every** sibling `d`, `V(s ++ [d]) = ω(s) · V(s)`. Consistency (`hV`) is exactly
+what makes this hold across all siblings, not just `d = 0`.
 -/
-theorem volumeToPrescribedRadix_placeholder (_V : VolumeFunction) (_hV : isConsistent _V) :
-    ∃ _ω : RadixLaw, True :=
-  ⟨⟨fun _ => 2, fun _ => le_refl 2⟩, trivial⟩
+theorem volumeToPrescribedRadix (V : VolumeFunction) (hV : isConsistent V)
+    (r : PrefixWord → ℕ) (hr2 : ∀ s, 2 ≤ r s)
+    (hr : ∀ s, V.volume (s ++ [0]) = (r s : ℝ) * V.volume s) :
+    ∃ ω : RadixLaw, ∀ s d, V.volume (s ++ [d]) = (ω.radix s : ℝ) * V.volume s := by
+  refine ⟨⟨r, hr2⟩, fun s d => ?_⟩
+  show V.volume (s ++ [d]) = (r s : ℝ) * V.volume s
+  rw [hV s d 0, hr s]
 
 end FdrsFormal.Modes.VariableRadix.Design

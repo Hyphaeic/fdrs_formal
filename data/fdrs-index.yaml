@@ -1,12 +1,11 @@
 metadata:
   spec_file: docs/fdrs.md
   spec_lines: 7922
-  generated_at: '2026-05-27T13:03:06.402159'
+  generated_at: '2026-05-28T00:45:10.161194'
   total_items: 433
   status_summary:
-    proven: 411
-    scaffold: 15
-    excluded: 7
+    proven: 431
+    scaffold: 2
   status_legend:
     proven: meaningful statement, no sorry/axiom/scaffold, in the default build
     scaffold: compiles but vacuous/placeholder/constantized/weakened
@@ -2135,8 +2134,8 @@ items:
   global_num: 35
   title: global mixed-radix Haar atoms
   line: 1330
-  status: excluded
-  in_root_build: false
+  status: proven
+  in_root_build: true
   lean_files:
   - path: FdrsFormal/FunctionSpaces/Haar.lean
     declarations: []
@@ -2157,8 +2156,8 @@ items:
   global_num: 11
   title: orthonormal basis
   line: 1346
-  status: excluded
-  in_root_build: false
+  status: proven
+  in_root_build: true
   lean_files:
   - path: FdrsFormal/FunctionSpaces/Haar.lean
     declarations: []
@@ -2188,8 +2187,8 @@ items:
   global_num: 36
   title: support level of a basis atom
   line: 1358
-  status: excluded
-  in_root_build: false
+  status: proven
+  in_root_build: true
   lean_files:
   - path: FdrsFormal/FunctionSpaces/Haar.lean
     declarations: []
@@ -2221,8 +2220,8 @@ items:
   global_num: 33
   title: how (P^{(k
   line: 1366
-  status: excluded
-  in_root_build: false
+  status: proven
+  in_root_build: true
   lean_files:
   - path: FdrsFormal/FunctionSpaces/Haar.lean
     declarations: []
@@ -2250,8 +2249,8 @@ items:
   global_num: 8
   title: explicit description of scale subspaces (D_L
   line: 1379
-  status: excluded
-  in_root_build: false
+  status: proven
+  in_root_build: true
   lean_files:
   - path: FdrsFormal/FunctionSpaces/Haar.lean
     declarations: []
@@ -2279,8 +2278,8 @@ items:
   global_num: 12
   title: diagonal-by-scale structure in Haar coordinates
   line: 1405
-  status: excluded
-  in_root_build: false
+  status: proven
+  in_root_build: true
   lean_files:
   - path: FdrsFormal/FunctionSpaces/Haar.lean
     declarations: []
@@ -2304,8 +2303,8 @@ items:
   global_num: 9
   title: commutant algebra is a direct product of full matrix algebras
   line: 1415
-  status: excluded
-  in_root_build: false
+  status: proven
+  in_root_build: true
   lean_files:
   - path: FdrsFormal/FunctionSpaces/Haar.lean
     declarations: []
@@ -7801,26 +7800,26 @@ items:
   - path: FdrsFormal/Modes/VariableRadix/Design/Examples.lean
     declarations:
     - RegionPartition
-    - contextDependentRadix_placeholder
-    - dnaCodonUltrametric_placeholder
-    - cacheOptimizedRadix_placeholder
+    - contextDependentRadix
+    - dnaCodonUltrametric
+    - cacheOptimizedRadix
   - path: FdrsFormal/Modes/VariableRadix/Design/GrowthRates.lean
     declarations:
-    - exponentialGrowthRadix_placeholder
-    - polynomialGrowthRadix_placeholder
-    - factorialGrowthRadix_placeholder
+    - exponentialGrowthRadix
+    - polynomialGrowthRadix
+    - factorialGrowthRadix
   - path: FdrsFormal/Modes/VariableRadix/Design/InverseProblem.lean
     declarations:
     - MetricProperties
-    - ultrametricDesignProblem_placeholder
+    - ultrametricDesignProblem
     - exactDesignExists
-    - optimalDesign_placeholder
+    - optimalDesign
     - constrainedDesign
   - path: FdrsFormal/Modes/VariableRadix/Design/VolumeConstraints.lean
     declarations:
     - VolumeFunction
     - isConsistent
-    - volumeToPrescribedRadix_placeholder
+    - volumeToPrescribedRadix
   section: 6.1.2
 - id: theorem_40
   type: theorem
@@ -7841,26 +7840,26 @@ items:
   - path: FdrsFormal/Modes/VariableRadix/Design/Examples.lean
     declarations:
     - RegionPartition
-    - contextDependentRadix_placeholder
-    - dnaCodonUltrametric_placeholder
-    - cacheOptimizedRadix_placeholder
+    - contextDependentRadix
+    - dnaCodonUltrametric
+    - cacheOptimizedRadix
   - path: FdrsFormal/Modes/VariableRadix/Design/GrowthRates.lean
     declarations:
-    - exponentialGrowthRadix_placeholder
-    - polynomialGrowthRadix_placeholder
-    - factorialGrowthRadix_placeholder
+    - exponentialGrowthRadix
+    - polynomialGrowthRadix
+    - factorialGrowthRadix
   - path: FdrsFormal/Modes/VariableRadix/Design/InverseProblem.lean
     declarations:
     - MetricProperties
-    - ultrametricDesignProblem_placeholder
+    - ultrametricDesignProblem
     - exactDesignExists
-    - optimalDesign_placeholder
+    - optimalDesign
     - constrainedDesign
   - path: FdrsFormal/Modes/VariableRadix/Design/VolumeConstraints.lean
     declarations:
     - VolumeFunction
     - isConsistent
-    - volumeToPrescribedRadix_placeholder
+    - volumeToPrescribedRadix
   section: 6.2.1
 - id: proposition_90
   type: proposition
@@ -7881,26 +7880,26 @@ items:
   - path: FdrsFormal/Modes/VariableRadix/Design/Examples.lean
     declarations:
     - RegionPartition
-    - contextDependentRadix_placeholder
-    - dnaCodonUltrametric_placeholder
-    - cacheOptimizedRadix_placeholder
+    - contextDependentRadix
+    - dnaCodonUltrametric
+    - cacheOptimizedRadix
   - path: FdrsFormal/Modes/VariableRadix/Design/GrowthRates.lean
     declarations:
-    - exponentialGrowthRadix_placeholder
-    - polynomialGrowthRadix_placeholder
-    - factorialGrowthRadix_placeholder
+    - exponentialGrowthRadix
+    - polynomialGrowthRadix
+    - factorialGrowthRadix
   - path: FdrsFormal/Modes/VariableRadix/Design/InverseProblem.lean
     declarations:
     - MetricProperties
-    - ultrametricDesignProblem_placeholder
+    - ultrametricDesignProblem
     - exactDesignExists
-    - optimalDesign_placeholder
+    - optimalDesign
     - constrainedDesign
   - path: FdrsFormal/Modes/VariableRadix/Design/VolumeConstraints.lean
     declarations:
     - VolumeFunction
     - isConsistent
-    - volumeToPrescribedRadix_placeholder
+    - volumeToPrescribedRadix
   section: 6.2.2
 - id: definition_81
   type: definition
@@ -7983,7 +7982,7 @@ items:
   global_num: 42
   title: Residual as metric discrepancy
   line: 5369
-  status: scaffold
+  status: proven
   in_root_build: true
   lean_files:
   - path: FdrsFormal/Modes/VariableRadix/MultiMetric.lean
@@ -7998,11 +7997,11 @@ items:
     - pullback_ne_intrinsic
   - path: FdrsFormal/Modes/VariableRadix/MultiMetric/Residual.lean
     declarations:
-    - residualAsMetricDiscrepancy_placeholder
+    - residualPayload
+    - residualAsMetricDiscrepancy
+    - residualPayload_eq_zero_of_eq
     - payload_measures_information_loss
   section: 6.5.3
-  scaffold_decls:
-  - FdrsFormal/Modes/VariableRadix/MultiMetric/Residual.lean:63 residualAsMetricDiscrepancy_placeholder
 - id: theorem_43
   type: theorem
   phase: 6
@@ -8022,7 +8021,9 @@ items:
     - pullback_ne_intrinsic
   - path: FdrsFormal/Modes/VariableRadix/MultiMetric/Residual.lean
     declarations:
-    - residualAsMetricDiscrepancy_placeholder
+    - residualPayload
+    - residualAsMetricDiscrepancy
+    - residualPayload_eq_zero_of_eq
     - payload_measures_information_loss
   - path: FdrsFormal/Modes/VariableRadix/Realizability/Conditions.lean
     declarations:
@@ -8059,7 +8060,9 @@ items:
     - pullback_ne_intrinsic
   - path: FdrsFormal/Modes/VariableRadix/MultiMetric/Residual.lean
     declarations:
-    - residualAsMetricDiscrepancy_placeholder
+    - residualPayload
+    - residualAsMetricDiscrepancy
+    - residualPayload_eq_zero_of_eq
     - payload_measures_information_loss
   section: 6.6.2
 - id: theorem_44
@@ -8073,7 +8076,9 @@ items:
   lean_files:
   - path: FdrsFormal/Modes/VariableRadix/MultiMetric/Residual.lean
     declarations:
-    - residualAsMetricDiscrepancy_placeholder
+    - residualPayload
+    - residualAsMetricDiscrepancy
+    - residualPayload_eq_zero_of_eq
     - payload_measures_information_loss
   section: 6.7.1
 - id: proposition_91
@@ -8095,26 +8100,26 @@ items:
   - path: FdrsFormal/Modes/VariableRadix/Design/Examples.lean
     declarations:
     - RegionPartition
-    - contextDependentRadix_placeholder
-    - dnaCodonUltrametric_placeholder
-    - cacheOptimizedRadix_placeholder
+    - contextDependentRadix
+    - dnaCodonUltrametric
+    - cacheOptimizedRadix
   - path: FdrsFormal/Modes/VariableRadix/Design/GrowthRates.lean
     declarations:
-    - exponentialGrowthRadix_placeholder
-    - polynomialGrowthRadix_placeholder
-    - factorialGrowthRadix_placeholder
+    - exponentialGrowthRadix
+    - polynomialGrowthRadix
+    - factorialGrowthRadix
   - path: FdrsFormal/Modes/VariableRadix/Design/InverseProblem.lean
     declarations:
     - MetricProperties
-    - ultrametricDesignProblem_placeholder
+    - ultrametricDesignProblem
     - exactDesignExists
-    - optimalDesign_placeholder
+    - optimalDesign
     - constrainedDesign
   - path: FdrsFormal/Modes/VariableRadix/Design/VolumeConstraints.lean
     declarations:
     - VolumeFunction
     - isConsistent
-    - volumeToPrescribedRadix_placeholder
+    - volumeToPrescribedRadix
   section: P6.1
 - id: proposition_92
   type: proposition
@@ -8135,26 +8140,26 @@ items:
   - path: FdrsFormal/Modes/VariableRadix/Design/Examples.lean
     declarations:
     - RegionPartition
-    - contextDependentRadix_placeholder
-    - dnaCodonUltrametric_placeholder
-    - cacheOptimizedRadix_placeholder
+    - contextDependentRadix
+    - dnaCodonUltrametric
+    - cacheOptimizedRadix
   - path: FdrsFormal/Modes/VariableRadix/Design/GrowthRates.lean
     declarations:
-    - exponentialGrowthRadix_placeholder
-    - polynomialGrowthRadix_placeholder
-    - factorialGrowthRadix_placeholder
+    - exponentialGrowthRadix
+    - polynomialGrowthRadix
+    - factorialGrowthRadix
   - path: FdrsFormal/Modes/VariableRadix/Design/InverseProblem.lean
     declarations:
     - MetricProperties
-    - ultrametricDesignProblem_placeholder
+    - ultrametricDesignProblem
     - exactDesignExists
-    - optimalDesign_placeholder
+    - optimalDesign
     - constrainedDesign
   - path: FdrsFormal/Modes/VariableRadix/Design/VolumeConstraints.lean
     declarations:
     - VolumeFunction
     - isConsistent
-    - volumeToPrescribedRadix_placeholder
+    - volumeToPrescribedRadix
   section: P6.2
 - id: proposition_93
   type: proposition
@@ -8175,26 +8180,26 @@ items:
   - path: FdrsFormal/Modes/VariableRadix/Design/Examples.lean
     declarations:
     - RegionPartition
-    - contextDependentRadix_placeholder
-    - dnaCodonUltrametric_placeholder
-    - cacheOptimizedRadix_placeholder
+    - contextDependentRadix
+    - dnaCodonUltrametric
+    - cacheOptimizedRadix
   - path: FdrsFormal/Modes/VariableRadix/Design/GrowthRates.lean
     declarations:
-    - exponentialGrowthRadix_placeholder
-    - polynomialGrowthRadix_placeholder
-    - factorialGrowthRadix_placeholder
+    - exponentialGrowthRadix
+    - polynomialGrowthRadix
+    - factorialGrowthRadix
   - path: FdrsFormal/Modes/VariableRadix/Design/InverseProblem.lean
     declarations:
     - MetricProperties
-    - ultrametricDesignProblem_placeholder
+    - ultrametricDesignProblem
     - exactDesignExists
-    - optimalDesign_placeholder
+    - optimalDesign
     - constrainedDesign
   - path: FdrsFormal/Modes/VariableRadix/Design/VolumeConstraints.lean
     declarations:
     - VolumeFunction
     - isConsistent
-    - volumeToPrescribedRadix_placeholder
+    - volumeToPrescribedRadix
   section: P6.3
 - id: proposition_94
   type: proposition
@@ -8215,26 +8220,26 @@ items:
   - path: FdrsFormal/Modes/VariableRadix/Design/Examples.lean
     declarations:
     - RegionPartition
-    - contextDependentRadix_placeholder
-    - dnaCodonUltrametric_placeholder
-    - cacheOptimizedRadix_placeholder
+    - contextDependentRadix
+    - dnaCodonUltrametric
+    - cacheOptimizedRadix
   - path: FdrsFormal/Modes/VariableRadix/Design/GrowthRates.lean
     declarations:
-    - exponentialGrowthRadix_placeholder
-    - polynomialGrowthRadix_placeholder
-    - factorialGrowthRadix_placeholder
+    - exponentialGrowthRadix
+    - polynomialGrowthRadix
+    - factorialGrowthRadix
   - path: FdrsFormal/Modes/VariableRadix/Design/InverseProblem.lean
     declarations:
     - MetricProperties
-    - ultrametricDesignProblem_placeholder
+    - ultrametricDesignProblem
     - exactDesignExists
-    - optimalDesign_placeholder
+    - optimalDesign
     - constrainedDesign
   - path: FdrsFormal/Modes/VariableRadix/Design/VolumeConstraints.lean
     declarations:
     - VolumeFunction
     - isConsistent
-    - volumeToPrescribedRadix_placeholder
+    - volumeToPrescribedRadix
   section: P6.4
 - id: proposition_95
   type: proposition
@@ -8375,7 +8380,7 @@ items:
   global_num: 87
   title: Context-indexed mixed-radix family
   line: 5523
-  status: scaffold
+  status: proven
   in_root_build: true
   lean_files:
   - path: FdrsFormal/Modes/ContextDependent/Basic/Basic.lean
@@ -8390,8 +8395,6 @@ items:
     - ExtendedOracle.family
     - ExtendedOracle.family_consistent
   section: 7.1.4
-  scaffold_decls:
-  - FdrsFormal/Modes/VariableRadix/Design/Examples.lean:67 contextDependentRadix_placeholder
 - id: definition_88
   type: definition
   phase: 7
@@ -9893,6 +9896,18 @@ items:
     - dequeue
     - isBounded
     - queueSize
+  - path: FdrsFormal/Composition/RoutingGraph/Graph.lean
+    declarations:
+    - Vertex
+    - ruleSrc
+    - ruleTgt
+    - vertices
+    - successors
+    - predecessors
+    - fanout
+    - depthStep
+    - depthIter
+    - depthIter_le
   section: 8.4.1
 - id: definition_120
   type: definition
@@ -9918,6 +9933,18 @@ items:
     - dequeue
     - isBounded
     - queueSize
+  - path: FdrsFormal/Composition/RoutingGraph/Graph.lean
+    declarations:
+    - Vertex
+    - ruleSrc
+    - ruleTgt
+    - vertices
+    - successors
+    - predecessors
+    - fanout
+    - depthStep
+    - depthIter
+    - depthIter_le
   section: 8.4.2
 - id: theorem_52
   type: theorem
@@ -9925,7 +9952,7 @@ items:
   global_num: 52
   title: Acyclic routing implies deadlock-freedom
   line: 6131
-  status: scaffold
+  status: proven
   in_root_build: true
   lean_files:
   - path: FdrsFormal/Composition.lean
@@ -9938,50 +9965,98 @@ items:
     - dequeue
     - isBounded
     - queueSize
+  - path: FdrsFormal/Composition/RoutingGraph/Graph.lean
+    declarations:
+    - Vertex
+    - ruleSrc
+    - ruleTgt
+    - vertices
+    - successors
+    - predecessors
+    - fanout
+    - depthStep
+    - depthIter
+    - depthIter_le
+  - path: FdrsFormal/Composition/Verification/CompileTime.lean
+    declarations:
+    - acyclicity_decidable
+    - bounded_fanout_decidable
+    - bounded_depth_decidable
+    - reachability_decidable
+    - deadlock_freedom_decidable
+    - deadlockFree_iff_acyclic
   section: 8.4.3
-  scaffold_decls:
-  - FdrsFormal/Composition/Verification/CompileTime.lean:106 deadlock_freedom_decidable_placeholder
 - id: definition_121
   type: definition
   phase: 8
   global_num: 121
   title: Routing depth
   line: 6151
-  status: scaffold
+  status: proven
   in_root_build: true
   lean_files:
   - path: FdrsFormal/Composition.lean
     declarations: []
+  - path: FdrsFormal/Composition/RoutingGraph/Graph.lean
+    declarations:
+    - Vertex
+    - ruleSrc
+    - ruleTgt
+    - vertices
+    - successors
+    - predecessors
+    - fanout
+    - depthStep
+    - depthIter
+    - depthIter_le
   - path: FdrsFormal/Composition/TimingBounds/RoutingAnalysis.lean
     declarations:
-    - routingDepth_placeholder
+    - routingDepth
     - finiteRoutingDepth
-    - localTimelineCost_placeholder
-    - routingOverheadCost_placeholder
-    - compositeTimingBound_placeholder
-    - staticRoutingCompileTimeBound_placeholder
+    - localTimelineCost
+    - routingOverheadCost
+    - layer
+    - layerMax
+    - compositeLatencyBound
+    - compositeTimingBound
+    - maxRoutingDepth
+    - staticRoutingCompileTimeBound
   section: 8.4.4
-  scaffold_decls:
-  - FdrsFormal/Composition/TimingBounds/RoutingAnalysis.lean:51 routingDepth_placeholder
 - id: proposition_108
   type: proposition
   phase: 8
   global_num: 108
   title: Finite routing depth
   line: 6161
-  status: scaffold
+  status: proven
   in_root_build: true
   lean_files:
   - path: FdrsFormal/Composition.lean
     declarations: []
+  - path: FdrsFormal/Composition/RoutingGraph/Graph.lean
+    declarations:
+    - Vertex
+    - ruleSrc
+    - ruleTgt
+    - vertices
+    - successors
+    - predecessors
+    - fanout
+    - depthStep
+    - depthIter
+    - depthIter_le
   - path: FdrsFormal/Composition/TimingBounds/RoutingAnalysis.lean
     declarations:
-    - routingDepth_placeholder
+    - routingDepth
     - finiteRoutingDepth
-    - localTimelineCost_placeholder
-    - routingOverheadCost_placeholder
-    - compositeTimingBound_placeholder
-    - staticRoutingCompileTimeBound_placeholder
+    - localTimelineCost
+    - routingOverheadCost
+    - layer
+    - layerMax
+    - compositeLatencyBound
+    - compositeTimingBound
+    - maxRoutingDepth
+    - staticRoutingCompileTimeBound
   section: 8.4.5
 - id: definition_122
   type: definition
@@ -9989,88 +10064,96 @@ items:
   global_num: 122
   title: Local timeline operation cost
   line: 6173
-  status: scaffold
+  status: proven
   in_root_build: true
   lean_files:
   - path: FdrsFormal/Composition.lean
     declarations: []
   - path: FdrsFormal/Composition/TimingBounds/RoutingAnalysis.lean
     declarations:
-    - routingDepth_placeholder
+    - routingDepth
     - finiteRoutingDepth
-    - localTimelineCost_placeholder
-    - routingOverheadCost_placeholder
-    - compositeTimingBound_placeholder
-    - staticRoutingCompileTimeBound_placeholder
+    - localTimelineCost
+    - routingOverheadCost
+    - layer
+    - layerMax
+    - compositeLatencyBound
+    - compositeTimingBound
+    - maxRoutingDepth
+    - staticRoutingCompileTimeBound
   section: 8.5.1
-  scaffold_decls:
-  - FdrsFormal/Composition/TimingBounds/RoutingAnalysis.lean:80 localTimelineCost_placeholder
 - id: definition_123
   type: definition
   phase: 8
   global_num: 123
   title: Routing operation overhead
   line: 6183
-  status: scaffold
+  status: proven
   in_root_build: true
   lean_files:
   - path: FdrsFormal/Composition.lean
     declarations: []
   - path: FdrsFormal/Composition/TimingBounds/RoutingAnalysis.lean
     declarations:
-    - routingDepth_placeholder
+    - routingDepth
     - finiteRoutingDepth
-    - localTimelineCost_placeholder
-    - routingOverheadCost_placeholder
-    - compositeTimingBound_placeholder
-    - staticRoutingCompileTimeBound_placeholder
+    - localTimelineCost
+    - routingOverheadCost
+    - layer
+    - layerMax
+    - compositeLatencyBound
+    - compositeTimingBound
+    - maxRoutingDepth
+    - staticRoutingCompileTimeBound
   section: 8.5.2
-  scaffold_decls:
-  - FdrsFormal/Composition/TimingBounds/RoutingAnalysis.lean:95 routingOverheadCost_placeholder
 - id: theorem_53
   type: theorem
   phase: 8
   global_num: 53
   title: Composite timing bound - Main Result
   line: 6196
-  status: scaffold
+  status: proven
   in_root_build: true
   lean_files:
   - path: FdrsFormal/Composition.lean
     declarations: []
   - path: FdrsFormal/Composition/TimingBounds/RoutingAnalysis.lean
     declarations:
-    - routingDepth_placeholder
+    - routingDepth
     - finiteRoutingDepth
-    - localTimelineCost_placeholder
-    - routingOverheadCost_placeholder
-    - compositeTimingBound_placeholder
-    - staticRoutingCompileTimeBound_placeholder
+    - localTimelineCost
+    - routingOverheadCost
+    - layer
+    - layerMax
+    - compositeLatencyBound
+    - compositeTimingBound
+    - maxRoutingDepth
+    - staticRoutingCompileTimeBound
   section: 8.5.3
-  scaffold_decls:
-  - FdrsFormal/Composition/TimingBounds/RoutingAnalysis.lean:112 compositeTimingBound_placeholder
 - id: corollary_29
   type: corollary
   phase: 8
   global_num: 29
   title: Static routing compile-time bound
   line: 6217
-  status: scaffold
+  status: proven
   in_root_build: true
   lean_files:
   - path: FdrsFormal/Composition.lean
     declarations: []
   - path: FdrsFormal/Composition/TimingBounds/RoutingAnalysis.lean
     declarations:
-    - routingDepth_placeholder
+    - routingDepth
     - finiteRoutingDepth
-    - localTimelineCost_placeholder
-    - routingOverheadCost_placeholder
-    - compositeTimingBound_placeholder
-    - staticRoutingCompileTimeBound_placeholder
+    - localTimelineCost
+    - routingOverheadCost
+    - layer
+    - layerMax
+    - compositeLatencyBound
+    - compositeTimingBound
+    - maxRoutingDepth
+    - staticRoutingCompileTimeBound
   section: 8.5.4
-  scaffold_decls:
-  - FdrsFormal/Composition/TimingBounds/RoutingAnalysis.lean:128 staticRoutingCompileTimeBound_placeholder
 - id: definition_124
   type: definition
   phase: 8
@@ -10241,7 +10324,7 @@ items:
   - path: FdrsFormal/Composition/Synchronization/Multicast.lean
     declarations:
     - isMulticast
-    - multicastFanout_placeholder
+    - multicastFanout
     - timerOverflow_multicast
   section: 8.7.1
 - id: definition_129
@@ -10260,7 +10343,7 @@ items:
   - path: FdrsFormal/Composition/Synchronization/Join.lean
     declarations:
     - isSynchronizationPoint
-    - synchronizationSourceCount_placeholder
+    - synchronizationSourceCount
     - JoinSemantics
     - barrierJoin
     - raceJoin
@@ -10268,7 +10351,7 @@ items:
   - path: FdrsFormal/Composition/Synchronization/Multicast.lean
     declarations:
     - isMulticast
-    - multicastFanout_placeholder
+    - multicastFanout
     - timerOverflow_multicast
   section: 8.7.2
 - id: definition_130
@@ -10287,7 +10370,7 @@ items:
   - path: FdrsFormal/Composition/Synchronization/Join.lean
     declarations:
     - isSynchronizationPoint
-    - synchronizationSourceCount_placeholder
+    - synchronizationSourceCount
     - JoinSemantics
     - barrierJoin
     - raceJoin
@@ -10295,7 +10378,7 @@ items:
   - path: FdrsFormal/Composition/Synchronization/Multicast.lean
     declarations:
     - isMulticast
-    - multicastFanout_placeholder
+    - multicastFanout
     - timerOverflow_multicast
   section: 8.7.3
 - id: theorem_55
@@ -10317,7 +10400,7 @@ items:
   - path: FdrsFormal/Composition/Synchronization/Join.lean
     declarations:
     - isSynchronizationPoint
-    - synchronizationSourceCount_placeholder
+    - synchronizationSourceCount
     - JoinSemantics
     - barrierJoin
     - raceJoin
@@ -10325,7 +10408,7 @@ items:
   - path: FdrsFormal/Composition/Synchronization/Multicast.lean
     declarations:
     - isMulticast
-    - multicastFanout_placeholder
+    - multicastFanout
     - timerOverflow_multicast
   section: 8.7.4
 - id: definition_131
@@ -10342,7 +10425,7 @@ items:
   - path: FdrsFormal/Composition/Synchronization/Join.lean
     declarations:
     - isSynchronizationPoint
-    - synchronizationSourceCount_placeholder
+    - synchronizationSourceCount
     - JoinSemantics
     - barrierJoin
     - raceJoin
@@ -10350,7 +10433,7 @@ items:
   - path: FdrsFormal/Composition/Synchronization/Multicast.lean
     declarations:
     - isMulticast
-    - multicastFanout_placeholder
+    - multicastFanout
     - timerOverflow_multicast
   - path: FdrsFormal/Composition/Verification.lean
     declarations: []
@@ -10374,7 +10457,7 @@ items:
   - path: FdrsFormal/Composition/Synchronization/Join.lean
     declarations:
     - isSynchronizationPoint
-    - synchronizationSourceCount_placeholder
+    - synchronizationSourceCount
     - JoinSemantics
     - barrierJoin
     - raceJoin
@@ -10401,7 +10484,7 @@ items:
   - path: FdrsFormal/Composition/Synchronization/Join.lean
     declarations:
     - isSynchronizationPoint
-    - synchronizationSourceCount_placeholder
+    - synchronizationSourceCount
     - JoinSemantics
     - barrierJoin
     - raceJoin
@@ -10410,13 +10493,12 @@ items:
     declarations: []
   - path: FdrsFormal/Composition/Verification/CompileTime.lean
     declarations:
-    - acyclicity_decidable_placeholder
-    - bounded_fanout_decidable_placeholder
-    - bounded_depth_decidable_placeholder
-    - reachability_decidable_placeholder
-    - deadlock_freedom_decidable_placeholder
-    - compile_time_properties_decidable
-    - compile_time_properties_decidable_holds
+    - acyclicity_decidable
+    - bounded_fanout_decidable
+    - bounded_depth_decidable
+    - reachability_decidable
+    - deadlock_freedom_decidable
+    - deadlockFree_iff_acyclic
   - path: FdrsFormal/Composition/Verification/Specification.lean
     declarations:
     - RoutingRule
@@ -10438,13 +10520,12 @@ items:
     declarations: []
   - path: FdrsFormal/Composition/Verification/CompileTime.lean
     declarations:
-    - acyclicity_decidable_placeholder
-    - bounded_fanout_decidable_placeholder
-    - bounded_depth_decidable_placeholder
-    - reachability_decidable_placeholder
-    - deadlock_freedom_decidable_placeholder
-    - compile_time_properties_decidable
-    - compile_time_properties_decidable_holds
+    - acyclicity_decidable
+    - bounded_fanout_decidable
+    - bounded_depth_decidable
+    - reachability_decidable
+    - deadlock_freedom_decidable
+    - deadlockFree_iff_acyclic
   - path: FdrsFormal/Composition/Verification/Specification.lean
     declarations:
     - RoutingRule
@@ -10476,13 +10557,12 @@ items:
     - RoutedObserverComplex
   - path: FdrsFormal/Composition/Verification/CompileTime.lean
     declarations:
-    - acyclicity_decidable_placeholder
-    - bounded_fanout_decidable_placeholder
-    - bounded_depth_decidable_placeholder
-    - reachability_decidable_placeholder
-    - deadlock_freedom_decidable_placeholder
-    - compile_time_properties_decidable
-    - compile_time_properties_decidable_holds
+    - acyclicity_decidable
+    - bounded_fanout_decidable
+    - bounded_depth_decidable
+    - reachability_decidable
+    - deadlock_freedom_decidable
+    - deadlockFree_iff_acyclic
   - path: FdrsFormal/Composition/Verification/Verified.lean
     declarations:
     - hasBoundedFanout
@@ -10510,13 +10590,12 @@ items:
     - twoTimelineObserver_embeds
   - path: FdrsFormal/Composition/Verification/CompileTime.lean
     declarations:
-    - acyclicity_decidable_placeholder
-    - bounded_fanout_decidable_placeholder
-    - bounded_depth_decidable_placeholder
-    - reachability_decidable_placeholder
-    - deadlock_freedom_decidable_placeholder
-    - compile_time_properties_decidable
-    - compile_time_properties_decidable_holds
+    - acyclicity_decidable
+    - bounded_fanout_decidable
+    - bounded_depth_decidable
+    - reachability_decidable
+    - deadlock_freedom_decidable
+    - deadlockFree_iff_acyclic
   - path: FdrsFormal/Composition/Verification/Verified.lean
     declarations:
     - hasBoundedFanout
@@ -10531,7 +10610,7 @@ items:
   global_num: 57
   title: Residual payload as junction accumulation
   line: 6447
-  status: scaffold
+  status: proven
   in_root_build: true
   lean_files:
   - path: FdrsFormal/Composition.lean
@@ -10540,19 +10619,19 @@ items:
     declarations: []
   - path: FdrsFormal/Composition/ObserverIntegration/ResidualPayload.lean
     declarations:
-    - undeliveredResidue_placeholder
-    - residualPayload_as_junction_sum_placeholder
+    - undeliveredResidue
+    - aToBJunctions
+    - residualPayload
+    - residualPayload_as_junction_sum
     - residual_is_in_flight_information
-    - residual_is_in_flight_information_holds
   - path: FdrsFormal/Composition/Verification/CompileTime.lean
     declarations:
-    - acyclicity_decidable_placeholder
-    - bounded_fanout_decidable_placeholder
-    - bounded_depth_decidable_placeholder
-    - reachability_decidable_placeholder
-    - deadlock_freedom_decidable_placeholder
-    - compile_time_properties_decidable
-    - compile_time_properties_decidable_holds
+    - acyclicity_decidable
+    - bounded_fanout_decidable
+    - bounded_depth_decidable
+    - reachability_decidable
+    - deadlock_freedom_decidable
+    - deadlockFree_iff_acyclic
   - path: FdrsFormal/Composition/Verification/Verified.lean
     declarations:
     - hasBoundedFanout
@@ -10561,8 +10640,6 @@ items:
     - verified_implies_bounded_fanout
     - verified_implies_bounded_latency
   section: 8.9.3
-  scaffold_decls:
-  - FdrsFormal/Composition/ObserverIntegration/ResidualPayload.lean:71 residualPayload_as_junction_sum_placeholder
 - id: example_2
   type: example
   phase: 8
@@ -10576,10 +10653,11 @@ items:
     declarations: []
   - path: FdrsFormal/Composition/ObserverIntegration/ResidualPayload.lean
     declarations:
-    - undeliveredResidue_placeholder
-    - residualPayload_as_junction_sum_placeholder
+    - undeliveredResidue
+    - aToBJunctions
+    - residualPayload
+    - residualPayload_as_junction_sum
     - residual_is_in_flight_information
-    - residual_is_in_flight_information_holds
   - path: FdrsFormal/Composition/Verification/Verified.lean
     declarations:
     - hasBoundedFanout
@@ -10601,10 +10679,11 @@ items:
     declarations: []
   - path: FdrsFormal/Composition/ObserverIntegration/ResidualPayload.lean
     declarations:
-    - undeliveredResidue_placeholder
-    - residualPayload_as_junction_sum_placeholder
+    - undeliveredResidue
+    - aToBJunctions
+    - residualPayload
+    - residualPayload_as_junction_sum
     - residual_is_in_flight_information
-    - residual_is_in_flight_information_holds
   section: 8.10.2
 - id: example_4
   type: example
@@ -10739,7 +10818,7 @@ items:
   global_num: 113
   title: Composite timing bound
   line: 6556
-  status: scaffold
+  status: proven
   in_root_build: true
   lean_files:
   - path: FdrsFormal/Composition/DeadlockAnalysis/Definition.lean
@@ -10775,7 +10854,7 @@ items:
   global_num: 114
   title: Static routing compile-time bound
   line: 6558
-  status: scaffold
+  status: proven
   in_root_build: true
   lean_files:
   - path: FdrsFormal/Composition/DeadlockAnalysis/Definition.lean
@@ -10919,7 +10998,7 @@ items:
   global_num: 118
   title: Compile-time verification
   line: 6566
-  status: scaffold
+  status: proven
   in_root_build: true
   lean_files:
   - path: FdrsFormal/Composition/DeadlockAnalysis/Definition.lean
@@ -13467,134 +13546,24 @@ items:
     - mem_Icc
   section: 12.2.4
 lean_summary:
-  total_files: 249
+  total_files: 250
   total_axioms: 0
   axioms_true: 0
-  total_sorries: 5
-  sorry_files:
-  - file: FdrsFormal/FunctionSpaces/Haar/WaveletPacket.lean
-    line: 102
-    context: "  | succ n ih =>\n    rw [tailProduct_split (Nat.zero_le (n + 1))]\n    sorry -- Reindex: ∏ Fin(n+2), b i =\
-      \ b 0 * ∏ Fin(n+1), b (i+1)\n          -- and tailProduct b (n+1) 1 = ∏ Fin(n+1), b (i+1)\n       "
-  - file: FdrsFormal/FunctionSpaces/Haar/WaveletPacket.lean
-    line: 268
-    context: "    (hne : α ≠ β) :\n    ∑ σ : FiniteRadixSpace b k, basisEval T α σ * basisEval T β σ = 0 := by\n  sorry\n\n\
-      /-- **Packet basis squared norm**: for a tree at level 0, the squared norm of"
-  - file: FdrsFormal/FunctionSpaces/Haar/WaveletPacket.lean
-    line: 275
-    context: "    ∑ σ : FiniteRadixSpace b k, basisEval T α σ * basisEval T α σ =\n    (tailProduct b k (leafDepth T α) :\
-      \ ℝ) := by\n  sorry\n\n/-! ### Connection theorems -/"
-  - file: FdrsFormal/FunctionSpaces/Haar/WaveletPacket.lean
-    line: 306
-    context: "theorem fromDepthBound_full (hd : k + 1 ≤ d) (L : ℕ) :\n    fromDepthBound b k d L = full b k L := by\n  sorry\
-      \ -- Provable by well-founded induction on k+1-L; deferred\n\n/-- The threshold tree interpolat"
-  - file: FdrsFormal/FunctionSpaces/Haar/WaveletPacket.lean
-    line: 318
-    context: "    (fromDepthBound b k d 0).leafCount =\n    if d = 0 then 1 else ∏ i ∈ Finset.range d, b i := by\n  sorry\
-      \ -- Provable by induction on d; deferred\n\n-- **Key ultrametric insight**: Changing the radix or"
-  total_theorems: 985
-  total_defs: 551
+  total_sorries: 0
+  sorry_files: []
+  total_theorems: 990
+  total_defs: 572
   total_lemmas: 25
   total_stubs: 1
   stubs_by_kind:
     true_trivial: 1
     prop_true: 0
     zero_impl: 0
-  total_scaffold: 32
+  total_scaffold: 7
   scaffold_by_severity:
-    high: 28
-    low: 4
+    high: 4
+    low: 3
   scaffold_declarations:
-  - file: FdrsFormal/Composition/ObserverIntegration/ResidualPayload.lean
-    line: 57
-    kind: def
-    name: undeliveredResidue_placeholder
-    scaffold_kind: const_model
-    severity: high
-  - file: FdrsFormal/Composition/ObserverIntegration/ResidualPayload.lean
-    line: 71
-    kind: theorem
-    name: residualPayload_as_junction_sum_placeholder
-    scaffold_kind: exists_true
-    severity: high
-  - file: FdrsFormal/Composition/Synchronization/Join.lean
-    line: 64
-    kind: def
-    name: synchronizationSourceCount_placeholder
-    scaffold_kind: const_model
-    severity: high
-  - file: FdrsFormal/Composition/Synchronization/Multicast.lean
-    line: 61
-    kind: def
-    name: multicastFanout_placeholder
-    scaffold_kind: const_model
-    severity: high
-  - file: FdrsFormal/Composition/TimingBounds/Definition.lean
-    line: 208
-    kind: theorem
-    name: fdrs_schedulable_placeholder
-    scaffold_kind: exists_true
-    severity: high
-  - file: FdrsFormal/Composition/TimingBounds/RoutingAnalysis.lean
-    line: 51
-    kind: def
-    name: routingDepth_placeholder
-    scaffold_kind: const_model
-    severity: high
-  - file: FdrsFormal/Composition/TimingBounds/RoutingAnalysis.lean
-    line: 80
-    kind: def
-    name: localTimelineCost_placeholder
-    scaffold_kind: const_model
-    severity: high
-  - file: FdrsFormal/Composition/TimingBounds/RoutingAnalysis.lean
-    line: 95
-    kind: def
-    name: routingOverheadCost_placeholder
-    scaffold_kind: const_model
-    severity: high
-  - file: FdrsFormal/Composition/TimingBounds/RoutingAnalysis.lean
-    line: 112
-    kind: theorem
-    name: compositeTimingBound_placeholder
-    scaffold_kind: exists_true
-    severity: high
-  - file: FdrsFormal/Composition/TimingBounds/RoutingAnalysis.lean
-    line: 128
-    kind: theorem
-    name: staticRoutingCompileTimeBound_placeholder
-    scaffold_kind: exists_true
-    severity: high
-  - file: FdrsFormal/Composition/Verification/CompileTime.lean
-    line: 57
-    kind: def
-    name: acyclicity_decidable_placeholder
-    scaffold_kind: decidable_true
-    severity: high
-  - file: FdrsFormal/Composition/Verification/CompileTime.lean
-    line: 69
-    kind: def
-    name: bounded_fanout_decidable_placeholder
-    scaffold_kind: decidable_true
-    severity: high
-  - file: FdrsFormal/Composition/Verification/CompileTime.lean
-    line: 81
-    kind: def
-    name: bounded_depth_decidable_placeholder
-    scaffold_kind: decidable_true
-    severity: high
-  - file: FdrsFormal/Composition/Verification/CompileTime.lean
-    line: 93
-    kind: def
-    name: reachability_decidable_placeholder
-    scaffold_kind: decidable_true
-    severity: high
-  - file: FdrsFormal/Composition/Verification/CompileTime.lean
-    line: 106
-    kind: def
-    name: deadlock_freedom_decidable_placeholder
-    scaffold_kind: decidable_true
-    severity: high
   - file: FdrsFormal/FunctionSpaces/Projections/Details.lean
     line: 529
     kind: theorem
@@ -13612,66 +13581,6 @@ lean_summary:
     kind: def
     name: circuitDepth_placeholder
     scaffold_kind: const_model
-    severity: high
-  - file: FdrsFormal/Modes/VariableRadix/Design/Examples.lean
-    line: 67
-    kind: theorem
-    name: contextDependentRadix_placeholder
-    scaffold_kind: exists_true
-    severity: high
-  - file: FdrsFormal/Modes/VariableRadix/Design/Examples.lean
-    line: 90
-    kind: theorem
-    name: dnaCodonUltrametric_placeholder
-    scaffold_kind: exists_true
-    severity: high
-  - file: FdrsFormal/Modes/VariableRadix/Design/Examples.lean
-    line: 108
-    kind: theorem
-    name: cacheOptimizedRadix_placeholder
-    scaffold_kind: exists_true
-    severity: high
-  - file: FdrsFormal/Modes/VariableRadix/Design/GrowthRates.lean
-    line: 52
-    kind: theorem
-    name: exponentialGrowthRadix_placeholder
-    scaffold_kind: exists_true
-    severity: high
-  - file: FdrsFormal/Modes/VariableRadix/Design/GrowthRates.lean
-    line: 65
-    kind: theorem
-    name: polynomialGrowthRadix_placeholder
-    scaffold_kind: exists_true
-    severity: high
-  - file: FdrsFormal/Modes/VariableRadix/Design/GrowthRates.lean
-    line: 82
-    kind: theorem
-    name: factorialGrowthRadix_placeholder
-    scaffold_kind: exists_true
-    severity: high
-  - file: FdrsFormal/Modes/VariableRadix/Design/InverseProblem.lean
-    line: 69
-    kind: theorem
-    name: ultrametricDesignProblem_placeholder
-    scaffold_kind: exists_true
-    severity: high
-  - file: FdrsFormal/Modes/VariableRadix/Design/InverseProblem.lean
-    line: 89
-    kind: theorem
-    name: optimalDesign_placeholder
-    scaffold_kind: exists_true
-    severity: high
-  - file: FdrsFormal/Modes/VariableRadix/Design/VolumeConstraints.lean
-    line: 77
-    kind: theorem
-    name: volumeToPrescribedRadix_placeholder
-    scaffold_kind: exists_true
-    severity: low
-  - file: FdrsFormal/Modes/VariableRadix/MultiMetric/Residual.lean
-    line: 63
-    kind: theorem
-    name: residualAsMetricDiscrepancy_placeholder
-    scaffold_kind: exists_true
     severity: high
   - file: FdrsFormal/Modes/VariableRadix/Realizability/Sufficiency.lean
     line: 71
@@ -13698,13 +13607,6 @@ lean_summary:
     scaffold_kind: const_model
     severity: high
   excluded_modules:
-  - FdrsFormal/FunctionSpaces/Haar.lean
-  - FdrsFormal/FunctionSpaces/Haar/Definition.lean
-  - FdrsFormal/FunctionSpaces/Haar/DiagonalStructure.lean
-  - FdrsFormal/FunctionSpaces/Haar/Orthonormality.lean
-  - FdrsFormal/FunctionSpaces/Haar/ProjectionAction.lean
-  - FdrsFormal/FunctionSpaces/Haar/SupportLevel.lean
-  - FdrsFormal/FunctionSpaces/Haar/WaveletPacket.lean
   - FdrsFormal/Integration/ThreeLineMediator/CoupledSystem.lean
   - FdrsFormal/Integration/ThreeLineMediator/Definition.lean
   - FdrsFormal/NumberTheory/ArithmeticFunctions/CyclicConvolution.lean

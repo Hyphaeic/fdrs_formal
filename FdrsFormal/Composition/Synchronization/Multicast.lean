@@ -34,8 +34,11 @@ The same triggering event routes to multiple distinct targets.
 -/
 
 import FdrsFormal.Composition.Routing.Definition
+import FdrsFormal.Composition.RoutingGraph.Graph
 
 namespace FdrsFormal.Composition.Synchronization
+
+open FdrsFormal.Composition.Verification
 
 /-!
 ## Multicast Routing
@@ -54,11 +57,11 @@ def isMulticast (fanout : ℕ → ℕ → ℕ) (sourceTimeline sourceCylinder : 
 /--
 Fanout count: number of targets for a multicast.
 
-**fdrs.md line 6320**: |ρ(A, s_A, e, c)| = fanout.
-
-Placeholder: actual fanout depends on routing function.
+**fdrs.md line 6320**: `|ρ(A, s_A, e, c)|` = fanout, the number of routing
+actions out of junction `(sourceTimeline, sourceCylinder)` in `G_ρ`.
 -/
-def multicastFanout_placeholder (_sourceTimeline _sourceCylinder : ℕ) : ℕ := 0
+def multicastFanout (spec : RoutingSpecification) (sourceTimeline sourceCylinder : ℕ) : ℕ :=
+  RoutingGraph.fanout spec (sourceTimeline, sourceCylinder)
 
 /--
 Multicast example: timer overflow.

@@ -90,18 +90,23 @@ theorem tailProduct_pos : 0 < tailProduct b k L := by
     exact Nat.mul_pos (b.pos L) tailProduct_pos
 termination_by k + 1 - L
 
+/-- `tailProduct b k L = ∏_{i=L}^{k} b_i` as a `Finset.Ico` product. -/
+theorem tailProduct_eq_prod_Ico (b : RadixSeq) (k L : ℕ) :
+    tailProduct b k L = ∏ i ∈ Finset.Ico L (k + 1), b i := by
+  by_cases hL : k < L
+  · rw [tailProduct_gt hL, Finset.Ico_eq_empty (by omega), Finset.prod_empty]
+  · push_neg at hL
+    rw [tailProduct_split hL, tailProduct_eq_prod_Ico b k (L + 1)]
+    have hsplit : Finset.Ico L (k + 1) = insert L (Finset.Ico (L + 1) (k + 1)) := by
+      ext x; simp only [Finset.mem_Ico, Finset.mem_insert]; omega
+    rw [hsplit, Finset.prod_insert (by simp only [Finset.mem_Ico]; omega)]
+  termination_by k + 1 - L
+
 /-- `tailProduct b k 0` is the full space cardinality `∏_{i=0}^k b_i`. -/
 theorem tailProduct_zero_eq_prod :
     tailProduct b k 0 = ∏ i : Fin (k + 1), (b i : ℕ) := by
-  induction k with
-  | zero =>
-    rw [tailProduct_split (Nat.zero_le 0), tailProduct_gt (by omega : 0 < 1)]
-    simp
-  | succ n ih =>
-    rw [tailProduct_split (Nat.zero_le (n + 1))]
-    sorry -- Reindex: ∏ Fin(n+2), b i = b 0 * ∏ Fin(n+1), b (i+1)
-          -- and tailProduct b (n+1) 1 = ∏ Fin(n+1), b (i+1)
-          -- Provable via Fin arithmetic; deferred to keep file building
+  rw [tailProduct_eq_prod_Ico b k 0, ← Finset.range_eq_Ico]
+  exact (Fin.prod_univ_eq_prod_range (fun i => (b i : ℕ)) (k + 1)).symm
 
 /-! ### Packet Tree -/
 
@@ -239,6 +244,154 @@ theorem le_leafDepth (T : PacketTree b k L) (α : HaarAtom b k) :
   | stop L => exact Nat.le_refl L
   | split L hL children ih => exact Nat.le_of_succ_le (ih (α ⟨L, by omega⟩))
 
+/-! ### Closed-form factorization
+
+We give a per-position closed form for `basisEval`. The basis function factors as
+a product over digit positions, with position-`i` contribution `1` below the
+start level `L`, an indicator `𝟙[d = α i]` at split positions
+`i ∈ [L, leafDepth T α)`, and the Haar component for `i ≥ leafDepth T α`. This
+unifies the orthogonality and norm proofs: both follow by `Fintype.prod_sum` on
+the closed form.
+-/
+
+/-- Per-position factor of the packet basis function. -/
+private noncomputable def pCompAt (L D : ℕ) (α : HaarAtom b k)
+    (i : Fin (k + 1)) (d : Fin (b i)) : ℝ :=
+  if i.val < L then 1
+  else if i.val < D then (if d = α i then 1 else 0)
+  else haarComponent i (α i) d
+
+/-- **Closed form** for the packet basis function: factors as a product over
+positions, with `1` below the start level, an indicator at split positions, and
+the Haar component for positions beyond the leaf. -/
+theorem basisEval_eq_prod {L : ℕ} (T : PacketTree b k L) (α : HaarAtom b k)
+    (σ : FiniteRadixSpace b k) :
+    basisEval T α σ = ∏ i : Fin (k + 1), pCompAt L (leafDepth T α) α i (σ i) := by
+  induction T with
+  | stop M =>
+    show haarTail M α σ = _
+    rw [haarTail, Finset.prod_filter]
+    apply Finset.prod_congr rfl
+    intro i _
+    simp only [leafDepth, pCompAt]
+    by_cases h : i.val < M
+    · rw [if_neg (Nat.not_le_of_lt h), if_pos h]
+    · rw [if_pos (Nat.not_lt.mp h), if_neg h, if_neg h]
+  | split M hM children ih =>
+    have hM1 : M < k + 1 := Nat.lt_succ_of_le hM
+    show (if σ ⟨M, hM1⟩ = α ⟨M, hM1⟩ then basisEval (children (α ⟨M, hM1⟩)) α σ else 0)
+        = ∏ i : Fin (k + 1), pCompAt M (leafDepth (children (α ⟨M, hM1⟩)) α) α i (σ i)
+    rw [ih (α ⟨M, hM1⟩)]
+    have hMD : M < leafDepth (children (α ⟨M, hM1⟩)) α :=
+      Nat.lt_of_lt_of_le (Nat.lt_succ_self _) (le_leafDepth _ _)
+    -- Peel position ⟨M, hM1⟩ from both products
+    rw [show (∏ i : Fin (k+1), pCompAt M (leafDepth (children (α ⟨M, hM1⟩)) α) α i (σ i))
+            = pCompAt M (leafDepth (children (α ⟨M, hM1⟩)) α) α ⟨M, hM1⟩ (σ ⟨M, hM1⟩)
+              * ∏ i ∈ Finset.univ.erase ⟨M, hM1⟩,
+                pCompAt M (leafDepth (children (α ⟨M, hM1⟩)) α) α i (σ i)
+          from (Finset.mul_prod_erase Finset.univ _ (Finset.mem_univ _)).symm]
+    rw [show (∏ i : Fin (k+1), pCompAt (M+1) (leafDepth (children (α ⟨M, hM1⟩)) α) α i (σ i))
+            = pCompAt (M+1) (leafDepth (children (α ⟨M, hM1⟩)) α) α ⟨M, hM1⟩ (σ ⟨M, hM1⟩)
+              * ∏ i ∈ Finset.univ.erase ⟨M, hM1⟩,
+                pCompAt (M+1) (leafDepth (children (α ⟨M, hM1⟩)) α) α i (σ i)
+          from (Finset.mul_prod_erase Finset.univ _ (Finset.mem_univ _)).symm]
+    have pM : pCompAt M (leafDepth (children (α ⟨M, hM1⟩)) α) α ⟨M, hM1⟩ (σ ⟨M, hM1⟩)
+        = if σ ⟨M, hM1⟩ = α ⟨M, hM1⟩ then (1 : ℝ) else 0 := by
+      simp only [pCompAt]
+      rw [if_neg (Nat.lt_irrefl M), if_pos hMD]
+    have pM1 : pCompAt (M+1) (leafDepth (children (α ⟨M, hM1⟩)) α) α ⟨M, hM1⟩ (σ ⟨M, hM1⟩) = 1 := by
+      simp only [pCompAt]
+      rw [if_pos (Nat.lt_succ_self M)]
+    rw [pM, pM1, one_mul]
+    have heq : ∀ i ∈ (Finset.univ : Finset (Fin (k+1))).erase ⟨M, hM1⟩,
+        pCompAt M (leafDepth (children (α ⟨M, hM1⟩)) α) α i (σ i)
+        = pCompAt (M+1) (leafDepth (children (α ⟨M, hM1⟩)) α) α i (σ i) := by
+      intro i hi
+      rw [Finset.mem_erase] at hi
+      have hival : i.val ≠ M := fun h => hi.1 (Fin.ext h)
+      simp only [pCompAt]
+      by_cases h : i.val < M
+      · rw [if_pos h, if_pos (Nat.lt_succ_of_lt h)]
+      · have hnot : ¬ i.val < M + 1 := by omega
+        rw [if_neg h, if_neg hnot]
+    rw [Finset.prod_congr rfl heq]
+    by_cases h : σ ⟨M, hM1⟩ = α ⟨M, hM1⟩
+    · simp [h]
+    · simp [h]
+
+/-- Fin-filter to Ico reindex: `Fin (k+1)` filtered by `D ≤ ·.val` is in
+bijection with `Ico D (k+1)` via `Fin.val`. -/
+private theorem prod_fin_filter_ge_eq_Ico (D : ℕ) (g : ℕ → ℝ) :
+    ∏ i ∈ (Finset.univ : Finset (Fin (k + 1))).filter (fun i => D ≤ i.val), g i.val
+    = ∏ j ∈ Finset.Ico D (k + 1), g j := by
+  refine Finset.prod_bij (fun (a : Fin (k + 1)) _ => a.val) ?_ ?_ ?_ ?_
+  · intro a ha
+    rw [Finset.mem_filter] at ha
+    rw [Finset.mem_Ico]
+    exact ⟨ha.2, a.isLt⟩
+  · intro a₁ _ a₂ _ heq
+    exact Fin.ext heq
+  · intro j hj
+    rw [Finset.mem_Ico] at hj
+    refine ⟨⟨j, hj.2⟩, ?_, rfl⟩
+    rw [Finset.mem_filter]
+    exact ⟨Finset.mem_univ _, hj.1⟩
+  · intros; rfl
+
+/-- `tailProduct b k D` as a `Fin`-indexed product with a guard. -/
+private theorem tailProduct_eq_prod_fin (D : ℕ) :
+    (tailProduct b k D : ℝ) = ∏ i : Fin (k + 1), if D ≤ i.val then (b i : ℝ) else 1 := by
+  rw [tailProduct_eq_prod_Ico]
+  push_cast
+  symm
+  rw [← Finset.prod_filter]
+  exact prod_fin_filter_ge_eq_Ico D (fun j => (b j : ℝ))
+
+/-- **First-difference with mode-match**: if `α, β` differ at some position `≥ L`
+in a tree `T : PacketTree b k L`, there is a position `j ≥ L` where they differ
+*and* both leaf depths are simultaneously above or simultaneously at-most `j`
+(so the per-position factor in the closed form vanishes). -/
+private theorem firstDiffMode_gen (α β : HaarAtom b k) :
+    ∀ {L : ℕ} (T : PacketTree b k L),
+      (∃ i : Fin (k + 1), L ≤ i.val ∧ α i ≠ β i) →
+      ∃ j : Fin (k + 1), L ≤ j.val ∧ α j ≠ β j ∧
+        ((j.val < leafDepth T α ∧ j.val < leafDepth T β) ∨
+         (leafDepth T α ≤ j.val ∧ leafDepth T β ≤ j.val)) := by
+  intro L T
+  induction T with
+  | stop M =>
+    intro ⟨j, hLj, hne_j⟩
+    refine ⟨j, hLj, hne_j, Or.inr ?_⟩
+    show leafDepth (PacketTree.stop M) α ≤ j.val ∧ leafDepth (PacketTree.stop M) β ≤ j.val
+    simp only [leafDepth]
+    exact ⟨hLj, hLj⟩
+  | split M hM children ih =>
+    intro ⟨i, hMi, hne_i⟩
+    have hM1 : M < k + 1 := Nat.lt_succ_of_le hM
+    by_cases hαβ : α ⟨M, hM1⟩ = β ⟨M, hM1⟩
+    · -- Same value at M; recurse on the child
+      have hMi' : M + 1 ≤ i.val := by
+        rcases Nat.lt_or_eq_of_le hMi with h | h
+        · exact h
+        · exfalso
+          apply hne_i
+          have : i = ⟨M, hM1⟩ := Fin.ext h.symm
+          rw [this]; exact hαβ
+      obtain ⟨j, hMj, hne_j, hmode⟩ := ih (α ⟨M, hM1⟩) ⟨i, hMi', hne_i⟩
+      refine ⟨j, by omega, hne_j, ?_⟩
+      show (j.val < leafDepth (children (α ⟨M, hM1⟩)) α
+              ∧ j.val < leafDepth (children (β ⟨M, hM1⟩)) β)
+           ∨ (leafDepth (children (α ⟨M, hM1⟩)) α ≤ j.val
+              ∧ leafDepth (children (β ⟨M, hM1⟩)) β ≤ j.val)
+      rw [show children (β ⟨M, hM1⟩) = children (α ⟨M, hM1⟩) by rw [hαβ]]
+      exact hmode
+    · -- Different at M; take j = ⟨M, hM1⟩, both leaf depths > M
+      refine ⟨⟨M, hM1⟩, Nat.le_refl _, hαβ, Or.inl ⟨?_, ?_⟩⟩
+      · show M < leafDepth (children (α ⟨M, hM1⟩)) α
+        exact Nat.lt_of_lt_of_le (Nat.lt_succ_self _) (le_leafDepth _ _)
+      · show M < leafDepth (children (β ⟨M, hM1⟩)) β
+        exact Nat.lt_of_lt_of_le (Nat.lt_succ_self _) (le_leafDepth _ _)
+
 /-! ### Orthogonality
 
 The proof strategy for orthogonality is:
@@ -265,14 +418,106 @@ The combined formula (for any tree at level L) is:
 theorem packetBasis_orthogonal (T : PacketTree b k 0) (α β : HaarAtom b k)
     (hne : α ≠ β) :
     ∑ σ : FiniteRadixSpace b k, basisEval T α σ * basisEval T β σ = 0 := by
-  sorry
+  set Dα := leafDepth T α with hDα
+  set Dβ := leafDepth T β with hDβ
+  -- Step 1: factor each `basisEval` via the closed form and combine the products.
+  have step1 : ∀ σ : FiniteRadixSpace b k,
+      basisEval T α σ * basisEval T β σ
+      = ∏ i : Fin (k+1), pCompAt 0 Dα α i (σ i) * pCompAt 0 Dβ β i (σ i) := by
+    intro σ
+    rw [basisEval_eq_prod T α σ, basisEval_eq_prod T β σ, ← Finset.prod_mul_distrib]
+  simp_rw [step1]
+  -- Step 2: sum-product exchange `∑ σ ∏ i = ∏ i ∑ d`.
+  rw [show (∑ σ : FiniteRadixSpace b k,
+            ∏ i : Fin (k+1), pCompAt 0 Dα α i (σ i) * pCompAt 0 Dβ β i (σ i))
+        = ∏ i : Fin (k+1), ∑ d : Fin (b i), pCompAt 0 Dα α i d * pCompAt 0 Dβ β i d from ?_]
+  · -- Step 3: at the first-difference position `j`, the factor `∑ d` is `0`.
+    have hex : ∃ i : Fin (k + 1), (0 : ℕ) ≤ i.val ∧ α i ≠ β i := by
+      by_contra hall
+      push_neg at hall
+      exact hne (funext fun i => hall i (Nat.zero_le _))
+    obtain ⟨j, _, hne_j, hmode⟩ := firstDiffMode_gen α β T hex
+    apply Finset.prod_eq_zero (Finset.mem_univ j)
+    rcases hmode with ⟨hjα, hjβ⟩ | ⟨hjα, hjβ⟩
+    · -- both in the split-indicator mode: factor `= ∑ d 𝟙[d=α j]·𝟙[d=β j] = 0` (`α j ≠ β j`)
+      have hfact : ∀ d : Fin (b j), pCompAt 0 Dα α j d * pCompAt 0 Dβ β j d
+            = (if d = α j then (1:ℝ) else 0) * (if d = β j then (1:ℝ) else 0) := by
+        intro d
+        simp only [pCompAt]
+        rw [if_neg (Nat.not_lt_zero _), if_pos hjα,
+            if_neg (Nat.not_lt_zero _), if_pos hjβ]
+      simp_rw [hfact]
+      apply Finset.sum_eq_zero
+      intro d _
+      by_cases hd : d = α j
+      · have hd' : d ≠ β j := fun h => hne_j (hd ▸ h)
+        rw [if_pos hd, if_neg hd']
+        ring
+      · rw [if_neg hd]
+        ring
+    · -- both in the Haar mode: factor `= ∑ d hc(α j,d)·hc(β j,d) = 0` (`haarComponent_inner`)
+      have hfact : ∀ d : Fin (b j), pCompAt 0 Dα α j d * pCompAt 0 Dβ β j d
+            = haarComponent j (α j) d * haarComponent j (β j) d := by
+        intro d
+        simp only [pCompAt]
+        rw [if_neg (Nat.not_lt_zero _), if_neg (Nat.not_lt.mpr hjα),
+            if_neg (Nat.not_lt_zero _), if_neg (Nat.not_lt.mpr hjβ)]
+      simp_rw [hfact]
+      rw [haarComponent_inner j (α j) (β j), if_neg hne_j]
+  · show ∑ σ : ((i : Fin (k+1)) → Fin (b i)), _ = _
+    exact (Fintype.prod_sum (fun i d => pCompAt 0 Dα α i d * pCompAt 0 Dβ β i d)).symm
 
 /-- **Packet basis squared norm**: for a tree at level 0, the squared norm of
     `basisEval T α` depends on the leaf depth that `α` reaches. -/
 theorem packetBasis_norm_sq (T : PacketTree b k 0) (α : HaarAtom b k) :
     ∑ σ : FiniteRadixSpace b k, basisEval T α σ * basisEval T α σ =
     (tailProduct b k (leafDepth T α) : ℝ) := by
-  sorry
+  set D := leafDepth T α with hD
+  -- Step 1: factor each `basisEval` via the closed form and combine.
+  have step1 : ∀ σ : FiniteRadixSpace b k,
+      basisEval T α σ * basisEval T α σ
+      = ∏ i : Fin (k+1), pCompAt 0 D α i (σ i) * pCompAt 0 D α i (σ i) := by
+    intro σ
+    rw [basisEval_eq_prod T α σ, ← Finset.prod_mul_distrib]
+  simp_rw [step1]
+  -- Step 2: sum-product exchange.
+  rw [show (∑ σ : FiniteRadixSpace b k,
+            ∏ i : Fin (k+1), pCompAt 0 D α i (σ i) * pCompAt 0 D α i (σ i))
+        = ∏ i : Fin (k+1), ∑ d : Fin (b i), pCompAt 0 D α i d * pCompAt 0 D α i d from ?_]
+  · -- Step 3: per-position sum: `1` for split levels, `b i` for Haar levels.
+    have hperi : ∀ i : Fin (k+1),
+        (∑ d : Fin (b i), pCompAt 0 D α i d * pCompAt 0 D α i d)
+        = if D ≤ i.val then (b i : ℝ) else 1 := by
+      intro i
+      by_cases h : i.val < D
+      · -- split-indicator mode: ∑_d 𝟙[d=α i]² = 1
+        rw [if_neg (Nat.not_le_of_lt h)]
+        have hfact : ∀ d : Fin (b i), pCompAt 0 D α i d * pCompAt 0 D α i d
+              = if d = α i then (1:ℝ) else 0 := by
+          intro d
+          simp only [pCompAt]
+          rw [if_neg (Nat.not_lt_zero _), if_pos h]
+          by_cases hd : d = α i
+          · simp [hd]
+          · simp [hd]
+        simp_rw [hfact]
+        rw [Finset.sum_ite_eq']
+        simp
+      · -- Haar mode: ∑_d hc(α i,d)² = b i  (`haarComponent_inner i (α i) (α i)`)
+        rw [if_pos (Nat.not_lt.mp h)]
+        have hfact : ∀ d : Fin (b i), pCompAt 0 D α i d * pCompAt 0 D α i d
+              = haarComponent i (α i) d * haarComponent i (α i) d := by
+          intro d
+          simp only [pCompAt]
+          rw [if_neg (Nat.not_lt_zero _), if_neg h]
+        simp_rw [hfact]
+        rw [haarComponent_inner i (α i) (α i)]
+        simp
+    simp_rw [hperi]
+    -- Step 4: the resulting product is `tailProduct b k D`.
+    exact (tailProduct_eq_prod_fin D).symm
+  · show ∑ σ : ((i : Fin (k+1)) → Fin (b i)), _ = _
+    exact (Fintype.prod_sum (fun i d => pCompAt 0 D α i d * pCompAt 0 D α i d)).symm
 
 /-! ### Connection theorems -/
 
@@ -303,19 +548,39 @@ theorem fromDepthBound_zero (L : ℕ) :
 /-- The threshold tree at depth `≥ k + 1` is the full tree. -/
 theorem fromDepthBound_full (hd : k + 1 ≤ d) (L : ℕ) :
     fromDepthBound b k d L = full b k L := by
-  sorry -- Provable by well-founded induction on k+1-L; deferred
+  rw [fromDepthBound, full]
+  by_cases h : L ≤ k
+  · rw [dif_pos ⟨h, by omega⟩, dif_pos h]
+    congr 1
+    funext _
+    exact fromDepthBound_full hd (L + 1)
+  · rw [dif_neg (fun hc => h hc.1), dif_neg h]
+  termination_by k + 1 - L
 
-/-- The threshold tree interpolates between trivial (d=0) and full (d=k+1).
-    The depth `d` corresponds to the ultrametric resolution: balls of radius
-    `B_d⁻¹` define the leaf partition.
+/-- Leaf count of the threshold tree from level `L`: `∏_{i=L}^{d-1} b_i`. -/
+theorem fromDepthBound_leafCount_aux (hd : d ≤ k + 1) (L : ℕ) :
+    (fromDepthBound b k d L).leafCount = ∏ i ∈ Finset.Ico L d, b i := by
+  rw [fromDepthBound]
+  by_cases h : L ≤ k ∧ L < d
+  · rw [dif_pos h]
+    simp only [leafCount]
+    rw [Finset.sum_const, Finset.card_univ, Fintype.card_fin, smul_eq_mul,
+        fromDepthBound_leafCount_aux hd (L + 1)]
+    have hsplit : Finset.Ico L d = insert L (Finset.Ico (L + 1) d) := by
+      ext x; simp only [Finset.mem_Ico, Finset.mem_insert]; omega
+    rw [hsplit, Finset.prod_insert (by simp only [Finset.mem_Ico]; omega)]
+  · rw [dif_neg h]
+    simp only [leafCount]
+    rw [Finset.Ico_eq_empty (by omega), Finset.prod_empty]
+  termination_by k + 1 - L
 
-    - `d = 0`: No splitting, one big block → pure Haar basis (coarsest ultrametric)
-    - `d = k+1`: Full splitting, individual points → standard basis (finest ultrametric)
-    - `0 < d < k+1`: Split first `d` digits, Haar for rest → intermediate resolution -/
 theorem fromDepthBound_leaf_count (hd : d ≤ k + 1) :
     (fromDepthBound b k d 0).leafCount =
     if d = 0 then 1 else ∏ i ∈ Finset.range d, b i := by
-  sorry -- Provable by induction on d; deferred
+  rw [fromDepthBound_leafCount_aux hd 0, ← Finset.range_eq_Ico]
+  by_cases hd0 : d = 0
+  · subst hd0; simp
+  · rw [if_neg hd0]
 
 -- **Key ultrametric insight**: Changing the radix ordering permutes the digit
 -- positions, which changes which digits are "coarse" (split first) vs "fine"

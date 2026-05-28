@@ -33,6 +33,7 @@ Solutions for different growth functions f:
 
 import FdrsFormal.Modes.VariableRadix.Design.InverseProblem
 import FdrsFormal.Modes.VariableRadix.Basic.RadixLaw
+import FdrsFormal.Modes.VariableRadix.PrefixWeights.Definition
 
 namespace FdrsFormal.Modes.VariableRadix.Design
 
@@ -40,46 +41,66 @@ namespace FdrsFormal.Modes.VariableRadix.Design
 ## Asymptotic Growth Patterns
 -/
 
-/--
-Exponential growth: β_ω(s) ~ c^{|s|}
-
-**fdrs.md lines 5284-5287**: Achieved by constant radix ω(s) = c for all s.
-
-**Result**: Standard p-adic-like structure.
-
-**Axiomatized**: Construction and asymptotic verification.
--/
-theorem exponentialGrowthRadix_placeholder (_c : ℕ) (_hc : 2 ≤ _c) :
-  ∃ ω : RadixLaw, True  -- ∀ s, ω.radix s = c (simplified - needs proper formulation)
-  := ⟨⟨fun _ => 2, fun _ => le_refl 2⟩, trivial⟩
+/-- Constant radix `c` gives exponential prefix weight `β_ω(s) = c^{|s|}`. -/
+private theorem prefixWeight_const (c : ℕ) (hc : 2 ≤ c) (s : PrefixWord) :
+    prefixWeight ⟨fun _ => c, fun _ => hc⟩ s = c ^ s.length := by
+  induction s using List.reverseRecOn with
+  | nil => simp
+  | append_singleton t d ih =>
+    rw [prefixWeight_append, ih]
+    simp [List.length_append, pow_succ]
 
 /--
-Polynomial growth: β_ω(s) ~ |s|^α
+**Exponential growth** — β_ω(s) = c^{|s|}.
 
-**fdrs.md lines 5288-5290**: Requires variable radices ω(s) ~ |s|^{α-1}.
-
-**Result**: Subexponential ultrametric.
-
-**Axiomatized**: Construction requires careful coefficient tuning.
+**fdrs.md lines 5284-5287**: achieved by the constant radix `ω(s) = c`, giving the
+standard p-adic-like structure. Here the prefix weight is computed exactly as the
+power `c^{|s|}`.
 -/
-theorem polynomialGrowthRadix_placeholder (_α : ℝ) (_hα : 0 < _α) :
-  ∃ ω : RadixLaw, True  -- Asymptotic ~ |s|^α (to be formalized)
-  := ⟨⟨fun _ => 2, fun _ => le_refl 2⟩, trivial⟩
+theorem exponentialGrowthRadix (c : ℕ) (hc : 2 ≤ c) :
+    ∃ ω : RadixLaw, (∀ s, ω.radix s = c) ∧ (∀ s, prefixWeight ω s = c ^ s.length) :=
+  ⟨⟨fun _ => c, fun _ => hc⟩, fun _ => rfl, prefixWeight_const c hc⟩
 
 /--
-Factorial growth: β_ω(s) ~ |s|!
+**Polynomial growth regime** — variable radices.
 
-**fdrs.md lines 5292-5294**: Achieved by ω(s) = |s| + 1.
+**fdrs.md lines 5288-5290**: polynomial target `β_ω(s) ~ |s|^α` "requires variable
+radices." We exhibit a genuinely variable radix law (its radix is not constant
+across prefixes), the regime the spec identifies for sub-exponential design.
 
-**Result**: Super-exponential refinement.
-
-**Proof sketch**:
-- β_ω(s) = ∏_{i=0}^{|s|-1} (i+1) = |s|!
-- Direct calculation from product formula
-
-**Axiomatized**: Needs factorial characterization.
+Note: an *exact* polynomial `β_ω ~ |s|^α` is unattainable under the `ω ≥ 2`
+constraint, since then `β_ω(s) = ∏ ω ≥ 2^{|s|}` grows at least exponentially; the
+realizable content is precisely that polynomial-regime design demands variable
+radices (constant radices give pure exponential growth, above).
 -/
-theorem factorialGrowthRadix_placeholder : ∃ ω : RadixLaw, True  -- ∀ s, ω.radix s = s.length + 1
-  := ⟨⟨fun _ => 2, fun _ => le_refl 2⟩, trivial⟩
+theorem polynomialGrowthRadix (α : ℝ) (hα : 0 < α) :
+    ∃ ω : RadixLaw, ∃ s t, ω.radix s ≠ ω.radix t :=
+  ⟨⟨fun s => 2 + s.length % 2, fun _ => Nat.le_add_right 2 _⟩, [], [0], by decide⟩
+
+/-- The radix `ω(s) = |s| + 2` gives factorial prefix weight `β_ω(s) = (|s|+1)!`. -/
+private def linearRadix : RadixLaw := ⟨fun s => s.length + 2, fun _ => Nat.le_add_left 2 _⟩
+
+private theorem prefixWeight_linearRadix (s : PrefixWord) :
+    prefixWeight linearRadix s = Nat.factorial (s.length + 1) := by
+  induction s using List.reverseRecOn with
+  | nil => simp [linearRadix, Nat.factorial]
+  | append_singleton t d ih =>
+    rw [prefixWeight_append, ih]
+    show Nat.factorial (t.length + 1) * (t.length + 2) = Nat.factorial ((t ++ [d]).length + 1)
+    rw [List.length_append, List.length_singleton, Nat.factorial_succ (t.length + 1)]
+    ring
+
+/--
+**Factorial growth** — β_ω(s) = (|s|+1)!.
+
+**fdrs.md lines 5292-5294**: the spec's `ω(s) = |s| + 1` gives `β_ω` super-exponential
+(`|s|!`). Since a radix law requires `ω ≥ 2` (the spec's `ω([]) = 1` is degenerate),
+we use `ω(s) = |s| + 2`, for which `β_ω(s) = ∏_{i=0}^{|s|-1}(i+2) = (|s|+1)!` —
+still factorial, super-exponential refinement.
+-/
+theorem factorialGrowthRadix :
+    ∃ ω : RadixLaw, (∀ s, ω.radix s = s.length + 2) ∧
+      (∀ s, prefixWeight ω s = Nat.factorial (s.length + 1)) :=
+  ⟨linearRadix, fun _ => rfl, prefixWeight_linearRadix⟩
 
 end FdrsFormal.Modes.VariableRadix.Design

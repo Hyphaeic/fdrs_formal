@@ -50,3 +50,4 @@ import FdrsFormal.FunctionSpaces.Measure
 import FdrsFormal.FunctionSpaces.Projections
 import FdrsFormal.FunctionSpaces.LocalOperators
 import FdrsFormal.FunctionSpaces.Commutant
+import FdrsFormal.FunctionSpaces.Haar

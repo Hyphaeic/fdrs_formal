@@ -38,6 +38,7 @@ From routing specification Spec, the following are **decidable at compile time:*
 
 import FdrsFormal.Composition.Verification.Specification
 import FdrsFormal.Composition.DeadlockAnalysis.Definition
+import FdrsFormal.Composition.RoutingGraph.Graph
 
 namespace FdrsFormal.Composition.Verification
 
@@ -48,83 +49,64 @@ namespace FdrsFormal.Composition.Verification
 /--
 Acyclicity is decidable at compile time.
 
-**fdrs.md Proposition 109 item 1 (line 6396)**: Cycle detection on G_ρ.
+**fdrs.md Proposition 109 item 1 (line 6396)**: cycle detection on `G_ρ`.
 
-**Proof sketch**: Standard graph cycle detection (DFS, Tarjan, etc.) on finite graph.
-
-**Axiomatized**: Requires routing graph construction from spec.
+The decision procedure is the `Decidable (RoutingGraph.Acyclic spec)` instance:
+`G_ρ` has a finite vertex list and decidable reachability, so checking that no
+junction reaches itself is decidable.
 -/
-def acyclicity_decidable_placeholder (_spec : RoutingSpecification) : Decidable True :=
-  Decidable.isTrue trivial
+def acyclicity_decidable (spec : RoutingSpecification) :
+    Decidable (RoutingGraph.Acyclic spec) := inferInstance
 
 /--
 Bounded fanout is decidable.
 
-**fdrs.md Proposition 109 item 2 (line 6397)**: Scan specification for max fanout.
+**fdrs.md Proposition 109 item 2 (line 6397)**: scan the specification for max fanout.
 
-**Proof sketch**: Iterate through rules, compute max |targets| per source.
-
-**Axiomatized**: Straightforward scan.
+A finite scan over `vertices spec` of the rule-derived `fanout` against bound `B`.
 -/
-def bounded_fanout_decidable_placeholder (_spec : RoutingSpecification) : Decidable True :=
-  Decidable.isTrue trivial
+def bounded_fanout_decidable (spec : RoutingSpecification) (B : ℕ) :
+    Decidable (RoutingGraph.BoundedFanout spec B) := inferInstance
 
 /--
 Bounded routing depth is decidable.
 
-**fdrs.md Proposition 109 item 3 (line 6398)**: Longest path in DAG.
+**fdrs.md Proposition 109 item 3 (line 6398)**: longest path in the DAG.
 
-**Proof sketch**: Topological sort + dynamic programming for longest path.
-
-**Axiomatized**: Standard graph algorithm.
+Longest-path relaxation (`RoutingGraph.depthIter`) over the finite vertex set,
+compared against bound `D`.
 -/
-def bounded_depth_decidable_placeholder (_spec : RoutingSpecification) : Decidable True :=
-  Decidable.isTrue trivial
+def bounded_depth_decidable (spec : RoutingSpecification) (D : ℕ) :
+    Decidable (RoutingGraph.BoundedDepth spec D) := inferInstance
 
 /--
 Reachability is decidable.
 
-**fdrs.md Proposition 109 item 4 (line 6399)**: Graph traversal (BFS/DFS).
+**fdrs.md Proposition 109 item 4 (line 6399)**: graph traversal (BFS/DFS).
 
-**Proof sketch**: Standard graph reachability check.
-
-**Axiomatized**: Graph traversal algorithm.
+Membership of `target` in the bounded reachable set of `source`
+(`RoutingGraph.Reaches`).
 -/
-def reachability_decidable_placeholder (_spec : RoutingSpecification)
-  (_source _target : ℕ × ℕ) : Decidable True :=
-  Decidable.isTrue trivial
+def reachability_decidable (spec : RoutingSpecification) (source target : ℕ × ℕ) :
+    Decidable (RoutingGraph.Reaches spec source target) := inferInstance
 
 /--
 Deadlock freedom is decidable.
 
-**fdrs.md Proposition 109 item 5 (line 6400)**: Cycle detection in wait-for graph.
+**fdrs.md Proposition 109 item 5 (line 6400)**: cycle detection in the wait-for graph.
 
-**Proof sketch**: Build dependency graph, check for cycles.
-
-**Axiomatized**: Cycle detection.
+By Theorem 52 deadlock freedom is acyclicity of `G_ρ` (`RoutingGraph.DeadlockFree`),
+so it is decided by the same cycle-detection procedure.
 -/
-def deadlock_freedom_decidable_placeholder (_spec : RoutingSpecification) : Decidable True :=
-  Decidable.isTrue trivial
+def deadlock_freedom_decidable (spec : RoutingSpecification) :
+    Decidable (RoutingGraph.DeadlockFree spec) := inferInstance
 
 /--
-All properties are decidable (polynomial-time claim is informal).
-
-**fdrs.md line 6402**: All reduce to polynomial graph algorithms.
-
-Expressed as: all five decidability checks above return a decision. This is
-trivially true since each check is `Decidable True`, but captures the intent
-that these properties are computable from the specification.
+**fdrs.md Theorem 52 (lines 6131-6145)**: at the decision level, deadlock freedom
+of the system coincides with acyclicity of `G_ρ` — a set of mutually waiting
+timelines is exactly a cycle in the routing graph.
 -/
-def compile_time_properties_decidable (spec : RoutingSpecification) : Prop :=
-  (acyclicity_decidable_placeholder spec).decide = true ∧
-  (bounded_fanout_decidable_placeholder spec).decide = true ∧
-  (bounded_depth_decidable_placeholder spec).decide = true ∧
-  (deadlock_freedom_decidable_placeholder spec).decide = true
-
-/-- All compile-time properties are decidable for any specification. -/
-theorem compile_time_properties_decidable_holds (spec : RoutingSpecification) :
-    compile_time_properties_decidable spec := by
-  simp [compile_time_properties_decidable, acyclicity_decidable_placeholder, bounded_fanout_decidable_placeholder,
-    bounded_depth_decidable_placeholder, deadlock_freedom_decidable_placeholder]
+theorem deadlockFree_iff_acyclic (spec : RoutingSpecification) :
+    RoutingGraph.DeadlockFree spec ↔ RoutingGraph.Acyclic spec := Iff.rfl
 
 end FdrsFormal.Composition.Verification
