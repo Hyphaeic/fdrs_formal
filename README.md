@@ -4,8 +4,7 @@ A Lean 4 formalization of **Function-Defined Radix Systems** (FDRS) — a mathem
 framework generalizing classical positional notation by allowing the radix at each
 digit position to be determined by a *function* rather than fixed data.
 
-The mathematical specification lives in [`docs/fdrs.md`](docs/fdrs.md) (the single
-source of truth). The Lean code in [`FdrsFormal/`](FdrsFormal/) is a machine-checked
+The mathematical specification lives in [`docs/fdrs.md`](docs/fdrs.md) (the aggreate of concepts). The Lean code in [`FdrsFormal/`](FdrsFormal/) is a machine-checked
 formalization of that specification against [Mathlib](https://github.com/leanprover-community/mathlib4).
 
 ## Status
