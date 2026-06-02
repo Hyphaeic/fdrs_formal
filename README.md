@@ -1,3 +1,27 @@
+<div align="center">
+  <img src="https://src.hyphaeic.com/website/img/logo.png" alt="Hyphaeic" width="80"/>
+
+  # FDRS Formal
+
+  [![Hyphaeic](https://img.shields.io/badge/HYPHAEIC-research-41efa4?style=flat-square&labelColor=1a1a1a)](https://github.com/Hyphaeic)
+  [![Lean 4](https://img.shields.io/badge/Lean_4-v4.27.0--rc1-purple?style=flat-square&labelColor=1a1a1a)](https://github.com/leanprover/lean4)
+  [![Build](https://img.shields.io/badge/lake_build-passing-41efa4?style=flat-square&labelColor=1a1a1a)](docs/TESTING.md)
+  [![License](https://img.shields.io/badge/license-HPL-41efa4?style=flat-square&labelColor=1a1a1a)](https://github.com/hyphaeic/hpl)
+
+  **A machine-checked Lean 4 formalization of Function-Defined Radix Systems (FDRS). It establishes a dual filtration framework that unifies additive (positional) and multiplicative (Dirichlet) operator algebras on variable-radix spaces.**
+
+  [Specification](docs/fdrs.md) · [Documentation](docs/fdrs-index.md) · [Toolchain](scripts/)
+
+  [HPL License](https://github.com/hyphaeic/hpl) · [Local License](LICENSE)
+
+</div>
+
+---
+
+**A formal foundation for variable-representation radix systems, generalizing classical positional notation. Implements canonical bijections for finite mixed-radix spaces, block projections for cylinder filtrations, and Dirichlet transforms acting on the factorization lens. Proves the cylinder-measurability bridge characterizing when congruence conditions align with positional prefixes, constructs a non-stationary contrast basis extending Vilenkin wavelets, and provides a constructive witness of generic non-commutation between the operator families.**
+
+> Formalized against Mathlib with zero axioms and zero sorries in the core modules. The mathematical specification is maintained alongside the live Lean source via a custom Python dashboarding toolchain to ensure tight spec-to-code correspondence.
+
 # FDRS Formal
 
 A Lean 4 formalization of **Function-Defined Radix Systems** (FDRS) — a mathematical
