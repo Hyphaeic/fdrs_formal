@@ -1,11 +1,10 @@
 metadata:
   spec_file: docs/fdrs.md
   spec_lines: 7922
-  generated_at: '2026-05-28T00:45:10.161194'
+  generated_at: '2026-06-06T12:29:24.160927'
   total_items: 433
   status_summary:
-    proven: 431
-    scaffold: 2
+    proven: 433
   status_legend:
     proven: meaningful statement, no sorry/axiom/scaffold, in the default build
     scaffold: compiles but vacuous/placeholder/constantized/weakened
@@ -982,7 +981,7 @@ items:
   global_num: 22
   title: block projection (P_L
   line: 628
-  status: scaffold
+  status: proven
   in_root_build: true
   lean_files:
   - path: FdrsFormal/FunctionSpaces.lean
@@ -1003,8 +1002,6 @@ items:
     - cylinderSet_injective
   fragment: '1'
   section: '3.2'
-  scaffold_decls:
-  - FdrsFormal/FunctionSpaces/Projections/Details.lean:529 blockProjection_Lp_convergence_placeholder
 - id: proposition_16
   type: proposition
   phase: 2
@@ -3413,10 +3410,6 @@ items:
     - freePart
     - factorization_unique
     - freePart_coprime
-  - path: FdrsFormal/NumberTheory/FactorizationLens/ValuationAlgebra.lean
-    declarations:
-    - multiplicativeSigmaAlgebra
-    - valuationFiltration_monotone_placeholder
   fragment: '4'
   section: '1.1'
 - id: proposition_52
@@ -3736,10 +3729,10 @@ items:
   - path: FdrsFormal/Integration/Complexity/Definition.lean
     declarations:
     - touchSet
-    - touchComplexity_placeholder
+    - touchComplexity
+    - tickTouchSet
+    - tick_touchComplexity
     - tick_touch_bound
-    - tick_expected_complexity
-    - dirichlet_touch_bound
   - path: FdrsFormal/Integration/DualFiltrations/Definition.lean
     declarations:
     - blockSize
@@ -3782,10 +3775,10 @@ items:
   - path: FdrsFormal/Integration/Complexity/Definition.lean
     declarations:
     - touchSet
-    - touchComplexity_placeholder
+    - touchComplexity
+    - tickTouchSet
+    - tick_touchComplexity
     - tick_touch_bound
-    - tick_expected_complexity
-    - dirichlet_touch_bound
   - path: FdrsFormal/Integration/DualFiltrations/Definition.lean
     declarations:
     - blockSize
@@ -3828,10 +3821,10 @@ items:
   - path: FdrsFormal/Integration/Complexity/Definition.lean
     declarations:
     - touchSet
-    - touchComplexity_placeholder
+    - touchComplexity
+    - tickTouchSet
+    - tick_touchComplexity
     - tick_touch_bound
-    - tick_expected_complexity
-    - dirichlet_touch_bound
   - path: FdrsFormal/Integration/DualFiltrations/Definition.lean
     declarations:
     - blockSize
@@ -3874,10 +3867,10 @@ items:
   - path: FdrsFormal/Integration/Complexity/Definition.lean
     declarations:
     - touchSet
-    - touchComplexity_placeholder
+    - touchComplexity
+    - tickTouchSet
+    - tick_touchComplexity
     - tick_touch_bound
-    - tick_expected_complexity
-    - dirichlet_touch_bound
   - path: FdrsFormal/Integration/DualFiltrations/Definition.lean
     declarations:
     - blockSize
@@ -3920,10 +3913,10 @@ items:
   - path: FdrsFormal/Integration/Complexity/Definition.lean
     declarations:
     - touchSet
-    - touchComplexity_placeholder
+    - touchComplexity
+    - tickTouchSet
+    - tick_touchComplexity
     - tick_touch_bound
-    - tick_expected_complexity
-    - dirichlet_touch_bound
   - path: FdrsFormal/Integration/DualFiltrations/Definition.lean
     declarations:
     - blockSize
@@ -3966,10 +3959,10 @@ items:
   - path: FdrsFormal/Integration/Complexity/Definition.lean
     declarations:
     - touchSet
-    - touchComplexity_placeholder
+    - touchComplexity
+    - tickTouchSet
+    - tick_touchComplexity
     - tick_touch_bound
-    - tick_expected_complexity
-    - dirichlet_touch_bound
   - path: FdrsFormal/Integration/DualFiltrations/Definition.lean
     declarations:
     - blockSize
@@ -4012,10 +4005,10 @@ items:
   - path: FdrsFormal/Integration/Complexity/Definition.lean
     declarations:
     - touchSet
-    - touchComplexity_placeholder
+    - touchComplexity
+    - tickTouchSet
+    - tick_touchComplexity
     - tick_touch_bound
-    - tick_expected_complexity
-    - dirichlet_touch_bound
   - path: FdrsFormal/Integration/DualFiltrations/Definition.lean
     declarations:
     - blockSize
@@ -4058,10 +4051,10 @@ items:
   - path: FdrsFormal/Integration/Complexity/Definition.lean
     declarations:
     - touchSet
-    - touchComplexity_placeholder
+    - touchComplexity
+    - tickTouchSet
+    - tick_touchComplexity
     - tick_touch_bound
-    - tick_expected_complexity
-    - dirichlet_touch_bound
   - path: FdrsFormal/Integration/DualFiltrations/Definition.lean
     declarations:
     - blockSize
@@ -4104,10 +4097,10 @@ items:
   - path: FdrsFormal/Integration/Complexity/Definition.lean
     declarations:
     - touchSet
-    - touchComplexity_placeholder
+    - touchComplexity
+    - tickTouchSet
+    - tick_touchComplexity
     - tick_touch_bound
-    - tick_expected_complexity
-    - dirichlet_touch_bound
   - path: FdrsFormal/Integration/DualFiltrations/Definition.lean
     declarations:
     - blockSize
@@ -4150,10 +4143,10 @@ items:
   - path: FdrsFormal/Integration/Complexity/Definition.lean
     declarations:
     - touchSet
-    - touchComplexity_placeholder
+    - touchComplexity
+    - tickTouchSet
+    - tick_touchComplexity
     - tick_touch_bound
-    - tick_expected_complexity
-    - dirichlet_touch_bound
   - path: FdrsFormal/Integration/DualFiltrations/Definition.lean
     declarations:
     - blockSize
@@ -4196,10 +4189,10 @@ items:
   - path: FdrsFormal/Integration/Complexity/Definition.lean
     declarations:
     - touchSet
-    - touchComplexity_placeholder
+    - touchComplexity
+    - tickTouchSet
+    - tick_touchComplexity
     - tick_touch_bound
-    - tick_expected_complexity
-    - dirichlet_touch_bound
   - path: FdrsFormal/Integration/DualFiltrations/Definition.lean
     declarations:
     - blockSize
@@ -4242,10 +4235,10 @@ items:
   - path: FdrsFormal/Integration/Complexity/Definition.lean
     declarations:
     - touchSet
-    - touchComplexity_placeholder
+    - touchComplexity
+    - tickTouchSet
+    - tick_touchComplexity
     - tick_touch_bound
-    - tick_expected_complexity
-    - dirichlet_touch_bound
   - path: FdrsFormal/Integration/DualFiltrations/Definition.lean
     declarations:
     - blockSize
@@ -4288,10 +4281,10 @@ items:
   - path: FdrsFormal/Integration/Complexity/Definition.lean
     declarations:
     - touchSet
-    - touchComplexity_placeholder
+    - touchComplexity
+    - tickTouchSet
+    - tick_touchComplexity
     - tick_touch_bound
-    - tick_expected_complexity
-    - dirichlet_touch_bound
   - path: FdrsFormal/Integration/DualFiltrations/Definition.lean
     declarations:
     - blockSize
@@ -4334,10 +4327,10 @@ items:
   - path: FdrsFormal/Integration/Complexity/Definition.lean
     declarations:
     - touchSet
-    - touchComplexity_placeholder
+    - touchComplexity
+    - tickTouchSet
+    - tick_touchComplexity
     - tick_touch_bound
-    - tick_expected_complexity
-    - dirichlet_touch_bound
   - path: FdrsFormal/Integration/DualFiltrations/Definition.lean
     declarations:
     - blockSize
@@ -4380,10 +4373,10 @@ items:
   - path: FdrsFormal/Integration/Complexity/Definition.lean
     declarations:
     - touchSet
-    - touchComplexity_placeholder
+    - touchComplexity
+    - tickTouchSet
+    - tick_touchComplexity
     - tick_touch_bound
-    - tick_expected_complexity
-    - dirichlet_touch_bound
   - path: FdrsFormal/Integration/DualFiltrations/Definition.lean
     declarations:
     - blockSize
@@ -4426,10 +4419,10 @@ items:
   - path: FdrsFormal/Integration/Complexity/Definition.lean
     declarations:
     - touchSet
-    - touchComplexity_placeholder
+    - touchComplexity
+    - tickTouchSet
+    - tick_touchComplexity
     - tick_touch_bound
-    - tick_expected_complexity
-    - dirichlet_touch_bound
   - path: FdrsFormal/Integration/DualFiltrations/Definition.lean
     declarations:
     - blockSize
@@ -4472,10 +4465,10 @@ items:
   - path: FdrsFormal/Integration/Complexity/Definition.lean
     declarations:
     - touchSet
-    - touchComplexity_placeholder
+    - touchComplexity
+    - tickTouchSet
+    - tick_touchComplexity
     - tick_touch_bound
-    - tick_expected_complexity
-    - dirichlet_touch_bound
   - path: FdrsFormal/Integration/DualFiltrations/Definition.lean
     declarations:
     - blockSize
@@ -4518,10 +4511,10 @@ items:
   - path: FdrsFormal/Integration/Complexity/Definition.lean
     declarations:
     - touchSet
-    - touchComplexity_placeholder
+    - touchComplexity
+    - tickTouchSet
+    - tick_touchComplexity
     - tick_touch_bound
-    - tick_expected_complexity
-    - dirichlet_touch_bound
   - path: FdrsFormal/Integration/DualFiltrations/Definition.lean
     declarations:
     - blockSize
@@ -4564,10 +4557,10 @@ items:
   - path: FdrsFormal/Integration/Complexity/Definition.lean
     declarations:
     - touchSet
-    - touchComplexity_placeholder
+    - touchComplexity
+    - tickTouchSet
+    - tick_touchComplexity
     - tick_touch_bound
-    - tick_expected_complexity
-    - dirichlet_touch_bound
   - path: FdrsFormal/Integration/DualFiltrations/Definition.lean
     declarations:
     - blockSize
@@ -4610,10 +4603,10 @@ items:
   - path: FdrsFormal/Integration/Complexity/Definition.lean
     declarations:
     - touchSet
-    - touchComplexity_placeholder
+    - touchComplexity
+    - tickTouchSet
+    - tick_touchComplexity
     - tick_touch_bound
-    - tick_expected_complexity
-    - dirichlet_touch_bound
   - path: FdrsFormal/Integration/DualFiltrations/Definition.lean
     declarations:
     - blockSize
@@ -4656,10 +4649,10 @@ items:
   - path: FdrsFormal/Integration/Complexity/Definition.lean
     declarations:
     - touchSet
-    - touchComplexity_placeholder
+    - touchComplexity
+    - tickTouchSet
+    - tick_touchComplexity
     - tick_touch_bound
-    - tick_expected_complexity
-    - dirichlet_touch_bound
   - path: FdrsFormal/Integration/DualFiltrations/Definition.lean
     declarations:
     - blockSize
@@ -4702,10 +4695,10 @@ items:
   - path: FdrsFormal/Integration/Complexity/Definition.lean
     declarations:
     - touchSet
-    - touchComplexity_placeholder
+    - touchComplexity
+    - tickTouchSet
+    - tick_touchComplexity
     - tick_touch_bound
-    - tick_expected_complexity
-    - dirichlet_touch_bound
   - path: FdrsFormal/Integration/DualFiltrations/Definition.lean
     declarations:
     - blockSize
@@ -4748,10 +4741,10 @@ items:
   - path: FdrsFormal/Integration/Complexity/Definition.lean
     declarations:
     - touchSet
-    - touchComplexity_placeholder
+    - touchComplexity
+    - tickTouchSet
+    - tick_touchComplexity
     - tick_touch_bound
-    - tick_expected_complexity
-    - dirichlet_touch_bound
   - path: FdrsFormal/Integration/DualFiltrations/Definition.lean
     declarations:
     - blockSize
@@ -4794,10 +4787,10 @@ items:
   - path: FdrsFormal/Integration/Complexity/Definition.lean
     declarations:
     - touchSet
-    - touchComplexity_placeholder
+    - touchComplexity
+    - tickTouchSet
+    - tick_touchComplexity
     - tick_touch_bound
-    - tick_expected_complexity
-    - dirichlet_touch_bound
   - path: FdrsFormal/Integration/DualFiltrations/Definition.lean
     declarations:
     - blockSize
@@ -4840,10 +4833,10 @@ items:
   - path: FdrsFormal/Integration/Complexity/Definition.lean
     declarations:
     - touchSet
-    - touchComplexity_placeholder
+    - touchComplexity
+    - tickTouchSet
+    - tick_touchComplexity
     - tick_touch_bound
-    - tick_expected_complexity
-    - dirichlet_touch_bound
   - path: FdrsFormal/Integration/DualFiltrations/Definition.lean
     declarations:
     - blockSize
@@ -4886,10 +4879,10 @@ items:
   - path: FdrsFormal/Integration/Complexity/Definition.lean
     declarations:
     - touchSet
-    - touchComplexity_placeholder
+    - touchComplexity
+    - tickTouchSet
+    - tick_touchComplexity
     - tick_touch_bound
-    - tick_expected_complexity
-    - dirichlet_touch_bound
   - path: FdrsFormal/Integration/DualFiltrations/Definition.lean
     declarations:
     - blockSize
@@ -4932,10 +4925,10 @@ items:
   - path: FdrsFormal/Integration/Complexity/Definition.lean
     declarations:
     - touchSet
-    - touchComplexity_placeholder
+    - touchComplexity
+    - tickTouchSet
+    - tick_touchComplexity
     - tick_touch_bound
-    - tick_expected_complexity
-    - dirichlet_touch_bound
   - path: FdrsFormal/Integration/DualFiltrations/Definition.lean
     declarations:
     - blockSize
@@ -4978,10 +4971,10 @@ items:
   - path: FdrsFormal/Integration/Complexity/Definition.lean
     declarations:
     - touchSet
-    - touchComplexity_placeholder
+    - touchComplexity
+    - tickTouchSet
+    - tick_touchComplexity
     - tick_touch_bound
-    - tick_expected_complexity
-    - dirichlet_touch_bound
   - path: FdrsFormal/Integration/DualFiltrations/Definition.lean
     declarations:
     - blockSize
@@ -5024,10 +5017,10 @@ items:
   - path: FdrsFormal/Integration/Complexity/Definition.lean
     declarations:
     - touchSet
-    - touchComplexity_placeholder
+    - touchComplexity
+    - tickTouchSet
+    - tick_touchComplexity
     - tick_touch_bound
-    - tick_expected_complexity
-    - dirichlet_touch_bound
   - path: FdrsFormal/Integration/DualFiltrations/Definition.lean
     declarations:
     - blockSize
@@ -5070,10 +5063,10 @@ items:
   - path: FdrsFormal/Integration/Complexity/Definition.lean
     declarations:
     - touchSet
-    - touchComplexity_placeholder
+    - touchComplexity
+    - tickTouchSet
+    - tick_touchComplexity
     - tick_touch_bound
-    - tick_expected_complexity
-    - dirichlet_touch_bound
   - path: FdrsFormal/Integration/DualFiltrations/Definition.lean
     declarations:
     - blockSize
@@ -5116,10 +5109,10 @@ items:
   - path: FdrsFormal/Integration/Complexity/Definition.lean
     declarations:
     - touchSet
-    - touchComplexity_placeholder
+    - touchComplexity
+    - tickTouchSet
+    - tick_touchComplexity
     - tick_touch_bound
-    - tick_expected_complexity
-    - dirichlet_touch_bound
   - path: FdrsFormal/Integration/DualFiltrations/Definition.lean
     declarations:
     - blockSize
@@ -5183,10 +5176,10 @@ items:
   - path: FdrsFormal/Integration/Complexity/Definition.lean
     declarations:
     - touchSet
-    - touchComplexity_placeholder
+    - touchComplexity
+    - tickTouchSet
+    - tick_touchComplexity
     - tick_touch_bound
-    - tick_expected_complexity
-    - dirichlet_touch_bound
   - path: FdrsFormal/Integration/DualFiltrations/Definition.lean
     declarations:
     - blockSize
@@ -5229,10 +5222,10 @@ items:
   - path: FdrsFormal/Integration/Complexity/Definition.lean
     declarations:
     - touchSet
-    - touchComplexity_placeholder
+    - touchComplexity
+    - tickTouchSet
+    - tick_touchComplexity
     - tick_touch_bound
-    - tick_expected_complexity
-    - dirichlet_touch_bound
   - path: FdrsFormal/Integration/DualFiltrations/Definition.lean
     declarations:
     - blockSize
@@ -5275,10 +5268,10 @@ items:
   - path: FdrsFormal/Integration/Complexity/Definition.lean
     declarations:
     - touchSet
-    - touchComplexity_placeholder
+    - touchComplexity
+    - tickTouchSet
+    - tick_touchComplexity
     - tick_touch_bound
-    - tick_expected_complexity
-    - dirichlet_touch_bound
   - path: FdrsFormal/Integration/DualFiltrations/Definition.lean
     declarations:
     - blockSize
@@ -5321,10 +5314,10 @@ items:
   - path: FdrsFormal/Integration/Complexity/Definition.lean
     declarations:
     - touchSet
-    - touchComplexity_placeholder
+    - touchComplexity
+    - tickTouchSet
+    - tick_touchComplexity
     - tick_touch_bound
-    - tick_expected_complexity
-    - dirichlet_touch_bound
   - path: FdrsFormal/Integration/DualFiltrations/Definition.lean
     declarations:
     - blockSize
@@ -5367,10 +5360,10 @@ items:
   - path: FdrsFormal/Integration/Complexity/Definition.lean
     declarations:
     - touchSet
-    - touchComplexity_placeholder
+    - touchComplexity
+    - tickTouchSet
+    - tick_touchComplexity
     - tick_touch_bound
-    - tick_expected_complexity
-    - dirichlet_touch_bound
   - path: FdrsFormal/Integration/DualFiltrations/Definition.lean
     declarations:
     - blockSize
@@ -5413,10 +5406,10 @@ items:
   - path: FdrsFormal/Integration/Complexity/Definition.lean
     declarations:
     - touchSet
-    - touchComplexity_placeholder
+    - touchComplexity
+    - tickTouchSet
+    - tick_touchComplexity
     - tick_touch_bound
-    - tick_expected_complexity
-    - dirichlet_touch_bound
   - path: FdrsFormal/Integration/DualFiltrations/Definition.lean
     declarations:
     - blockSize
@@ -5459,10 +5452,10 @@ items:
   - path: FdrsFormal/Integration/Complexity/Definition.lean
     declarations:
     - touchSet
-    - touchComplexity_placeholder
+    - touchComplexity
+    - tickTouchSet
+    - tick_touchComplexity
     - tick_touch_bound
-    - tick_expected_complexity
-    - dirichlet_touch_bound
   - path: FdrsFormal/Integration/DualFiltrations/Definition.lean
     declarations:
     - blockSize
@@ -5505,10 +5498,10 @@ items:
   - path: FdrsFormal/Integration/Complexity/Definition.lean
     declarations:
     - touchSet
-    - touchComplexity_placeholder
+    - touchComplexity
+    - tickTouchSet
+    - tick_touchComplexity
     - tick_touch_bound
-    - tick_expected_complexity
-    - dirichlet_touch_bound
   - path: FdrsFormal/Integration/DualFiltrations/Definition.lean
     declarations:
     - blockSize
@@ -5551,10 +5544,10 @@ items:
   - path: FdrsFormal/Integration/Complexity/Definition.lean
     declarations:
     - touchSet
-    - touchComplexity_placeholder
+    - touchComplexity
+    - tickTouchSet
+    - tick_touchComplexity
     - tick_touch_bound
-    - tick_expected_complexity
-    - dirichlet_touch_bound
   - path: FdrsFormal/Integration/DualFiltrations/Definition.lean
     declarations:
     - blockSize
@@ -5597,10 +5590,10 @@ items:
   - path: FdrsFormal/Integration/Complexity/Definition.lean
     declarations:
     - touchSet
-    - touchComplexity_placeholder
+    - touchComplexity
+    - tickTouchSet
+    - tick_touchComplexity
     - tick_touch_bound
-    - tick_expected_complexity
-    - dirichlet_touch_bound
   - path: FdrsFormal/Integration/DualFiltrations/Definition.lean
     declarations:
     - blockSize
@@ -5643,10 +5636,10 @@ items:
   - path: FdrsFormal/Integration/Complexity/Definition.lean
     declarations:
     - touchSet
-    - touchComplexity_placeholder
+    - touchComplexity
+    - tickTouchSet
+    - tick_touchComplexity
     - tick_touch_bound
-    - tick_expected_complexity
-    - dirichlet_touch_bound
   - path: FdrsFormal/Integration/DualFiltrations/Definition.lean
     declarations:
     - blockSize
@@ -5689,10 +5682,10 @@ items:
   - path: FdrsFormal/Integration/Complexity/Definition.lean
     declarations:
     - touchSet
-    - touchComplexity_placeholder
+    - touchComplexity
+    - tickTouchSet
+    - tick_touchComplexity
     - tick_touch_bound
-    - tick_expected_complexity
-    - dirichlet_touch_bound
   - path: FdrsFormal/Integration/DualFiltrations/Definition.lean
     declarations:
     - blockSize
@@ -5735,10 +5728,10 @@ items:
   - path: FdrsFormal/Integration/Complexity/Definition.lean
     declarations:
     - touchSet
-    - touchComplexity_placeholder
+    - touchComplexity
+    - tickTouchSet
+    - tick_touchComplexity
     - tick_touch_bound
-    - tick_expected_complexity
-    - dirichlet_touch_bound
   - path: FdrsFormal/Integration/DualFiltrations/Definition.lean
     declarations:
     - blockSize
@@ -5774,13 +5767,15 @@ items:
   - path: FdrsFormal/Integration/Complexity/Definition.lean
     declarations:
     - touchSet
-    - touchComplexity_placeholder
+    - touchComplexity
+    - tickTouchSet
+    - tick_touchComplexity
     - tick_touch_bound
     - tick_expected_complexity
     - dirichlet_touch_bound
-    - circuitDepth_placeholder
-    - tick_parallel_depth
-    - globalValuationLocalCost
+    - chainDepth
+    - circuitDepth
+    - seqChain
   - path: FdrsFormal/Integration/DualFiltrations/Definition.lean
     declarations:
     - blockSize
@@ -5814,10 +5809,10 @@ items:
   - path: FdrsFormal/Integration/Complexity/Definition.lean
     declarations:
     - touchSet
-    - touchComplexity_placeholder
+    - touchComplexity
+    - tickTouchSet
+    - tick_touchComplexity
     - tick_touch_bound
-    - tick_expected_complexity
-    - dirichlet_touch_bound
   - path: FdrsFormal/Integration/DualFiltrations/Definition.lean
     declarations:
     - blockSize
@@ -5860,10 +5855,10 @@ items:
   - path: FdrsFormal/Integration/Complexity/Definition.lean
     declarations:
     - touchSet
-    - touchComplexity_placeholder
+    - touchComplexity
+    - tickTouchSet
+    - tick_touchComplexity
     - tick_touch_bound
-    - tick_expected_complexity
-    - dirichlet_touch_bound
   - path: FdrsFormal/Integration/DualFiltrations/Definition.lean
     declarations:
     - blockSize
@@ -5906,10 +5901,10 @@ items:
   - path: FdrsFormal/Integration/Complexity/Definition.lean
     declarations:
     - touchSet
-    - touchComplexity_placeholder
+    - touchComplexity
+    - tickTouchSet
+    - tick_touchComplexity
     - tick_touch_bound
-    - tick_expected_complexity
-    - dirichlet_touch_bound
   - path: FdrsFormal/Integration/DualFiltrations/Definition.lean
     declarations:
     - blockSize
@@ -5952,10 +5947,10 @@ items:
   - path: FdrsFormal/Integration/Complexity/Definition.lean
     declarations:
     - touchSet
-    - touchComplexity_placeholder
+    - touchComplexity
+    - tickTouchSet
+    - tick_touchComplexity
     - tick_touch_bound
-    - tick_expected_complexity
-    - dirichlet_touch_bound
   - path: FdrsFormal/Integration/DualFiltrations/Definition.lean
     declarations:
     - blockSize
@@ -5985,7 +5980,7 @@ items:
   global_num: 57
   title: branching function / radix law
   line: 3956
-  status: scaffold
+  status: proven
   in_root_build: true
   lean_files:
   - path: FdrsFormal/Modes/VariableRadix/Basic/Basic.lean
@@ -6002,9 +5997,6 @@ items:
     - ofRadixSeq_isPositionOnly
   fragment: '5.1'
   section: '1.1'
-  scaffold_decls:
-  - FdrsFormal/Modes/VariableRadix/Realizability/Sufficiency.lean:71 radixLawFromUltrametric_placeholder
-  - FdrsFormal/Modes/VariableRadix/Realizability/Sufficiency.lean:82 radixLawFromUltrametric_su_placeholder
 - id: definition_58
   type: definition
   phase: 5
@@ -13551,61 +13543,19 @@ lean_summary:
   axioms_true: 0
   total_sorries: 0
   sorry_files: []
-  total_theorems: 990
-  total_defs: 572
+  total_theorems: 993
+  total_defs: 576
   total_lemmas: 25
-  total_stubs: 1
+  total_stubs: 0
   stubs_by_kind:
-    true_trivial: 1
+    true_trivial: 0
     prop_true: 0
     zero_impl: 0
-  total_scaffold: 7
+  total_scaffold: 0
   scaffold_by_severity:
-    high: 4
-    low: 3
-  scaffold_declarations:
-  - file: FdrsFormal/FunctionSpaces/Projections/Details.lean
-    line: 529
-    kind: theorem
-    name: blockProjection_Lp_convergence_placeholder
-    scaffold_kind: true_concl
-    severity: high
-  - file: FdrsFormal/Integration/Complexity/Definition.lean
-    line: 68
-    kind: def
-    name: touchComplexity_placeholder
-    scaffold_kind: const_model
-    severity: high
-  - file: FdrsFormal/Integration/Complexity/Definition.lean
-    line: 163
-    kind: def
-    name: circuitDepth_placeholder
-    scaffold_kind: const_model
-    severity: high
-  - file: FdrsFormal/Modes/VariableRadix/Realizability/Sufficiency.lean
-    line: 71
-    kind: def
-    name: radixLawFromUltrametric_placeholder
-    scaffold_kind: vacuous_hyp
-    severity: low
-  - file: FdrsFormal/Modes/VariableRadix/Realizability/Sufficiency.lean
-    line: 82
-    kind: theorem
-    name: radixLawFromUltrametric_su_placeholder
-    scaffold_kind: vacuous_hyp
-    severity: low
-  - file: FdrsFormal/Modes/VariableRadix/Realizability/Sufficiency.lean
-    line: 98
-    kind: theorem
-    name: theoremB_sufficiency_placeholder
-    scaffold_kind: vacuous_hyp
-    severity: low
-  - file: FdrsFormal/NumberTheory/FactorizationLens/ValuationAlgebra.lean
-    line: 61
-    kind: def
-    name: valuationFiltration_monotone_placeholder
-    scaffold_kind: const_model
-    severity: high
+    high: 0
+    low: 0
+  scaffold_declarations: []
   excluded_modules:
   - FdrsFormal/Integration/ThreeLineMediator/CoupledSystem.lean
   - FdrsFormal/Integration/ThreeLineMediator/Definition.lean

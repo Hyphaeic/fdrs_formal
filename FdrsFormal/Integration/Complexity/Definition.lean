@@ -58,15 +58,24 @@ def touchSet (op : (ℕ → α) → (ℕ → α)) (n : ℕ) : Set ℕ :=
   Set.univ  -- Conservative: assume all positions may be accessed
 
 /--
-Touch complexity: size of the touch set.
+Touch complexity: the number of positions an operation accesses, i.e. the
+cardinality of its (finite) touch set.
 
-**fdrs.md**: `|Touch(Op)|` - bounded for all local operations
-
-Note: For finite touch sets, this would be the cardinality.
-We return 0 as a placeholder; concrete operations override this.
+**fdrs.md**: `|Touch(Op)|` — bounded for all *local* operations. An opaque
+operation has `touchSet = Set.univ` (unbounded); a local operation exposes a
+finite touch set `T`, and its touch complexity is `T.card`.
 -/
-def touchComplexity_placeholder (op : (ℕ → α) → (ℕ → α)) (n : ℕ) : ℕ :=
-  0  -- Placeholder: concrete operations specify their touch complexity
+def touchComplexity (T : Finset ℕ) : ℕ := T.card
+
+/-- The touch set of `Tick` at a state whose carry stops at index `m`: the carry
+zone `{0, 1, …, m}`. By `tick_touch_bound`, positions beyond `m` are untouched. -/
+def tickTouchSet (m : ℕ) : Finset ℕ := Finset.range (m + 1)
+
+/-- `Tick` touches exactly `m + 1` positions when the carry stops at index `m`,
+so its touch complexity is `O(m) ≤ O(L)` for an `L`-digit number — the carry-local
+cost made precise by `tick_touch_bound`. -/
+theorem tick_touchComplexity (m : ℕ) : touchComplexity (tickTouchSet m) = m + 1 := by
+  simp [touchComplexity, tickTouchSet]
 
 /-!
 ## Tick Complexity
@@ -152,16 +161,43 @@ theorem dirichlet_touch_bound (a n : ℕ) (ha : a ≠ 0) :
 -/
 
 /--
-Circuit depth for parallel operations.
-
-**fdrs.md**: Depth(Op) = longest dependency chain in the operation DAG
-
-Note: This is an abstract characterization of parallel depth.
-Concrete operations would specify their dependency DAG.
-We return 0 as a placeholder; concrete operations override this.
+Longest directed dependency chain reaching node `i`, where `deps j` is the set of
+nodes that `j` directly depends on. `fuel` bounds the search depth; for a DAG
+(`deps j ⊆ {0, …, j-1}`) any `fuel ≥ i + 1` yields the true longest chain.
 -/
-def circuitDepth_placeholder (op : (ℕ → α) → (ℕ → α)) : ℕ :=
-  0  -- Placeholder: concrete operations specify their circuit depth
+def chainDepth (deps : ℕ → Finset ℕ) : ℕ → ℕ → ℕ
+  | 0,        _ => 0
+  | fuel + 1, i => (deps i).sup (fun j => chainDepth deps fuel j + 1)
+
+/--
+Circuit depth of an operation with dependency structure `deps`, at output `i`:
+the longest directed dependency chain reaching `i`.
+
+**fdrs.md**: `Depth(Op) = longest dependency chain in the operation DAG`.
+A leaf (no dependencies) has depth `0`; each dependency edge adds `1`.
+-/
+def circuitDepth (deps : ℕ → Finset ℕ) (i : ℕ) : ℕ :=
+  chainDepth deps (i + 1) i
+
+/-- The fully sequential (ripple) dependency chain: node `j + 1` depends on node `j`. -/
+def seqChain : ℕ → Finset ℕ
+  | 0     => ∅
+  | j + 1 => {j}
+
+/--
+The sequential chain over positions `0, …, L` has circuit depth `L`: a fully
+sequential ripple carry has *linear* depth. Contrast `tick_parallel_depth`, where
+carry-lookahead reduces the depth to `Nat.log 2 L < L`.
+-/
+theorem circuitDepth_seqChain (L : ℕ) : circuitDepth seqChain L = L := by
+  have aux : ∀ i, chainDepth seqChain (i + 1) i = i := by
+    intro i
+    induction i with
+    | zero => simp [chainDepth, seqChain]
+    | succ j ih =>
+        show (seqChain (j + 1)).sup (fun k => chainDepth seqChain (j + 1) k + 1) = j + 1
+        rw [show seqChain (j + 1) = {j} from rfl, Finset.sup_singleton, ih]
+  exact aux L
 
 /--
 Tick parallel depth is O(log L): logarithmic depth is strictly less than linear depth.

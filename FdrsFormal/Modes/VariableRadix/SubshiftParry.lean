@@ -42,6 +42,8 @@ import Mathlib.Probability.Kernel.Basic
 import Mathlib.Probability.Kernel.Composition.MapComap
 import Mathlib.Probability.Kernel.IonescuTulcea.Traj
 import Mathlib.Probability.ProbabilityMassFunction.Constructions
+import Mathlib.Probability.Process.Filtration
+import Mathlib.Probability.Martingale.Convergence
 
 namespace FdrsFormal.Modes.VariableRadix.Subshift.Parry
 
@@ -185,5 +187,46 @@ Ionescu–Tulcea trajectory kernel. Countably additive on the canonical `Measura
 and (by stationarity of `π`) the genuine shift-invariant measure of maximal entropy. -/
 noncomputable def parryMeasure : Measure (Π _n : ℕ, Fin 2) :=
   parryInit.bind parryTraj
+
+instance : IsMarkovKernel parryTraj := by unfold parryTraj; infer_instance
+instance : IsProbabilityMeasure parryInit := by unfold parryInit; infer_instance
+instance : IsProbabilityMeasure parryMeasure := by unfold parryMeasure; infer_instance
+
+/-! ## Group G on the golden timeline: the Lévy upward engine (Chunk 3) -/
+
+/-- The coordinate filtration `piLE` exhausts the product σ-algebra: `⨆ L, piLE L = pi`.
+This is the lone obligation Lévy's upward theorem requires. (Each `piLE L ≤ pi`; conversely
+`pi = ⨆ j, comap (eval j)` and `eval j` factors through `frestrictLe j`, so
+`comap (eval j) ≤ piLE j`.) -/
+theorem iSup_piLE_eq_pi :
+    ⨆ L : ℕ, (Filtration.piLE (X := fun _ : ℕ => Fin 2) L : MeasurableSpace (ℕ → Fin 2))
+      = MeasurableSpace.pi := by
+  refine le_antisymm (iSup_le fun L => (Filtration.piLE (X := fun _ => Fin 2)).le L) ?_
+  unfold MeasurableSpace.pi
+  refine iSup_le fun j => le_iSup_of_le j ?_
+  rw [Filtration.piLE_eq_comap_frestrictLe]
+  have hfac : (fun f : ℕ → Fin 2 => f j)
+      = (fun g : (i : Finset.Iic j) → Fin 2 => g ⟨j, Finset.mem_Iic.2 le_rfl⟩)
+        ∘ Preorder.frestrictLe j := rfl
+  calc MeasurableSpace.comap (fun f : ℕ → Fin 2 => f j) inferInstance
+      = MeasurableSpace.comap (Preorder.frestrictLe j)
+          (MeasurableSpace.comap (fun g : (i : Finset.Iic j) → Fin 2 => g ⟨j, Finset.mem_Iic.2 le_rfl⟩)
+            inferInstance) := by rw [hfac, MeasurableSpace.comap_comp]
+    _ ≤ MeasurableSpace.comap (Preorder.frestrictLe j) MeasurableSpace.pi :=
+        MeasurableSpace.comap_mono (measurable_pi_apply _).comap_le
+
+/-- **Group G on the golden timeline (Lévy upward).** For any integrable, measurable `f`, the
+block conditional expectations over the coordinate filtration converge to `f` in `L¹` under the
+Parry measure: `E[f | ℱ_L] → f`. This is the integration engine, running natively on the
+generated golden-mean timeline — no metric, no bespoke topology, just Mathlib's classical
+martingale convergence on the canonical `pi` σ-algebra. -/
+theorem parry_condExp_tendsto {f : (ℕ → Fin 2) → ℝ} (hf : Integrable f parryMeasure)
+    (hf' : StronglyMeasurable f) :
+    Filter.Tendsto
+      (fun L => eLpNorm (parryMeasure[f|Filtration.piLE (X := fun _ => Fin 2) L] - f) 1 parryMeasure)
+      Filter.atTop (nhds 0) := by
+  refine hf.tendsto_eLpNorm_condExp ?_
+  rw [iSup_piLE_eq_pi]
+  exact hf'
 
 end FdrsFormal.Modes.VariableRadix.Subshift.Parry

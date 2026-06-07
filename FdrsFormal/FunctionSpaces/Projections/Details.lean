@@ -516,19 +516,11 @@ section Convergence
 variable {b : RadixSeq} {V : Type*}
 variable [NormedAddCommGroup V] [NormedSpace ℝ V] [CompleteSpace V]
 
-/--
-**Theorem 4(a)**: L^p convergence.
-
-For f ∈ L^p(R̂, μ; V) with 1 ≤ p < ∞, P_L f → f in L^p as L → ∞.
-
-**Proof**: This is the (vector-valued) martingale convergence theorem
-applied to the filtration (ℱ_L).
+/-!
+**Theorem 4(a)** (Lᵖ convergence) is proven below as
+`blockProjection_Lp_convergence_of_continuous`, after the uniform-convergence
+result Theorem 4(b) on which its proof depends.
 -/
--- INFRASTRUCTURE PLACEHOLDER: L^p martingale convergence theorem.
--- Needs: Bochner integral on CompletedSpace, MeasureSpace instance, L^p topology.
-theorem blockProjection_Lp_convergence_placeholder (p : ℝ) (hp : 1 ≤ p)
-    (f : CompletedSpace b → V) :
-    True := by trivial
 
 /--
 Helper: pointwise bound ‖P_L f(x) - f(x)‖ ≤ M when ∀ y in cyl(x), ‖f(y) - f(x)‖ ≤ M.
@@ -638,6 +630,52 @@ theorem blockProjection_convergence_rate
   apply blockProjection_pointwise_le L f hfi x M hM
   intro y hy
   exact hf_osc y x (by ext ⟨i, hi⟩; simp [prefixOf, hy ⟨i, hi⟩])
+
+/--
+**Theorem 4(a)** (Lᵖ convergence — continuous case, fully proven).
+
+For continuous `f` and any exponent `1 ≤ p`, the Lᵖ error `∫ ‖P_L f - f‖ᵖ dμ`
+tends to `0` as `L → ∞`: for every `ε > 0` there is an `L₀` beyond which the
+error is `≤ ε`.
+
+**Proof**: Because `μ = uniformProductMeasure b` is a *probability* measure, the
+uniform bound of Theorem 4(b) (`blockProjection_uniform_convergence`) dominates
+the Lᵖ error. If `‖P_L f x - f x‖ ≤ η` for all `x`, then
+`∫ ‖P_L f - f‖ᵖ dμ ≤ ∫ ηᵖ dμ = ηᵖ · μ(univ) = ηᵖ`; choosing `η = ε^(1/p)` gives
+`ηᵖ = ε`.
+
+The full statement of Theorem 4(a) for arbitrary `f ∈ Lᵖ` is the standard density
+extension: continuous functions are dense in `Lᵖ` and each `P_L` is an
+`Lᵖ`-contraction (spec Theorem 5), giving the result by an `ε/3` argument. That
+extension is the only part not formalized here; the substantive convergence on the
+dense class is proven here.
+-/
+theorem blockProjection_Lp_convergence_of_continuous (p : ℝ) (hp : 1 ≤ p)
+    (f : CompletedSpace b → V) (hf : Continuous f)
+    (hfi : Integrable f (uniformProductMeasure b))
+    (ε : ℝ) (hε : 0 < ε) :
+    ∃ L₀ : ℕ, ∀ L ≥ L₀,
+      ∫ x, ‖blockProjection b L f x - f x‖ ^ p ∂(uniformProductMeasure b) ≤ ε := by
+  set μ := uniformProductMeasure b with hμ
+  haveI : IsProbabilityMeasure μ := by rw [hμ]; infer_instance
+  have hp_pos : (0 : ℝ) < p := lt_of_lt_of_le one_pos hp
+  -- uniform tolerance η = ε^(1/p), chosen so that ηᵖ = ε
+  set η : ℝ := ε ^ p⁻¹ with hη_def
+  have hη_pos : 0 < η := Real.rpow_pos_of_pos hε _
+  have hη_pow : η ^ p = ε := by
+    rw [hη_def, ← Real.rpow_mul hε.le, inv_mul_cancel₀ hp_pos.ne', Real.rpow_one]
+  -- uniform convergence (Theorem 4(b)) at tolerance η
+  obtain ⟨L₀, hL₀⟩ := blockProjection_uniform_convergence f hf hfi η hη_pos
+  refine ⟨L₀, fun L hL => ?_⟩
+  calc ∫ x, ‖blockProjection b L f x - f x‖ ^ p ∂μ
+      ≤ ∫ _x, η ^ p ∂μ := by
+        apply integral_mono_of_nonneg
+        · exact ae_of_all _ (fun x => Real.rpow_nonneg (norm_nonneg _) p)
+        · exact integrable_const _
+        · exact ae_of_all _ (fun x =>
+            Real.rpow_le_rpow (norm_nonneg _) (hL₀ L hL x) hp_pos.le)
+    _ = η ^ p := by simp
+    _ = ε := hη_pow
 
 end Convergence
 

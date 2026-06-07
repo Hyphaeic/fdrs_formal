@@ -35,8 +35,11 @@ Implements **Phase 2** from fdrs.md (lines 533-1278):
 ## Status
 
 Built and machine-checked against Mathlib; the earlier "axiomatized / N axioms" status
-is obsolete (this module has no axioms). One Lᵖ-convergence result in `Projections/`
-remains a placeholder (`blockProjection_Lp_convergence_placeholder`). Run
+is obsolete (this module has no axioms). Lᵖ convergence (Theorem 4(a)) is proven in
+`Projections/Details.lean` as `blockProjection_Lp_convergence_of_continuous` for the
+dense class of continuous functions; the extension to arbitrary `f ∈ Lᵖ` is the
+standard density argument (continuous functions dense in `Lᵖ` + `Lᵖ`-contractivity of
+`P_L`) and is the only part of Theorem 4(a) not yet formalized. Run
 `python3 scripts/fdrs-summary` for the live, authoritative status — axioms, sorries,
 and scaffold declarations — rather than relying on counts written here.
 

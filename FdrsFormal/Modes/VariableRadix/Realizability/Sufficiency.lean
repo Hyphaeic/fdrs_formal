@@ -60,55 +60,122 @@ structure AbstractUltrametric where
   dist_ultrametric : ∀ x y z, dist x z ≤ max (dist x y) (dist y z)
 
 /-!
-## Construction of RadixLaw from Ultrametric
+## Realizability Conditions on an Abstract Ultrametric
+
+The full Theorem 43 sufficiency direction needs three conditions on `δ`:
+**cylinder correspondence**, **monotone refinement**, and **finite branching**.
+The first two require an alignment of `δ`'s underlying type
+`∀ i, δ.digitSets i` with the prefix-cylinder structure used in the rest of the
+formalization — infrastructure that is not yet provided at the `AbstractUltrametric`
+level. We therefore capture only the **branching slice** of the conditions here,
+in a form that supports a non-trivial construction of a sibling-uniform radix
+law from `δ`. The structure is left open so additional conditions can be added
+without breaking downstream signatures.
 -/
 
 /--
-Construct a RadixLaw from an abstract ultrametric satisfying the conditions.
+Abstract realizability conditions on `δ : AbstractUltrametric`.
 
-The radix at prefix s is the branching factor (number of children).
+Currently captures the branching-content of Theorem 43 sufficiency: each digit
+set has at least two elements, the natural abstract analogue of "the radix is at
+least 2 everywhere". Cylinder correspondence and monotone refinement are not
+expressible directly on `AbstractUltrametric` without additional alignment
+infrastructure (cylinders, ball radii on `∀ i, δ.digitSets i`).
 -/
-noncomputable def radixLawFromUltrametric_placeholder (δ : AbstractUltrametric)
-    (hcc : True) -- cylinder correspondence placeholder
-    (hmr : True) -- monotone refinement placeholder
-    (hfb : True) -- finite branching placeholder
-    : RadixLaw where
-  radix := fun _s => 2 -- Placeholder: should be computed from branching
-  radix_ge_two := fun _s => Nat.le_refl 2
-
-/--
-The constructed RadixLaw is sibling uniform.
--/
-theorem radixLawFromUltrametric_su_placeholder (δ : AbstractUltrametric)
-    (hcc : True) (hmr : True) (hfb : True) (k : ℕ) :
-    isSiblingUniform (radixLawFromUltrametric_placeholder δ hcc hmr hfb) k :=
-  -- The placeholder radix is constant 2, which is position-only
-  positionOnly_siblingUniform _ k (fun _ _ _ => rfl)
+structure AbstractRealizabilityConditions (δ : AbstractUltrametric) : Prop where
+  /--
+  Each digit set has at least 2 elements. Necessary because the constructed
+  radix law must satisfy `ω.radix s ≥ 2` everywhere.
+  -/
+  digitSets_geTwo : ∀ i, 2 ≤ Nat.card (δ.digitSets i)
 
 /-!
-## Sufficiency Theorem
+## Construction of a Sibling-Uniform Radix Law from an Abstract Ultrametric
 -/
 
 /--
-**THEOREM B (Sufficiency)**: If an ultrametric satisfies the three conditions,
-then there exists an SU radix function ω such that δ = δ_ω.
+The radix law derived from `δ`: at any prefix of length `L`, the radix equals
+the cardinality of `δ.digitSets L`.
 
-This is the inverse direction: given the conditions, construct ω.
+This is the "branching-only" content of Theorem 43 sufficiency: the construction
+is position-only (depends on `s.length`, not on the digits of `s`), which is the
+strongest form of sibling uniformity. The full Theorem 43 would additionally
+characterize the cardinalities by ball-refinement counts on `δ`, but the
+construction itself is well-defined from digit-set cardinalities alone.
 -/
-theorem theoremB_sufficiency_placeholder (δ : AbstractUltrametric)
-    (hcc : True) -- Cylinder correspondence (placeholder for proper type)
-    (hmr : True) -- Monotone refinement (placeholder for proper type)
-    (hfb : True) -- Finite branching (placeholder for proper type)
-    :
+noncomputable def radixLawFromUltrametric (δ : AbstractUltrametric)
+    (h : AbstractRealizabilityConditions δ) : RadixLaw where
+  radix := fun s => Nat.card (δ.digitSets s.length)
+  radix_ge_two := fun s => h.digitSets_geTwo s.length
+
+/--
+The radix law `radixLawFromUltrametric δ h` is sibling-uniform at every depth.
+
+The construction is position-only by design — `ω.radix` depends only on
+`s.length` — and position-only radix laws are sibling-uniform at every depth
+(`positionOnly_siblingUniform`).
+-/
+theorem radixLawFromUltrametric_su (δ : AbstractUltrametric)
+    (h : AbstractRealizabilityConditions δ) (k : ℕ) :
+    isSiblingUniform (radixLawFromUltrametric δ h) k := by
+  apply positionOnly_siblingUniform
+  intro s t hlen
+  show Nat.card (δ.digitSets s.length) = Nat.card (δ.digitSets t.length)
+  rw [hlen]
+
+/-!
+## Sufficiency Theorem (Branching Slice)
+-/
+
+/--
+**Theorem 43 sufficiency — branching slice**.
+
+Given an abstract ultrametric `δ` whose digit sets all have at least two
+elements, there exists a sibling-uniform radix law `ω` whose radix at every
+prefix `s` matches the cardinality of `δ.digitSets s.length`.
+
+The full Theorem 43 additionally asserts `δ = δ_ω` as ultrametrics; that
+equality requires aligning `∀ i, δ.digitSets i` with `InfiniteVariableSpace ω`,
+which is not yet provided at the `AbstractUltrametric` level. The combinatorial
+side of the correspondence — that the branching schedule of `ω` matches the
+digit-set cardinalities of `δ` — is established here.
+-/
+theorem theoremB_sufficiency (δ : AbstractUltrametric)
+    (h : AbstractRealizabilityConditions δ) :
     ∃ (ω : RadixLaw),
       (∀ k, isSiblingUniform ω k) ∧
-      -- INFRASTRUCTURE PLACEHOLDER: Should state δ = δ_ω (metric recovery).
-      -- Needs: proper ultrametric ↔ radix law correspondence with metric equality.
-      True := by
-  use radixLawFromUltrametric_placeholder δ hcc hmr hfb
-  constructor
-  · exact radixLawFromUltrametric_su_placeholder δ hcc hmr hfb
-  · trivial
+      (∀ s : PrefixWord, ω.radix s = Nat.card (δ.digitSets s.length)) := by
+  refine ⟨radixLawFromUltrametric δ h, ?_, ?_⟩
+  · intro k; exact radixLawFromUltrametric_su δ h k
+  · intro _; rfl
+
+/-!
+## Remaining work for the full Theorem 43 (`δ = δ_ω`)
+
+`theoremB_sufficiency` establishes the combinatorial (branching-schedule) half of
+Theorem 43. Upgrading it to the full *metric* statement `δ = δ_ω` requires, in order:
+
+1. **Cylinders and ball radii on `∀ i, δ.digitSets i`** — the abstract analogue of
+   the prefix-cylinder structure used in `InducedUltrametric`.
+2. **Encode the two remaining realizability conditions** as `Prop`s on `δ`:
+   *cylinder correspondence* (every `δ`-ball is a finite union of cylinders) and
+   *monotone refinement* (containment orders ball radii). (*Finite branching* is
+   already captured by `digitSets_geTwo`.)
+3. **Derive the metric form**: from (2), `δ.dist x y` equals the inverse prefix
+   weight at the first position where `x` and `y` differ — i.e. `δ` is the
+   first-difference ultrametric. This is the crux, and it is FALSE for an arbitrary
+   `AbstractUltrametric`; that is precisely why the present
+   `AbstractRealizabilityConditions` (carrying only `digitSets_geTwo`) is insufficient
+   to conclude `δ = δ_ω`, and why this file proves the branching slice only.
+4. **Space alignment** `(∀ i, δ.digitSets i) ≃ InfiniteVariableSpace ω` via the
+   pointwise `δ.digitSets i ≃ Fin (Nat.card (δ.digitSets i))` (finite sets of equal
+   cardinality).
+5. **Transport** the metric equality of (3) across the alignment of (4) to conclude
+   `δ = δ_ω`.
+
+Mathematically this is the classical ultrametric ↔ rooted-tree (dendrogram)
+correspondence; the outstanding work is the Lean infrastructure, not new mathematics.
+-/
 
 /-!
 ## Uniqueness
