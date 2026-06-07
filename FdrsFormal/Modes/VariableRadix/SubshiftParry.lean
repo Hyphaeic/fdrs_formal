@@ -39,6 +39,8 @@ import Mathlib.NumberTheory.Real.GoldenRatio
 import Mathlib.Algebra.BigOperators.Fin
 import Mathlib.Tactic.LinearCombination
 import Mathlib.Probability.Kernel.Basic
+import Mathlib.Probability.Kernel.Composition.MapComap
+import Mathlib.Probability.Kernel.IonescuTulcea.Traj
 import Mathlib.Probability.ProbabilityMassFunction.Constructions
 
 namespace FdrsFormal.Modes.VariableRadix.Subshift.Parry
@@ -101,5 +103,87 @@ instance : IsMarkovKernel goldenKernel := by
   refine ⟨fun i => ?_⟩
   change IsProbabilityMeasure ((goldenPMF i).toMeasure)
   infer_instance
+
+/-! ## The Parry stationary initial law `π ∝ (φ², 1)` (defined upfront, isolated) -/
+
+/-- Parry stationary weights `π ∝ (φ², 1)`, normalized by `φ² + 1`. For the symmetric
+golden-mean matrix this is `lᵢ rᵢ`; equivalently the unique law with `π · goldenP = π`. -/
+noncomputable def goldenStat (j : Fin 2) : ℝ :=
+  if j = 0 then φ ^ 2 / (φ ^ 2 + 1) else 1 / (φ ^ 2 + 1)
+
+theorem golden_sq_add_one_pos : 0 < φ ^ 2 + 1 := by positivity
+
+@[simp] theorem goldenStat_0 : goldenStat 0 = φ ^ 2 / (φ ^ 2 + 1) := by simp [goldenStat]
+@[simp] theorem goldenStat_1 : goldenStat 1 = 1 / (φ ^ 2 + 1) := by simp [goldenStat]
+
+theorem goldenStat_nonneg (j : Fin 2) : 0 ≤ goldenStat j := by
+  unfold goldenStat; split <;> positivity
+
+/-- Normalization: the stationary weights sum to `1`. -/
+theorem goldenStat_sum_one : ∑ j, goldenStat j = 1 := by
+  rw [Fin.sum_univ_two, goldenStat_0, goldenStat_1, div_add_div_same,
+    div_self (ne_of_gt golden_sq_add_one_pos)]
+
+/-- **Stationarity**: `π · goldenP = π`, i.e. `π` is `goldenP`-invariant — so the trajectory
+measure built from it is genuinely the (shift-invariant) Parry measure. Each row reduces to
+the golden identity `φ² = φ + 1`. -/
+theorem goldenStat_stationary (j : Fin 2) :
+    ∑ i, goldenStat i * goldenP i j = goldenStat j := by
+  have hd : φ ^ 2 + 1 ≠ 0 := ne_of_gt golden_sq_add_one_pos
+  have hsq : φ ^ 2 = φ + 1 := goldenRatio_sq
+  fin_cases j
+  · show ∑ i, goldenStat i * goldenP i 0 = goldenStat 0
+    rw [Fin.sum_univ_two, goldenStat_0, goldenStat_1, goldenP_00, goldenP_10, inv_gold_eq]
+    -- make φ opaque so `field_simp`/`ring` don't unfold the abbrev to √5
+    set p := φ with hp
+    field_simp
+    linear_combination (p - 1) * hsq
+  · show ∑ i, goldenStat i * goldenP i 1 = goldenStat 1
+    rw [Fin.sum_univ_two, goldenStat_0, goldenStat_1, goldenP_01, goldenP_11, ← inv_pow, inv_gold_eq]
+    set p := φ with hp
+    field_simp
+    linear_combination (p ^ 2 - p + 1) * hsq
+
+/-- The Parry stationary law as a `PMF (Fin 2)`. -/
+noncomputable def goldenStatPMF : PMF (Fin 2) :=
+  PMF.ofFintype (fun j => ENNReal.ofReal (goldenStat j)) <| by
+    rw [← ENNReal.ofReal_one, ← goldenStat_sum_one,
+      ENNReal.ofReal_sum_of_nonneg (fun j _ => goldenStat_nonneg j)]
+
+/-! ## Injecting the homogeneous chain into the `traj` family shape (Chunk 2, step 2) -/
+
+/-- Extract the current (time-`n`) state from a history `Π i : Iic n, Fin 2`. The index
+`⟨n, mem_Iic.2 le_rfl⟩` pulls the exact `n`-th coordinate (`Iic n` is `Finset.Iic n = [0,n]`). -/
+def coord (n : ℕ) : (Π _i : Finset.Iic n, Fin 2) → Fin 2 :=
+  fun x => x ⟨n, Finset.mem_Iic.2 le_rfl⟩
+
+theorem measurable_coord (n : ℕ) : Measurable (coord n) := measurable_pi_apply _
+
+/-- The golden kernel as the history-dependent family `Kernel.traj` expects: the law of the
+next state depends only on the current one (`comap` along `coord`). This is where the
+homogeneous Markov chain is injected into the general history-dependent API. -/
+noncomputable def goldenFam (n : ℕ) : Kernel (Π _i : Finset.Iic n, Fin 2) (Fin 2) :=
+  goldenKernel.comap (coord n) (measurable_coord n)
+
+/-- Each `goldenFam n` is Markov — `comap` of a Markov kernel by a measurable map. -/
+instance instMarkovGoldenFam (n : ℕ) : IsMarkovKernel (goldenFam n) := by
+  unfold goldenFam; infer_instance
+
+/-! ## The Parry path measure via Ionescu–Tulcea (Chunk 2, step 3) -/
+
+/-- The Ionescu–Tulcea trajectory kernel for the golden-mean chain: from a state at time `0`
+to the whole path `ℕ → Fin 2`, with countable additivity supplied by Mathlib's `Kernel.traj`. -/
+noncomputable def parryTraj := Kernel.traj (X := fun _ => Fin 2) goldenFam 0
+
+/-- The stationary law on the time-`0` history space `Π i : Iic 0, Fin 2` (a single
+coordinate, `Iic 0 = {0}`) — the product of the one factor `goldenStatPMF`. -/
+noncomputable def parryInit : Measure (Π _i : Finset.Iic 0, Fin 2) :=
+  Measure.pi (fun _ => goldenStatPMF.toMeasure)
+
+/-- **The Parry path measure** on `ℕ → Fin 2`: the stationary law `π` pushed through the
+Ionescu–Tulcea trajectory kernel. Countably additive on the canonical `MeasurableSpace.pi`,
+and (by stationarity of `π`) the genuine shift-invariant measure of maximal entropy. -/
+noncomputable def parryMeasure : Measure (Π _n : ℕ, Fin 2) :=
+  parryInit.bind parryTraj
 
 end FdrsFormal.Modes.VariableRadix.Subshift.Parry
