@@ -86,4 +86,21 @@ theorem emit_traps {K : Type*} [CommRing K] [LinearOrder K] [IsStrictOrderedRing
       (by linarith) (by nlinarith [u2]) (by nlinarith [u3]) hx hy
     nlinarith [h, u4]
 
+/-- **The driver's emissions are certified (the boolean ⇄ proposition padlock).** A `true`
+from the *executable* `emitReady` discharges exactly the hypotheses of `emit_traps`: the
+output value is trapped in `[k, k+1)` (with `k = emitDigit T`) for every tail `x, y ≥ 1`.
+The boolean check the driver runs and the proposition `emit_traps` proves are now welded —
+every digit the engine physically emits carries its correctness proof. No `Int.fdiv ↔ ⌊⌋`
+lemma and no `ℚ` detour: `emitReady` *verifies* the guess via the trapping inequalities, so
+the decode is just `Bool.and_eq_true` + `emit_traps`. -/
+theorem emitReady_traps {K : Type*} [CommRing K] [LinearOrder K] [IsStrictOrderedRing K]
+    (T : BihTensor) (h : emitReady T = true) {x y : K} (hx : 1 ≤ x) (hy : 1 ≤ y) :
+    (emitDigit T : K) * ((T.e : K) * x * y + T.f * x + T.g * y + T.h)
+        ≤ (T.a : K) * x * y + T.b * x + T.c * y + T.d ∧
+      (T.a : K) * x * y + T.b * x + T.c * y + T.d
+        < (emitDigit T + 1 : K) * ((T.e : K) * x * y + T.f * x + T.g * y + T.h) := by
+  simp only [emitReady, Bool.and_eq_true, decide_eq_true_eq, and_assoc] at h
+  obtain ⟨_, _, _, _, lo1, lo2, lo3, lo4, hi1, hi2, hi3, hi4⟩ := h
+  exact emit_traps T (emitDigit T) lo1 lo2 lo3 lo4 hi1 hi2 hi3 hi4 hx hy
+
 end FdrsFormal.Modes.VariableRadix.BihTensor

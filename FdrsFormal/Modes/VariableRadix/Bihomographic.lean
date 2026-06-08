@@ -89,18 +89,24 @@ def emit (q : ℤ) (T : BihTensor) : BihTensor where
   g := T.c - q * T.g
   h := T.d - q * T.h
 
-/-- The candidate output quotient: the floor at the `(x,y) = (∞,∞)` corner, `⌊a/e⌋`. -/
-def emitDigit (T : BihTensor) : ℤ := T.a / T.e
+/-- The candidate output quotient: the floor at the `(∞,∞)` corner, `⌊a/e⌋ = a.fdiv e`
+(floor division — NOT `/`, which truncates toward zero and would misfire once the inner
+coordinates swing negative under the `emit` inverse shift). -/
+def emitDigit (T : BihTensor) : ℤ := T.a.fdiv T.e
 
-/-- **Emission is ready** when the output floor agrees at all four corners of the input
-plane `(x,y) ∈ {1,∞}²` — `(∞,∞)=a/e`, `(∞,1)=(a+b)/(e+f)`, `(1,∞)=(a+c)/(e+g)`,
-`(1,1)=(a+b+c+d)/(e+f+g+h)` — so the next output quotient is forced regardless of the
-unread tails of A and B. Guarded by positive corner-denominators. -/
+/-- **Emission is ready** when the candidate digit `k = emitDigit` *traps* every corner:
+positive corner-denominators, and `k·denom ≤ numer < (k+1)·denom` at all four corners
+`(∞,∞), (∞,1), (1,∞), (1,1)`. These are exactly the hypotheses of `emit_traps`, so a
+`true` here *certifies* the emission (`emitReady_traps`) — the guess is verified, not
+trusted, so the `fdiv` semantics can't make it lie. -/
 def emitReady (T : BihTensor) : Bool :=
   0 < T.e && 0 < T.e + T.f && 0 < T.e + T.g && 0 < T.e + T.f + T.g + T.h &&
-    T.a / T.e == (T.a + T.b) / (T.e + T.f) &&
-    T.a / T.e == (T.a + T.c) / (T.e + T.g) &&
-    T.a / T.e == (T.a + T.b + T.c + T.d) / (T.e + T.f + T.g + T.h)
+    emitDigit T * T.e ≤ T.a && emitDigit T * (T.e + T.f) ≤ T.a + T.b &&
+    emitDigit T * (T.e + T.g) ≤ T.a + T.c &&
+    emitDigit T * (T.e + T.f + T.g + T.h) ≤ T.a + T.b + T.c + T.d &&
+    T.a < (emitDigit T + 1) * T.e && T.a + T.b < (emitDigit T + 1) * (T.e + T.f) &&
+    T.a + T.c < (emitDigit T + 1) * (T.e + T.g) &&
+    T.a + T.b + T.c + T.d < (emitDigit T + 1) * (T.e + T.f + T.g + T.h)
 
 /-- **Inputs commute.** Reading from Timeline A and from Timeline B commute — the two
 input channels are independent (`x` and `y` are substituted independently). -/
