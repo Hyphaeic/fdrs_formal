@@ -117,7 +117,39 @@ theorem ready_sound_mod_p (p : ℕ) (M : PadicLedger)
   obtain ⟨⟨hc, _hd⟩, ha⟩ := h
   simp only [valueMod, candidate, hc, ha, zero_mul, zero_add]
 
-/-! ## 4. Demos (the scratch Demo B numbers, exact `ZMod` arithmetic) -/
+/-! ## 4. Reduction — keeping the iterated transducer ledger primitive
+
+**A correction to the design's emit recurrence.** The scratch `NOTES.md` §1 emit
+`M ↦ [[a−βc, b−βd],[p·c, p·d]]` (det ↦ p·det) is a correct *value* transform, but it
+leaves the denominator `p·c·x + p·d ≡ 0 (mod p)`, so `denomUnitOnDisk` (which needs
+`d ≢ 0`) can **never** fire again — the engine emits one digit and stalls. (The scratch
+validator never caught this: Demo B reads `y₀`'s Hensel digits directly via
+`padic_digits`, it never iterates the ledger emit.)
+
+The fix: at a *valid* (ready) emit the four new entries are all `≡ 0 (mod p)` — because
+`a ≡ c ≡ 0` and `β ≡ b·d⁻¹` give `a−βc ≡ 0` and `b−βd ≡ 0`, and `p·c, p·d` are visibly
+divisible — so the ledger carries a spurious common factor of `p` that must be divided
+out to return to the primitive representative `⟨(a−βc)/p, (b−βd)/p, c, d⟩` (denominator
+`c·x + d` restored, so `ready` can fire again). `reduceOnce` performs exactly that single
+cancellation (one suffices: `d ≢ 0 (mod p)` blocks any further division). Dividing all
+four entries by `p` does not change the value `(a·x+b)/(c·x+d)`, so the soundness M0c/M0d
+— stated on the primitive ledger — is unaffected; only the *driver* uses `reduceOnce`. -/
+
+/-- Divide all four ledger entries by `p` **iff** all are divisible by `p` (else leave the
+ledger unchanged). After a valid emit this cancels the single spurious factor of `p` that
+`emit` introduces, restoring the primitive ledger on which `ready`/`candidate` are
+meaningful. Pure `ℤ`: exact division, no float. -/
+def reduceOnce (p : ℤ) (M : PadicLedger) : PadicLedger :=
+  if M.a % p == 0 && M.b % p == 0 && M.c % p == 0 && M.d % p == 0 then
+    ⟨M.a / p, M.b / p, M.c / p, M.d / p⟩
+  else M
+
+/-- One full output step of the iterated transducer: emit the digit `β`, then renormalize
+(`reduceOnce`) so the ledger stays primitive and the next digit can be forced. -/
+def emitStep (p : ℤ) (β : ℤ) (M : PadicLedger) : PadicLedger :=
+  reduceOnce p (M.emit p β)
+
+/-! ## 5. Demos (the scratch Demo B numbers, exact `ZMod` arithmetic) -/
 
 -- Demo B map `y = (3x+2)/(5x+1)` over `ℤ₅` is **not** ready initially (`a = 3 ≢ 0 mod 5`):
 #eval ready 5 ⟨3, 2, 5, 1⟩        -- false — must absorb an input digit first

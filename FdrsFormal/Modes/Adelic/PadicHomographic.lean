@@ -139,11 +139,17 @@ theorem det_applyOps (p : ℤ) (r : PadicLedger) (ops : List Op) :
     have hstep : applyOps p r (op :: ops) = applyOps p (applyOp p r op) ops := rfl
     rw [hstep, ih (applyOp p r op), det_applyOp, List.length_cons, pow_succ]; ring
 
-/-- **THE p-adic EXACTNESS INVARIANT.** From the identity ledger, after any sequence of
-`k` absorb/emit operations the determinant is *exactly* `p^k`. This is the within-place
-analogue of the CF `bracket_invariant` (`|det| = 1`): the p-adic ledger never rounds, but
-its determinant is a pure power of `p` (so `v_p(det) = #steps`) rather than a unit
-(design `04` §2). -/
+/-- **THE p-adic EXACTNESS INVARIANT (raw operations).** From the identity ledger, after
+any sequence of `k` *raw* absorb/emit operations the determinant is *exactly* `p^k`. This
+is the within-place analogue of the CF `bracket_invariant` (`|det| = 1`): the p-adic
+ledger never rounds, but its determinant is a pure power of `p` (so `v_p(det) = #steps`)
+rather than a unit (design `04` §2).
+
+NB: the *operative* transducer renormalizes after each emit (`reduceOnce`, M0b) — a valid
+emit leaves a spurious common factor of `p`, divided out to keep the ledger primitive — so
+along a real driver run the determinant's `p`-valuation tracks the absorb−emit *lookahead*,
+not the raw step count. This raw law is the exactness of the underlying operations; the
+renormalized run is `PadicLedger.emitStep`. -/
 theorem det_applyOps_init (p : ℤ) (ops : List Op) :
     (applyOps p init ops).det = p ^ ops.length := by
   rw [det_applyOps, init_det, mul_one]
