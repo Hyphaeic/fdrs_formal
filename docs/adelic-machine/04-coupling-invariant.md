@@ -101,16 +101,22 @@ finite precision — it converges to `1`, with the error controlled by the
 Archimedean place. The honest machine invariant is therefore not "`= 1` at every
 step" but a **bound**:
 
-> **Conjecture (adelic gauge bound, 🔬).** For `x ∈ ℚ` represented by the complex
-> to CF-depth `n` (gauge `q_n`) and exact finite valuations, the running product
-> satisfies `|∏_v |x|_v − 1| ≤ C / q_n` (or a similar `gauge`-controlled bound),
-> tying the CF gauge growth (`steps_qCur_unbounded`, ✅) to the valuation data.
+> **Adelic gauge bound — EMPIRICALLY CONFIRMED (📊, classical).** For `x ∈ ℚ`
+> represented by the complex to CF-depth `n` (gauge `q_n`) and exact finite
+> valuations, the running product satisfies `|∏_v |x|_v − 1| ≤ C / q_n`. The scratch
+> probe (`scratch/gauge_bound_probe.py`) confirms it on every tested `x` with effective
+> constant **`C = 1`**, in fact `Θ(1/q_n²)` (the Fibonacci/`φ` case converges to the
+> Hurwitz constant `0.2764`), strictly decreasing, no divergence.
 
-This is the precise sense in which the product formula could be a *conserved
-machine invariant*: an integer/rational residual whose deviation from `1` is
-bounded by the (growing) CF gauge — checkable without floats (the bound is a
-rational inequality on `q_n` and the `v_p`'s). Whether the constant `C` exists and
-is effective is the open content.
+The reason — and the honest calibration — is that the non-Archimedean legs are *exact*
+(`∏_S |x|_p = 1/|x|`), so `Δ_n = |p_n/q_n − x| / |x|`: the **entire** deviation is the
+classical continued-fraction convergent error scaled by `1/|x|`, and the p-adic places
+never interact with the Archimedean limit. So the bound is a *conserved machine
+invariant* (a rational inequality on `q_n` and the `v_p`'s, checkable without floats) —
+but it **is** the classical convergent bound `|x − p_n/q_n| < 1/(q_n q_{n+1})` in adelic
+costume, **not** new mathematics. `C` exists and is effective; M4b is therefore
+*reachable*, classical, and not a research stall point (`06` §5 failure-mode-1 was
+tested and did not occur).
 
 ---
 
@@ -208,15 +214,21 @@ one — the actual research contribution, or the place the approach stalls.
   *value-identified* product-formula theorem, because it reduces to unique
   factorization + the existing congruence certificate (exact only because the value
   is identified).
-- **Genuinely open / may not work:** **M4b** — the finite-precision gauge bound over
-  *live* prefixes (§3.3); any *additive* coupling law (§3.2 boundary); the full
-  restricted-product (L3) version.
-- **The failure mode to watch:** if the gauge bound has no effective constant, the
-  Archimedean and non-Archimedean factors never reconcile at finite precision, and
-  the "coupling" remains two bookkeeping systems side by side rather than a single
-  conserved law — i.e. exactly the handoff's "indistinguishable from noise" risk.
-  M4b's scratch (item 4, the gauge-bound tabulation) is designed to detect this
-  *before* investing in Lean.
+- **Plausibly formalizable, classical (📊 confirmed, was "the prize/stall"):** **M4b** —
+  the finite-precision gauge bound over *live* prefixes (§3.3). The scratch probe
+  settled it: the deviation is `Θ(1/q_n²)` with effective `C = 1` (Hurwitz), so M4b is
+  *reachable* — but it reduces to the classical CF convergent bound (the non-Arch legs
+  are exact constants), so it is **mechanical** Lean labor, not research. Formalization
+  handle: the FDRS `bracket_invariant` (`|det| = 1`) gives `|p_n/q_n − p_{n-1}/q_{n-1}|
+  = 1/(q_n q_{n-1})`, chained to the convergent bound; `steps_qCur_unbounded` gives
+  `q_n → ∞`; the non-Arch factor is the exact product-formula constant `1/|x|`.
+- **Genuinely open / may not work:** any *additive* coupling law (§3.2 boundary); the
+  full restricted-product (L3) version.
+- **The failure mode that did NOT occur:** the worry was that the gauge bound might have
+  no effective constant — leaving the Archimedean and non-Archimedean data unreconciled,
+  "two bookkeeping systems / indistinguishable from noise." The scratch probe (item 4)
+  **tested this and refuted it**: the constant exists (`C = 1`), the deviation strictly
+  decreases, the coupling is one conserved law at finite precision.
 
 Next: [`05-build-roadmap.md`](05-build-roadmap.md) — the staged plan that front-loads
 the ✅ pieces and gates on these 🔬 checks.

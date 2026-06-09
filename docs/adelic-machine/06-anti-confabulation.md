@@ -97,23 +97,28 @@ classical.
 | p-adic ledger has `det=±pᵏ`, not `\|det\|=1` | `03`§3b, `04`§2 | 🔨-easy (det-induction template ✅) |
 | `padic_emit_traps` (the p-adic soundness theorem) | `03`§3c, `05` M0 | 🔨 (core ✅, wiring to do) |
 | `p²`-corner bihomographic at `p` (Axis I) | `03`§3d | 🔬/🔨 |
-| place-parametric `PlaceEngine` + generic scheduler | `03`§2, `05` M0.5 | 🔨 |
-| two-place complex `{∞,p}`, scheduler-independent | `05` M1 | 🔨 (commutations ✅) |
-| `S`-product-formula for `S`-integral `x` | `05` M2, `04`§4 | 🔬 (reduces to ✅ factorization) |
+| place-parametric `PlaceEngine` + generic scheduler | `03`§2, `05` M0.5 | ✅ BUILT (`PlaceEngine.lean`) |
+| two-place complex `{∞,p}`, scheduler-independent | `05` M1 | ✅ BUILT (`Complex.lean`, `run_eq_of_counts`) |
+| `S`-product-formula for `S`-integral `x` | `05` M2, `04`§4 | ✅ BUILT (`product_formula_nat`, factorization) |
+| read `v_p` off the emitted stream (`padic_valuation_from_stream`) | `06`(this), bridge | ✅ BUILT (`ValuationStream.lean`) |
 | restricted product / genuine adeles | `05` M3 | 🔨/🔬 (optional, after M2/M4a) |
-| **M4a** exact soundness (value identified) | `04`§4, `05` M4a | 🔬 (reachable — unique factorization) |
-| **M4b** `gauge_bound` (finite live prefixes) | `04`§3.3, `05` M4b | 🔬 — may have no effective constant (the stall) |
+| **M4a** exact soundness (value identified) | `04`§4, `05` M4a | ✅ BUILT (`product_formula_place`) |
+| **M4b** `gauge_bound` (finite live prefixes) | `04`§3.3, `05` M4b | 📊 CONFIRMED classical (probe: `C=1`, `Θ(1/q_n²)`, Hurwitz) → reachable, mechanical Lean, NOT a stall |
+| p²-corner p-adic bihomographic *soundness* (Axis I at `p`) | `03`§3d | 🔨 (algebra ✅ M0a; congruence-trap soundness next) |
 | `ProductFormulaResidual` is symbolic-exponent, **not** `log p` | `03`§6 | 🔨 (NF1: `log p ∉ ℚ`) |
 
 ---
 
 ## 5. The failure modes (name them so they can't masquerade as success)
 
-1. **Two bookkeeping systems, not one law.** If `gauge_bound` (`04`§3.3) has no
-   effective constant, the Archimedean and non-Archimedean data never reconcile at
-   finite precision; the "coupling" is then two side-by-side ledgers, and Axis-II
-   is "indistinguishable from noise" (the handoff's own warning). Detect via
-   scratch item 4 **before** Lean.
+1. **Two bookkeeping systems, not one law — TESTED, DID NOT OCCUR.** The worry: if
+   `gauge_bound` (`04`§3.3) had no effective constant, the Archimedean and
+   non-Archimedean data would never reconcile at finite precision; the "coupling"
+   would be two side-by-side ledgers, Axis-II "indistinguishable from noise." The
+   scratch probe (`gauge_bound_probe.py`, item 4, run **before** Lean as the gate)
+   **refuted this**: effective constant `C = 1`, deviation `Θ(1/q_n²)`, strictly
+   decreasing — one conserved law. (The honest residue: the law is the *classical* CF
+   convergent bound, so the coupling is real but the bound is not new mathematics.)
 2. **Toy mistaken for adele ring.** Shipping L1/L2 and calling it "the adelic
    machine." Mitigation: per-module honesty banners (`05`), the scope ladder
    (`00`§5), this ledger.
