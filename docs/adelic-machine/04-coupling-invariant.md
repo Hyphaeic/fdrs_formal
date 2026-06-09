@@ -214,14 +214,13 @@ one — the actual research contribution, or the place the approach stalls.
   *value-identified* product-formula theorem, because it reduces to unique
   factorization + the existing congruence certificate (exact only because the value
   is identified).
-- **Plausibly formalizable, classical (📊 confirmed, was "the prize/stall"):** **M4b** —
-  the finite-precision gauge bound over *live* prefixes (§3.3). The scratch probe
-  settled it: the deviation is `Θ(1/q_n²)` with effective `C = 1` (Hurwitz), so M4b is
-  *reachable* — but it reduces to the classical CF convergent bound (the non-Arch legs
-  are exact constants), so it is **mechanical** Lean labor, not research. Formalization
-  handle: the FDRS `bracket_invariant` (`|det| = 1`) gives `|p_n/q_n − p_{n-1}/q_{n-1}|
-  = 1/(q_n q_{n-1})`, chained to the convergent bound; `steps_qCur_unbounded` gives
-  `q_n → ∞`; the non-Arch factor is the exact product-formula constant `1/|x|`.
+- **BUILT ✅ (was "the prize/stall", now machine-checked):** **M4b** — the finite-precision
+  gauge bound `| |p_n/q_n|·P − 1 | ≤ P/q_n` (`GaugeBound.lean`: `gauge_bound`, +
+  `gauge_product_tendsto` for `Π_n → 1`). The scratch probe settled the shape (`Θ(1/q_n²)`,
+  `C = 1`, Hurwitz); the Lean proof assembles Mathlib's `abs_sub_convs_le` (whose own proof
+  goes through `fib(n+2) ≤ denom` — the gauge growth, FDRS's `steps_qCur_unbounded` /
+  `bracket_invariant` in Mathlib form) + the product-formula constant `P`. It **is** the
+  classical CF convergent bound in adelic costume — mechanical assembly, not new math.
 - **Genuinely open / may not work:** any *additive* coupling law (§3.2 boundary); the
   full restricted-product (L3) version.
 - **The failure mode that did NOT occur:** the worry was that the gauge bound might have

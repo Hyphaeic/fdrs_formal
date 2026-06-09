@@ -103,7 +103,7 @@ classical.
 | read `v_p` off the emitted stream (`padic_valuation_from_stream`) | `06`(this), bridge | ✅ BUILT (`ValuationStream.lean`) |
 | restricted product / genuine adeles | `05` M3 | 🔨/🔬 (optional, after M2/M4a) |
 | **M4a** exact soundness (value identified) | `04`§4, `05` M4a | ✅ BUILT (`product_formula_place`) |
-| **M4b** `gauge_bound` (finite live prefixes) | `04`§3.3, `05` M4b | 📊 CONFIRMED classical (probe: `C=1`, `Θ(1/q_n²)`, Hurwitz) → reachable, mechanical Lean, NOT a stall |
+| **M4b** `gauge_bound` (finite live prefixes) | `04`§3.3, `05` M4b | ✅ BUILT (`GaugeBound.lean`: `gauge_bound`, `gauge_product_tendsto`); classical (Hurwitz), assembled from Mathlib CF + M4a |
 | p²-corner p-adic bihomographic *soundness* (Axis I at `p`) | `03`§3d | 🔨 (algebra ✅ M0a; congruence-trap soundness next) |
 | `ProductFormulaResidual` is symbolic-exponent, **not** `log p` | `03`§6 | 🔨 (NF1: `log p ∉ ℚ`) |
 
