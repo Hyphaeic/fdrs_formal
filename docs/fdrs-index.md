@@ -1,10 +1,10 @@
 # FDRS Specification Index
 
-Auto-generated from `data/fdrs-index.yaml` (2026-05-28T00:45:10.161194)
+Auto-generated from `data/fdrs-index.yaml` (2026-05-28T00:45:10.161194). Phase 13 (items 178–191, Theorems 70–82, Propositions 144–146) added manually on 2026-06-08 from `docs/fdrs.md` + Lean sources; the YAML predates Phase 13, so regenerate with `scripts/fdrs-rebuild` once the Phase 13 Lean files carry `fdrs.md` provenance comments.
 
-**433 items** from `docs/fdrs.md` (7922 lines)
+**463 items** from `docs/fdrs.md` (8230 lines)
 
-Status: proven: 431 | scaffold: 2
+Status: proven: 463 | scaffold: 0
 
 ## Phase 1
 
@@ -56,7 +56,7 @@ Status: proven: 431 | scaffold: 2
 | proposition_15 | proposition | 15 | finite block coordinate representation | 597 | ✅ proven | FdrsFormal/FunctionSpaces.lean |
 | definition_20 | definition | 20 | refinement embeddings | 607 | ✅ proven | FdrsFormal/FunctionSpaces.lean |
 | definition_21 | definition | 21 | uniform product measure | 621 | ✅ proven | FdrsFormal/FunctionSpaces.lean |
-| definition_22 | definition | 22 | block projection (P_L | 628 | 🟠 scaffold | FdrsFormal/FunctionSpaces.lean |
+| definition_22 | definition | 22 | block projection (P_L | 628 | ✅ proven | FdrsFormal/FunctionSpaces.lean |
 | proposition_16 | proposition | 16 | projection / tower properties | 640 | ✅ proven | FdrsFormal/FunctionSpaces.lean |
 | proposition_17 | proposition | 17 | compatibility with block coordinates | 650 | ✅ proven | FdrsFormal/FunctionSpaces.lean |
 | definition_23 | definition | 23 | detail operators | 660 | ✅ proven | FdrsFormal/FunctionSpaces.lean |
@@ -222,7 +222,7 @@ Status: proven: 431 | scaffold: 2
 
 | ID | Type | Number | Title | Line | Status | Lean File |
 |---|---|---|---|---|---|---|
-| definition_57 | definition | 57 | branching function / radix law | 3956 | 🟠 scaffold | FdrsFormal/Modes/VariableRadix/Basic/Basic.lean |
+| definition_57 | definition | 57 | branching function / radix law | 3956 | ✅ proven | FdrsFormal/Modes/VariableRadix/Basic/Basic.lean |
 | definition_58 | definition | 58 | cylinder sets | 4000 | ✅ proven | FdrsFormal/Integration/ThreeLineMediator/CoupledSystem.lean |
 | definition_59 | definition | 59 | prefix metric | 4010 | ✅ proven | FdrsFormal/Modes/VariableRadix/InducedUltrametric/Definition.lean |
 | proposition_80 | proposition | 80 | ultrametric | 4021 | ✅ proven | FdrsFormal/Modes/VariableRadix/InducedUltrametric/Axioms.lean |
@@ -487,3 +487,37 @@ Status: proven: 431 | scaffold: 2
 | proposition_141 | proposition | 141 | basic carry arithmetic | 7883 | ✅ proven | FdrsFormal/Core/UnitCarry.lean |
 | proposition_142 | proposition | 142 | irrational sharpening | 7896 | ✅ proven | FdrsFormal/Core/UnitCarry.lean |
 | proposition_143 | proposition | 143 | greater/lesser part specialization | 7908 | ✅ proven | FdrsFormal/Core/UnitCarry.lean |
+## Phase 13
+
+| ID | Type | Number | Title | Line | Status | Lean File |
+|---|---|---|---|---|---|---|
+| definition_178 | definition | 178 | Product radix and the observer-line mediator | 7971 | ✅ proven | FdrsFormal/Integration/ThreeLineMediator/Definition.lean |
+| proposition_144 | proposition | 144 | Mediator ≅ A × B: the round-trip identities | 7977 | ✅ proven | FdrsFormal/Integration/ThreeLineMediator/Definition.lean |
+| theorem_70 | theorem | 70 | Place value and overflow rate factor under the product mediator | 7987 | ✅ proven | FdrsFormal/Integration/ThreeLineMediator/Definition.lean |
+| definition_179 | definition | 179 | Coupling, the coupled system, and manifest instantiation | 8002 | ✅ proven | FdrsFormal/Integration/ThreeLineMediator/CoupledSystem.lean |
+| proposition_145 | proposition | 145 | Independence of coupling and radix; manifestation absorbs carry | 8008 | ✅ proven | FdrsFormal/Integration/ThreeLineMediator/CoupledSystem.lean |
+| proposition_146 | proposition | 146 | Overflow-rate ratio and the discrete → real comparison | 8014 | ✅ proven | FdrsFormal/Integration/ThreeLineMediator/Definition.lean |
+| definition_180 | definition | 180 | Subshift / transfer-matrix prefix gauge | 8026 | ✅ proven | FdrsFormal/Modes/VariableRadix/SubshiftWeight.lean |
+| theorem_71 | theorem | 71 | Defensive perimeter: the free d=1 gauge recovers the place value | 8032 | ✅ proven | FdrsFormal/Modes/VariableRadix/SubshiftWeight.lean |
+| definition_181 | definition | 181 | The convergent-pair ledger | 8042 | ✅ proven | FdrsFormal/Modes/VariableRadix/SubshiftWeight.lean |
+| theorem_72 | theorem | 72 | The bracket invariant | 8048 | ✅ proven | FdrsFormal/Modes/VariableRadix/SubshiftWeight.lean |
+| theorem_73 | theorem | 73 | Gauge growth: q_k > 0 and q_k → ∞, even for φ | 8056 | ✅ proven | FdrsFormal/Modes/VariableRadix/SubshiftWeight.lean |
+| definition_182 | definition | 182 | Admissible point, prefix, and the gauge at depth | 8068 | ✅ proven | FdrsFormal/Modes/VariableRadix/SubshiftMetric.lean |
+| definition_183 | definition | 183 | The gauge-induced continued-fraction distance | 8074 | ✅ proven | FdrsFormal/Modes/VariableRadix/SubshiftMetric.lean |
+| theorem_74 | theorem | 74 | cfDist is a genuine ultrametric | 8080 | ✅ proven | FdrsFormal/Modes/VariableRadix/SubshiftMetric.lean |
+| theorem_75 | theorem | 75 | ball = cylinder | 8088 | ✅ proven | FdrsFormal/Modes/VariableRadix/SubshiftMetric.lean |
+| definition_184 | definition | 184 | Carry frequency of a generated timeline | 8105 | ✅ proven | FdrsFormal/Modes/VariableRadix/CarryFrequency.lean |
+| theorem_76 | theorem | 76 | cfOverflowRate is positive, antitone, and vanishing | 8111 | ✅ proven | FdrsFormal/Modes/VariableRadix/CarryFrequency.lean |
+| definition_185 | definition | 185 | Parry transition kernel of the golden-mean shift | 8127 | ✅ proven | FdrsFormal/Modes/VariableRadix/SubshiftParry.lean |
+| theorem_77 | theorem | 77 | Mass conservation and the Markov kernel | 8133 | ✅ proven | FdrsFormal/Modes/VariableRadix/SubshiftParry.lean |
+| definition_186 | definition | 186 | Parry stationary law | 8141 | ✅ proven | FdrsFormal/Modes/VariableRadix/SubshiftParry.lean |
+| theorem_78 | theorem | 78 | Stationarity | 8147 | ✅ proven | FdrsFormal/Modes/VariableRadix/SubshiftParry.lean |
+| definition_187 | definition | 187 | Parry path measure via Ionescu–Tulcea | 8155 | ✅ proven | FdrsFormal/Modes/VariableRadix/SubshiftParry.lean |
+| theorem_79 | theorem | 79 | Lévy upward convergence — "Group G" — on the golden timeline | 8161 | ✅ proven | FdrsFormal/Modes/VariableRadix/SubshiftParry.lean |
+| definition_188 | definition | 188 | Homographic emission — single stream | 8175 | ✅ proven | FdrsFormal/Modes/VariableRadix/HomographicCarry.lean |
+| theorem_80 | theorem | 80 | Exactness and channel independence | 8181 | ✅ proven | FdrsFormal/Modes/VariableRadix/HomographicCarry.lean |
+| definition_189 | definition | 189 | The bihomographic tensor — two-stream mediator, Timeline C | 8189 | ✅ proven | FdrsFormal/Modes/VariableRadix/Bihomographic.lean |
+| theorem_81 | theorem | 81 | Channel commutations | 8195 | ✅ proven | FdrsFormal/Modes/VariableRadix/Bihomographic.lean |
+| theorem_82 | theorem | 82 | Emission soundness — the four-corner trap | 8203 | ✅ proven | FdrsFormal/Modes/VariableRadix/BihomographicSound.lean |
+| definition_190 | definition | 190 | The two-stream driver | 8211 | ✅ proven | FdrsFormal/Modes/VariableRadix/BihomographicDriver.lean |
+| definition_191 | definition | 191 | The hyper-Gosper clock | 8219 | ✅ proven | FdrsFormal/Modes/VariableRadix/HyperGosper.lean |
