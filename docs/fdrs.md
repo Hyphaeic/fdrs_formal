@@ -2192,6 +2192,8 @@ Equivalently: for each fixed (p)-free (m), (T_a) acts on the sequence (r\mapsto 
 
 **Proof.** Divisors (d\mid p^r m) that are (p)-powers are exactly (p^j) for (0\le j\le r), and ((p^r m)/p^j=p^{r-j}m). ∎
 
+**Lean.** Definition 43 and Theorem 21 are formalized in `FdrsFormal/NumberTheory/FactorizationLens/PowerKernel.lean` (`PurePowerKernel`, `valuationFiberAction`).
+
 This is one of the cleanest places where “ANT operator = structured multi-rate update” is literally true: valuations form a discrete hierarchy, and the kernel (a(p^j)) determines cross-level coupling.
 
 ---
@@ -2418,6 +2420,8 @@ Let (a\in\mathcal A_P). Then the dependence graph of (T_a) is contained in:
 i.e. transitions only move **downward** in the valuation lattice and never change (u).
 
 **Proof.** This is exactly Corollary 16. ∎
+
+**Lean.** Proposition 53 is formalized in `FdrsFormal/NumberTheory/FactorizationLens/MarkovProperty.lean` (`markov_on_lens`; `finite_dependency_neighborhood` exhibits the finite dependency neighborhood explicitly). This is *combinatorial* Markov locality of a Dirichlet convolution — distinct from the probabilistic Parry Markov kernel of Phase 13 §13.5.
 
 So if your “environment state” is indexed by ((u,e)), then (T_a) is a structured Markov update (finite dependency neighborhood determined by (\mathrm{supp}(a))).
 
@@ -7459,17 +7463,21 @@ All updates remain deterministic if each `I_i, D_i, K_{i -> j}` is deterministic
 
 ### Theorem 64 (Classical mixed-radix line as a single-lineage special case)  [§10.9.1 · Phase 10]
 
-Assume:
+*(Faithful, formalized form. This supersedes the earlier prose statement, whose Lean placeholder `classicalMixedRadixLine` had a vacuous conclusion (`… → True` plus a restated hypothesis); the genuine projection-equivalence below is now machine-checked, 0 sorries.)*
 
-1. the sea graph is restricted to a single path lineage,
-2. modules form an ordered chain `M_0 -> M_1 -> ... -> M_{k-1}`,
-3. couplings are nearest-right overflow transfers only,
-4. local update is 1-Lipschitz single-step injection with deterministic carry routing,
-5. decay is disabled on active windows (or exactly balanced so projected states are preserved).
+The abstract coupled-digit network (`CoupledDigitNetwork`, Definition 163) carries no dynamic digit state, so it admits no step to project. We therefore bundle the chain constraints with the data the abstract layer lacks — per-module active radix `b i`, cell-chain capacity `M i` (with `1 ≤ b i ≤ M i`), and a digit-vector state `digits i` — into a **linear-chain machine** `LinearChain`, mirroring how `SeaState` carries the occupancy that `seaTick` advances. Its step `linearChainStep` is a single mixed-radix `+1`: increment-or-overflow with nearest-right carry (`chainIncrement`). The projection `Π_chain` (`chainToCylinder`) sends each module's digit to a one-hot Phase 9 spatial token position — the analogue of `windowToDigitProjection` (Theorem 63).
 
-Then the coupled-digit sea network dynamics project to the standard mixed-radix odometer line and recover Phase 9/10 arithmetic-cylinder semantics as a strict special case.
+**Theorem.** Under input active-zone validity (`∀ i, digits i < b i`), the projected chain step equals the Phase 9 unified spatial tick:
+```
+Π_chain (linearChainStep lc) = (unifiedSpatialTick … (Π_chain lc) … 0 true).1
+```
+That is, the abstract increment-or-overflow on the coupled-digit chain **commutes with the projection** into the proven spatial-tick (odometer) semantics. Output validity and the `cylinderValid` premise are *derived*, not assumed.
 
-**Proof.** Under assumptions (1)-(4), each module behaves as an ordered digit window with deterministic increment-or-wrap and rightward carry propagation. Assumption (5) removes state-loss in active windows so projected states coincide with the preserved digit states. Therefore the global update is exactly the line-ordered mixed-radix carry system, i.e. the previously proven Phase 9/10 special-case dynamics. ∎
+**Lean.** `linearChain_projectsTo_odometer` (`FdrsFormal/Modes/BaseZeroSea/LinearChain.lean`).
+
+**Proof.** Induct on `n − pos` (`unifiedSpatialTick_tokenPos_eq`): when the cylinder projects the digit vector, the spatial tick's token positions track `chainIncrement` position-by-position. The carry step is closed by the route-decision identity `carryRouteDecision_eq_carry` (Theorem 61, carry = overflow routing), the advance case collapsing via `unifiedSpatialTick_false`; validity is preserved by `linearChainStep_valid` (the analogue of `cylinderValid_update`). This is exactly Theorem 63 (`phase9_specialCase`) one layer up. ∎
+
+This single-lineage odometer is the bridge into Phase 13, where its place value `B_L` is generalized to the *generated* gauge `q_n` (§13.2) and its overflow rate `1/B_L` to the carry frequency `1/q_n` (§13.4).
 
 ---
 
@@ -7920,3 +7928,303 @@ Let $(x \in (0,1))$ be irrational, with greater part $(g = \operatorname{greater
 
 **End of Phase 12: Unit Complement Structure and Carry Decomposition**
 **Status:** Foundational primitives for normalized quantity reasoning and irrational carry dynamics
+
+---
+
+## Phase 13 — Generated (Continued-Fraction) Timelines
+
+### Motivation
+
+Phases 1–12 develop the mixed-radix line whose place values `B_L = ∏ b_i` are a *given* product of bases. Phase 5 (function-defined radices `b_ω(prefix)`) and Phase 7 (context-dependent radix) already let the base at position `i` depend on the prefix seen so far; Phase 9/10 give the odometer its spatial, carry-routed dynamics; Phase 12 (§12.2) isolates the irrational unit-carry primitive `N(a) = ⌊1/a⌋` — which is exactly one step of a continued-fraction (Gauss-map) expansion.
+
+Phase 13 follows that primitive to its conclusion: the **generated timeline**, where the place-value sequence is not supplied as a product of bases but is *generated* by a constrained-alphabet (subshift) transfer rule. The canonical instance is the **continued fraction / Ostrowski numeration**: a point is an infinite sequence of partial quotients, and the place value at depth `n` is the convergent denominator `q_n` (Fibonacci for the golden mean `φ = [1;1,1,…]`, Pell for `√2 = [1;2,2,…]`). This is the *irrational* radix line — the one whose base product would stagnate on base-1 "wires" yet whose cylinders still shrink to a point, because the gauge `q_n` keeps growing via the `+ q_{n-1}` recurrence.
+
+The phase tells one story, and the sub-section order is that story:
+
+1. **§13.1** the fixed-radix baseline: coupling two ordinary radix lines through a least-significant-unit (LSU) mediator, where place values and overflow rates *factor as products*;
+2. **§13.2–13.3** generalize the place value from a base product to the generated gauge `q_n`, and rebuild the ultrametric on it (`ball = cylinder` survives);
+3. **§13.4** the hinge: the overflow-rate (carry-frequency) law `1/B_L` generalizes to `1/q_n` — **but the product law of §13.1 breaks**;
+4. **§13.5** equips the golden-mean gauge with its measure of maximal entropy (the Parry measure), built as a genuine Markov chain;
+5. **§13.6** exhibits the engine that forced the product law to break: the density-free homographic/bihomographic arithmetic that combines two generated streams exactly, in `ℤ`, most-significant-digit first.
+
+Everything in this phase is machine-checked in Lean (0 `sorry`, no added axioms beyond Mathlib's `propext`/`Classical.choice`/`Quot.sound`); each numbered result cites its Lean name for direct verification.
+
+### Formalization map
+
+| Sub-section | Lean module (under `FdrsFormal/`) |
+|---|---|
+| §13.1 | `Integration/ThreeLineMediator/Definition.lean`, `…/CoupledSystem.lean` |
+| §13.2 | `Modes/VariableRadix/SubshiftWeight.lean` |
+| §13.3 | `Modes/VariableRadix/SubshiftMetric.lean` |
+| §13.4 | `Modes/VariableRadix/CarryFrequency.lean` |
+| §13.5 | `Modes/VariableRadix/SubshiftParry.lean` |
+| §13.6 | `Modes/VariableRadix/{HomographicCarry,Bihomographic,BihomographicSound,BihomographicDriver,HyperGosper}.lean` |
+
+The single-lineage bridge from Phase 10's coupled-digit network into this phase is the strengthened **Theorem 64** (§10.9.1, `Modes/BaseZeroSea/LinearChain.lean`): the chain step projects onto the Phase 9 spatial odometer. Phase 13 picks up where that odometer's place value is replaced by the generated gauge.
+
+---
+
+## 13.1 The least-significant-unit mediator and overflow rate (fixed radix)
+
+Two independent radix lines A and B each advance by a 1-Lipschitz tick — their **least significant unit** (LSU), the smallest meaningful advance. The LSUs are *incommensurable* (one tick on A need not equal one tick on B in any metric), but both are `+1` in `ℤ`, so they are comparable through carry mechanics. A **mediator** line C makes that comparison observable.
+
+### Definition 178 (Product radix and the observer-line mediator)  [§13.1.1 · Phase 13]
+
+For radix sequences `b₁, b₂`, the **product radix** is `(productRadix b₁ b₂) i = b₁ i · b₂ i`. An **observer line** is a radix sequence together with its odometer; a **line mediator** of observer lines A, B is a line C with maps `toA, toB, fromAB` forming a bijection `R̂_C ≅ R̂_A × R̂_B` (as sets, via the mod/div encoding `c_i = a_i + b₁(i)·b_i`) together with the place-value and overflow factoring laws below. The **product mediator** instantiates C with the product radix.
+
+**Lean.** `productRadix`, `ObserverLine`, `LineMediator`, `productMediator` (`ThreeLineMediator/Definition.lean`).
+
+### Proposition 144 (Mediator ≅ A × B: the round-trip identities)  [§13.1.2 · Phase 13]
+
+The projections `projectA x = (x mod b₁)`, `projectB x = (x div b₁)` and the constructor `combine a b = a + b₁·b` satisfy `projectA (combine a b) = a`, `projectB (combine a b) = b`, and `combine (projectA x) (projectB x) = x`. Hence the mediator space is exactly the set-theoretic product of the source spaces.
+
+**Lean.** `projectA_combine`, `projectB_combine`, `combine_project`.
+
+**Proof.** Each is the digit-wise Euclidean identity `n = (n mod m) + m·(n div m)` with `m = b₁ i`, discharged by `Nat.mod_add_div` / `Nat.add_mul_div_left`. ∎
+
+**Remark (no truncated CRT).** This bijection is on the *completed* (full-depth) space. The analogous identity on truncated length-`L` prefix values **fails**: for `b₁=(3,5)`, `b₂=(2,7)`, `x=(4,13)`, `L=2` one gets `82 ≠ 85`, because cross-digit carry patterns differ between the product and component systems. The Lean source therefore deliberately omits a product-radix prefix-CRT lemma. Do not assert one.
+
+### Theorem 70 (Place value and overflow rate factor under the product mediator)  [§13.1.3 · Phase 13]
+
+Define the **overflow rate** `overflowRate b L = 1 / B_L` — the fraction of states whose tick carries past depth `L`, a purely combinatorial reciprocal place value. Then under the product mediator,
+```
+placeValue (productRadix b₁ b₂) L = placeValue b₁ L · placeValue b₂ L
+overflowRate (productRadix b₁ b₂) L = overflowRate b₁ L · overflowRate b₂ L
+```
+and `overflowRate` is positive and antitone in depth (deeper carry is rarer).
+
+**Lean.** `placeValue_product`, `overflowRate_product`, `overflowRate_pos`, `overflowRate_antitone`.
+
+**Proof.** `placeValue_product` is induction on `L` (`B_{L+1} = b·B_L`, multiply through). The overflow product is then `1/(B₁B₂) = (1/B₁)(1/B₂)` (`field_simp`). Positivity and antitonicity follow from `placeValue.pos` / `placeValue.mono`. ∎
+
+This **product law** is the structural payload of fixed-radix coupling: comparing two lines reduces to multiplying reciprocal place values, no real-valued metric presupposed. §13.4 shows precisely how much of it survives the passage to a generated gauge.
+
+### Definition 179 (Coupling, the coupled system, and manifest instantiation)  [§13.1.4 · Phase 13]
+
+A **coupling** of A, B is a latency `latency ≥ 1` — the number of A-ticks per B-emission; this latency, *not* the radix, defines what "one mediator unit" means (`lsuWeight = latency`). A **coupled system** bundles lines A (finer), B (coarser), a coupling, an **independent** mediator radix, and an **instantiation mode**: `preInitialized` (all positions present, filled with 0 — the completed space `R̂`) or `manifestOnOverflow` (positions are null `∅` until carry first reaches them; the first carry writes `0`, the additive identity — manifestation, not counting).
+
+**Lean.** `Coupling`, `CoupledSystem`, `InstantiationMode`, `ManifestSpace`, `tickDigit` (`ThreeLineMediator/CoupledSystem.lean`).
+
+### Proposition 145 (Independence of coupling and radix; manifestation absorbs carry)  [§13.1.5 · Phase 13]
+
+(i) The A:B tick ratio is exactly the latency at every count: `aTicksFor n = latency · bEmissionsFor n`. (ii) The two structural parameters are orthogonal — equal latency forces equal A-tick counts regardless of radix (`lsu_independent_of_radix`), and equal mediator radix forces equal capacity regardless of coupling (`radix_independent_of_coupling`). (iii) Ticking a null slot yields `(some 0, false)`: **manifestation absorbs the carry** — a created position halts propagation rather than overflowing.
+
+**Lean.** `tick_ratio`, `lsu_independent_of_radix`, `radix_independent_of_coupling`, `tickDigit_none`.
+
+### Proposition 146 (Overflow-rate ratio and the discrete → real comparison)  [§13.1.6 · Phase 13]
+
+The overflow-rate ratio of two lines is the reciprocal place-value ratio, `overflowRatio b₁ b₂ L = B₂(L) / B₁(L)`; for constant radices `a, c` it is the exact power `(c/a)^L`. Chaining these ratios as `L → ∞` is the discrete mechanism by which real-valued line-speed comparisons are recovered without presupposing the continuum.
+
+**Lean.** `overflowRatio_eq`, `overflowRatio_constant`. The construction extends to prefix-dependent laws via `productLaw` (Phase 5/7 context dependence).
+
+---
+
+## 13.2 The generated (continued-fraction) gauge
+
+We now replace the supplied base product `B_L` by a gauge *generated* from a constrained alphabet — the place value of the irrational radix line.
+
+### Definition 180 (Subshift / transfer-matrix prefix gauge)  [§13.2.1 · Phase 13]
+
+For a `d`-state alphabet constraint with prefix-indexed transition weights `M`, the **subshift weight** carries a state-vector through the prefix (`weightVec`, one `stepVec` contraction per symbol) and contracts against a boundary vector. It generalizes the free per-path place value `β_ω` (`prefixWeight`) of Phase 5 to a per-path *transfer product*, using only a `Finset` contraction — no `Matrix` type class.
+
+**Lean.** `subshiftWeight`, `stepVec`, `weightVec`, `freeTransition` (`SubshiftWeight.lean`).
+
+### Theorem 71 (Defensive perimeter: the free `d = 1` gauge recovers the place value)  [§13.2.2 · Phase 13]
+
+Over the free (complete, single-state) transition, the subshift gauge equals the Phase 5 place value exactly: `subshiftWeight (freeTransition ω) 1 1 s = prefixWeight ω s`.
+
+**Lean.** `subshiftWeight_free_eq_prefixWeight` (via `weightVec_free_const`).
+
+**Proof.** Induction on `s`: the free fold multiplies the carried scalar by `ω.radix` at each head shift, so a constant start `x` yields `x · β_ω(s)`; take `x = 1`. ∎
+
+**Consequence.** Every existing result built on `prefixWeight` — the induced ultrametric, `ball = cylinder`, the Group-G block convergence — is the `d = 1` instance and is left untouched as the generalization is built out. This is why the generalization is safe.
+
+### Definition 181 (The convergent-pair ledger)  [§13.2.3 · Phase 13]
+
+`RemainderState` carries the last two continued-fraction convergents `(p_{k-1}, p_k ; q_{k-1}, q_k)` — the `SL₂(ℤ)` transition state. One discovered partial quotient acts by the convergent recurrence `x_{k+1} = a·x_k + x_{k-1}` (`step`, i.e. right-multiply by `[[a,1],[1,0]]`); `init = (1,0,0,1)` starts a fractional CF `[0; a₁, a₂, …]`. The **gauge** is the denominator `q_k`; the defining quantity is the cross-determinant `det = p_k q_{k-1} − p_{k-1} q_k`.
+
+**Lean.** `RemainderState`, `step`, `init`, `steps`, `gauge`, `det` (`SubshiftWeight.lean`).
+
+### Theorem 72 (The bracket invariant)  [§13.2.4 · Phase 13]
+
+For any discovered-quotient sequence, the cross-determinant is `±1`: `|p_k q_{k-1} − p_{k-1} q_k| = 1`. Hence the convergent bracket gap is exactly `1/(q_{k-1} q_k)`.
+
+**Lean.** `bracket_invariant` (via `det_step`, `det_steps`, `init_det`).
+
+**Proof.** Each `step` multiplies the determinant by `−1` (the factor `[[a,1],[1,0]]` has determinant `−1`); with `init.det = −1`, after `k` steps `det = (−1)^{k+1}`, so `|det| = 1`. Pure integer algebra — the exact, general form of the periodic `|Q| = 1` check. ∎
+
+### Theorem 73 (Gauge growth: `q_k > 0` and `q_k → ∞`, even for `φ`)  [§13.2.5 · Phase 13]
+
+For continued-fraction quotients (all `≥ 1`): the denominator is a positive integer (`q_k ≥ 1`) and grows without bound, `|as| + 1 ≤ 2·q_k`; consequently for every `ε > 0` there is a depth beyond which `1/q_k < ε`. This holds **even for the all-1 sequence** `φ`, where the base product `β = ∏ radix` stagnates: the `+ q_{k-1}` Fibonacci term keeps `q_k` growing, so the cylinders `1/q_k` still shrink to a point.
+
+**Lean.** `steps_qCur_pos`, `steps_qCur_unbounded`, `gauge_inv_lt`.
+
+**Proof.** A combined invariant (`steps_invariant`, by reverse induction on the quotient list) gives `0 ≤ q_{k-1} ≤ q_k`, `q_k ≥ 1`, and `|as|+1 ≤ q_{k-1}+q_k`; positivity and the linear lower bound follow, and `1/q_k → 0` is the Archimedean consequence. ∎
+
+---
+
+## 13.3 The continued-fraction ultrametric
+
+### Definition 182 (Admissible point, prefix, and the gauge at depth)  [§13.3.1 · Phase 13]
+
+A point of the generated timeline is an infinite quotient sequence `x : ℕ → ℕ` with every `x i ≥ 1` (`Admissible`). Its length-`n` prefix is `pre x n`, and the **gauge at depth `n`** is `gaugeAt x n = q_n`, the convergent denominator of that prefix. It is positive, monotone (non-decreasing) in depth, and `1/q_n → 0`.
+
+**Lean.** `Admissible`, `pre`, `gaugeAt`, `gaugeAt_pos`, `gaugeAt_monotone`, `gaugeAt_inv_lt` (`SubshiftMetric.lean`).
+
+### Definition 183 (The gauge-induced continued-fraction distance)  [§13.3.2 · Phase 13]
+
+For distinct points let `ℓ = lcpLen x y` be the longest-common-prefix length (first index of disagreement). The **CF distance** is `cfDist x y = 1/q_ℓ` (and `0` when `x = y`) — the subshift analogue of the Phase 1/6 cylinder ultrametric, with the generated gauge `q_ℓ` in place of the base product `β`.
+
+**Lean.** `lcpLen`, `cfDist`.
+
+### Theorem 74 (`cfDist` is a genuine ultrametric)  [§13.3.3 · Phase 13]
+
+On admissible points, `cfDist` satisfies `cfDist x x = 0`, non-negativity, symmetry, identity of indiscernibles (`cfDist x y = 0 ↔ x = y`), and the **strong triangle inequality** `cfDist x z ≤ max (cfDist x y) (cfDist y z)`.
+
+**Lean.** `cfDist_self`, `cfDist_nonneg`, `cfDist_comm`, `cfDist_eq_zero_iff`, `cfDist_triangle`.
+
+**Proof.** The strong triangle is the gauge made geometric: `lcpLen x z ≥ min(lcpLen x y, lcpLen y z)` (a shared prefix of `x,y` and of `y,z` is a shared prefix of `x,z`), and `gaugeAt` monotone turns the longer common prefix into the smaller `1/q`. Symmetry uses that both endpoints read the same gauge on their common prefix; identity of indiscernibles uses `q_ℓ > 0`. ∎
+
+### Theorem 75 (`ball = cylinder`)  [§13.3.4 · Phase 13]
+
+Every open ball about an admissible point is exactly a combinatorial cylinder: choosing `n` minimal with `1/q_n < r`,
+```
+{ y | cfDist x y < r } = { y | pre y n = pre x n }.
+```
+
+**Lean.** `ball_eq_cylinder`.
+
+**Proof.** `→`: `cfDist x y < r` forces the common prefix to reach depth `n` (else `1/q` at a shallower depth would be `≥ r` by minimality of `n`). `←`: agreement to depth `n` makes `lcpLen ≥ n`, so `1/q_{lcp} ≤ 1/q_n < r` by gauge monotonicity. This is the translation layer between the analytic metric and the combinatorial cylinders that the measure and routing layers consume. ∎
+
+---
+
+## 13.4 Carry frequency on the generated timeline
+
+This is the hinge of the phase. The fixed-radix overflow rate `1/B_L` (§13.1) generalizes to the generated gauge — the carry-frequency *law* survives, the *product law* does not.
+
+### Definition 184 (Carry frequency of a generated timeline)  [§13.4.1 · Phase 13]
+
+`cfOverflowRate x L = 1 / q_L` — the reciprocal of the gauge, the continued-fraction analogue of `overflowRate b L = 1/B_L`, with the convergent denominator `q_L` (admissible-configuration count) in place of the fixed place value. Rational and exact; no measure, no density.
+
+**Lean.** `cfOverflowRate` (`CarryFrequency.lean`).
+
+### Theorem 76 (`cfOverflowRate` is positive, antitone, and vanishing)  [§13.4.2 · Phase 13]
+
+For admissible `x`: `cfOverflowRate x L > 0`; it is antitone in depth (deeper carry is rarer); and it **vanishes** — beyond some depth it drops below any `ε > 0`.
+
+**Lean.** `cfOverflowRate_pos`, `cfOverflowRate_antitone`, `cfOverflowRate_vanishes` (via `gaugeAt_pos`, `gaugeAt_monotone`, `gaugeAt_inv_lt`).
+
+**Proof.** The three properties mirror `overflowRate_pos`/`_antitone` exactly, with gauge facts replacing place-value facts; vanishing is `gaugeAt_inv_lt` (Theorem 73) — the strict-positivity payoff the fixed-radix `overflowRate` attains only when `B_L → ∞`, which here holds even for `φ`. ∎
+
+**Remark (the product law breaks).** Theorem 70's `overflowRate_product` (`B_C = B_A · B_B`) has **no analogue** here: continued-fraction combination is not a radix product, so the place value of a combined output stream is not the product of the inputs' place values. The bridge from §13.1 holds at the level of the carry-frequency law (reciprocal place value), **not** the product structure. §13.6 is the reason: combining two generated streams is genuinely more than digit-aligned carry.
+
+---
+
+## 13.5 The Parry measure on the golden-mean shift
+
+The generated gauge of §13.2–13.4 is combinatorial. §13.5 equips its canonical instance — the golden-mean (Zeckendorf) shift — with its measure of maximal entropy, the **Parry measure**, built as a genuine Markov chain so the integration engine cannot leak probability mass.
+
+### Definition 185 (Parry transition kernel of the golden-mean shift)  [§13.5.1 · Phase 13]
+
+The golden-mean shift on `{0,1}` ("no two consecutive 1s", transition matrix `[[1,1],[1,0]]`, place values the Fibonacci numbers). Its **Parry kernel** is `goldenP`: from state `0`, go to `0` with probability `1/φ` and to `1` with `1/φ²`; from state `1`, go to `0` with probability `1` (a `1` must be followed by a `0`). Packaged as a `ProbabilityTheory.Kernel`.
+
+**Lean.** `goldenP`, `goldenKernel` (`SubshiftParry.lean`); `φ = Real.goldenRatio`, characterized purely by `goldenRatio_sq`.
+
+### Theorem 77 (Mass conservation and the Markov kernel)  [§13.5.2 · Phase 13]
+
+Each row of `goldenP` sums to `1`, and `goldenKernel` is a Markov kernel (`IsMarkovKernel`).
+
+**Lean.** `goldenP_sum_one`, `goldenP_nonneg`, `instIsMarkovKernel…`.
+
+**Proof.** The non-trivial state-`0` row is exactly the golden identity `1/φ + 1/φ² = 1`, equivalent to `φ² = φ + 1` (`goldenRatio_sq`) and proved *exactly* — no real-analysis limits — using `φ⁻¹ = φ − 1`. The Markov instance is then discharged by the per-state `PMF`. The Perron eigenpair `[[1,1],[1,0]]·(φ,1)ᵀ = φ·(φ,1)ᵀ` is implicit in the probabilities `p_{ij} = A_{ij} r_j /(λ r_i)`; Mathlib's Perron–Frobenius is not invoked. ∎
+
+### Definition 186 (Parry stationary law)  [§13.5.3 · Phase 13]
+
+`goldenStat = π ∝ (φ², 1)`, normalized by `φ² + 1` — for the symmetric golden-mean matrix this is `l_i r_i`, the unique `goldenP`-invariant law.
+
+**Lean.** `goldenStat`, `goldenStat_sum_one`.
+
+### Theorem 78 (Stationarity)  [§13.5.4 · Phase 13]
+
+`π · goldenP = π`: the stationary law is invariant, so the path measure built from it is the genuine shift-invariant Parry measure.
+
+**Lean.** `goldenStat_stationary`.
+
+**Proof.** Each coordinate of `π · P = π` reduces, after clearing the denominator `φ² + 1`, to the golden identity `φ² = φ + 1` (a `linear_combination` of `goldenRatio_sq`). ∎
+
+### Definition 187 (Parry path measure via Ionescu–Tulcea)  [§13.5.5 · Phase 13]
+
+Injecting the homogeneous chain into the history-dependent family `goldenFam n` (the next state depends only on the current one), the **Parry path measure** on `ℕ → Fin 2` is the stationary law pushed through the Ionescu–Tulcea trajectory kernel: `parryMeasure = parryInit.bind parryTraj`. It is a probability measure on the canonical product σ-algebra.
+
+**Lean.** `goldenFam`, `parryTraj` (`Kernel.traj`), `parryInit`, `parryMeasure`; `IsProbabilityMeasure parryMeasure`.
+
+### Theorem 79 (Lévy upward convergence — "Group G" — on the golden timeline)  [§13.5.6 · Phase 13]
+
+For every integrable, strongly-measurable `f`, the block conditional expectations over the coordinate filtration converge to `f` in `L¹` under the Parry measure: `E[f | ℱ_L] → f`.
+
+**Lean.** `parry_condExp_tendsto` (via `iSup_piLE_eq_pi`).
+
+**Proof.** The coordinate filtration exhausts the product σ-algebra (`⨆_L ℱ_L = pi`, the lone obligation), after which the statement is Mathlib's classical martingale (Lévy upward) convergence `tendsto_eLpNorm_condExp`. The integration engine thus runs natively on the generated golden-mean timeline — no bespoke metric or topology, just the canonical `pi` σ-algebra. ∎
+
+---
+
+## 13.6 Density-free continued-fraction arithmetic
+
+Finally, the engine that combines generated streams — and the reason §13.4's product law had to break. It is *density-free*: exact `ℤ` arithmetic, most-significant-digit first, emitting an output digit only once it is *forced*.
+
+### Definition 188 (Homographic emission — single stream)  [§13.6.1 · Phase 13]
+
+The dual of the absorbing `step` (Definition 181): `emit q` applies the homographic map `v ↦ 1/(v − q)` (left-multiply the `SL₂(ℤ)` ledger by `[[0,1],[1,-q]]`), writing one output partial quotient. The candidate digit is `emitDigit = ⌊h_cur / q_cur⌋`; `emitReady` fires when that floor agrees at both ends of the unread input range `[1, ∞)`, so the next output is forced regardless of the input tail.
+
+**Lean.** `RemainderState.emit`, `emitDigit`, `emitReady` (`HomographicCarry.lean`).
+
+### Theorem 80 (Exactness and channel independence)  [§13.6.2 · Phase 13]
+
+Emission preserves `|det| = 1` (combined with `init`, the engine stays unimodular forever — exact integer arithmetic, no rounding), and the absorb and emit channels **commute**: `emit q (step r a) = step (emit q r) a`.
+
+**Lean.** `emit_det_natAbs`, `emit_step_comm`.
+
+**Proof.** `emit` flips the determinant (`emit_det`), so `|det|` is preserved; commutation is a four-field polynomial identity closed by `ring`. Channel independence is the defining property of an exact-real streaming transducer: reads and writes interleave freely. ∎
+
+### Definition 189 (The bihomographic tensor — two-stream mediator, Timeline C)  [§13.6.3 · Phase 13]
+
+Gosper's rank-3 tensor `z = (a·xy + b·x + c·y + d)/(e·xy + f·x + g·y + h)`, a flat 8-field `ℤ` structure (`BihTensor`) absorbing two input streams (`absorbX`, `absorbY`) and emitting one (`emit`). `emitDigit = a.fdiv e` (floor division at the `(∞,∞)` corner); `emitReady` requires positive corner-denominators and that the candidate digit trap all **four corners** `(x,y) ∈ {1,∞}²`.
+
+**Lean.** `BihTensor`, `absorbX`, `absorbY`, `emit`, `emitDigit`, `emitReady` (`Bihomographic.lean`).
+
+### Theorem 81 (Channel commutations)  [§13.6.4 · Phase 13]
+
+The two input reads and the output write pairwise commute: `absorbX_absorbY_comm`, `emit_absorbX_comm`, `emit_absorbY_comm`. The mediator is therefore an asynchronous, non-blocking transducer — A, B, C interleave freely.
+
+**Lean.** `absorbX_absorbY_comm`, `emit_absorbX_comm`, `emit_absorbY_comm`.
+
+**Proof.** Each is a polynomial identity on the 8 fields closed by `ring` (the flat structure is used precisely so `ring` sees through it, where a `Matrix` product would hide a `Finset.sum`). ∎
+
+### Theorem 82 (Emission soundness — the four-corner trap)  [§13.6.5 · Phase 13]
+
+If the integer floor `k` agrees at all four corners (eight integer inequalities on the tensor coefficients), then for **every** input tail `x, y ≥ 1` the true output value `N/D` is trapped in `[k, k+1)`. Emitting `k` therefore never hallucinates a digit, whatever the unread tails of A and B. Moreover a `true` from the executable `emitReady` discharges exactly these hypotheses, so every digit the driver physically emits carries its own correctness proof.
+
+**Lean.** `emit_traps`, `emitReady_traps` (via `bilinear_ge_const`) (`BihomographicSound.lean`).
+
+**Proof.** The kernel is a no-limits bilinear bound: over any ordered ring, `α·xy + β·x + γ·y + δ ≥ α + β + γ + δ` on the quadrant `x, y ≥ 1` whenever the three leading corner-coefficients `α`, `α+β`, `α+γ` are non-negative — via the identity `αxy+βx+γy+δ = α(x−1)(y−1) + (α+β)(x−1) + (α+γ)(y−1) + (α+β+γ+δ)`. Applying it to `N − k·D` and to `(k+1)·D − N` gives the two-sided trap. The infinite corners are leading-coefficient sign conditions, never limits; `ℚ` suffices, and `x, y` are inert order-carriers (`nlinarith`). ∎
+
+### Definition 190 (The two-stream driver)  [§13.6.6 · Phase 13]
+
+`run` is the Gosper scheduler over the verified tensor: emit when `emitReady` (the digit is forced, certified by Theorem 82), else absorb the next quotient, alternating A/B with a fuel bound. With `addTensor` (`z = x + y`) and `mulTensor` (`z = x·y`) it computes irrational arithmetic exactly in `ℤ`.
+
+**Lean.** `run`, `addTensor`, `mulTensor` (`BihomographicDriver.lean`).
+
+**Worked evaluations (executable `#eval`).** `φ + φ = 2φ = 1+√5 = [3;4,4,…]`; `φ·φ = φ+1 = [2;1,1,…]`; `√2 + √2 = [2;1,4,1,4,…]`. And the honest case: `√2·√2 = 2` sits exactly on a floor boundary — undecidable from finite input — so the engine **safely emits nothing** (`[]`) rather than guess; this is Theorem 82 preventing a hallucinated digit, not a failure.
+
+### Definition 191 (The hyper-Gosper clock)  [§13.6.7 · Phase 13]
+
+Coupling `N` streams through a single flat tensor would need `2^(N+1)` integers. Instead `coupleAll` arranges verified rank-3 nodes into a **tournament-bracket binary tree** (`pairUp` a layer, `coupleTree` cascade): every node stays at 8 integers, only discrete emitted streams travel the wires, and per-node certification (Theorem 82) composes up the tree. Linear node count, log-depth latency, no exponential state.
+
+**Lean.** `coupleAll`, `coupleTree`, `pairUp` (`HyperGosper.lean`). Evaluations: `3φ = [4;1,5,…]`, `4φ = [6;2,…]`, `8φ = [12;1,…]`, each node still 8 integers.
+
+**Remark (honest scope).** Two limitations are stated in the source and are *not* theorems here: (i) the "thermodynamic limit" intuition — that coarsening up an infinite tree converges to the Gauss/Parry invariant measure — is a **conjecture**, and the link to the commutant/multiresolution algebra is an analogy; (ii) composing finite-fuel `run`s truncates intermediate streams, so deep trees lose tail precision (the bracket's log depth mitigates but does not remove this). This file builds the coupler; the limit theorem is future work.
+
+---
+
+**End of Phase 13: Generated (Continued-Fraction) Timelines**
+**Status:** Machine-verified in Lean (0 sorries; axioms `propext`/`Classical.choice`/`Quot.sound` only). The generated gauge `q_n` generalizes the place value `B_L`; the ultrametric and carry-frequency law transfer (`ball = cylinder`, `cfOverflowRate = 1/q_n`), the product law does not; the golden-mean instance carries an exact Parry measure with Lévy convergence; and the density-free homographic/bihomographic engine combines generated streams exactly, emitting only certified digits.
