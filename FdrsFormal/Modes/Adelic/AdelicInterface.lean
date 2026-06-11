@@ -31,10 +31,10 @@ assumed axiom (that would be "declare victory in axiom costume", `06` §5).
   whose base is not constant `p` fails to reproduce the p-adic place value, so there is
   **no genuinely synthetic instance of `AdelicLaw` on `ℚ`** (Artin–Whaple, machine-checked).
 
-**Honest scope.** The classical instance is over the *positive integers* `ℕ+` — the exact
-quantities the master-branch product formula proves. The full `ℚ*` conservation is the
-standard *multiplicative lift* (via `padicNorm.mul`/`.div`, 📐 present in Mathlib), a
-classical extension noted but not formalized here. And the genuinely *synthetic* instances
+**Honest scope.** The classical instance here is over the *positive integers* `ℕ+` — the
+exact quantities the master-branch product formula proves. The full `ℚˣ` conservation is
+the standard *multiplicative lift*, now formalized in `ProductFormulaRat.lean`
+(`product_formula_rat`, `ratAdelicLaw : AdelicLaw Place ℚˣ`). And the genuinely *synthetic* instances
 live not on `ℚ` (Ostrowski) but on **global function fields** `F_q(t)`, where places are
 irreducible polynomials — the empty, correctly-typed slot this interface leaves open.
 Leaf module. No `sorry`; axiom-clean.

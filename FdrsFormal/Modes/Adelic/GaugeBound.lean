@@ -36,8 +36,9 @@ The proof chain is the one the FDRS engine carries natively, taken pre-packaged 
 Mathlib's continued fractions: `abs_sub_convs_le` (`|x − pₙ/qₙ| ≤ 1/(qₙqₙ₊₁)`, whose own
 proof runs through `fib(n+2) ≤ denom` — the gauge growth, FDRS's `steps_qCur_unbounded` /
 `bracket_invariant` in Mathlib form) + `succ_nth_fib_le_of_nth_den` (`qₙ ≥ 1`). The Axis-II
-invariant `|x|·P = 1` enters as a hypothesis — it is M4a's `product_formula` (proven for
-integers; `norm_num`-checkable for any concrete rational).
+invariant `|x|·P = 1` enters as a hypothesis — discharged for *every* nonzero rational by
+the `ℚˣ` lift (`ProductFormulaRat.lean`: `gauge_bound_rat` instantiates
+`P := ∏_{p ∈ ratSupport x} |x|_p` and supplies the proof).
 
 Also: **`gauge_product_tendsto`** — the conservation law in the limit: `Πₙ → 1`. Leaf
 module. No `sorry`; axiom-clean.

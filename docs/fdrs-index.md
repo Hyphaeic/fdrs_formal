@@ -521,3 +521,35 @@ Status: proven: 463 | scaffold: 0
 | theorem_82 | theorem | 82 | Emission soundness — the four-corner trap | 8203 | ✅ proven | FdrsFormal/Modes/VariableRadix/BihomographicSound.lean |
 | definition_190 | definition | 190 | The two-stream driver | 8211 | ✅ proven | FdrsFormal/Modes/VariableRadix/BihomographicDriver.lean |
 | definition_191 | definition | 191 | The hyper-Gosper clock | 8219 | ✅ proven | FdrsFormal/Modes/VariableRadix/HyperGosper.lean |
+
+## Phase 14 — The Synthetic Place Complex (Coupled Radix Networks)
+
+| id | kind | # | name | fdrs.md line | status | Lean |
+|---|---|---|---|---|---|---|
+| definition_192 | definition | 192 | Prefix gauge | 8257 | ✅ proven | FdrsFormal/Modes/SyntheticPlace/GaugeUltrametric.lean |
+| theorem_83 | theorem | 83 | Gauge ⇒ ultrametric; ball = cylinder | 8264 | ✅ proven | FdrsFormal/Modes/SyntheticPlace/GaugeUltrametric.lean |
+| proposition_147 | proposition | 147 | The corpus instances (β_ω and cfDist) | 8272 | ✅ proven | FdrsFormal/Modes/SyntheticPlace/GaugeUltrametric.lean |
+| definition_193 | definition | 193 | Coupled fiber law; coupled completion counts | 8281 | ✅ proven | FdrsFormal/Modes/SyntheticPlace/Composition.lean |
+| theorem_84 | theorem | 84 | Level-only coupling preserves SU | 8288 | ✅ proven | FdrsFormal/Modes/SyntheticPlace/Composition.lean |
+| proposition_148 | proposition | 148 | The ragged witness | 8293 | ✅ proven | FdrsFormal/Modes/SyntheticPlace/Composition.lean |
+| theorem_85 | theorem | 85 | Geometry survives raggedness | 8300 | ✅ proven | FdrsFormal/Modes/SyntheticPlace/Composition.lean |
+| definition_194 | definition | 194 | Transfer structure; uncertainty ledger; trap gate | 8309 | ✅ proven | FdrsFormal/Modes/SyntheticPlace/AdmissibilityTrap.lean |
+| theorem_86 | theorem | 86 | Admissibility-trap soundness | 8316 | ✅ proven | FdrsFormal/Modes/SyntheticPlace/AdmissibilityTrap.lean |
+| definition_195 | definition | 195 | Depth-decided observables | 8330 | ✅ proven | FdrsFormal/Modes/SyntheticPlace/Restriction.lean |
+| theorem_87 | theorem | 87 | Indistinguishability below the gauge; strict hierarchy | 8334 | ✅ proven | FdrsFormal/Modes/SyntheticPlace/Restriction.lean |
+| definition_196 | definition | 196 | Completion mass and observed flux | 8346 | ✅ proven | FdrsFormal/Modes/SyntheticPlace/Conservation.lean |
+| theorem_88 | theorem | 88 | The partition law; zero leak | 8351 | ✅ proven | FdrsFormal/Modes/SyntheticPlace/Conservation.lean |
+| definition_197 | definition | 197 | The coupled interface machine; balance | 8361 | ✅ proven | FdrsFormal/Modes/SyntheticPlace/InterfaceBalance.lean |
+| theorem_89 | theorem | 89 | The interface balance law | 8368 | ✅ proven | FdrsFormal/Modes/SyntheticPlace/InterfaceBalance.lean |
+| definition_198 | definition | 198 | Place-local transfer rules | 8376 | ✅ proven | FdrsFormal/Modes/SyntheticPlace/ConservationRigidity.lean |
+| theorem_90 | theorem | 90 | Conservation rigidity: factorization, no-go, boundary | 8381 | ✅ proven | FdrsFormal/Modes/SyntheticPlace/ConservationRigidity.lean |
+| proposition_149 | proposition | 149 | Witnesses on both sides of the boundary | 8395 | ✅ proven | FdrsFormal/Modes/SyntheticPlace/ConservationRigidity.lean |
+| definition_199 | definition | 199 | Schedules, trace equivalence, projections | 8405 | ✅ proven | FdrsFormal/Modes/SyntheticPlace/TraceGeometry.lean |
+| theorem_91 | theorem | 91 | The scalar trace-gauge no-go | 8413 | ✅ proven | FdrsFormal/Modes/SyntheticPlace/TraceGeometry.lean |
+| definition_200 | definition | 200 | The observer-glued network distance | 8425 | ✅ proven | FdrsFormal/Modes/SyntheticPlace/NetworkGauge.lean |
+| theorem_92 | theorem | 92 | The glued network ultrametric | 8430 | ✅ proven | FdrsFormal/Modes/SyntheticPlace/NetworkGauge.lean |
+
+Phase 14 items (22) were added manually with the SPS build (the generated YAML
+predates Phase 14, as it did Phase 13); `docs/synthetic-place/` carries the design
+record. All 22 items are machine-verified: 0 sorries, axioms
+`propext`/`Classical.choice`/`Quot.sound` only.

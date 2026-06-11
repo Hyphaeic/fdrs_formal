@@ -8228,3 +8228,231 @@ Coupling `N` streams through a single flat tensor would need `2^(N+1)` integers.
 
 **End of Phase 13: Generated (Continued-Fraction) Timelines**
 **Status:** Machine-verified in Lean (0 sorries; axioms `propext`/`Classical.choice`/`Quot.sound` only). The generated gauge `q_n` generalizes the place value `B_L`; the ultrametric and carry-frequency law transfer (`ball = cylinder`, `cfOverflowRate = 1/q_n`), the product law does not; the golden-mean instance carries an exact Parry measure with Lévy convergence; and the density-free homographic/bihomographic engine combines generated streams exactly, emitting only certified digits.
+
+---
+
+## Phase 14 — The Synthetic Place Complex (Coupled Radix Networks)
+
+Phases 5–13 built mixed-radix structure along a line: one timeline, one gauge, one
+odometer — with Phase 13 generalizing the gauge from a base product to a generated
+quantity, and the adelic complex running two such engines side by side under
+scheduler confluence. Phase 14 is the network regime: digit fibers determined by
+*other* chains' states (Phase 7's oracle with chain-valued context), histories that
+are partial orders rather than words, and conservation that crosses interfaces. Its
+organizing discovery is a triple migration:
+
+> **In the network regime, every global scalar dies, and every law survives by
+> becoming indexed and glued.** Value (the global decode) dies with sibling
+> uniformity and survives as gauge-graded observables; conservation (the product
+> formula) dies with separability and survives as a family of interface balances;
+> geometry (a scalar depth) dies with concurrency and survives as the
+> observer-indexed gauge family glued by sup.
+
+The coupled radix complex is accordingly not a generalized adele but a **networked
+transport object** — a gauge-indexed transport geometry. Design record:
+`docs/synthetic-place/00-thesis.md`, `01-build-roadmap.md`, `02-phase14-design.md`.
+
+### 14.1 Designed gauges and the refinement ultrametric
+
+**Definition 192 (prefix gauge)**:
+A *prefix gauge* on words over a digit alphabet `D` is a pair `(Adm, g)`: a
+prefix-closed admissibility predicate `Adm ⊆ D*` and a weight `g : D* → ℕ` with
+`g(s) ≥ 1` on admissible words and `g(s) ≤ g(s·d)` along admissible extensions. A
+point is admissible when all its prefixes are; the induced distance is the
+first-disagreement reciprocal `δ_g(x,y) = g(lcp(x,y))⁻¹` (and `0` for equal points).
+
+**Theorem 83 (gauge ⇒ ultrametric; ball = cylinder)**:
+For any prefix gauge, `δ_g` is an ultrametric on admissible points (strong triangle
+inequality); if moreover the gauge is unbounded along the centre, every open ball is
+exactly a combinatorial cylinder. The structure (product law, subshift, completion
+count, nested chain) enters only through the two gauge laws.
+
+*Lean:* `FdrsFormal/Modes/SyntheticPlace/GaugeUltrametric.lean`.
+
+**Proposition 147 (the corpus instances)**:
+The product gauge `g = β_ω` of any radix law is a prefix gauge (unbounded, via
+`2^{|s|} ≤ β_ω(s)`), and its induced distance carries Definition 79's formula
+`β_ω(lcp)⁻¹`. The generated CF gauge `g(s) = q(s)` of Phase 13 is a prefix gauge on
+quotient-admissible words, and its induced distance **equals** `cfDist`
+(Definition 180). Both prior ultrametrics are instances of Theorem 83.
+
+### 14.2 Cross-timeline composition and the ragged regime
+
+**Definition 193 (coupled fiber law; coupled completion counts)**:
+A *coupled fiber law* is a pair `fiberA : Σ* → ℕ≥2`, `fiberB : Σ* × Σ* → ℕ≥2`, where
+B's fiber reads its own prefix *and* A's prefix including A's current digit — the
+Definition 85 oracle `Ω(s, c)` with the context `c` instantiated as another chain's
+state. The *coupled completion count* `W_k(s_A, s_B)` counts admissible pair-paths of
+depth `k` (Definition 61, coupled).
+
+**Theorem 84 (level-only coupling preserves SU)**:
+If both fibers depend only on prefix lengths, the coupled completion counts depend
+only on lengths; all pair-siblings have equal counts (the Definition 74 regime — the
+coupled echo of Theorem 70).
+
+**Proposition 148 (the ragged witness, machine-checked)**:
+There is a coupled fiber law with two A-siblings of different completion counts
+(`4 ≠ 6` at depth 1, `16 ≠ 36` at depth 2; kernel-checked). Coupling generically
+destroys sibling uniformity: no rank chart, no odometer, and the pair-fiber of a
+single node is jagged — the coupled tree is not a radix law at all (Phase 5.4 §5,
+realized).
+
+**Theorem 85 (geometry survives raggedness)**:
+The path place-value of a coupled chain is a prefix gauge on pair digits; hence the
+coupled chain carries a genuine ultrametric with ball = cylinder *even in the ragged
+regime*. Refinement geometry survives the death of the odometer.
+
+*Lean (14.2):* `FdrsFormal/Modes/SyntheticPlace/Composition.lean`.
+
+### 14.3 The admissibility trap (the third certificate)
+
+**Definition 194 (transfer structure; uncertainty ledger; trap gate)**:
+A *transfer structure* is a finite state set `Q` with total transition
+`step : Q × D → Q`, Boolean admissibility gate `allowed`, and observation
+`obs : Q → O`. The engine's ledger is the *uncertainty set* `S ⊆ Q` of states
+consistent with what has been observed; the *trap gate* `ready S` holds when the
+admissible one-step image of `S` carries exactly one observation.
+
+**Theorem 86 (admissibility-trap soundness)**:
+If the candidate set is a singleton `{o}`, then every admissible tail from every
+state of `S` observes `o` after one step. A finite Boolean check certifies a
+universally quantified forcing — the third emission certificate, with admissibility
+playing the role order plays at the Archimedean place (Theorem 82) and congruence
+plays at the p-adic places. The fuel driver emits only when forced; on the
+golden-mean structure the certificate is Zeckendorf's forced zero (`ready {1}`
+fires, candidate `0`; from `0` the engine must refine), the engine-side face of the
+deterministic Parry kernel row (Theorem 77).
+
+*Lean:* `FdrsFormal/Modes/SyntheticPlace/AdmissibilityTrap.lean`.
+
+### 14.4 Zoom-out restriction
+
+**Definition 195 (depth-decided observables)**:
+An observable `f` on digit streams is *decided at depth `n`* when it is constant on
+every depth-`n` cylinder.
+
+**Theorem 87 (indistinguishability below the gauge; strict hierarchy)**:
+A depth-`n` observable cannot separate points closer than `(g(pre_n x))⁻¹`:
+separating by a depth-`n` view costs at least the depth-`n` gauge reciprocal in
+distance (Theorem 44's Lipschitz bound, gauge-general and decode-free — valid in the
+ragged regime). The depth hierarchy of decided observables is monotone and strict at
+every genuine branch (Proposition 133's shape). The SU-regime modulus-by-depth
+(Corollary 27) is the decode-bearing special case and is not rebuilt.
+
+*Lean:* `FdrsFormal/Modes/SyntheticPlace/Restriction.lean`.
+
+### 14.5 Conservation: partition, balance, rigidity
+
+**Definition 196 (completion mass and observed flux)**:
+The *completion mass* `mass_n(q)` is the number of admissible runs of horizon `n`
+from `q`; the *observed flux* `flux_n(q, o)` is the mass flowing through admissible
+first steps whose next observation is `o`.
+
+**Theorem 88 (the partition law; zero leak)**:
+`mass_{n+1}(S) = Σ_o flux_n(S, o)` over the candidate observations — the continuity
+equation of refinement: mass is partitioned by the emitted symbol, never created or
+destroyed. When the trap fires (`candidates = {o}`), the **entire** mass flows
+through the emitted symbol: certified emission is conditioning on a sure event —
+exact transport, zero leak. On the golden structure the masses are the Fibonacci
+numbers (the counting shadow of `fib(n+2) ≤ qₙ`), kernel-checked.
+
+*Lean:* `FdrsFormal/Modes/SyntheticPlace/Conservation.lean`.
+
+**Definition 197 (the coupled interface machine; balance)**:
+The coupled step of Definition 193 run as a two-place machine with a declared
+ledger: an A-half-step appends an A-digit and *issues* the grant
+`fiberB(s_B, s_A·a)` into the interface; a B-half-step *consumes* the pending grant
+by choosing a digit below it. A configuration is *balanced* when
+`issued = consumed + pending`.
+
+**Theorem 89 (the interface balance law)**:
+Every reachable configuration is balanced, for **arbitrary** coupling — Proposition
+128's shape per step, Theorem 57's shape in sum: the residual is exactly the
+undelivered in-flight payload; nothing is created or destroyed anonymously. No
+reachable configuration has `consumed > issued` (the obstruction reading).
+
+*Lean:* `FdrsFormal/Modes/SyntheticPlace/InterfaceBalance.lean`.
+
+**Definition 198 (place-local transfer rules)**:
+A charge `Φ` on configurations is *place-locally exact* when its increment at an
+A-half-step is a function of `(s_A, a)` alone and at a B-half-step of `(s_B, b)`
+alone — neither rule sees the other place or the interface.
+
+**Theorem 90 (conservation rigidity: factorization, no-go, boundary)**:
+(i) *Factorization*: every place-locally exact charge satisfies
+`Φ = Φ₀ + f(s_A) + g(s_B)` on reachables — it is additively separable and cannot
+measure the coupling. (ii) *No-go*: for a bilateral coupling (the grant reads both
+opening digits) the carry charge `issued` admits **no** place-local transfer rule —
+the four corner runs carry ledgers `5, 6, 6, 5`, violating the rectangle identity
+forced by (i) (kernel-checked). (iii) *Boundary*: for B-blind couplings (the grant
+ignores B's own prefix) the carry charge **is** place-locally exact. The classical
+product formula is the ultimate separable charge — possible exactly because
+classical places are mutually blind; the Phase 13 product-law breakage (§13.4) is
+the same fact seen from the engine side. The conserved quantity of a genuine
+coupling lives on the interface, not in the places: Definition 197's register is
+necessary, not a convenience.
+
+**Proposition 149 (witnesses on both sides of the boundary)**:
+Proposition 148's ragged fiber is B-blind — hence place-locally accountable, *inside*
+the boundary: raggedness does not obstruct local accounting; bilaterality does. The
+bilateral witness sits outside. The boundary is real and crossed.
+
+*Lean (Defs 198, Thm 90, Prop 149):*
+`FdrsFormal/Modes/SyntheticPlace/ConservationRigidity.lean`.
+
+### 14.6 Network geometry: the scalar no-go and the observer gluing
+
+**Definition 199 (schedules, trace equivalence, projections)**:
+A network *schedule* is a finite word of events `(place, digit)`; *trace
+equivalence* identifies schedules up to adjacent swaps of events at different places
+(Mazurkiewicz, for the place-disjointness independence); the *projection* `π_v`
+extracts place `v`'s digits in order; `u` is a *trace-prefix* of `w` when some
+completion of `u` is trace-equivalent to `w`. Projections are schedule-invariant:
+trace-equivalent schedules have identical projection tuples.
+
+**Theorem 91 (the scalar trace-gauge no-go, machine-checked)**:
+No distance on schedules can simultaneously satisfy the triangle inequality, call
+two schedules `(g u)⁻¹`-close whenever `u` is a common trace-prefix of both (for any
+gauge unbounded along each of two places' own pure lines — no positivity or
+swap-invariance assumed), and keep root-divergent pure runs uniformly separated.
+Witness: `a^n` and `b^m` are both trace-prefixes of `a^n · b^m` (the block commute),
+so the bridge run is close to both while they stay far from each other — even the
+ordinary triangle inequality fails. Depth earned at one place masks blindness at
+another: **a scalar refinement metric cannot price concurrency.**
+
+*Lean:* `FdrsFormal/Modes/SyntheticPlace/TraceGeometry.lean`.
+
+**Definition 200 (the observer-glued network distance)**:
+For a family of prefix gauges `G_v` indexed by the places and network points given
+by per-place stream tuples, `netDist(x, y) = max_v δ_{G_v}(x_v, y_v)` — *you are
+only as close as your most-disagreeing observer.*
+
+**Theorem 92 (the glued network ultrametric)**:
+`netDist` is an ultrametric on admissible tuples; with one place it equals the
+Theorem 83 distance exactly (the sequential theory is the one-observer case); with
+per-place unbounded gauges every ball is a **cylinder profile** — a per-place depth
+vector, the network's refinement domain; every observable of the projection tuple is
+schedule-invariant; and a place-`v` observable decided at depth `n` cannot separate
+network points closer than `(g_v(pre_n x_v))⁻¹` — each observer's information flows
+at its own gauge speed (Theorem 87, transported through the gluing).
+
+*Lean:* `FdrsFormal/Modes/SyntheticPlace/NetworkGauge.lean`.
+
+### 14.7 Honest scope and open frontiers
+
+"Balance sheaf" and "gauge sheaf" are structural vocabulary — indexed families with
+additive/sup gluing; no sheaf axioms are formalized. "No product formula" has the
+exact scope of Theorem 90: separable charges cannot measure coupling, and the
+bilateral witness refutes place-local accounting of the carry; the full
+accountability iff ("place-local ⟺ rectangle identity on reachables") is open.
+Liveness is absent throughout: every certificate is sound, none is yet guaranteed to
+fire. Coupled-place stream determinacy (the conditional Kahn diamond) is open. The
+bridge from infinite network runs to total stream tuples needs an unformalized
+fairness hypothesis. Minimality of the sup-gluing is posed, not claimed. Trace
+theory background is classical (Mazurkiewicz); the corpus contributes the
+FDRS-shaped statements and the verified artifact.
+
+---
+
+**End of Phase 14: The Synthetic Place Complex**
+**Status:** Machine-verified in Lean (0 sorries; axioms `propext`/`Classical.choice`/`Quot.sound` only). The designed gauge generalizes both the place-value product `β_ω` and the generated gauge `q_n` into one keystone (ultrametric + ball = cylinder); coupling realizes the ragged regime concretely while geometry survives it; emission gains its third certificate (admissibility) with exact mass transport; conservation migrates from separable node charges — impossible under bilateral coupling, by machine-checked rigidity — to interface balance laws; and network geometry, refused to every scalar gauge by the trace no-go, is carried by the observer-glued family. Value, conservation, and geometry each survive the network regime by becoming indexed and glued.
