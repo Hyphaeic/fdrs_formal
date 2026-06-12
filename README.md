@@ -65,14 +65,12 @@ item to its proof.
   additive and multiplicative filtrations, including a constructive witness of
   their generic non-commutation.
 
-**Realizability — corrected by its own formalization.** Which ultrametrics are
-realizable by sibling-uniform radix laws (Theorem 43) was *mis-stated* in the
-original specification: machine-checking produced a counterexample to the
-stated conditions, an erratum in the spec (fdrs.md §6.6.1), and the corrected
-full characterization — every open ball a prefix cylinder, plus canonical
-cylinder diameters — proven in both directions
+**Realizability.** The full characterization of which ultrametrics are
+realizable by sibling-uniform radix laws (Theorem 43): an ultrametric is
+realizable **iff** every open ball is a prefix cylinder and every cylinder has
+canonical diameter — proven in both directions, with the two conditions doing
+provably separate work (the first pins the tree, the second pins the gauge)
 ([`MetricRealizability.lean`](FdrsFormal/Modes/VariableRadix/Realizability/MetricRealizability.lean)).
-The repository treats this as the method working as intended.
 
 **Certified emission engines (Phase 13).** Continued-fraction timelines where
 the gauge is generated rather than multiplied out, with Gosper-style
@@ -131,8 +129,8 @@ FdrsFormal/
 ├── Analysis/        # Digit-conditional signal analysis, the Fourier ceiling
 ├── Composition/     # Multi-timeline routing, deadlock-freedom, timing bounds
 └── Modes/
-    ├── VariableRadix/    # Mode I, realizability (incl. the corrected Theorem 43),
-    │                     #   subshift gauges, the Gosper engine cluster
+    ├── VariableRadix/    # Mode I, realizability (Theorem 43), subshift gauges,
+    │                     #   the Gosper engine cluster
     ├── ContextDependent/ # Mode II oracles
     ├── ExtendedBase/     # Mode III: walls, wires, the spatial thermometer
     ├── BaseZeroSea/      # Phase 10 substrate dynamics, the linear-chain bridge
