@@ -26,7 +26,6 @@ The set of elements in cylinder(s) is exactly the interval
 ## References
 
 - fdrs.md, Phase 5-6, Section 3 (lines 4870-4900)
-- DEPENDENCY_BASED_STRUCTURE.md, Modes/VariableRadix/PrefixWeights
 -/
 
 import FdrsFormal.Modes.VariableRadix.PrefixWeights.OdometerDecode

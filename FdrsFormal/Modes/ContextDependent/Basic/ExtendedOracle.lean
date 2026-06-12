@@ -34,7 +34,6 @@ Key properties:
 ## References
 
 - fdrs.md, Phase 7, Section 7.1 (lines 5499-5509)
-- DEPENDENCY_BASED_STRUCTURE.md, Modes/ContextDependent/Basic
 -/
 
 import FdrsFormal.Modes.ContextDependent.Basic.ContextSpace

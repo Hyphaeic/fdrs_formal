@@ -30,7 +30,6 @@ only structure at depth > L may differ.
 ## References
 
 - fdrs.md, Phase 7, Section 7.4 (lines 5641-5649)
-- DEPENDENCY_BASED_STRUCTURE.md, Modes/ContextDependent/Preservation
 -/
 
 import FdrsFormal.Modes.ContextDependent.Realization.Realization

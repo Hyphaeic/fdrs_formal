@@ -30,7 +30,7 @@ Equivalently: β_{ω₁}(s) ≤ β_{ω₂}(s) for all prefixes s.
 ## References
 
 - fdrs.md, Phase 6, Section 6.3 (lines 5214-5240)
-- Paper: Part of custom ultrametric design framework
+- Paper (external draft): Part of custom ultrametric design framework
 -/
 
 import FdrsFormal.Modes.VariableRadix.InducedUltrametric.Definition

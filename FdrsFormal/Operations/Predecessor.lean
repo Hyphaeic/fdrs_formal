@@ -9,7 +9,7 @@ Predecessor operator pred: R → R defined as pred(τ) = enc(dec(τ) - 1)
 
 ## References
 - fdrs.md Phase 1 Fragment 2 Section 2.1
-- Paper: Predecessor operation
+- Paper (external draft): Predecessor operation
 -/
 
 import FdrsFormal.Operations.Predecessor.Correctness

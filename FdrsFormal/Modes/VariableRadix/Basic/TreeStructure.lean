@@ -30,7 +30,6 @@ The tree structure:
 ## References
 
 - fdrs.md, Phase 5-6, Section 1.1 (lines 3967-3968)
-- DEPENDENCY_BASED_STRUCTURE.md, Modes/VariableRadix/Basic
 -/
 
 import FdrsFormal.Modes.VariableRadix.Basic.DigitAlphabet

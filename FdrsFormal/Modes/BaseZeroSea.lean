@@ -27,7 +27,7 @@ Deterministic substrate dynamics where:
 - **Properties.lean**: Propositions 126-128, Theorem 62 (determinism, validity, balance law, transition system)
 - **Projection.lean**: Definitions 158-159, Theorem 63 (window-to-digit projection, Phase 9 special case)
 - **Modules.lean**: Definitions 160-163, Propositions 129-130, Theorem 64 (digit modules, resistance, coupled networks)
-- **LinearChain.lean**: `LinearChain`, `linearChainStep`, `chainToCylinder`; Theorem 64 strengthened — the chain step projects to the Phase 9 odometer (`linearChain_projectsTo_odometer`), **fully proven (0 sorries)**, superseding the vacuous `classicalMixedRadixLine`
+- **LinearChain.lean**: `LinearChain`, `linearChainStep`, `chainToCylinder`; Theorem 64 in substantive form — the chain step projects to the Phase 9 odometer (`linearChain_projectsTo_odometer`); `classicalMixedRadixLine` (Modules.lean) states the same claim vacuously and is retained for the Definition-163 statement shape
 
 ## References
 

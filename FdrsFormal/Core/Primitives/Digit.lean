@@ -20,7 +20,7 @@ Defines the digit alphabet at each position as Fin (b i).
 ## References
 
 - fdrs.md, Phase 1 Fragment 1, Section 1 (lines 6-8)
-- Paper §2.1
+- Paper (external draft) §2.1
 -/
 
 import FdrsFormal.Core.Primitives.RadixSeq

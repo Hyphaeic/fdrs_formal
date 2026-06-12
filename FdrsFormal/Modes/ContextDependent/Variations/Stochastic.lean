@@ -33,7 +33,6 @@ then SU holds almost surely at each time step.
 ## References
 
 - fdrs.md, Phase 7, Section 7.7 (lines 5820-5840)
-- DEPENDENCY_BASED_STRUCTURE.md, Modes/ContextDependent/Variations
 -/
 
 import FdrsFormal.Modes.ContextDependent.Preservation.Preservation

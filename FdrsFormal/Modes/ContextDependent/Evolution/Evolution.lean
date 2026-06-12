@@ -27,7 +27,6 @@ Aggregator for context evolution definitions.
 ## References
 
 - fdrs.md, Phase 7, Section 7.2 (lines 5540-5599)
-- DEPENDENCY_BASED_STRUCTURE.md, Modes/ContextDependent/Evolution
 -/
 
 import FdrsFormal.Modes.ContextDependent.Evolution.ContextDynamics

@@ -26,11 +26,11 @@ exactly `1` — it converges to `1`, the deviation controlled by the CF gauge `q
 > (so `|x|·P = 1`), the finite-precision deviation is gauge-controlled:
 > `| |pₙ/qₙ|·P − 1 | ≤ P / qₙ`, where `qₙ = densₙ` is the convergent denominator.
 
-This is the bound the scratch probe (`scratch/gauge_bound_probe.py`) confirmed empirically
+This is the bound the scratch probe (`docs/archive/adelic-machine/scratch/gauge_bound_probe.py`) confirmed empirically
 (`C = 1`, `Θ(1/qₙ²)`, Hurwitz) — now machine-checked. As that probe showed, it **is** the
 classical CF convergent bound `|x − pₙ/qₙ| < 1/(qₙ qₙ₊₁)` (the non-Archimedean legs are the
 exact constant `P`, which never interacts with the limit): *mechanical assembly of
-classical facts*, not new mathematics, exactly as `04`/`06` record.
+classical facts*, not new mathematics, exactly as the archived design `04`/`06` records.
 
 The proof chain is the one the FDRS engine carries natively, taken pre-packaged from
 Mathlib's continued fractions: `abs_sub_convs_le` (`|x − pₙ/qₙ| ≤ 1/(qₙqₙ₊₁)`, whose own

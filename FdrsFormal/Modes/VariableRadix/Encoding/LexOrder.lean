@@ -24,7 +24,6 @@ Defines the canonical ordering needed for Tick on variable-radix spaces.
 ## References
 
 - fdrs.md, Phase 5 Fragment 5.1, Section 3.1 (lines 4048-4052)
-- DEPENDENCY_BASED_STRUCTURE.md, Tier 18
 -/
 
 import FdrsFormal.Modes.VariableRadix.Encoding.SubtreeCards

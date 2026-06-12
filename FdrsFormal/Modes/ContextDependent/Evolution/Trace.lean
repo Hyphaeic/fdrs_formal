@@ -28,7 +28,6 @@ The trace captures the complete history of context evolution.
 ## References
 
 - fdrs.md, Phase 7, Section 7.2 (lines 5576-5587)
-- DEPENDENCY_BASED_STRUCTURE.md, Modes/ContextDependent/Evolution
 -/
 
 import FdrsFormal.Modes.ContextDependent.Evolution.StatefulSystem

@@ -9,7 +9,7 @@ Engineering corollaries establishing hierarchical scheduling foundation.
 
 ## References
 - fdrs.md Phase 1 Fragment 2 Section 5
-- Paper: Locality and finite dependence
+- Paper (external draft): Locality and finite dependence
 -/
 
 import FdrsFormal.Topology.Locality.Properties

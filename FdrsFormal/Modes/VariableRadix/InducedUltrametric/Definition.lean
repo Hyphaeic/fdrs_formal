@@ -38,7 +38,6 @@ where β_ω(s) = ∏_{i=0}^{|s|-1} ω(s_{<i}) is the odometer weight.
 
 - fdrs.md, Phase 5-6, Section 2 (lines 4010-4019)
 - fdrs.md, Phase 6, Definition 79 (lines 5135-5148)
-- DEPENDENCY_BASED_STRUCTURE.md, Modes/VariableRadix/InducedUltrametric
 -/
 
 import FdrsFormal.Modes.VariableRadix.PrefixWeights.Definition

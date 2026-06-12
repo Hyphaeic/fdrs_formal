@@ -26,7 +26,6 @@ Defines digit permutations S_{j,π} and their measure/norm preservation properti
 ## References
 
 - fdrs.md, Phase 2 Fragment 4, Section 3 (lines 1480-1504)
-- DEPENDENCY_BASED_STRUCTURE.md, Tier 9
 -/
 
 import FdrsFormal.FunctionSpaces.LocalOperators.Definition

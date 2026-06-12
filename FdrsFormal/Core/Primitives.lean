@@ -23,7 +23,7 @@ Re-exports all primitive definitions for mixed-radix systems:
 ## References
 
 - fdrs.md, Phase 1 Fragment 1, Section 1
-- Paper §2.1
+- Paper (external draft) §2.1
 -/
 
 import FdrsFormal.Core.Primitives.RadixSeq

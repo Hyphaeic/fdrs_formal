@@ -34,8 +34,7 @@ If transition c → c' is structure-preserving at depth L, then:
 ## References
 
 - fdrs.md, Phase 7, Section 7.4 (lines 5639-5694)
-- DEPENDENCY_BASED_STRUCTURE.md, Modes/ContextDependent/Preservation
-- Paper: THEOREM F
+- Paper (external draft): THEOREM F
 -/
 
 import FdrsFormal.Modes.ContextDependent.Preservation.DepthL

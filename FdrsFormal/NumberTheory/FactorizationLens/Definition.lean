@@ -35,7 +35,7 @@ Each u-fiber evolves independently under P-smooth operations.
 ## References
 
 - fdrs.md, Phase 3 Fragment 4 (lines 2228-2476), Phase 4 Fragment 1 (lines 2488-2513)
-- Paper §8.1-8.2, Definition 8.2
+- Paper (external draft) §8.1-8.2, Definition 8.2
 -/
 
 import FdrsFormal.NumberTheory.Valuations

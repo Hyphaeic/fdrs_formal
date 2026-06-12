@@ -30,7 +30,6 @@ where ℰ is an event space. Γ(c, e) = c' means:
 ## References
 
 - fdrs.md, Phase 7, Section 7.2 (lines 5540-5550)
-- DEPENDENCY_BASED_STRUCTURE.md, Modes/ContextDependent/Evolution
 -/
 
 import FdrsFormal.Modes.ContextDependent.Basic.Basic

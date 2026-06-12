@@ -62,8 +62,7 @@ See: `Realizability/Realizability.lean`
 ## References
 
 - fdrs.md, Phase 5-6 (Variable Radix Systems)
-- DEPENDENCY_BASED_STRUCTURE.md, Modes/VariableRadix
-- Paper: §6.3, Theorems A and B
+- Paper (external draft): §6.3, Theorems A and B
 -/
 
 -- Basic definitions

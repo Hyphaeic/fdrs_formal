@@ -28,8 +28,7 @@ For the induced ultrametric δ_ω from an SU radix function:
 ## References
 
 - fdrs.md, Phase 6, Section 6.6 (lines 5393-5395)
-- DEPENDENCY_BASED_STRUCTURE.md, Modes/VariableRadix/Realizability
-- Paper: Theorem B (§6.3), necessity direction
+- Paper (external draft): Theorem B (§6.3), necessity direction
 -/
 
 import FdrsFormal.Modes.VariableRadix.Realizability.Conditions

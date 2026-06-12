@@ -10,7 +10,7 @@ Properties of the completed space ℛ̂.
 
 ## References
 - fdrs.md Phase 1 Fragment 3
-- Paper: Topological properties
+- Paper (external draft): Topological properties
 -/
 
 import FdrsFormal.Topology.Compactness.Properties

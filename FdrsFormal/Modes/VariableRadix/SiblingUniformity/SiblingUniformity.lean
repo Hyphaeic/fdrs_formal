@@ -25,8 +25,7 @@ Aggregator for the sibling uniformity condition.
 ## References
 
 - fdrs.md, Phase 5-6, Section 1 (lines 4683-4720)
-- DEPENDENCY_BASED_STRUCTURE.md, Modes/VariableRadix/SiblingUniformity
-- Paper: Fragment 5.4
+- Paper (external draft): Fragment 5.4
 -/
 
 import FdrsFormal.Modes.VariableRadix.SiblingUniformity.Definition

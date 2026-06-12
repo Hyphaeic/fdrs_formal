@@ -10,7 +10,7 @@ Addition operator ⊕: R × R → R defined as τ ⊕ σ = enc(dec(τ) + dec(σ)
 
 ## References
 - fdrs.md Phase 1 Fragment 2 Section 3
-- Paper: Arithmetic operations
+- Paper (external draft): Arithmetic operations
 -/
 
 import FdrsFormal.Operations.Addition.Correctness

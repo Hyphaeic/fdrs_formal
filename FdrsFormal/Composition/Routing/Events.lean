@@ -25,7 +25,6 @@ Defines the event types for timeline communication and the routing function sign
 ## References
 
 - fdrs.md, Phase 8, Section 8.2 (lines 5976-6004)
-- DEPENDENCY_BASED_STRUCTURE.md, Tier 22
 -/
 
 import FdrsFormal.Composition.Routing.Definition

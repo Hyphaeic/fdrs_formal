@@ -27,8 +27,7 @@ The p-adic ultrametrics are minimal in the spectrum ordering:
 ## References
 
 - fdrs.md, Phase 6, Section 6.6
-- DEPENDENCY_BASED_STRUCTURE.md, Modes/VariableRadix/Realizability
-- Paper: Theorem B (§6.3)
+- Paper (external draft): Theorem B (§6.3)
 -/
 
 import FdrsFormal.Modes.VariableRadix.Realizability.Spectrum

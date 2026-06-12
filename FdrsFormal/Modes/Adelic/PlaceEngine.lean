@@ -36,12 +36,13 @@ single-stream driver. Two instances are supplied:
 (`BihomographicDriver`: *"the emission correctness is the proven `emit_traps`; the
 scheduling is engineering; the two are cleanly separable"*). So `PlaceEngine` carries only
 the executable operations; the *certificates* live beside it as the proven per-place
-theorems: `padic_emit_traps` (✅, M0d) at `p`, and `emitReady_traps` (✅, the two-stream
+theorems: `padic_emit_traps` (M0d) at `p`, and `emitReady_traps` (the two-stream
 four-corner trap) at `∞` — with a single-stream `∞` floor-trap a noted follow-up (the
 corpus proves the bihomographic trap; `RemainderState.emitDigit` uses truncating `/`, so a
-clean single-stream statement carries the `fdiv`-vs-`/` caveat the handoff flags).
+clean single-stream statement carries the `fdiv`-vs-`/` caveat recorded in
+`docs/archive/gosper-fdrs-handoff.md`).
 
-This is M0.5 of the adelic roadmap (`docs/adelic-machine/05`): the refactor that lets the
+This is M0.5 of the adelic roadmap (`docs/archive/adelic-machine/05`): the refactor that lets the
 M1 two-place complex drive heterogeneous place-engines through one scheduler. Leaf module
 (imports the `∞` ledger + the M0 `p` ledger). No `sorry`; axiom-clean.
 -/
@@ -88,7 +89,7 @@ end PlaceEngine
 /-- **The Archimedean place engine** (`∞`): the existing single-stream Gosper ledger
 `RemainderState`. `absorb` is the CF read `step` (a partial quotient `≥ 1`); `emit`,
 `candidate = emitDigit`, `ready = emitReady` are its homographic-carry duals. The proven
-`∞` certificate is the four-corner `emitReady_traps` (✅). -/
+`∞` certificate is the four-corner `emitReady_traps`. -/
 def archEngine : PlaceEngine RemainderState where
   absorb := fun a r => r.step a.toNat
   emit := RemainderState.emit
@@ -98,7 +99,7 @@ def archEngine : PlaceEngine RemainderState where
 /-- **The p-adic place engine** (`p`): the M0 single-stream Hensel ledger `PadicLedger`.
 `absorb`/`emit` are the shift recurrence; `candidate` is the forced Hensel digit as its
 integer residue in `{0,…,p−1}`; `ready` is the congruence gate. The proven `p` certificate
-is `padic_emit_traps` (✅, M0d) — congruence, not order. -/
+is `padic_emit_traps` (M0d) — congruence, not order. -/
 def padicEngine (p : ℕ) [Fact p.Prime] : PlaceEngine PadicLedger where
   absorb := PadicLedger.absorb (p : ℤ)
   emit := PadicLedger.emitStep (p : ℤ)   -- emit + reduceOnce: stay primitive so iteration works
@@ -111,7 +112,7 @@ instance : Fact (Nat.Prime 5) := ⟨by norm_num⟩
 
 -- p-adic place: the Demo B map `(3x+2)/(5x+1)` over `ℤ₅`, fed the Hensel digits of
 -- `x = 2/3` (= `[4,1,3,1,3,…]`), emits the Hensel digits of `M(2/3) = 12/13` — which are
--- `[4,4,1,0,3,…]` (verified exactly by the scratch validator). All congruence, no float.
+-- `[4,4,1,0,3,…]` (matching the archived design's numerical validator). All congruence, no float.
 #eval PlaceEngine.run (padicEngine 5) ⟨3, 2, 5, 1⟩ [4, 1, 3, 1, 3, 1, 3, 1] 40
 
 -- Archimedean place: the same generic runner drives the single-stream `∞` ledger

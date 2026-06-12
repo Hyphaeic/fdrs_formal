@@ -35,7 +35,6 @@ contexts in some finite reachable set 𝒞_reach ⊆ 𝒞.
 ## References
 
 - fdrs.md, Phase 7, Section 7.3 (lines 5613-5627)
-- DEPENDENCY_BASED_STRUCTURE.md, Modes/ContextDependent/Realization
 -/
 
 import FdrsFormal.Modes.ContextDependent.Evolution.Evolution

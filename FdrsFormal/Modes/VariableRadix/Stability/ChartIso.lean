@@ -32,7 +32,6 @@ Under sibling uniformity, this isomorphism preserves:
 ## References
 
 - fdrs.md, Phase 5-6, Fragment 5.2
-- DEPENDENCY_BASED_STRUCTURE.md, Modes/VariableRadix/Stability
 -/
 
 import FdrsFormal.Modes.VariableRadix.Encoding.Encoding

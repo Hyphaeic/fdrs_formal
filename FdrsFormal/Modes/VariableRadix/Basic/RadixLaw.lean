@@ -30,7 +30,6 @@ a rooted tree T_ω whose node s has ω(s) children.
 ## References
 
 - fdrs.md, Phase 5-6, Section 1.1 (lines 3956-3968)
-- DEPENDENCY_BASED_STRUCTURE.md, Modes/VariableRadix/Basic
 -/
 
 import FdrsFormal.Core.Primitives

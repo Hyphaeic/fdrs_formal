@@ -30,8 +30,7 @@ and finite branching:
 ## References
 
 - fdrs.md, Phase 6, Section 6.6 (lines 5396-5402)
-- DEPENDENCY_BASED_STRUCTURE.md, Modes/VariableRadix/Realizability
-- Paper: Theorem B (§6.3), sufficiency direction
+- Paper (external draft): Theorem B (§6.3), sufficiency direction
 -/
 
 import FdrsFormal.Modes.VariableRadix.Realizability.Necessity

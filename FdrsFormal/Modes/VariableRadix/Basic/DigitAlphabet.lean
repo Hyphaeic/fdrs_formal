@@ -27,7 +27,6 @@ The digit at position |s| can be any value in D_ω(s).
 ## References
 
 - fdrs.md, Phase 5-6, Section 1.1 (lines 3962-3965)
-- DEPENDENCY_BASED_STRUCTURE.md, Modes/VariableRadix/Basic
 -/
 
 import FdrsFormal.Modes.VariableRadix.Basic.RadixLaw

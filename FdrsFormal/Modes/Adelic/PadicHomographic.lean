@@ -27,18 +27,18 @@ determinant `p`).
 So every absorb/emit multiplies the determinant by `p`, and the within-place exactness
 invariant is **not** `|det| = 1` but `det = p^{#steps}` (`v_p(det) = #steps`): the ledger
 is exact, but its determinant is a pure power of `p` rather than a unit (design
-`docs/adelic-machine/04` §2, `03` §3b; scratch `NOTES.md` §1). Everything here is pure
+`docs/archive/adelic-machine/04` §2, `03` §3b; scratch `NOTES.md` §1, same archive). Everything here is pure
 `ℤ` arithmetic — no order, no floor, no float (the p-adic emission *certificate* of
 M0b–M0d is a congruence, not an order trap).
 
-This file is **M0a** of the adelic build roadmap (`docs/adelic-machine/05`): the ledger,
+This file is **M0a** of the adelic build roadmap (`docs/archive/adelic-machine/05`): the ledger,
 the absorb/emit recurrence, the determinant law, and the `det = p^{#steps}` exactness
 invariant — plus the two-stream `PadicBihTensor` (Axis I at `p`) and its channel
 commutations, the pure-`ℤ` algebra that transfers verbatim from `BihTensor`. Candidate /
 readiness (M0b) and soundness (M0c/M0d) live in sibling modules.
 
 Provenance: the *algebra* mirrors the verified corpus structures `RemainderState` /
-`BihTensor` (✅); the *p-adic shift recurrence and the `det ↦ p·det` law* are new (this
+`BihTensor`; the *p-adic shift recurrence and the `det ↦ p·det` law* are new (this
 file), proved by the same `det_step` / `congr 1 <;> ring` idioms. Leaf module: nothing
 imports it. No `sorry`; axiom-clean.
 -/
@@ -143,7 +143,7 @@ theorem det_applyOps (p : ℤ) (r : PadicLedger) (ops : List Op) :
 any sequence of `k` *raw* absorb/emit operations the determinant is *exactly* `p^k`. This
 is the within-place analogue of the CF `bracket_invariant` (`|det| = 1`): the p-adic
 ledger never rounds, but its determinant is a pure power of `p` (so `v_p(det) = #steps`)
-rather than a unit (design `04` §2).
+rather than a unit (archived design `04` §2).
 
 NB: the *operative* transducer renormalizes after each emit (`reduceOnce`, M0b) — a valid
 emit leaves a spurious common factor of `p`, divided out to keep the ledger primitive — so
@@ -166,14 +166,15 @@ end PadicLedger
 /-! ## 2. The two-stream p-adic tensor (Axis I at `p`)
 
 The two-input combinator at a non-Archimedean place. Same 8-field `ℤ` shape as the
-Archimedean `BihTensor` — the tensor *algebra* is place-agnostic (design `02` §1/§3) —
+Archimedean `BihTensor` — the tensor *algebra* is place-agnostic (archived design `02` §1/§3) —
 but with Hensel *shift* reads in place of CF inversion. The three channel commutations
 (both inputs and the output pairwise commute) transfer verbatim: each operation acts on
 an independent leg, so they commute by `ring`, exactly as for `BihTensor`.
 
 NB (honesty): unlike the single-stream ledger, the *tensor* carries **no** clean scalar
 determinant invariant. Whether a `|det|=1`-style quantity is conserved across a node's
-two inputs and its output is the handoff's **open** frontier #1 — not claimed here. -/
+two inputs and its output is an **open** frontier (recorded in
+`docs/archive/gosper-fdrs-handoff.md`) — not claimed here. -/
 
 /-- The p-adic bihomographic tensor
 `z = (a·xy + b·x + c·y + d)/(e·xy + f·x + g·y + h)`, two inputs `x, y ∈ ℤ_p`. Flat 8-field

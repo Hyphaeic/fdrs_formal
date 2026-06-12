@@ -32,7 +32,6 @@ This counts the number of valid completions of prefix s to depth k.
 ## References
 
 - fdrs.md, Phase 5-6, Section 3 (lines 4056-4069)
-- DEPENDENCY_BASED_STRUCTURE.md, Modes/VariableRadix/Encoding
 -/
 
 import FdrsFormal.Modes.VariableRadix.Basic.Basic

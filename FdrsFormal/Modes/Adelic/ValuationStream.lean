@@ -35,8 +35,8 @@ machine's *output*, with no appeal to factorization.
 **Honest scope (the bright line).** This closes the **non-Archimedean** half: `v_p(x)` is
 read *exactly* off a *finite* emitted prefix (the p-adic digits stabilize finitely). It
 does **not** close the **Archimedean** half — the running product `= 1` over *live*
-prefixes, where `|x|_∞` only *converges* — that is **M4b** (the gauge bound, `04` §3.3),
-still open. And the bridge is proved for the *canonical* digit list `Nat.digits p n`, which
+prefixes, where `|x|_∞` only *converges* — that is **M4b**, proven in `GaugeBound.lean`
+(its conservation hypothesis discharged on `ℚˣ` by `ProductFormulaRat.lean`). And the bridge is proved for the *canonical* digit list `Nat.digits p n`, which
 the p-adic engine emits (demonstrated below by `#eval`); the *full* driver-correctness proof
 (`PlaceEngine.run` output ≡ `Nat.digits` as a prefix) is a separate obligation, not claimed
 here. Leaf module. No `sorry`; axiom-clean.

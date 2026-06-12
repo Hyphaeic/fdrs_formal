@@ -29,7 +29,6 @@ and digit permutations.
 ## References
 
 - fdrs.md, Phase 2 Fragment 4, Sections 3-4 (lines 1430-1543)
-- DEPENDENCY_BASED_STRUCTURE.md, Tier 9
 -/
 
 import FdrsFormal.FunctionSpaces.Commutant.MultiLevelCommutant

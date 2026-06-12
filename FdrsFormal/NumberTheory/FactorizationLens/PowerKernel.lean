@@ -26,7 +26,6 @@ lower-triangular convolutions in the valuation coordinate.
 ## References
 
 - fdrs.md, Phase 3 Fragment 3, Section 3.2-3.4 (lines 2181-2193)
-- DEPENDENCY_BASED_STRUCTURE.md, Tier 13
 -/
 
 import FdrsFormal.NumberTheory.FactorizationLens.Definition

@@ -26,7 +26,6 @@ Place values using effective base, with monotonicity and recovery properties.
 ## References
 
 - fdrs.md, Phase 9, Section 9.2 (lines 6913-6929)
-- DEPENDENCY_BASED_STRUCTURE.md, Tier 20
 -/
 
 import FdrsFormal.Modes.ExtendedBase.IndexSets

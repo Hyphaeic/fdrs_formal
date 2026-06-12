@@ -24,7 +24,6 @@ Defines the three computational modes for context-dependent systems.
 ## References
 
 - fdrs.md, Phase 7, Section 7.3 (lines 5601-5609)
-- DEPENDENCY_BASED_STRUCTURE.md, Modes/ContextDependent/Realization
 -/
 
 import FdrsFormal.Modes.ContextDependent.Realization.Strategies

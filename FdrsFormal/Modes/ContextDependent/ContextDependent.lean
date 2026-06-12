@@ -64,8 +64,7 @@ See: `Preservation/OperatorPreserved.lean`
 ## References
 
 - fdrs.md, Phase 7 (Context-Dependent Radix Systems)
-- DEPENDENCY_BASED_STRUCTURE.md, Modes/ContextDependent
-- Paper: §7, Theorems E and F
+- Paper (external draft): §7, Theorems E and F
 -/
 
 -- Basic definitions

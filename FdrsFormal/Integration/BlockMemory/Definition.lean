@@ -29,7 +29,6 @@ L digits of the current position τ.
 ## References
 
 - fdrs.md, Phase 4, Section 4.1 (Block Memory)
-- DEPENDENCY_BASED_STRUCTURE.md, Integration/BlockMemory
 -/
 
 import FdrsFormal.Core

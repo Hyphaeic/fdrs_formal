@@ -28,7 +28,6 @@ This shows the flexibility of variable radix systems for metric design.
 ## References
 
 - fdrs.md, Phase 6, Section 6.4 (lines 5260-5275)
-- DEPENDENCY_BASED_STRUCTURE.md, Modes/VariableRadix/Realizability
 -/
 
 import FdrsFormal.Modes.VariableRadix.Realizability.Spectrum

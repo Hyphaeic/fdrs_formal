@@ -31,7 +31,6 @@ Key examples:
 ## References
 
 - fdrs.md, Phase 3 Fragment 1, Section 2.1 (lines 1612-1620)
-- DEPENDENCY_BASED_STRUCTURE.md, NumberTheory/ArithmeticFunctions
 -/
 
 import Mathlib.Data.Nat.Prime.Basic

@@ -27,7 +27,6 @@ This follows from the definition of φ_ω as counting lexicographically smaller 
 ## References
 
 - fdrs.md, Phase 5-6, Section 3 (lines 4080-4091)
-- DEPENDENCY_BASED_STRUCTURE.md, Modes/VariableRadix/Encoding
 -/
 
 import FdrsFormal.Modes.VariableRadix.Encoding.Ranking

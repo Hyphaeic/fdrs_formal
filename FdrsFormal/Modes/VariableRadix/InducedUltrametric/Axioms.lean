@@ -30,7 +30,6 @@ Exponentiating by ρ^{(·)} yields the ultrametric inequality.
 ## References
 
 - fdrs.md, Phase 5-6, Section 2 (lines 4021-4033)
-- DEPENDENCY_BASED_STRUCTURE.md, Modes/VariableRadix/InducedUltrametric
 -/
 
 import FdrsFormal.Modes.VariableRadix.InducedUltrametric.Definition

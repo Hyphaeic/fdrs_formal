@@ -29,7 +29,6 @@ Alternatively, T(τ) is the lexicographic successor of τ (with wraparound).
 ## References
 
 - fdrs.md, Phase 5-6, Section 4 (lines 4099-4117)
-- DEPENDENCY_BASED_STRUCTURE.md, Modes/VariableRadix/VariableTick
 -/
 
 import FdrsFormal.Modes.VariableRadix.Encoding.Encoding

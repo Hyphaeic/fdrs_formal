@@ -20,7 +20,7 @@ Defines place values B_m = ∏_{i=0}^{m-1} b_i (cumulative radix products).
 ## References
 
 - fdrs.md, Phase 1 Fragment 1, Section 1 (lines 9-15)
-- Paper §2.1
+- Paper (external draft) §2.1
 -/
 
 import FdrsFormal.Core.Primitives.RadixSeq

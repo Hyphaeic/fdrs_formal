@@ -13,7 +13,7 @@ This is the foundation that all other modules build upon.
 ## References
 - fdrs.md Phase 1 Fragment 1 Sections 1-3
 - fdrs.md Phase 12 Sections 12.1-12.2
-- Paper §2.1-2.2
+- Paper (external draft) §2.1-2.2
 -/
 
 import FdrsFormal.Core.Primitives

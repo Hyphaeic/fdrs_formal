@@ -32,16 +32,16 @@ Aggregator for the Commutant submodule.
 
 ```
 Commutant/
-├── FiniteHorizon.lean       ✅ Finite cylinders U_k(s), uniform measure μ_k
-├── FiniteProjection.lean    ✅ P_L^(k), Δ_L^(k), projection algebra
-├── Contraction.lean         🔴 Lp norm bounds (Thm 4.1)
-├── BlockDiagonal.lean       🔴 Commutation theorem (Thm 5.2)
-├── Compatibility.lean       🔴 Truncation/embedding (Prop 6.2)
-├── Multiresolution.lean     🔴 Coarse/detail subspaces (Defs 1.1-1.2)
-├── OrthogonalDecomp.lean    🔴 Orthogonal decomposition (Thm 1.4)
-├── MultiLevelCommutant.lean 🔴 Multi-level commutant (Thm 2.2)
-├── LocalityVsCommutation.lean 🔴 Locality theory (Props 3.3-3.4, Thm 3.5)
-└── TickPullback.lean        🔴 Tick dynamics (Thm 4.5, Props 4.3-4.4)
+├── FiniteHorizon.lean       Finite cylinders U_k(s), uniform measure μ_k
+├── FiniteProjection.lean    P_L^(k), Δ_L^(k), projection algebra
+├── Contraction.lean         Lp norm bounds (Thm 4.1)
+├── BlockDiagonal.lean       Commutation theorem (Thm 5.2)
+├── Compatibility.lean       Truncation/embedding (Prop 6.2)
+├── Multiresolution.lean     Coarse/detail subspaces (Defs 1.1-1.2)
+├── OrthogonalDecomp.lean    Orthogonal decomposition (Thm 1.4)
+├── MultiLevelCommutant.lean Multi-level commutant (Thm 2.2)
+├── LocalityVsCommutation.lean Locality theory (Props 3.3-3.4, Thm 3.5)
+└── TickPullback.lean        Tick dynamics (Thm 4.5, Props 4.3-4.4)
 ```
 
 ## Current Status
@@ -54,7 +54,6 @@ Commutant/
 
 - fdrs.md: Phase 2, Fragments 2-3 (lines 773-1278)
 - THEOREM_MAPPING.md: FunctionSpaces/Commutant section
-- DEPENDENCY_BASED_STRUCTURE.md: Tier 6-9 (FunctionSpaces module)
 -/
 
 import FdrsFormal.FunctionSpaces.Commutant.FiniteHorizon

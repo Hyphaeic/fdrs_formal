@@ -35,7 +35,6 @@ This is the boundary/path space of the rooted tree T_ω.
 ## References
 
 - fdrs.md, Phase 5-6, Section 1.1-1.2 (lines 3971-3992)
-- DEPENDENCY_BASED_STRUCTURE.md, Modes/VariableRadix/Basic
 -/
 
 import FdrsFormal.Modes.VariableRadix.Basic.TreeStructure

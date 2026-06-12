@@ -129,12 +129,12 @@ per-edge ratios.
 | SU6b currency-generic balance + two currencies (`CurrencyBalance.lean`) | ✅ BUILT |
 | SU6c shared clock + length-window accountability (`WindowAccountability.lean`) | ✅ BUILT |
 | SU6d nested chart, gauge half (`NestedChain.lean`): synthetic fractions (`refined_potential_inside`, composite gauge `B_p·C_j`), gauge-lossless splice (`refined_potential_top/above`), `nested_dilation_gauge` | ✅ BUILT |
-| Dilation theorem, dynamic half (tick conjugation through the chart) | open (gauge half done) |
-| Window boundary beyond three points (clock-deducible conjecture) | open |
-| Comultiplication / multi-edge fan-out; network `Config` | open (next arc) |
-| `NestedLaw` (prefix-dependent version of the nested chart) | open (chain core done) |
-| Non-blocking couplability (relational `J`, empty-fiber reachability via SU2) | open |
-| Mutual coupling well-formedness (per-step dependency acyclicity, reuse Phase 8) | open |
+| SU6d′ dilation, dynamic half (`NestedDilation.lean`): exact splice is a valid radix line (`refineBase_ge_two`), ℕ moduli agreement, **re-blocking identity** (`refined_digit_reblock` — outer digit = inner decode of block digits), `dilation_tick` (one outer unit = `B_p`-fold inner tick). **Exact nesting is conservative: resolution, never arithmetic** | ✅ BUILT |
+| SU6c′ window boundary (`WindowBoundary.lean`): **CLOSED for the alternating machine** — `issued_placeLocal_iff_grantUniform` (accountable ⟺ grant-uniform across co-reachable same-source contexts); clock ⟸ uniform, content ⟸ not (kernel-checked). Free-scheduler case → `04-network-config.md` | ✅ BUILT |
+| Comultiplication / multi-edge fan-out; network `Config` | → folded into `04-network-config.md` (SU7 arc) |
+| Non-blocking couplability (relational `J`, empty-fiber reachability via SU2) | → folded into `04-network-config.md` (SU7 arc) |
+| Mutual coupling well-formedness (per-step dependency acyclicity, reuse Phase 8) | → folded into `04-network-config.md` (SU7 arc; acyclicity = dependency *grading*) |
+| `NestedLaw` (prefix-dependent version of the nested chart) | open (chain core + conservativity done) |
 
 ## 8. Anti-confabulation ledger (SU6 additions; prior ledgers inherited)
 

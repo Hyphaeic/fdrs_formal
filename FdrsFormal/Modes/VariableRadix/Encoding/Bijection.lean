@@ -36,8 +36,7 @@ This is **THEOREM A** from the FDRS paper (§6.3).
 ## References
 
 - fdrs.md, Phase 5-6, Section 3 (lines 4080-4091)
-- DEPENDENCY_BASED_STRUCTURE.md, Modes/VariableRadix/Encoding
-- Paper: Theorem A (§6.3)
+- Paper (external draft): Theorem A (§6.3)
 -/
 
 import FdrsFormal.Modes.VariableRadix.Encoding.OrderPreserving

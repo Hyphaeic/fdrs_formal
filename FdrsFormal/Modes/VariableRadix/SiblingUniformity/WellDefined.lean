@@ -28,7 +28,6 @@ This allows us to define a uniform block size function.
 ## References
 
 - fdrs.md, Phase 5-6, Section 1 (lines 4698-4720)
-- DEPENDENCY_BASED_STRUCTURE.md, Modes/VariableRadix/SiblingUniformity
 -/
 
 import FdrsFormal.Modes.VariableRadix.SiblingUniformity.Definition

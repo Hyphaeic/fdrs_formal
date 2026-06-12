@@ -34,7 +34,6 @@ for all x, y. The finer metric δ_{c'} dominates δ_c.
 ## References
 
 - fdrs.md, Phase 7, Section 7.4 (lines 5672-5694)
-- DEPENDENCY_BASED_STRUCTURE.md, Modes/ContextDependent/Preservation
 -/
 
 import FdrsFormal.Modes.ContextDependent.Preservation.DepthL

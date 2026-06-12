@@ -10,7 +10,7 @@ Defines the relationship between prefix constraints and congruence modulo place 
 
 ## References
 - fdrs.md Phase 1 Fragment 2 Section 1
-- Paper: Cylinder sets and congruence classes
+- Paper (external draft): Cylinder sets and congruence classes
 -/
 
 import FdrsFormal.Topology.PrefixCongruence.Definition

@@ -42,9 +42,9 @@ the concrete M0c over the genuine object, **not** a new hard proof (roadmap `05`
 "given the trap, the emission is sound." The complementary *liveness* fact — that the
 ledger *reaches* the pinned state after finitely many `absorb`s (the digit stabilizes once
 a finite input prefix is known) — is the corpus keystone `residue_depends_on_prefix`
-(`NumberTheory/CylinderMeasurability.lean`, ✅) specialized to constant base `p`; it
+(`NumberTheory/CylinderMeasurability.lean`) specialized to constant base `p`; it
 belongs to the driver milestone, not to this local-soundness theorem. Conflating the two
-is the error `04` §4 warns against; they are kept separate here.
+is the error the archived design `04` §4 warns against; they are kept separate here.
 
 Leaf module (imports M0b/M0c + Mathlib `PadicInt`). No `sorry`; axiom-clean.
 -/

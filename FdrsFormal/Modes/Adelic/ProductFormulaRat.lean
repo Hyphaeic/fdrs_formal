@@ -28,7 +28,7 @@ supports are **disjoint** (`Nat.Coprime.disjoint_primeFactors`) and the product 
 the joint support `ratSupport x = supp(num) ∪ supp(den)` splits with no interaction
 terms — at a numerator prime the denominator's norm is exactly `1`, and vice versa
 (`padicNorm.nat_eq_one_iff`). Everything stays in exact `ℚ`; no float, no `ℝ`, no
-heavyweight adele-ring import (the no-floats discipline, design `02` §7 / `06` §5).
+heavyweight adele-ring import (the no-floats discipline, archived design `02` §7 / `06` §5).
 
 Contents:
 
@@ -45,7 +45,7 @@ Contents:
   finite-precision Axis-II invariant is now self-contained on `ℚˣ`.
 
 **Honest scope.** The lift is classical bookkeeping over the already-proven M4a core —
-no new mathematics, exactly as `04`/`06` would record it. Still open and untouched
+no new mathematics, exactly as the archived design `04`/`06` records. Still open and untouched
 here: M3 (the restricted product over all places), the genuinely synthetic instances
 (global function fields — the empty, correctly-typed `AdelicLaw` slot), and the live
 Archimedean stream side of M4b beyond what `GaugeBound.lean` already proves. Leaf
@@ -238,8 +238,8 @@ theorem gauge_product_tendsto_rat (x : ℚ) (hx : x ≠ 0) :
 -- `x = -12/5`: support `{2, 3, 5}`; `|x|·|x|_2·|x|_3·|x|_5 = (12/5)·(1/4)·(1/3)·5 = 1`.
 #eval ratSupport (-12/5 : ℚ)
 #eval |(-12/5 : ℚ)| * ∏ p ∈ ratSupport (-12/5 : ℚ), padicNorm p (-12/5 : ℚ)
--- `x = 355/113` (the M4b demo value): the p-adic product is `113/355` — previously the
--- hand-supplied constant in `GaugeBound.lean`, now computed from the support:
+-- `x = 355/113` (the M4b demo value): the p-adic product is `113/355` — the constant
+-- `GaugeBound.lean`'s demo supplies by hand, here computed from the support:
 #eval ∏ p ∈ ratSupport (355/113 : ℚ), padicNorm p (355/113 : ℚ)
 #eval |(355/113 : ℚ)| * ∏ p ∈ ratSupport (355/113 : ℚ), padicNorm p (355/113 : ℚ)
 -- the running adelic product of `355/113` along its convergents, → 1 (cf. `gauge_bound_rat`):

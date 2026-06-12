@@ -29,7 +29,6 @@ This is the weighted positional sum where β_ω(τ_{<i}) is the place value at p
 ## References
 
 - fdrs.md, Phase 5-6, Section 2 (lines 4733-4740)
-- DEPENDENCY_BASED_STRUCTURE.md, Modes/VariableRadix/PrefixWeights
 -/
 
 import FdrsFormal.Modes.VariableRadix.PrefixWeights.Definition

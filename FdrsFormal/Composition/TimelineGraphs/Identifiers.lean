@@ -25,7 +25,6 @@ Defines the timeline identifier space and timeline graph tuple (𝒯, 𝒥, ρ).
 ## References
 
 - fdrs.md, Phase 8, Section 8.1 (lines 5920-5948)
-- DEPENDENCY_BASED_STRUCTURE.md, Tier 22
 -/
 
 import FdrsFormal.Composition.TimelineGraphs.Definition

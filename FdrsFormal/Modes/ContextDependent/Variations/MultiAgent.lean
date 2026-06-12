@@ -34,7 +34,6 @@ Agents A and B have coupled evolution if their context dynamics interact:
 ## References
 
 - fdrs.md, Phase 7, Section 7.5 (lines 5696-5761)
-- DEPENDENCY_BASED_STRUCTURE.md, Modes/ContextDependent/Variations
 -/
 
 import FdrsFormal.Modes.ContextDependent.Variations.Stochastic

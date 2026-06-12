@@ -18,7 +18,7 @@ permissions and limitations under the License.
 The final state of the machine for `ℚ`, as a *generic interface* rather than a single
 implementation: the "Version 2.0" scaffold. The product formula `∏_v |x|_v = 1` becomes an
 **interface requirement** — a *proof obligation* an instance must discharge, never an
-assumed axiom (that would be "declare victory in axiom costume", `06` §5).
+assumed axiom (that would be "declare victory in axiom costume", archived design `06` §5).
 
 * **`AdelicLaw Place α`** — the FDRS-native Artin–Whaple axiomatization: a family of places
   `Place` carrying `ℚ`-valued absolute values `val`, a finite support per quantity, and a

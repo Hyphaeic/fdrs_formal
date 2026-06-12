@@ -28,7 +28,6 @@ with a movable radix wall.
 ## References
 
 - fdrs.md, Phase 9, Section 9.8 (lines 7082-7124)
-- DEPENDENCY_BASED_STRUCTURE.md, Tier 21
 -/
 
 import FdrsFormal.Modes.ExtendedBase.Definition

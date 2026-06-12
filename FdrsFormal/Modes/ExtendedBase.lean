@@ -27,7 +27,6 @@ Aggregator for the extended base mode with distinguished 0/1 digits.
 ## References
 
 - fdrs.md, Phase 6 Section 6.3, Phase 9 (lines 6890-7035)
-- DEPENDENCY_BASED_STRUCTURE.md, Tier 20-21
 -/
 
 import FdrsFormal.Modes.ExtendedBase.Definition

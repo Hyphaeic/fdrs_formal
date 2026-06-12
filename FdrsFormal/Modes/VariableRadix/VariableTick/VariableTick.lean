@@ -27,7 +27,6 @@ Aggregator for the variable radix Tick operator.
 ## References
 
 - fdrs.md, Phase 5-6, Section 4-5 (lines 4099-4160)
-- DEPENDENCY_BASED_STRUCTURE.md, Modes/VariableRadix/VariableTick
 -/
 
 import FdrsFormal.Modes.VariableRadix.VariableTick.Definition

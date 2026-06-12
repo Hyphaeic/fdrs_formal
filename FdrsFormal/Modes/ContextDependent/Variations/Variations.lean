@@ -25,7 +25,6 @@ Aggregator for context system variations.
 ## References
 
 - fdrs.md, Phase 7, Sections 7.5, 7.7 (lines 5696-5761, 5820-5840)
-- DEPENDENCY_BASED_STRUCTURE.md, Modes/ContextDependent/Variations
 -/
 
 import FdrsFormal.Modes.ContextDependent.Variations.Stochastic

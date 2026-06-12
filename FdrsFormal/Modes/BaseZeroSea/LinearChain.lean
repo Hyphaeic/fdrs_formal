@@ -13,14 +13,14 @@ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or
 implied. See the License for the specific language governing
 permissions and limitations under the License.
 
-# Base-Zero Sea: Linear-Chain Operational Semantics (strengthened Theorem 64)
+# Base-Zero Sea: Linear-Chain Operational Semantics (Theorem 64, substantive form)
 
 This file wires the abstract coupled-digit layer (`CoupledDigitNetwork`,
-Definition 163) to the *proven* Phase 9 spatial-tick infrastructure, turning
-Theorem 64 from the vacuous statement in `Modules.lean`
-(`classicalMixedRadixLine`, whose conclusion is `… → True` plus a restated
-hypothesis) into a genuine projection-equivalence — the exact analogue, one
-layer up, of how Theorem 63 (`phase9_specialCase`) reduces to Theorem 61.
+Definition 163) to the *proven* Phase 9 spatial-tick infrastructure. It gives
+Theorem 64 its substantive form: `Modules.lean`'s `classicalMixedRadixLine`
+(whose conclusion is `… → True` plus a restated hypothesis) states the claim
+vacuously; here it is a genuine projection-equivalence — the exact analogue,
+one layer up, of how Theorem 63 (`phase9_specialCase`) reduces to Theorem 61.
 
 ## Why a new state type is needed
 

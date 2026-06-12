@@ -28,7 +28,6 @@ within k iterations (either finding a non-maximal digit or wrapping).
 ## References
 
 - fdrs.md, Phase 5-6, Section 5 (lines 4148-4160)
-- DEPENDENCY_BASED_STRUCTURE.md, Modes/VariableRadix/VariableTick
 -/
 
 import FdrsFormal.Modes.VariableRadix.VariableTick.CarryAlgorithm

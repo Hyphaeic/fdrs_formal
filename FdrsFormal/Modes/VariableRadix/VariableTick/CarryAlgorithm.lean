@@ -33,7 +33,6 @@ This is the variable-radix generalization of the fixed-radix carry rule.
 ## References
 
 - fdrs.md, Phase 5-6, Section 4 (lines 4119-4134)
-- DEPENDENCY_BASED_STRUCTURE.md, Modes/VariableRadix/VariableTick
 -/
 
 import FdrsFormal.Modes.VariableRadix.VariableTick.Definition

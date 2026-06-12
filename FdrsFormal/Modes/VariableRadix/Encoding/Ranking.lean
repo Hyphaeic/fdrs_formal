@@ -33,7 +33,6 @@ where the second decode is relative to the subtree rooted at d_0.
 ## References
 
 - fdrs.md, Phase 5-6, Section 3 (lines 4071-4078)
-- DEPENDENCY_BASED_STRUCTURE.md, Modes/VariableRadix/Encoding
 -/
 
 import FdrsFormal.Modes.VariableRadix.Encoding.SubtreeCards

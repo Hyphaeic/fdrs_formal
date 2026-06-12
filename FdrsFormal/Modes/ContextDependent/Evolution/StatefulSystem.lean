@@ -34,7 +34,6 @@ where:
 ## References
 
 - fdrs.md, Phase 7, Section 7.2 (lines 5552-5574)
-- DEPENDENCY_BASED_STRUCTURE.md, Modes/ContextDependent/Evolution
 -/
 
 import FdrsFormal.Modes.ContextDependent.Evolution.ContextDynamics

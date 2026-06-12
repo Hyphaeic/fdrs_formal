@@ -33,7 +33,6 @@ odometer properties at each instant.
 ## References
 
 - fdrs.md, Phase 7, Section 7.1 (lines 5511-5521)
-- DEPENDENCY_BASED_STRUCTURE.md, Modes/ContextDependent/Basic
 -/
 
 import FdrsFormal.Modes.ContextDependent.Basic.ExtendedOracle

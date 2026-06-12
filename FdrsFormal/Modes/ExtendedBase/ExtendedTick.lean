@@ -26,7 +26,6 @@ Tick operator generalized to extended bases (wall/wire/standard carry).
 ## References
 
 - fdrs.md, Phase 9, Section 9.4 (lines 6970-6994)
-- DEPENDENCY_BASED_STRUCTURE.md, Tier 21
 -/
 
 import FdrsFormal.Modes.ExtendedBase.PlaceValues

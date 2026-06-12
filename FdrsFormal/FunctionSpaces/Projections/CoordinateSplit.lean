@@ -26,7 +26,6 @@ Block-matrix decomposition of R^(k) into prefix/suffix coordinates.
 ## References
 
 - fdrs.md, Phase 2 Fragment 2, Section 3 (lines 855-954)
-- DEPENDENCY_BASED_STRUCTURE.md, Tier 7
 -/
 
 import FdrsFormal.FunctionSpaces.Projections.Definition

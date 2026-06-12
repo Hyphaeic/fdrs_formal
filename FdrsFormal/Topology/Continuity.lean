@@ -12,7 +12,7 @@ Proves all arithmetic operations are 1-Lipschitz with respect to ultrametric δ.
 
 ## References
 - fdrs.md Phase 1 Fragment 2 Section 4
-- Paper: Continuity of operations
+- Paper (external draft): Continuity of operations
 -/
 
 import FdrsFormal.Topology.Continuity.Operations

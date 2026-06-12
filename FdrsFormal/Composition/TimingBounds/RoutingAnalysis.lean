@@ -29,7 +29,6 @@ Routing depth bounds, local timeline costs, and the main composite timing theore
 ## References
 
 - fdrs.md, Phase 8, Sections 8.4-8.5 (lines 6151-6231)
-- DEPENDENCY_BASED_STRUCTURE.md, Tier 24
 -/
 
 import FdrsFormal.Composition.TimingBounds.Definition

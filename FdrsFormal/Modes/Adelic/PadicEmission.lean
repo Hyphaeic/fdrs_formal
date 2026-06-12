@@ -22,7 +22,8 @@ At `p` a digit is forced by a **congruence** — the residue `mod p` pinned acro
 residue-disks of the unread tail. This file builds that certificate for the single-stream
 `PadicLedger` of M0a.
 
-The mechanism (scratch `NOTES.md` §2, design `03` §3c):
+The mechanism (archived design `03` §3c and scratch `NOTES.md` §2,
+`docs/archive/adelic-machine/`):
 
 * **`candidate`** — the forced output digit is `b · d⁻¹ (mod p)`, the value at the
   `x ≡ 0` corner.
@@ -39,7 +40,7 @@ The mechanism (scratch `NOTES.md` §2, design `03` §3c):
   general valued field.
 
 Everything is exact, integer/`ZMod`-driven: no order, no floor, no float — the
-no-floats / congruence-not-order discipline (`00` §4). Leaf module (imports only M0a). No
+no-floats / congruence-not-order discipline (archived design `00` §4). Leaf module (imports only M0a). No
 `sorry`; axiom-clean.
 -/
 import FdrsFormal.Modes.Adelic.PadicHomographic
@@ -64,7 +65,7 @@ so it is the forced digit. -/
 def candidate (p : ℕ) (M : PadicLedger) : ZMod p :=
   (M.b : ZMod p) * (M.d : ZMod p)⁻¹
 
-/-- **`denom_unit_on_disk`** (the named gate, design `03` §3c): the denominator `c·x + d`
+/-- **`denom_unit_on_disk`** (the named gate, archived design `03` §3c): the denominator `c·x + d`
 is a p-adic unit for *every* tail `x ∈ ℤ_p`, i.e. `c ≡ 0 ∧ d ≢ 0 (mod p)` (then
 `c·x + d ≡ d`, a unit, for all `x`). A decidable congruence condition — no order. -/
 def denomUnitOnDisk (p : ℕ) (M : PadicLedger) : Bool :=
@@ -95,7 +96,7 @@ theorem denom_ne_zero_on_disk (p : ℕ) (M : PadicLedger)
 **pole on the disk**. So the engine cannot emit; it must refine (absorb another input
 digit). This is the non-Archimedean analogue of the Archimedean engine *withholding* a
 digit at a boundary (`√2·√2 = 2 → []`), and the dual of the sharp necessity theorem
-`congruenceSet_not_cylinder_union_of_not_dvd` (✅). -/
+`congruenceSet_not_cylinder_union_of_not_dvd`. -/
 theorem pole_exists_of_not_unit (p : ℕ) [Fact p.Prime] (M : PadicLedger)
     (hc : (M.c : ZMod p) ≠ 0) :
     ∃ x : ZMod p, (M.c : ZMod p) * x + (M.d : ZMod p) = 0 := by
@@ -119,12 +120,13 @@ theorem ready_sound_mod_p (p : ℕ) (M : PadicLedger)
 
 /-! ## 4. Reduction — keeping the iterated transducer ledger primitive
 
-**A correction to the design's emit recurrence.** The scratch `NOTES.md` §1 emit
+**A correction to the archived design's emit recurrence** (scratch `NOTES.md` §1,
+`docs/archive/adelic-machine/`). The raw emit
 `M ↦ [[a−βc, b−βd],[p·c, p·d]]` (det ↦ p·det) is a correct *value* transform, but it
 leaves the denominator `p·c·x + p·d ≡ 0 (mod p)`, so `denomUnitOnDisk` (which needs
-`d ≢ 0`) can **never** fire again — the engine emits one digit and stalls. (The scratch
-validator never caught this: Demo B reads `y₀`'s Hensel digits directly via
-`padic_digits`, it never iterates the ledger emit.)
+`d ≢ 0`) can **never** fire again — the engine emits one digit and stalls. (The design's
+numerical validator does not exercise this path: its Demo B reads Hensel digits directly,
+never iterating the ledger emit.)
 
 The fix: at a *valid* (ready) emit the four new entries are all `≡ 0 (mod p)` — because
 `a ≡ c ≡ 0` and `β ≡ b·d⁻¹` give `a−βc ≡ 0` and `b−βd ≡ 0`, and `p·c, p·d` are visibly
@@ -149,12 +151,12 @@ def reduceOnce (p : ℤ) (M : PadicLedger) : PadicLedger :=
 def emitStep (p : ℤ) (β : ℤ) (M : PadicLedger) : PadicLedger :=
   reduceOnce p (M.emit p β)
 
-/-! ## 5. Demos (the scratch Demo B numbers, exact `ZMod` arithmetic) -/
+/-! ## 5. Demos (the archived design's Demo B numbers, exact `ZMod` arithmetic) -/
 
 -- Demo B map `y = (3x+2)/(5x+1)` over `ℤ₅` is **not** ready initially (`a = 3 ≢ 0 mod 5`):
 #eval ready 5 ⟨3, 2, 5, 1⟩        -- false — must absorb an input digit first
--- After absorbing one input digit `α = 4` (= `x mod 5` for the scratch `x = 2/3`) it IS
--- ready, and the forced output digit is `4` — exactly the scratch `a₀(y₀) = 4`.
+-- After absorbing one input digit `α = 4` (= `x mod 5` for the reference value `x = 2/3`) it IS
+-- ready, and the forced output digit is `4` — matching the reference `a₀(y₀) = 4`.
 #eval ready 5 (absorb 5 4 ⟨3, 2, 5, 1⟩)        -- true
 #eval candidate 5 (absorb 5 4 ⟨3, 2, 5, 1⟩)    -- 4
 

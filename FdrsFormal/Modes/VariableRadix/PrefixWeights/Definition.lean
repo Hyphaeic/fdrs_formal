@@ -29,8 +29,7 @@ This is the "odometer weight" - the cumulative product of radices up to prefix s
 ## References
 
 - fdrs.md, Phase 5-6, Section 2 (lines 5144-5147)
-- DEPENDENCY_BASED_STRUCTURE.md, Modes/VariableRadix/PrefixWeights
-- Paper: Fragment 5.4
+- Paper (external draft): Fragment 5.4
 -/
 
 import FdrsFormal.Modes.VariableRadix.Basic.Basic

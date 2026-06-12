@@ -25,7 +25,6 @@ Active index set, capacity index set, and effective base for generalized radix s
 ## References
 
 - fdrs.md, Phase 9, Section 9.1 (lines 6894-6907)
-- DEPENDENCY_BASED_STRUCTURE.md, Tier 20
 -/
 
 import FdrsFormal.Modes.ExtendedBase.Definition

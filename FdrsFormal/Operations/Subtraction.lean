@@ -9,7 +9,7 @@ Subtraction operator ⊖: R × R → R (partial) defined as τ ⊖ σ = enc(dec(
 
 ## References
 - fdrs.md Phase 1 Fragment 2 Section 2.2
-- Paper: Arithmetic operations
+- Paper (external draft): Arithmetic operations
 -/
 
 import FdrsFormal.Operations.Subtraction.Correctness

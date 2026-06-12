@@ -27,7 +27,7 @@ Aggregator for the encoding/bijection construction.
 ## References
 
 - fdrs.md, Phase 5-6, Section 3 (lines 4044-4091)
-- Paper: THEOREM A (§6.3)
+- Paper (external draft): THEOREM A (§6.3)
 -/
 
 import FdrsFormal.Modes.VariableRadix.Encoding.SubtreeCards

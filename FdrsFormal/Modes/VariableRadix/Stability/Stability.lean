@@ -25,7 +25,6 @@ Aggregator for stability and transport results.
 ## References
 
 - fdrs.md, Phase 5-6, Fragment 5.2, Theorem 33
-- DEPENDENCY_BASED_STRUCTURE.md, Modes/VariableRadix/Stability
 -/
 
 import FdrsFormal.Modes.VariableRadix.Stability.ChartIso

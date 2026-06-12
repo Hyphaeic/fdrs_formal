@@ -26,8 +26,7 @@ Aggregator for prefix weight construction.
 ## References
 
 - fdrs.md, Phase 5-6, Section 2-3 (lines 5144-5147, 4733-4740, 4870-4900)
-- DEPENDENCY_BASED_STRUCTURE.md, Modes/VariableRadix/PrefixWeights
-- Paper: Fragment 5.4
+- Paper (external draft): Fragment 5.4
 -/
 
 import FdrsFormal.Modes.VariableRadix.PrefixWeights.Definition

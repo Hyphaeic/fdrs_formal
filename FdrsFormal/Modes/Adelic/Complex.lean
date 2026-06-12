@@ -22,7 +22,7 @@ only by being two views of one quantity; they are *incommensurable timelines*
 (the `ThreeLineMediator` philosophy), and the central theorem here makes that precise.
 
 **Honest banner.** This is the two-place toy `S = {∞, p}`, **NOT** the adele ring
-(handoff anti-confabulation). It establishes the coupling *mechanics* — heterogeneous
+(anti-confabulation banner, `docs/archive/gosper-fdrs-handoff.md`). It establishes the coupling *mechanics* — heterogeneous
 place-engines under one scheduler, advancing asynchronously and confluently. The
 restricted product over all primes is M3; the conserved cross-place law (product formula)
 is M4. Here there is no cross-place invariant yet — only the scheduling fabric.

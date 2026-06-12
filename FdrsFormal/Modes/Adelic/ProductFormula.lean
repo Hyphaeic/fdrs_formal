@@ -18,17 +18,18 @@ permissions and limitations under the License.
 The cross-place conserved law that ties one quantity across its positions: the **product
 formula** `∏_v |x|_v = 1`. This is what makes the complex *adelic* rather than two
 side-by-side ledgers — the adelic analogue of the within-place `|det| = 1` (a structural
-rhyme, **not** the same invariant; design `04` §3.1).
+rhyme, **not** the same invariant; archived design `04` §3.1,
+`docs/archive/adelic-machine/`).
 
-Per `04` §7 the reachable prize (**M4a**) is the *exact, value-identified* product formula,
+Per the archived design `04` §7 the reachable prize (**M4a**) is the *exact, value-identified* product formula,
 which "bottoms out in unique factorization." This file proves exactly that, the honest
 lightweight way: directly from `Nat.factorization_prod_pow_eq_self`, staying in exact `ℚ`
 with `padicNorm` as `|·|_p` — **not** importing Mathlib's heavyweight number-field /
-adele-ring `Height.AdmissibleAbsValues` machinery (the no-floats discipline, `02` §7,
+adele-ring `Height.AdmissibleAbsValues` machinery (the no-floats discipline, archived design `02` §7,
 `06` §5). The Archimedean factor is exact because the value is *identified* (a given
-rational), as M4a requires — the `04` §3.3 finite-precision gauge bound (M4b, where the
-Archimedean stream only converges) is the genuinely-open piece and is **not** attempted
-here.
+rational), as M4a requires; the finite-precision gauge bound over live prefixes (M4b,
+archived design `04` §3.3) is proven separately in `GaugeBound.lean`, its conservation
+hypothesis discharged on `ℚˣ` by `ProductFormulaRat.lean`.
 
 * `Place`, `Place.absValue` — the places of `ℚ` (`∞` and the primes) and their absolute
   values (`|x|_∞ = |x|`, `|x|_p = padicNorm p x`).
@@ -38,11 +39,10 @@ here.
 
 **Honest scope.** This is the *value-identified, `S`-integral* product formula (M4a). The
 quantity is a *given* rational, so every `|·|_v` is exact; the conserved law is then unique
-factorization. **Not** included: the live-prefix gauge bound (M4b, open); the bridge
-`padic_valuation_from_stream` reading `v_p(x)` off the *emitted* Hensel stream (the
-emission certificate M0d pins each digit, but assembling the full-valuation read is left as
-the next bridge); the restricted product over all primes (M3). Those keep their `🔬`/`🔨`
-tags. Leaf module. No `sorry`; axiom-clean.
+factorization. Proven in sibling modules: the live-prefix gauge bound (M4b,
+`GaugeBound.lean`), the valuation-from-stream bridge (`ValuationStream.lean`), and the
+`ℚˣ` lift (`ProductFormulaRat.lean`). Still **not** included: the restricted product over
+all primes (M3), which remains open. Leaf module. No `sorry`; axiom-clean.
 -/
 import FdrsFormal.Modes.Adelic.Complex
 import Mathlib.NumberTheory.Padics.PadicNorm

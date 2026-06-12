@@ -28,8 +28,7 @@ by the dominance relation: δ₁ ⪰ δ₂ iff balls of δ₁ are unions of ball
 ## References
 
 - fdrs.md, Phase 6, Summary (lines 5450-5454)
-- DEPENDENCY_BASED_STRUCTURE.md, Modes/VariableRadix/Realizability
-- Paper: Theorem B (§6.3)
+- Paper (external draft): Theorem B (§6.3)
 -/
 
 import FdrsFormal.Modes.VariableRadix.Realizability.Sufficiency

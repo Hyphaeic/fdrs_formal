@@ -10,7 +10,7 @@ Tick as a continuous dynamical system on ℛ̂.
 
 ## References
 - fdrs.md Phase 1 Fragment 3
-- Paper: Dynamical systems on mixed-radix spaces
+- Paper (external draft): Dynamical systems on mixed-radix spaces
 -/
 
 import FdrsFormal.Topology.Dynamics.Odometer

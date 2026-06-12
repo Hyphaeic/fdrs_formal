@@ -88,21 +88,15 @@ def encodeFinite (b : RadixSeq) (k : ℕ) (n : Fin (placeValue b (k + 1))) : Fin
     This proves that extracting digits via division/mod and summing them back
     correctly reconstructs the original number.
 
-    **Proof Progress**:
-    - ✅ Base case (k=0): FULLY PROVEN
-    - ⚠️ Inductive step: Structure set up, needs completion
-
-    **Remaining work**: Complete inductive step using:
-    1. Nat.div_add_mod to split n = B_{k+1} * (n/B_{k+1}) + (n % B_{k+1})
-    2. Locality property: For i ≤ k, digit extraction from n equals extraction from (n % B_{k+1})
-       - Requires: Nat.add_mul_div_of_dvd, Nat.add_mul_mod (using placeValue.dvd_of_le)
-    3. Apply IH to (n % B_{k+1}) < B_{k+1}
-    4. Handle last digit: (n / B_{k+1}) % b_{k+1}, show it contributes correctly -/
+    **Proof shape**: induction on `k`. Base case: a single digit below `b 0`.
+    Inductive step: split `n = B_{k+1} * (n / B_{k+1}) + (n % B_{k+1})` via
+    `Nat.div_add_mod`; digit extraction below position `k+1` factors through
+    `n % B_{k+1}` (locality, via `placeValue.dvd_of_le`); apply the IH to
+    `n % B_{k+1}`; account the top digit `(n / B_{k+1}) % b (k+1)`. -/
 theorem sum_div_mod_placeValue (k : ℕ) (n : ℕ) (hn : n < placeValue b (k + 1)) :
     n = ∑ i : Fin (k + 1), ((n / placeValue b i) % b i) * placeValue b i := by
   induction k generalizing n with
   | zero =>
-    -- ✅ BASE CASE PROVEN
     rw [Fin.sum_univ_one]
     simp only [Fin.val_zero, placeValue.zero, Nat.div_one, Nat.mul_one]
     have h_lt : n < b 0 := by
@@ -192,14 +186,9 @@ theorem sum_div_mod_placeValue (k : ℕ) (n : ℕ) (hn : n < placeValue b (k + 1
 
     This proves that the mixed-radix representation is unique (injectivity of decode).
 
-    **Proof Strategy**:
-    - Use functional extensionality (funext i)
-    - For each digit position i, extract the digit using modular arithmetic
-    - Key: Take sum mod B_{i+1}, then divide by B_i, then mod by b_i
-    - Use divisibility placeValue.dvd_of_le to show higher terms vanish
-    - Show d_i = e_i for each i
-
-    **Remaining work**: Implement extraction of each digit via modular arithmetic -/
+    **Proof shape**: functional extensionality, then per-position digit
+    extraction by modular arithmetic — take the sum mod `B_{i+1}`, divide by
+    `B_i`, reduce mod `b i`; higher terms vanish by `placeValue.dvd_of_le`. -/
 theorem digits_unique {k : ℕ} (d e : (i : Fin (k + 1)) → Fin (b i))
     (h : ∑ i : Fin (k + 1), (d i : ℕ) * placeValue b i =
          ∑ i : Fin (k + 1), (e i : ℕ) * placeValue b i) :

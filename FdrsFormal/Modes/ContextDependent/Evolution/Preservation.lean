@@ -29,7 +29,6 @@ Context transitions change c but don't affect this per-context property.
 ## References
 
 - fdrs.md, Phase 7, Section 7.2 (lines 5589-5599)
-- DEPENDENCY_BASED_STRUCTURE.md, Modes/ContextDependent/Evolution
 -/
 
 import FdrsFormal.Modes.ContextDependent.Evolution.Trace

@@ -26,7 +26,6 @@ Aggregator for basic context-dependent definitions.
 ## References
 
 - fdrs.md, Phase 7, Section 7.1 (lines 5481-5537)
-- DEPENDENCY_BASED_STRUCTURE.md, Modes/ContextDependent/Basic
 -/
 
 import FdrsFormal.Modes.ContextDependent.Basic.ContextSpace

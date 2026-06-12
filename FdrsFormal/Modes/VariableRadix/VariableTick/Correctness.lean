@@ -28,7 +28,6 @@ This is the fundamental correctness theorem for variable radix Tick.
 ## References
 
 - fdrs.md, Phase 5-6, Section 4 (lines 4136-4146)
-- DEPENDENCY_BASED_STRUCTURE.md, Modes/VariableRadix/VariableTick
 -/
 
 import FdrsFormal.Modes.VariableRadix.VariableTick.Definition

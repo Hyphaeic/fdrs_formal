@@ -20,7 +20,7 @@ Defines the RadixSeq structure: a sequence of radices (b_i)_{i≥0} with each b_
 ## References
 
 - fdrs.md, Phase 1 Fragment 1, Section 1 (lines 4-15)
-- Paper §2.1
+- Paper (external draft) §2.1
 -/
 
 import Mathlib.Data.Fin.Basic

@@ -7,7 +7,7 @@ Core Infinite - Direct limit and completed spaces
 
 ## References
 - fdrs.md Phase 1 Fragment 1 Section 3
-- Paper Theorem 2.7
+- Paper (external draft) Theorem 2.7
 -/
 
 import FdrsFormal.Core.Infinite.DirectLimit

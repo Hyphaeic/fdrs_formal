@@ -333,8 +333,7 @@ lemma tickCompleted_iterate_preserves_not_eventually_all_max {b : RadixSeq} {x :
 
 /-! ### Tick and prefix value relationship
 
-These theorems replace the axioms previously in Core/PrefixValue.lean.
-They establish that tick increments the prefix value by 1 modulo B_L.
+These theorems establish that tick increments the prefix value by 1 modulo B_L.
 -/
 
 /-- When allMaxBefore holds up to L, tick zeros all first L positions,

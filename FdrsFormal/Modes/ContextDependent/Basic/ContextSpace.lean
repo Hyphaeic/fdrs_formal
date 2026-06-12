@@ -32,7 +32,6 @@ Contexts can represent:
 ## References
 
 - fdrs.md, Phase 7, Section 7.1 (lines 5481-5497)
-- DEPENDENCY_BASED_STRUCTURE.md, Modes/ContextDependent/Basic
 -/
 
 import FdrsFormal.Modes.VariableRadix.VariableRadix

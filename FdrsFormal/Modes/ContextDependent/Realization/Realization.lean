@@ -31,8 +31,7 @@ produce identical observable behavior (same values at accessed locations).
 ## References
 
 - fdrs.md, Phase 7, Section 7.3 (lines 5601-5636)
-- DEPENDENCY_BASED_STRUCTURE.md, Modes/ContextDependent/Realization
-- Paper: THEOREM E
+- Paper (external draft): THEOREM E
 -/
 
 import FdrsFormal.Modes.ContextDependent.Realization.Strategies

@@ -5,7 +5,7 @@ Tick (successor), addition, subtraction, predecessor with carry/borrow semantics
 
 ## References
 - fdrs.md Phase 1 Fragments 1-2
-- Paper §2.3, §2.6
+- Paper (external draft) §2.3, §2.6
 -/
 
 import FdrsFormal.Operations.Tick
