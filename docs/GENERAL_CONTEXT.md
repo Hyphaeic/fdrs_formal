@@ -9,9 +9,13 @@ commands, see [`TESTING.md`](TESTING.md).
 FDRS Formal is a Lean 4 formalization of **Function-Defined Radix Systems** — a
 mathematical framework for mixed-radix number systems in which the base at each digit
 position is determined by a function. The specification lives in a single document,
-[`fdrs.md`](fdrs.md), organized into 12 phases spanning foundations (radix sequences,
+[`fdrs.md`](fdrs.md), organized into 14 phases spanning foundations (radix sequences,
 bijections, ultrametric topology) through analytic number theory, digit-conditional
-signal analysis, and multi-timeline composition.
+signal analysis, multi-timeline composition, generated (continued-fraction) timelines
+with certified emission engines, and the synthetic place complex (coupled radix
+networks: gauges, conservation, and their machine-checked boundaries). Satellite
+complexes (the adelic machine, the function-field keystone) live under
+`Modes/Adelic/` with design records in `docs/`.
 
 Every spec item carries a **global monotonic ID** (e.g. "Definition 47", "Theorem 12")
 with an annotation preserving its original section number, e.g. `[§2.1.3 · Phase 3,

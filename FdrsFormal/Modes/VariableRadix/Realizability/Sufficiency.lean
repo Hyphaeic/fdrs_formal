@@ -149,31 +149,17 @@ theorem theoremB_sufficiency (δ : AbstractUltrametric)
   · intro _; rfl
 
 /-!
-## Remaining work for the full Theorem 43 (`δ = δ_ω`)
+## The full metric Theorem 43: RESOLVED in `MetricRealizability.lean`
 
 `theoremB_sufficiency` establishes the combinatorial (branching-schedule) half of
-Theorem 43. Upgrading it to the full *metric* statement `δ = δ_ω` requires, in order:
-
-1. **Cylinders and ball radii on `∀ i, δ.digitSets i`** — the abstract analogue of
-   the prefix-cylinder structure used in `InducedUltrametric`.
-2. **Encode the two remaining realizability conditions** as `Prop`s on `δ`:
-   *cylinder correspondence* (every `δ`-ball is a finite union of cylinders) and
-   *monotone refinement* (containment orders ball radii). (*Finite branching* is
-   already captured by `digitSets_geTwo`.)
-3. **Derive the metric form**: from (2), `δ.dist x y` equals the inverse prefix
-   weight at the first position where `x` and `y` differ — i.e. `δ` is the
-   first-difference ultrametric. This is the crux, and it is FALSE for an arbitrary
-   `AbstractUltrametric`; that is precisely why the present
-   `AbstractRealizabilityConditions` (carrying only `digitSets_geTwo`) is insufficient
-   to conclude `δ = δ_ω`, and why this file proves the branching slice only.
-4. **Space alignment** `(∀ i, δ.digitSets i) ≃ InfiniteVariableSpace ω` via the
-   pointwise `δ.digitSets i ≃ Fin (Nat.card (δ.digitSets i))` (finite sets of equal
-   cardinality).
-5. **Transport** the metric equality of (3) across the alignment of (4) to conclude
-   `δ = δ_ω`.
-
-Mathematically this is the classical ultrametric ↔ rooted-tree (dendrogram)
-correspondence; the outstanding work is the Lean infrastructure, not new mathematics.
+Theorem 43. The full *metric* statement is proven — in corrected form — in
+`Realizability/MetricRealizability.lean` (`theorem43`): `δ` carries the
+Definition 79 formula for the constructed SU law **iff** every open ball is a
+prefix cylinder (C1) and every cylinder has canonical diameter (C4). The fdrs.md
+§6.6.1 erratum records why the original three conditions were insufficient
+(machine-checked there: `conditions_insufficient`) and why the crux noted below —
+the first-difference form — follows from (C1) alone (the extraction lemmas),
+while (C4) is the genuinely additional gauge-pinning condition.
 -/
 
 /-!

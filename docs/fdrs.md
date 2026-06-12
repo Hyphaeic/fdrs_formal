@@ -5405,6 +5405,41 @@ An ultrametric δ on ∏_{i=0}^∞ D_i is realizable as δ = δ_ω for some SU r
 
 ∎
 
+**Erratum and corrected statement** (Phase 14 pass; machine-checked in
+`Realizability/MetricRealizability.lean`). As stated above, the three conditions
+are **insufficient** for `δ = δ_ω`, in two independent ways:
+
+1. *"Finite union of cylinders" is too weak*: three sibling subtrees at
+   pairwise-unequal distances satisfy (1)–(3) while breaking the first-difference
+   form — balls can sit strictly between cylinder levels. The corrected condition
+   (C1) takes the single-cylinder form, **every open ball is a prefix cylinder** —
+   which is exactly what the necessity direction actually proves
+   (`ball_is_cylinder`), and exactly the gauge keystone's shape (Theorem 83).
+2. *Monotone refinement does not pin the radii*: the schedule `rad = 1/(2n+1)` on
+   the binary product satisfies (C1) — a fortiori (1)–(3) — but is not `δ_ω` for
+   any SU `ω`, whose radii are forced to be reciprocal place values
+   (`conditions_insufficient`, machine-checked). The conditions pin the *tree*
+   (the dendrogram); `δ = δ_ω` additionally pins the *gauge*.
+
+**Theorem 43 (corrected).** An ultrametric `δ` on `∏ᵢ Dᵢ` (each `Dᵢ` finite, with
+at least two elements) is realizable as `δ = δ_ω` for an SU radix law `ω` — the
+position-only law `ω(s) = |D_{|s|}|`, unique by `radixLaw_unique` — **iff**
+
+- **(C1)** every open ball is a prefix cylinder, and
+- **(C4)** every depth-`n` cylinder has diameter exactly `(∏_{j<n} |D_j|)⁻¹`
+  (the canonical reciprocal place value, as a least upper bound).
+
+Both directions are machine-checked (`theorem43`). The proof factors as the
+erratum predicts: **(C1) alone forces the first-difference (gauge) form** — the
+extraction (`dist_eq_of_lcpLenD_eq`, `dist_anti_of_lcpLenD_lt`, `dist_local`): a
+ball of radius `δ(x,z)` is a cylinder, so it separates partners by lcp depth,
+making the distance a strictly-refining function of the shared prefix (the
+classical ultrametric ↔ dendrogram correspondence — Theorem 43-general); **(C4)
+then pins the gauge** to the canonical product schedule (Theorem 43-SU).
+Realizability is stated intrinsically (the Definition 79 formula on `δ`'s own
+space, tied to the constructed law by `suRealizable_iff_prefixWeight`); strict
+monotone refinement and vanishing radii are consequences of (C1), not assumptions.
+
 ---
 
 **Corollary 28** (Non-realizable ultrametrics)  [§6.6.2 · Phase 6]

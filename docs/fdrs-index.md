@@ -1,10 +1,17 @@
 # FDRS Specification Index
 
-Auto-generated from `data/fdrs-index.yaml` (2026-05-28T00:45:10.161194). Phase 13 (items 178–191, Theorems 70–82, Propositions 144–146) added manually on 2026-06-08 from `docs/fdrs.md` + Lean sources; the YAML predates Phase 13, so regenerate with `scripts/fdrs-rebuild` once the Phase 13 Lean files carry `fdrs.md` provenance comments.
+Auto-generated from `data/fdrs-index.yaml` (2026-05-28T00:45:10.161194), with manual
+additions: Phase 13 (Definitions 178–191, Theorems 70–82, Propositions 144–146; added
+2026-06-08) and Phase 14 (Definitions 192–200, Theorems 83–92, Propositions 147–149;
+added 2026-06-10), both from `docs/fdrs.md` + Lean sources. The Theorem 43 row reflects
+the fdrs.md §6.6.1 erratum (corrected statement fully proven in
+`Realizability/MetricRealizability.lean`). The generated YAML predates Phases 13–14;
+regenerate with `scripts/fdrs-rebuild` once those Lean files carry `fdrs.md` provenance
+comments.
 
-**463 items** from `docs/fdrs.md` (8230 lines)
+**485 items** from `docs/fdrs.md` (8493 lines)
 
-Status: proven: 463 | scaffold: 0
+Status: proven: 485 | scaffold: 0
 
 ## Phase 1
 
@@ -281,7 +288,7 @@ Status: proven: 463 | scaffold: 0
 | definition_82 | definition | 82 | Multi-metric observer complex | 5342 | ✅ proven | FdrsFormal/Modes/VariableRadix/MultiMetric.lean |
 | definition_83 | definition | 83 | Metric projection | 5357 | ✅ proven | FdrsFormal/Modes/VariableRadix/MultiMetric.lean |
 | theorem_42 | theorem | 42 | Residual as metric discrepancy | 5369 | ✅ proven | FdrsFormal/Modes/VariableRadix/MultiMetric.lean |
-| theorem_43 | theorem | 43 | Realizability criterion for ultrametrics | 5385 | ✅ proven | FdrsFormal/Modes/VariableRadix/MultiMetric/ObserverComplex.lean |
+| theorem_43 | theorem | 43 | Realizability criterion for ultrametrics — **corrected & fully proven** (see fdrs.md §6.6.1 erratum): full iff `theorem43` + insufficiency witness `conditions_insufficient` in Realizability/MetricRealizability.lean; branching slice in Realizability/Sufficiency.lean | 5385 | ✅ proven | FdrsFormal/Modes/VariableRadix/Realizability/MetricRealizability.lean |
 | corollary_28 | corollary | 28 | Non-realizable ultrametrics | 5406 | ✅ proven | FdrsFormal/Modes/VariableRadix/MultiMetric/Projection.lean |
 | theorem_44 | theorem | 44 | Locality bounds under designed metrics | 5417 | ✅ proven | FdrsFormal/Modes/VariableRadix/MultiMetric/Residual.lean |
 | proposition_91 | proposition | 91 | SU ⟹ proper ultrametric | 5442 | ✅ proven | FdrsFormal/Modes/ExtendedBase/Definition.lean |

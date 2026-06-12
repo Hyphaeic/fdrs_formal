@@ -8,145 +8,177 @@
   [![Build](https://img.shields.io/badge/lake_build-passing-41efa4?style=flat-square&labelColor=1a1a1a)](docs/TESTING.md)
   [![License](https://img.shields.io/badge/license-HPL-41efa4?style=flat-square&labelColor=1a1a1a)](https://github.com/hyphaeic/hpl)
 
-  **A machine-checked Lean 4 formalization of Function-Defined Radix Systems (FDRS). It establishes a dual filtration framework that unifies additive (positional) and multiplicative (Dirichlet) operator algebras on variable-radix spaces.**
+  **A machine-checked mathematical corpus on Function-Defined Radix Systems —
+  from positional notation as algebra, through certified digit-emission engines,
+  to the geometry and conservation laws of coupled radix networks.**
 
-  [Specification](docs/fdrs.md) · [Documentation](docs/fdrs-index.md) · [Toolchain](scripts/)
-
-  [HPL License](https://github.com/hyphaeic/hpl) · [Local License](LICENSE)
+  [Specification](docs/fdrs.md) · [Index](docs/fdrs-index.md) · [Design records](docs/synthetic-place/) · [Toolchain](scripts/)
 
 </div>
 
 ---
 
-**A formal foundation for variable-representation radix systems, generalizing classical positional notation. Implements canonical bijections for finite mixed-radix spaces, block projections for cylinder filtrations, and Dirichlet transforms acting on the factorization lens. Proves the cylinder-measurability bridge characterizing when congruence conditions align with positional prefixes, constructs a non-stationary contrast basis extending Vilenkin wavelets, and provides a constructive witness of generic non-commutation between the operator families.**
+## What this is
 
-> Formalized against Mathlib with zero axioms and zero sorries in the core modules. The mathematical specification is maintained alongside the live Lean source via a custom Python dashboarding toolchain to ensure tight spec-to-code correspondence.
+This repository is a long-form mathematical research program carried out
+spec-first in a single document and machine-checked item by item in Lean 4
+against [Mathlib](https://github.com/leanprover-community/mathlib4). The
+specification ([`docs/fdrs.md`](docs/fdrs.md)) has grown through **fourteen
+phases** of numbered definitions, theorems, and propositions; every numbered
+item has a Lean proof, and the correspondence is maintained by tooling rather
+than by prose claims. The default build carries **zero axioms and zero
+sorries** (work-in-progress wavelet-packet experiments are excluded from the
+default target).
 
-# FDRS Formal
+The subject is *what number representation becomes when its structure is a
+free parameter*. Classical positional notation fixes a base; FDRS lets the
+radix at each position be computed by a function — of the position, the prefix
+already written, an external context, or the state of another number line
+entirely. The corpus develops what survives each generalization and what
+breaks, with the boundary in every case proven, not asserted.
 
-A Lean 4 formalization of **Function-Defined Radix Systems** (FDRS) — a mathematical
-framework generalizing classical positional notation by allowing the radix at each
-digit position to be determined by a *function* rather than fixed data.
+**The arc:** foundations (canonical bijections with ℕ, the odometer, the
+prefix ultrametric, a conditional-expectation multiresolution analysis on
+mixed-radix cylinders, and the bridge to analytic number theory) → the three
+modes of function-defined radices and the design space of engineered
+ultrametrics → multi-timeline routing and spatialized digits → generated
+gauges, where continued-fraction timelines replace base products and digit
+emission becomes a *certified* act → the synthetic place complex: coupled
+radix networks, their geometry, their conservation laws, and the precise
+obstructions separating them from numbers.
 
-The mathematical specification lives in [`docs/fdrs.md`](docs/fdrs.md) (the aggreate of concepts). The Lean code in [`FdrsFormal/`](FdrsFormal/) is a machine-checked
-formalization of that specification against [Mathlib](https://github.com/leanprover-community/mathlib4).
+## Selected results
 
-## Status
+A sample chosen to show the range; the [index](docs/fdrs-index.md) maps every
+item to its proof.
 
-This is an actively developed formalization, refined over time rather than a sealed
-artifact — expect it to keep evolving. The default `lake build` compiles cleanly; a few
-`sorry`s remain in work-in-progress modules (currently the wavelet-packet experiments
-under `FunctionSpaces/Haar/`).
+**Foundations and bridges.**
+- Canonical bijections between digit spaces and ℕ; the tick is `+1` under
+  decode and `1`-Lipschitz in the ultrametric; balls are exactly cylinders.
+- A discrete multiresolution analysis: block projections as conditional
+  expectations, detail operators, L² Pythagoras, and the commutant theorem —
+  an operator commutes with every scale projection iff it is
+  scale-block-diagonal in the Haar/contrast basis.
+- The cylinder-measurability bridge: a congruence condition is decidable from a
+  positional prefix **iff** the modulus divides the place value (both
+  directions, with the sharp converse) — the exact interface between the
+  additive and multiplicative filtrations, including a constructive witness of
+  their generic non-commutation.
 
-For the current state of the Lean code, ask the tooling rather than relying on numbers
-written in prose:
+**Realizability — corrected by its own formalization.** Which ultrametrics are
+realizable by sibling-uniform radix laws (Theorem 43) was *mis-stated* in the
+original specification: machine-checking produced a counterexample to the
+stated conditions, an erratum in the spec (fdrs.md §6.6.1), and the corrected
+full characterization — every open ball a prefix cylinder, plus canonical
+cylinder diameters — proven in both directions
+([`MetricRealizability.lean`](FdrsFormal/Modes/VariableRadix/Realizability/MetricRealizability.lean)).
+The repository treats this as the method working as intended.
 
-```bash
-python3 scripts/fdrs-summary        # axioms, sorries, stubs, per-phase coverage
-```
+**Certified emission engines (Phase 13).** Continued-fraction timelines where
+the gauge is generated rather than multiplied out, with Gosper-style
+homographic/bihomographic engines that emit a digit only when *every* possible
+continuation of the unread input forces it — the four-corner order trap at the
+Archimedean place, the congruence trap at p-adic places, the admissibility
+trap on finite grammars. Exact integer ledgers, no floating point anywhere;
+`√2·√2` emits nothing, honestly.
 
-Building the work-in-progress modules that aren't part of the default target is covered
-in [`docs/TESTING.md`](docs/TESTING.md).
+**The adelic complex.** Heterogeneous place-engines under one scheduler with
+proven confluence; the product formula on ℚˣ in exact arithmetic; the
+finite-precision gauge bound; and the rigidity boundary — an FDRS gauge
+reproduces a p-adic place value **iff** its base is constantly p, so there are
+no synthetic places on ℚ. A function-field keystone stakes the genuinely
+synthetic instance ([`docs/function-field/`](docs/function-field/)).
 
-## Building
+**The synthetic place complex (Phase 14).** What survives when number lines
+couple: any positive monotone prefix gauge induces an ultrametric with
+ball = cylinder (both prior corpus metrics become instances); coupling
+generically destroys the odometer while the geometry survives; conservation
+migrates from product formulas — impossible for genuinely coupled systems, by
+a machine-checked separability no-go — to interface balance laws
+(`issued = consumed + pending`, proven for arbitrary coupling in any
+commutative monoid of carries); no scalar gauge can metrize a concurrent
+network (proven), forcing the observer-glued construction; and "bigger digit"
+exists iff every coupling loop has trivial holonomy — with a verified
+three-digit Penrose staircase on the other side of the boundary. Together with
+ragged fibers and bilateral coupling, that gives three independent,
+machine-checked obstructions separating coupled radix complexes from number
+systems.
 
-Requires the Lean toolchain pinned in [`lean-toolchain`](lean-toolchain)
-(`leanprover/lean4:v4.27.0-rc1`) via [elan](https://github.com/leanprover/elan), and
-Mathlib (fetched automatically by Lake; the revision is pinned in
-[`lake-manifest.json`](lake-manifest.json)).
+## Method
 
-```bash
-# Fetch the prebuilt Mathlib cache (recommended — avoids compiling Mathlib from source)
-lake exe cache get
+- **Spec first.** `docs/fdrs.md` is the single source of truth; Lean modules
+  cite the numbered items they prove, and an erratum is preferred over a
+  silent fix when the spec is wrong.
+- **Ask the tooling, not the prose.** `python3 scripts/fdrs-summary` scans the
+  live source for axioms, sorries, stubs, and per-phase coverage; numbers in
+  documentation are treated as stale by default.
+- **Honest scope, as working practice.** Every module carries an honest-scope
+  banner; design documents carry anti-confabulation ledgers; finite witnesses
+  use kernel `decide` (never `native_decide`); classical results are cited as
+  classical — the contribution is the connection and the verified artifact.
 
-# Build the formalization
-lake build
-```
-
-## Module structure
+## Layout
 
 ```
 FdrsFormal/
-├── Core/           # Radix sequences, finite/infinite spaces, canonical bijections
-├── Operations/     # Tick, predecessor, addition, subtraction
-├── Topology/       # Ultrametric structure, continuity, compactness, filtration
-├── FunctionSpaces/ # Tensor spaces, projections, detail operators, Haar/contrast bases
-├── NumberTheory/   # Arithmetic functions, Dirichlet convolution, characters,
-│                   #   valuations, the factorization lens
-├── Integration/    # Block memory, dual filtrations, runtime algebra, complexity bounds
-├── Modes/          # The three modes of application:
-│                   #   VariableRadix, ContextDependent, ExtendedBase, BaseZeroSea
-├── Analysis/       # Digit-conditional signal analysis (radix trees, orthogonal
-│                   #   decomposition, Fourier ceiling, detection power)
-└── Composition/    # Multi-timeline routing, synchronization, lifecycle management
+├── Core/            # Radix sequences, bijections, finite/infinite spaces
+├── Operations/      # Tick, predecessor, addition, subtraction
+├── Topology/        # Ultrametric, compactness, filtration, odometer dynamics
+├── FunctionSpaces/  # Projections, detail operators, Haar/contrast bases, commutant
+├── NumberTheory/    # Dirichlet convolution, characters, valuations,
+│                    #   the factorization lens, the measurability bridge
+├── Integration/     # Dual filtrations, mediator lines, runtime algebra
+├── Analysis/        # Digit-conditional signal analysis, the Fourier ceiling
+├── Composition/     # Multi-timeline routing, deadlock-freedom, timing bounds
+└── Modes/
+    ├── VariableRadix/    # Mode I, realizability (incl. the corrected Theorem 43),
+    │                     #   subshift gauges, the Gosper engine cluster
+    ├── ContextDependent/ # Mode II oracles
+    ├── ExtendedBase/     # Mode III: walls, wires, the spatial thermometer
+    ├── BaseZeroSea/      # Phase 10 substrate dynamics, the linear-chain bridge
+    ├── Adelic/           # Place engines, product formula (ℚˣ), gauge bound,
+    │                     #   rigidity, the AdelicLaw interface, function-field keystone
+    └── SyntheticPlace/   # Phase 14: gauge keystone, coupling, certificates,
+                          #   conservation + rigidity, network geometry, grading
 ```
 
-`FdrsFormal.lean` is the root module aggregating the development; `Main.lean` is a
-trivial executable entry point.
+`FdrsFormal.lean` is the root module aggregating the development; `Main.lean`
+is a trivial executable entry point. Design records for the newer complexes
+live in [`docs/synthetic-place/`](docs/synthetic-place/) and
+[`docs/function-field/`](docs/function-field/); superseded design documents
+are archived under [`docs/archive/`](docs/archive/).
 
-## What this formalizes
+## Building
 
-The specification develops the theory of radix systems where the base at each digit
-position is computed by a function evaluated during representation. The function's
-domain and evaluation semantics define three principal **modes of application**:
-
-- **Mode I — Prefix-Pure**: the radix depends only on the prefix of digits already
-  determined (`w : S* → ℕ_{≥2}`). Yields static tree structures with canonical
-  ultrametrics and a classification of realizable ultrametrics (Theorem B).
-- **Mode II — Context-Dependent**: the radix depends on prefix and evolving external
-  context (`O : S* × C → ℕ_{≥2}`). Yields context-parameterized ultrametrics with
-  representation independence (Theorem E) and structure-preserving transitions (Theorem F).
-- **Mode III — Extended-Base**: the codomain extends to include 0 (walls) and 1 (wires),
-  enabling dynamic structure discovery and explicit routing.
-
-Across all modes the formalization establishes canonical bijections with ℕ (Theorem A),
-arithmetic continuity (Tick is 1-Lipschitz, Theorem C), orthogonal dual filtrations
-(topological vs. multiplicative, Theorem D), mixed-radix complexes (a discrete
-ultrametric analogue of wavelet multiresolution analysis), analytic number theory on
-radix coordinates, and multi-timeline composition.
-
-## Tooling
-
-A small Python toolchain (requires `pyyaml`, see [`requirements.txt`](requirements.txt))
-maintains the spec ⇄ Lean correspondence and regenerates the metadata in `data/`:
+Requires the toolchain pinned in [`lean-toolchain`](lean-toolchain) via
+[elan](https://github.com/leanprover/elan); Mathlib is fetched by Lake at the
+revision pinned in [`lake-manifest.json`](lake-manifest.json). The maintenance
+tooling needs Python with `pyyaml` ([`requirements.txt`](requirements.txt)).
 
 ```bash
-python3 scripts/fdrs-summary                 # Status dashboard (scans live .lean source)
-python3 scripts/fdrs-summary --check         # Verify the index matches live code
-python3 scripts/fdrs-summary --sorries       # List every sorry
-python3 scripts/fdrs-summary --stubs         # List every declaration stub
-python3 scripts/fdrs-summary --phase 11      # Items in a specific phase
-python3 scripts/fdrs-rebuild                 # Regenerate all derived metadata + graphs
+lake exe cache get             # prebuilt Mathlib (recommended)
+lake build                     # the formalization
+python3 scripts/fdrs-summary   # live status: axioms, sorries, coverage
 ```
 
-See [`docs/GENERAL_CONTEXT.md`](docs/GENERAL_CONTEXT.md) for the canonical-source trust
-hierarchy and how the metadata is generated, and [`docs/TESTING.md`](docs/TESTING.md)
-for build/check workflows.
+[`docs/TESTING.md`](docs/TESTING.md) covers the work-in-progress modules
+outside the default target; [`docs/GENERAL_CONTEXT.md`](docs/GENERAL_CONTEXT.md)
+documents the trust hierarchy of the generated metadata;
+[`docs/notation.md`](docs/notation.md) is the symbol reference extracted from
+live code.
 
-## Documentation
+## Scope
 
-- [`docs/fdrs.md`](docs/fdrs.md) — the mathematical specification (single source of truth).
-- [`docs/fdrs-index.md`](docs/fdrs-index.md) — auto-generated spec-item → Lean index.
-- [`docs/notation.md`](docs/notation.md) — symbol/notation reference extracted from live code.
-- `data/*.yaml` — machine-readable index and dependency graphs (regenerated by the tooling).
-
-The rendered dependency-graph images (`*.svg`/`*.dot`) are not committed; regenerate
-them locally with `scripts/fdrs-rebuild` (requires Graphviz).
-
-## Scope of this repository
-
-This repository contains **only** the Lean formalization, its build configuration, the
-maintenance tooling, and the documentation needed to build and check it. It intentionally
-excludes the SageMath experiments, ML experiments, paper drafts, teaching material,
-archived planning documents, and generated media that lived alongside the formalization
-during development.
-
-It is the canonical Lean artifact of the Hyphaeic **variable-representation** research
-program (registry id `project-fdrs-formal`), and is built within the
+This repository contains the Lean formalization, its build configuration, the
+maintenance tooling, and the documentation needed to build and check it. It
+intentionally excludes the SageMath and ML experiments, paper drafts, and
+generated media that live alongside the formalization during development. It
+is the canonical Lean artifact of the Hyphaeic variable-representation
+research program (registry id `project-fdrs-formal`), built within the
 `workspace-math-proof-env` toolchain (Lean 4 + Python + SageMath).
 
 ## License
 
 Licensed under the [Hyphaeic Public License, Version 1.0](https://github.com/hyphaeic/hpl).
-See [LICENSE](LICENSE) and [NOTICE](NOTICE). Third-party components (Lean 4, Mathlib) are
-under their own licenses, as noted in [NOTICE](NOTICE).
+See [LICENSE](LICENSE) and [NOTICE](NOTICE). Third-party components (Lean 4,
+Mathlib) are under their own licenses, as noted in [NOTICE](NOTICE).
