@@ -27,8 +27,7 @@ specification ([`docs/fdrs.md`](docs/fdrs.md)) has grown through **fourteen
 phases** of numbered definitions, theorems, and propositions; every numbered
 item has a Lean proof, and the correspondence is maintained by tooling rather
 than by prose claims. The default build carries **zero axioms and zero
-sorries** (work-in-progress wavelet-packet experiments are excluded from the
-default target).
+sorries**.
 
 The subject is *what number representation becomes when its structure is a
 free parameter*. Classical positional notation fixes a base; FDRS lets the
