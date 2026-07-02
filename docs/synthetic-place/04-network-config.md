@@ -5,7 +5,18 @@ axiom-clean): the 2-node/1-edge network machine recovers the SU4b interface mach
 exactly (`pairNet_reachable_iff` — reachable sets correspond under the bijective
 configuration correspondence; balance transports per edge; the ragged demo run lands
 on SU4b's ledger, kernel-checked). The `Config` design passes its own mandatory gate
-(§5.6). SU7.1+ remain pre-formalization. This is the arc the whole SPS series has
+(§5.6). **SU7.1 BUILT** (`NetworkComplexStep.lean`, 0 sorries, axiom-clean): the
+three-clause `complexStep` — fan-out lawfulness as a firing guard (declared carry
+mass partitioned by transport shares, Theorem-88 shape; trigger diagonal), joint-fiber
+guards with per-edge `admit` windows, and well-formedness = dependency grading with
+Phase 8's `time_ordered_deadlock_free` reused verbatim as the certificate (a
+dependency cycle admits no potential — the causal-frustration no-go, candidate
+only). Conservative over SU7.0 (`ofRule_reachable_iff`; the SU4b probe transports:
+`pairComplex_reachable_iff`); mixed split witness live (lawful `1+3=4` fires with
+trigger token, unlawful `1+2` blocked, kernel-checked). Recorded decisions D7 (one
+ambient currency per module instance; per-edge currencies + morphisms = SU7.2) and
+D8 (carry mass is a per-node declaration; `none` = SU4b's capacity-grant regime).
+SU7.2+ remain pre-formalization. This is the arc the whole SPS series has
 been statics for: the coupled radix network as a verified abstract machine — the
 standing radix-complex goal (`Config` + `complexStep` + value), now with its value
 layer correctly replaced by graded observables (Phase 14 thesis). Three previously
