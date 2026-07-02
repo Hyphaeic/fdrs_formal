@@ -27,7 +27,17 @@ make self-loops unfireable — not legislated, derived). The heterogeneous machi
 (`HRule`/`HConfig`/`HReachable`) delivers per-edge-per-currency balance
 (`hnetwork_balanced_per_edge`, each edge in its own monoid); **D9 recorded**: the
 heterogeneous carry partition needs per-node currencies + declared push morphisms
-`Mv →+ M_e` — open, not smuggled. SU7.3+ remain pre-formalization. This is the arc the whole SPS series has
+`Mv →+ M_e` — open, not smuggled. **SU7.3 BUILT** (`NetworkCouplability.lean`, 0 sorries, axiom-clean):
+`Enabled`/`NonBlocking` (couplability = every reachable Config has an enabled
+step); the **decidable check** `couplableCheck` (reachable-set fixpoint over a
+declared finite-state abstraction — the SU2 stepSet shape — closure + all-enabled,
+`Decidable` instance) with one-directional **soundness**
+(`nonBlocking_of_couplableCheck`; no completeness claimed); the **live witness**
+(constant coupled pair, Bool abstraction, check by `decide`, pending invariant —
+`live_nonBlocking`); the **blocked witness** (`admit := False`, the empty joint
+fiber: one step reachable then nothing enabled — `blocked_stuck`,
+`blocked_not_nonBlocking` — a grammar strangled by its own coupling,
+machine-checked). SU7.4+ remain pre-formalization. This is the arc the whole SPS series has
 been statics for: the coupled radix network as a verified abstract machine — the
 standing radix-complex goal (`Config` + `complexStep` + value), now with its value
 layer correctly replaced by graded observables (Phase 14 thesis). Three previously
