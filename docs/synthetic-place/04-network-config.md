@@ -47,7 +47,17 @@ tracking is conservative over SU7.1); consistency (`consistency_step` +
 faithful observation map); and **`network_trap_sound`** — Theorem 86 per node on
 the network, `trap_sound`/`emitNow_sound` transported VERBATIM: the network adds
 bookkeeping, never new trust. Trajectory-level consistency needs the §14.7 fairness
-bridge (SU7.5 territory). SU7.5–7.6 remain pre-formalization. This is the arc the whole SPS series has
+bridge (SU7.5 territory). **SU7.5 BUILT** (`NetworkDeterminacy.lean`, 0 sorries, axiom-clean —
+`[propext, Quot.sound]` only): the conditional Kahn diamond, local form. THE
+DISCIPLINE PAYS (`no_edge_between`): under capacity-one, two distinct
+simultaneously-enabled nodes can share NO coupling edge — the diamond's
+independence side-condition is DERIVED from enabledness, not assumed.
+`fireC_comm` (two enabled firings at distinct nodes commute on the nose),
+`enabled_after_fire` (each survives the other, all four guards incl. fan-out
+sums), `diamond` (both interleavings reachable, same configuration). Global KPN
+determinacy = diamond + fairness (classical, cited; §14.7's open bridge). Same-node
+choice non-determinism is the scheduler's, not the machine's. SU7.6 remains
+pre-formalization. This is the arc the whole SPS series has
 been statics for: the coupled radix network as a verified abstract machine — the
 standing radix-complex goal (`Config` + `complexStep` + value), now with its value
 layer correctly replaced by graded observables (Phase 14 thesis). Three previously
