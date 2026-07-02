@@ -72,8 +72,23 @@ conservation → couplability → per-node certified observation → the Kahn di
 liveness. The standing radix-complex goal (`Config` + `complexStep` + graded
 observables) is formalized. Remaining opens carried forward honestly: the
 free-scheduler window boundary (§3), heterogeneous carry morphisms (D9), the
-fairness bridge (§14.7), the accountability iff, queue-valued interfaces, and
-Phase-14 numbering for the SU7 items (next corpus pass). This is the arc the whole SPS series has
+fairness bridge (§14.7), the accountability iff, queue-valued interfaces (**DISCHARGED** — see below), and
+Phase-14 numbering for the SU7 items (next corpus pass).
+
+**The Phase-8 concretization bridge BUILT** (`NetworkBridge.lean`, 0 sorries,
+axiom-clean): the June and July network layers welded in the SU7.0 style —
+`NetworkShape.ofTimelineGraph` (a timeline graph IS a network shape);
+`timelineDeps` + `timeline_graded` (strict time-monotonicity IS clause-3 grading:
+the potential is the `time` field — Phase 8 and SU7.1 are one fact);
+`ComplexRule.ofRouting` (routing entries as coupling rules, `transform` = grant
+weight, unconditionally lawful). **The queue open discharged as reuse**:
+`QueueConfig` (the `Composition/Injection` FIFO discipline, monoid payloads +
+declared ledger) with `queueReachable_balanced` — the SU6b law at EVERY capacity
+(`issued = consumed + buffer.sum`, axiom-FREE) — and the instance theorem
+`queueReachable_one_toCurrency`: a capacity-one queue register IS the
+`CurrencyConfig` register (+ `queueBalanced_one_iff`); literal weld to the Phase-8
+artifact via `payloads_enqueue`/`payloads_dequeue`. Swapping the register inside
+`CConfig` is the licensed mechanical upgrade, not performed here. This is the arc the whole SPS series has
 been statics for: the coupled radix network as a verified abstract machine — the
 standing radix-complex goal (`Config` + `complexStep` + value), now with its value
 layer correctly replaced by graded observables (Phase 14 thesis). Three previously
