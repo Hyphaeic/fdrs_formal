@@ -51,6 +51,13 @@ noncomputable def rSquared {N : ℕ} (T : NonStationaryRadixTree N) (f : Fin N �
     let explainedVar := Finset.sum Finset.univ (fun i => (proj i - μ) ^ 2)
     explainedVar / totalVar
 
+/--
+**fdrs.md**: Definition 174 (DCC) — the minimum-leaves quantity [§11.8.1 · Phase 11].
+
+PLACEHOLDER: returns the ambient `N` (the trivial upper bound), not the true
+`min { |Leaves(T)| : R²(f,T) ≥ 1-ε }` over non-stationary radix trees. A genuine
+implementation (`sInf` over the achieving trees) is tracked formalization debt.
+-/
 noncomputable def digitConditionalComplexity {N : ℕ} (_f : Fin N → ℝ) (_ε : ℝ) : ℕ :=
   -- The minimum leaf count over all trees achieving R² ≥ 1 - ε
   -- We use N as the fallback (no tree achieves the threshold)

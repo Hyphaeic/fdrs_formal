@@ -23,5 +23,16 @@ jobs:
         with:
           python-version: '3.12'
       - run: pip install pyyaml
-      - run: python3 scripts/fdrs_index.py
+      # Regenerate both derived artifacts from the live Lean + fdrs.md sources.
+      - run: python3 scripts/fdrs_index.py            # -> data/fdrs-index.yaml
+      - run: python3 scripts/fdrs-summary --spec-index # -> docs/fdrs-index.md
+      # Fail if the committed index is stale (someone changed Lean/fdrs.md without
+      # regenerating). The `-I` filters ignore the only nondeterministic line — the
+      # generation timestamp — so the gate triggers only on real content drift.
+      - name: Fail if the committed index is out of date
+        run: |
+          git diff --exit-code \
+            -I 'generated_at' -I 'Auto-generated from' \
+            -- data/fdrs-index.yaml docs/fdrs-index.md \
+          || { echo "::error::Index is stale — run scripts/fdrs-rebuild and commit the result."; exit 1; }
       - run: python3 scripts/fdrs-check

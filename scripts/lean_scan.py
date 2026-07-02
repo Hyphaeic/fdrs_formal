@@ -43,10 +43,11 @@ class Declaration:
     scaffold_kind: Optional[str] = None  # None | true_concl | exists_true | and_true
                                          #      | vacuous_hyp | decidable_true | const_model
     scaffold_severity: Optional[str] = None  # None | "high" (claims FDRS spec content) | "low"
+    anchor: Optional[str] = None  # exact fdrs.md item cited, e.g. "proposition_135"
 
     def to_dict(self):
         d = asdict(self)
-        for k in ('stub_kind', 'scaffold_kind', 'scaffold_severity'):
+        for k in ('stub_kind', 'scaffold_kind', 'scaffold_severity', 'anchor'):
             if d.get(k) is None:
                 del d[k]
         return d
@@ -168,6 +169,14 @@ _SPEC_CLAIM_RE = re.compile(
     re.IGNORECASE,
 )
 _SCAFFOLD_ALLOW_RE = re.compile(r'@scaffold-ok')
+
+# Exact item anchor: a docstring line like `**fdrs.md**: Proposition 135 (…)`.
+# Requires the type+number to follow `fdrs.md` directly, so file-header phrases
+# like `fdrs.md, Phase 11, Sections …` (no item number) do not false-anchor.
+RE_ANCHOR = re.compile(
+    r'fdrs\.md[*\s:]*\(?\s*(Theorem|Definition|Proposition|Corollary|Lemma)\s+(\d+)',
+    re.IGNORECASE,
+)
 
 
 def _count_by(items, key):
@@ -347,8 +356,48 @@ def _detect_scaffold(lines: list[str], start_idx: int, kind: str) -> tuple[Optio
         noop_id = bool(re.match(r'^id$', body) or re.match(r'^fun\s+(\w+)\s*=>\s*\1$', body))
         if const_zero or const_lit or noop_id:
             return ('const_model', 'high')
+        # A def that discards an explicit (data) argument and returns a bare
+        # binder/identifier — e.g. `(_f : …) … := N` — is a constantized stub the
+        # digit-literal checks miss (`N` is an identifier, not `\d+`). The ignored
+        # `_`-prefixed explicit argument is the tell that the input is unused. This
+        # is what let `minUniformCells := N` / `digitConditionalComplexity := N`
+        # slip through as `proven`.
+        ignores_explicit_arg = bool(re.search(r'\(\s*_\w', type_part))
+        bare_ident_body = bool(
+            re.fullmatch(r"[A-Za-z_][\w']*", body)
+            or re.fullmatch(r"fun[\s\w_]+=>\s*[A-Za-z_][\w']*", body))
+        if ignores_explicit_arg and bare_ident_body:
+            return ('const_model', 'high')
 
     return (None, None)
+
+
+_ANCHOR_STOP_PREFIXES = ('theorem ', 'lemma ', 'def ', 'noncomputable', 'abbrev ',
+                         'instance ', 'structure ', 'class ', 'inductive ', 'end ',
+                         'namespace ', 'section ')
+
+
+def _detect_anchor(lines: list[str], start_idx: int) -> Optional[str]:
+    """The exact fdrs.md item a declaration cites in its doc-comment, e.g.
+    `**fdrs.md**: Proposition 135` -> "proposition_135". Enables precise
+    item<->declaration linking, overriding the coarse line/phase fallbacks.
+
+    Unlike `_preceding_doc` (which stops at blank lines, for severity heuristics),
+    this collects the whole `/-- … -/` block above the declaration — anchors often
+    sit on the first doc line, separated from the body by a blank line.
+    """
+    collected = []
+    for j in range(start_idx - 1, max(-1, start_idx - 40), -1):
+        s = lines[j].strip()
+        collected.append(s)
+        if '/--' in s or '/-!' in s:        # reached the top of this doc block
+            break
+        if any(s.startswith(p) for p in _ANCHOR_STOP_PREFIXES):
+            return None                      # hit prior code without a doc block
+    m = RE_ANCHOR.search('\n'.join(reversed(collected)))
+    if m:
+        return f"{m.group(1).lower()}_{m.group(2)}"
+    return None
 
 
 def scan_file(filepath: Path, rel_path: str) -> tuple[
@@ -446,9 +495,10 @@ def scan_file(filepath: Path, rel_path: str) -> tuple[
             name = m.group(2)
             stub_kind = _detect_stub_kind(lines, lineno_0, kind)
             sc_kind, sc_sev = _detect_scaffold(lines, lineno_0, kind)
+            anchor = _detect_anchor(lines, lineno_0)
             decls.append(Declaration(kind=kind, name=name, file=rel_path, line=lineno,
                                      stub_kind=stub_kind, scaffold_kind=sc_kind,
-                                     scaffold_severity=sc_sev))
+                                     scaffold_severity=sc_sev, anchor=anchor))
             continue
 
         # Infix/prefix/postfix notations

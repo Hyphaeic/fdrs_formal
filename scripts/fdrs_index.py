@@ -253,8 +253,59 @@ def match_items_to_lean(
     for s in scan.sorries:
         sorry_files.setdefault(s.file, []).append(s.line)
 
+    # Strategy 0: exact anchor matching. A declaration whose docstring cites
+    # `**fdrs.md**: <Type> <Num>` links *directly* to that item, overriding the
+    # line/phase fallbacks below (which otherwise attribute an item to whatever
+    # shares its file or phase — e.g. all of Phase 11 collapsing onto one file).
+    # This is the reliable item<->declaration link, and it lets a scaffolded
+    # declaration correctly downgrade its item's status.
+    anchor_to_decls: dict[str, list[Declaration]] = {}
+    for d in scan.declarations:
+        a = getattr(d, 'anchor', None)
+        if a:
+            anchor_to_decls.setdefault(a, []).append(d)
+
+    for item in items:
+        decls_for = anchor_to_decls.get(item.id)
+        if not decls_for:
+            continue
+        by_file: dict[str, list[Declaration]] = {}
+        for d in decls_for:
+            by_file.setdefault(d.file, []).append(d)
+        lean_files = []
+        has_axiom = has_sorry = has_genuine = has_stub = False
+        for fp, ds in sorted(by_file.items()):
+            lean_files.append({'path': fp, 'declarations': [d.name for d in ds][:10]})
+            g, s = _classify_decls(ds)
+            has_genuine = has_genuine or g
+            has_stub = has_stub or s
+            if fp in sorry_files:
+                has_sorry = True
+            if file_axioms.get(fp):
+                has_axiom = True
+        in_root = any(lf['path'] in root_files for lf in lean_files)
+        status = _item_status(
+            has_lean=True, has_genuine=has_genuine, has_scaffold=has_stub,
+            has_sorry=has_sorry, has_axiom=has_axiom, in_root=in_root)
+        # An anchor must never *downgrade* an item to `missing`: a decl may *cite*
+        # an item (a downstream realization of Theorem 45) without *proving* it,
+        # while the real proof lives elsewhere without an anchor. If the anchored
+        # decls prove nothing, fall through to the coarse strategies. Genuine /
+        # scaffold / wip verdicts are definite and kept (the precise-link win,
+        # e.g. a stubbed Definition 174 correctly flagged scaffold).
+        if status == 'missing':
+            continue
+        matches[item.id] = {
+            'lean_files': lean_files,
+            'status': status,
+            'match_method': 'anchor',
+            'in_root_build': in_root,
+        }
+
     # Strategy 1: line-range matching
     for item in items:
+        if item.id in matches:
+            continue
         item_line = item.line
         matched_files = set()
         for file_path, start, end in line_ranges:
