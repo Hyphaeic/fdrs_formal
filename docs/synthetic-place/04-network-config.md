@@ -56,8 +56,24 @@ independence side-condition is DERIVED from enabledness, not assumed.
 `enabled_after_fire` (each survives the other, all four guards incl. fan-out
 sums), `diamond` (both interleavings reachable, same configuration). Global KPN
 determinacy = diamond + fairness (classical, cited; §14.7's open bridge). Same-node
-choice non-determinism is the scheduler's, not the machine's. SU7.6 remains
-pre-formalization. This is the arc the whole SPS series has
+choice non-determinism is the scheduler's, not the machine's. **SU7.6 BUILT** (`NetworkLiveness.lean`, 0 sorries, axiom-clean): liveness at both
+scales — `Run`/`liveRun`/`nonBlocking_progress` (a non-blocking network extends to
+an infinite run; `no_deadlock`), `network_live` (progress + per-node dependency
+deadlock-freedom, packaging SU7.3 with SU7.1's Phase-8 certificate), and
+certificates fire when forced: `emitNow_fires` (a singleton candidate set makes the
+driver ACTUALLY emit) + `network_trap_fires` (fires ∧ sound, on the tracked
+machine). The guarantee factors honestly: progress (proven) × fairness (§14.7's
+bridge, classical, cited, open) × instance forcing bounds (declared grammar
+property) — proven where provable, named where instance-dependent.
+
+**THE SU7 ARC IS COMPLETE (2026-07-02): SU7.0–7.6 all BUILT** — the coupled radix
+network as a verified abstract machine: probe gate → three-clause `complexStep` →
+conservation → couplability → per-node certified observation → the Kahn diamond →
+liveness. The standing radix-complex goal (`Config` + `complexStep` + graded
+observables) is formalized. Remaining opens carried forward honestly: the
+free-scheduler window boundary (§3), heterogeneous carry morphisms (D9), the
+fairness bridge (§14.7), the accountability iff, queue-valued interfaces, and
+Phase-14 numbering for the SU7 items (next corpus pass). This is the arc the whole SPS series has
 been statics for: the coupled radix network as a verified abstract machine — the
 standing radix-complex goal (`Config` + `complexStep` + value), now with its value
 layer correctly replaced by graded observables (Phase 14 thesis). Three previously
