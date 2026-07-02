@@ -1,6 +1,11 @@
 # SU7 — the network arc: `Config` + `complexStep` (the radix-complex machine)
 
-**Status:** design note, pre-formalization. This is the arc the whole SPS series has
+**Status:** design blessed; **SU7.0 probe BUILT** (`NetworkConfig.lean`, 0 sorries,
+axiom-clean): the 2-node/1-edge network machine recovers the SU4b interface machine
+exactly (`pairNet_reachable_iff` — reachable sets correspond under the bijective
+configuration correspondence; balance transports per edge; the ragged demo run lands
+on SU4b's ledger, kernel-checked). The `Config` design passes its own mandatory gate
+(§5.6). SU7.1+ remain pre-formalization. This is the arc the whole SPS series has
 been statics for: the coupled radix network as a verified abstract machine — the
 standing radix-complex goal (`Config` + `complexStep` + value), now with its value
 layer correctly replaced by graded observables (Phase 14 thesis). Three previously

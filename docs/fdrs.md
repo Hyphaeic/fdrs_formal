@@ -7706,15 +7706,17 @@ For a `T`-adapted signal `f`, the **representation gap** is:
 ```
 Gap(f, T) = U(f) / |Leaves(T)|.
 ```
-This measures how many more uniform cells are needed compared to tree-adapted cells. `Gap ≥ 1` always, with equality iff the tree partition is already uniform.
+This measures how many more uniform cells are needed compared to tree-adapted cells. For a tree that is *tight* for `f` (it separates every leaf cell), `Gap ≥ 1`; in general the robust, hypothesis-honest facts are the collapse `Gap ≤ 1` when the tree is uniform-adapted and the strict `Gap > 1` achievable under heterogeneity (Proposition 135).
 
-### Proposition 135 (Gap ≥ 1)  [§11.5.3 · Phase 11]
+### Proposition 135 (Representation gap: collapse and strict gap)  [§11.5.3 · Phase 11]
 
-For any `T`-adapted signal `f`: `Gap(f, T) ≥ 1`.
+The bare claim "`Gap(f, T) ≥ 1` for every `T`-adapted `f`" is **false**: a constant `f` is adapted to any tree, so a 5-leaf tree gives `Gap = 1/5`. The inequality silently needs `f` to separate every leaf cell (the tree is *tight* for `f`) — a hypothesis the bare form omits. The two hypothesis-honest facts, both machine-checked and axiom-clean, are:
 
-If `T` is heterogeneous (non-uniform child branching), then generically `Gap > 1`: the tree captures the signal with fewer cells than any uniform partition.
+1. **Collapse (zero penalty).** If `f` is constant on the equal-size cells of the uniform tree with `|Leaves(T)|` cells, then `Gap(f, T) ≤ 1`: the uniform partition loses nothing. This is the empirical `adv-over-uniform = 0.0000` at `Gap = 1` made into a theorem (`representationGap_le_one_of_uniform`).
 
-**Proof.** Any partition representing `f` as piecewise-constant must refine the leaf partition of `T` (since `f` is `T`-adapted and distinguishes different leaf cells). A uniform partition refining a non-uniform partition needs at least as many cells as the non-uniform one. For strict inequality in the heterogeneous case: if child branching varies, the leaf cell sizes vary, and a uniform partition must use cells of size `gcd` of all leaf cell sizes, which is strictly finer. ∎
+2. **Heterogeneity strictly pays.** Some heterogeneous tree with an adapted signal has `Gap > 1`: on `Fin 4`, `f = ![0,0,1,2]` adapted to `node [leaf 2 0, node [leaf 1 2, leaf 1 3]]` has `U(f) = 4` over `3` leaves, so `Gap = 4/3` (`representationGap_gt_one_example`).
+
+**Proof.** (1) `U(f) ≤ |Leaves(T)|` since the uniform partition of that size already resolves `f`, so `Gap = U(f)/|Leaves(T)| ≤ 1`. (2) The only equipartitions of `{0,1,2,3}` are into `1, 2, 4` cells; `f` is non-constant (rules out `1`) and differs across the second block `{2,3}` (rules out `2`), so `U(f) = 4` while the tree has `3` leaves. The classical tight-tree `Gap ≥ 1` (a uniform partition resolving `f` must refine a tight tree's leaves) remains true but is subsumed by (1)–(2) and not separately formalized. ∎
 
 ### Theorem 67 (Depth-2 gap formula)  [§11.5.4 · Phase 11]
 
@@ -8285,7 +8287,9 @@ organizing discovery is a triple migration:
 
 The coupled radix complex is accordingly not a generalized adele but a **networked
 transport object** — a gauge-indexed transport geometry. Design record:
-`docs/synthetic-place/00-thesis.md`, `01-build-roadmap.md`, `02-phase14-design.md`.
+`docs/synthetic-place/00-thesis.md`, `01-build-roadmap.md`, `02-phase14-design.md`,
+`03-digit-coupling.md` (the digit-coupling layer, §14.8–14.9), `04-network-config.md`
+(the SU7 network arc — the radix-complex machine these statics serve).
 
 ### 14.1 Designed gauges and the refinement ultrametric
 
@@ -8487,7 +8491,239 @@ fairness hypothesis. Minimality of the sup-gluing is posed, not claimed. Trace
 theory background is classical (Mazurkiewicz); the corpus contributes the
 FDRS-shaped statements and the verified artifact.
 
+### 14.8 Digit coupling — the six axes (the SU6 layer)
+
+*(Addendum, 2026-07-02: assigns Phase-14 numbering to the digit-coupling layer built
+2026-06-10/11 — design record `03-digit-coupling.md` — and to the non-abelian arc of
+2026-06-29/30, §14.10. The `03` ledger's "Phase 14 numbering for SU6 awaits the next
+corpus pass" is hereby discharged.)*
+
+Every coupling rule between FDRS lines is a point in a six-axis space — **topology**
+(which digits couple), **window** (what the receiver sees of the source), **message**
+(what crosses: a commutative-monoid currency), **distribution** (route/split vs
+mirror), **activation** (overflow, trigger, manifestation), and **grading** (exact vs
+frustrated) — with the ordinary number line at the origin: path topology, blind
+window, unit mass, route-to-next, overflow activation, exact grading. The base
+primitive is the *window-coupled step*: one source tick emits a message (its carry
+content), and the receiver's fiber is gated by the pair (message, window-reading of
+the source). This section records the grading, currency, and window axes; §14.9 the
+within-digit (nested) topology.
+
+**Definition 201 (coupling graph; size as an edge cocycle)**:
+A *coupling graph* on places `V` is an edge type with `src, tgt : Edge → V` and a
+positive ratio `ratio : Edge → ℚ` — how many source-increments one target-increment
+is worth (its reciprocal is the carry frequency: the two readings of size,
+composition and activity, are reciprocal currencies of one **edge** datum). A
+traversal step crosses an edge forward (factor `ratio`) or backward (factor
+`ratio⁻¹`); `walkFactor` is the product along a walk; the complex is **gradable**
+when a global positive magnitude `w` exists with `w(tgt) = ratio · w(src)` on every
+edge. Size is not a node property; it is a multiplicative cocycle on the coupling
+graph.
+
+*Lean:* `FdrsFormal/Modes/SyntheticPlace/Grading.lean` (`CouplingGraph`, `Step`,
+`walkFactor`, `Gradable`).
+
+**Theorem 93 (the holonomy dichotomy — the full iff)**:
+In a gradable complex every closed walk has size factor `1` (`gradable_holonomy`);
+conversely, a base-connected complex with trivial loop holonomy is gradable — the
+potential is defined by walk transport, well-defined by the walk-reversal toolkit
+(`gradable_of_trivial_holonomy`). *Direction is not geometry — it is exactness of the
+size cocycle.*
+
+**Proposition 150 (witnesses on both sides)**:
+`chainGraph_gradable` — the standard number line is the graded case: path topology
+has no loops and the witness potential is exactly the place value (`chainPotential`
+= `B_i`); "most significant digit" is well-defined *because* chains are trees.
+`frustratedTriangle_not_gradable` — three digits, each overflowing into the next at
+ratio `2` around a loop (loop factor `8 ≠ 1`): the dynamics and every per-edge
+balance remain perfectly well-defined, yet **no global bigger/smaller exists** — a
+Penrose staircase of digits. **Frustration** thereby joins raggedness (Proposition
+148: kills the rank chart) and bilaterality (Theorem 90: kills separable
+conservation) as the **third obstruction to number-hood**; a coupling complex is "a
+number" exactly when it clears all three, and each failure leaves a survivor
+(geometry, balance, per-edge ratios).
+
+**Definition 202 (currency; transport vs trigger)**:
+A per-interface *currency register* over a commutative monoid `M` carries the
+declared ledger (`issued`, `consumed`, `pending : Option M`) with `issue`/`consume`
+transitions and reachability relative to a declared grant set. Overflow distribution
+has two species that must never be conflated: **transport** (route/split — the carry
+is conserved mass; distributed weights sum) and **trigger** (mirror — every coupled
+digit generates its own tick; the carry is *copied like information*).
+
+*Lean:* `FdrsFormal/Modes/SyntheticPlace/CurrencyBalance.lean` (`CurrencyConfig`,
+`CurrencyReachable`).
+
+**Theorem 94 (currency-generic interface balance)**:
+`issued = consumed + pending` on every reachable register, generically over **any**
+commutative monoid (`currencyReachable_balanced`) — SU4b's law never used
+subtraction, order, or grant size. Instantiations: `mass_balance` (transport,
+`M = ℕ`) and `trigger_balance` (each overflow issues one event-token): **mirrors
+conserve too — in the event currency.** Every coupling edge declares its currency;
+conservation holds in the declared currency; currencies never convert without a
+declared morphism.
+
+**Definition 203 (windows; the length window; grant uniformity)**:
+The *window* of a coupling is what the grant may read of the partner: nothing
+(blind) ⊂ the partner's clock (`LengthWindow`: the grant factors through the
+partner's prefix *length*) ⊂ the partner's content (the full prefix — SU1's
+`CoupledFiber`). A coupling is *grant-uniform* (`GrantUniform`) when the grant
+agrees across co-reachable configurations with the same source prefix — i.e. the
+books never depend on partner data that varies while the source's own view is fixed.
+
+*Lean:* `FdrsFormal/Modes/SyntheticPlace/WindowAccountability.lean`,
+`WindowBoundary.lean`.
+
+**Theorem 95 (the shared clock; clock windows are accountable)**:
+Strict alternation is a shared clock: on every reachable configuration
+`|s_A| = |s_B|` with the interface empty and `|s_A| = |s_B| + 1` with a grant
+pending (`reachable_length`). Consequently a length-window coupling is place-locally
+accountable (`issued_placeLocal_of_lengthWindow`): reading the partner's *time*
+costs nothing, because synchrony already shares it. The accountability boundary thus
+refines to: blind ⊂ clock — accountable; content — not (Theorem 90 ii).
+
+**Theorem 96 (the window boundary, CLOSED for the alternating machine)**:
+The carry charge is place-locally accountable **iff** the coupling is grant-uniform
+(`issued_placeLocal_iff_grantUniform`). The calibrated points fall out as
+corollaries: clock windows are uniform (`grantUniform_of_lengthWindow`, subsuming
+Theorem 95), the bilateral content window is not (`jointFiber_not_grantUniform`).
+*Scope:* strict alternation only — under free network scheduling the boundary
+reopens, and its correct restatement (accountable ⟺ the window factors through
+schedule-deducible data) is an open item of the SU7 arc (`04-network-config.md` §3).
+
+### 14.9 Nested charts and dilation (within-digit coupling)
+
+**Definition 204 (the exact splice)**:
+One digit of an outer radix line is *implemented by an inner chain*: `refineBase`
+splices a `k`-stage inner line `c` into position `p` of the outer line `b`, under
+the recorded **exactness** decision `b p = ∏_{j<k} c j` — the outer fiber equals the
+inner mass on the nose (lossless chart; lossy/quotient charts are the sea's regime
+and remain a declared variant).
+
+*Lean:* `FdrsFormal/Modes/SyntheticPlace/NestedChain.lean`, `NestedDilation.lean`.
+
+**Theorem 97 (synthetic fractions; the gauge half of dilation)**:
+Below the spliced block nothing changes (`refined_potential_below`); **inside the
+block the gauge is composite** `B_p · C_j` — the inner states sit at resolutions
+strictly between `B_p` and `B_{p+1}`, so a *synthetic fraction* is exactly a
+position inside one outer unit whose denominator is the inner gauge scaled by the
+outer place value (`refined_potential_inside`); at the top of the block and beyond,
+the refined gauge **rejoins the outer gauge exactly** (`refined_potential_top`,
+`refined_potential_above`) — the chart is gauge-lossless: the outer line cannot
+tell, by resolution, that one of its digits is secretly a whole structure; and
+crossing the block multiplies resolution by exactly `b p`
+(`nested_dilation_gauge`). *The gauge is the clock; coupling re-clocks.*
+
+**Theorem 98 (dilation, dynamic half — exact nesting is conservative)**:
+The exact splice never leaves Mode 0: the refined sequence is a bona fide radix line
+(`refineBase_ge_two`), its place values agree with the composite gauge
+(`chainPlace_refine_below/inside/above`), the **re-blocking identity** holds — the
+outer digit is the inner decode of the block digits (`refined_digit_reblock`) — and
+one outer unit is exactly a `B_p`-fold inner tick (`dilation_tick`). **Exact nesting
+buys resolution, never arithmetic**: both lines enumerate the same `ℕ`, and the
+chart between them is value-preserving.
+
+### 14.10 The non-abelian arc: group grading and the certified SE(2) engine
+
+The grading axis of §14.8 is `ℚ`-valued — abelian by accident of the instance, not
+by necessity of the idea. This arc (built 2026-06-29/30) re-derives the axis over an
+**arbitrary group**: the walk factor becomes an *ordered* product, and order matters
+exactly when the group does. It then carries the emission-certificate family into
+the non-commutative regime, where the value space (rotation) has **no global order
+and no floor**.
+
+**Definition 205 (group-valued coupling graph)**:
+A `GroupGraph V G` (`[Group G]`) carries `ratio : Edge → G`; `walkFactor` is the
+**ordered** product of step factors (`ratio` forward, `ratio⁻¹` backward);
+`Gradable` demands a potential `w : V → G` with `w(tgt) = ratio · w(src)`.
+
+*Lean:* `FdrsFormal/Modes/SyntheticPlace/GroupGrading.lean` (`GroupGraph`,
+`walkFactor`, `Gradable`).
+
+**Theorem 99 (group holonomy dichotomy — gain-graph balance)**:
+`gradable_holonomy` and `gradable_of_trivial_holonomy` combine to the full iff for
+base-connected complexes: **`group_gradable_iff_trivial_holonomy`** — a global
+`G`-valued magnitude exists iff every closed walk has factor `1`. Chains are
+gradable over *any* group (`chainGraph_gradable`, potential = the ordered
+`chainPotential`): the abelian/non-abelian distinction is invisible to trees — it is
+a **cycle** property. *Attribution:* this is Zaslavsky's balance criterion for gain
+graphs (1989), classical; the corpus contributes the placement (size/order as
+cocycles on the coupling graph) and the machine-checked artifact.
+
+**Proposition 151 (non-abelian frustrated witnesses, discrete and continuous)**:
+`frustratedTriangle : GroupGraph (Fin 3) (DihedralGroup 3)` — loop factor `≠ 1`
+(`frustrated_loop_factor_ne_one`), hence `frustratedTriangle_not_gradable`
+(discrete). `frustratedSE2 : GroupGraph (Fin 3) SE2` — three genuine rigid motions
+of the plane composing around a loop to a nontrivial slide
+(`frustratedSE2_holonomy_ne_one`, `frustratedSE2_not_gradable`): a real rigid-motion
+cycle that does not close (continuous). *Lean:* `GroupGrading.lean`, `SE2Pose.lean`.
+
+**Definition 206 (sector emission — the floor-free trap)**:
+On the circle `ℤ/(M · cellWidth)` with `M` sectors: `sector` reads the cyclic sector
+of a position; `emitSector` emits the sector index **only when the entire
+uncertainty window lies in one sector**, and refuses otherwise. The digit *wraps*
+(`wall_wraps` — the base-0 wall): there is no global order and no floor to take.
+
+*Lean:* `FdrsFormal/Modes/SyntheticPlace/CircleEmit.lean`.
+
+**Theorem 100 (sector-trap soundness — the fourth certificate)**:
+`emitSector_sound`: every value of the uncertainty window observes the emitted
+sector — the faithful wrap-analogue of the Archimedean four-corner trap, with cyclic
+sectors in place of floor intervals. The emission-certificate family is now four:
+**order** (the Archimedean place, Theorem 82), **congruence** (the p-adic places,
+`padic_emit_traps`), **admissibility** (synthetic places, Theorem 86), and **sector**
+(the circle — the rotation half of SE(2)). Executable demos: `emit_demo`,
+`refuse_demo`.
+
+**Definition 207 (exact SE2 motions; pose regions; tractable engines)**:
+`SE2` is the genuine rigid-motion group (rotation `Circle` × translation `ℂ`, the
+non-commutative semidirect law); a *pose region* is `PoseRegion := Set SE2`, with
+`predict` (the group's own set-product) and `update` (intersection). A
+`TractablePose R` is an engine over representable regions `R` with sound
+predict/update; the generic machinery is `Box K` and affine motions `Aff K` over
+**any** ordered ring `K` — exactly the typeclass of the bihomographic trap.
+
+*Lean:* `SE2Pose.lean`, `SE2Engine.lean`, `SE2Tight.lean`.
+
+**Theorem 101 (the certified non-commutative engine: soundness and the tight traps)**:
+At the set level the predict→update loop is sound through non-commutative
+composition (`predict_sound`, `update_sound`, `run_sound`) — soundness is free; the
+work is tractability. The generic engine supplies it exactly: `Aff.comp_apply`
+(exact affine composition, no error), `Aff.bbox_sound` (**the tight four-corner
+trap**: every box point maps into the bbox of the actual slanted image),
+`bilinear_ge`/`bilinear_le` and `coupling_ge`/`coupling_le` (**the bounded-region
+bihomographic trap**: the Gosper bilinear form over a box is trapped by its four
+corners — Theorem 82's kernel with `[1,∞]` tails replaced by box edges, certifying
+the rotation × translation coupling itself), and exact rational rotations (the
+Pythagorean `(3,4,5)`: `cos = 3/5, sin = 4/5`) — genuine fine rotations over `ℚ`,
+no floats.
+
+**Theorem 102 (the tight tractable engine)**:
+`tightTractable_run_sound`: the `PoseBox` engine — rotation box × translation box;
+predict = tight bbox transported through the coordinate bridges (`rc_mul`,
+`tc_mul`), update = exact intersection — is sound at every step against the true
+pose. *Honest seam (open):* the coordinate bridges identify the generic `K × K` box
+engine with `Circle ⋉ ℂ` pointwise; the full engine-level identification, with
+`CircleEmit`'s certified sector feeding the heading channel, is the remaining wire.
+
+### 14.11 Addendum honest scope
+
+Potentials on graphs are classical discrete gauge theory, and Theorem 99 is
+Zaslavsky's gain-graph balance — the contribution is placement, the FDRS reading,
+and the verified witnesses. The three obstructions to number-hood are a
+classification of *observed* failure modes, never a completeness claim; *causal
+frustration* is a recorded **candidate** fourth (`04-network-config.md` §2, clause
+3: magnitude may be frustrated, causality must not be). The window-boundary iff
+(Theorem 96) is alternation-relative — do not cite it for free schedulers. Currency
+laws hold per declared currency only. The SE(2) identification seam and
+`CircleEmit`'s probe status are as stated in Theorem 102 / Definition 206. These
+statics serve the **SU7 network arc** — `Config` + `complexStep`, the coupled radix
+network as a verified abstract machine (`04-network-config.md`) — whose
+formalization begins with the SU7.0 probe (`NetworkConfig.lean`: the 2-node/1-edge
+network machine recovers the SU4b interface machine).
+
 ---
 
 **End of Phase 14: The Synthetic Place Complex**
 **Status:** Machine-verified in Lean (0 sorries; axioms `propext`/`Classical.choice`/`Quot.sound` only). The designed gauge generalizes both the place-value product `β_ω` and the generated gauge `q_n` into one keystone (ultrametric + ball = cylinder); coupling realizes the ragged regime concretely while geometry survives it; emission gains its third certificate (admissibility) with exact mass transport; conservation migrates from separable node charges — impossible under bilateral coupling, by machine-checked rigidity — to interface balance laws; and network geometry, refused to every scalar gauge by the trace no-go, is carried by the observer-glued family. Value, conservation, and geometry each survive the network regime by becoming indexed and glued.
+**Addendum status (2026-07-02, §14.8–14.11):** the digit-coupling layer lands the three-obstruction picture (raggedness · bilaterality · frustration) with the holonomy dichotomy proven as a full iff and witnessed on both sides; conservation becomes currency-generic (mirrors conserve in the event currency); the window boundary is closed for the alternating machine (accountable ⟺ grant-uniform); exact nesting is conservative (resolution, never arithmetic); and the non-abelian arc lifts grading to arbitrary groups (gain-graph balance, machine-checked, with dihedral and SE(2) frustrated witnesses) and extends certified emission to the floor-free sector trap and the tight SE(2) pose engine. Next: the SU7 network machine.
