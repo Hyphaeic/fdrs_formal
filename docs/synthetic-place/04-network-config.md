@@ -16,7 +16,18 @@ only). Conservative over SU7.0 (`ofRule_reachable_iff`; the SU4b probe transport
 trigger token, unlawful `1+2` blocked, kernel-checked). Recorded decisions D7 (one
 ambient currency per module instance; per-edge currencies + morphisms = SU7.2) and
 D8 (carry mass is a per-node declaration; `none` = SU4b's capacity-grant regime).
-SU7.2+ remain pre-formalization. This is the arc the whole SPS series has
+**SU7.2 BUILT** (`NetworkBalance.lean`, 0 sorries, axiom-clean): per-edge balance by
+literal SU6b reuse (`edge_currencyReachable` — the firing guards ARE the ledger
+discipline; `network_balanced_per_edge` via `currencyReachable_balanced` verbatim);
+the cross-edge sum in the ambient currency (`network_balanced_total` — the only
+regime where it is meaningful, ledger item 3); **fan-out exactness as a theorem**
+(`fire_fanout_exact`: a declaring node's firing issues exactly its carry across its
+transport out-edges), with the structural bonus `fire_no_self_loop` (clause-2 guards
+make self-loops unfireable — not legislated, derived). The heterogeneous machine
+(`HRule`/`HConfig`/`HReachable`) delivers per-edge-per-currency balance
+(`hnetwork_balanced_per_edge`, each edge in its own monoid); **D9 recorded**: the
+heterogeneous carry partition needs per-node currencies + declared push morphisms
+`Mv →+ M_e` — open, not smuggled. SU7.3+ remain pre-formalization. This is the arc the whole SPS series has
 been statics for: the coupled radix network as a verified abstract machine — the
 standing radix-complex goal (`Config` + `complexStep` + value), now with its value
 layer correctly replaced by graded observables (Phase 14 thesis). Three previously
