@@ -37,7 +37,17 @@ declared finite-state abstraction — the SU2 stepSet shape — closure + all-en
 `live_nonBlocking`); the **blocked witness** (`admit := False`, the empty joint
 fiber: one step reachable then nothing enabled — `blocked_stuck`,
 `blocked_not_nonBlocking` — a grammar strangled by its own coupling,
-machine-checked). SU7.4+ remain pre-formalization. This is the arc the whole SPS series has
+machine-checked). **SU7.4 BUILT** (`NetworkTraps.lean`, 0 sorries, axiom-clean): per-node engines
+(`NodeEngines`: a `TransferStructure` + initial ledger per node, **windows as the
+declared observation maps** from in-flight grants to the node's alphabet); the
+tracked machine (`Tracked`/`trackedFire`/`TrackedReachable` — firing refines the
+firing node's uncertainty ledger by its window observation; `tracked_base`:
+tracking is conservative over SU7.1); consistency (`consistency_step` +
+`tracked_consistent_fire` — refinement never loses the truth when the window is a
+faithful observation map); and **`network_trap_sound`** — Theorem 86 per node on
+the network, `trap_sound`/`emitNow_sound` transported VERBATIM: the network adds
+bookkeeping, never new trust. Trajectory-level consistency needs the §14.7 fairness
+bridge (SU7.5 territory). SU7.5–7.6 remain pre-formalization. This is the arc the whole SPS series has
 been statics for: the coupled radix network as a verified abstract machine — the
 standing radix-complex goal (`Config` + `complexStep` + value), now with its value
 layer correctly replaced by graded observables (Phase 14 thesis). Three previously
