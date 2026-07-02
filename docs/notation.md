@@ -6,9 +6,9 @@ Auto-generated from Lean source files.
 
 | Symbol | Expansion | File | Line | Scoped |
 |--------|-----------|------|------|--------|
-| `:50 c " ⟶[" e "] " Γ` | `ContextDynamics.step Γ c e` | FdrsFormal/Modes/ContextDependent/Evolution/ContextDynamics.lean | 74 |  |
-| `:max Ω "[" c "]` | `ExtendedOracle.atContext Ω c` | FdrsFormal/Modes/ContextDependent/Basic/ExtendedOracle.lean | 70 |  |
-| `c₀` | `InitialContext.initial` | FdrsFormal/Modes/ContextDependent/Basic/ContextSpace.lean | 62 |  |
+| `:50 c " ⟶[" e "] " Γ` | `ContextDynamics.step Γ c e` | FdrsFormal/Modes/ContextDependent/Evolution/ContextDynamics.lean | 73 |  |
+| `:max Ω "[" c "]` | `ExtendedOracle.atContext Ω c` | FdrsFormal/Modes/ContextDependent/Basic/ExtendedOracle.lean | 69 |  |
+| `c₀` | `InitialContext.initial` | FdrsFormal/Modes/ContextDependent/Basic/ContextSpace.lean | 61 |  |
 | `P[" k "," L "]` | `finiteBlockProjection _ k L _` | FdrsFormal/FunctionSpaces/Commutant/FiniteProjection.lean | 84 | ✓ |
 | `P_" L` | `blockProjection _ L` | FdrsFormal/FunctionSpaces/Projections/Definition.lean | 83 | ✓ |
 | `pred` | `predecessor` | FdrsFormal/Operations/Predecessor/Correctness.lean | 52 |  |
@@ -18,18 +18,18 @@ Auto-generated from Lean source files.
 | `Δ[" k "," L "]` | `finiteDetailOperator _ k L _` | FdrsFormal/FunctionSpaces/Commutant/FiniteProjection.lean | 97 | ✓ |
 | `Δ_" L` | `detailOperator _ L` | FdrsFormal/FunctionSpaces/Projections/Details.lean | 70 | ✓ |
 | `δ₁ " ⪰ " δ₂` | `metricDominance δ₁ δ₂` | FdrsFormal/Modes/VariableRadix/MetricComparison/Definition.lean | 61 |  |
-| `ε` | `epsilon` | FdrsFormal/NumberTheory/ArithmeticFunctions/Definition.lean | 74 |  |
-| `μ` | `moebius` | FdrsFormal/NumberTheory/ArithmeticFunctions/Definition.lean | 98 |  |
+| `ε` | `epsilon` | FdrsFormal/NumberTheory/ArithmeticFunctions/Definition.lean | 73 |  |
+| `μ` | `moebius` | FdrsFormal/NumberTheory/ArithmeticFunctions/Definition.lean | 97 |  |
 | `μ_" b` | `uniformProductMeasure b` | FdrsFormal/FunctionSpaces/Measure/ProductMeasure.lean | 144 | ✓ |
 | `μ_k[" k "]` | `finiteUniformMeasure _ k` | FdrsFormal/FunctionSpaces/Commutant/FiniteHorizon.lean | 326 | ✓ |
-| `μ²` | `squarefreeIndicator` | FdrsFormal/NumberTheory/ArithmeticFunctions/Definition.lean | 120 |  |
+| `μ²` | `squarefreeIndicator` | FdrsFormal/NumberTheory/ArithmeticFunctions/Definition.lean | 119 |  |
 | `π_" L` | `prefixProjection _ L` | FdrsFormal/Topology/PrefixCongruence/Definition.lean | 174 |  |
 | `ℱ_" L` | `cylinderAlgebra _ L` | FdrsFormal/Topology/Filtration/Definition.lean | 62 |  |
 | `⊕ (infixl:65)` | `add` | FdrsFormal/Operations/Addition/Correctness.lean | 52 |  |
 | `⊖ (infixl:65)` | `subtract` | FdrsFormal/Operations/Subtraction/Correctness.lean | 53 |  |
 | `⋆ (local infixl:70)` | `dirichletConv` | FdrsFormal/NumberTheory/ArithmeticFunctions/DirichletConv.lean | 121 |  |
 | `⋆ (local infixl:70)` | `dirichletConv` | FdrsFormal/NumberTheory/ArithmeticFunctions/MobiusInversion.lean | 46 |  |
-| `𝟙` | `constantOne` | FdrsFormal/NumberTheory/ArithmeticFunctions/Definition.lean | 82 |  |
+| `𝟙` | `constantOne` | FdrsFormal/NumberTheory/ArithmeticFunctions/Definition.lean | 81 |  |
 
 ## Key Mathematical Symbols
 

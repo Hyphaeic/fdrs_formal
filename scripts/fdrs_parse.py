@@ -41,8 +41,8 @@ RE_PHASE_FRAGMENT = re.compile(
 RE_PHASE_HASH = re.compile(
     r'^#\s+Phase\s+(\d+):', re.IGNORECASE
 )
-RE_PHASE9 = re.compile(
-    r'^##\s+Phase\s+9\s*[—–-]', re.IGNORECASE
+RE_PHASE_DASH = re.compile(
+    r'^##\s+Phase\s+(\d+)\s*[—–-]', re.IGNORECASE
 )
 
 # Annotation suffix pattern: [§2.1 · Phase 1, Fragment 1] or [P6.1 · Phase 6]
@@ -93,9 +93,9 @@ def determine_phase_fragment(line: str, current_phase: int, current_fragment: Op
     m = RE_PHASE_HASH.match(line)
     if m:
         return int(m.group(1)), None
-    m = RE_PHASE9.match(line)
+    m = RE_PHASE_DASH.match(line)
     if m:
-        return 9, None
+        return int(m.group(1)), None
     return current_phase, current_fragment
 
 
@@ -233,8 +233,9 @@ def parse_fdrs(fdrs_path: Path) -> list[SpecItem]:
                 ))
             continue
 
-        # --- Pattern 5: **Proposition N.** (Phase 3 bold, now renumbered) ---
-        if current_phase in (3, 4):
+        # --- Pattern 5: **Proposition N.** (Phase 3/4 bold; Phase 14 uses the same
+        # `**Definition N (title)**:` shape) ---
+        if current_phase in (3, 4, 14):
             m = RE_PHASE3_BOLD.match(stripped)
             if m:
                 item_type = m.group(1).lower()
