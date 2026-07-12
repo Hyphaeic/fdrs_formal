@@ -8491,6 +8491,14 @@ fairness hypothesis. Minimality of the sup-gluing is posed, not claimed. Trace
 theory background is classical (Mazurkiewicz); the corpus contributes the
 FDRS-shaped statements and the verified artifact.
 
+*(Status update — §14.12 addendum, 2026-07-12: two of these opens have since been
+discharged in their honest partial forms. Coupled-place determinacy landed as the
+conditional Kahn diamond in LOCAL form (Theorem 109 — the independence
+side-condition derived from the latency discipline, not assumed), and liveness
+landed FACTORED (Theorem 110 — progress proven, fairness cited-open, instance
+forcing declared). The fairness bridge itself, the free-scheduler window boundary,
+the accountability iff, and sup-gluing minimality remain open.)*
+
 ### 14.8 Digit coupling — the six axes (the SU6 layer)
 
 *(Addendum, 2026-07-02: assigns Phase-14 numbering to the digit-coupling layer built
@@ -8718,12 +8726,256 @@ frustration* is a recorded **candidate** fourth (`04-network-config.md` §2, cla
 laws hold per declared currency only. The SE(2) identification seam and
 `CircleEmit`'s probe status are as stated in Theorem 102 / Definition 206. These
 statics serve the **SU7 network arc** — `Config` + `complexStep`, the coupled radix
-network as a verified abstract machine (`04-network-config.md`) — whose
-formalization begins with the SU7.0 probe (`NetworkConfig.lean`: the 2-node/1-edge
-network machine recovers the SU4b interface machine).
+network as a verified abstract machine (`04-network-config.md`) — now formalized
+in full as §14.12: the SU7.0 probe gate is Theorem 103, and the arc completed
+2026-07-02 (all seven rows SU7.0–7.6 built).
+
+### 14.12 The SU7 network arc: `Config` + `complexStep` (the radix-complex machine)
+
+*(Addendum, 2026-07-12: assigns Phase-14 numbering to the SU7 network arc built
+2026-07-02 — design record `04-network-config.md`, all seven rows SU7.0–7.6 landed.
+This discharges the design record's ledger item 4 for SU7 — "cite Lean names until
+numbered" — exactly as the §14.8 addendum did for SU6. The §14.7 opens on
+coupled-place determinacy and liveness are discharged here in the conditional/local
+forms recorded below; the fairness bridge stays open.)*
+
+The statics of §§14.1–14.10 (gauges, balance, rigidity, grading, certificates) are
+here assembled into a dynamics: the **coupled radix network as a verified abstract
+machine**. A configuration is per-node digit words plus per-edge interface
+registers; one step is a node firing a digit against its in-edge grants and its
+own law. Theorem 90 forced the register design (the conserved quantity lives ON
+the coupling), and the capacity-one **latency discipline** (Definition 179's
+`latency`, per edge) turns out to carry the determinacy theory (Theorem 109).
+
+**Definition 208 (the network machine; the latency discipline)**:
+A *network shape* is places plus directed coupling edges; a `NetConfig` carries
+one digit word per node and one SU6b currency register (`CurrencyConfig`,
+Definition 202) per edge, capacity-one. A firing (`NetReachable.fire`) at node `v`
+with digit `d`: `d` is admitted by `v`'s own law (when autonomous) and by every
+in-edge's pending grant; every in-edge is consumed; every out-edge receives the
+grant computed by its declared window rule from the fired source word and the
+target word.
+
+*Lean:* `FdrsFormal/Modes/SyntheticPlace/NetworkConfig.lean`.
+
+**Theorem 103 (the probe gate: the two-node network IS the SU4b machine)**:
+On the 2-node/1-edge shape instantiated at a coupled fiber law, `toCoupled` /
+`ofCoupled` are mutually inverse, firings map to the interface machine's
+`applyA`/`applyB`, and the network's reachable set is exactly SU4b's
+(`pairNet_reachable_iff`); every reachable probe configuration carries a balanced
+edge ledger (`pairNet_balanced` — Theorem 89 read through the correspondence;
+kernel-checked demo run, ledger `6 = 6 + 0`). The design record's mandatory gate
+passes: the network conservatively extends what is built.
+
+**Definition 209 (`complexStep` — the three-clause firing)**:
+The full machine, over one ambient commutative carry monoid `M` (recorded decision
+D7): **clause 1** — fan-out (`fanout`): the firing node's overflow produces a
+family of grants across its out-edges, and lawfulness (`FanoutLawful`) is a
+*guard*: where the node declares a carry mass (D8, `carry v = some c`) the
+transport out-edges' grants sum to it — Theorem 88's partition shape as a
+constraint — and every trigger out-edge receives exactly its declared unit token
+(the diagonal); mixed fan-out is legal. **Clause 2** — guards: own-law admission
+(when autonomous), every in-edge's `admit` window (the joint fiber), and out-edge
+capacity (`pending = none`). **Clause 3** — the rule declares its within-step
+reads-before-writes order as a Phase-8 `DependencyGraph` per node, and
+*well-formedness = a `timeOf` potential exists* (`WellFormed`).
+
+*Lean:* `FdrsFormal/Modes/SyntheticPlace/NetworkComplexStep.lean`.
+
+**Theorem 104 (conservative extension, twice; the fan-out witnesses)**:
+`ofRule` embeds every probe rule into the three-clause machine with the same
+reachable set (`ofRule_reachable_iff`); composed with Theorem 103, the 2-node
+instance of the full machine is still the SU4b machine
+(`pairComplex_reachable_iff`). The clauses are live, kernel-checked: a declared
+carry `4` splits lawfully as `1 + 3` across transport edges plus a trigger token
+(`split_step_lawful`, `split_fire_ledgers`); the unlawful `1 + 2` split is blocked
+(`badSplit_not_lawful`).
+
+**Theorem 105 (causality must not be frustrated — well-formedness is grading)**:
+A dependency cycle admits NO potential (`no_potential_of_cycle`), and a
+well-formed (graded) declaration never wedges a firing internally — the
+certificate is Phase 8's `time_ordered_deadlock_free` **reused verbatim**
+(`wellFormed_deadlock_free`); the canonical reads-at-0/writes-at-1 discipline is
+graded (`readsBeforeWrites_timeOrdered`). The design law: magnitude MAY be
+frustrated (Proposition 150's Penrose staircase is legal); causality MUST NOT be.
+Whether *causal frustration* is a genuine fourth obstruction to number-hood
+remains a **candidate** (§14.11) — no completeness claim.
+
+**Theorem 106 (network balance: SU6b's generic law, per edge)**:
+Every edge ledger of a reachable configuration is `CurrencyReachable`
+(`edge_currencyReachable`) — the firing guards ARE the SU6b reachability
+discipline — hence balanced per edge (`network_balanced_per_edge`) and, in the
+one-ambient-currency regime, in total (`network_balanced_total`). Fan-out
+exactness is a theorem on the emission side (`fire_fanout_exact`): a firing with
+declared carry increases total transport issue by exactly that carry. En route, a
+structural freebie: a fireable node has no self-loop (`fire_no_self_loop`) — its
+register would need to be simultaneously pending and empty. The heterogeneous
+machine (per-edge currencies) carries the balance law per edge, each in its own
+declared currency (`hnetwork_balanced_per_edge`); cross-edge sums in mixed
+currencies are refused (recorded decision D9 — per-node currencies with declared
+push morphisms `Mv →+ M_e` remain open, not smuggled).
+
+*Lean:* `FdrsFormal/Modes/SyntheticPlace/NetworkBalance.lean`.
+
+**Definition 210 (non-blocking couplability; the decidable fixpoint check)**:
+`Enabled` is the step-guard predicate; a network is `NonBlocking` when every
+reachable configuration has an enabled firing — *"these lines can couple."*
+`reachFix` iterates a declared finite-state abstraction's successor map to a
+reachable-set fixpoint (SU2's `stepSet` shape), and `couplableCheck` (fixpoint
+closure ∧ all abstract states enabled) is decidable
+(`instDecidableCouplableCheck`).
+
+*Lean:* `FdrsFormal/Modes/SyntheticPlace/NetworkCouplability.lean`.
+
+**Theorem 107 (couplability certificate soundness)**:
+An abstraction that maps the initial configuration to `q0`, over-approximates
+every guarded firing, and reads enabledness back concretely turns a
+`couplableCheck` success into `NonBlocking` (`nonBlocking_of_couplableCheck`).
+One direction only — the check is a certificate, not a characterization; a
+`false` verdict says nothing.
+
+**Proposition 152 (witnesses on both sides of couplability)**:
+The constant coupled pair (fibers `2`, `2`), abstracted to "interface empty?",
+discharges the check by kernel `decide` and can always move (`live_nonBlocking`).
+The same shape with the **empty joint fiber** (`admit := False`) reaches one
+A-step and then sticks — A capacity-blocked by its own unconsumed grant, B's
+window admitting nothing (`blocked_stuck`, `blocked_not_nonBlocking`): a grammar
+strangled by its own coupling, machine-checked.
+
+**Theorem 108 (per-node traps on the network — Theorem 86 transported verbatim)**:
+`Tracked` pairs a configuration with per-node uncertainty sets; `trackedFire`
+refines the firing node's ledger by its window observation, conservatively over
+the base machine (`tracked_base`); a consistent truth assignment survives tracked
+firings when the window is a faithful observation map
+(`tracked_consistent_fire`). The row theorem `network_trap_sound`: a trap firing
+on a node's current uncertainty set forces the observation for EVERY admissible
+tail from EVERY state of that set — Theorem 86 per node, on the network. The
+transport being verbatim is the point: the network adds bookkeeping, never new
+trust.
+
+*Lean:* `FdrsFormal/Modes/SyntheticPlace/NetworkTraps.lean`.
+
+**Theorem 109 (the conditional Kahn diamond — determinacy, local form)**:
+Under the capacity-one latency discipline, two distinct simultaneously-enabled
+nodes can share NO coupling edge in either direction (`no_edge_between` — a
+connecting edge would have to be simultaneously pending and empty): the Kahn
+independence side-condition is **derived**, not assumed. Hence the diamond:
+distinct enabled firings commute on the nose (`fireC_comm`), each stays enabled
+after the other (`enabled_after_fire`), and both interleavings land on one
+configuration (`diamond`). Scope, per the ledger: Kahn-network determinacy is
+classical (Kahn 1974 lineage) — the corpus contributes the FDRS-shaped statement
+and the verified artifact; global stream determinacy needs the §14.7 fairness
+bridge, cited not formalized; same-node firings with different digits are the
+scheduler's choice and are not claimed to commute.
+
+*Lean:* `FdrsFormal/Modes/SyntheticPlace/NetworkDeterminacy.lean`.
+
+**Theorem 110 (network liveness — the factored guarantee)**:
+A non-blocking network extends to an infinite run from the initial configuration
+and no reachable configuration is stuck (`nonBlocking_progress`, `no_deadlock`);
+with well-formedness the machine lives at both scales (`network_live` — between
+steps by couplability, within steps by Theorem 105). Certificates fire when
+forced: a singleton candidate set makes the executable driver actually emit
+(`emitNow_fires`), and on the tracked machine a forced node both fires and is
+sound (`network_trap_fires`). §14.7's "none is yet guaranteed to fire" is thereby
+discharged in its honest factored form: **progress** (proven here), **fairness**
+of the schedule (classical, cited — open), and the **instance forcing bound** (a
+declared grammar property, e.g. the golden mean's forced zero after `1`). The
+composition is not smuggled.
+
+*Lean:* `FdrsFormal/Modes/SyntheticPlace/NetworkLiveness.lean`.
+
+### 14.13 The Phase-8 concretization bridge
+
+The corpus carries two network formalizations: the concrete Phase-8 layer
+(`Composition/` — timeline graphs, routing tables, injection queues) and the
+abstract SU7 machine of §14.12. Unbridged, they would drift into exactly the
+recreation pattern the synthetic-place series exists to prevent. This section
+welds them, in the probe style — the concrete layer read as an *instance* of the
+abstract machine.
+
+**Theorem 111 (a timeline graph IS a network shape; time-ordering IS grading)**:
+`NetworkShape.ofTimelineGraph` reads a Phase-8 `TimelineGraph` as a network shape
+(places = timeline nodes, coupling edges = the graph's edges). A strictly
+time-monotone timeline graph's edge relation, read as a clause-3 dependency
+declaration (`timelineDeps`), is GRADED — the potential is literally the node's
+`time` field (`timeline_graded`): Phase 8's time-ordering and Theorem 105's
+dependency grading are one mathematics, now a theorem rather than a remark. A
+per-edge `RoutingEntry` assignment reads as a coupling rule
+(`ComplexRule.ofRouting` — the entry's `transform` as grant weight, all-transport,
+the capacity-grant regime D8), with unconditionally lawful fan-out
+(`ofRouting_fanoutLawful`).
+
+*Lean:* `FdrsFormal/Modes/SyntheticPlace/NetworkBridge.lean`.
+
+**Definition 211 (the queue-backed edge register)**:
+`QueueConfig` is the edge register at ANY capacity: issued/consumed totals plus a
+FIFO buffer of monoid-valued payloads — the `Composition/Injection` discipline
+with the declared ledger. The weld to the Phase-8 artifact is literal: the
+`InjectionQueue` operations project onto the buffer discipline
+(`payloads_enqueue`, `payloads_dequeue`).
+
+**Theorem 112 (queue balance at every capacity; capacity-one IS the currency register)**:
+`queueReachable_balanced`: `issued = consumed + buffer.sum` on every reachable
+queue register — the SU6b balance law at every capacity. And the probe-style
+instance theorem `queueReachable_one_toCurrency`: a capacity-one queue register
+IS the `CurrencyConfig` register (the projection carries reachable to reachable,
+issue to issue, consume to consume), with `queueBalanced_one_iff` closing the
+loop. The build roadmap's "queue-valued interfaces (capacity > 1)" open is
+discharged as REUSE. Honest scope: `ofRouting` reads `transform` as a grant
+weight — the declared interpretation; richer routing semantics stay in the
+concrete layer. Swapping the queue register into the §14.12 machine (the
+capacity > 1 network) is the mechanical upgrade this section licenses but does
+not perform — the per-edge balance transports that upgrade needs are exactly the
+queue forms proven here.
+
+### 14.14 Application capstone — the Curve25519 field as a variable-radix digit ring
+
+*(Addendum, 2026-07-11 module. `Modes.VariableRadix` applied to real machine
+arithmetic: the field GF(2^255 − 19) underneath Ed25519 signature verification;
+the Lean theorems govern the Rust kernel `fdrs-field25519` in the Hyphaeic rebound
+membrane. An application, not new mathematics — the content is that the corpus's
+vocabulary (radix law, ledger identity, holonomy) is exactly the working
+vocabulary of a production field implementation.)*
+
+**Definition 212 (the 25519 digit ring)**:
+A field element is ten digits under the **alternating radix law**
+ω = (2^26, 2^25, 2^26, 2^25, …) — a genuine variable radix law, not a uniform
+base. Digit `i` has weight `Wᵢ = ∏_{j<i} ωⱼ = 2^⌈25.5·i⌉`, and the ten digits span
+exactly the 255 bits of the field (`weightBits_ten`). `value` is the decode
+`Σ dᵢ·Wᵢ`; `carryStep` moves `⌊dᵢ/ωᵢ⌋` up one digit, keeping `dᵢ mod ωᵢ`; the
+invariant `B` (`BoundB`) is every digit `< 2^26`; the ring's `holonomy` is `19`.
+
+*Lean:* `FdrsFormal/Applications/Field25519Carry.lean`.
+
+**Theorem 113 (a carry is a value-preserving redistribution)**:
+`carryStep_preserves_value`: a carry at position `i` leaves the value of digits
+`i` and `i+1` unchanged, because `Wᵢ₊₁ = Wᵢ · ωᵢ` — the ledger identity
+(Theorem 89's `issued = consumed + pending`) at one digit interface of machine
+arithmetic: a digit above its radix holds *pending* value; a carry *consumes*
+pending at `i` and *issues* it at `i+1`. The landed digit is canonical
+(`carryStep_digit_canonical`). The schedule may change the representative, never
+the element.
+
+**Theorem 114 (the wrap has holonomy 19, not 1)**:
+`wrap_holonomy`: `2^255 ≡ 19 (mod p)` — carrying out of the TOP digit re-enters
+at digit 0 multiplied by 19. The digit ring's carry cycle has **nontrivial
+holonomy** in exactly the §14.8 sense: a plain odometer's wrap is the graded case
+(loop factor 1 — Proposition 150's `chainGraph_gradable`), while this ring sits on
+the other side of Theorem 93's dichotomy; that single fact is the whole
+difficulty of field carries.
+
+**Theorem 115 (the schedule restores the bound — lazy reduction licensed)**:
+`schedule_restores_bound`: the eleven-carry schedule (sweep 0–8, the holonomy
+wrap at 9, one settling carry at 0) takes ANY digit vector bounded by the
+multiplication accumulator bound `2^61` back inside the invariant `B`; together
+with `mul_accumulator_bound` this closes the loop — a multiply's output is always
+a legal multiply input — which is exactly what licenses lazy reduction in the
+kernel.
 
 ---
 
 **End of Phase 14: The Synthetic Place Complex**
 **Status:** Machine-verified in Lean (0 sorries; axioms `propext`/`Classical.choice`/`Quot.sound` only). The designed gauge generalizes both the place-value product `β_ω` and the generated gauge `q_n` into one keystone (ultrametric + ball = cylinder); coupling realizes the ragged regime concretely while geometry survives it; emission gains its third certificate (admissibility) with exact mass transport; conservation migrates from separable node charges — impossible under bilateral coupling, by machine-checked rigidity — to interface balance laws; and network geometry, refused to every scalar gauge by the trace no-go, is carried by the observer-glued family. Value, conservation, and geometry each survive the network regime by becoming indexed and glued.
 **Addendum status (2026-07-02, §14.8–14.11):** the digit-coupling layer lands the three-obstruction picture (raggedness · bilaterality · frustration) with the holonomy dichotomy proven as a full iff and witnessed on both sides; conservation becomes currency-generic (mirrors conserve in the event currency); the window boundary is closed for the alternating machine (accountable ⟺ grant-uniform); exact nesting is conservative (resolution, never arithmetic); and the non-abelian arc lifts grading to arbitrary groups (gain-graph balance, machine-checked, with dihedral and SE(2) frustrated witnesses) and extends certified emission to the floor-free sector trap and the tight SE(2) pose engine. Next: the SU7 network machine.
+**Addendum status (2026-07-12, §14.12–14.14):** the SU7 network arc is COMPLETE and numbered — the coupled radix network as a verified abstract machine: probe gate passed (the 2-node network IS the SU4b interface machine), the three-clause `complexStep` with fan-out lawfulness as a guard and well-formedness as dependency grading (Phase 8's deadlock certificate reused verbatim; causal frustration recorded as candidate obstruction only), per-edge SU6b balance with fan-out exactness, decidable couplability with witnesses on both sides, per-node traps transported verbatim, the conditional Kahn diamond with the independence condition *derived* from the latency discipline, and liveness in factored form. The Phase-8 concretization bridge welds the June network layer to the machine (a timeline graph IS a network shape; time-ordering IS grading; queue registers balance at every capacity, capacity-one being the currency register). The application capstone reads GF(2^255−19) as a variable-radix digit ring: carries are ledger-balanced redistributions, the wrap has holonomy 19 (nontrivial, in the §14.8 sense), and the eleven-carry schedule provably restores the digit bound — the corpus vocabulary load-bearing in production field arithmetic.

@@ -15,12 +15,14 @@ permissions and limitations under the License.
 
 # Modes Module
 
-This module aggregates the three generalization modes of FDRS.
+This module aggregates the generalization modes of FDRS and the satellite
+complexes built on them.
 
 ## Contents
 
-- **VariableRadix/** (Mode I): Prefix-pure radix laws ω: Σ* → ℕ≥2
-  - Theorems A-B (Canonical bijection, Realizability)
+- **VariableRadix/** (Mode I, Phases 5-6 + 13): Prefix-pure radix laws ω: Σ* → ℕ≥2
+  - Theorems A-B (Canonical bijection, Realizability — corrected Theorem 43)
+  - Phase 13: generated (continued-fraction) timelines and the Gosper engine cluster
 
 - **ContextDependent/** (Mode II): Context-dependent radix laws Ω: Σ* × C → ℕ≥2
   - Theorems E-F (Lazy-eager, Structure preservation)
@@ -31,9 +33,17 @@ This module aggregates the three generalization modes of FDRS.
 
 - **Analysis/DigitConditional/** (Phase 11): Digit-conditional signal analysis
 
+- **Adelic/**: Place engines, product formula (ℚˣ), gauge bound, rigidity,
+  the AdelicLaw interface, function-field keystone
+
+- **SyntheticPlace/** (Phase 14): Gauge keystone, coupling, certificates,
+  conservation + rigidity, network geometry, grading, the SU7 network machine,
+  and the Phase-8 concretization bridge
+
 ## References
 
-- fdrs.md, Phases 5-6 (Modes), Phase 10 (Base-Zero Sea), Phase 11 (Digit-Conditional)
+- fdrs.md, Phases 5-6 (Modes), Phase 10 (Base-Zero Sea), Phase 11
+  (Digit-Conditional), Phase 13 (Generated Timelines), Phase 14 (Synthetic Place)
 -/
 
 import FdrsFormal.Modes.VariableRadix.VariableRadix
@@ -41,3 +51,5 @@ import FdrsFormal.Modes.ContextDependent.ContextDependent
 import FdrsFormal.Modes.ExtendedBase
 import FdrsFormal.Modes.BaseZeroSea
 import FdrsFormal.Analysis.DigitConditional
+import FdrsFormal.Modes.Adelic
+import FdrsFormal.Modes.SyntheticPlace

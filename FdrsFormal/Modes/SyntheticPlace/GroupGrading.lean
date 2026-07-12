@@ -230,6 +230,12 @@ theorem group_gradable_iff_trivial_holonomy (base : V)
 
 end GroupGraph
 
+/- The witness instances live in the `GroupGrading` sub-namespace: their base names
+(`chainGraph`, `chainPotential`, `frustratedTriangle`, …) deliberately mirror the
+ℚ-valued witnesses of `Grading.lean` (the group arc re-derives that axis), and the
+two modules are imported together by the `Modes.SyntheticPlace` aggregator. -/
+namespace GroupGrading
+
 variable {G : Type*} [Group G]
 
 /-! ## 3. The graded witness: a chain is gradable in any group -/
@@ -279,5 +285,7 @@ holonomy, so by `gradable_holonomy` no global pose assignment exists — the loo
 not close. The non-abelian analogue of `frustratedTriangle_not_gradable`. -/
 theorem frustratedTriangle_not_gradable : ¬ frustratedTriangle.Gradable := fun hg =>
   frustrated_loop_factor_ne_one (frustratedTriangle.gradable_holonomy hg frustrated_loop_isWalk)
+
+end GroupGrading
 
 end FdrsFormal.Modes.SyntheticPlace

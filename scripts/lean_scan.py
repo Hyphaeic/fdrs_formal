@@ -143,7 +143,7 @@ class LeanScanResult:
 # Patterns
 RE_AXIOM = re.compile(r'^axiom\s+(\S+)\s*(.*)')
 RE_SORRY = re.compile(r'\bsorry\b')
-RE_DECL = re.compile(r'^(theorem|def|lemma|noncomputable def|noncomputable instance|instance|abbrev|structure|class|inductive)\s+(\S+)')
+RE_DECL = re.compile(r'^(?:@\[[^\]]*\]\s*)?(theorem|def|lemma|noncomputable def|noncomputable instance|instance|abbrev|structure|class|inductive)\s+(\S+)')
 RE_NOTATION = re.compile(r'^(scoped\s+)?notation\b(.+)')
 # Infix/prefix/postfix notations: (local)? (infixl|infixr|prefix|postfix):precedence "symbol" => expansion
 RE_INFIX = re.compile(r'^(local\s+)?(infixl|infixr|prefix|postfix)\s*:\s*(\d+)\s+"([^"]+)"\s*=>\s*(.+)')
@@ -422,7 +422,11 @@ def scan_file(filepath: Path, rel_path: str) -> tuple[
         lineno = lineno_0 + 1
         stripped = line.strip()
 
-        # Track block comments
+        # Track block comments. A line that closes a block comment is still a
+        # comment line — process it as such (the flag flips for the NEXT line),
+        # otherwise doc-comment closers like "No `sorry`; axiom-clean. -/" are
+        # scanned as code and produce false sorry/axiom hits.
+        closes_block = in_block_comment and '-/' in line
         if '/-' in line and '-/' not in line:
             in_block_comment = True
         if '-/' in line:
@@ -442,9 +446,9 @@ def scan_file(filepath: Path, rel_path: str) -> tuple[
             elif RE_FDRS_REF_SIMPLE.search(line):
                 fdrs_refs.append(FdrsRef(file=rel_path, line=lineno, text=line.strip()))
 
-        # Skip comment-only lines for declaration scanning
-        if stripped.startswith('--') or in_block_comment:
-            # But still check for sorry in actual code
+        # Skip comment-only lines for declaration scanning (including the line
+        # that closes a block comment — see `closes_block` above)
+        if stripped.startswith('--') or in_block_comment or closes_block:
             continue
 
         # Axioms
@@ -473,10 +477,12 @@ def scan_file(filepath: Path, rel_path: str) -> tuple[
 
         # Sorry
         if RE_SORRY.search(stripped) and not stripped.startswith('--'):
-            # Make sure it's not in a string or comment suffix
-            # Simple heuristic: check it's not after --
+            # Only count `sorry` as a code token: strip trailing line comments,
+            # inline block comments, and backtick-quoted prose mentions.
             code_part = stripped.split('--')[0] if '--' in stripped else stripped
-            if 'sorry' in code_part:
+            code_part = re.sub(r'/-.*?-/', '', code_part)
+            code_part = re.sub(r'`[^`]*`', '', code_part)
+            if RE_SORRY.search(code_part):
                 context_lines = []
                 for delta in range(-2, 3):
                     idx = lineno_0 + delta

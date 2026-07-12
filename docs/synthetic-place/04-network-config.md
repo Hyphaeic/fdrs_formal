@@ -73,7 +73,12 @@ liveness. The standing radix-complex goal (`Config` + `complexStep` + graded
 observables) is formalized. Remaining opens carried forward honestly: the
 free-scheduler window boundary (§3), heterogeneous carry morphisms (D9), the
 fairness bridge (§14.7), the accountability iff, queue-valued interfaces (**DISCHARGED** — see below), and
-Phase-14 numbering for the SU7 items (next corpus pass).
+Phase-14 numbering for the SU7 items (**DISCHARGED 2026-07-12** — fdrs.md §14.12–14.13:
+Definitions 208–211, Theorems 103–112, Proposition 152. The mapping:
+SU7.0 = Def 208 + Thm 103 · SU7.1 = Def 209 + Thms 104–105 · SU7.2 = Thm 106 ·
+SU7.3 = Def 210 + Thm 107 + Prop 152 · SU7.4 = Thm 108 · SU7.5 = Thm 109 ·
+SU7.6 = Thm 110 · bridge = Thm 111 + Def 211 + Thm 112. Ledger item 4's
+"cite Lean names until numbered" is closed; corpus items may now be cited.)
 
 **The Phase-8 concretization bridge BUILT** (`NetworkBridge.lean`, 0 sorries,
 axiom-clean): the June and July network layers welded in the SU7.0 style —

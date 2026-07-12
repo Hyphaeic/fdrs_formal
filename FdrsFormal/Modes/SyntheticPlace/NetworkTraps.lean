@@ -153,7 +153,9 @@ theorem tracked_consistent_fire {E : NodeEngines N M Qf Df Of} {R : ComplexRule 
 verbatim): if node `v`'s trap fires on its current uncertainty ledger, then every
 admissible substrate tail from every state of that ledger observes the emitted
 symbol after one step. The network adds bookkeeping (the tracked machine), never
-new trust — the certificate is SU2's, unchanged. -/
+new trust — the certificate is SU2's, unchanged.
+
+**fdrs.md**: Theorem 108 (per-node traps on the network — Theorem 86 transported verbatim) [§14.12 · Phase 14] -/
 theorem network_trap_sound {E : NodeEngines N M Qf Df Of} {R : ComplexRule N M}
     {tc : Tracked N M Qf} (_ : TrackedReachable E R tc) (v : N.V) {o : Of v}
     (hemit : (E.T v).emitNow (tc.unc v) = some o) :

@@ -157,6 +157,8 @@ Odometer routing decision: given a carry event at position `pos`,
 determine whether to propagate (and to which position).
 
 Returns `true` (propagate to pos+1) iff the event is OVERFLOW.
+
+**fdrs.md**: Definition 149 (Carry-as-route) [§9.9.2 · Phase 9]
 -/
 def carryRouteDecision (ce : CarryEvent) : Bool :=
   match ce with
@@ -238,6 +240,8 @@ and consults `carryRouteDecision` to determine whether to propagate.
 
 This is operationally the event-driven perspective: each OVERFLOW
 event at position `pos` triggers an INJECT at position `pos+1`.
+
+**fdrs.md**: Definition 150 (Unified spatial tick) [§9.9.3 · Phase 9]
 -/
 def unifiedSpatialTick {k : ℕ} (M : Fin k → ℕ) (b : Fin k → ℕ)
     (hb : ∀ i, 1 ≤ b i) (hbM : ∀ i, b i ≤ M i)

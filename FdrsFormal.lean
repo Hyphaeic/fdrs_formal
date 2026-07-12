@@ -11,9 +11,11 @@ Formalization of the fdrs.md specification, organized by mathematical dependenci
 - **FunctionSpaces/**: Mixed-radix complexes (𝕋(V), projections P_L, details Δ_L)
 - **NumberTheory/**: Analytic number theory (Dirichlet, characters, factorization)
 - **Integration/**: Combined topology + ANT (dual filtrations, complexity bounds)
-- **Modes/**: Modes of application (VariableRadix, ContextDependent, ExtendedBase, BaseZeroSea)
+- **Modes/**: Modes of application (VariableRadix incl. the Phase-13 Gosper cluster,
+  ContextDependent, ExtendedBase, BaseZeroSea, Adelic, SyntheticPlace)
 - **Analysis/**: Digit-conditional signal analysis (imported transitively via Modes)
 - **Composition/**: Multi-timeline routing and composition
+- **Applications/**: Corpus theory applied to deployed systems (Field25519Carry)
 
 For live status (file/theorem counts, sorries, stubs) run
 `python3 scripts/fdrs-summary`; counts are intentionally not hard-coded here.
@@ -42,3 +44,6 @@ import FdrsFormal.Modes
 
 -- Composition layer (Phase 5) - NEW 2026-01-30
 import FdrsFormal.Composition
+
+-- Applications layer (fdrs.md §14.14) - NEW 2026-07-12
+import FdrsFormal.Applications

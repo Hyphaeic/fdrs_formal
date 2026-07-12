@@ -168,7 +168,9 @@ theorem fireC_comm {R : ComplexRule N M} {cfg : CConfig N M} {v u : N.V}
 /-- **SU7.5 — the diamond, packaged**: from a reachable configuration with two
 distinct enabled firings, both interleavings are reachable and land on the same
 configuration. Local confluence; the global KPN determinacy composes this with
-fairness (classical, cited — Phase 14 §14.7's open bridge). -/
+fairness (classical, cited — Phase 14 §14.7's open bridge).
+
+**fdrs.md**: Theorem 109 (the conditional Kahn diamond — determinacy, local form) [§14.12 · Phase 14] -/
 theorem diamond {R : ComplexRule N M} {cfg : CConfig N M} {v u : N.V} {d d' : ℕ}
     (hr : ComplexReachable R cfg) (hvu : v ≠ u)
     (hv : Enabled R cfg v d) (hu : Enabled R cfg u d') :

@@ -69,7 +69,9 @@ def numDigits : ℕ := 10
 This is the `RadixLaw` of `Modes.VariableRadix`, instantiated. -/
 def radixBits (i : ℕ) : ℕ := if i % 2 = 0 then 26 else 25
 
-/-- ωᵢ, the radix at digit i. -/
+/-- ωᵢ, the radix at digit i.
+
+**fdrs.md**: Definition 212 (the 25519 digit ring) [§14.14 · Phase 14] -/
 def radix (i : ℕ) : ℕ := 2 ^ radixBits i
 
 /-- Wᵢ = ∏_{j<i} ωⱼ = 2^⌈25.5·i⌉, the weight of digit i. -/
@@ -100,7 +102,9 @@ def carryStep (d : ℕ → ℕ) (i : ℕ) : ℕ → ℕ := fun k =>
 between them: the surplus that leaves i arrives at i+1 with exactly the
 weight that keeps the sum invariant (Wᵢ₊₁ = Wᵢ · ωᵢ).
 
-This is the ledger identity `issued = consumed + pending` at one interface. -/
+This is the ledger identity `issued = consumed + pending` at one interface.
+
+**fdrs.md**: Theorem 113 (a carry is a value-preserving redistribution) [§14.14 · Phase 14] -/
 theorem carryStep_preserves_value (d : ℕ → ℕ) (i : ℕ) :
     (carryStep d i i) * 2 ^ weightBits i
       + (carryStep d i (i + 1)) * 2 ^ weightBits (i + 1)
@@ -137,7 +141,9 @@ digit 0, and the weight it lands with is W₁₀ = 2^255, which is ≡ 19 (mod p
 So one unit of surplus leaving digit 9 re-enters at digit 0 as exactly 19.
 
 This is the FDRS holonomy of going once around the digit ring, and it is the
-*only* place the modulus enters the arithmetic. -/
+*only* place the modulus enters the arithmetic.
+
+**fdrs.md**: Theorem 114 (the wrap has holonomy 19, not 1) [§14.14 · Phase 14] -/
 theorem wrap_holonomy : (2 : ℕ) ^ weightBits 10 % p = holonomy := by
   rw [weightBits_ten]
   unfold p holonomy
@@ -196,7 +202,9 @@ the settling carry hands at most 2^41 / 2^26 = 2^15 to digit 1:
     digit 1 < 2^25 + 2^15 < 2^26.  ∎
 
 Every digit is therefore < 2^26 — `B` holds, the ledger is empty, and the
-next multiply's accumulator bound is licensed again. -/
+next multiply's accumulator bound is licensed again.
+
+**fdrs.md**: Theorem 115 (the schedule restores the bound — lazy reduction licensed) [§14.14 · Phase 14] -/
 theorem schedule_restores_bound
     (d1 : ℕ)          -- digit 1 after the sweep: canonical
     (h1 : d1 < 2 ^ 25)

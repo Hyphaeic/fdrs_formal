@@ -109,7 +109,9 @@ def emitReady (T : BihTensor) : Bool :=
     T.a + T.b + T.c + T.d < (emitDigit T + 1) * (T.e + T.f + T.g + T.h)
 
 /-- **Inputs commute.** Reading from Timeline A and from Timeline B commute — the two
-input channels are independent (`x` and `y` are substituted independently). -/
+input channels are independent (`x` and `y` are substituted independently).
+
+**fdrs.md**: Theorem 81 (Channel commutations) [§13.6.4 · Phase 13] -/
 theorem absorbX_absorbY_comm (p p' : ℤ) (T : BihTensor) :
     absorbX p (absorbY p' T) = absorbY p' (absorbX p T) := by
   cases T; simp only [absorbX, absorbY]; congr 1 <;> ring

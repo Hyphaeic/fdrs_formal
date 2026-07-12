@@ -37,6 +37,23 @@ except ImportError:
     sys.exit(1)
 
 
+def _index_is_stale(project_root: Path, index_path: Path) -> bool:
+    """The cached index is stale if any live source (spec or Lean) is newer
+    than the cache file itself. mtime-based: cheap, no git dependency."""
+    cache_mtime = index_path.stat().st_mtime
+    spec = project_root / "docs" / "fdrs.md"
+    if spec.exists() and spec.stat().st_mtime > cache_mtime:
+        return True
+    lean_root = project_root / "FdrsFormal"
+    for p in lean_root.rglob("*.lean"):
+        if p.stat().st_mtime > cache_mtime:
+            return True
+    root_mod = project_root / "FdrsFormal.lean"
+    if root_mod.exists() and root_mod.stat().st_mtime > cache_mtime:
+        return True
+    return False
+
+
 def load_index(project_root: Path) -> dict:
     index_path = project_root / "data" / "fdrs-index.yaml"
     if not index_path.exists():
@@ -47,6 +64,14 @@ def load_index(project_root: Path) -> dict:
         with open(index_path, 'w') as f:
             yaml.dump(index, f, default_flow_style=False, sort_keys=False, allow_unicode=True, width=120)
         return index
+
+    if _index_is_stale(project_root, index_path):
+        print("=" * 64, file=sys.stderr)
+        print("  WARNING: data/fdrs-index.yaml is STALE — live sources are newer", file=sys.stderr)
+        print("  than the cache. Every number below (including the section", file=sys.stderr)
+        print("  labelled 'authoritative') reflects the OLD state of the tree.", file=sys.stderr)
+        print("  Run `python3 scripts/fdrs-summary --rebuild` first.", file=sys.stderr)
+        print("=" * 64, file=sys.stderr)
 
     with open(index_path) as f:
         return yaml.safe_load(f)

@@ -28,16 +28,21 @@ Aggregator for ultrametric realizability theory.
 
 ## Main Result
 
-**THEOREM B (Realizability Classification)**:
-An ultrametric δ on ∏_{i≥0} D_i is realizable as δ = δ_ω for some SU radix function ω
-if and only if:
+**THEOREM B (Realizability Classification)** — original three-condition form:
 1. Cylinder correspondence: Every ball is a finite union of cylinders
 2. Monotone refinement: U(s) ⊆ U(t) ⟹ rad(U(s)) ≤ rad(U(t))
 3. Finite branching: Each cylinder has finitely many immediate sub-cylinders
 
+**Erratum (Phase 14 pass)**: these three conditions are provably INSUFFICIENT for
+δ = δ_ω. The corrected, machine-checked characterization is Theorem 43 in
+`MetricRealizability.lean`: realizable ⟺ (C1) every open ball is a prefix cylinder
+AND (C4) every depth-n cylinder has the canonical reciprocal-place-value diameter —
+with the counterexamples showing the two conditions do separate work. See fdrs.md
+§6.6 (erratum and corrected statement).
+
 ## References
 
-- fdrs.md, Phase 6, Section 6.6 (lines 5381-5402)
+- fdrs.md, Phase 6, Section 6.6 (Theorem 43, corrected form + erratum)
 - Paper (external draft): Theorem B (§6.3), Theorem 6.14
 -/
 
@@ -47,6 +52,7 @@ import FdrsFormal.Modes.VariableRadix.Realizability.Sufficiency
 import FdrsFormal.Modes.VariableRadix.Realizability.Spectrum
 import FdrsFormal.Modes.VariableRadix.Realizability.Extremal
 import FdrsFormal.Modes.VariableRadix.Realizability.Examples
+import FdrsFormal.Modes.VariableRadix.Realizability.MetricRealizability
 
 namespace FdrsFormal.Modes.VariableRadix
 

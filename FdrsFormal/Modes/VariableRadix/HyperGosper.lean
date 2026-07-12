@@ -56,7 +56,9 @@ def coupleTree (T : BihTensor) (fuel : ℕ) : ℕ → List (List ℤ) → List �
 
 /-- **The hyper-Gosper clock.** Couple a list of `N` input timelines through a
 tournament-bracket tree of rank-3 `BihTensor` nodes — every node at 8 integers, only
-discrete streams on the wires. -/
+discrete streams on the wires.
+
+**fdrs.md**: Definition 191 (The hyper-Gosper clock) [§13.6.7 · Phase 13] -/
 def coupleAll (T : BihTensor) (fuel : ℕ) (streams : List (List ℤ)) : List ℤ :=
   coupleTree T fuel streams.length streams
 

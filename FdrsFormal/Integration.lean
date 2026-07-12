@@ -26,10 +26,11 @@ FDRS modes with analytic number theory primitives.
 - **RuntimeAlgebra**: Runtime operator algebra ℜ_N
 - **DualFiltrations**: Additive and multiplicative filtration structures
 - **Complexity**: Complexity bounds for operations
+- **ThreeLineMediator**: The LSU mediator and coupled system (fdrs.md §13.1)
 
 ## References
 
-- fdrs.md, Phase 4 (Integration)
+- fdrs.md, Phase 4 (Integration), Phase 13 §13.1 (the fixed-radix baseline)
 -/
 
 import FdrsFormal.Integration.BlockMemory.Definition
@@ -39,3 +40,5 @@ import FdrsFormal.Integration.Programs.IntegerSemantics
 import FdrsFormal.Integration.RuntimeAlgebra.Definition
 import FdrsFormal.Integration.DualFiltrations.Definition
 import FdrsFormal.Integration.Complexity.Definition
+import FdrsFormal.Integration.ThreeLineMediator.Definition
+import FdrsFormal.Integration.ThreeLineMediator.CoupledSystem

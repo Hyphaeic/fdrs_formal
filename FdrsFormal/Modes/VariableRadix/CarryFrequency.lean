@@ -64,7 +64,9 @@ theorem cfOverflowRate_antitone {x : ℕ → ℕ} (hx : Admissible x) {L₁ L₂
 /-- **Carries vanish.** Beyond some depth the carry frequency drops below any `ε > 0` —
 the generated-timeline refinement (`1/qₗ → 0`) that the integration engine relies on.
 This is the strict-positivity payoff of the gauge growth, which the *fixed*-radix
-`overflowRate` only attains when `B_L → ∞`; here it holds even for `φ`. -/
+`overflowRate` only attains when `B_L → ∞`; here it holds even for `φ`.
+
+**fdrs.md**: Theorem 76 (`cfOverflowRate` is positive, antitone, and vanishing) [§13.4.2 · Phase 13] -/
 theorem cfOverflowRate_vanishes {x : ℕ → ℕ} (hx : Admissible x) {ε : ℚ} (hε : 0 < ε) :
     ∃ N : ℕ, ∀ L, N ≤ L → cfOverflowRate x L < ε := by
   obtain ⟨N, hN⟩ := gaugeAt_inv_lt hx (ε : ℝ) (by exact_mod_cast hε)

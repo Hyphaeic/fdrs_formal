@@ -33,20 +33,22 @@ lake build FdrsFormal.Analysis.DigitConditional
 lake build FdrsFormal.FunctionSpaces.Projections.Details
 ```
 
-### Building everything, including unwired modules
+### Coverage of the default target
 
-A few auxiliary / work-in-progress modules are present in the tree but not imported by
-the root module, so they are not built by a bare `lake build`. To compile them too:
+Since the 2026-07-12 wiring pass, **every module in the tree is imported
+(transitively) by the root module**, so a bare `lake build` compiles the entire
+formalization — including the Phase-13 Gosper cluster, the adelic complex
+(`Modes/Adelic/`), the synthetic place complex and SU7 network machine
+(`Modes/SyntheticPlace/`), and the applications layer (`Applications/`). There is
+no separate "unwired modules" step. If a new leaf module is added, wire it into
+its directory aggregator (e.g. `Modes/SyntheticPlace.lean`) so the default target
+keeps this property; `python3 scripts/fdrs-summary` reports any modules that fall
+outside the default build.
 
-```bash
-lake build FdrsFormal \
-  FdrsFormal.FunctionSpaces.Haar \
-  FdrsFormal.Integration.ThreeLineMediator.CoupledSystem \
-  FdrsFormal.NumberTheory.ArithmeticFunctions.CyclicConvolution
-```
-
-This surfaces the `sorry` warnings in `FunctionSpaces/Haar/WaveletPacket.lean`, which is
-the only file with outstanding `sorry`s (work in progress).
+The corpus carries no outstanding `sorry`s and no axiom declarations; the build
+should finish with no errors and no `sorry` warnings (historical note: the last
+`sorry`s, in `FunctionSpaces/Haar/WaveletPacket.lean`, were eliminated in the
+2026-05/06 proof-completion pass).
 
 ### Clean rebuild
 

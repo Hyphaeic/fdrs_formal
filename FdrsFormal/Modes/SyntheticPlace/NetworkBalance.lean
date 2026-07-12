@@ -86,7 +86,9 @@ theorem edge_currencyReachable {R : ComplexRule N M} {cfg : CConfig N M}
         exact ih
 
 /-- **SU7.2, per edge**: every edge of a reachable configuration is balanced —
-`currencyReachable_balanced`, applied verbatim. -/
+`currencyReachable_balanced`, applied verbatim.
+
+**fdrs.md**: Theorem 106 (network balance: SU6b's generic law, per edge) [§14.12 · Phase 14] -/
 theorem network_balanced_per_edge {R : ComplexRule N M} {cfg : CConfig N M}
     (h : ComplexReachable R cfg) (e : N.E) :
     CurrencyBalanced (cfg.edge e) :=

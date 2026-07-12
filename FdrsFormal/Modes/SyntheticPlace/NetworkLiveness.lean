@@ -107,7 +107,9 @@ theorem no_deadlock {R : ComplexRule N M} (h : NonBlocking R) :
 
 /-- **SU7.6 — the network lives at both scales**: between steps (an infinite run
 exists — couplability) and within steps (every declared dependency order is
-deadlock-free — graded dependencies, Phase 8's certificate via SU7.1). -/
+deadlock-free — graded dependencies, Phase 8's certificate via SU7.1).
+
+**fdrs.md**: Theorem 110 (network liveness — the factored guarantee) [§14.12 · Phase 14] -/
 theorem network_live {R : ComplexRule N M} (hnb : NonBlocking R) (hwf : WellFormed R) :
     (∃ f : ℕ → CConfig N M, Run R f) ∧
     ∀ v, FdrsFormal.Composition.DeadlockAnalysis.isDeadlockFree (R.deps v) :=

@@ -79,7 +79,9 @@ structure NetworkRule (N : NetworkShape) where
   grant : N.E → List ℕ → List ℕ → ℕ
 
 /-- A network configuration: one digit word per node, one declared interface ledger
-per edge (`CurrencyConfig` — SU6b; the conserved quantity lives ON the coupling). -/
+per edge (`CurrencyConfig` — SU6b; the conserved quantity lives ON the coupling).
+
+**fdrs.md**: Definition 208 (the network machine; the latency discipline) [§14.12 · Phase 14] -/
 @[ext] structure NetConfig (N : NetworkShape) where
   word : N.V → List ℕ
   edge : N.E → CurrencyConfig ℕ
@@ -246,7 +248,9 @@ theorem coupledReachable_ofCoupled {C : CoupledFiber} {k : CoupledConfig}
 /-- **SU7.0 — THE PROBE GATE.** The 2-node/1-edge network machine is the SU4b
 interface machine: reachability corresponds exactly under the (bijective)
 configuration correspondence. The network `Config` conservatively extends what is
-built — the design passes its own mandatory gate (`04-network-config.md` §4/§5.6). -/
+built — the design passes its own mandatory gate (`04-network-config.md` §4/§5.6).
+
+**fdrs.md**: Theorem 103 (the probe gate: the two-node network IS the SU4b machine) [§14.12 · Phase 14] -/
 theorem pairNet_reachable_iff (C : CoupledFiber) (cfg : NetConfig pairShape) :
     NetReachable (pairRule C) cfg ↔ Reachable C (toCoupled cfg) := by
   constructor

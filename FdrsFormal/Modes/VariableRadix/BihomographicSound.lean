@@ -48,7 +48,9 @@ tensor coefficients), then for EVERY input tail `x, y ≥ 1` the true output val
 is trapped in `[k, k+1)`: `k·D ≤ N` and `N < (k+1)·D`. So emitting `k` never
 hallucinates a digit, regardless of the unread tails of A and B.
 
-No reals, no limits, no topology — pure ordered-ring algebra; `x, y` are inert. -/
+No reals, no limits, no topology — pure ordered-ring algebra; `x, y` are inert.
+
+**fdrs.md**: Theorem 82 (Emission soundness — the four-corner trap) [§13.6.5 · Phase 13] -/
 theorem emit_traps {K : Type*} [CommRing K] [LinearOrder K] [IsStrictOrderedRing K] (T : BihTensor) (k : ℤ)
     (lo1 : k * T.e ≤ T.a) (lo2 : k * (T.e + T.f) ≤ T.a + T.b)
     (lo3 : k * (T.e + T.g) ≤ T.a + T.c)

@@ -36,7 +36,9 @@ import FdrsFormal.Modes.VariableRadix.SubshiftWeight
 namespace FdrsFormal.Modes.VariableRadix.RemainderState
 
 /-- **Emit** one output partial quotient `q`: the homographic map `v ↦ 1/(v − q)`,
-i.e. left-multiply the `SL₂(ℤ)` state by `[[0,1],[1,-q]]`. The dual of `step`. -/
+i.e. left-multiply the `SL₂(ℤ)` state by `[[0,1],[1,-q]]`. The dual of `step`.
+
+**fdrs.md**: Definition 188 (Homographic emission — single stream) [§13.6.1 · Phase 13] -/
 def emit (q : ℤ) (r : RemainderState) : RemainderState where
   hPrev := r.qPrev
   hCur  := r.qCur
@@ -48,7 +50,9 @@ def emit (q : ℤ) (r : RemainderState) : RemainderState where
   simp only [det, emit]; ring
 
 /-- **Exactness.** Emission preserves `|det|`, so combined with `init` (`init_det = -1`)
-every emit/absorb keeps `|det| = 1`: the engine is exact integer arithmetic, no rounding. -/
+every emit/absorb keeps `|det| = 1`: the engine is exact integer arithmetic, no rounding.
+
+**fdrs.md**: Theorem 80 (Exactness and channel independence) [§13.6.2 · Phase 13] -/
 theorem emit_det_natAbs (q : ℤ) (r : RemainderState) :
     (emit q r).det.natAbs = r.det.natAbs := by
   rw [emit_det, Int.natAbs_neg]

@@ -101,6 +101,27 @@ ragged fibers and bilateral coupling, that gives three independent,
 machine-checked obstructions separating coupled radix complexes from number
 systems.
 
+**The SU7 network machine (Phase 14, §14.12–14.13).** The coupled radix network
+as a verified abstract machine: a three-clause firing rule whose fan-out
+lawfulness is a guard (declared carry mass partitioned exactly across transport
+edges), whose well-formedness *is* dependency grading (Phase 8's deadlock
+certificate reused verbatim), with per-edge balance laws, a decidable
+couplability certificate (witnessed live and blocked), per-node emission traps
+transported unchanged, a conditional Kahn diamond whose independence
+side-condition is **derived** from the capacity-one latency discipline rather
+than assumed, and liveness in honest factored form. A concretization bridge
+proves the Phase-8 timeline-graph layer is an instance of this machine (a
+timeline graph IS a network shape; time-ordering IS grading; queue registers
+balance at every capacity).
+
+**Applications (§14.14).** The corpus vocabulary load-bearing in production
+arithmetic: GF(2^255 − 19) under Ed25519 read as a ten-digit variable-radix
+ring — carries are ledger-balanced redistributions, the wrap has holonomy 19
+(a digit ring on the frustrated side of the grading dichotomy), and the
+eleven-carry schedule provably restores the digit bound, licensing the Rust
+kernel's lazy reduction
+([`Field25519Carry.lean`](FdrsFormal/Applications/Field25519Carry.lean)).
+
 ## Method
 
 - **Spec first.** `docs/fdrs.md` is the single source of truth; Lean modules
@@ -127,6 +148,7 @@ FdrsFormal/
 ├── Integration/     # Dual filtrations, mediator lines, runtime algebra
 ├── Analysis/        # Digit-conditional signal analysis, the Fourier ceiling
 ├── Composition/     # Multi-timeline routing, deadlock-freedom, timing bounds
+├── Applications/    # Corpus theory governing deployed systems (Field25519Carry)
 └── Modes/
     ├── VariableRadix/    # Mode I, realizability (Theorem 43), subshift gauges,
     │                     #   the Gosper engine cluster
@@ -136,8 +158,12 @@ FdrsFormal/
     ├── Adelic/           # Place engines, product formula (ℚˣ), gauge bound,
     │                     #   rigidity, the AdelicLaw interface, function-field keystone
     └── SyntheticPlace/   # Phase 14: gauge keystone, coupling, certificates,
-                          #   conservation + rigidity, network geometry, grading
+                          #   conservation + rigidity, network geometry, grading,
+                          #   the SU7 network machine + Phase-8 bridge
 ```
+
+The default `lake build` target compiles the entire tree — every module above is
+imported (transitively) by the root module (wiring pass of 2026-07-12).
 
 `FdrsFormal.lean` is the root module aggregating the development; `Main.lean`
 is a trivial executable entry point. Design records for the newer complexes

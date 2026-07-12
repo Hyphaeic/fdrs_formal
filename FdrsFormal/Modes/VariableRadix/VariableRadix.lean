@@ -54,14 +54,23 @@ This generalizes the fixed radix systems from Core to allow content-dependent br
 order-preserving bijection φ_ω: R^{(∞)}_ω → ℕ.
 See: `Encoding/Bijection.lean`
 
-**THEOREM B** (Realizability Classification): An ultrametric δ is realizable as
-δ_ω for some SU radix function ω iff it has cylinder correspondence, monotone
-refinement, and finite branching.
-See: `Realizability/Realizability.lean`
+**THEOREM B** (Realizability Classification, corrected form — Theorem 43): An
+ultrametric δ is realizable as δ_ω for an SU radix law iff every open ball is a
+prefix cylinder AND every cylinder has the canonical reciprocal-place-value
+diameter. (The original three-condition form is provably insufficient; see the
+erratum in fdrs.md §6.6.)
+See: `Realizability/MetricRealizability.lean`
+
+## Phase 13 (Generated Timelines)
+
+The subshift gauge, the CF ultrametric, carry frequency, the Parry measure on the
+golden-mean shift, and the certified Gosper engine cluster
+(homographic/bihomographic/hyper) — fdrs.md Phase 13, Definitions 178–191,
+Theorems 70–82.
 
 ## References
 
-- fdrs.md, Phase 5-6 (Variable Radix Systems)
+- fdrs.md, Phase 5-6 (Variable Radix Systems), Phase 13 (Generated Timelines)
 - Paper (external draft): §6.3, Theorems A and B
 -/
 
@@ -89,3 +98,16 @@ import FdrsFormal.Modes.VariableRadix.Realizability.Realizability
 import FdrsFormal.Modes.VariableRadix.MetricComparison
 import FdrsFormal.Modes.VariableRadix.Design
 import FdrsFormal.Modes.VariableRadix.MultiMetric
+
+-- Phase 13: generated (continued-fraction) timelines — the subshift gauge,
+-- the CF ultrametric, carry frequency, the Parry measure, and the certified
+-- Gosper engine cluster
+import FdrsFormal.Modes.VariableRadix.SubshiftWeight
+import FdrsFormal.Modes.VariableRadix.SubshiftMetric
+import FdrsFormal.Modes.VariableRadix.CarryFrequency
+import FdrsFormal.Modes.VariableRadix.SubshiftParry
+import FdrsFormal.Modes.VariableRadix.HomographicCarry
+import FdrsFormal.Modes.VariableRadix.Bihomographic
+import FdrsFormal.Modes.VariableRadix.BihomographicSound
+import FdrsFormal.Modes.VariableRadix.BihomographicDriver
+import FdrsFormal.Modes.VariableRadix.HyperGosper

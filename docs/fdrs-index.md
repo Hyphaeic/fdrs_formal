@@ -1,10 +1,10 @@
 # FDRS Specification Index
 
-Auto-generated from `data/fdrs-index.yaml` (2026-07-02T10:54:17.404153)
+Auto-generated from `data/fdrs-index.yaml` (2026-07-12T12:30:04.523062)
 
-**504 items** from `docs/fdrs.md` (8729 lines)
+**523 items** from `docs/fdrs.md` (8981 lines)
 
-Status: excluded: 17 | missing: 34 | proven: 450 | scaffold: 2 | wip: 1
+Status: missing: 1 | proven: 520 | scaffold: 2
 
 ## Phase 1
 
@@ -119,8 +119,8 @@ Status: excluded: 17 | missing: 34 | proven: 450 | scaffold: 2 | wip: 1
 
 | ID | Type | Number | Title | Line | Status | Lean File |
 |---|---|---|---|---|---|---|
-| proposition_38 | proposition | 38 | (\mathcal R^{(k | 1594 | ⚪ excluded | FdrsFormal/NumberTheory/ArithmeticFunctions/CyclicConvolution.lean |
-| theorem_13 | theorem | 13 | closure, associativity, commutativity, identity | 1604 | ⚪ excluded | FdrsFormal/NumberTheory/ArithmeticFunctions/CyclicConvolution.lean |
+| proposition_38 | proposition | 38 | (\mathcal R^{(k | 1594 | ✅ proven | FdrsFormal/NumberTheory/ArithmeticFunctions/CyclicConvolution.lean |
+| theorem_13 | theorem | 13 | closure, associativity, commutativity, identity | 1604 | ✅ proven | FdrsFormal/NumberTheory/ArithmeticFunctions/CyclicConvolution.lean |
 | theorem_14 | theorem | 14 | Dirichlet algebra | 1622 | ✅ proven | FdrsFormal/NumberTheory.lean |
 | proposition_39 | proposition | 39 | representation | 1637 | ✅ proven | FdrsFormal/NumberTheory.lean |
 | theorem_15 | theorem | 15 | Möbius inversion | 1667 | ✅ proven | FdrsFormal/NumberTheory.lean |
@@ -302,7 +302,7 @@ Status: excluded: 17 | missing: 34 | proven: 450 | scaffold: 2 | wip: 1
 | definition_88 | definition | 88 | Context dynamics | 5579 | ✅ proven | FdrsFormal/Modes/ContextDependent/Evolution/Evolution.lean |
 | definition_89 | definition | 89 | Stateful context-dependent system | 5591 | ✅ proven | FdrsFormal/Modes/ContextDependent/Evolution/Evolution.lean |
 | definition_90 | definition | 90 | Trace of a stateful system | 5615 | ✅ proven | FdrsFormal/Modes/ContextDependent/Realization/Realization.lean |
-| theorem_45 | theorem | 45 | Context-switching preserves SU | 5628 | ❌ missing | FdrsFormal/Modes/ContextDependent/Realization/Realization.lean |
+| theorem_45 | theorem | 45 | Context-switching preserves SU | 5628 | ✅ proven | FdrsFormal/Modes/ContextDependent/Evolution/Preservation.lean |
 | definition_91 | definition | 91 | Operational semantic modes | 5640 | ✅ proven | FdrsFormal/Modes/ContextDependent/Realization/SemanticModes.lean |
 | definition_92 | definition | 92 | Lazy vs eager realization | 5652 | ✅ proven | FdrsFormal/Modes/ContextDependent/Preservation/OperatorPreserved.lean |
 | theorem_46 | theorem | 46 | Lazy-eager semantic equivalence | 5668 | ✅ proven | FdrsFormal/Modes/ContextDependent/Preservation/OperatorPreserved.lean |
@@ -416,8 +416,8 @@ Status: excluded: 17 | missing: 34 | proven: 450 | scaffold: 2 | wip: 1
 | definition_147 | definition | 147 | Spatial radix wall | 7144 | ✅ proven | FdrsFormal/Modes/ExtendedBase/SpatialThermometer.lean |
 | theorem_60 | theorem | 60 | Spatial-algebraic isomorphism | 7154 | ✅ proven | FdrsFormal/Modes/ExtendedBase/SpatialThermometer.lean |
 | definition_148 | definition | 148 | Carry event classification | 7175 | ✅ proven | FdrsFormal/Modes/BaseZeroSea/Projection.lean |
-| definition_149 | definition | 149 | Carry-as-route | 7184 | ❌ missing | FdrsFormal/Modes/BaseZeroSea.lean |
-| definition_150 | definition | 150 | Unified spatial tick | 7195 | ❌ missing | FdrsFormal/Modes/BaseZeroSea.lean |
+| definition_149 | definition | 149 | Carry-as-route | 7184 | ✅ proven | FdrsFormal/Modes/ExtendedBase/CarryRouteUnification.lean |
+| definition_150 | definition | 150 | Unified spatial tick | 7195 | ✅ proven | FdrsFormal/Modes/ExtendedBase/CarryRouteUnification.lean |
 | theorem_61 | theorem | 61 | Fractal unification — carry is overflow route | 7199 | ✅ proven | FdrsFormal/Modes/BaseZeroSea.lean |
 ## Phase 10
 
@@ -492,77 +492,96 @@ Status: excluded: 17 | missing: 34 | proven: 450 | scaffold: 2 | wip: 1
 | ID | Type | Number | Title | Line | Status | Lean File |
 |---|---|---|---|---|---|---|
 | definition_178 | definition | 178 | Product radix and the observer-line mediator | 8008 | ✅ proven | FdrsFormal/Integration/ThreeLineMediator/Definition.lean |
-| proposition_144 | proposition | 144 | Mediator ≅ A × B: the round-trip identities | 8014 | ❌ missing | - |
-| theorem_70 | theorem | 70 | Place value and overflow rate factor under the pro | 8024 | ✅ proven | FdrsFormal/Core/Primitives/PlaceValue.lean |
-| definition_179 | definition | 179 | Coupling, the coupled system, and manifest instant | 8039 | ✅ proven | FdrsFormal/Integration/ThreeLineMediator/CoupledSystem.lean |
-| proposition_145 | proposition | 145 | Independence of coupling and radix; manifestation  | 8045 | ✅ proven | FdrsFormal/Integration/ThreeLineMediator/CoupledSystem.lean |
-| proposition_146 | proposition | 146 | Overflow-rate ratio and the discrete → real compar | 8051 | ⚪ excluded | FdrsFormal/Integration/ThreeLineMediator/Definition.lean |
-| definition_180 | definition | 180 | Subshift / transfer-matrix prefix gauge | 8063 | ✅ proven | FdrsFormal/FunctionSpaces/Basic/PrefixSet.lean |
-| theorem_71 | theorem | 71 | Defensive perimeter: the free `d = 1` gauge recove | 8069 | ✅ proven | FdrsFormal/Core/Primitives/PlaceValue.lean |
-| definition_181 | definition | 181 | The convergent-pair ledger | 8079 | ❌ missing | - |
-| theorem_72 | theorem | 72 | The bracket invariant | 8085 | ⚪ excluded | FdrsFormal/Modes/VariableRadix/SubshiftWeight.lean |
-| theorem_73 | theorem | 73 | Gauge growth: `q_k > 0` and `q_k → ∞`, even for `φ | 8093 | ⚪ excluded | FdrsFormal/Modes/SyntheticPlace/GaugeUltrametric.lean |
-| definition_182 | definition | 182 | Admissible point, prefix, and the gauge at depth | 8105 | ✅ proven | FdrsFormal/FunctionSpaces/Basic/PrefixSet.lean |
-| definition_183 | definition | 183 | The gauge-induced continued-fraction distance | 8111 | ⚪ excluded | FdrsFormal/Modes/SyntheticPlace/GaugeUltrametric.lean |
-| theorem_74 | theorem | 74 | `cfDist` is a genuine ultrametric | 8117 | ✅ proven | FdrsFormal/Modes/VariableRadix/InducedUltrametric/Axioms.lean |
-| theorem_75 | theorem | 75 | `ball = cylinder` | 8125 | ⚪ excluded | FdrsFormal/Modes/SyntheticPlace/Composition.lean |
-| definition_184 | definition | 184 | Carry frequency of a generated timeline | 8142 | ✅ proven | FdrsFormal/Composition/TimelineGraphs/Definition.lean |
-| theorem_76 | theorem | 76 | `cfOverflowRate` is positive, antitone, and vanish | 8148 | ❌ missing | - |
-| definition_185 | definition | 185 | Parry transition kernel of the golden-mean shift | 8164 | ⚪ excluded | FdrsFormal/Modes/VariableRadix/SubshiftParry.lean |
-| theorem_77 | theorem | 77 | Mass conservation and the Markov kernel | 8170 | ⚪ excluded | FdrsFormal/Modes/SyntheticPlace/Conservation.lean |
-| definition_186 | definition | 186 | Parry stationary law | 8178 | ❌ missing | - |
-| theorem_78 | theorem | 78 | Stationarity | 8184 | ❌ missing | - |
-| definition_187 | definition | 187 | Parry path measure via Ionescu–Tulcea | 8192 | ✅ proven | FdrsFormal/Composition/DeadlockAnalysis/Definition.lean |
-| theorem_79 | theorem | 79 | Lévy upward convergence — "Group G" — on the golde | 8198 | ✅ proven | FdrsFormal/Composition/TimelineGraphs/Definition.lean |
-| definition_188 | definition | 188 | Homographic emission — single stream | 8212 | ❌ missing | - |
-| theorem_80 | theorem | 80 | Exactness and channel independence | 8218 | ❌ missing | - |
-| definition_189 | definition | 189 | The bihomographic tensor — two-stream mediator, Ti | 8226 | ✅ proven | FdrsFormal/Composition/ObserverIntegration/Embedding.lean |
-| theorem_81 | theorem | 81 | Channel commutations | 8232 | ❌ missing | - |
-| theorem_82 | theorem | 82 | Emission soundness — the four-corner trap | 8240 | ❌ missing | - |
-| definition_190 | definition | 190 | The two-stream driver | 8248 | ❌ missing | - |
-| definition_191 | definition | 191 | The hyper-Gosper clock | 8256 | ❌ missing | - |
+| proposition_144 | proposition | 144 | Mediator ≅ A × B: the round-trip identities | 8014 | ✅ proven | FdrsFormal/Integration/ThreeLineMediator/Definition.lean |
+| theorem_70 | theorem | 70 | Place value and overflow rate factor under the pro | 8024 | ✅ proven | FdrsFormal/Integration/ThreeLineMediator/Definition.lean |
+| definition_179 | definition | 179 | Coupling, the coupled system, and manifest instant | 8039 | ✅ proven | FdrsFormal/Integration/ThreeLineMediator/Definition.lean |
+| proposition_145 | proposition | 145 | Independence of coupling and radix; manifestation  | 8045 | ✅ proven | FdrsFormal/Integration/ThreeLineMediator/Definition.lean |
+| proposition_146 | proposition | 146 | Overflow-rate ratio and the discrete → real compar | 8051 | ✅ proven | FdrsFormal/Integration/ThreeLineMediator/Definition.lean |
+| definition_180 | definition | 180 | Subshift / transfer-matrix prefix gauge | 8063 | ✅ proven | FdrsFormal/Integration/ThreeLineMediator/Definition.lean |
+| theorem_71 | theorem | 71 | Defensive perimeter: the free `d = 1` gauge recove | 8069 | ✅ proven | FdrsFormal/Integration/ThreeLineMediator/Definition.lean |
+| definition_181 | definition | 181 | The convergent-pair ledger | 8079 | ✅ proven | FdrsFormal/Modes/VariableRadix/SubshiftWeight.lean |
+| theorem_72 | theorem | 72 | The bracket invariant | 8085 | ✅ proven | FdrsFormal/Integration/ThreeLineMediator/Definition.lean |
+| theorem_73 | theorem | 73 | Gauge growth: `q_k > 0` and `q_k → ∞`, even for `φ | 8093 | ✅ proven | FdrsFormal/Integration/ThreeLineMediator/Definition.lean |
+| definition_182 | definition | 182 | Admissible point, prefix, and the gauge at depth | 8105 | ✅ proven | FdrsFormal/Integration/ThreeLineMediator/Definition.lean |
+| definition_183 | definition | 183 | The gauge-induced continued-fraction distance | 8111 | ✅ proven | FdrsFormal/Integration/ThreeLineMediator/Definition.lean |
+| theorem_74 | theorem | 74 | `cfDist` is a genuine ultrametric | 8117 | ✅ proven | FdrsFormal/Integration/ThreeLineMediator/Definition.lean |
+| theorem_75 | theorem | 75 | `ball = cylinder` | 8125 | ✅ proven | FdrsFormal/Integration/ThreeLineMediator/Definition.lean |
+| definition_184 | definition | 184 | Carry frequency of a generated timeline | 8142 | ✅ proven | FdrsFormal/Integration/ThreeLineMediator/Definition.lean |
+| theorem_76 | theorem | 76 | `cfOverflowRate` is positive, antitone, and vanish | 8148 | ✅ proven | FdrsFormal/Modes/VariableRadix/CarryFrequency.lean |
+| definition_185 | definition | 185 | Parry transition kernel of the golden-mean shift | 8164 | ✅ proven | FdrsFormal/Integration/ThreeLineMediator/Definition.lean |
+| theorem_77 | theorem | 77 | Mass conservation and the Markov kernel | 8170 | ✅ proven | FdrsFormal/Integration/ThreeLineMediator/Definition.lean |
+| definition_186 | definition | 186 | Parry stationary law | 8178 | ✅ proven | FdrsFormal/Modes/VariableRadix/SubshiftParry.lean |
+| theorem_78 | theorem | 78 | Stationarity | 8184 | ✅ proven | FdrsFormal/Modes/VariableRadix/SubshiftParry.lean |
+| definition_187 | definition | 187 | Parry path measure via Ionescu–Tulcea | 8192 | ✅ proven | FdrsFormal/Integration/ThreeLineMediator/Definition.lean |
+| theorem_79 | theorem | 79 | Lévy upward convergence — "Group G" — on the golde | 8198 | ✅ proven | FdrsFormal/Integration/ThreeLineMediator/Definition.lean |
+| definition_188 | definition | 188 | Homographic emission — single stream | 8212 | ✅ proven | FdrsFormal/Modes/VariableRadix/HomographicCarry.lean |
+| theorem_80 | theorem | 80 | Exactness and channel independence | 8218 | ✅ proven | FdrsFormal/Modes/VariableRadix/HomographicCarry.lean |
+| definition_189 | definition | 189 | The bihomographic tensor — two-stream mediator, Ti | 8226 | ✅ proven | FdrsFormal/Integration/ThreeLineMediator/Definition.lean |
+| theorem_81 | theorem | 81 | Channel commutations | 8232 | ✅ proven | FdrsFormal/Modes/VariableRadix/Bihomographic.lean |
+| theorem_82 | theorem | 82 | Emission soundness — the four-corner trap | 8240 | ✅ proven | FdrsFormal/Modes/VariableRadix/BihomographicSound.lean |
+| definition_190 | definition | 190 | The two-stream driver | 8248 | ✅ proven | FdrsFormal/Modes/VariableRadix/BihomographicDriver.lean |
+| definition_191 | definition | 191 | The hyper-Gosper clock | 8256 | ✅ proven | FdrsFormal/Modes/VariableRadix/HyperGosper.lean |
 ## Phase 14
 
 | ID | Type | Number | Title | Line | Status | Lean File |
 |---|---|---|---|---|---|---|
-| definition_192 | definition | 192 | prefix gauge | 8296 | ✅ proven | FdrsFormal/Core/PrefixValue.lean |
-| theorem_83 | theorem | 83 | gauge ⇒ ultrametric; ball = cylinder | 8303 | ✅ proven | FdrsFormal/FunctionSpaces/Basic/Cylinder.lean |
-| proposition_147 | proposition | 147 | the corpus instances | 8311 | ❌ missing | - |
-| definition_193 | definition | 193 | coupled fiber law; coupled completion counts | 8320 | ✅ proven | FdrsFormal/Integration/ThreeLineMediator/CoupledSystem.lean |
-| theorem_84 | theorem | 84 | level-only coupling preserves SU | 8327 | ⚪ excluded | FdrsFormal/Modes/SyntheticPlace/Composition.lean |
-| proposition_148 | proposition | 148 | the ragged witness, machine-checked | 8332 | ❌ missing | - |
-| theorem_85 | theorem | 85 | geometry survives raggedness | 8339 | ❌ missing | - |
-| definition_194 | definition | 194 | transfer structure; uncertainty ledger; trap gate | 8348 | ✅ proven | FdrsFormal/Composition/Junctions/TransferSemantics.lean |
-| theorem_86 | theorem | 86 | admissibility-trap soundness | 8355 | ❌ missing | - |
-| definition_195 | definition | 195 | depth-decided observables | 8369 | ✅ proven | FdrsFormal/Analysis/DigitConditional/RepresentationGap.lean |
-| theorem_87 | theorem | 87 | indistinguishability below the gauge; strict hiera | 8373 | ⚪ excluded | FdrsFormal/Modes/SyntheticPlace/GaugeUltrametric.lean |
-| definition_196 | definition | 196 | completion mass and observed flux | 8385 | ❌ missing | - |
-| theorem_88 | theorem | 88 | the partition law; zero leak | 8390 | ✅ proven | FdrsFormal/Core/Finite/Bijection.lean |
-| definition_197 | definition | 197 | the coupled interface machine; balance | 8400 | ✅ proven | FdrsFormal/Integration/ThreeLineMediator/CoupledSystem.lean |
-| theorem_89 | theorem | 89 | the interface balance law | 8407 | ❌ missing | - |
-| definition_198 | definition | 198 | place-local transfer rules | 8415 | ✅ proven | FdrsFormal/Core/Primitives/PlaceValue.lean |
-| theorem_90 | theorem | 90 | conservation rigidity: factorization, no-go, bound | 8420 | ❌ missing | - |
-| proposition_149 | proposition | 149 | witnesses on both sides of the boundary | 8434 | ❌ missing | - |
-| definition_199 | definition | 199 | schedules, trace equivalence, projections | 8444 | ❌ missing | - |
-| theorem_91 | theorem | 91 | the scalar trace-gauge no-go, machine-checked | 8452 | ⚪ excluded | FdrsFormal/Modes/SyntheticPlace/GaugeUltrametric.lean |
-| definition_200 | definition | 200 | the observer-glued network distance | 8464 | ❌ missing | - |
-| theorem_92 | theorem | 92 | the glued network ultrametric | 8469 | ✅ proven | FdrsFormal/Modes/VariableRadix/InducedUltrametric/Axioms.lean |
-| definition_201 | definition | 201 | coupling graph; size as an edge cocycle | 8512 | ✅ proven | FdrsFormal/Composition/TimelineGraphs/Definition.lean |
-| theorem_93 | theorem | 93 | the holonomy dichotomy — the full iff | 8526 | ⚪ excluded | FdrsFormal/Modes/SyntheticPlace/Grading.lean |
-| proposition_150 | proposition | 150 | witnesses on both sides | 8533 | ❌ missing | - |
-| definition_202 | definition | 202 | currency; transport vs trigger | 8546 | ❌ missing | - |
-| theorem_94 | theorem | 94 | currency-generic interface balance | 8557 | ❌ missing | - |
-| definition_203 | definition | 203 | windows; the length window; grant uniformity | 8566 | 🟡 wip | FdrsFormal/Modes/SyntheticPlace/WindowAccountability.lean |
-| theorem_95 | theorem | 95 | the shared clock; clock windows are accountable | 8577 | ❌ missing | - |
-| theorem_96 | theorem | 96 | the window boundary, CLOSED for the alternating ma | 8585 | ❌ missing | - |
-| definition_204 | definition | 204 | the exact splice | 8596 | ❌ missing | - |
-| theorem_97 | theorem | 97 | synthetic fractions; the gauge half of dilation | 8605 | ⚪ excluded | FdrsFormal/Modes/SyntheticPlace/GaugeUltrametric.lean |
-| theorem_98 | theorem | 98 | dilation, dynamic half — exact nesting is conserva | 8617 | ❌ missing | - |
-| definition_205 | definition | 205 | group-valued coupling graph | 8635 | ✅ proven | FdrsFormal/Composition/TimelineGraphs/Definition.lean |
-| theorem_99 | theorem | 99 | group holonomy dichotomy — gain-graph balance | 8643 | ⚪ excluded | FdrsFormal/Modes/SyntheticPlace/Grading.lean |
-| proposition_151 | proposition | 151 | non-abelian frustrated witnesses, discrete and con | 8653 | ⚪ excluded | FdrsFormal/Modes/SyntheticPlace/Grading.lean |
-| definition_206 | definition | 206 | sector emission — the floor-free trap | 8661 | ❌ missing | - |
-| theorem_100 | theorem | 100 | sector-trap soundness — the fourth certificate | 8669 | ❌ missing | - |
-| definition_207 | definition | 207 | exact SE2 motions; pose regions; tractable engines | 8678 | ✅ proven | FdrsFormal/Analysis/DigitConditional/Decomposition.lean |
-| theorem_101 | theorem | 101 | the certified non-commutative engine: soundness an | 8688 | ✅ proven | FdrsFormal/Analysis/DigitConditional/Tree.lean |
-| theorem_102 | theorem | 102 | the tight tractable engine | 8701 | ⚪ excluded | FdrsFormal/Modes/SyntheticPlace/SE2Pose.lean |
+| definition_192 | definition | 192 | prefix gauge | 8296 | ✅ proven | FdrsFormal/Applications/Field25519Carry.lean |
+| theorem_83 | theorem | 83 | gauge ⇒ ultrametric; ball = cylinder | 8303 | ✅ proven | FdrsFormal/Applications/Field25519Carry.lean |
+| proposition_147 | proposition | 147 | the corpus instances | 8311 | ✅ proven | FdrsFormal/Applications/Field25519Carry.lean |
+| definition_193 | definition | 193 | coupled fiber law; coupled completion counts | 8320 | ✅ proven | FdrsFormal/Applications/Field25519Carry.lean |
+| theorem_84 | theorem | 84 | level-only coupling preserves SU | 8327 | ✅ proven | FdrsFormal/Applications/Field25519Carry.lean |
+| proposition_148 | proposition | 148 | the ragged witness, machine-checked | 8332 | ✅ proven | FdrsFormal/Applications/Field25519Carry.lean |
+| theorem_85 | theorem | 85 | geometry survives raggedness | 8339 | ✅ proven | FdrsFormal/Applications/Field25519Carry.lean |
+| definition_194 | definition | 194 | transfer structure; uncertainty ledger; trap gate | 8348 | ✅ proven | FdrsFormal/Applications/Field25519Carry.lean |
+| theorem_86 | theorem | 86 | admissibility-trap soundness | 8355 | ✅ proven | FdrsFormal/Applications/Field25519Carry.lean |
+| definition_195 | definition | 195 | depth-decided observables | 8369 | ✅ proven | FdrsFormal/Applications/Field25519Carry.lean |
+| theorem_87 | theorem | 87 | indistinguishability below the gauge; strict hiera | 8373 | ✅ proven | FdrsFormal/Applications/Field25519Carry.lean |
+| definition_196 | definition | 196 | completion mass and observed flux | 8385 | ✅ proven | FdrsFormal/Applications/Field25519Carry.lean |
+| theorem_88 | theorem | 88 | the partition law; zero leak | 8390 | ✅ proven | FdrsFormal/Applications/Field25519Carry.lean |
+| definition_197 | definition | 197 | the coupled interface machine; balance | 8400 | ✅ proven | FdrsFormal/Applications/Field25519Carry.lean |
+| theorem_89 | theorem | 89 | the interface balance law | 8407 | ✅ proven | FdrsFormal/Applications/Field25519Carry.lean |
+| definition_198 | definition | 198 | place-local transfer rules | 8415 | ✅ proven | FdrsFormal/Applications/Field25519Carry.lean |
+| theorem_90 | theorem | 90 | conservation rigidity: factorization, no-go, bound | 8420 | ✅ proven | FdrsFormal/Applications/Field25519Carry.lean |
+| proposition_149 | proposition | 149 | witnesses on both sides of the boundary | 8434 | ✅ proven | FdrsFormal/Applications/Field25519Carry.lean |
+| definition_199 | definition | 199 | schedules, trace equivalence, projections | 8444 | ✅ proven | FdrsFormal/Applications/Field25519Carry.lean |
+| theorem_91 | theorem | 91 | the scalar trace-gauge no-go, machine-checked | 8452 | ✅ proven | FdrsFormal/Applications/Field25519Carry.lean |
+| definition_200 | definition | 200 | the observer-glued network distance | 8464 | ✅ proven | FdrsFormal/Applications/Field25519Carry.lean |
+| theorem_92 | theorem | 92 | the glued network ultrametric | 8469 | ✅ proven | FdrsFormal/Applications/Field25519Carry.lean |
+| definition_201 | definition | 201 | coupling graph; size as an edge cocycle | 8520 | ✅ proven | FdrsFormal/Applications/Field25519Carry.lean |
+| theorem_93 | theorem | 93 | the holonomy dichotomy — the full iff | 8534 | ✅ proven | FdrsFormal/Applications/Field25519Carry.lean |
+| proposition_150 | proposition | 150 | witnesses on both sides | 8541 | ✅ proven | FdrsFormal/Applications/Field25519Carry.lean |
+| definition_202 | definition | 202 | currency; transport vs trigger | 8554 | ✅ proven | FdrsFormal/Applications/Field25519Carry.lean |
+| theorem_94 | theorem | 94 | currency-generic interface balance | 8565 | ✅ proven | FdrsFormal/Applications/Field25519Carry.lean |
+| definition_203 | definition | 203 | windows; the length window; grant uniformity | 8574 | ✅ proven | FdrsFormal/Applications/Field25519Carry.lean |
+| theorem_95 | theorem | 95 | the shared clock; clock windows are accountable | 8585 | ✅ proven | FdrsFormal/Applications/Field25519Carry.lean |
+| theorem_96 | theorem | 96 | the window boundary, CLOSED for the alternating ma | 8593 | ✅ proven | FdrsFormal/Applications/Field25519Carry.lean |
+| definition_204 | definition | 204 | the exact splice | 8604 | ✅ proven | FdrsFormal/Applications/Field25519Carry.lean |
+| theorem_97 | theorem | 97 | synthetic fractions; the gauge half of dilation | 8613 | ✅ proven | FdrsFormal/Applications/Field25519Carry.lean |
+| theorem_98 | theorem | 98 | dilation, dynamic half — exact nesting is conserva | 8625 | ✅ proven | FdrsFormal/Applications/Field25519Carry.lean |
+| definition_205 | definition | 205 | group-valued coupling graph | 8643 | ✅ proven | FdrsFormal/Applications/Field25519Carry.lean |
+| theorem_99 | theorem | 99 | group holonomy dichotomy — gain-graph balance | 8651 | ✅ proven | FdrsFormal/Applications/Field25519Carry.lean |
+| proposition_151 | proposition | 151 | non-abelian frustrated witnesses, discrete and con | 8661 | ✅ proven | FdrsFormal/Applications/Field25519Carry.lean |
+| definition_206 | definition | 206 | sector emission — the floor-free trap | 8669 | ✅ proven | FdrsFormal/Applications/Field25519Carry.lean |
+| theorem_100 | theorem | 100 | sector-trap soundness — the fourth certificate | 8677 | ✅ proven | FdrsFormal/Applications/Field25519Carry.lean |
+| definition_207 | definition | 207 | exact SE2 motions; pose regions; tractable engines | 8686 | ✅ proven | FdrsFormal/Applications/Field25519Carry.lean |
+| theorem_101 | theorem | 101 | the certified non-commutative engine: soundness an | 8696 | ✅ proven | FdrsFormal/Applications/Field25519Carry.lean |
+| theorem_102 | theorem | 102 | the tight tractable engine | 8709 | ✅ proven | FdrsFormal/Applications/Field25519Carry.lean |
+| definition_208 | definition | 208 | the network machine; the latency discipline | 8750 | ✅ proven | FdrsFormal/Modes/SyntheticPlace/NetworkConfig.lean |
+| theorem_103 | theorem | 103 | the probe gate: the two-node network IS the SU4b m | 8761 | ✅ proven | FdrsFormal/Modes/SyntheticPlace/NetworkConfig.lean |
+| definition_209 | definition | 209 | `complexStep` — the three-clause firing | 8770 | ✅ proven | FdrsFormal/Modes/SyntheticPlace/NetworkComplexStep.lean |
+| theorem_104 | theorem | 104 | conservative extension, twice; the fan-out witness | 8785 | ✅ proven | FdrsFormal/Modes/SyntheticPlace/NetworkComplexStep.lean |
+| theorem_105 | theorem | 105 | causality must not be frustrated — well-formedness | 8794 | ✅ proven | FdrsFormal/Modes/SyntheticPlace/NetworkComplexStep.lean |
+| theorem_106 | theorem | 106 | network balance: SU6b's generic law, per edge | 8804 | ✅ proven | FdrsFormal/Modes/SyntheticPlace/NetworkBalance.lean |
+| definition_210 | definition | 210 | non-blocking couplability; the decidable fixpoint  | 8820 | ✅ proven | FdrsFormal/Modes/SyntheticPlace/NetworkCouplability.lean |
+| theorem_107 | theorem | 107 | couplability certificate soundness | 8830 | ✅ proven | FdrsFormal/Modes/SyntheticPlace/NetworkCouplability.lean |
+| proposition_152 | proposition | 152 | witnesses on both sides of couplability | 8837 | ✅ proven | FdrsFormal/Modes/SyntheticPlace/NetworkCouplability.lean |
+| theorem_108 | theorem | 108 | per-node traps on the network — Theorem 86 transpo | 8845 | ✅ proven | FdrsFormal/Modes/SyntheticPlace/NetworkTraps.lean |
+| theorem_109 | theorem | 109 | the conditional Kahn diamond — determinacy, local  | 8858 | ✅ proven | FdrsFormal/Modes/SyntheticPlace/NetworkDeterminacy.lean |
+| theorem_110 | theorem | 110 | network liveness — the factored guarantee | 8873 | ✅ proven | FdrsFormal/Modes/SyntheticPlace/NetworkLiveness.lean |
+| theorem_111 | theorem | 111 | a timeline graph IS a network shape; time-ordering | 8897 | ✅ proven | FdrsFormal/Modes/SyntheticPlace/NetworkBridge.lean |
+| definition_211 | definition | 211 | the queue-backed edge register | 8911 | ✅ proven | FdrsFormal/Modes/SyntheticPlace/NetworkBridge.lean |
+| theorem_112 | theorem | 112 | queue balance at every capacity; capacity-one IS t | 8918 | ✅ proven | FdrsFormal/Modes/SyntheticPlace/NetworkBridge.lean |
+| definition_212 | definition | 212 | the 25519 digit ring | 8941 | ✅ proven | FdrsFormal/Applications/Field25519Carry.lean |
+| theorem_113 | theorem | 113 | a carry is a value-preserving redistribution | 8951 | ✅ proven | FdrsFormal/Applications/Field25519Carry.lean |
+| theorem_114 | theorem | 114 | the wrap has holonomy 19, not 1 | 8960 | ✅ proven | FdrsFormal/Applications/Field25519Carry.lean |
+| theorem_115 | theorem | 115 | the schedule restores the bound — lazy reduction l | 8968 | ✅ proven | FdrsFormal/Applications/Field25519Carry.lean |

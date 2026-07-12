@@ -109,7 +109,9 @@ instance : IsMarkovKernel goldenKernel := by
 /-! ## The Parry stationary initial law `π ∝ (φ², 1)` (defined upfront, isolated) -/
 
 /-- Parry stationary weights `π ∝ (φ², 1)`, normalized by `φ² + 1`. For the symmetric
-golden-mean matrix this is `lᵢ rᵢ`; equivalently the unique law with `π · goldenP = π`. -/
+golden-mean matrix this is `lᵢ rᵢ`; equivalently the unique law with `π · goldenP = π`.
+
+**fdrs.md**: Definition 186 (Parry stationary law) [§13.5.3 · Phase 13] -/
 noncomputable def goldenStat (j : Fin 2) : ℝ :=
   if j = 0 then φ ^ 2 / (φ ^ 2 + 1) else 1 / (φ ^ 2 + 1)
 
@@ -128,7 +130,9 @@ theorem goldenStat_sum_one : ∑ j, goldenStat j = 1 := by
 
 /-- **Stationarity**: `π · goldenP = π`, i.e. `π` is `goldenP`-invariant — so the trajectory
 measure built from it is genuinely the (shift-invariant) Parry measure. Each row reduces to
-the golden identity `φ² = φ + 1`. -/
+the golden identity `φ² = φ + 1`.
+
+**fdrs.md**: Theorem 78 (Stationarity) [§13.5.4 · Phase 13] -/
 theorem goldenStat_stationary (j : Fin 2) :
     ∑ i, goldenStat i * goldenP i j = goldenStat j := by
   have hd : φ ^ 2 + 1 ≠ 0 := ne_of_gt golden_sq_add_one_pos

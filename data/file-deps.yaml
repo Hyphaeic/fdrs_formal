@@ -1,7 +1,7 @@
 metadata:
-  total_files: 290
-  total_edges: 573
-  total_modules: 17
+  total_files: 307
+  total_edges: 646
+  total_modules: 19
 modules:
   Analysis:
   - FdrsFormal/Analysis/DigitConditional.lean
@@ -14,6 +14,10 @@ modules:
   - FdrsFormal/Analysis/DigitConditional/SignalClass.lean
   - FdrsFormal/Analysis/DigitConditional/SpecialCase.lean
   - FdrsFormal/Analysis/DigitConditional/Tree.lean
+  Applications:
+  - FdrsFormal/Applications/Field25519Carry.lean
+  Applications.lean:
+  - FdrsFormal/Applications.lean
   Composition:
   - FdrsFormal/Composition/DeadlockAnalysis/Definition.lean
   - FdrsFormal/Composition/Injection.lean
@@ -120,9 +124,11 @@ modules:
   Integration.lean:
   - FdrsFormal/Integration.lean
   Modes:
+  - FdrsFormal/Modes/Adelic.lean
   - FdrsFormal/Modes/Adelic/AdelicInterface.lean
   - FdrsFormal/Modes/Adelic/Complex.lean
   - FdrsFormal/Modes/Adelic/DriverCorrect.lean
+  - FdrsFormal/Modes/Adelic/FunctionFieldDegree.lean
   - FdrsFormal/Modes/Adelic/GaugeBound.lean
   - FdrsFormal/Modes/Adelic/PadicBihEmission.lean
   - FdrsFormal/Modes/Adelic/PadicEmission.lean
@@ -172,17 +178,28 @@ modules:
   - FdrsFormal/Modes/ExtendedBase/PlaceValues.lean
   - FdrsFormal/Modes/ExtendedBase/SigmaAlgebra.lean
   - FdrsFormal/Modes/ExtendedBase/SpatialThermometer.lean
+  - FdrsFormal/Modes/SyntheticPlace.lean
   - FdrsFormal/Modes/SyntheticPlace/AdmissibilityTrap.lean
+  - FdrsFormal/Modes/SyntheticPlace/CircleEmit.lean
   - FdrsFormal/Modes/SyntheticPlace/Composition.lean
   - FdrsFormal/Modes/SyntheticPlace/Conservation.lean
   - FdrsFormal/Modes/SyntheticPlace/ConservationRigidity.lean
+  - FdrsFormal/Modes/SyntheticPlace/CurrencyBalance.lean
   - FdrsFormal/Modes/SyntheticPlace/GaugeUltrametric.lean
   - FdrsFormal/Modes/SyntheticPlace/Grading.lean
   - FdrsFormal/Modes/SyntheticPlace/GroupGrading.lean
   - FdrsFormal/Modes/SyntheticPlace/InterfaceBalance.lean
   - FdrsFormal/Modes/SyntheticPlace/NestedChain.lean
   - FdrsFormal/Modes/SyntheticPlace/NestedDilation.lean
+  - FdrsFormal/Modes/SyntheticPlace/NetworkBalance.lean
+  - FdrsFormal/Modes/SyntheticPlace/NetworkBridge.lean
+  - FdrsFormal/Modes/SyntheticPlace/NetworkComplexStep.lean
+  - FdrsFormal/Modes/SyntheticPlace/NetworkConfig.lean
+  - FdrsFormal/Modes/SyntheticPlace/NetworkCouplability.lean
+  - FdrsFormal/Modes/SyntheticPlace/NetworkDeterminacy.lean
   - FdrsFormal/Modes/SyntheticPlace/NetworkGauge.lean
+  - FdrsFormal/Modes/SyntheticPlace/NetworkLiveness.lean
+  - FdrsFormal/Modes/SyntheticPlace/NetworkTraps.lean
   - FdrsFormal/Modes/SyntheticPlace/Restriction.lean
   - FdrsFormal/Modes/SyntheticPlace/SE2Engine.lean
   - FdrsFormal/Modes/SyntheticPlace/SE2Pose.lean
@@ -242,6 +259,7 @@ modules:
   - FdrsFormal/Modes/VariableRadix/Stability/Stability.lean
   - FdrsFormal/Modes/VariableRadix/Stability/Transport.lean
   - FdrsFormal/Modes/VariableRadix/SubshiftMetric.lean
+  - FdrsFormal/Modes/VariableRadix/SubshiftParry.lean
   - FdrsFormal/Modes/VariableRadix/SubshiftWeight.lean
   - FdrsFormal/Modes/VariableRadix/VariableRadix.lean
   - FdrsFormal/Modes/VariableRadix/VariableTick/CarryAlgorithm.lean
@@ -253,6 +271,7 @@ modules:
   - FdrsFormal/Modes.lean
   NumberTheory:
   - FdrsFormal/NumberTheory/ArithmeticFunctions.lean
+  - FdrsFormal/NumberTheory/ArithmeticFunctions/CyclicConvolution.lean
   - FdrsFormal/NumberTheory/ArithmeticFunctions/Definition.lean
   - FdrsFormal/NumberTheory/ArithmeticFunctions/DirichletConv.lean
   - FdrsFormal/NumberTheory/ArithmeticFunctions/MobiusInversion.lean
@@ -313,6 +332,8 @@ modules:
 module_edges:
 - from: Analysis
   to: Core.lean
+- from: Applications.lean
+  to: Applications
 - from: Composition
   to: Core.lean
 - from: Composition
@@ -420,6 +441,8 @@ file_edges:
   to: FdrsFormal/Analysis/DigitConditional/Complexity.lean
 - from: FdrsFormal/Analysis/DigitConditional.lean
   to: FdrsFormal/Analysis/DigitConditional/SpecialCase.lean
+- from: FdrsFormal/Applications.lean
+  to: FdrsFormal/Applications/Field25519Carry.lean
 - from: FdrsFormal/Composition/DeadlockAnalysis/Definition.lean
   to: FdrsFormal/Core.lean
 - from: FdrsFormal/Composition/Injection/Definition.lean
@@ -870,6 +893,10 @@ file_edges:
   to: FdrsFormal/Integration/DualFiltrations/Definition.lean
 - from: FdrsFormal/Integration.lean
   to: FdrsFormal/Integration/Complexity/Definition.lean
+- from: FdrsFormal/Integration.lean
+  to: FdrsFormal/Integration/ThreeLineMediator/Definition.lean
+- from: FdrsFormal/Integration.lean
+  to: FdrsFormal/Integration/ThreeLineMediator/CoupledSystem.lean
 - from: FdrsFormal/Modes/Adelic/AdelicInterface.lean
   to: FdrsFormal/Modes/Adelic/ProductFormula.lean
 - from: FdrsFormal/Modes/Adelic/AdelicInterface.lean
@@ -900,6 +927,34 @@ file_edges:
   to: FdrsFormal/Core/Primitives/PlaceValue.lean
 - from: FdrsFormal/Modes/Adelic/ValuationStream.lean
   to: FdrsFormal/Modes/Adelic/ProductFormula.lean
+- from: FdrsFormal/Modes/Adelic.lean
+  to: FdrsFormal/Modes/Adelic/PlaceEngine.lean
+- from: FdrsFormal/Modes/Adelic.lean
+  to: FdrsFormal/Modes/Adelic/PadicEmission.lean
+- from: FdrsFormal/Modes/Adelic.lean
+  to: FdrsFormal/Modes/Adelic/PadicHomographic.lean
+- from: FdrsFormal/Modes/Adelic.lean
+  to: FdrsFormal/Modes/Adelic/PadicEmitTraps.lean
+- from: FdrsFormal/Modes/Adelic.lean
+  to: FdrsFormal/Modes/Adelic/PadicBihEmission.lean
+- from: FdrsFormal/Modes/Adelic.lean
+  to: FdrsFormal/Modes/Adelic/ValuationStream.lean
+- from: FdrsFormal/Modes/Adelic.lean
+  to: FdrsFormal/Modes/Adelic/Complex.lean
+- from: FdrsFormal/Modes/Adelic.lean
+  to: FdrsFormal/Modes/Adelic/ProductFormula.lean
+- from: FdrsFormal/Modes/Adelic.lean
+  to: FdrsFormal/Modes/Adelic/ProductFormulaRat.lean
+- from: FdrsFormal/Modes/Adelic.lean
+  to: FdrsFormal/Modes/Adelic/GaugeBound.lean
+- from: FdrsFormal/Modes/Adelic.lean
+  to: FdrsFormal/Modes/Adelic/DriverCorrect.lean
+- from: FdrsFormal/Modes/Adelic.lean
+  to: FdrsFormal/Modes/Adelic/Rigidity.lean
+- from: FdrsFormal/Modes/Adelic.lean
+  to: FdrsFormal/Modes/Adelic/AdelicInterface.lean
+- from: FdrsFormal/Modes/Adelic.lean
+  to: FdrsFormal/Modes/Adelic/FunctionFieldDegree.lean
 - from: FdrsFormal/Modes/BaseZeroSea/Basic.lean
   to: FdrsFormal/Core.lean
 - from: FdrsFormal/Modes/BaseZeroSea/Dynamics.lean
@@ -1058,10 +1113,40 @@ file_edges:
   to: FdrsFormal/Modes/SyntheticPlace/Grading.lean
 - from: FdrsFormal/Modes/SyntheticPlace/NestedDilation.lean
   to: FdrsFormal/Modes/SyntheticPlace/NestedChain.lean
+- from: FdrsFormal/Modes/SyntheticPlace/NetworkBalance.lean
+  to: FdrsFormal/Modes/SyntheticPlace/NetworkComplexStep.lean
+- from: FdrsFormal/Modes/SyntheticPlace/NetworkBridge.lean
+  to: FdrsFormal/Modes/SyntheticPlace/NetworkComplexStep.lean
+- from: FdrsFormal/Modes/SyntheticPlace/NetworkBridge.lean
+  to: FdrsFormal/Composition/TimelineGraphs/Definition.lean
+- from: FdrsFormal/Modes/SyntheticPlace/NetworkBridge.lean
+  to: FdrsFormal/Composition/Routing/Definition.lean
+- from: FdrsFormal/Modes/SyntheticPlace/NetworkBridge.lean
+  to: FdrsFormal/Composition/Injection/Queue.lean
+- from: FdrsFormal/Modes/SyntheticPlace/NetworkComplexStep.lean
+  to: FdrsFormal/Modes/SyntheticPlace/NetworkConfig.lean
+- from: FdrsFormal/Modes/SyntheticPlace/NetworkComplexStep.lean
+  to: FdrsFormal/Composition/DeadlockAnalysis/Definition.lean
+- from: FdrsFormal/Modes/SyntheticPlace/NetworkConfig.lean
+  to: FdrsFormal/Modes/SyntheticPlace/InterfaceBalance.lean
+- from: FdrsFormal/Modes/SyntheticPlace/NetworkConfig.lean
+  to: FdrsFormal/Modes/SyntheticPlace/CurrencyBalance.lean
+- from: FdrsFormal/Modes/SyntheticPlace/NetworkCouplability.lean
+  to: FdrsFormal/Modes/SyntheticPlace/NetworkComplexStep.lean
+- from: FdrsFormal/Modes/SyntheticPlace/NetworkDeterminacy.lean
+  to: FdrsFormal/Modes/SyntheticPlace/NetworkCouplability.lean
 - from: FdrsFormal/Modes/SyntheticPlace/NetworkGauge.lean
   to: FdrsFormal/Modes/SyntheticPlace/TraceGeometry.lean
 - from: FdrsFormal/Modes/SyntheticPlace/NetworkGauge.lean
   to: FdrsFormal/Modes/SyntheticPlace/Restriction.lean
+- from: FdrsFormal/Modes/SyntheticPlace/NetworkLiveness.lean
+  to: FdrsFormal/Modes/SyntheticPlace/NetworkTraps.lean
+- from: FdrsFormal/Modes/SyntheticPlace/NetworkLiveness.lean
+  to: FdrsFormal/Modes/SyntheticPlace/NetworkDeterminacy.lean
+- from: FdrsFormal/Modes/SyntheticPlace/NetworkTraps.lean
+  to: FdrsFormal/Modes/SyntheticPlace/NetworkCouplability.lean
+- from: FdrsFormal/Modes/SyntheticPlace/NetworkTraps.lean
+  to: FdrsFormal/Modes/SyntheticPlace/AdmissibilityTrap.lean
 - from: FdrsFormal/Modes/SyntheticPlace/Restriction.lean
   to: FdrsFormal/Modes/SyntheticPlace/GaugeUltrametric.lean
 - from: FdrsFormal/Modes/SyntheticPlace/SE2Pose.lean
@@ -1076,6 +1161,62 @@ file_edges:
   to: FdrsFormal/Modes/SyntheticPlace/ConservationRigidity.lean
 - from: FdrsFormal/Modes/SyntheticPlace/WindowBoundary.lean
   to: FdrsFormal/Modes/SyntheticPlace/WindowAccountability.lean
+- from: FdrsFormal/Modes/SyntheticPlace.lean
+  to: FdrsFormal/Modes/SyntheticPlace/GaugeUltrametric.lean
+- from: FdrsFormal/Modes/SyntheticPlace.lean
+  to: FdrsFormal/Modes/SyntheticPlace/Composition.lean
+- from: FdrsFormal/Modes/SyntheticPlace.lean
+  to: FdrsFormal/Modes/SyntheticPlace/AdmissibilityTrap.lean
+- from: FdrsFormal/Modes/SyntheticPlace.lean
+  to: FdrsFormal/Modes/SyntheticPlace/Restriction.lean
+- from: FdrsFormal/Modes/SyntheticPlace.lean
+  to: FdrsFormal/Modes/SyntheticPlace/Conservation.lean
+- from: FdrsFormal/Modes/SyntheticPlace.lean
+  to: FdrsFormal/Modes/SyntheticPlace/InterfaceBalance.lean
+- from: FdrsFormal/Modes/SyntheticPlace.lean
+  to: FdrsFormal/Modes/SyntheticPlace/ConservationRigidity.lean
+- from: FdrsFormal/Modes/SyntheticPlace.lean
+  to: FdrsFormal/Modes/SyntheticPlace/TraceGeometry.lean
+- from: FdrsFormal/Modes/SyntheticPlace.lean
+  to: FdrsFormal/Modes/SyntheticPlace/NetworkGauge.lean
+- from: FdrsFormal/Modes/SyntheticPlace.lean
+  to: FdrsFormal/Modes/SyntheticPlace/Grading.lean
+- from: FdrsFormal/Modes/SyntheticPlace.lean
+  to: FdrsFormal/Modes/SyntheticPlace/CurrencyBalance.lean
+- from: FdrsFormal/Modes/SyntheticPlace.lean
+  to: FdrsFormal/Modes/SyntheticPlace/WindowAccountability.lean
+- from: FdrsFormal/Modes/SyntheticPlace.lean
+  to: FdrsFormal/Modes/SyntheticPlace/WindowBoundary.lean
+- from: FdrsFormal/Modes/SyntheticPlace.lean
+  to: FdrsFormal/Modes/SyntheticPlace/NestedChain.lean
+- from: FdrsFormal/Modes/SyntheticPlace.lean
+  to: FdrsFormal/Modes/SyntheticPlace/NestedDilation.lean
+- from: FdrsFormal/Modes/SyntheticPlace.lean
+  to: FdrsFormal/Modes/SyntheticPlace/GroupGrading.lean
+- from: FdrsFormal/Modes/SyntheticPlace.lean
+  to: FdrsFormal/Modes/SyntheticPlace/CircleEmit.lean
+- from: FdrsFormal/Modes/SyntheticPlace.lean
+  to: FdrsFormal/Modes/SyntheticPlace/SE2Pose.lean
+- from: FdrsFormal/Modes/SyntheticPlace.lean
+  to: FdrsFormal/Modes/SyntheticPlace/SE2Engine.lean
+- from: FdrsFormal/Modes/SyntheticPlace.lean
+  to: FdrsFormal/Modes/SyntheticPlace/SE2Tight.lean
+- from: FdrsFormal/Modes/SyntheticPlace.lean
+  to: FdrsFormal/Modes/SyntheticPlace/NetworkConfig.lean
+- from: FdrsFormal/Modes/SyntheticPlace.lean
+  to: FdrsFormal/Modes/SyntheticPlace/NetworkComplexStep.lean
+- from: FdrsFormal/Modes/SyntheticPlace.lean
+  to: FdrsFormal/Modes/SyntheticPlace/NetworkBalance.lean
+- from: FdrsFormal/Modes/SyntheticPlace.lean
+  to: FdrsFormal/Modes/SyntheticPlace/NetworkCouplability.lean
+- from: FdrsFormal/Modes/SyntheticPlace.lean
+  to: FdrsFormal/Modes/SyntheticPlace/NetworkTraps.lean
+- from: FdrsFormal/Modes/SyntheticPlace.lean
+  to: FdrsFormal/Modes/SyntheticPlace/NetworkDeterminacy.lean
+- from: FdrsFormal/Modes/SyntheticPlace.lean
+  to: FdrsFormal/Modes/SyntheticPlace/NetworkLiveness.lean
+- from: FdrsFormal/Modes/SyntheticPlace.lean
+  to: FdrsFormal/Modes/SyntheticPlace/NetworkBridge.lean
 - from: FdrsFormal/Modes/VariableRadix/Basic/Basic.lean
   to: FdrsFormal/Modes/VariableRadix/Basic/RadixLaw.lean
 - from: FdrsFormal/Modes/VariableRadix/Basic/Basic.lean
@@ -1230,6 +1371,8 @@ file_edges:
   to: FdrsFormal/Modes/VariableRadix/Realizability/Extremal.lean
 - from: FdrsFormal/Modes/VariableRadix/Realizability/Realizability.lean
   to: FdrsFormal/Modes/VariableRadix/Realizability/Examples.lean
+- from: FdrsFormal/Modes/VariableRadix/Realizability/Realizability.lean
+  to: FdrsFormal/Modes/VariableRadix/Realizability/MetricRealizability.lean
 - from: FdrsFormal/Modes/VariableRadix/Realizability/Spectrum.lean
   to: FdrsFormal/Modes/VariableRadix/Realizability/Sufficiency.lean
 - from: FdrsFormal/Modes/VariableRadix/Realizability/Sufficiency.lean
@@ -1278,6 +1421,24 @@ file_edges:
   to: FdrsFormal/Modes/VariableRadix/Design.lean
 - from: FdrsFormal/Modes/VariableRadix/VariableRadix.lean
   to: FdrsFormal/Modes/VariableRadix/MultiMetric.lean
+- from: FdrsFormal/Modes/VariableRadix/VariableRadix.lean
+  to: FdrsFormal/Modes/VariableRadix/SubshiftWeight.lean
+- from: FdrsFormal/Modes/VariableRadix/VariableRadix.lean
+  to: FdrsFormal/Modes/VariableRadix/SubshiftMetric.lean
+- from: FdrsFormal/Modes/VariableRadix/VariableRadix.lean
+  to: FdrsFormal/Modes/VariableRadix/CarryFrequency.lean
+- from: FdrsFormal/Modes/VariableRadix/VariableRadix.lean
+  to: FdrsFormal/Modes/VariableRadix/SubshiftParry.lean
+- from: FdrsFormal/Modes/VariableRadix/VariableRadix.lean
+  to: FdrsFormal/Modes/VariableRadix/HomographicCarry.lean
+- from: FdrsFormal/Modes/VariableRadix/VariableRadix.lean
+  to: FdrsFormal/Modes/VariableRadix/Bihomographic.lean
+- from: FdrsFormal/Modes/VariableRadix/VariableRadix.lean
+  to: FdrsFormal/Modes/VariableRadix/BihomographicSound.lean
+- from: FdrsFormal/Modes/VariableRadix/VariableRadix.lean
+  to: FdrsFormal/Modes/VariableRadix/BihomographicDriver.lean
+- from: FdrsFormal/Modes/VariableRadix/VariableRadix.lean
+  to: FdrsFormal/Modes/VariableRadix/HyperGosper.lean
 - from: FdrsFormal/Modes/VariableRadix/VariableTick/CarryAlgorithm.lean
   to: FdrsFormal/Modes/VariableRadix/VariableTick/Definition.lean
 - from: FdrsFormal/Modes/VariableRadix/VariableTick/Correctness.lean
@@ -1306,6 +1467,10 @@ file_edges:
   to: FdrsFormal/Modes/BaseZeroSea.lean
 - from: FdrsFormal/Modes.lean
   to: FdrsFormal/Analysis/DigitConditional.lean
+- from: FdrsFormal/Modes.lean
+  to: FdrsFormal/Modes/Adelic.lean
+- from: FdrsFormal/Modes.lean
+  to: FdrsFormal/Modes/SyntheticPlace.lean
 - from: FdrsFormal/NumberTheory/ArithmeticFunctions/DirichletConv.lean
   to: FdrsFormal/NumberTheory/ArithmeticFunctions/Definition.lean
 - from: FdrsFormal/NumberTheory/ArithmeticFunctions/MobiusInversion.lean
@@ -1328,6 +1493,8 @@ file_edges:
   to: FdrsFormal/NumberTheory/ArithmeticFunctions/MobiusInversion.lean
 - from: FdrsFormal/NumberTheory/ArithmeticFunctions.lean
   to: FdrsFormal/NumberTheory/ArithmeticFunctions/TensorPullback.lean
+- from: FdrsFormal/NumberTheory/ArithmeticFunctions.lean
+  to: FdrsFormal/NumberTheory/ArithmeticFunctions/CyclicConvolution.lean
 - from: FdrsFormal/NumberTheory/Characters/CRT.lean
   to: FdrsFormal/NumberTheory/Characters/DirichletCharacters.lean
 - from: FdrsFormal/NumberTheory/Characters/DirichletCharacters.lean

@@ -33,7 +33,9 @@ namespace FdrsFormal.Modes.VariableRadix.BihTensor
 /-- Run the two-stream mediator: given input partial-quotient lists `xs` (Timeline A)
 and `ys` (Timeline B), an alternation `turn`, and a `fuel` bound, produce the output
 quotient stream (Timeline C). Emits when `emitReady`; otherwise absorbs the next
-quotient, alternating A/B and falling back to whichever stream is non-empty. -/
+quotient, alternating A/B and falling back to whichever stream is non-empty.
+
+**fdrs.md**: Definition 190 (The two-stream driver) [§13.6.6 · Phase 13] -/
 def run (T : BihTensor) (xs ys : List ℤ) (turn : Bool) : ℕ → List ℤ
   | 0 => []
   | fuel + 1 =>

@@ -134,7 +134,9 @@ theorem reachFix_subset_of_fix {succs : Q → Finset Q} {q0 : Q} {fuel : ℕ}
     rw [reachFix_stab hfix]
 
 /-- **The decidable couplability check**: the abstract reachable set closes at
-`fuel`, and every abstract state in it reads enabled. -/
+`fuel`, and every abstract state in it reads enabled.
+
+**fdrs.md**: Definition 210 (non-blocking couplability; the decidable fixpoint check) [§14.12 · Phase 14] -/
 def couplableCheck (succs : Q → Finset Q) (q0 : Q) (enabledB : Q → Bool)
     (fuel : ℕ) : Prop :=
   stepFix succs (reachFix succs q0 fuel) = reachFix succs q0 fuel ∧
@@ -165,7 +167,9 @@ theorem abstract_reach {R : ComplexRule N M} {Q : Type*} [DecidableEq Q]
 
 /-- **SU7.3 — soundness of the couplability check**: a finite-state abstraction that
 over-approximates the firings and reads enabledness back concretely turns a
-`couplableCheck` success into `NonBlocking`. -/
+`couplableCheck` success into `NonBlocking`.
+
+**fdrs.md**: Theorem 107 (couplability certificate soundness) [§14.12 · Phase 14] -/
 theorem nonBlocking_of_couplableCheck {R : ComplexRule N M} {Q : Type*} [DecidableEq Q]
     (abs : CConfig N M → Q) (succs : Q → Finset Q) (q0 : Q) (enabledB : Q → Bool)
     (fuel : ℕ)
@@ -284,7 +288,9 @@ theorem blocked_stuck (v : Bool) (d : ℕ) :
 
 /-- **The blocked witness**: the strangled pair is NOT non-blocking — a grammar
 strangled by its own coupling, the empty-joint-fiber phenomenon of `04` §2,
-machine-checked. -/
+machine-checked.
+
+**fdrs.md**: Proposition 152 (witnesses on both sides of couplability) [§14.12 · Phase 14] -/
 theorem blocked_not_nonBlocking : ¬ NonBlocking blockedRule := by
   intro h
   obtain ⟨v, d, henb⟩ := h _ blocked_reachable

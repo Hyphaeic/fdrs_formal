@@ -100,7 +100,9 @@ inductive Species where
 
 /-- The full coupling rule (`04` §2): per-node own law and declared carry mass,
 per-edge species, trigger token, fan-out share, receiver window, and the declared
-within-step dependency order (clause 3, a Phase 8 `DependencyGraph` per node). -/
+within-step dependency order (clause 3, a Phase 8 `DependencyGraph` per node).
+
+**fdrs.md**: Definition 209 (`complexStep` — the three-clause firing) [§14.12 · Phase 14] -/
 structure ComplexRule (N : NetworkShape) (M : Type*) [AddCommMonoid M] where
   /-- clause 2: the node's own radix law (`some`), or edge-driven (`none`). -/
   nodeFiber : N.V → Option (List ℕ → ℕ)
@@ -189,7 +191,9 @@ def WellFormed (R : ComplexRule N M) : Prop :=
 
 omit [DecidableEq N.V] [Fintype N.E] in
 /-- **The clause-3 certificate — Phase 8 reused verbatim**: a well-formed rule's
-per-node dependency graphs are deadlock-free (`time_ordered_deadlock_free`). -/
+per-node dependency graphs are deadlock-free (`time_ordered_deadlock_free`).
+
+**fdrs.md**: Theorem 105 (causality must not be frustrated — well-formedness is grading) [§14.12 · Phase 14] -/
 theorem wellFormed_deadlock_free {R : ComplexRule N M} (h : WellFormed R) (v : N.V) :
     isDeadlockFree (R.deps v) := by
   obtain ⟨ht⟩ := h v
@@ -258,7 +262,9 @@ theorem ofNet_fire (R₀ : NetworkRule N) (cfg : NetConfig N) (v : N.V) (d : ℕ
 
 /-- **The conservative-extension theorem**: the three-clause machine at an embedded
 SU7.0 rule reaches exactly SU7.0's configurations. New clauses, old machine — the
-extension is conservative on the probe-validated fragment. -/
+extension is conservative on the probe-validated fragment.
+
+**fdrs.md**: Theorem 104 (conservative extension, twice; the fan-out witnesses) [§14.12 · Phase 14] -/
 theorem ofRule_reachable_iff (R₀ : NetworkRule N) (cfg : CConfig N ℕ) :
     ComplexReachable (ofRule R₀) cfg ↔ NetReachable R₀ (toNet cfg) := by
   constructor

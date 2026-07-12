@@ -199,7 +199,9 @@ theorem projectB_combine (b₁ b₂ : RadixSeq) (a : CompletedSpace b₁)
   rw [Nat.add_mul_div_left _ _ (by linarith [b₁.ge_two i] : 0 < b₁ i),
       Nat.div_eq_of_lt (a i).isLt]; simp
 
-/-- Combining the projections of a mediator element recovers the original -/
+/-- Combining the projections of a mediator element recovers the original.
+
+**fdrs.md**: Proposition 144 (Mediator ≅ A × B: the round-trip identities) [§13.1.2 · Phase 13] -/
 theorem combine_project (b₁ b₂ : RadixSeq)
     (x : CompletedSpace (productRadix b₁ b₂)) :
     combine b₁ b₂ (projectA b₁ b₂ x) (projectB b₁ b₂ x) = x := by

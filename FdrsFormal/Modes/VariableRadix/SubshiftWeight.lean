@@ -120,7 +120,9 @@ exact, *general* (any quotient sequence) form of the periodic `|Q| = 1` check
 verified numerically in `explorations/phi_vs_sqrt2.py`.
 -/
 
-/-- The convergent-pair ledger `(pₖ₋₁, pₖ ; qₖ₋₁, qₖ)` — the SL₂(ℤ) state. -/
+/-- The convergent-pair ledger `(pₖ₋₁, pₖ ; qₖ₋₁, qₖ)` — the SL₂(ℤ) state.
+
+**fdrs.md**: Definition 181 (The convergent-pair ledger) [§13.2.3 · Phase 13] -/
 structure RemainderState where
   hPrev : ℤ
   hCur : ℤ

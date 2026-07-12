@@ -90,7 +90,9 @@ def timelineDeps (G : Composition.TimelineGraphs.TimelineGraph) : DepGraph where
 
 /-- **The weld, grading half**: a strictly time-monotone timeline graph's
 dependency declaration is GRADED — the `timeOf` potential is literally the node's
-`time` field. Phase 8's time-ordering and SU7.1's well-formedness are one fact. -/
+`time` field. Phase 8's time-ordering and SU7.1's well-formedness are one fact.
+
+**fdrs.md**: Theorem 111 (a timeline graph IS a network shape; time-ordering IS grading) [§14.13 · Phase 14] -/
 def timeline_graded (G : Composition.TimelineGraphs.TimelineGraph)
     (hstrict : ∀ e ∈ G.edges, e.source.time < e.target.time) :
     TimeOrderedDependencies (timelineDeps G) where
@@ -134,7 +136,9 @@ theorem ofRouting_fanoutLawful {N : NetworkShape} [DecidableEq N.V] [Fintype N.E
 variable {M : Type*} [AddCommMonoid M]
 
 /-- The queue-backed edge register: the `Composition/Injection` FIFO discipline
-with monoid-valued payloads and the declared ledger. -/
+with monoid-valued payloads and the declared ledger.
+
+**fdrs.md**: Definition 211 (the queue-backed edge register) [§14.13 · Phase 14] -/
 structure QueueConfig (M : Type*) where
   issued : M
   consumed : M
@@ -166,7 +170,9 @@ inductive QueueReachable (cap : ℕ) : QueueConfig M → Prop
 def QueueBalanced (c : QueueConfig M) : Prop :=
   c.issued = c.consumed + c.buffer.sum
 
-/-- **The SU6b law at every capacity**: every reachable queue register is balanced. -/
+/-- **The SU6b law at every capacity**: every reachable queue register is balanced.
+
+**fdrs.md**: Theorem 112 (queue balance at every capacity; capacity-one IS the currency register) [§14.13 · Phase 14] -/
 theorem queueReachable_balanced {cap : ℕ} {c : QueueConfig M}
     (h : QueueReachable cap c) : QueueBalanced c := by
   induction h with

@@ -232,6 +232,7 @@ def render_item_dot(dag: dict[str, Node], output_path: Path, phase: int = None) 
             color = status_colors.get(node.status, "#e8e8e8")
             shape = type_shapes.get(node.type, default_shape)
             title = node.title[:30] + "..." if len(node.title) > 30 else node.title
+            title = title.replace('\\', '\\\\').replace('"', '\\"')
             label = f"{node.type.capitalize()} {node.global_num}\\n{title}"
 
             # Dim cross-phase deps

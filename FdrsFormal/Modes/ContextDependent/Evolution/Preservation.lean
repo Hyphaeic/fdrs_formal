@@ -45,6 +45,8 @@ open FdrsFormal.Modes.VariableRadix
 **Theorem 45**: Context-switching preserves SU.
 
 If a system has CSU, then every context visited in any trace satisfies SU.
+
+**fdrs.md**: Theorem 45 (Context-switching preserves SU) [§7.2.4 · Phase 7]
 -/
 theorem csu_preserved_along_trace {C E : Type*}
     [ContextSpace C] [InitialContext C] [EventSpace E]

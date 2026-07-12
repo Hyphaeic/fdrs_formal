@@ -1,14 +1,12 @@
 metadata:
   spec_file: docs/fdrs.md
-  spec_lines: 8729
-  generated_at: '2026-07-02T10:54:17.404153'
-  total_items: 504
+  spec_lines: 8981
+  generated_at: '2026-07-12T12:30:04.523062'
+  total_items: 523
   status_summary:
-    proven: 450
-    excluded: 17
-    missing: 34
+    proven: 520
+    missing: 1
     scaffold: 2
-    wip: 1
   status_legend:
     proven: meaningful statement, no sorry/axiom/scaffold, in the default build
     scaffold: compiles but vacuous/placeholder/constantized/weakened
@@ -1876,6 +1874,7 @@ items:
     declarations:
     - euclidean_inner_eq_sum
     - onesVec
+    - onesVec_apply
     - onesVec_ne_zero
     - onesVec_inner_self
     - finrank_meanZero
@@ -1883,7 +1882,6 @@ items:
     - onbVec
     - onbVec_mem
     - onbVec_mean_zero
-    - onbVec_orthonormal
   fragment: '4'
   section: '1.1'
 - id: definition_35
@@ -1905,6 +1903,8 @@ items:
     - ':'
     - haarComponent
     - haarFunction
+    - haarFunction_product
+    - haarComponent_constant
     - haarComponent_contrast
   fragment: '4'
   section: '1.2'
@@ -1927,6 +1927,8 @@ items:
     - ':'
     - haarComponent
     - haarFunction
+    - haarFunction_product
+    - haarComponent_constant
     - haarComponent_contrast
   - path: FdrsFormal/FunctionSpaces/Haar/Orthonormality.lean
     declarations:
@@ -1958,6 +1960,8 @@ items:
     - ':'
     - haarComponent
     - haarFunction
+    - haarFunction_product
+    - haarComponent_constant
     - haarComponent_contrast
   - path: FdrsFormal/FunctionSpaces/Haar/SupportLevel.lean
     declarations:
@@ -1991,6 +1995,8 @@ items:
     - ':'
     - haarComponent
     - haarFunction
+    - haarFunction_product
+    - haarComponent_constant
     - haarComponent_contrast
   - path: FdrsFormal/FunctionSpaces/Haar/ProjectionAction.lean
     declarations:
@@ -2020,6 +2026,8 @@ items:
     - ':'
     - haarComponent
     - haarFunction
+    - haarFunction_product
+    - haarComponent_constant
     - haarComponent_contrast
   - path: FdrsFormal/FunctionSpaces/Haar/ProjectionAction.lean
     declarations:
@@ -2232,8 +2240,8 @@ items:
   global_num: 38
   title: (\mathcal R^{(k
   line: 1594
-  status: excluded
-  in_root_build: false
+  status: proven
+  in_root_build: true
   lean_files:
   - path: FdrsFormal/NumberTheory/ArithmeticFunctions/CyclicConvolution.lean
     declarations:
@@ -2246,8 +2254,8 @@ items:
   global_num: 13
   title: closure, associativity, commutativity, identity
   line: 1604
-  status: excluded
-  in_root_build: false
+  status: proven
+  in_root_build: true
   lean_files:
   - path: FdrsFormal/NumberTheory/ArithmeticFunctions/CyclicConvolution.lean
     declarations:
@@ -5760,10 +5768,10 @@ items:
   - path: FdrsFormal/Integration/ThreeLineMediator/Definition.lean
     declarations:
     - productRadix
+    - productRadix_apply
     - placeValue_product
     - projectA
     - projectB
-    - combine
   - path: FdrsFormal/Modes/VariableRadix/Basic/DigitAlphabet.lean
     declarations:
     - DigitAt
@@ -5806,10 +5814,10 @@ items:
   - path: FdrsFormal/Integration/ThreeLineMediator/Definition.lean
     declarations:
     - productRadix
+    - productRadix_apply
     - placeValue_product
     - projectA
     - projectB
-    - combine
   - path: FdrsFormal/Modes/VariableRadix/Basic/DigitAlphabet.lean
     declarations:
     - DigitAt
@@ -5866,10 +5874,10 @@ items:
   - path: FdrsFormal/Integration/ThreeLineMediator/Definition.lean
     declarations:
     - productRadix
+    - productRadix_apply
     - placeValue_product
     - projectA
     - projectB
-    - combine
   - path: FdrsFormal/Modes/VariableRadix/Basic/DigitAlphabet.lean
     declarations:
     - DigitAt
@@ -5912,10 +5920,10 @@ items:
   - path: FdrsFormal/Integration/ThreeLineMediator/Definition.lean
     declarations:
     - productRadix
+    - productRadix_apply
     - placeValue_product
     - projectA
     - projectB
-    - combine
   - path: FdrsFormal/Modes/VariableRadix/Basic/DigitAlphabet.lean
     declarations:
     - DigitAt
@@ -5958,10 +5966,10 @@ items:
   - path: FdrsFormal/Integration/ThreeLineMediator/Definition.lean
     declarations:
     - productRadix
+    - productRadix_apply
     - placeValue_product
     - projectA
     - projectB
-    - combine
   - path: FdrsFormal/Modes/VariableRadix/Basic/DigitAlphabet.lean
     declarations:
     - DigitAt
@@ -6004,10 +6012,10 @@ items:
   - path: FdrsFormal/Integration/ThreeLineMediator/Definition.lean
     declarations:
     - productRadix
+    - productRadix_apply
     - placeValue_product
     - projectA
     - projectB
-    - combine
   - path: FdrsFormal/Modes/VariableRadix/Basic/DigitAlphabet.lean
     declarations:
     - DigitAt
@@ -6050,10 +6058,10 @@ items:
   - path: FdrsFormal/Integration/ThreeLineMediator/Definition.lean
     declarations:
     - productRadix
+    - productRadix_apply
     - placeValue_product
     - projectA
     - projectB
-    - combine
   - path: FdrsFormal/Modes/VariableRadix/Basic/DigitAlphabet.lean
     declarations:
     - DigitAt
@@ -6096,10 +6104,10 @@ items:
   - path: FdrsFormal/Integration/ThreeLineMediator/Definition.lean
     declarations:
     - productRadix
+    - productRadix_apply
     - placeValue_product
     - projectA
     - projectB
-    - combine
   - path: FdrsFormal/Modes/VariableRadix/Basic/DigitAlphabet.lean
     declarations:
     - DigitAt
@@ -6142,10 +6150,10 @@ items:
   - path: FdrsFormal/Integration/ThreeLineMediator/Definition.lean
     declarations:
     - productRadix
+    - productRadix_apply
     - placeValue_product
     - projectA
     - projectB
-    - combine
   - path: FdrsFormal/Modes/VariableRadix/Basic/DigitAlphabet.lean
     declarations:
     - DigitAt
@@ -6188,10 +6196,10 @@ items:
   - path: FdrsFormal/Integration/ThreeLineMediator/Definition.lean
     declarations:
     - productRadix
+    - productRadix_apply
     - placeValue_product
     - projectA
     - projectB
-    - combine
   - path: FdrsFormal/Modes/VariableRadix/Basic/DigitAlphabet.lean
     declarations:
     - DigitAt
@@ -6234,10 +6242,10 @@ items:
   - path: FdrsFormal/Integration/ThreeLineMediator/Definition.lean
     declarations:
     - productRadix
+    - productRadix_apply
     - placeValue_product
     - projectA
     - projectB
-    - combine
   - path: FdrsFormal/Modes/VariableRadix/Basic/DigitAlphabet.lean
     declarations:
     - DigitAt
@@ -6280,10 +6288,10 @@ items:
   - path: FdrsFormal/Integration/ThreeLineMediator/Definition.lean
     declarations:
     - productRadix
+    - productRadix_apply
     - placeValue_product
     - projectA
     - projectB
-    - combine
   - path: FdrsFormal/Modes/VariableRadix/Basic/DigitAlphabet.lean
     declarations:
     - DigitAt
@@ -6326,10 +6334,10 @@ items:
   - path: FdrsFormal/Integration/ThreeLineMediator/Definition.lean
     declarations:
     - productRadix
+    - productRadix_apply
     - placeValue_product
     - projectA
     - projectB
-    - combine
   - path: FdrsFormal/Modes/VariableRadix/Basic/DigitAlphabet.lean
     declarations:
     - DigitAt
@@ -6386,10 +6394,10 @@ items:
   - path: FdrsFormal/Integration/ThreeLineMediator/Definition.lean
     declarations:
     - productRadix
+    - productRadix_apply
     - placeValue_product
     - projectA
     - projectB
-    - combine
   - path: FdrsFormal/Modes/VariableRadix/Basic/DigitAlphabet.lean
     declarations:
     - DigitAt
@@ -6432,10 +6440,10 @@ items:
   - path: FdrsFormal/Integration/ThreeLineMediator/Definition.lean
     declarations:
     - productRadix
+    - productRadix_apply
     - placeValue_product
     - projectA
     - projectB
-    - combine
   - path: FdrsFormal/Modes/VariableRadix/Basic/DigitAlphabet.lean
     declarations:
     - DigitAt
@@ -6478,10 +6486,10 @@ items:
   - path: FdrsFormal/Integration/ThreeLineMediator/Definition.lean
     declarations:
     - productRadix
+    - productRadix_apply
     - placeValue_product
     - projectA
     - projectB
-    - combine
   - path: FdrsFormal/Modes/VariableRadix/Basic/DigitAlphabet.lean
     declarations:
     - DigitAt
@@ -6524,10 +6532,10 @@ items:
   - path: FdrsFormal/Integration/ThreeLineMediator/Definition.lean
     declarations:
     - productRadix
+    - productRadix_apply
     - placeValue_product
     - projectA
     - projectB
-    - combine
   - path: FdrsFormal/Modes/VariableRadix/Basic/DigitAlphabet.lean
     declarations:
     - DigitAt
@@ -6570,10 +6578,10 @@ items:
   - path: FdrsFormal/Integration/ThreeLineMediator/Definition.lean
     declarations:
     - productRadix
+    - productRadix_apply
     - placeValue_product
     - projectA
     - projectB
-    - combine
   - path: FdrsFormal/Modes/VariableRadix/Basic/DigitAlphabet.lean
     declarations:
     - DigitAt
@@ -6616,10 +6624,10 @@ items:
   - path: FdrsFormal/Integration/ThreeLineMediator/Definition.lean
     declarations:
     - productRadix
+    - productRadix_apply
     - placeValue_product
     - projectA
     - projectB
-    - combine
   - path: FdrsFormal/Modes/VariableRadix/Basic/DigitAlphabet.lean
     declarations:
     - DigitAt
@@ -6704,10 +6712,10 @@ items:
   - path: FdrsFormal/Integration/ThreeLineMediator/Definition.lean
     declarations:
     - productRadix
+    - productRadix_apply
     - placeValue_product
     - projectA
     - projectB
-    - combine
   - path: FdrsFormal/Modes/VariableRadix/Basic/DigitAlphabet.lean
     declarations:
     - DigitAt
@@ -6772,10 +6780,10 @@ items:
   - path: FdrsFormal/Integration/ThreeLineMediator/Definition.lean
     declarations:
     - productRadix
+    - productRadix_apply
     - placeValue_product
     - projectA
     - projectB
-    - combine
   - path: FdrsFormal/Modes/VariableRadix/Basic/DigitAlphabet.lean
     declarations:
     - DigitAt
@@ -6818,10 +6826,10 @@ items:
   - path: FdrsFormal/Integration/ThreeLineMediator/Definition.lean
     declarations:
     - productRadix
+    - productRadix_apply
     - placeValue_product
     - projectA
     - projectB
-    - combine
   - path: FdrsFormal/Modes/VariableRadix/Basic/DigitAlphabet.lean
     declarations:
     - DigitAt
@@ -6864,10 +6872,10 @@ items:
   - path: FdrsFormal/Integration/ThreeLineMediator/Definition.lean
     declarations:
     - productRadix
+    - productRadix_apply
     - placeValue_product
     - projectA
     - projectB
-    - combine
   - path: FdrsFormal/Modes/VariableRadix/Basic/DigitAlphabet.lean
     declarations:
     - DigitAt
@@ -6910,10 +6918,10 @@ items:
   - path: FdrsFormal/Integration/ThreeLineMediator/Definition.lean
     declarations:
     - productRadix
+    - productRadix_apply
     - placeValue_product
     - projectA
     - projectB
-    - combine
   - path: FdrsFormal/Modes/VariableRadix/Basic/DigitAlphabet.lean
     declarations:
     - DigitAt
@@ -6956,10 +6964,10 @@ items:
   - path: FdrsFormal/Integration/ThreeLineMediator/Definition.lean
     declarations:
     - productRadix
+    - productRadix_apply
     - placeValue_product
     - projectA
     - projectB
-    - combine
   - path: FdrsFormal/Modes/VariableRadix/Basic/DigitAlphabet.lean
     declarations:
     - DigitAt
@@ -7002,10 +7010,10 @@ items:
   - path: FdrsFormal/Integration/ThreeLineMediator/Definition.lean
     declarations:
     - productRadix
+    - productRadix_apply
     - placeValue_product
     - projectA
     - projectB
-    - combine
   - path: FdrsFormal/Modes/VariableRadix/Basic/DigitAlphabet.lean
     declarations:
     - DigitAt
@@ -7048,10 +7056,10 @@ items:
   - path: FdrsFormal/Integration/ThreeLineMediator/Definition.lean
     declarations:
     - productRadix
+    - productRadix_apply
     - placeValue_product
     - projectA
     - projectB
-    - combine
   - path: FdrsFormal/Modes/VariableRadix/Basic/DigitAlphabet.lean
     declarations:
     - DigitAt
@@ -7321,13 +7329,6 @@ items:
     - extendPrefixToInfinite_mem_cylinder
     - lcpLength_ge_of_same_prefix
     - not_mem_cylinder_of_lcpLength_lt
-  - path: FdrsFormal/Modes/VariableRadix/Realizability/Realizability.lean
-    declarations:
-    - theoremB_forward
-    - any_radixLaw_satisfies_conditions
-    - radixLaw_gives_ultrametric
-    - su_gives_ultrametric
-    - spectrum_classification
   section: 6.6.1
 - id: corollary_28
   type: corollary
@@ -7611,10 +7612,10 @@ items:
   - path: FdrsFormal/Integration/ThreeLineMediator/Definition.lean
     declarations:
     - productRadix
+    - productRadix_apply
     - placeValue_product
     - projectA
     - projectB
-    - combine
   - path: FdrsFormal/Modes/ContextDependent/Basic/CSU.lean
     declarations:
     - hasCSU
@@ -7753,11 +7754,12 @@ items:
   global_num: 45
   title: Context-switching preserves SU
   line: 5628
-  status: missing
+  status: proven
   in_root_build: true
   lean_files:
-  - path: FdrsFormal/Modes/ContextDependent/Realization/Realization.lean
-    declarations: []
+  - path: FdrsFormal/Modes/ContextDependent/Evolution/Preservation.lean
+    declarations:
+    - csu_preserved_along_trace
   section: 7.2.4
 - id: definition_91
   type: definition
@@ -7986,10 +7988,10 @@ items:
   - path: FdrsFormal/Integration/ThreeLineMediator/Definition.lean
     declarations:
     - productRadix
+    - productRadix_apply
     - placeValue_product
     - projectA
     - projectB
-    - combine
   - path: FdrsFormal/Modes/ContextDependent/Basic/CSU.lean
     declarations:
     - hasCSU
@@ -8031,10 +8033,10 @@ items:
   - path: FdrsFormal/Integration/ThreeLineMediator/Definition.lean
     declarations:
     - productRadix
+    - productRadix_apply
     - placeValue_product
     - projectA
     - projectB
-    - combine
   - path: FdrsFormal/Modes/ContextDependent/Basic/CSU.lean
     declarations:
     - hasCSU
@@ -8076,10 +8078,10 @@ items:
   - path: FdrsFormal/Integration/ThreeLineMediator/Definition.lean
     declarations:
     - productRadix
+    - productRadix_apply
     - placeValue_product
     - projectA
     - projectB
-    - combine
   - path: FdrsFormal/Modes/ContextDependent/Basic/CSU.lean
     declarations:
     - hasCSU
@@ -8121,10 +8123,10 @@ items:
   - path: FdrsFormal/Integration/ThreeLineMediator/Definition.lean
     declarations:
     - productRadix
+    - productRadix_apply
     - placeValue_product
     - projectA
     - projectB
-    - combine
   - path: FdrsFormal/Modes/ContextDependent/Basic/CSU.lean
     declarations:
     - hasCSU
@@ -8166,10 +8168,10 @@ items:
   - path: FdrsFormal/Integration/ThreeLineMediator/Definition.lean
     declarations:
     - productRadix
+    - productRadix_apply
     - placeValue_product
     - projectA
     - projectB
-    - combine
   - path: FdrsFormal/Modes/ContextDependent/Basic/CSU.lean
     declarations:
     - hasCSU
@@ -8232,10 +8234,10 @@ items:
   - path: FdrsFormal/Integration/ThreeLineMediator/Definition.lean
     declarations:
     - productRadix
+    - productRadix_apply
     - placeValue_product
     - projectA
     - projectB
-    - combine
   - path: FdrsFormal/Modes/ContextDependent/Basic/CSU.lean
     declarations:
     - hasCSU
@@ -8277,10 +8279,10 @@ items:
   - path: FdrsFormal/Integration/ThreeLineMediator/Definition.lean
     declarations:
     - productRadix
+    - productRadix_apply
     - placeValue_product
     - projectA
     - projectB
-    - combine
   - path: FdrsFormal/Modes/ContextDependent/Basic/CSU.lean
     declarations:
     - hasCSU
@@ -8322,10 +8324,10 @@ items:
   - path: FdrsFormal/Integration/ThreeLineMediator/Definition.lean
     declarations:
     - productRadix
+    - productRadix_apply
     - placeValue_product
     - projectA
     - projectB
-    - combine
   - path: FdrsFormal/Modes/ContextDependent/Basic/CSU.lean
     declarations:
     - hasCSU
@@ -8367,10 +8369,10 @@ items:
   - path: FdrsFormal/Integration/ThreeLineMediator/Definition.lean
     declarations:
     - productRadix
+    - productRadix_apply
     - placeValue_product
     - projectA
     - projectB
-    - combine
   - path: FdrsFormal/Modes/ContextDependent/Basic/CSU.lean
     declarations:
     - hasCSU
@@ -8412,10 +8414,10 @@ items:
   - path: FdrsFormal/Integration/ThreeLineMediator/Definition.lean
     declarations:
     - productRadix
+    - productRadix_apply
     - placeValue_product
     - projectA
     - projectB
-    - combine
   - path: FdrsFormal/Modes/ContextDependent/Basic/CSU.lean
     declarations:
     - hasCSU
@@ -8457,10 +8459,10 @@ items:
   - path: FdrsFormal/Integration/ThreeLineMediator/Definition.lean
     declarations:
     - productRadix
+    - productRadix_apply
     - placeValue_product
     - projectA
     - projectB
-    - combine
   - path: FdrsFormal/Modes/ContextDependent/Basic/CSU.lean
     declarations:
     - hasCSU
@@ -9938,11 +9940,12 @@ items:
   global_num: 149
   title: Carry-as-route
   line: 7184
-  status: missing
+  status: proven
   in_root_build: true
   lean_files:
-  - path: FdrsFormal/Modes/BaseZeroSea.lean
-    declarations: []
+  - path: FdrsFormal/Modes/ExtendedBase/CarryRouteUnification.lean
+    declarations:
+    - carryRouteDecision
   section: 9.9.2
 - id: definition_150
   type: definition
@@ -9950,11 +9953,12 @@ items:
   global_num: 150
   title: Unified spatial tick
   line: 7195
-  status: missing
+  status: proven
   in_root_build: true
   lean_files:
-  - path: FdrsFormal/Modes/BaseZeroSea.lean
-    declarations: []
+  - path: FdrsFormal/Modes/ExtendedBase/CarryRouteUnification.lean
+    declarations:
+    - unifiedSpatialTick
   section: 9.9.3
 - id: theorem_61
   type: theorem
@@ -10744,12 +10748,33 @@ items:
   - path: FdrsFormal/Integration/ThreeLineMediator/Definition.lean
     declarations:
     - productRadix
-  - path: FdrsFormal/Integration/ThreeLineMediator/Definition.lean
+    - productRadix_apply
+    - placeValue_product
+    - projectA
+    - projectB
+  - path: FdrsFormal/Modes/VariableRadix/Bihomographic.lean
     declarations:
-    - productMediator
-  - path: FdrsFormal/Modes/BaseZeroSea/Modules.lean
+    - BihTensor
+    - absorbX
+    - absorbY
+    - emit
+    - emitDigit
+  - path: FdrsFormal/Modes/VariableRadix/BihomographicDriver.lean
     declarations:
-    - classicalMixedRadixLine
+    - run
+    - addTensor
+    - mulTensor
+  - path: FdrsFormal/Modes/VariableRadix/BihomographicSound.lean
+    declarations:
+    - bilinear_ge_const
+    - emit_traps
+    - emitReady_traps
+  - path: FdrsFormal/Modes/VariableRadix/CarryFrequency.lean
+    declarations:
+    - cfOverflowRate
+    - cfOverflowRate_pos
+    - cfOverflowRate_antitone
+    - cfOverflowRate_vanishes
   section: 13.1.1
 - id: proposition_144
   type: proposition
@@ -10757,9 +10782,12 @@ items:
   global_num: 144
   title: 'Mediator ≅ A × B: the round-trip identities'
   line: 8014
-  status: missing
+  status: proven
   in_root_build: true
-  lean_files: []
+  lean_files:
+  - path: FdrsFormal/Integration/ThreeLineMediator/Definition.lean
+    declarations:
+    - combine_project
   section: 13.1.2
 - id: theorem_70
   type: theorem
@@ -10770,15 +10798,36 @@ items:
   status: proven
   in_root_build: true
   lean_files:
-  - path: FdrsFormal/Core/Primitives/PlaceValue.lean
-    declarations:
-    - placeValue
   - path: FdrsFormal/Integration/ThreeLineMediator/Definition.lean
     declarations:
+    - productRadix
+    - productRadix_apply
     - placeValue_product
-  - path: FdrsFormal/Integration/ThreeLineMediator/Definition.lean
+    - projectA
+    - projectB
+  - path: FdrsFormal/Modes/VariableRadix/Bihomographic.lean
     declarations:
-    - overflowRate_product
+    - BihTensor
+    - absorbX
+    - absorbY
+    - emit
+    - emitDigit
+  - path: FdrsFormal/Modes/VariableRadix/BihomographicDriver.lean
+    declarations:
+    - run
+    - addTensor
+    - mulTensor
+  - path: FdrsFormal/Modes/VariableRadix/BihomographicSound.lean
+    declarations:
+    - bilinear_ge_const
+    - emit_traps
+    - emitReady_traps
+  - path: FdrsFormal/Modes/VariableRadix/CarryFrequency.lean
+    declarations:
+    - cfOverflowRate
+    - cfOverflowRate_pos
+    - cfOverflowRate_antitone
+    - cfOverflowRate_vanishes
   section: 13.1.3
 - id: definition_179
   type: definition
@@ -10789,15 +10838,36 @@ items:
   status: proven
   in_root_build: true
   lean_files:
-  - path: FdrsFormal/Integration/ThreeLineMediator/CoupledSystem.lean
+  - path: FdrsFormal/Integration/ThreeLineMediator/Definition.lean
     declarations:
-    - CoupledSystem
-  - path: FdrsFormal/Integration/ThreeLineMediator/CoupledSystem.lean
+    - productRadix
+    - productRadix_apply
+    - placeValue_product
+    - projectA
+    - projectB
+  - path: FdrsFormal/Modes/VariableRadix/Bihomographic.lean
     declarations:
-    - productCoupledSystem
-  - path: FdrsFormal/Integration/ThreeLineMediator/CoupledSystem.lean
+    - BihTensor
+    - absorbX
+    - absorbY
+    - emit
+    - emitDigit
+  - path: FdrsFormal/Modes/VariableRadix/BihomographicDriver.lean
     declarations:
-    - mkCoupledSystem
+    - run
+    - addTensor
+    - mulTensor
+  - path: FdrsFormal/Modes/VariableRadix/BihomographicSound.lean
+    declarations:
+    - bilinear_ge_const
+    - emit_traps
+    - emitReady_traps
+  - path: FdrsFormal/Modes/VariableRadix/CarryFrequency.lean
+    declarations:
+    - cfOverflowRate
+    - cfOverflowRate_pos
+    - cfOverflowRate_antitone
+    - cfOverflowRate_vanishes
   section: 13.1.4
 - id: proposition_145
   type: proposition
@@ -10808,15 +10878,36 @@ items:
   status: proven
   in_root_build: true
   lean_files:
-  - path: FdrsFormal/Integration/ThreeLineMediator/CoupledSystem.lean
+  - path: FdrsFormal/Integration/ThreeLineMediator/Definition.lean
     declarations:
-    - radix_independent_of_coupling
-  - path: FdrsFormal/Modes/ContextDependent/Realization/EquivalenceThm.lean
+    - productRadix
+    - productRadix_apply
+    - placeValue_product
+    - projectA
+    - projectB
+  - path: FdrsFormal/Modes/VariableRadix/Bihomographic.lean
     declarations:
-    - representation_independence
-  - path: FdrsFormal/Modes/ExtendedBase/CarryRouteUnification.lean
+    - BihTensor
+    - absorbX
+    - absorbY
+    - emit
+    - emitDigit
+  - path: FdrsFormal/Modes/VariableRadix/BihomographicDriver.lean
     declarations:
-    - carryRouteDecision_eq_carry
+    - run
+    - addTensor
+    - mulTensor
+  - path: FdrsFormal/Modes/VariableRadix/BihomographicSound.lean
+    declarations:
+    - bilinear_ge_const
+    - emit_traps
+    - emitReady_traps
+  - path: FdrsFormal/Modes/VariableRadix/CarryFrequency.lean
+    declarations:
+    - cfOverflowRate
+    - cfOverflowRate_pos
+    - cfOverflowRate_antitone
+    - cfOverflowRate_vanishes
   section: 13.1.5
 - id: proposition_146
   type: proposition
@@ -10824,18 +10915,39 @@ items:
   global_num: 146
   title: Overflow-rate ratio and the discrete → real comparison
   line: 8051
-  status: excluded
-  in_root_build: false
+  status: proven
+  in_root_build: true
   lean_files:
   - path: FdrsFormal/Integration/ThreeLineMediator/Definition.lean
     declarations:
-    - overflowRate
-  - path: FdrsFormal/Integration/ThreeLineMediator/Definition.lean
+    - productRadix
+    - productRadix_apply
+    - placeValue_product
+    - projectA
+    - projectB
+  - path: FdrsFormal/Modes/VariableRadix/Bihomographic.lean
     declarations:
-    - overflowRate_pos
-  - path: FdrsFormal/Integration/ThreeLineMediator/Definition.lean
+    - BihTensor
+    - absorbX
+    - absorbY
+    - emit
+    - emitDigit
+  - path: FdrsFormal/Modes/VariableRadix/BihomographicDriver.lean
     declarations:
-    - overflowRate_antitone
+    - run
+    - addTensor
+    - mulTensor
+  - path: FdrsFormal/Modes/VariableRadix/BihomographicSound.lean
+    declarations:
+    - bilinear_ge_const
+    - emit_traps
+    - emitReady_traps
+  - path: FdrsFormal/Modes/VariableRadix/CarryFrequency.lean
+    declarations:
+    - cfOverflowRate
+    - cfOverflowRate_pos
+    - cfOverflowRate_antitone
+    - cfOverflowRate_vanishes
   section: 13.1.6
 - id: definition_180
   type: definition
@@ -10846,15 +10958,36 @@ items:
   status: proven
   in_root_build: true
   lean_files:
-  - path: FdrsFormal/FunctionSpaces/Basic/PrefixSet.lean
+  - path: FdrsFormal/Integration/ThreeLineMediator/Definition.lean
     declarations:
-    - extendPrefix
-  - path: FdrsFormal/FunctionSpaces/Basic/PrefixSet.lean
+    - productRadix
+    - productRadix_apply
+    - placeValue_product
+    - projectA
+    - projectB
+  - path: FdrsFormal/Modes/VariableRadix/Bihomographic.lean
     declarations:
-    - prefixResidue
-  - path: FdrsFormal/FunctionSpaces/Commutant/FiniteProjection.lean
+    - BihTensor
+    - absorbX
+    - absorbY
+    - emit
+    - emitDigit
+  - path: FdrsFormal/Modes/VariableRadix/BihomographicDriver.lean
     declarations:
-    - extendPrefix
+    - run
+    - addTensor
+    - mulTensor
+  - path: FdrsFormal/Modes/VariableRadix/BihomographicSound.lean
+    declarations:
+    - bilinear_ge_const
+    - emit_traps
+    - emitReady_traps
+  - path: FdrsFormal/Modes/VariableRadix/CarryFrequency.lean
+    declarations:
+    - cfOverflowRate
+    - cfOverflowRate_pos
+    - cfOverflowRate_antitone
+    - cfOverflowRate_vanishes
   section: 13.2.1
 - id: theorem_71
   type: theorem
@@ -10865,15 +10998,36 @@ items:
   status: proven
   in_root_build: true
   lean_files:
-  - path: FdrsFormal/Core/Primitives/PlaceValue.lean
+  - path: FdrsFormal/Integration/ThreeLineMediator/Definition.lean
     declarations:
-    - placeValue
-  - path: FdrsFormal/Modes/ExtendedBase/Definition.lean
+    - productRadix
+    - productRadix_apply
+    - placeValue_product
+    - projectA
+    - projectB
+  - path: FdrsFormal/Modes/VariableRadix/Bihomographic.lean
     declarations:
-    - placeValue
-  - path: FdrsFormal/Modes/SyntheticPlace/GaugeUltrametric.lean
+    - BihTensor
+    - absorbX
+    - absorbY
+    - emit
+    - emitDigit
+  - path: FdrsFormal/Modes/VariableRadix/BihomographicDriver.lean
     declarations:
-    - gaugeAt
+    - run
+    - addTensor
+    - mulTensor
+  - path: FdrsFormal/Modes/VariableRadix/BihomographicSound.lean
+    declarations:
+    - bilinear_ge_const
+    - emit_traps
+    - emitReady_traps
+  - path: FdrsFormal/Modes/VariableRadix/CarryFrequency.lean
+    declarations:
+    - cfOverflowRate
+    - cfOverflowRate_pos
+    - cfOverflowRate_antitone
+    - cfOverflowRate_vanishes
   section: 13.2.2
 - id: definition_181
   type: definition
@@ -10881,9 +11035,12 @@ items:
   global_num: 181
   title: The convergent-pair ledger
   line: 8079
-  status: missing
+  status: proven
   in_root_build: true
-  lean_files: []
+  lean_files:
+  - path: FdrsFormal/Modes/VariableRadix/SubshiftWeight.lean
+    declarations:
+    - RemainderState
   section: 13.2.3
 - id: theorem_72
   type: theorem
@@ -10891,15 +11048,39 @@ items:
   global_num: 72
   title: The bracket invariant
   line: 8085
-  status: excluded
-  in_root_build: false
+  status: proven
+  in_root_build: true
   lean_files:
-  - path: FdrsFormal/Modes/VariableRadix/SubshiftWeight.lean
+  - path: FdrsFormal/Integration/ThreeLineMediator/Definition.lean
     declarations:
-    - bracket_invariant
-  - path: FdrsFormal/Modes/VariableRadix/SubshiftWeight.lean
+    - productRadix
+    - productRadix_apply
+    - placeValue_product
+    - projectA
+    - projectB
+  - path: FdrsFormal/Modes/VariableRadix/Bihomographic.lean
     declarations:
-    - steps_invariant
+    - BihTensor
+    - absorbX
+    - absorbY
+    - emit
+    - emitDigit
+  - path: FdrsFormal/Modes/VariableRadix/BihomographicDriver.lean
+    declarations:
+    - run
+    - addTensor
+    - mulTensor
+  - path: FdrsFormal/Modes/VariableRadix/BihomographicSound.lean
+    declarations:
+    - bilinear_ge_const
+    - emit_traps
+    - emitReady_traps
+  - path: FdrsFormal/Modes/VariableRadix/CarryFrequency.lean
+    declarations:
+    - cfOverflowRate
+    - cfOverflowRate_pos
+    - cfOverflowRate_antitone
+    - cfOverflowRate_vanishes
   section: 13.2.4
 - id: theorem_73
   type: theorem
@@ -10907,18 +11088,39 @@ items:
   global_num: 73
   title: 'Gauge growth: `q_k > 0` and `q_k → ∞`, even for `φ`'
   line: 8093
-  status: excluded
-  in_root_build: false
+  status: proven
+  in_root_build: true
   lean_files:
-  - path: FdrsFormal/Modes/SyntheticPlace/GaugeUltrametric.lean
+  - path: FdrsFormal/Integration/ThreeLineMediator/Definition.lean
     declarations:
-    - gaugeAt
-  - path: FdrsFormal/Modes/SyntheticPlace/GaugeUltrametric.lean
+    - productRadix
+    - productRadix_apply
+    - placeValue_product
+    - projectA
+    - projectB
+  - path: FdrsFormal/Modes/VariableRadix/Bihomographic.lean
     declarations:
-    - gaugeAt_pos
-  - path: FdrsFormal/Modes/SyntheticPlace/GaugeUltrametric.lean
+    - BihTensor
+    - absorbX
+    - absorbY
+    - emit
+    - emitDigit
+  - path: FdrsFormal/Modes/VariableRadix/BihomographicDriver.lean
     declarations:
-    - gaugeAt_monotone
+    - run
+    - addTensor
+    - mulTensor
+  - path: FdrsFormal/Modes/VariableRadix/BihomographicSound.lean
+    declarations:
+    - bilinear_ge_const
+    - emit_traps
+    - emitReady_traps
+  - path: FdrsFormal/Modes/VariableRadix/CarryFrequency.lean
+    declarations:
+    - cfOverflowRate
+    - cfOverflowRate_pos
+    - cfOverflowRate_antitone
+    - cfOverflowRate_vanishes
   section: 13.2.5
 - id: definition_182
   type: definition
@@ -10929,15 +11131,36 @@ items:
   status: proven
   in_root_build: true
   lean_files:
-  - path: FdrsFormal/FunctionSpaces/Basic/PrefixSet.lean
+  - path: FdrsFormal/Integration/ThreeLineMediator/Definition.lean
     declarations:
-    - extendPrefix
-  - path: FdrsFormal/FunctionSpaces/Basic/PrefixSet.lean
+    - productRadix
+    - productRadix_apply
+    - placeValue_product
+    - projectA
+    - projectB
+  - path: FdrsFormal/Modes/VariableRadix/Bihomographic.lean
     declarations:
-    - prefixResidue
-  - path: FdrsFormal/FunctionSpaces/Commutant/FiniteProjection.lean
+    - BihTensor
+    - absorbX
+    - absorbY
+    - emit
+    - emitDigit
+  - path: FdrsFormal/Modes/VariableRadix/BihomographicDriver.lean
     declarations:
-    - extendPrefix
+    - run
+    - addTensor
+    - mulTensor
+  - path: FdrsFormal/Modes/VariableRadix/BihomographicSound.lean
+    declarations:
+    - bilinear_ge_const
+    - emit_traps
+    - emitReady_traps
+  - path: FdrsFormal/Modes/VariableRadix/CarryFrequency.lean
+    declarations:
+    - cfOverflowRate
+    - cfOverflowRate_pos
+    - cfOverflowRate_antitone
+    - cfOverflowRate_vanishes
   section: 13.3.1
 - id: definition_183
   type: definition
@@ -10945,18 +11168,39 @@ items:
   global_num: 183
   title: The gauge-induced continued-fraction distance
   line: 8111
-  status: excluded
-  in_root_build: false
+  status: proven
+  in_root_build: true
   lean_files:
-  - path: FdrsFormal/Modes/SyntheticPlace/GaugeUltrametric.lean
+  - path: FdrsFormal/Integration/ThreeLineMediator/Definition.lean
     declarations:
-    - gaugeAt
-  - path: FdrsFormal/Modes/SyntheticPlace/GaugeUltrametric.lean
+    - productRadix
+    - productRadix_apply
+    - placeValue_product
+    - projectA
+    - projectB
+  - path: FdrsFormal/Modes/VariableRadix/Bihomographic.lean
     declarations:
-    - gaugeAt_pos
-  - path: FdrsFormal/Modes/SyntheticPlace/GaugeUltrametric.lean
+    - BihTensor
+    - absorbX
+    - absorbY
+    - emit
+    - emitDigit
+  - path: FdrsFormal/Modes/VariableRadix/BihomographicDriver.lean
     declarations:
-    - gaugeAt_monotone
+    - run
+    - addTensor
+    - mulTensor
+  - path: FdrsFormal/Modes/VariableRadix/BihomographicSound.lean
+    declarations:
+    - bilinear_ge_const
+    - emit_traps
+    - emitReady_traps
+  - path: FdrsFormal/Modes/VariableRadix/CarryFrequency.lean
+    declarations:
+    - cfOverflowRate
+    - cfOverflowRate_pos
+    - cfOverflowRate_antitone
+    - cfOverflowRate_vanishes
   section: 13.3.2
 - id: theorem_74
   type: theorem
@@ -10967,15 +11211,36 @@ items:
   status: proven
   in_root_build: true
   lean_files:
-  - path: FdrsFormal/Modes/VariableRadix/InducedUltrametric/Axioms.lean
+  - path: FdrsFormal/Integration/ThreeLineMediator/Definition.lean
     declarations:
-    - ultrametricDist_triangle
-  - path: FdrsFormal/Modes/VariableRadix/InducedUltrametric/Definition.lean
+    - productRadix
+    - productRadix_apply
+    - placeValue_product
+    - projectA
+    - projectB
+  - path: FdrsFormal/Modes/VariableRadix/Bihomographic.lean
     declarations:
-    - ultrametricDist
-  - path: FdrsFormal/Modes/VariableRadix/InducedUltrametric/Definition.lean
+    - BihTensor
+    - absorbX
+    - absorbY
+    - emit
+    - emitDigit
+  - path: FdrsFormal/Modes/VariableRadix/BihomographicDriver.lean
     declarations:
-    - ultrametricDist_comm
+    - run
+    - addTensor
+    - mulTensor
+  - path: FdrsFormal/Modes/VariableRadix/BihomographicSound.lean
+    declarations:
+    - bilinear_ge_const
+    - emit_traps
+    - emitReady_traps
+  - path: FdrsFormal/Modes/VariableRadix/CarryFrequency.lean
+    declarations:
+    - cfOverflowRate
+    - cfOverflowRate_pos
+    - cfOverflowRate_antitone
+    - cfOverflowRate_vanishes
   section: 13.3.3
 - id: theorem_75
   type: theorem
@@ -10983,18 +11248,39 @@ items:
   global_num: 75
   title: '`ball = cylinder`'
   line: 8125
-  status: excluded
-  in_root_build: false
+  status: proven
+  in_root_build: true
   lean_files:
-  - path: FdrsFormal/Modes/SyntheticPlace/Composition.lean
+  - path: FdrsFormal/Integration/ThreeLineMediator/Definition.lean
     declarations:
-    - coupled_ball_eq_cylinder
-  - path: FdrsFormal/Modes/SyntheticPlace/GaugeUltrametric.lean
+    - productRadix
+    - productRadix_apply
+    - placeValue_product
+    - projectA
+    - projectB
+  - path: FdrsFormal/Modes/VariableRadix/Bihomographic.lean
     declarations:
-    - ball_eq_cylinder
-  - path: FdrsFormal/Modes/SyntheticPlace/NetworkGauge.lean
+    - BihTensor
+    - absorbX
+    - absorbY
+    - emit
+    - emitDigit
+  - path: FdrsFormal/Modes/VariableRadix/BihomographicDriver.lean
     declarations:
-    - netBall_eq_cylinder
+    - run
+    - addTensor
+    - mulTensor
+  - path: FdrsFormal/Modes/VariableRadix/BihomographicSound.lean
+    declarations:
+    - bilinear_ge_const
+    - emit_traps
+    - emitReady_traps
+  - path: FdrsFormal/Modes/VariableRadix/CarryFrequency.lean
+    declarations:
+    - cfOverflowRate
+    - cfOverflowRate_pos
+    - cfOverflowRate_antitone
+    - cfOverflowRate_vanishes
   section: 13.3.4
 - id: definition_184
   type: definition
@@ -11005,15 +11291,36 @@ items:
   status: proven
   in_root_build: true
   lean_files:
-  - path: FdrsFormal/Composition/TimelineGraphs/Definition.lean
+  - path: FdrsFormal/Integration/ThreeLineMediator/Definition.lean
     declarations:
-    - StrictTimelineGraph.toTimelineGraph
-  - path: FdrsFormal/Core/UnitCarry.lean
+    - productRadix
+    - productRadix_apply
+    - placeValue_product
+    - projectA
+    - projectB
+  - path: FdrsFormal/Modes/VariableRadix/Bihomographic.lean
     declarations:
-    - overflowCarry
-  - path: FdrsFormal/Modes/ExtendedBase/CarryRouteUnification.lean
+    - BihTensor
+    - absorbX
+    - absorbY
+    - emit
+    - emitDigit
+  - path: FdrsFormal/Modes/VariableRadix/BihomographicDriver.lean
     declarations:
-    - carryRouteDecision_eq_carry
+    - run
+    - addTensor
+    - mulTensor
+  - path: FdrsFormal/Modes/VariableRadix/BihomographicSound.lean
+    declarations:
+    - bilinear_ge_const
+    - emit_traps
+    - emitReady_traps
+  - path: FdrsFormal/Modes/VariableRadix/CarryFrequency.lean
+    declarations:
+    - cfOverflowRate
+    - cfOverflowRate_pos
+    - cfOverflowRate_antitone
+    - cfOverflowRate_vanishes
   section: 13.4.1
 - id: theorem_76
   type: theorem
@@ -11021,9 +11328,12 @@ items:
   global_num: 76
   title: '`cfOverflowRate` is positive, antitone, and vanishing'
   line: 8148
-  status: missing
+  status: proven
   in_root_build: true
-  lean_files: []
+  lean_files:
+  - path: FdrsFormal/Modes/VariableRadix/CarryFrequency.lean
+    declarations:
+    - cfOverflowRate_vanishes
   section: 13.4.2
 - id: definition_185
   type: definition
@@ -11031,18 +11341,39 @@ items:
   global_num: 185
   title: Parry transition kernel of the golden-mean shift
   line: 8164
-  status: excluded
-  in_root_build: false
+  status: proven
+  in_root_build: true
   lean_files:
-  - path: FdrsFormal/Modes/VariableRadix/SubshiftParry.lean
+  - path: FdrsFormal/Integration/ThreeLineMediator/Definition.lean
     declarations:
-    - goldenKernel
-  - path: FdrsFormal/Modes/VariableRadix/SubshiftParry.lean
+    - productRadix
+    - productRadix_apply
+    - placeValue_product
+    - projectA
+    - projectB
+  - path: FdrsFormal/Modes/VariableRadix/Bihomographic.lean
     declarations:
-    - parryTraj
-  - path: FdrsFormal/Modes/VariableRadix/SubshiftParry.lean
+    - BihTensor
+    - absorbX
+    - absorbY
+    - emit
+    - emitDigit
+  - path: FdrsFormal/Modes/VariableRadix/BihomographicDriver.lean
     declarations:
-    - parryInit
+    - run
+    - addTensor
+    - mulTensor
+  - path: FdrsFormal/Modes/VariableRadix/BihomographicSound.lean
+    declarations:
+    - bilinear_ge_const
+    - emit_traps
+    - emitReady_traps
+  - path: FdrsFormal/Modes/VariableRadix/CarryFrequency.lean
+    declarations:
+    - cfOverflowRate
+    - cfOverflowRate_pos
+    - cfOverflowRate_antitone
+    - cfOverflowRate_vanishes
   section: 13.5.1
 - id: theorem_77
   type: theorem
@@ -11050,18 +11381,39 @@ items:
   global_num: 77
   title: Mass conservation and the Markov kernel
   line: 8170
-  status: excluded
-  in_root_build: false
+  status: proven
+  in_root_build: true
   lean_files:
-  - path: FdrsFormal/Modes/SyntheticPlace/Conservation.lean
+  - path: FdrsFormal/Integration/ThreeLineMediator/Definition.lean
     declarations:
-    - mass
-  - path: FdrsFormal/Modes/SyntheticPlace/Conservation.lean
+    - productRadix
+    - productRadix_apply
+    - placeValue_product
+    - projectA
+    - projectB
+  - path: FdrsFormal/Modes/VariableRadix/Bihomographic.lean
     declarations:
-    - certified_mass_conservation
-  - path: FdrsFormal/Modes/SyntheticPlace/Conservation.lean
+    - BihTensor
+    - absorbX
+    - absorbY
+    - emit
+    - emitDigit
+  - path: FdrsFormal/Modes/VariableRadix/BihomographicDriver.lean
     declarations:
-    - ready_mass_conservation
+    - run
+    - addTensor
+    - mulTensor
+  - path: FdrsFormal/Modes/VariableRadix/BihomographicSound.lean
+    declarations:
+    - bilinear_ge_const
+    - emit_traps
+    - emitReady_traps
+  - path: FdrsFormal/Modes/VariableRadix/CarryFrequency.lean
+    declarations:
+    - cfOverflowRate
+    - cfOverflowRate_pos
+    - cfOverflowRate_antitone
+    - cfOverflowRate_vanishes
   section: 13.5.2
 - id: definition_186
   type: definition
@@ -11069,9 +11421,12 @@ items:
   global_num: 186
   title: Parry stationary law
   line: 8178
-  status: missing
+  status: proven
   in_root_build: true
-  lean_files: []
+  lean_files:
+  - path: FdrsFormal/Modes/VariableRadix/SubshiftParry.lean
+    declarations:
+    - goldenStat
   section: 13.5.3
 - id: theorem_78
   type: theorem
@@ -11079,9 +11434,12 @@ items:
   global_num: 78
   title: Stationarity
   line: 8184
-  status: missing
+  status: proven
   in_root_build: true
-  lean_files: []
+  lean_files:
+  - path: FdrsFormal/Modes/VariableRadix/SubshiftParry.lean
+    declarations:
+    - goldenStat_stationary
   section: 13.5.4
 - id: definition_187
   type: definition
@@ -11092,15 +11450,36 @@ items:
   status: proven
   in_root_build: true
   lean_files:
-  - path: FdrsFormal/Composition/DeadlockAnalysis/Definition.lean
+  - path: FdrsFormal/Integration/ThreeLineMediator/Definition.lean
     declarations:
-    - pendingPath_to_dependencyPath
-  - path: FdrsFormal/FunctionSpaces/Measure/ProductMeasure.lean
+    - productRadix
+    - productRadix_apply
+    - placeValue_product
+    - projectA
+    - projectB
+  - path: FdrsFormal/Modes/VariableRadix/Bihomographic.lean
     declarations:
-    - digitMeasure_isProbabilityMeasure
-  - path: FdrsFormal/Modes/VariableRadix/SubshiftParry.lean
+    - BihTensor
+    - absorbX
+    - absorbY
+    - emit
+    - emitDigit
+  - path: FdrsFormal/Modes/VariableRadix/BihomographicDriver.lean
     declarations:
-    - parryMeasure
+    - run
+    - addTensor
+    - mulTensor
+  - path: FdrsFormal/Modes/VariableRadix/BihomographicSound.lean
+    declarations:
+    - bilinear_ge_const
+    - emit_traps
+    - emitReady_traps
+  - path: FdrsFormal/Modes/VariableRadix/CarryFrequency.lean
+    declarations:
+    - cfOverflowRate
+    - cfOverflowRate_pos
+    - cfOverflowRate_antitone
+    - cfOverflowRate_vanishes
   section: 13.5.5
 - id: theorem_79
   type: theorem
@@ -11111,15 +11490,36 @@ items:
   status: proven
   in_root_build: true
   lean_files:
-  - path: FdrsFormal/Composition/TimelineGraphs/Definition.lean
+  - path: FdrsFormal/Integration/ThreeLineMediator/Definition.lean
     declarations:
-    - StrictTimelineGraph.toTimelineGraph
-  - path: FdrsFormal/FunctionSpaces/Projections/Details.lean
+    - productRadix
+    - productRadix_apply
+    - placeValue_product
+    - projectA
+    - projectB
+  - path: FdrsFormal/Modes/VariableRadix/Bihomographic.lean
     declarations:
-    - blockProjection_uniform_convergence
-  - path: FdrsFormal/FunctionSpaces/Projections/Details.lean
+    - BihTensor
+    - absorbX
+    - absorbY
+    - emit
+    - emitDigit
+  - path: FdrsFormal/Modes/VariableRadix/BihomographicDriver.lean
     declarations:
-    - blockProjection_convergence_rate
+    - run
+    - addTensor
+    - mulTensor
+  - path: FdrsFormal/Modes/VariableRadix/BihomographicSound.lean
+    declarations:
+    - bilinear_ge_const
+    - emit_traps
+    - emitReady_traps
+  - path: FdrsFormal/Modes/VariableRadix/CarryFrequency.lean
+    declarations:
+    - cfOverflowRate
+    - cfOverflowRate_pos
+    - cfOverflowRate_antitone
+    - cfOverflowRate_vanishes
   section: 13.5.6
 - id: definition_188
   type: definition
@@ -11127,9 +11527,12 @@ items:
   global_num: 188
   title: Homographic emission — single stream
   line: 8212
-  status: missing
+  status: proven
   in_root_build: true
-  lean_files: []
+  lean_files:
+  - path: FdrsFormal/Modes/VariableRadix/HomographicCarry.lean
+    declarations:
+    - emit
   section: 13.6.1
 - id: theorem_80
   type: theorem
@@ -11137,9 +11540,12 @@ items:
   global_num: 80
   title: Exactness and channel independence
   line: 8218
-  status: missing
+  status: proven
   in_root_build: true
-  lean_files: []
+  lean_files:
+  - path: FdrsFormal/Modes/VariableRadix/HomographicCarry.lean
+    declarations:
+    - emit_det_natAbs
   section: 13.6.2
 - id: definition_189
   type: definition
@@ -11150,15 +11556,36 @@ items:
   status: proven
   in_root_build: true
   lean_files:
-  - path: FdrsFormal/Composition/ObserverIntegration/Embedding.lean
+  - path: FdrsFormal/Integration/ThreeLineMediator/Definition.lean
     declarations:
-    - TwoTimelineObserver
-  - path: FdrsFormal/Modes/Adelic/PadicBihEmission.lean
+    - productRadix
+    - productRadix_apply
+    - placeValue_product
+    - projectA
+    - projectB
+  - path: FdrsFormal/Modes/VariableRadix/Bihomographic.lean
     declarations:
+    - BihTensor
+    - absorbX
+    - absorbY
+    - emit
+    - emitDigit
+  - path: FdrsFormal/Modes/VariableRadix/BihomographicDriver.lean
+    declarations:
+    - run
     - addTensor
-  - path: FdrsFormal/Modes/Adelic/PadicBihEmission.lean
-    declarations:
     - mulTensor
+  - path: FdrsFormal/Modes/VariableRadix/BihomographicSound.lean
+    declarations:
+    - bilinear_ge_const
+    - emit_traps
+    - emitReady_traps
+  - path: FdrsFormal/Modes/VariableRadix/CarryFrequency.lean
+    declarations:
+    - cfOverflowRate
+    - cfOverflowRate_pos
+    - cfOverflowRate_antitone
+    - cfOverflowRate_vanishes
   section: 13.6.3
 - id: theorem_81
   type: theorem
@@ -11166,9 +11593,12 @@ items:
   global_num: 81
   title: Channel commutations
   line: 8232
-  status: missing
+  status: proven
   in_root_build: true
-  lean_files: []
+  lean_files:
+  - path: FdrsFormal/Modes/VariableRadix/Bihomographic.lean
+    declarations:
+    - absorbX_absorbY_comm
   section: 13.6.4
 - id: theorem_82
   type: theorem
@@ -11176,9 +11606,12 @@ items:
   global_num: 82
   title: Emission soundness — the four-corner trap
   line: 8240
-  status: missing
+  status: proven
   in_root_build: true
-  lean_files: []
+  lean_files:
+  - path: FdrsFormal/Modes/VariableRadix/BihomographicSound.lean
+    declarations:
+    - emit_traps
   section: 13.6.5
 - id: definition_190
   type: definition
@@ -11186,9 +11619,12 @@ items:
   global_num: 190
   title: The two-stream driver
   line: 8248
-  status: missing
+  status: proven
   in_root_build: true
-  lean_files: []
+  lean_files:
+  - path: FdrsFormal/Modes/VariableRadix/BihomographicDriver.lean
+    declarations:
+    - run
   section: 13.6.6
 - id: definition_191
   type: definition
@@ -11196,9 +11632,12 @@ items:
   global_num: 191
   title: The hyper-Gosper clock
   line: 8256
-  status: missing
+  status: proven
   in_root_build: true
-  lean_files: []
+  lean_files:
+  - path: FdrsFormal/Modes/VariableRadix/HyperGosper.lean
+    declarations:
+    - coupleAll
   section: 13.6.7
 - id: definition_192
   type: definition
@@ -11209,15 +11648,41 @@ items:
   status: proven
   in_root_build: true
   lean_files:
-  - path: FdrsFormal/Core/PrefixValue.lean
+  - path: FdrsFormal/Applications/Field25519Carry.lean
     declarations:
-    - prefixValue_eq_of_prefix_eq
-  - path: FdrsFormal/FunctionSpaces/Basic/PrefixSet.lean
+    - numDigits
+    - radixBits
+    - radix
+    - weightBits
+    - weightBits_ten
+  - path: FdrsFormal/Modes/SyntheticPlace/NetworkBalance.lean
     declarations:
-    - extendPrefix
-  - path: FdrsFormal/FunctionSpaces/Basic/PrefixSet.lean
+    - edge_currencyReachable
+    - network_balanced_per_edge
+    - network_balanced_total
+    - fire_no_self_loop
+    - fire_fanout_exact
+  - path: FdrsFormal/Modes/SyntheticPlace/NetworkBridge.lean
     declarations:
-    - prefixResidue
+    - ':'
+    - NetworkShape.ofTimelineGraph
+    - timelineDeps
+    - timeline_graded
+    - ComplexRule.ofRouting
+  - path: FdrsFormal/Modes/SyntheticPlace/NetworkComplexStep.lean
+    declarations:
+    - DepGraph
+    - Species
+    - ComplexRule
+    - CConfig
+    - initC
+  - path: FdrsFormal/Modes/SyntheticPlace/NetworkConfig.lean
+    declarations:
+    - NetworkShape
+    - NetworkRule
+    - NetConfig
+    - initNet
+    - fire
 - id: theorem_83
   type: theorem
   phase: 14
@@ -11227,24 +11692,85 @@ items:
   status: proven
   in_root_build: true
   lean_files:
-  - path: FdrsFormal/FunctionSpaces/Basic/Cylinder.lean
+  - path: FdrsFormal/Applications/Field25519Carry.lean
     declarations:
-    - cylinderSet_eq_ultrametric_cylinder
-  - path: FdrsFormal/Modes/SyntheticPlace/GaugeUltrametric.lean
+    - numDigits
+    - radixBits
+    - radix
+    - weightBits
+    - weightBits_ten
+  - path: FdrsFormal/Modes/SyntheticPlace/NetworkBalance.lean
     declarations:
-    - gaugeAt
-  - path: FdrsFormal/Modes/SyntheticPlace/GaugeUltrametric.lean
+    - edge_currencyReachable
+    - network_balanced_per_edge
+    - network_balanced_total
+    - fire_no_self_loop
+    - fire_fanout_exact
+  - path: FdrsFormal/Modes/SyntheticPlace/NetworkBridge.lean
     declarations:
-    - ball_eq_cylinder
+    - ':'
+    - NetworkShape.ofTimelineGraph
+    - timelineDeps
+    - timeline_graded
+    - ComplexRule.ofRouting
+  - path: FdrsFormal/Modes/SyntheticPlace/NetworkComplexStep.lean
+    declarations:
+    - DepGraph
+    - Species
+    - ComplexRule
+    - CConfig
+    - initC
+  - path: FdrsFormal/Modes/SyntheticPlace/NetworkConfig.lean
+    declarations:
+    - NetworkShape
+    - NetworkRule
+    - NetConfig
+    - initNet
+    - fire
 - id: proposition_147
   type: proposition
   phase: 14
   global_num: 147
   title: the corpus instances
   line: 8311
-  status: missing
+  status: proven
   in_root_build: true
-  lean_files: []
+  lean_files:
+  - path: FdrsFormal/Applications/Field25519Carry.lean
+    declarations:
+    - numDigits
+    - radixBits
+    - radix
+    - weightBits
+    - weightBits_ten
+  - path: FdrsFormal/Modes/SyntheticPlace/NetworkBalance.lean
+    declarations:
+    - edge_currencyReachable
+    - network_balanced_per_edge
+    - network_balanced_total
+    - fire_no_self_loop
+    - fire_fanout_exact
+  - path: FdrsFormal/Modes/SyntheticPlace/NetworkBridge.lean
+    declarations:
+    - ':'
+    - NetworkShape.ofTimelineGraph
+    - timelineDeps
+    - timeline_graded
+    - ComplexRule.ofRouting
+  - path: FdrsFormal/Modes/SyntheticPlace/NetworkComplexStep.lean
+    declarations:
+    - DepGraph
+    - Species
+    - ComplexRule
+    - CConfig
+    - initC
+  - path: FdrsFormal/Modes/SyntheticPlace/NetworkConfig.lean
+    declarations:
+    - NetworkShape
+    - NetworkRule
+    - NetConfig
+    - initNet
+    - fire
 - id: definition_193
   type: definition
   phase: 14
@@ -11254,51 +11780,173 @@ items:
   status: proven
   in_root_build: true
   lean_files:
-  - path: FdrsFormal/Integration/ThreeLineMediator/CoupledSystem.lean
+  - path: FdrsFormal/Applications/Field25519Carry.lean
     declarations:
-    - CoupledSystem
-  - path: FdrsFormal/Modes/ContextDependent/Variations/MultiAgent.lean
+    - numDigits
+    - radixBits
+    - radix
+    - weightBits
+    - weightBits_ten
+  - path: FdrsFormal/Modes/SyntheticPlace/NetworkBalance.lean
     declarations:
-    - CoupledSystem
+    - edge_currencyReachable
+    - network_balanced_per_edge
+    - network_balanced_total
+    - fire_no_self_loop
+    - fire_fanout_exact
+  - path: FdrsFormal/Modes/SyntheticPlace/NetworkBridge.lean
+    declarations:
+    - ':'
+    - NetworkShape.ofTimelineGraph
+    - timelineDeps
+    - timeline_graded
+    - ComplexRule.ofRouting
+  - path: FdrsFormal/Modes/SyntheticPlace/NetworkComplexStep.lean
+    declarations:
+    - DepGraph
+    - Species
+    - ComplexRule
+    - CConfig
+    - initC
   - path: FdrsFormal/Modes/SyntheticPlace/NetworkConfig.lean
     declarations:
-    - toCoupled_ofCoupled
+    - NetworkShape
+    - NetworkRule
+    - NetConfig
+    - initNet
+    - fire
 - id: theorem_84
   type: theorem
   phase: 14
   global_num: 84
   title: level-only coupling preserves SU
   line: 8327
-  status: excluded
-  in_root_build: false
+  status: proven
+  in_root_build: true
   lean_files:
-  - path: FdrsFormal/Modes/SyntheticPlace/Composition.lean
+  - path: FdrsFormal/Applications/Field25519Carry.lean
     declarations:
-    - CoupledFiber.IsLevelOnly
-  - path: FdrsFormal/Modes/SyntheticPlace/Composition.lean
+    - numDigits
+    - radixBits
+    - radix
+    - weightBits
+    - weightBits_ten
+  - path: FdrsFormal/Modes/SyntheticPlace/NetworkBalance.lean
     declarations:
-    - coupledCount_levelOnly
-  - path: FdrsFormal/Modes/SyntheticPlace/Composition.lean
+    - edge_currencyReachable
+    - network_balanced_per_edge
+    - network_balanced_total
+    - fire_no_self_loop
+    - fire_fanout_exact
+  - path: FdrsFormal/Modes/SyntheticPlace/NetworkBridge.lean
     declarations:
-    - raggedFiber_not_levelOnly
+    - ':'
+    - NetworkShape.ofTimelineGraph
+    - timelineDeps
+    - timeline_graded
+    - ComplexRule.ofRouting
+  - path: FdrsFormal/Modes/SyntheticPlace/NetworkComplexStep.lean
+    declarations:
+    - DepGraph
+    - Species
+    - ComplexRule
+    - CConfig
+    - initC
+  - path: FdrsFormal/Modes/SyntheticPlace/NetworkConfig.lean
+    declarations:
+    - NetworkShape
+    - NetworkRule
+    - NetConfig
+    - initNet
+    - fire
 - id: proposition_148
   type: proposition
   phase: 14
   global_num: 148
   title: the ragged witness, machine-checked
   line: 8332
-  status: missing
+  status: proven
   in_root_build: true
-  lean_files: []
+  lean_files:
+  - path: FdrsFormal/Applications/Field25519Carry.lean
+    declarations:
+    - numDigits
+    - radixBits
+    - radix
+    - weightBits
+    - weightBits_ten
+  - path: FdrsFormal/Modes/SyntheticPlace/NetworkBalance.lean
+    declarations:
+    - edge_currencyReachable
+    - network_balanced_per_edge
+    - network_balanced_total
+    - fire_no_self_loop
+    - fire_fanout_exact
+  - path: FdrsFormal/Modes/SyntheticPlace/NetworkBridge.lean
+    declarations:
+    - ':'
+    - NetworkShape.ofTimelineGraph
+    - timelineDeps
+    - timeline_graded
+    - ComplexRule.ofRouting
+  - path: FdrsFormal/Modes/SyntheticPlace/NetworkComplexStep.lean
+    declarations:
+    - DepGraph
+    - Species
+    - ComplexRule
+    - CConfig
+    - initC
+  - path: FdrsFormal/Modes/SyntheticPlace/NetworkConfig.lean
+    declarations:
+    - NetworkShape
+    - NetworkRule
+    - NetConfig
+    - initNet
+    - fire
 - id: theorem_85
   type: theorem
   phase: 14
   global_num: 85
   title: geometry survives raggedness
   line: 8339
-  status: missing
+  status: proven
   in_root_build: true
-  lean_files: []
+  lean_files:
+  - path: FdrsFormal/Applications/Field25519Carry.lean
+    declarations:
+    - numDigits
+    - radixBits
+    - radix
+    - weightBits
+    - weightBits_ten
+  - path: FdrsFormal/Modes/SyntheticPlace/NetworkBalance.lean
+    declarations:
+    - edge_currencyReachable
+    - network_balanced_per_edge
+    - network_balanced_total
+    - fire_no_self_loop
+    - fire_fanout_exact
+  - path: FdrsFormal/Modes/SyntheticPlace/NetworkBridge.lean
+    declarations:
+    - ':'
+    - NetworkShape.ofTimelineGraph
+    - timelineDeps
+    - timeline_graded
+    - ComplexRule.ofRouting
+  - path: FdrsFormal/Modes/SyntheticPlace/NetworkComplexStep.lean
+    declarations:
+    - DepGraph
+    - Species
+    - ComplexRule
+    - CConfig
+    - initC
+  - path: FdrsFormal/Modes/SyntheticPlace/NetworkConfig.lean
+    declarations:
+    - NetworkShape
+    - NetworkRule
+    - NetConfig
+    - initNet
+    - fire
 - id: definition_194
   type: definition
   phase: 14
@@ -11308,24 +11956,85 @@ items:
   status: proven
   in_root_build: true
   lean_files:
-  - path: FdrsFormal/Composition/Junctions/TransferSemantics.lean
+  - path: FdrsFormal/Applications/Field25519Carry.lean
     declarations:
-    - TransferType
-  - path: FdrsFormal/Composition/Junctions/TransferSemantics.lean
+    - numDigits
+    - radixBits
+    - radix
+    - weightBits
+    - weightBits_ten
+  - path: FdrsFormal/Modes/SyntheticPlace/NetworkBalance.lean
     declarations:
-    - applyTransfer
-  - path: FdrsFormal/Modes/SyntheticPlace/AdmissibilityTrap.lean
+    - edge_currencyReachable
+    - network_balanced_per_edge
+    - network_balanced_total
+    - fire_no_self_loop
+    - fire_fanout_exact
+  - path: FdrsFormal/Modes/SyntheticPlace/NetworkBridge.lean
     declarations:
-    - TransferStructure
+    - ':'
+    - NetworkShape.ofTimelineGraph
+    - timelineDeps
+    - timeline_graded
+    - ComplexRule.ofRouting
+  - path: FdrsFormal/Modes/SyntheticPlace/NetworkComplexStep.lean
+    declarations:
+    - DepGraph
+    - Species
+    - ComplexRule
+    - CConfig
+    - initC
+  - path: FdrsFormal/Modes/SyntheticPlace/NetworkConfig.lean
+    declarations:
+    - NetworkShape
+    - NetworkRule
+    - NetConfig
+    - initNet
+    - fire
 - id: theorem_86
   type: theorem
   phase: 14
   global_num: 86
   title: admissibility-trap soundness
   line: 8355
-  status: missing
+  status: proven
   in_root_build: true
-  lean_files: []
+  lean_files:
+  - path: FdrsFormal/Applications/Field25519Carry.lean
+    declarations:
+    - numDigits
+    - radixBits
+    - radix
+    - weightBits
+    - weightBits_ten
+  - path: FdrsFormal/Modes/SyntheticPlace/NetworkBalance.lean
+    declarations:
+    - edge_currencyReachable
+    - network_balanced_per_edge
+    - network_balanced_total
+    - fire_no_self_loop
+    - fire_fanout_exact
+  - path: FdrsFormal/Modes/SyntheticPlace/NetworkBridge.lean
+    declarations:
+    - ':'
+    - NetworkShape.ofTimelineGraph
+    - timelineDeps
+    - timeline_graded
+    - ComplexRule.ofRouting
+  - path: FdrsFormal/Modes/SyntheticPlace/NetworkComplexStep.lean
+    declarations:
+    - DepGraph
+    - Species
+    - ComplexRule
+    - CConfig
+    - initC
+  - path: FdrsFormal/Modes/SyntheticPlace/NetworkConfig.lean
+    declarations:
+    - NetworkShape
+    - NetworkRule
+    - NetConfig
+    - initNet
+    - fire
 - id: definition_195
   type: definition
   phase: 14
@@ -11335,42 +12044,129 @@ items:
   status: proven
   in_root_build: true
   lean_files:
-  - path: FdrsFormal/Analysis/DigitConditional/RepresentationGap.lean
+  - path: FdrsFormal/Applications/Field25519Carry.lean
     declarations:
-    - depth2GapFormula
-  - path: FdrsFormal/Analysis/DigitConditional/Tree.lean
+    - numDigits
+    - radixBits
+    - radix
+    - weightBits
+    - weightBits_ten
+  - path: FdrsFormal/Modes/SyntheticPlace/NetworkBalance.lean
     declarations:
-    - depth
-  - path: FdrsFormal/Analysis/DigitConditional/Tree.lean
+    - edge_currencyReachable
+    - network_balanced_per_edge
+    - network_balanced_total
+    - fire_no_self_loop
+    - fire_fanout_exact
+  - path: FdrsFormal/Modes/SyntheticPlace/NetworkBridge.lean
     declarations:
-    - depth
+    - ':'
+    - NetworkShape.ofTimelineGraph
+    - timelineDeps
+    - timeline_graded
+    - ComplexRule.ofRouting
+  - path: FdrsFormal/Modes/SyntheticPlace/NetworkComplexStep.lean
+    declarations:
+    - DepGraph
+    - Species
+    - ComplexRule
+    - CConfig
+    - initC
+  - path: FdrsFormal/Modes/SyntheticPlace/NetworkConfig.lean
+    declarations:
+    - NetworkShape
+    - NetworkRule
+    - NetConfig
+    - initNet
+    - fire
 - id: theorem_87
   type: theorem
   phase: 14
   global_num: 87
   title: indistinguishability below the gauge; strict hierarchy
   line: 8373
-  status: excluded
-  in_root_build: false
+  status: proven
+  in_root_build: true
   lean_files:
-  - path: FdrsFormal/Modes/SyntheticPlace/GaugeUltrametric.lean
+  - path: FdrsFormal/Applications/Field25519Carry.lean
     declarations:
-    - agree_below_lcp
-  - path: FdrsFormal/Modes/SyntheticPlace/GaugeUltrametric.lean
+    - numDigits
+    - radixBits
+    - radix
+    - weightBits
+    - weightBits_ten
+  - path: FdrsFormal/Modes/SyntheticPlace/NetworkBalance.lean
     declarations:
-    - gaugeAt
-  - path: FdrsFormal/Modes/SyntheticPlace/GaugeUltrametric.lean
+    - edge_currencyReachable
+    - network_balanced_per_edge
+    - network_balanced_total
+    - fire_no_self_loop
+    - fire_fanout_exact
+  - path: FdrsFormal/Modes/SyntheticPlace/NetworkBridge.lean
     declarations:
-    - gaugeAt_pos
+    - ':'
+    - NetworkShape.ofTimelineGraph
+    - timelineDeps
+    - timeline_graded
+    - ComplexRule.ofRouting
+  - path: FdrsFormal/Modes/SyntheticPlace/NetworkComplexStep.lean
+    declarations:
+    - DepGraph
+    - Species
+    - ComplexRule
+    - CConfig
+    - initC
+  - path: FdrsFormal/Modes/SyntheticPlace/NetworkConfig.lean
+    declarations:
+    - NetworkShape
+    - NetworkRule
+    - NetConfig
+    - initNet
+    - fire
 - id: definition_196
   type: definition
   phase: 14
   global_num: 196
   title: completion mass and observed flux
   line: 8385
-  status: missing
+  status: proven
   in_root_build: true
-  lean_files: []
+  lean_files:
+  - path: FdrsFormal/Applications/Field25519Carry.lean
+    declarations:
+    - numDigits
+    - radixBits
+    - radix
+    - weightBits
+    - weightBits_ten
+  - path: FdrsFormal/Modes/SyntheticPlace/NetworkBalance.lean
+    declarations:
+    - edge_currencyReachable
+    - network_balanced_per_edge
+    - network_balanced_total
+    - fire_no_self_loop
+    - fire_fanout_exact
+  - path: FdrsFormal/Modes/SyntheticPlace/NetworkBridge.lean
+    declarations:
+    - ':'
+    - NetworkShape.ofTimelineGraph
+    - timelineDeps
+    - timeline_graded
+    - ComplexRule.ofRouting
+  - path: FdrsFormal/Modes/SyntheticPlace/NetworkComplexStep.lean
+    declarations:
+    - DepGraph
+    - Species
+    - ComplexRule
+    - CConfig
+    - initC
+  - path: FdrsFormal/Modes/SyntheticPlace/NetworkConfig.lean
+    declarations:
+    - NetworkShape
+    - NetworkRule
+    - NetConfig
+    - initNet
+    - fire
 - id: theorem_88
   type: theorem
   phase: 14
@@ -11380,15 +12176,41 @@ items:
   status: proven
   in_root_build: true
   lean_files:
-  - path: FdrsFormal/Core/Finite/Bijection.lean
+  - path: FdrsFormal/Applications/Field25519Carry.lean
     declarations:
-    - zero
-  - path: FdrsFormal/Core/Infinite/DirectLimit.lean
+    - numDigits
+    - radixBits
+    - radix
+    - weightBits
+    - weightBits_ten
+  - path: FdrsFormal/Modes/SyntheticPlace/NetworkBalance.lean
     declarations:
-    - zero
-  - path: FdrsFormal/Core/Primitives/PlaceValue.lean
+    - edge_currencyReachable
+    - network_balanced_per_edge
+    - network_balanced_total
+    - fire_no_self_loop
+    - fire_fanout_exact
+  - path: FdrsFormal/Modes/SyntheticPlace/NetworkBridge.lean
     declarations:
-    - zero
+    - ':'
+    - NetworkShape.ofTimelineGraph
+    - timelineDeps
+    - timeline_graded
+    - ComplexRule.ofRouting
+  - path: FdrsFormal/Modes/SyntheticPlace/NetworkComplexStep.lean
+    declarations:
+    - DepGraph
+    - Species
+    - ComplexRule
+    - CConfig
+    - initC
+  - path: FdrsFormal/Modes/SyntheticPlace/NetworkConfig.lean
+    declarations:
+    - NetworkShape
+    - NetworkRule
+    - NetConfig
+    - initNet
+    - fire
 - id: definition_197
   type: definition
   phase: 14
@@ -11398,24 +12220,85 @@ items:
   status: proven
   in_root_build: true
   lean_files:
-  - path: FdrsFormal/Integration/ThreeLineMediator/CoupledSystem.lean
+  - path: FdrsFormal/Applications/Field25519Carry.lean
     declarations:
-    - CoupledSystem
-  - path: FdrsFormal/Modes/ContextDependent/Variations/MultiAgent.lean
+    - numDigits
+    - radixBits
+    - radix
+    - weightBits
+    - weightBits_ten
+  - path: FdrsFormal/Modes/SyntheticPlace/NetworkBalance.lean
     declarations:
-    - CoupledSystem
+    - edge_currencyReachable
+    - network_balanced_per_edge
+    - network_balanced_total
+    - fire_no_self_loop
+    - fire_fanout_exact
+  - path: FdrsFormal/Modes/SyntheticPlace/NetworkBridge.lean
+    declarations:
+    - ':'
+    - NetworkShape.ofTimelineGraph
+    - timelineDeps
+    - timeline_graded
+    - ComplexRule.ofRouting
+  - path: FdrsFormal/Modes/SyntheticPlace/NetworkComplexStep.lean
+    declarations:
+    - DepGraph
+    - Species
+    - ComplexRule
+    - CConfig
+    - initC
   - path: FdrsFormal/Modes/SyntheticPlace/NetworkConfig.lean
     declarations:
-    - toCoupled_ofCoupled
+    - NetworkShape
+    - NetworkRule
+    - NetConfig
+    - initNet
+    - fire
 - id: theorem_89
   type: theorem
   phase: 14
   global_num: 89
   title: the interface balance law
   line: 8407
-  status: missing
+  status: proven
   in_root_build: true
-  lean_files: []
+  lean_files:
+  - path: FdrsFormal/Applications/Field25519Carry.lean
+    declarations:
+    - numDigits
+    - radixBits
+    - radix
+    - weightBits
+    - weightBits_ten
+  - path: FdrsFormal/Modes/SyntheticPlace/NetworkBalance.lean
+    declarations:
+    - edge_currencyReachable
+    - network_balanced_per_edge
+    - network_balanced_total
+    - fire_no_self_loop
+    - fire_fanout_exact
+  - path: FdrsFormal/Modes/SyntheticPlace/NetworkBridge.lean
+    declarations:
+    - ':'
+    - NetworkShape.ofTimelineGraph
+    - timelineDeps
+    - timeline_graded
+    - ComplexRule.ofRouting
+  - path: FdrsFormal/Modes/SyntheticPlace/NetworkComplexStep.lean
+    declarations:
+    - DepGraph
+    - Species
+    - ComplexRule
+    - CConfig
+    - initC
+  - path: FdrsFormal/Modes/SyntheticPlace/NetworkConfig.lean
+    declarations:
+    - NetworkShape
+    - NetworkRule
+    - NetConfig
+    - initNet
+    - fire
 - id: definition_198
   type: definition
   phase: 14
@@ -11425,69 +12308,261 @@ items:
   status: proven
   in_root_build: true
   lean_files:
-  - path: FdrsFormal/Core/Primitives/PlaceValue.lean
+  - path: FdrsFormal/Applications/Field25519Carry.lean
     declarations:
-    - placeValue
-  - path: FdrsFormal/Modes/ExtendedBase/Definition.lean
+    - numDigits
+    - radixBits
+    - radix
+    - weightBits
+    - weightBits_ten
+  - path: FdrsFormal/Modes/SyntheticPlace/NetworkBalance.lean
     declarations:
-    - placeValue
-  - path: FdrsFormal/Modes/SyntheticPlace/ConservationRigidity.lean
+    - edge_currencyReachable
+    - network_balanced_per_edge
+    - network_balanced_total
+    - fire_no_self_loop
+    - fire_fanout_exact
+  - path: FdrsFormal/Modes/SyntheticPlace/NetworkBridge.lean
     declarations:
-    - PlaceLocalExact
+    - ':'
+    - NetworkShape.ofTimelineGraph
+    - timelineDeps
+    - timeline_graded
+    - ComplexRule.ofRouting
+  - path: FdrsFormal/Modes/SyntheticPlace/NetworkComplexStep.lean
+    declarations:
+    - DepGraph
+    - Species
+    - ComplexRule
+    - CConfig
+    - initC
+  - path: FdrsFormal/Modes/SyntheticPlace/NetworkConfig.lean
+    declarations:
+    - NetworkShape
+    - NetworkRule
+    - NetConfig
+    - initNet
+    - fire
 - id: theorem_90
   type: theorem
   phase: 14
   global_num: 90
   title: 'conservation rigidity: factorization, no-go, boundary'
   line: 8420
-  status: missing
+  status: proven
   in_root_build: true
-  lean_files: []
+  lean_files:
+  - path: FdrsFormal/Applications/Field25519Carry.lean
+    declarations:
+    - numDigits
+    - radixBits
+    - radix
+    - weightBits
+    - weightBits_ten
+  - path: FdrsFormal/Modes/SyntheticPlace/NetworkBalance.lean
+    declarations:
+    - edge_currencyReachable
+    - network_balanced_per_edge
+    - network_balanced_total
+    - fire_no_self_loop
+    - fire_fanout_exact
+  - path: FdrsFormal/Modes/SyntheticPlace/NetworkBridge.lean
+    declarations:
+    - ':'
+    - NetworkShape.ofTimelineGraph
+    - timelineDeps
+    - timeline_graded
+    - ComplexRule.ofRouting
+  - path: FdrsFormal/Modes/SyntheticPlace/NetworkComplexStep.lean
+    declarations:
+    - DepGraph
+    - Species
+    - ComplexRule
+    - CConfig
+    - initC
+  - path: FdrsFormal/Modes/SyntheticPlace/NetworkConfig.lean
+    declarations:
+    - NetworkShape
+    - NetworkRule
+    - NetConfig
+    - initNet
+    - fire
 - id: proposition_149
   type: proposition
   phase: 14
   global_num: 149
   title: witnesses on both sides of the boundary
   line: 8434
-  status: missing
+  status: proven
   in_root_build: true
-  lean_files: []
+  lean_files:
+  - path: FdrsFormal/Applications/Field25519Carry.lean
+    declarations:
+    - numDigits
+    - radixBits
+    - radix
+    - weightBits
+    - weightBits_ten
+  - path: FdrsFormal/Modes/SyntheticPlace/NetworkBalance.lean
+    declarations:
+    - edge_currencyReachable
+    - network_balanced_per_edge
+    - network_balanced_total
+    - fire_no_self_loop
+    - fire_fanout_exact
+  - path: FdrsFormal/Modes/SyntheticPlace/NetworkBridge.lean
+    declarations:
+    - ':'
+    - NetworkShape.ofTimelineGraph
+    - timelineDeps
+    - timeline_graded
+    - ComplexRule.ofRouting
+  - path: FdrsFormal/Modes/SyntheticPlace/NetworkComplexStep.lean
+    declarations:
+    - DepGraph
+    - Species
+    - ComplexRule
+    - CConfig
+    - initC
+  - path: FdrsFormal/Modes/SyntheticPlace/NetworkConfig.lean
+    declarations:
+    - NetworkShape
+    - NetworkRule
+    - NetConfig
+    - initNet
+    - fire
 - id: definition_199
   type: definition
   phase: 14
   global_num: 199
   title: schedules, trace equivalence, projections
   line: 8444
-  status: missing
+  status: proven
   in_root_build: true
-  lean_files: []
+  lean_files:
+  - path: FdrsFormal/Applications/Field25519Carry.lean
+    declarations:
+    - numDigits
+    - radixBits
+    - radix
+    - weightBits
+    - weightBits_ten
+  - path: FdrsFormal/Modes/SyntheticPlace/NetworkBalance.lean
+    declarations:
+    - edge_currencyReachable
+    - network_balanced_per_edge
+    - network_balanced_total
+    - fire_no_self_loop
+    - fire_fanout_exact
+  - path: FdrsFormal/Modes/SyntheticPlace/NetworkBridge.lean
+    declarations:
+    - ':'
+    - NetworkShape.ofTimelineGraph
+    - timelineDeps
+    - timeline_graded
+    - ComplexRule.ofRouting
+  - path: FdrsFormal/Modes/SyntheticPlace/NetworkComplexStep.lean
+    declarations:
+    - DepGraph
+    - Species
+    - ComplexRule
+    - CConfig
+    - initC
+  - path: FdrsFormal/Modes/SyntheticPlace/NetworkConfig.lean
+    declarations:
+    - NetworkShape
+    - NetworkRule
+    - NetConfig
+    - initNet
+    - fire
 - id: theorem_91
   type: theorem
   phase: 14
   global_num: 91
   title: the scalar trace-gauge no-go, machine-checked
   line: 8452
-  status: excluded
-  in_root_build: false
+  status: proven
+  in_root_build: true
   lean_files:
-  - path: FdrsFormal/Modes/SyntheticPlace/GaugeUltrametric.lean
+  - path: FdrsFormal/Applications/Field25519Carry.lean
     declarations:
-    - gaugeAt
-  - path: FdrsFormal/Modes/SyntheticPlace/GaugeUltrametric.lean
+    - numDigits
+    - radixBits
+    - radix
+    - weightBits
+    - weightBits_ten
+  - path: FdrsFormal/Modes/SyntheticPlace/NetworkBalance.lean
     declarations:
-    - gaugeAt_pos
-  - path: FdrsFormal/Modes/SyntheticPlace/TraceGeometry.lean
+    - edge_currencyReachable
+    - network_balanced_per_edge
+    - network_balanced_total
+    - fire_no_self_loop
+    - fire_fanout_exact
+  - path: FdrsFormal/Modes/SyntheticPlace/NetworkBridge.lean
     declarations:
-    - scalar_trace_metric_no_go
+    - ':'
+    - NetworkShape.ofTimelineGraph
+    - timelineDeps
+    - timeline_graded
+    - ComplexRule.ofRouting
+  - path: FdrsFormal/Modes/SyntheticPlace/NetworkComplexStep.lean
+    declarations:
+    - DepGraph
+    - Species
+    - ComplexRule
+    - CConfig
+    - initC
+  - path: FdrsFormal/Modes/SyntheticPlace/NetworkConfig.lean
+    declarations:
+    - NetworkShape
+    - NetworkRule
+    - NetConfig
+    - initNet
+    - fire
 - id: definition_200
   type: definition
   phase: 14
   global_num: 200
   title: the observer-glued network distance
   line: 8464
-  status: missing
+  status: proven
   in_root_build: true
-  lean_files: []
+  lean_files:
+  - path: FdrsFormal/Applications/Field25519Carry.lean
+    declarations:
+    - numDigits
+    - radixBits
+    - radix
+    - weightBits
+    - weightBits_ten
+  - path: FdrsFormal/Modes/SyntheticPlace/NetworkBalance.lean
+    declarations:
+    - edge_currencyReachable
+    - network_balanced_per_edge
+    - network_balanced_total
+    - fire_no_self_loop
+    - fire_fanout_exact
+  - path: FdrsFormal/Modes/SyntheticPlace/NetworkBridge.lean
+    declarations:
+    - ':'
+    - NetworkShape.ofTimelineGraph
+    - timelineDeps
+    - timeline_graded
+    - ComplexRule.ofRouting
+  - path: FdrsFormal/Modes/SyntheticPlace/NetworkComplexStep.lean
+    declarations:
+    - DepGraph
+    - Species
+    - ComplexRule
+    - CConfig
+    - initC
+  - path: FdrsFormal/Modes/SyntheticPlace/NetworkConfig.lean
+    declarations:
+    - NetworkShape
+    - NetworkRule
+    - NetConfig
+    - initNet
+    - fire
 - id: theorem_92
   type: theorem
   phase: 14
@@ -11497,299 +12572,1114 @@ items:
   status: proven
   in_root_build: true
   lean_files:
-  - path: FdrsFormal/Modes/VariableRadix/InducedUltrametric/Axioms.lean
+  - path: FdrsFormal/Applications/Field25519Carry.lean
     declarations:
-    - ultrametricDist_triangle
-  - path: FdrsFormal/Modes/VariableRadix/InducedUltrametric/Definition.lean
+    - numDigits
+    - radixBits
+    - radix
+    - weightBits
+    - weightBits_ten
+  - path: FdrsFormal/Modes/SyntheticPlace/NetworkBalance.lean
     declarations:
-    - ultrametricDist
-  - path: FdrsFormal/Modes/VariableRadix/InducedUltrametric/Definition.lean
+    - edge_currencyReachable
+    - network_balanced_per_edge
+    - network_balanced_total
+    - fire_no_self_loop
+    - fire_fanout_exact
+  - path: FdrsFormal/Modes/SyntheticPlace/NetworkBridge.lean
     declarations:
-    - ultrametricDist_comm
+    - ':'
+    - NetworkShape.ofTimelineGraph
+    - timelineDeps
+    - timeline_graded
+    - ComplexRule.ofRouting
+  - path: FdrsFormal/Modes/SyntheticPlace/NetworkComplexStep.lean
+    declarations:
+    - DepGraph
+    - Species
+    - ComplexRule
+    - CConfig
+    - initC
+  - path: FdrsFormal/Modes/SyntheticPlace/NetworkConfig.lean
+    declarations:
+    - NetworkShape
+    - NetworkRule
+    - NetConfig
+    - initNet
+    - fire
 - id: definition_201
   type: definition
   phase: 14
   global_num: 201
   title: coupling graph; size as an edge cocycle
-  line: 8512
+  line: 8520
   status: proven
   in_root_build: true
   lean_files:
-  - path: FdrsFormal/Composition/TimelineGraphs/Definition.lean
+  - path: FdrsFormal/Applications/Field25519Carry.lean
     declarations:
-    - StrictTimelineGraph.toTimelineGraph
-  - path: FdrsFormal/Integration/BlockMemory/Definition.lean
+    - numDigits
+    - radixBits
+    - radix
+    - weightBits
+    - weightBits_ten
+  - path: FdrsFormal/Modes/SyntheticPlace/NetworkBalance.lean
     declarations:
-    - blockSize
-  - path: FdrsFormal/Integration/DualFiltrations/Definition.lean
+    - edge_currencyReachable
+    - network_balanced_per_edge
+    - network_balanced_total
+    - fire_no_self_loop
+    - fire_fanout_exact
+  - path: FdrsFormal/Modes/SyntheticPlace/NetworkBridge.lean
     declarations:
-    - blockSize
+    - ':'
+    - NetworkShape.ofTimelineGraph
+    - timelineDeps
+    - timeline_graded
+    - ComplexRule.ofRouting
+  - path: FdrsFormal/Modes/SyntheticPlace/NetworkComplexStep.lean
+    declarations:
+    - DepGraph
+    - Species
+    - ComplexRule
+    - CConfig
+    - initC
+  - path: FdrsFormal/Modes/SyntheticPlace/NetworkConfig.lean
+    declarations:
+    - NetworkShape
+    - NetworkRule
+    - NetConfig
+    - initNet
+    - fire
 - id: theorem_93
   type: theorem
   phase: 14
   global_num: 93
   title: the holonomy dichotomy — the full iff
-  line: 8526
-  status: excluded
-  in_root_build: false
+  line: 8534
+  status: proven
+  in_root_build: true
   lean_files:
-  - path: FdrsFormal/Modes/SyntheticPlace/Grading.lean
+  - path: FdrsFormal/Applications/Field25519Carry.lean
     declarations:
-    - gradable_holonomy
-  - path: FdrsFormal/Modes/SyntheticPlace/Grading.lean
+    - numDigits
+    - radixBits
+    - radix
+    - weightBits
+    - weightBits_ten
+  - path: FdrsFormal/Modes/SyntheticPlace/NetworkBalance.lean
     declarations:
-    - gradable_of_trivial_holonomy
-  - path: FdrsFormal/Modes/SyntheticPlace/GroupGrading.lean
+    - edge_currencyReachable
+    - network_balanced_per_edge
+    - network_balanced_total
+    - fire_no_self_loop
+    - fire_fanout_exact
+  - path: FdrsFormal/Modes/SyntheticPlace/NetworkBridge.lean
     declarations:
-    - gradable_holonomy
+    - ':'
+    - NetworkShape.ofTimelineGraph
+    - timelineDeps
+    - timeline_graded
+    - ComplexRule.ofRouting
+  - path: FdrsFormal/Modes/SyntheticPlace/NetworkComplexStep.lean
+    declarations:
+    - DepGraph
+    - Species
+    - ComplexRule
+    - CConfig
+    - initC
+  - path: FdrsFormal/Modes/SyntheticPlace/NetworkConfig.lean
+    declarations:
+    - NetworkShape
+    - NetworkRule
+    - NetConfig
+    - initNet
+    - fire
 - id: proposition_150
   type: proposition
   phase: 14
   global_num: 150
   title: witnesses on both sides
-  line: 8533
-  status: missing
+  line: 8541
+  status: proven
   in_root_build: true
-  lean_files: []
+  lean_files:
+  - path: FdrsFormal/Applications/Field25519Carry.lean
+    declarations:
+    - numDigits
+    - radixBits
+    - radix
+    - weightBits
+    - weightBits_ten
+  - path: FdrsFormal/Modes/SyntheticPlace/NetworkBalance.lean
+    declarations:
+    - edge_currencyReachable
+    - network_balanced_per_edge
+    - network_balanced_total
+    - fire_no_self_loop
+    - fire_fanout_exact
+  - path: FdrsFormal/Modes/SyntheticPlace/NetworkBridge.lean
+    declarations:
+    - ':'
+    - NetworkShape.ofTimelineGraph
+    - timelineDeps
+    - timeline_graded
+    - ComplexRule.ofRouting
+  - path: FdrsFormal/Modes/SyntheticPlace/NetworkComplexStep.lean
+    declarations:
+    - DepGraph
+    - Species
+    - ComplexRule
+    - CConfig
+    - initC
+  - path: FdrsFormal/Modes/SyntheticPlace/NetworkConfig.lean
+    declarations:
+    - NetworkShape
+    - NetworkRule
+    - NetConfig
+    - initNet
+    - fire
 - id: definition_202
   type: definition
   phase: 14
   global_num: 202
   title: currency; transport vs trigger
-  line: 8546
-  status: missing
+  line: 8554
+  status: proven
   in_root_build: true
-  lean_files: []
+  lean_files:
+  - path: FdrsFormal/Applications/Field25519Carry.lean
+    declarations:
+    - numDigits
+    - radixBits
+    - radix
+    - weightBits
+    - weightBits_ten
+  - path: FdrsFormal/Modes/SyntheticPlace/NetworkBalance.lean
+    declarations:
+    - edge_currencyReachable
+    - network_balanced_per_edge
+    - network_balanced_total
+    - fire_no_self_loop
+    - fire_fanout_exact
+  - path: FdrsFormal/Modes/SyntheticPlace/NetworkBridge.lean
+    declarations:
+    - ':'
+    - NetworkShape.ofTimelineGraph
+    - timelineDeps
+    - timeline_graded
+    - ComplexRule.ofRouting
+  - path: FdrsFormal/Modes/SyntheticPlace/NetworkComplexStep.lean
+    declarations:
+    - DepGraph
+    - Species
+    - ComplexRule
+    - CConfig
+    - initC
+  - path: FdrsFormal/Modes/SyntheticPlace/NetworkConfig.lean
+    declarations:
+    - NetworkShape
+    - NetworkRule
+    - NetConfig
+    - initNet
+    - fire
 - id: theorem_94
   type: theorem
   phase: 14
   global_num: 94
   title: currency-generic interface balance
-  line: 8557
-  status: missing
+  line: 8565
+  status: proven
   in_root_build: true
-  lean_files: []
+  lean_files:
+  - path: FdrsFormal/Applications/Field25519Carry.lean
+    declarations:
+    - numDigits
+    - radixBits
+    - radix
+    - weightBits
+    - weightBits_ten
+  - path: FdrsFormal/Modes/SyntheticPlace/NetworkBalance.lean
+    declarations:
+    - edge_currencyReachable
+    - network_balanced_per_edge
+    - network_balanced_total
+    - fire_no_self_loop
+    - fire_fanout_exact
+  - path: FdrsFormal/Modes/SyntheticPlace/NetworkBridge.lean
+    declarations:
+    - ':'
+    - NetworkShape.ofTimelineGraph
+    - timelineDeps
+    - timeline_graded
+    - ComplexRule.ofRouting
+  - path: FdrsFormal/Modes/SyntheticPlace/NetworkComplexStep.lean
+    declarations:
+    - DepGraph
+    - Species
+    - ComplexRule
+    - CConfig
+    - initC
+  - path: FdrsFormal/Modes/SyntheticPlace/NetworkConfig.lean
+    declarations:
+    - NetworkShape
+    - NetworkRule
+    - NetConfig
+    - initNet
+    - fire
 - id: definition_203
   type: definition
   phase: 14
   global_num: 203
   title: windows; the length window; grant uniformity
-  line: 8566
-  status: wip
-  in_root_build: false
+  line: 8574
+  status: proven
+  in_root_build: true
   lean_files:
-  - path: FdrsFormal/Modes/SyntheticPlace/WindowAccountability.lean
+  - path: FdrsFormal/Applications/Field25519Carry.lean
     declarations:
-    - LengthWindow
-  - path: FdrsFormal/Modes/SyntheticPlace/WindowAccountability.lean
+    - numDigits
+    - radixBits
+    - radix
+    - weightBits
+    - weightBits_ten
+  - path: FdrsFormal/Modes/SyntheticPlace/NetworkBalance.lean
     declarations:
-    - issued_placeLocal_of_lengthWindow
-  - path: FdrsFormal/Modes/SyntheticPlace/WindowBoundary.lean
+    - edge_currencyReachable
+    - network_balanced_per_edge
+    - network_balanced_total
+    - fire_no_self_loop
+    - fire_fanout_exact
+  - path: FdrsFormal/Modes/SyntheticPlace/NetworkBridge.lean
     declarations:
-    - grantUniform_of_lengthWindow
+    - ':'
+    - NetworkShape.ofTimelineGraph
+    - timelineDeps
+    - timeline_graded
+    - ComplexRule.ofRouting
+  - path: FdrsFormal/Modes/SyntheticPlace/NetworkComplexStep.lean
+    declarations:
+    - DepGraph
+    - Species
+    - ComplexRule
+    - CConfig
+    - initC
+  - path: FdrsFormal/Modes/SyntheticPlace/NetworkConfig.lean
+    declarations:
+    - NetworkShape
+    - NetworkRule
+    - NetConfig
+    - initNet
+    - fire
 - id: theorem_95
   type: theorem
   phase: 14
   global_num: 95
   title: the shared clock; clock windows are accountable
-  line: 8577
-  status: missing
+  line: 8585
+  status: proven
   in_root_build: true
-  lean_files: []
+  lean_files:
+  - path: FdrsFormal/Applications/Field25519Carry.lean
+    declarations:
+    - numDigits
+    - radixBits
+    - radix
+    - weightBits
+    - weightBits_ten
+  - path: FdrsFormal/Modes/SyntheticPlace/NetworkBalance.lean
+    declarations:
+    - edge_currencyReachable
+    - network_balanced_per_edge
+    - network_balanced_total
+    - fire_no_self_loop
+    - fire_fanout_exact
+  - path: FdrsFormal/Modes/SyntheticPlace/NetworkBridge.lean
+    declarations:
+    - ':'
+    - NetworkShape.ofTimelineGraph
+    - timelineDeps
+    - timeline_graded
+    - ComplexRule.ofRouting
+  - path: FdrsFormal/Modes/SyntheticPlace/NetworkComplexStep.lean
+    declarations:
+    - DepGraph
+    - Species
+    - ComplexRule
+    - CConfig
+    - initC
+  - path: FdrsFormal/Modes/SyntheticPlace/NetworkConfig.lean
+    declarations:
+    - NetworkShape
+    - NetworkRule
+    - NetConfig
+    - initNet
+    - fire
 - id: theorem_96
   type: theorem
   phase: 14
   global_num: 96
   title: the window boundary, CLOSED for the alternating machine
-  line: 8585
-  status: missing
+  line: 8593
+  status: proven
   in_root_build: true
-  lean_files: []
+  lean_files:
+  - path: FdrsFormal/Applications/Field25519Carry.lean
+    declarations:
+    - numDigits
+    - radixBits
+    - radix
+    - weightBits
+    - weightBits_ten
+  - path: FdrsFormal/Modes/SyntheticPlace/NetworkBalance.lean
+    declarations:
+    - edge_currencyReachable
+    - network_balanced_per_edge
+    - network_balanced_total
+    - fire_no_self_loop
+    - fire_fanout_exact
+  - path: FdrsFormal/Modes/SyntheticPlace/NetworkBridge.lean
+    declarations:
+    - ':'
+    - NetworkShape.ofTimelineGraph
+    - timelineDeps
+    - timeline_graded
+    - ComplexRule.ofRouting
+  - path: FdrsFormal/Modes/SyntheticPlace/NetworkComplexStep.lean
+    declarations:
+    - DepGraph
+    - Species
+    - ComplexRule
+    - CConfig
+    - initC
+  - path: FdrsFormal/Modes/SyntheticPlace/NetworkConfig.lean
+    declarations:
+    - NetworkShape
+    - NetworkRule
+    - NetConfig
+    - initNet
+    - fire
 - id: definition_204
   type: definition
   phase: 14
   global_num: 204
   title: the exact splice
-  line: 8596
-  status: missing
+  line: 8604
+  status: proven
   in_root_build: true
-  lean_files: []
+  lean_files:
+  - path: FdrsFormal/Applications/Field25519Carry.lean
+    declarations:
+    - numDigits
+    - radixBits
+    - radix
+    - weightBits
+    - weightBits_ten
+  - path: FdrsFormal/Modes/SyntheticPlace/NetworkBalance.lean
+    declarations:
+    - edge_currencyReachable
+    - network_balanced_per_edge
+    - network_balanced_total
+    - fire_no_self_loop
+    - fire_fanout_exact
+  - path: FdrsFormal/Modes/SyntheticPlace/NetworkBridge.lean
+    declarations:
+    - ':'
+    - NetworkShape.ofTimelineGraph
+    - timelineDeps
+    - timeline_graded
+    - ComplexRule.ofRouting
+  - path: FdrsFormal/Modes/SyntheticPlace/NetworkComplexStep.lean
+    declarations:
+    - DepGraph
+    - Species
+    - ComplexRule
+    - CConfig
+    - initC
+  - path: FdrsFormal/Modes/SyntheticPlace/NetworkConfig.lean
+    declarations:
+    - NetworkShape
+    - NetworkRule
+    - NetConfig
+    - initNet
+    - fire
 - id: theorem_97
   type: theorem
   phase: 14
   global_num: 97
   title: synthetic fractions; the gauge half of dilation
-  line: 8605
-  status: excluded
-  in_root_build: false
+  line: 8613
+  status: proven
+  in_root_build: true
   lean_files:
-  - path: FdrsFormal/Modes/SyntheticPlace/GaugeUltrametric.lean
+  - path: FdrsFormal/Applications/Field25519Carry.lean
     declarations:
-    - gaugeAt
-  - path: FdrsFormal/Modes/SyntheticPlace/GaugeUltrametric.lean
+    - numDigits
+    - radixBits
+    - radix
+    - weightBits
+    - weightBits_ten
+  - path: FdrsFormal/Modes/SyntheticPlace/NetworkBalance.lean
     declarations:
-    - gaugeAt_pos
-  - path: FdrsFormal/Modes/SyntheticPlace/GaugeUltrametric.lean
+    - edge_currencyReachable
+    - network_balanced_per_edge
+    - network_balanced_total
+    - fire_no_self_loop
+    - fire_fanout_exact
+  - path: FdrsFormal/Modes/SyntheticPlace/NetworkBridge.lean
     declarations:
-    - gaugeAt_monotone
+    - ':'
+    - NetworkShape.ofTimelineGraph
+    - timelineDeps
+    - timeline_graded
+    - ComplexRule.ofRouting
+  - path: FdrsFormal/Modes/SyntheticPlace/NetworkComplexStep.lean
+    declarations:
+    - DepGraph
+    - Species
+    - ComplexRule
+    - CConfig
+    - initC
+  - path: FdrsFormal/Modes/SyntheticPlace/NetworkConfig.lean
+    declarations:
+    - NetworkShape
+    - NetworkRule
+    - NetConfig
+    - initNet
+    - fire
 - id: theorem_98
   type: theorem
   phase: 14
   global_num: 98
   title: dilation, dynamic half — exact nesting is conservative
-  line: 8617
-  status: missing
+  line: 8625
+  status: proven
   in_root_build: true
-  lean_files: []
+  lean_files:
+  - path: FdrsFormal/Applications/Field25519Carry.lean
+    declarations:
+    - numDigits
+    - radixBits
+    - radix
+    - weightBits
+    - weightBits_ten
+  - path: FdrsFormal/Modes/SyntheticPlace/NetworkBalance.lean
+    declarations:
+    - edge_currencyReachable
+    - network_balanced_per_edge
+    - network_balanced_total
+    - fire_no_self_loop
+    - fire_fanout_exact
+  - path: FdrsFormal/Modes/SyntheticPlace/NetworkBridge.lean
+    declarations:
+    - ':'
+    - NetworkShape.ofTimelineGraph
+    - timelineDeps
+    - timeline_graded
+    - ComplexRule.ofRouting
+  - path: FdrsFormal/Modes/SyntheticPlace/NetworkComplexStep.lean
+    declarations:
+    - DepGraph
+    - Species
+    - ComplexRule
+    - CConfig
+    - initC
+  - path: FdrsFormal/Modes/SyntheticPlace/NetworkConfig.lean
+    declarations:
+    - NetworkShape
+    - NetworkRule
+    - NetConfig
+    - initNet
+    - fire
 - id: definition_205
   type: definition
   phase: 14
   global_num: 205
   title: group-valued coupling graph
-  line: 8635
+  line: 8643
   status: proven
   in_root_build: true
   lean_files:
-  - path: FdrsFormal/Composition/TimelineGraphs/Definition.lean
+  - path: FdrsFormal/Applications/Field25519Carry.lean
     declarations:
-    - StrictTimelineGraph.toTimelineGraph
-  - path: FdrsFormal/Modes/SyntheticPlace/Grading.lean
+    - numDigits
+    - radixBits
+    - radix
+    - weightBits
+    - weightBits_ten
+  - path: FdrsFormal/Modes/SyntheticPlace/NetworkBalance.lean
     declarations:
-    - CouplingGraph
-  - path: FdrsFormal/Modes/SyntheticPlace/GroupGrading.lean
+    - edge_currencyReachable
+    - network_balanced_per_edge
+    - network_balanced_total
+    - fire_no_self_loop
+    - fire_fanout_exact
+  - path: FdrsFormal/Modes/SyntheticPlace/NetworkBridge.lean
     declarations:
-    - GroupGraph
+    - ':'
+    - NetworkShape.ofTimelineGraph
+    - timelineDeps
+    - timeline_graded
+    - ComplexRule.ofRouting
+  - path: FdrsFormal/Modes/SyntheticPlace/NetworkComplexStep.lean
+    declarations:
+    - DepGraph
+    - Species
+    - ComplexRule
+    - CConfig
+    - initC
+  - path: FdrsFormal/Modes/SyntheticPlace/NetworkConfig.lean
+    declarations:
+    - NetworkShape
+    - NetworkRule
+    - NetConfig
+    - initNet
+    - fire
 - id: theorem_99
   type: theorem
   phase: 14
   global_num: 99
   title: group holonomy dichotomy — gain-graph balance
-  line: 8643
-  status: excluded
-  in_root_build: false
+  line: 8651
+  status: proven
+  in_root_build: true
   lean_files:
-  - path: FdrsFormal/Modes/SyntheticPlace/Grading.lean
+  - path: FdrsFormal/Applications/Field25519Carry.lean
     declarations:
-    - gradable_holonomy
-  - path: FdrsFormal/Modes/SyntheticPlace/GroupGrading.lean
+    - numDigits
+    - radixBits
+    - radix
+    - weightBits
+    - weightBits_ten
+  - path: FdrsFormal/Modes/SyntheticPlace/NetworkBalance.lean
     declarations:
-    - GroupGraph
-  - path: FdrsFormal/Modes/SyntheticPlace/GroupGrading.lean
+    - edge_currencyReachable
+    - network_balanced_per_edge
+    - network_balanced_total
+    - fire_no_self_loop
+    - fire_fanout_exact
+  - path: FdrsFormal/Modes/SyntheticPlace/NetworkBridge.lean
     declarations:
-    - gradable_holonomy
+    - ':'
+    - NetworkShape.ofTimelineGraph
+    - timelineDeps
+    - timeline_graded
+    - ComplexRule.ofRouting
+  - path: FdrsFormal/Modes/SyntheticPlace/NetworkComplexStep.lean
+    declarations:
+    - DepGraph
+    - Species
+    - ComplexRule
+    - CConfig
+    - initC
+  - path: FdrsFormal/Modes/SyntheticPlace/NetworkConfig.lean
+    declarations:
+    - NetworkShape
+    - NetworkRule
+    - NetConfig
+    - initNet
+    - fire
 - id: proposition_151
   type: proposition
   phase: 14
   global_num: 151
   title: non-abelian frustrated witnesses, discrete and continuous
-  line: 8653
-  status: excluded
-  in_root_build: false
+  line: 8661
+  status: proven
+  in_root_build: true
   lean_files:
-  - path: FdrsFormal/Modes/SyntheticPlace/Grading.lean
+  - path: FdrsFormal/Applications/Field25519Carry.lean
     declarations:
-    - frustratedTriangle
-  - path: FdrsFormal/Modes/SyntheticPlace/Grading.lean
+    - numDigits
+    - radixBits
+    - radix
+    - weightBits
+    - weightBits_ten
+  - path: FdrsFormal/Modes/SyntheticPlace/NetworkBalance.lean
     declarations:
-    - frustratedTriangle_not_gradable
-  - path: FdrsFormal/Modes/SyntheticPlace/Grading.lean
+    - edge_currencyReachable
+    - network_balanced_per_edge
+    - network_balanced_total
+    - fire_no_self_loop
+    - fire_fanout_exact
+  - path: FdrsFormal/Modes/SyntheticPlace/NetworkBridge.lean
     declarations:
-    - frustrated_loop_isWalk
+    - ':'
+    - NetworkShape.ofTimelineGraph
+    - timelineDeps
+    - timeline_graded
+    - ComplexRule.ofRouting
+  - path: FdrsFormal/Modes/SyntheticPlace/NetworkComplexStep.lean
+    declarations:
+    - DepGraph
+    - Species
+    - ComplexRule
+    - CConfig
+    - initC
+  - path: FdrsFormal/Modes/SyntheticPlace/NetworkConfig.lean
+    declarations:
+    - NetworkShape
+    - NetworkRule
+    - NetConfig
+    - initNet
+    - fire
 - id: definition_206
   type: definition
   phase: 14
   global_num: 206
   title: sector emission — the floor-free trap
-  line: 8661
-  status: missing
+  line: 8669
+  status: proven
   in_root_build: true
-  lean_files: []
+  lean_files:
+  - path: FdrsFormal/Applications/Field25519Carry.lean
+    declarations:
+    - numDigits
+    - radixBits
+    - radix
+    - weightBits
+    - weightBits_ten
+  - path: FdrsFormal/Modes/SyntheticPlace/NetworkBalance.lean
+    declarations:
+    - edge_currencyReachable
+    - network_balanced_per_edge
+    - network_balanced_total
+    - fire_no_self_loop
+    - fire_fanout_exact
+  - path: FdrsFormal/Modes/SyntheticPlace/NetworkBridge.lean
+    declarations:
+    - ':'
+    - NetworkShape.ofTimelineGraph
+    - timelineDeps
+    - timeline_graded
+    - ComplexRule.ofRouting
+  - path: FdrsFormal/Modes/SyntheticPlace/NetworkComplexStep.lean
+    declarations:
+    - DepGraph
+    - Species
+    - ComplexRule
+    - CConfig
+    - initC
+  - path: FdrsFormal/Modes/SyntheticPlace/NetworkConfig.lean
+    declarations:
+    - NetworkShape
+    - NetworkRule
+    - NetConfig
+    - initNet
+    - fire
 - id: theorem_100
   type: theorem
   phase: 14
   global_num: 100
   title: sector-trap soundness — the fourth certificate
-  line: 8669
-  status: missing
+  line: 8677
+  status: proven
   in_root_build: true
-  lean_files: []
+  lean_files:
+  - path: FdrsFormal/Applications/Field25519Carry.lean
+    declarations:
+    - numDigits
+    - radixBits
+    - radix
+    - weightBits
+    - weightBits_ten
+  - path: FdrsFormal/Modes/SyntheticPlace/NetworkBalance.lean
+    declarations:
+    - edge_currencyReachable
+    - network_balanced_per_edge
+    - network_balanced_total
+    - fire_no_self_loop
+    - fire_fanout_exact
+  - path: FdrsFormal/Modes/SyntheticPlace/NetworkBridge.lean
+    declarations:
+    - ':'
+    - NetworkShape.ofTimelineGraph
+    - timelineDeps
+    - timeline_graded
+    - ComplexRule.ofRouting
+  - path: FdrsFormal/Modes/SyntheticPlace/NetworkComplexStep.lean
+    declarations:
+    - DepGraph
+    - Species
+    - ComplexRule
+    - CConfig
+    - initC
+  - path: FdrsFormal/Modes/SyntheticPlace/NetworkConfig.lean
+    declarations:
+    - NetworkShape
+    - NetworkRule
+    - NetConfig
+    - initNet
+    - fire
 - id: definition_207
   type: definition
   phase: 14
   global_num: 207
   title: exact SE2 motions; pose regions; tractable engines
-  line: 8678
+  line: 8686
   status: proven
   in_root_build: true
   lean_files:
-  - path: FdrsFormal/Analysis/DigitConditional/Decomposition.lean
+  - path: FdrsFormal/Applications/Field25519Carry.lean
     declarations:
-    - exactAdaptedReconstruction
-  - path: FdrsFormal/Modes/SyntheticPlace/SE2Pose.lean
+    - numDigits
+    - radixBits
+    - radix
+    - weightBits
+    - weightBits_ten
+  - path: FdrsFormal/Modes/SyntheticPlace/NetworkBalance.lean
     declarations:
-    - TractablePose
-  - path: FdrsFormal/Modes/SyntheticPlace/SE2Pose.lean
+    - edge_currencyReachable
+    - network_balanced_per_edge
+    - network_balanced_total
+    - fire_no_self_loop
+    - fire_fanout_exact
+  - path: FdrsFormal/Modes/SyntheticPlace/NetworkBridge.lean
     declarations:
-    - exactTractable
+    - ':'
+    - NetworkShape.ofTimelineGraph
+    - timelineDeps
+    - timeline_graded
+    - ComplexRule.ofRouting
+  - path: FdrsFormal/Modes/SyntheticPlace/NetworkComplexStep.lean
+    declarations:
+    - DepGraph
+    - Species
+    - ComplexRule
+    - CConfig
+    - initC
+  - path: FdrsFormal/Modes/SyntheticPlace/NetworkConfig.lean
+    declarations:
+    - NetworkShape
+    - NetworkRule
+    - NetConfig
+    - initNet
+    - fire
 - id: theorem_101
   type: theorem
   phase: 14
   global_num: 101
   title: 'the certified non-commutative engine: soundness and the tight traps'
-  line: 8688
+  line: 8696
   status: proven
   in_root_build: true
   lean_files:
-  - path: FdrsFormal/Analysis/DigitConditional/Tree.lean
+  - path: FdrsFormal/Applications/Field25519Carry.lean
     declarations:
-    - NonStationaryRadixTree
-  - path: FdrsFormal/Modes/Adelic/PadicBihEmission.lean
+    - numDigits
+    - radixBits
+    - radix
+    - weightBits
+    - weightBits_ten
+  - path: FdrsFormal/Modes/SyntheticPlace/NetworkBalance.lean
     declarations:
-    - padic_emit_traps
-  - path: FdrsFormal/Modes/Adelic/PadicEmitTraps.lean
+    - edge_currencyReachable
+    - network_balanced_per_edge
+    - network_balanced_total
+    - fire_no_self_loop
+    - fire_fanout_exact
+  - path: FdrsFormal/Modes/SyntheticPlace/NetworkBridge.lean
     declarations:
-    - padic_emit_traps
+    - ':'
+    - NetworkShape.ofTimelineGraph
+    - timelineDeps
+    - timeline_graded
+    - ComplexRule.ofRouting
+  - path: FdrsFormal/Modes/SyntheticPlace/NetworkComplexStep.lean
+    declarations:
+    - DepGraph
+    - Species
+    - ComplexRule
+    - CConfig
+    - initC
+  - path: FdrsFormal/Modes/SyntheticPlace/NetworkConfig.lean
+    declarations:
+    - NetworkShape
+    - NetworkRule
+    - NetConfig
+    - initNet
+    - fire
 - id: theorem_102
   type: theorem
   phase: 14
   global_num: 102
   title: the tight tractable engine
-  line: 8701
-  status: excluded
-  in_root_build: false
+  line: 8709
+  status: proven
+  in_root_build: true
   lean_files:
-  - path: FdrsFormal/Modes/SyntheticPlace/SE2Pose.lean
+  - path: FdrsFormal/Applications/Field25519Carry.lean
     declarations:
-    - TractablePose
-  - path: FdrsFormal/Modes/SyntheticPlace/SE2Tight.lean
+    - numDigits
+    - radixBits
+    - radix
+    - weightBits
+    - weightBits_ten
+  - path: FdrsFormal/Modes/SyntheticPlace/NetworkBalance.lean
     declarations:
-    - tightTractable
-  - path: FdrsFormal/Modes/SyntheticPlace/SE2Tight.lean
+    - edge_currencyReachable
+    - network_balanced_per_edge
+    - network_balanced_total
+    - fire_no_self_loop
+    - fire_fanout_exact
+  - path: FdrsFormal/Modes/SyntheticPlace/NetworkBridge.lean
     declarations:
-    - tightTractable_run_sound
+    - ':'
+    - NetworkShape.ofTimelineGraph
+    - timelineDeps
+    - timeline_graded
+    - ComplexRule.ofRouting
+  - path: FdrsFormal/Modes/SyntheticPlace/NetworkComplexStep.lean
+    declarations:
+    - DepGraph
+    - Species
+    - ComplexRule
+    - CConfig
+    - initC
+  - path: FdrsFormal/Modes/SyntheticPlace/NetworkConfig.lean
+    declarations:
+    - NetworkShape
+    - NetworkRule
+    - NetConfig
+    - initNet
+    - fire
+- id: definition_208
+  type: definition
+  phase: 14
+  global_num: 208
+  title: the network machine; the latency discipline
+  line: 8750
+  status: proven
+  in_root_build: true
+  lean_files:
+  - path: FdrsFormal/Modes/SyntheticPlace/NetworkConfig.lean
+    declarations:
+    - NetConfig
+- id: theorem_103
+  type: theorem
+  phase: 14
+  global_num: 103
+  title: 'the probe gate: the two-node network IS the SU4b machine'
+  line: 8761
+  status: proven
+  in_root_build: true
+  lean_files:
+  - path: FdrsFormal/Modes/SyntheticPlace/NetworkConfig.lean
+    declarations:
+    - pairNet_reachable_iff
+- id: definition_209
+  type: definition
+  phase: 14
+  global_num: 209
+  title: '`complexStep` — the three-clause firing'
+  line: 8770
+  status: proven
+  in_root_build: true
+  lean_files:
+  - path: FdrsFormal/Modes/SyntheticPlace/NetworkComplexStep.lean
+    declarations:
+    - ComplexRule
+- id: theorem_104
+  type: theorem
+  phase: 14
+  global_num: 104
+  title: conservative extension, twice; the fan-out witnesses
+  line: 8785
+  status: proven
+  in_root_build: true
+  lean_files:
+  - path: FdrsFormal/Modes/SyntheticPlace/NetworkComplexStep.lean
+    declarations:
+    - ofRule_reachable_iff
+- id: theorem_105
+  type: theorem
+  phase: 14
+  global_num: 105
+  title: causality must not be frustrated — well-formedness is grading
+  line: 8794
+  status: proven
+  in_root_build: true
+  lean_files:
+  - path: FdrsFormal/Modes/SyntheticPlace/NetworkComplexStep.lean
+    declarations:
+    - wellFormed_deadlock_free
+- id: theorem_106
+  type: theorem
+  phase: 14
+  global_num: 106
+  title: 'network balance: SU6b''s generic law, per edge'
+  line: 8804
+  status: proven
+  in_root_build: true
+  lean_files:
+  - path: FdrsFormal/Modes/SyntheticPlace/NetworkBalance.lean
+    declarations:
+    - network_balanced_per_edge
+- id: definition_210
+  type: definition
+  phase: 14
+  global_num: 210
+  title: non-blocking couplability; the decidable fixpoint check
+  line: 8820
+  status: proven
+  in_root_build: true
+  lean_files:
+  - path: FdrsFormal/Modes/SyntheticPlace/NetworkCouplability.lean
+    declarations:
+    - couplableCheck
+- id: theorem_107
+  type: theorem
+  phase: 14
+  global_num: 107
+  title: couplability certificate soundness
+  line: 8830
+  status: proven
+  in_root_build: true
+  lean_files:
+  - path: FdrsFormal/Modes/SyntheticPlace/NetworkCouplability.lean
+    declarations:
+    - nonBlocking_of_couplableCheck
+- id: proposition_152
+  type: proposition
+  phase: 14
+  global_num: 152
+  title: witnesses on both sides of couplability
+  line: 8837
+  status: proven
+  in_root_build: true
+  lean_files:
+  - path: FdrsFormal/Modes/SyntheticPlace/NetworkCouplability.lean
+    declarations:
+    - blocked_not_nonBlocking
+- id: theorem_108
+  type: theorem
+  phase: 14
+  global_num: 108
+  title: per-node traps on the network — Theorem 86 transported verbatim
+  line: 8845
+  status: proven
+  in_root_build: true
+  lean_files:
+  - path: FdrsFormal/Modes/SyntheticPlace/NetworkTraps.lean
+    declarations:
+    - network_trap_sound
+- id: theorem_109
+  type: theorem
+  phase: 14
+  global_num: 109
+  title: the conditional Kahn diamond — determinacy, local form
+  line: 8858
+  status: proven
+  in_root_build: true
+  lean_files:
+  - path: FdrsFormal/Modes/SyntheticPlace/NetworkDeterminacy.lean
+    declarations:
+    - diamond
+- id: theorem_110
+  type: theorem
+  phase: 14
+  global_num: 110
+  title: network liveness — the factored guarantee
+  line: 8873
+  status: proven
+  in_root_build: true
+  lean_files:
+  - path: FdrsFormal/Modes/SyntheticPlace/NetworkLiveness.lean
+    declarations:
+    - network_live
+- id: theorem_111
+  type: theorem
+  phase: 14
+  global_num: 111
+  title: a timeline graph IS a network shape; time-ordering IS grading
+  line: 8897
+  status: proven
+  in_root_build: true
+  lean_files:
+  - path: FdrsFormal/Modes/SyntheticPlace/NetworkBridge.lean
+    declarations:
+    - timeline_graded
+- id: definition_211
+  type: definition
+  phase: 14
+  global_num: 211
+  title: the queue-backed edge register
+  line: 8911
+  status: proven
+  in_root_build: true
+  lean_files:
+  - path: FdrsFormal/Modes/SyntheticPlace/NetworkBridge.lean
+    declarations:
+    - QueueConfig
+- id: theorem_112
+  type: theorem
+  phase: 14
+  global_num: 112
+  title: queue balance at every capacity; capacity-one IS the currency register
+  line: 8918
+  status: proven
+  in_root_build: true
+  lean_files:
+  - path: FdrsFormal/Modes/SyntheticPlace/NetworkBridge.lean
+    declarations:
+    - queueReachable_balanced
+- id: definition_212
+  type: definition
+  phase: 14
+  global_num: 212
+  title: the 25519 digit ring
+  line: 8941
+  status: proven
+  in_root_build: true
+  lean_files:
+  - path: FdrsFormal/Applications/Field25519Carry.lean
+    declarations:
+    - radix
+- id: theorem_113
+  type: theorem
+  phase: 14
+  global_num: 113
+  title: a carry is a value-preserving redistribution
+  line: 8951
+  status: proven
+  in_root_build: true
+  lean_files:
+  - path: FdrsFormal/Applications/Field25519Carry.lean
+    declarations:
+    - carryStep_preserves_value
+- id: theorem_114
+  type: theorem
+  phase: 14
+  global_num: 114
+  title: the wrap has holonomy 19, not 1
+  line: 8960
+  status: proven
+  in_root_build: true
+  lean_files:
+  - path: FdrsFormal/Applications/Field25519Carry.lean
+    declarations:
+    - wrap_holonomy
+- id: theorem_115
+  type: theorem
+  phase: 14
+  global_num: 115
+  title: the schedule restores the bound — lazy reduction licensed
+  line: 8968
+  status: proven
+  in_root_build: true
+  lean_files:
+  - path: FdrsFormal/Applications/Field25519Carry.lean
+    declarations:
+    - schedule_restores_bound
 lean_summary:
-  total_files: 296
+  total_files: 307
   total_axioms: 0
   axioms_true: 0
-  total_sorries: 2
-  sorry_files:
-  - file: FdrsFormal/Modes/SyntheticPlace/NestedChain.lean
-    line: 44
-    context: '`tick_outer ∘ φ = φ ∘ tick_inner^k` — remains open (03 §7). Exact charts only
-
-      (fiber = inner mass); lossy/quotient charts are the sea''s regime, declared not
-
-      built. Leaf module over SU6a. No `sorry`; a'
-  - file: FdrsFormal/Modes/SyntheticPlace/WindowBoundary.lean
-    line: 49
-    context: 'ranges over. Under free scheduling the partner''s clock is no longer deducible and
-
-      the boundary question reopens — that is the network arc''s territory
-
-      (`04-network-config.md`). Leaf module over SU6c. N'
-  total_theorems: 1331
-  total_defs: 789
-  total_lemmas: 25
+  total_sorries: 0
+  sorry_files: []
+  total_theorems: 1443
+  total_defs: 834
+  total_lemmas: 26
   total_stubs: 0
   stubs_by_kind:
     true_trivial: 0
@@ -11818,53 +13708,5 @@ lean_summary:
     name: injectAtCylinder
     scaffold_kind: const_model
     severity: high
-  excluded_modules:
-  - FdrsFormal/Integration/ThreeLineMediator/CoupledSystem.lean
-  - FdrsFormal/Integration/ThreeLineMediator/Definition.lean
-  - FdrsFormal/Modes/Adelic/AdelicInterface.lean
-  - FdrsFormal/Modes/Adelic/Complex.lean
-  - FdrsFormal/Modes/Adelic/DriverCorrect.lean
-  - FdrsFormal/Modes/Adelic/FunctionFieldDegree.lean
-  - FdrsFormal/Modes/Adelic/GaugeBound.lean
-  - FdrsFormal/Modes/Adelic/PadicBihEmission.lean
-  - FdrsFormal/Modes/Adelic/PadicEmission.lean
-  - FdrsFormal/Modes/Adelic/PadicEmitTraps.lean
-  - FdrsFormal/Modes/Adelic/PadicHomographic.lean
-  - FdrsFormal/Modes/Adelic/PlaceEngine.lean
-  - FdrsFormal/Modes/Adelic/ProductFormula.lean
-  - FdrsFormal/Modes/Adelic/ProductFormulaRat.lean
-  - FdrsFormal/Modes/Adelic/Rigidity.lean
-  - FdrsFormal/Modes/Adelic/ValuationStream.lean
-  - FdrsFormal/Modes/SyntheticPlace/AdmissibilityTrap.lean
-  - FdrsFormal/Modes/SyntheticPlace/CircleEmit.lean
-  - FdrsFormal/Modes/SyntheticPlace/Composition.lean
-  - FdrsFormal/Modes/SyntheticPlace/Conservation.lean
-  - FdrsFormal/Modes/SyntheticPlace/ConservationRigidity.lean
-  - FdrsFormal/Modes/SyntheticPlace/CurrencyBalance.lean
-  - FdrsFormal/Modes/SyntheticPlace/GaugeUltrametric.lean
-  - FdrsFormal/Modes/SyntheticPlace/Grading.lean
-  - FdrsFormal/Modes/SyntheticPlace/GroupGrading.lean
-  - FdrsFormal/Modes/SyntheticPlace/InterfaceBalance.lean
-  - FdrsFormal/Modes/SyntheticPlace/NestedChain.lean
-  - FdrsFormal/Modes/SyntheticPlace/NestedDilation.lean
-  - FdrsFormal/Modes/SyntheticPlace/NetworkConfig.lean
-  - FdrsFormal/Modes/SyntheticPlace/NetworkGauge.lean
-  - FdrsFormal/Modes/SyntheticPlace/Restriction.lean
-  - FdrsFormal/Modes/SyntheticPlace/SE2Engine.lean
-  - FdrsFormal/Modes/SyntheticPlace/SE2Pose.lean
-  - FdrsFormal/Modes/SyntheticPlace/SE2Tight.lean
-  - FdrsFormal/Modes/SyntheticPlace/TraceGeometry.lean
-  - FdrsFormal/Modes/SyntheticPlace/WindowAccountability.lean
-  - FdrsFormal/Modes/SyntheticPlace/WindowBoundary.lean
-  - FdrsFormal/Modes/VariableRadix/Bihomographic.lean
-  - FdrsFormal/Modes/VariableRadix/BihomographicDriver.lean
-  - FdrsFormal/Modes/VariableRadix/BihomographicSound.lean
-  - FdrsFormal/Modes/VariableRadix/CarryFrequency.lean
-  - FdrsFormal/Modes/VariableRadix/HomographicCarry.lean
-  - FdrsFormal/Modes/VariableRadix/HyperGosper.lean
-  - FdrsFormal/Modes/VariableRadix/Realizability/MetricRealizability.lean
-  - FdrsFormal/Modes/VariableRadix/SubshiftMetric.lean
-  - FdrsFormal/Modes/VariableRadix/SubshiftParry.lean
-  - FdrsFormal/Modes/VariableRadix/SubshiftWeight.lean
-  - FdrsFormal/NumberTheory/ArithmeticFunctions/CyclicConvolution.lean
+  excluded_modules: []
   stale_doc_risks: []
