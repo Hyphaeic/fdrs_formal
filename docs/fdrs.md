@@ -5297,6 +5297,11 @@ must be constant over all siblings d ∈ D_s.
    - Achieved by: ω(s) = |s| + 1
    - Result: Super-exponential refinement
 
+*(Phase 14 addendum: these regimes now carry machine-checked Hausdorff
+dimensions — §14.15, Theorems 117–118 and Proposition 153: canonical gauge ⇒
+`dimH = 1`, exponential schedules ⇒ `dimH = r` for every prescribed `r > 0`,
+polynomial ⇒ `dimH = ∞`, factorial ⇒ `dimH = 0`.)*
+
 ---
 
 **Example 6.4.4** (Context-dependent spatial resolution)
@@ -8289,7 +8294,8 @@ The coupled radix complex is accordingly not a generalized adele but a **network
 transport object** — a gauge-indexed transport geometry. Design record:
 `docs/synthetic-place/00-thesis.md`, `01-build-roadmap.md`, `02-phase14-design.md`,
 `03-digit-coupling.md` (the digit-coupling layer, §14.8–14.9), `04-network-config.md`
-(the SU7 network arc — the radix-complex machine these statics serve).
+(the SU7 network arc — the radix-complex machine these statics serve),
+`05-dimension.md` (the dimension of a designed gauge, §14.15).
 
 ### 14.1 Designed gauges and the refinement ultrametric
 
@@ -8975,7 +8981,102 @@ kernel.
 
 ---
 
+### 14.15 The dimension of a designed gauge (r is the tree↔gauge exchange rate)
+
+*(Addendum, 2026-09-04. Provenance: an external higher-category thread argued
+that no atomic "r-morphism" for real `r` can generalize the `n`-disk, and that
+real-indexed structure must be built on diagrams and rewrite witnesses rather
+than representable atoms. The corpus reply, made precise here: keep
+integer-indexed atoms — cylinders at integer depth, with their attaching
+recursion — and put the real number on the **gauge**; then "r" is not an arity
+but a derived, programmable invariant of the (tree, gauge) pair. This section
+brings the corpus its first analytic invariant — Hausdorff dimension, run
+through Mathlib's `dimH`/Hausdorff-measure machinery — and upgrades §6.4.3's
+growth-regime prose to computed dimensions. The mathematics is classical
+(Moran 1946; Falconer ch. 4; Billingsley-style dimension on sequence spaces);
+the FDRS content is the statement and the verified artifact. Design record:
+`docs/synthetic-place/05-dimension.md`.)*
+
+Supporting weld (unnumbered corpus infrastructure): the **Borel bridge**
+(`pi_eq_borel_completedSpace`) — the product σ-algebra `MeasurableSpace.pi`,
+where Definition 21's uniform measure lives, **equals** the Borel σ-algebra of
+Definition 9's ultrametric; cylinders generate both. The measure theory and
+the metric geometry of `R̂` are one structure, so the mass-distribution
+principle can run the corpus measure against the corpus metric.
+
+**Definition 213 (position gauge; the gauged completion)**:
+A *position gauge* is a weight `g : ℕ → ℕ` with `g ≥ 1`, monotone, unbounded —
+the position-only instance of Definition 192's prefix gauge, and the concrete
+carrier of §6.4's designed ultrametrics. The *gauged completion*
+`GaugedSpace b G` is the completed space `R̂ = ∏ᵢ Fin(bᵢ)` re-metrized by
+`δ_g(x,y) = g(firstDiff x y)⁻¹`, carried as a full instance stack: an
+ultrametric metric space (`IsUltrametricDist`), balls = cylinders (cylinders
+are a clopen countable topological basis), separable, second countable,
+Borel (the bridge transported), with Definition 21's uniform product measure
+riding along unchanged (`gaugedMeasure`; `μ(U_L) = B_L⁻¹` verbatim). The
+canonical instance `placeValueGauge` — the gauge equal to the place value —
+recovers Definition 9's metric on the nose (`canonicalIsometry`,
+definitional).
+
+*Lean:* `FdrsFormal/Modes/SyntheticPlace/Dimension.lean`.
+
+**Theorem 116 (the Moran frame — dimension squeezed by count against gauge)**:
+*Cover half* (`GaugedSpace.dimH_univ_le`, via `hausdorffMeasure_univ_eq_zero`):
+if `B_L · g(L)^{-d} → 0` then `dimH ≤ d` — the `B_L` depth-`L` cylinders, each
+of diameter `≤ g(L)⁻¹`, are the cover. *Mass half*
+(`GaugedSpace.le_dimH_univ`, via `gaugedMeasure_le_hausdorff`): if eventually
+`B_L⁻¹ ≤ (g(L)⁻¹)^d` then `d ≤ dimH` — the uniform product measure is the
+Frostman mass, fed through the mass-distribution principle; the critical-depth
+argument needs only monotonicity of the gauge, so schedules with plateaus are
+admissible. The Hausdorff dimension of a gauged completion is thereby pinched
+between count growth and gauge growth: **r is the exchange rate between the
+tree axis and the gauge axis** — exactly the two axes Theorem 43 (corrected)
+proved to do separate work ((C1) pins the tree, (C4) pins the gauge).
+
+**Theorem 117 (every number line is one-dimensional)**:
+`dimH_completedSpace_eq_one`: for **every** radix schedule `b`, the completed
+space under its canonical gauge has `dimH R̂ = 1`. Both halves of Theorem 116
+degenerate because the canonical gauge *is* the count: `μ(U_L) = diam(U_L) =
+B_L⁻¹` on the nose. Read with Theorem 43: condition (C4) — canonical
+diameters — is precisely the gauge locked to the tree, so **being realizable
+as a number system pins r = 1; that is what makes a number line a *line***.
+Dimension becomes a design degree of freedom exactly when the gauge is freed
+from the count — the whole content of Phase 6's inverse problem.
+
+**Theorem 118 (the gauge programs the dimension)**:
+`dimH_designedGauge`: on the binary tree — counts locked at `2^L` — the
+designed schedule `g(L) = 2^⌈L/r⌉` realizes `dimH = r`, for every prescribed
+real `r > 0`: one fixed tree, the entire dimension range swept by the gauge
+alone. The "r" of the space lives on the gauge axis, never in the arity of a
+cell: there is no atomic r-object anywhere in the construction — only integer
+cylinders under a designed resolution schedule whose *limit* invariant is `r`.
+
+**Proposition 153 (the §6.4.3 growth regimes, computed)**:
+Example 6.4.3's asymptotic regimes now carry their dimensions as theorems over
+the binary tree: exponential schedules are Theorem 118's family (`dimH = r`);
+the factorial gauge of 6.4.3(3) collapses the dimension
+(`dimH_factorialGauge_eq_zero`: `dimH = 0` — super-exponential resolution
+outruns any count); the polynomial gauge `g(L) = L + 1` of 6.4.3(2) blows it
+up (`dimH_polyGauge_eq_top`: `dimH = ∞` — the binary count outruns every
+polynomial resolution). With Theorem 117's `r = 1` at the canonical gauge,
+every value in `[0, ∞]` is realized by a designed gauge over a fixed tree.
+
+**Honest scope (§14.15).** All mathematics here is classical — Moran-type
+dimension computations on sequence spaces; no new theorems are claimed. The
+formalization is, to a three-search check (not a census), plausibly the first
+*computed* fractal `dimH` in the Lean ecosystem: Mathlib carries the theory
+but computes no Cantor-type instance. The liminf-valued general formula
+(`dimH = liminf log B_L / log g(L)` under regularity hypotheses) is **not**
+formalized — only the squeeze pair and its four instances. The network-regime
+questions — whether dimension survives the §14.6 migration indexed-and-glued,
+and whether bilateral coupling is the boundary where dimension stops being a
+computable ratio (the Hochman–Meyerovitch shadow) — are recorded as open
+frontier in the design record, not claimed.
+
+---
+
 **End of Phase 14: The Synthetic Place Complex**
 **Status:** Machine-verified in Lean (0 sorries; axioms `propext`/`Classical.choice`/`Quot.sound` only). The designed gauge generalizes both the place-value product `β_ω` and the generated gauge `q_n` into one keystone (ultrametric + ball = cylinder); coupling realizes the ragged regime concretely while geometry survives it; emission gains its third certificate (admissibility) with exact mass transport; conservation migrates from separable node charges — impossible under bilateral coupling, by machine-checked rigidity — to interface balance laws; and network geometry, refused to every scalar gauge by the trace no-go, is carried by the observer-glued family. Value, conservation, and geometry each survive the network regime by becoming indexed and glued.
 **Addendum status (2026-07-02, §14.8–14.11):** the digit-coupling layer lands the three-obstruction picture (raggedness · bilaterality · frustration) with the holonomy dichotomy proven as a full iff and witnessed on both sides; conservation becomes currency-generic (mirrors conserve in the event currency); the window boundary is closed for the alternating machine (accountable ⟺ grant-uniform); exact nesting is conservative (resolution, never arithmetic); and the non-abelian arc lifts grading to arbitrary groups (gain-graph balance, machine-checked, with dihedral and SE(2) frustrated witnesses) and extends certified emission to the floor-free sector trap and the tight SE(2) pose engine. Next: the SU7 network machine.
 **Addendum status (2026-07-12, §14.12–14.14):** the SU7 network arc is COMPLETE and numbered — the coupled radix network as a verified abstract machine: probe gate passed (the 2-node network IS the SU4b interface machine), the three-clause `complexStep` with fan-out lawfulness as a guard and well-formedness as dependency grading (Phase 8's deadlock certificate reused verbatim; causal frustration recorded as candidate obstruction only), per-edge SU6b balance with fan-out exactness, decidable couplability with witnesses on both sides, per-node traps transported verbatim, the conditional Kahn diamond with the independence condition *derived* from the latency discipline, and liveness in factored form. The Phase-8 concretization bridge welds the June network layer to the machine (a timeline graph IS a network shape; time-ordering IS grading; queue registers balance at every capacity, capacity-one being the currency register). The application capstone reads GF(2^255−19) as a variable-radix digit ring: carries are ledger-balanced redistributions, the wrap has holonomy 19 (nontrivial, in the §14.8 sense), and the eleven-carry schedule provably restores the digit bound — the corpus vocabulary load-bearing in production field arithmetic.
+**Addendum status (2026-09-04, §14.15):** the dimension arc lands the corpus's first analytic invariant. The Borel bridge welds Definition 21's measure to Definition 9's metric (product σ-algebra = Borel σ-algebra, cylinders generating both); the gauged completion carries any designed position gauge as a full metric/measure instance stack; the Moran frame squeezes `dimH` between count and gauge; and the four computed instances — canonical ⇒ 1 (every number line is one-dimensional, for every radix schedule), designed `2^⌈L/r⌉` ⇒ r (the gauge programs the dimension), factorial ⇒ 0, polynomial ⇒ ∞ — sweep `[0, ∞]` over one fixed binary tree. Classical mathematics (Moran/Falconer/Billingsley), machine-checked, axiom-clean; **r is the tree↔gauge exchange rate, and number systems are exactly the r = 1 locus.**

@@ -1,6 +1,6 @@
 metadata:
-  total_files: 307
-  total_edges: 646
+  total_files: 308
+  total_edges: 649
   total_modules: 19
 modules:
   Analysis:
@@ -185,6 +185,7 @@ modules:
   - FdrsFormal/Modes/SyntheticPlace/Conservation.lean
   - FdrsFormal/Modes/SyntheticPlace/ConservationRigidity.lean
   - FdrsFormal/Modes/SyntheticPlace/CurrencyBalance.lean
+  - FdrsFormal/Modes/SyntheticPlace/Dimension.lean
   - FdrsFormal/Modes/SyntheticPlace/GaugeUltrametric.lean
   - FdrsFormal/Modes/SyntheticPlace/Grading.lean
   - FdrsFormal/Modes/SyntheticPlace/GroupGrading.lean
@@ -376,6 +377,10 @@ module_edges:
   to: Core.lean
 - from: Modes
   to: Composition
+- from: Modes
+  to: Topology
+- from: Modes
+  to: FunctionSpaces
 - from: Modes.lean
   to: Modes
 - from: Modes.lean
@@ -1105,6 +1110,10 @@ file_edges:
   to: FdrsFormal/Modes/SyntheticPlace/AdmissibilityTrap.lean
 - from: FdrsFormal/Modes/SyntheticPlace/ConservationRigidity.lean
   to: FdrsFormal/Modes/SyntheticPlace/InterfaceBalance.lean
+- from: FdrsFormal/Modes/SyntheticPlace/Dimension.lean
+  to: FdrsFormal/Topology/Filtration/Definition.lean
+- from: FdrsFormal/Modes/SyntheticPlace/Dimension.lean
+  to: FdrsFormal/FunctionSpaces/Measure/ProductMeasure.lean
 - from: FdrsFormal/Modes/SyntheticPlace/GaugeUltrametric.lean
   to: FdrsFormal/Modes/VariableRadix/SubshiftMetric.lean
 - from: FdrsFormal/Modes/SyntheticPlace/InterfaceBalance.lean
@@ -1217,6 +1226,8 @@ file_edges:
   to: FdrsFormal/Modes/SyntheticPlace/NetworkLiveness.lean
 - from: FdrsFormal/Modes/SyntheticPlace.lean
   to: FdrsFormal/Modes/SyntheticPlace/NetworkBridge.lean
+- from: FdrsFormal/Modes/SyntheticPlace.lean
+  to: FdrsFormal/Modes/SyntheticPlace/Dimension.lean
 - from: FdrsFormal/Modes/VariableRadix/Basic/Basic.lean
   to: FdrsFormal/Modes/VariableRadix/Basic/RadixLaw.lean
 - from: FdrsFormal/Modes/VariableRadix/Basic/Basic.lean

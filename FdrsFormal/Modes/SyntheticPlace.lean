@@ -65,3 +65,6 @@ import FdrsFormal.Modes.SyntheticPlace.NetworkLiveness
 
 -- The Phase-8 concretization bridge (§14.13)
 import FdrsFormal.Modes.SyntheticPlace.NetworkBridge
+
+-- The dimension of a designed gauge (§14.15)
+import FdrsFormal.Modes.SyntheticPlace.Dimension
