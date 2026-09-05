@@ -12,130 +12,151 @@
   from positional notation as algebra, through certified digit-emission engines,
   to the geometry and conservation laws of coupled radix networks.**
 
-  [Specification](docs/fdrs.md) · [Index](docs/fdrs-index.md) · [Design records](docs/synthetic-place/) · [Toolchain](scripts/)
+  [The spec](docs/fdrs.md) · [Item index](docs/fdrs-index.md) · [Design records](docs/synthetic-place/) · [Tooling](scripts/)
 
 </div>
 
 ---
 
-## What this is
+## The idea
 
-This repository is a long-form mathematical research program carried out
-spec-first in a single document and machine-checked item by item in Lean 4
-against [Mathlib](https://github.com/leanprover-community/mathlib4). The
-specification ([`docs/fdrs.md`](docs/fdrs.md)) has grown through **fourteen
-phases** of numbered definitions, theorems, and propositions; every numbered
-item has a Lean proof, and the correspondence is maintained by tooling rather
-than by prose claims. The default build carries **zero axioms and zero
-sorries**.
+You already use a number system whose base changes with position: 60 seconds
+to a minute, 60 minutes to an hour, 24 hours to a day. That is *mixed radix*,
+and it is classical — fix a list of bases `b₀, b₁, b₂, …` and the place value
+at position `m` is the running product `Bₘ = b₀·b₁ ⋯ bₘ₋₁`.
 
-The subject is *what number representation becomes when its structure is a
-free parameter*. Classical positional notation fixes a base; FDRS lets the
-radix at each position be computed by a function — of the position, the prefix
-already written, an external context, or the state of another number line
-entirely. The corpus develops what survives each generalization and what
-breaks, with the boundary in every case proven, not asserted.
+This corpus asks what number representation becomes when that list is replaced
+by a **function**. The central object is the *radix law*
 
-**The arc:** foundations (canonical bijections with ℕ, the odometer, the
-prefix ultrametric, a conditional-expectation multiresolution analysis on
-mixed-radix cylinders, and the bridge to analytic number theory) → the three
-modes of function-defined radices and the design space of engineered
-ultrametrics → multi-timeline routing and spatialized digits → generated
-gauges, where continued-fraction timelines replace base products and digit
-emission becomes a *certified* act → the synthetic place complex: coupled
-radix networks, their geometry, their conservation laws, and the precise
-obstructions separating them from numbers.
+```
+b : prefix ⟶ {2, 3, 4, …}
+```
 
-## Selected results
+— the base at each position is *computed*: from the position, from the digits
+already written, from an external context, or from the live state of another
+number line entirely. The digit space stops being a grid and becomes a rooted
+tree whose branching factor varies node by node; the "numbers" are its paths.
 
-A sample chosen to show the range; the [index](docs/fdrs-index.md) maps every
-item to its proof.
+A surprising amount of classical structure survives the generalization: the
+bijection with ℕ, the carry dynamics of `+1` (the odometer), the prefix
+ultrametric in which balls are exactly cylinders. The subject of the corpus is
+*where each survival ends* — and the boundary is in every case proven, not
+asserted. The specification, [`docs/fdrs.md`](docs/fdrs.md), has grown through
+fourteen phases of numbered definitions, theorems, and propositions, and is
+machine-checked item by item in Lean 4 against
+[Mathlib](https://github.com/leanprover-community/mathlib4).
 
-**Foundations and bridges.**
-- Canonical bijections between digit spaces and ℕ; the tick is `+1` under
-  decode and `1`-Lipschitz in the ultrametric; balls are exactly cylinders.
-- A discrete multiresolution analysis: block projections as conditional
-  expectations, detail operators, L² Pythagoras, and the commutant theorem —
-  an operator commutes with every scale projection iff it is
-  scale-block-diagonal in the Haar/contrast basis.
-- The cylinder-measurability bridge: a congruence condition is decidable from a
-  positional prefix **iff** the modulus divides the place value (both
-  directions, with the sharp converse) — the exact interface between the
-  additive and multiplicative filtrations, including a constructive witness of
-  their generic non-commutation.
+## Five results, as a sampler
 
-**Realizability.** The full characterization of which ultrametrics are
-realizable by sibling-uniform radix laws (Theorem 43): an ultrametric is
-realizable **iff** every open ball is a prefix cylinder and every cylinder has
-canonical diameter — proven in both directions, with the two conditions doing
-provably separate work (the first pins the tree, the second pins the gauge)
+Chosen for range; the [index](docs/fdrs-index.md) maps every numbered item to
+its proof.
+
+**Which geometries can be numbered.** An ultrametric space is realizable by a
+sibling-uniform radix law **iff** every open ball is a prefix cylinder and
+every cylinder has canonical diameter (Theorem 43, Phase 6) — both directions
+proven, and the two conditions do provably separate work: the first pins the
+tree, the second pins the gauge
 ([`MetricRealizability.lean`](FdrsFormal/Modes/VariableRadix/Realizability/MetricRealizability.lean)).
 
-**Certified emission engines (Phase 13).** Continued-fraction timelines where
-the gauge is generated rather than multiplied out, with Gosper-style
-homographic/bihomographic engines that emit a digit only when *every* possible
+**A digit is emitted only when it is forced.** On continued-fraction timelines
+(Phase 13) the gauge is generated rather than multiplied out, and Gosper-style
+homographic/bihomographic engines emit a digit only when *every* possible
 continuation of the unread input forces it — the four-corner order trap at the
-Archimedean place, the congruence trap at p-adic places, the admissibility
-trap on finite grammars. Exact integer ledgers, no floating point anywhere;
+Archimedean place, the congruence trap at p-adic places, the admissibility trap
+on finite grammars. Exact integer ledgers, no floating point anywhere;
 `√2·√2` emits nothing, honestly.
 
-**The adelic complex.** Heterogeneous place-engines under one scheduler with
-proven confluence; the product formula on ℚˣ in exact arithmetic; the
-finite-precision gauge bound; and the rigidity boundary — an FDRS gauge
-reproduces a p-adic place value **iff** its base is constantly p, so there are
-no synthetic places on ℚ. A function-field keystone stakes the genuinely
-synthetic instance ([`docs/function-field/`](docs/function-field/)).
+**You cannot counterfeit a prime.** Heterogeneous place-engines run under one
+scheduler with proven confluence, and the product formula on ℚˣ holds in exact
+arithmetic — but an FDRS gauge reproduces a p-adic place value **iff** its base
+is constantly p. There are no synthetic places on ℚ; a function-field keystone
+stakes the genuinely synthetic instance
+([`docs/function-field/`](docs/function-field/)).
 
-**The synthetic place complex (Phase 14).** What survives when number lines
-couple: any positive monotone prefix gauge induces an ultrametric with
-ball = cylinder (both prior corpus metrics become instances); coupling
-generically destroys the odometer while the geometry survives; conservation
-migrates from product formulas — impossible for genuinely coupled systems, by
-a machine-checked separability no-go — to interface balance laws
+**When number lines couple, they stop being numbers — lawfully.** Coupling
+generically destroys the odometer while the geometry survives (Phase 14).
+Conservation migrates from product formulas — impossible for genuinely coupled
+systems, by a machine-checked separability no-go — to interface balance laws
 (`issued = consumed + pending`, proven for arbitrary coupling in any
-commutative monoid of carries); no scalar gauge can metrize a concurrent
-network (proven), forcing the observer-glued construction; and "bigger digit"
-exists iff every coupling loop has trivial holonomy — with a verified
-three-digit Penrose staircase on the other side of the boundary. Together with
-ragged fibers and bilateral coupling, that gives three independent,
-machine-checked obstructions separating coupled radix complexes from number
-systems.
+commutative monoid of carries). No scalar gauge can metrize a concurrent
+network, forcing the observer-glued construction; and "bigger digit" exists
+**iff** every coupling loop has trivial holonomy, with a verified three-digit
+Penrose staircase on the other side of the boundary. Together with ragged
+fibers and bilateral coupling, three independent machine-checked obstructions
+separate coupled radix complexes from number systems.
 
-**The SU7 network machine (Phase 14, §14.12–14.13).** The coupled radix network
-as a verified abstract machine: a three-clause firing rule whose fan-out
-lawfulness is a guard (declared carry mass partitioned exactly across transport
-edges), whose well-formedness *is* dependency grading (Phase 8's deadlock
-certificate reused verbatim), with per-edge balance laws, a decidable
-couplability certificate (witnessed live and blocked), per-node emission traps
-transported unchanged, a conditional Kahn diamond whose independence
-side-condition is **derived** from the capacity-one latency discipline rather
-than assumed, and liveness in honest factored form. A concretization bridge
-proves the Phase-8 timeline-graph layer is an instance of this machine (a
-timeline graph IS a network shape; time-ordering IS grading; queue registers
-balance at every capacity).
-
-**Applications (§14.14).** The corpus vocabulary load-bearing in production
-arithmetic: GF(2^255 − 19) under Ed25519 read as a ten-digit variable-radix
-ring — carries are ledger-balanced redistributions, the wrap has holonomy 19
-(a digit ring on the frustrated side of the grading dichotomy), and the
-eleven-carry schedule provably restores the digit bound, licensing the Rust
-kernel's lazy reduction
+**The vocabulary is load-bearing in production arithmetic.** GF(2²⁵⁵ − 19)
+under Ed25519, read as a ten-digit variable-radix ring: carries are
+ledger-balanced redistributions, the wrap has holonomy 19 — a digit ring on the
+frustrated side of the grading dichotomy — and the eleven-carry schedule
+provably restores the digit bound, licensing the lazy reduction used in
+deployed Rust kernels
 ([`Field25519Carry.lean`](FdrsFormal/Applications/Field25519Carry.lean)).
 
-## Method
+Beyond the sampler: a discrete multiresolution analysis with a commutant
+theorem, the cylinder-measurability bridge between the additive and
+multiplicative filtrations, and a verified abstract machine for coupled radix
+networks (the SU7 arc, §14.12–14.13) whose firing rule, balance laws, Kahn
+determinacy, and liveness are all proven — with the Phase-8 timeline-graph
+layer shown to be an instance of it.
+
+## How to trust it
+
+The default `lake build` target compiles the entire tree — **zero axioms and
+zero sorries** — against Mathlib at the revision pinned in the manifest. The
+spec contains **523 numbered items** across the fourteen phases, and the
+correspondence between items and Lean proofs is maintained by tooling, not by
+prose:
+
+```bash
+python3 scripts/fdrs-summary   # live status: axioms, sorries, scaffolds, coverage
+```
+
+At this writing the scanner matches 520 of the 523 items (99.4%) to proofs and
+names the residue explicitly — one open Phase-7 item and three scaffold
+declarations it flags as such. Numbers printed in documentation, including this
+file, are treated as stale by default; the scanner reads the live source.
+
+House rules, as working practice:
 
 - **Spec first.** `docs/fdrs.md` is the single source of truth; Lean modules
   cite the numbered items they prove, and an erratum is preferred over a
   silent fix when the spec is wrong.
-- **Ask the tooling, not the prose.** `python3 scripts/fdrs-summary` scans the
-  live source for axioms, sorries, stubs, and per-phase coverage; numbers in
-  documentation are treated as stale by default.
-- **Honest scope, as working practice.** Every module carries an honest-scope
-  banner; design documents carry anti-confabulation ledgers; finite witnesses
-  use kernel `decide` (never `native_decide`); classical results are cited as
-  classical — the contribution is the connection and the verified artifact.
+- **Honest scope.** Every module carries an honest-scope banner; design
+  documents carry anti-confabulation ledgers.
+- **Kernel `decide`.** Finite witnesses are checked by the kernel, never by
+  `native_decide`.
+- **Classical is cited as classical.** The contribution is the connection and
+  the verified artifact, not a claim of novelty over the ingredients.
+
+## The fourteen phases
+
+| Phase | Name | What lands there |
+|:--|:--|:--|
+| 1 | Foundations | Mixed-radix spaces; decode/encode bijections with ℕ; the Tick; the prefix ultrametric |
+| 2 | Mixed-Radix Complexes | Cylinders and filtration; block projections as conditional expectations; the Haar/contrast MRA; the commutant theorem |
+| 3 | Import Analytic Number Theory | Dirichlet convolution, characters, valuations; the cylinder-measurability bridge |
+| 4 | Integers as Programs | Computation primitives from ANT; the factorization lens |
+| 5 | Function-Defined Radices | The radix law; variable-radix trees; Tick with variable carry; no-infinite-carry conditions |
+| 6 | Custom Ultrametric Design | Radix engineering; the realizability criterion (Theorem 43) |
+| 7 | Context-Dependent Radix Systems | Radix laws that consult an external context or oracle |
+| 8 | Multi-Timeline Routing | Composition of timelines; the dependency-grading deadlock certificate; timing bounds |
+| 9 | Extended Base Support | Base-0 walls and base-1 wires; spatialized digits; the spatial thermometer |
+| 10 | Base-Zero Sea Dynamics | Deterministic substrate dynamics; the linear-chain bridge |
+| 11 | Digit-Conditional Signal Analysis | The projection algebra; the Fourier ceiling |
+| 12 | Unit Complement Structure | The complement `x ↦ 1 − x` as a uniform frame for the corpus's normalized quantities |
+| 13 | Generated Timelines | Continued-fraction gauges, generated rather than multiplied out; the certified Gosper emission engines |
+| 14 | The Synthetic Place Complex | Coupled radix networks: geometry, conservation, obstructions; the SU7 network machine; applications |
 
 ## Layout
+
+```
+docs/            # the spec (fdrs.md), the item index, design records, notation
+FdrsFormal/      # the Lean corpus (tree below)
+scripts/         # maintenance tooling — fdrs-summary and the index builder
+data/            # generated: the item index (YAML) and per-phase item graphs
+explorations/    # small Python sketches; exploratory, non-evidentiary
+```
 
 ```
 FdrsFormal/
@@ -162,14 +183,14 @@ FdrsFormal/
                           #   the SU7 network machine + Phase-8 bridge
 ```
 
-The default `lake build` target compiles the entire tree — every module above is
-imported (transitively) by the root module (wiring pass of 2026-07-12).
-
-`FdrsFormal.lean` is the root module aggregating the development; `Main.lean`
-is a trivial executable entry point. Design records for the newer complexes
-live in [`docs/synthetic-place/`](docs/synthetic-place/) and
-[`docs/function-field/`](docs/function-field/); superseded design documents
-are archived under [`docs/archive/`](docs/archive/).
+`FdrsFormal.lean` is the root module aggregating the development, and every
+module above is imported (transitively) by it, so the default `lake build`
+compiles the whole tree. `Main.lean` is a trivial executable entry point. A
+generated module dependency graph lives at
+[`docs/dependency-graph.svg`](docs/dependency-graph.svg). Design records for
+the newer complexes are in [`docs/synthetic-place/`](docs/synthetic-place/) and
+[`docs/function-field/`](docs/function-field/); superseded design documents are
+archived under [`docs/archive/`](docs/archive/).
 
 ## Building
 
@@ -184,8 +205,8 @@ lake build                     # the formalization
 python3 scripts/fdrs-summary   # live status: axioms, sorries, coverage
 ```
 
-[`docs/TESTING.md`](docs/TESTING.md) covers the work-in-progress modules
-outside the default target; [`docs/GENERAL_CONTEXT.md`](docs/GENERAL_CONTEXT.md)
+[`docs/TESTING.md`](docs/TESTING.md) covers work-in-progress modules outside
+the default target; [`docs/GENERAL_CONTEXT.md`](docs/GENERAL_CONTEXT.md)
 documents the trust hierarchy of the generated metadata;
 [`docs/notation.md`](docs/notation.md) is the symbol reference extracted from
 live code.
