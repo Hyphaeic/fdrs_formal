@@ -26,6 +26,8 @@ Additive and multiplicative (Dirichlet) characters with orthogonality and CRT.
    (Phase 3 §1.4 addendum: Theorem 119, Corollary 32, Propositions 154–155)
 5. **MixedRadixStages**: The staged FFT is the DFT; reads per output (§1.5)
 6. **GoodThomas**: The residue chart is untwisted; a chart iff coprime (§1.6)
+7. **FourierCircuit** / **FFTCircuit**: Family 130's gate model; exact gate counts for
+   the staged, dense, and binary circuits (§1.7)
 
 ## Mathematical References
 
@@ -46,3 +48,5 @@ import FdrsFormal.NumberTheory.Characters.TwistTransform
 import FdrsFormal.NumberTheory.Characters.MixedRadixFFT
 import FdrsFormal.NumberTheory.Characters.MixedRadixStages
 import FdrsFormal.NumberTheory.Characters.GoodThomas
+import FdrsFormal.NumberTheory.Characters.FourierCircuit
+import FdrsFormal.NumberTheory.Characters.FFTCircuit

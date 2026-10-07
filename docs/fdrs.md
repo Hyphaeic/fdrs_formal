@@ -1986,6 +1986,60 @@ exactly in the coprime case.
 contributes the placement next to Proposition 154 and the machine-checked
 artifact.
 
+## 1.7 Gate counts in the exact Fourier model (addendum, 2026-10-07)
+
+### Definition 216 (the exact Fourier gate model)  [§1.7 · Phase 3, Fragment 2]
+
+The scalar linear-circuit model of OpenAI's family 130 (re-stated with the
+semantics of its comparator statement `ExactFourier.lean`, openai/math, Apache
+License 2.0): a *gate* adds, subtracts, or multiplies by a predetermined complex
+scalar one or two available values and costs one; a *program* is a
+topologically ordered scalar DAG whose `k`-th gate may read the `n` inputs, the
+constant `0`, and the `k` earlier gates; a *circuit* names its `n` outputs among
+the available values (permutations and fan-out are free) and *computes* `A` if
+it returns `A x` on every input `x`. The *size* is the number of gates.
+Family 130's theorem — for every `c > 0`, arbitrarily long lengths admit exact
+Fourier circuits with fewer than `c · n log₂ n` gates — is recorded as the
+proposition `MainStatement` and is not proven in this corpus.
+
+### Proposition 157 (the frequency chart is a bijection)  [§1.7 · Phase 3, Fragment 2]
+
+`rdec_k : 𝓡^{(k)} → ℤ/B_{k+1}` is a bijection: it is `dec_k` of the reversed
+schedule `(b_k, b_{k-1}, …, b_0)` applied to the reversed digit string.
+
+### Theorem 123 (the staged circuit)  [§1.7 · Phase 3, Fragment 2]
+
+For every radix schedule, the DFT of length `N = B_{k+1}` is computed exactly by
+a circuit with
+[
+N\cdot\sum_{i\le k}(2b_i-1)
+]
+gates: stage `i` (Definition 214) spends one `b_i`-term linear-combination block
+— `2b_i - 1` gates — per output, inputs are read through `dec_k`, and outputs are
+named through `rdec_k` (Proposition 157).
+
+### Proposition 158 (the dense circuit)  [§1.7 · Phase 3, Fragment 2]
+
+Every length `n ≥ 1` has an exact Fourier circuit with `n(2n - 1)` gates.
+
+### Corollary 34 (the binary count)  [§1.7 · Phase 3, Fragment 2]
+
+On the binary schedule, length `N = 2^{k+1}` has an exact circuit with
+`3 · N · log₂ N` gates; hence family 130's statement holds for every `c > 3` by
+the staged construction alone.
+
+*Lean:* `FdrsFormal/NumberTheory/Characters/FourierCircuit.lean` (model and
+builder), `FdrsFormal/NumberTheory/Characters/FFTCircuit.lean` (circuits).
+
+**Honest scope (§1.7).** Classical (Cooley–Tukey 1965). The staged construction
+folds twiddles into its scalars; the classical radix-2 butterfly reaches
+`1.5 · N log₂ N` and split-radix less, so `c > 3` is a property of this
+construction, not a threshold. What family 130 adds — every `c > 0` along a
+subsequence, via sub-tensor-axis savings — is recorded, not proven. Open,
+in the corpus's own terms: which radix schedules admit circuits below
+`N · Σ_i (2b_i − 1)` — equivalently, below the tensor-axis cost of their own
+Vilenkin stages?
+
 ---
 
 # 2. Multiplicative probes: Dirichlet characters mod (q)
