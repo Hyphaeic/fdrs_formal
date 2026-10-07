@@ -1,6 +1,6 @@
 metadata:
-  total_files: 309
-  total_edges: 651
+  total_files: 311
+  total_edges: 655
   total_modules: 19
 modules:
   Analysis:
@@ -282,7 +282,9 @@ modules:
   - FdrsFormal/NumberTheory/Characters/AdditiveCharacters.lean
   - FdrsFormal/NumberTheory/Characters/CRT.lean
   - FdrsFormal/NumberTheory/Characters/DirichletCharacters.lean
+  - FdrsFormal/NumberTheory/Characters/GoodThomas.lean
   - FdrsFormal/NumberTheory/Characters/MixedRadixFFT.lean
+  - FdrsFormal/NumberTheory/Characters/MixedRadixStages.lean
   - FdrsFormal/NumberTheory/Characters/Oracle.lean
   - FdrsFormal/NumberTheory/Characters/TwistTransform.lean
   - FdrsFormal/NumberTheory/CylinderMeasurability.lean
@@ -1513,8 +1515,12 @@ file_edges:
   to: FdrsFormal/NumberTheory/ArithmeticFunctions/Definition.lean
 - from: FdrsFormal/NumberTheory/Characters/DirichletCharacters.lean
   to: FdrsFormal/NumberTheory/Characters/Oracle.lean
+- from: FdrsFormal/NumberTheory/Characters/GoodThomas.lean
+  to: FdrsFormal/NumberTheory/Characters/MixedRadixStages.lean
 - from: FdrsFormal/NumberTheory/Characters/MixedRadixFFT.lean
   to: FdrsFormal/Core/Finite/Bijection.lean
+- from: FdrsFormal/NumberTheory/Characters/MixedRadixStages.lean
+  to: FdrsFormal/NumberTheory/Characters/MixedRadixFFT.lean
 - from: FdrsFormal/NumberTheory/Characters/TwistTransform.lean
   to: FdrsFormal/NumberTheory/Characters/DirichletCharacters.lean
 - from: FdrsFormal/NumberTheory/Characters/TwistTransform.lean
@@ -1529,6 +1535,10 @@ file_edges:
   to: FdrsFormal/NumberTheory/Characters/TwistTransform.lean
 - from: FdrsFormal/NumberTheory/Characters.lean
   to: FdrsFormal/NumberTheory/Characters/MixedRadixFFT.lean
+- from: FdrsFormal/NumberTheory/Characters.lean
+  to: FdrsFormal/NumberTheory/Characters/MixedRadixStages.lean
+- from: FdrsFormal/NumberTheory/Characters.lean
+  to: FdrsFormal/NumberTheory/Characters/GoodThomas.lean
 - from: FdrsFormal/NumberTheory/CylinderMeasurability.lean
   to: FdrsFormal/Core/Primitives.lean
 - from: FdrsFormal/NumberTheory/CylinderMeasurability.lean

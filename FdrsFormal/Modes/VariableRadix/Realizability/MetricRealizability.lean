@@ -539,7 +539,9 @@ sets finite, ≥ 2 elements) is SU-realizable — carries the `δ_ω` defining f
 the position-only SU law `radix = card ∘ length` — **iff** every open ball is a
 prefix cylinder and every cylinder has canonical diameter. The conditions split
 exactly as the Phase-14 erratum records: (C1) pins the tree (the extraction /
-dendrogram step, Theorem 43-general); (C4) pins the gauge (Theorem 43-SU). -/
+dendrogram step, Theorem 43-general); (C4) pins the gauge (Theorem 43-SU).
+
+**fdrs.md**: Theorem 43 (realizability criterion for ultrametrics). -/
 theorem theorem43 (δ : AbstractUltrametric) (h2 : AbstractRealizabilityConditions δ) :
     SURealizable δ ↔ BallsAreCylinders δ ∧ CanonicalDiameters δ :=
   ⟨necessity h2, fun ⟨hC1, hdiam⟩ => sufficiency h2 hC1 hdiam⟩
