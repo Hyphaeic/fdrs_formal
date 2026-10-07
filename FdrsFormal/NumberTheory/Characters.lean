@@ -24,6 +24,8 @@ Additive and multiplicative (Dirichlet) characters with orthogonality and CRT.
 3. **CRT**: Factorization of characters and projectors under Chinese Remainder Theorem
 4. **MixedRadixFFT**: The pulled-back character as Vilenkin character × twiddle kernel
    (Phase 3 §1.4 addendum: Theorem 119, Corollary 32, Propositions 154–155)
+5. **MixedRadixStages**: The staged FFT is the DFT; reads per output (§1.5)
+6. **GoodThomas**: The residue chart is untwisted; a chart iff coprime (§1.6)
 
 ## Mathematical References
 
@@ -42,3 +44,5 @@ import FdrsFormal.NumberTheory.Characters.DirichletCharacters
 import FdrsFormal.NumberTheory.Characters.CRT
 import FdrsFormal.NumberTheory.Characters.TwistTransform
 import FdrsFormal.NumberTheory.Characters.MixedRadixFFT
+import FdrsFormal.NumberTheory.Characters.MixedRadixStages
+import FdrsFormal.NumberTheory.Characters.GoodThomas

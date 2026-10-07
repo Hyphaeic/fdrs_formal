@@ -1903,12 +1903,88 @@ Cooley–Tukey FFT.
 
 *Lean:* `FdrsFormal/NumberTheory/Characters/MixedRadixFFT.lean`.
 
-**Honest scope (§1.4).** No operation count is formalized: the circuit cost
-of the stage recursion (`B_{k+1} · Σ_i b_i` scalar multiplications, naively),
-its comparison with family 130's tensor savings, and the Good–Thomas chart are
-follow-ups. Open question raised by family 130 for variable radix: which
+**Honest scope (§1.4).** No operation count is formalized here; §1.5 runs the
+stage recursion as an algorithm and counts its reads, and §1.6 gives the
+Good–Thomas chart. Open question raised by family 130 for variable radix: which
 radix schedules admit a Fourier circuit beating the tensor-axis cost of their
 own Vilenkin transform?
+
+## 1.5 The staged transform and its read count (addendum, 2026-10-07)
+
+### Definition 214 (stage operators; the staged transform)  [§1.5 · Phase 3, Fragment 2]
+
+For `y : 𝓡^{(k)} → ℂ` and a digit position `i`, the *stage operator* sums out
+digit `i` in place against the stage factor of Proposition 155:
+[
+(T_i\,y)(\rho):=\sum_{t<b_i} y(\rho[i:=t])\,S_i(t;\rho).
+]
+The *staged transform* is `T_0 ∘ T_1 ∘ ⋯ ∘ T_k`. Its intermediate arrays live on
+`𝓡^{(k)}` itself: after `T_k, …, T_i`, positions `< i` still hold time digits and
+positions `≥ i` hold frequency digits.
+
+### Theorem 120 (the staged transform is the DFT)  [§1.5 · Phase 3, Fragment 2]
+
+`(T_0 ⋯ T_k\, y)(σ) = Σ_τ y(τ)\, ζ_N^{rdec σ · dec τ}`; in particular, on
+`y = x ∘ dec_k` it returns `DFT_N(x)` at `rdec_k σ`.
+*Proof.* Induct on the number of stages with the invariant: after `n` stages the
+array is `Σ_τ y(τ) [τ_l = ρ_l \text{ for unprocessed } l] ∏_{\text{processed } l}
+S_l(τ_l; ρ)`. One stage collapses the sum over `t` onto `t = τ_i`, and the
+earlier factors do not see position `i` (Proposition 155). ∎
+
+### Proposition 156 (the read count)  [§1.5 · Phase 3, Fragment 2]
+
+Say a transform *reads at most `r` entries per output* if each output entry is
+determined by some `r` input entries. Then (i) stage `T_i` reads at most `b_i`;
+(ii) the dense transform `y ↦ Σ_τ y(τ) ζ_N^{rdec σ · dec τ}` reads at most `r`
+**iff** `N ≤ r` (every kernel entry is a nonzero root of unity); (iii)
+`Σ_{i≤k} b_i ≤ B_{k+1}` on every schedule. So the staged transform reads
+`N · Σ_i b_i ≤ N²` entries against the dense `N²`.
+
+*Lean:* `FdrsFormal/NumberTheory/Characters/MixedRadixStages.lean`.
+
+**Honest scope (§1.5).** Classical (Cooley–Tukey 1965). The measure is reads per
+output (row sparsity of a sparse factorization), not a gate count; twiddles are
+folded into the stage coefficients. In family 130's gate model each stage is one
+tensor-axis call of a `b_i × b_i` matrix between free monomial maps, and that
+family's sub-tensor-axis savings are invisible to this measure.
+
+## 1.6 The Good–Thomas chart (addendum, 2026-10-07)
+
+Proposition 154 showed the positional chart twists `ℤ/B` against its digit
+groups on every multi-digit line. This section shows the twist belongs to the
+chart, not the group, exactly when the radices are pairwise coprime.
+
+### Definition 215 (the residue and Good charts)  [§1.6 · Phase 3, Fragment 2]
+
+The *residue chart* `crt(n) := (n mod b_i)_{i≤k}` and *Good's output chart*
+`rur(σ) := Σ_i σ_i · ∏_{l≠i} b_l`.
+
+### Theorem 121 (the untwisted phase)  [§1.6 · Phase 3, Fragment 2]
+
+For every schedule, `ζ_N^{rur(σ) · n} = V(crt(n), σ) = ∏_i ζ_{b_i}^{(n \bmod b_i)\,σ_i}`.
+*Proof.* `ζ_N^{σ_i ∏_{l≠i} b_l · n} = ζ_{b_i}^{σ_i n}`, which depends on `n` only
+mod `b_i`. ∎
+
+### Theorem 122 (the coprime boundary)  [§1.6 · Phase 3, Fragment 2]
+
+The residue chart `ℤ/B_{k+1} → 𝓡^{(k)}` is a bijection **iff** `b_0, …, b_k`
+are pairwise coprime; in that case Good's chart `𝓡^{(k)} → ℤ/B_{k+1}` is a
+bijection too. If `g = gcd(b_i, b_j) > 1`, the nonzero class `N/g` has every
+residue `0`.
+
+### Corollary 33 (Good–Thomas)  [§1.6 · Phase 3, Fragment 2]
+
+For pairwise-coprime radices the DFT on `ℤ/B_{k+1}`, with inputs read through
+the residue chart and outputs through Good's chart, *is* the Vilenkin transform
+of `∏_i ℤ/b_i` — no twiddle factors. Read with Proposition 154: positional chart,
+twisted on every multi-digit line; residue chart, untwisted, and a chart at all
+exactly in the coprime case.
+
+*Lean:* `FdrsFormal/NumberTheory/Characters/GoodThomas.lean`.
+
+**Honest scope (§1.6).** Classical: Good (1958), Thomas (1963). The corpus
+contributes the placement next to Proposition 154 and the machine-checked
+artifact.
 
 ---
 

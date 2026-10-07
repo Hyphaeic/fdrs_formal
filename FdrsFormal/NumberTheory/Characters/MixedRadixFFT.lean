@@ -42,9 +42,9 @@ character factors digit-by-digit into a **triangular** kernel:
 **Honest scope.** This is the classical mixed-radix Cooley–Tukey index
 calculus (Cooley–Tukey 1965; Good 1958 for the coprime variant), restated on
 the corpus's own `dec_k` chart; no new mathematics is claimed. Nothing here
-counts operations — the circuit cost of the induced algorithm, and the
-Good–Thomas CRT chart that removes twiddles for pairwise-coprime radices, are
-recorded as follow-ups, not proven. Motivation: OpenAI's family 130
+counts operations: the staged algorithm and its read count are in
+`MixedRadixStages.lean` (§1.5), and the Good–Thomas chart that removes twiddles
+for pairwise-coprime radices is in `GoodThomas.lean` (§1.6). Motivation: OpenAI's family 130
 (sub-`n log n` exact Fourier circuits, via savings on tensor-axis
 computations over digit coordinates) works on exactly this tensor/twiddle
 decomposition.
