@@ -22,6 +22,8 @@ Additive and multiplicative (Dirichlet) characters with orthogonality and CRT.
 1. **AdditiveCharacters**: Characters on ℤ/Nℤ, orthogonality, residue projectors
 2. **DirichletCharacters**: Multiplicative characters, dual orthogonality
 3. **CRT**: Factorization of characters and projectors under Chinese Remainder Theorem
+4. **MixedRadixFFT**: The pulled-back character as Vilenkin character × twiddle kernel
+   (Phase 3 §1.4 addendum: Theorem 119, Corollary 30, Propositions 154–155)
 
 ## Mathematical References
 
@@ -39,3 +41,4 @@ import FdrsFormal.NumberTheory.Characters.AdditiveCharacters
 import FdrsFormal.NumberTheory.Characters.DirichletCharacters
 import FdrsFormal.NumberTheory.Characters.CRT
 import FdrsFormal.NumberTheory.Characters.TwistTransform
+import FdrsFormal.NumberTheory.Characters.MixedRadixFFT

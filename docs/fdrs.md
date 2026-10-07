@@ -1846,6 +1846,70 @@ Let (*_k) be cyclic convolution on (\mathcal R^{(k)}) (equivalently (\mathbb Z/N
 
 **Meaning:** additive characters are exact “frequency probes” of the time convolution algebra.
 
+## 1.4 The mixed-radix Fourier factorization (addendum, 2026-10-07)
+
+*(Provenance: OpenAI's mathematics collection, family 130 — exact Fourier
+circuits below `n log n`, obtained from savings on tensor-axis computations
+over digit coordinates. Those circuits act on exactly the decomposition below;
+this addendum states it on the corpus's own `dec_k` chart. The mathematics is
+the classical Cooley–Tukey index calculus; no new theorems are claimed.)*
+
+Write `B_{[i,j)} := ∏_{i ≤ l < j} b_l`, so `B_j = B_i · B_{[i,j)}` and
+`N = B_{k+1}`. Read a **frequency** in the reversed schedule:
+`rdec_k(σ) := Σ_j σ_j · B_{[j+1,k+1)}` for `σ ∈ 𝓡^{(k)}`, and write
+`ζ_n := exp(2πi/n)`.
+
+### Theorem 119 (the triangular phase)  [§1.4 · Phase 3, Fragment 2]
+
+For `τ, σ ∈ 𝓡^{(k)}`:
+[
+\zeta_N^{\operatorname{dec}_k(\tau)\cdot\operatorname{rdec}_k(\sigma)}
+=\prod_{i\le j}\zeta_{B_{[i,j+1)}}^{\tau_i\sigma_j}.
+]
+Digit pairs with `i > j` contribute nothing.
+*Proof.* Expand the product of the two digit sums. For `i ≤ j`,
+`N = B_{[i,j+1)} · (B_i · B_{[j+1,k+1)})`, so the pair's weight coarsens `ζ_N`
+to `ζ_{B_{[i,j+1)}}`; for `i > j`, `B_i · B_{[j+1,k+1)} = N · B_{[j+1,i)}`. ∎
+
+### Corollary 30 (Vilenkin character × twiddle kernel)  [§1.4 · Phase 3, Fragment 2]
+
+The diagonal `i = j` of Theorem 119 is `V(τ,σ) = ∏_i ζ_{b_i}^{τ_iσ_i}`, the
+character of the carry-free group `∏_i ℤ/b_i` (the Vilenkin character); the
+strict upper triangle is the **twiddle kernel**
+`T(τ,σ) = ∏_{i<j} ζ_{B_{[i,j+1)}}^{τ_iσ_j}`. Hence
+`χ_{rdec σ}(dec τ) = V(τ,σ)·T(τ,σ)` and, for the transform of §1.1,
+[
+\widehat f(\operatorname{rdec}_k\sigma)=\frac1N\sum_{\tau\in\mathcal R^{(k)}}
+f(\operatorname{dec}_k\tau)\,\overline{V(\tau,\sigma)}\,\overline{T(\tau,\sigma)}.
+]
+The DFT on `ℤ/B_{k+1}` is the Vilenkin transform twisted by the twiddles.
+
+### Proposition 154 (the twiddle boundary)  [§1.4 · Phase 3, Fragment 2]
+
+`T ≡ 1` on `𝓡^{(k)} × 𝓡^{(k)}` **iff** `k = 0`. With two or more digits,
+`τ = e_0, σ = e_1` gives `T = ζ_{b_0b_1} ≠ 1`.
+*Reading:* through the positional chart, `ℤ/B` is a *twisted* product of its
+digit groups on every multi-digit line; the twist is the carry. (Good's
+coprime-factor chart, which is CRT rather than positional, removes the twist
+when the radices are pairwise coprime — not formalized here.)
+
+### Proposition 155 (stage locality)  [§1.4 · Phase 3, Fragment 2]
+
+The phase is a product of stage factors
+`S_i(τ_i; σ) = ∏_{j ≥ i} ζ_{B_{[i,j+1)}}^{τ_iσ_j}`, and `S_i` depends on `σ`
+only through the digits `σ_j`, `j ≥ i`. Summing out `τ_k` first (needing only
+`σ_k`), then `τ_{k-1}` (needing `σ_{k-1}, σ_k`), and so on, is the mixed-radix
+Cooley–Tukey FFT.
+
+*Lean:* `FdrsFormal/NumberTheory/Characters/MixedRadixFFT.lean`.
+
+**Honest scope (§1.4).** No operation count is formalized: the circuit cost
+of the stage recursion (`B_{k+1} · Σ_i b_i` scalar multiplications, naively),
+its comparison with family 130's tensor savings, and the Good–Thomas chart are
+follow-ups. Open question raised by family 130 for variable radix: which
+radix schedules admit a Fourier circuit beating the tensor-axis cost of their
+own Vilenkin transform?
+
 ---
 
 # 2. Multiplicative probes: Dirichlet characters mod (q)
