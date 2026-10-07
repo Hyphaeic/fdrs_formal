@@ -29,6 +29,7 @@ Additive and multiplicative (Dirichlet) characters with orthogonality and CRT.
 7. **FourierCircuit** / **FFTCircuit**: Family 130's gate model; exact gate counts for
    the staged, dense, and binary circuits (§1.7)
 8. **FFTButterfly**: The binary stage is a butterfly; `(3/2) N log₂ N` gates (§1.8)
+9. **FFTTwiddleSkip**: Trivial twiddles skipped; exactly `(3/2) N log₂ N − N + 1` gates (§1.9)
 
 ## Mathematical References
 
@@ -52,3 +53,4 @@ import FdrsFormal.NumberTheory.Characters.GoodThomas
 import FdrsFormal.NumberTheory.Characters.FourierCircuit
 import FdrsFormal.NumberTheory.Characters.FFTCircuit
 import FdrsFormal.NumberTheory.Characters.FFTButterfly
+import FdrsFormal.NumberTheory.Characters.FFTTwiddleSkip

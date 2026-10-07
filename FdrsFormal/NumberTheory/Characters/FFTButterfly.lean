@@ -31,8 +31,8 @@ family 130's gate model (Definition 216), with an exact gate count.
   holds for every `c > 3/2` by this construction.
 
 **Honest scope.** Classical (Cooley–Tukey 1965). The construction scales by every
-twiddle, trivial or not; skipping the `W = 1` products and split-radix schemes
-lower the constant further, and family 130 proves every `c > 0`. Neither is
+twiddle, trivial or not; skipping the `W = 1` products is `FFTTwiddleSkip.lean`
+(§1.9). Split-radix schemes and family 130's every-`c > 0` theorem are not
 claimed here.
 -/
 

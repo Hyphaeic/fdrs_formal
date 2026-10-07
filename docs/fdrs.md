@@ -2072,9 +2072,47 @@ Family 130's statement holds for every `c > 3/2` by the butterfly circuits alone
 *Lean:* `FdrsFormal/NumberTheory/Characters/FFTButterfly.lean`.
 
 **Honest scope (§1.8).** Classical (Cooley–Tukey 1965). The construction scales by
-every twiddle, trivial or not; skipping the `W = 1` products, and split-radix
-schemes, lower the constant further, and family 130 proves every `c > 0`. None
-of these is claimed here.
+every twiddle, trivial or not; skipping the `W = 1` products is §1.9; split-radix
+schemes and family 130's every-`c > 0` theorem are not claimed here.
+
+## 1.9 Skipping trivial twiddles (addendum, 2026-10-07)
+
+### Proposition 160 (trivial twiddles)  [§1.9 · Phase 3, Fragment 2]
+
+On the binary schedule, `W_i(ρ) = 1` **iff** `ρ_j = 0` for every `j > i`.
+*Proof.* `W_i(ρ) = ζ_M^E` with `M = 2^{k+1-i}` and `E = Σ_{j>i} 2^{k-j} ρ_j ≤ 2^{k-i} - 1 < M`;
+`ζ_M` is a primitive `M`-th root, so `ζ_M^E = 1` iff `M ∣ E` iff `E = 0`. ∎
+Hence digit `i` carries exactly `2^i` trivial pairs (the points vanishing at and
+above `i`), and its butterflies cost `3 · 2^k − 2^i` gates when trivial twiddles
+are skipped. No twiddle equals `-1` (`E < M/2`).
+
+### Theorem 125 (the skipping circuit)  [§1.9 · Phase 3, Fragment 2]
+
+Length `N = 2^{k+1}` has an exact Fourier circuit (Definition 216) with exactly
+[
+\tfrac32\,N\log_2 N-N+1
+]
+gates (over `ℕ`: `size + 2^{k+1} = 3 · 2^k (k+1) + 1`): trivial pairs use two gates
+(add, subtract), the others three.
+
+### Corollary 36 (the gap)  [§1.9 · Phase 3, Fragment 2]
+
+Against Theorem 124 the saving is exactly `N − 1` gates, and
+[
+\frac{\text{size}}{N\log_2N}=\frac32-\frac{N-1}{N\log_2N}.
+]
+The normalized constant rises toward `3/2` like `3/2 − 1/log₂N` (`N = 2: 1`;
+`N = 4: 1.125`; `N = 16: ≈1.266`; `N = 1024: ≈1.400`): skipping trivial
+twiddles moves the lower-order term, never the constant.
+
+*Lean:* `FdrsFormal/NumberTheory/Characters/FFTTwiddleSkip.lean`.
+
+**Honest scope (§1.9).** Classical (radix-2 with `N log₂ N` additions and
+`(N/2) log₂ N − N + 1` multiplications). In this gate model a multiplication by
+`±i` is a charged scale gate, so the radix-4 and split-radix savings of the
+real-arithmetic literature do not transfer as they stand; family 130 shows the
+constant itself can be pushed to any `c > 0` along a subsequence. Neither is
+claimed here.
 
 ---
 
