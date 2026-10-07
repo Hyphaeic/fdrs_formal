@@ -1871,7 +1871,7 @@ Digit pairs with `i > j` contribute nothing.
 `N = B_{[i,j+1)} · (B_i · B_{[j+1,k+1)})`, so the pair's weight coarsens `ζ_N`
 to `ζ_{B_{[i,j+1)}}`; for `i > j`, `B_i · B_{[j+1,k+1)} = N · B_{[j+1,i)}`. ∎
 
-### Corollary 30 (Vilenkin character × twiddle kernel)  [§1.4 · Phase 3, Fragment 2]
+### Corollary 32 (Vilenkin character × twiddle kernel)  [§1.4 · Phase 3, Fragment 2]
 
 The diagonal `i = j` of Theorem 119 is `V(τ,σ) = ∏_i ζ_{b_i}^{τ_iσ_i}`, the
 character of the carry-free group `∏_i ℤ/b_i` (the Vilenkin character); the

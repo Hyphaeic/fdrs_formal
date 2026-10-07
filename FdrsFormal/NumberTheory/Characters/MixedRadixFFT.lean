@@ -24,7 +24,7 @@ character factors digit-by-digit into a **triangular** kernel:
 - **Theorem 119** (`zeta_pow_decode_mul_reverseDecode`): the phase
   `ζ_N^{dec τ · rdec σ}` is `∏_{i ≤ j} ζ_{B_{[i, j+1)}}^{τ_i σ_j}` — pairs of
   digits with `i > j` contribute nothing.
-- **Corollary 30** (`character_factor`, `dft_factor`, `fourier_factor`): the
+- **Corollary 32** (`character_factor`, `dft_factor`, `fourier_factor`): the
   diagonal `i = j` is the Vilenkin character `∏_i ζ_{b_i}^{τ_i σ_i}` of the
   carry-free group `∏ ℤ/b_i`; the strict upper triangle `i < j` is the
   twiddle kernel. The DFT on `ℤ/B_{k+1}` is the Vilenkin transform twisted by
@@ -168,7 +168,7 @@ theorem zeta_pow_decode_mul_reverseDecode (k : ℕ) (τ σ : FiniteRadixSpace b 
   congr 1
   ring
 
-/-! ## Corollary 30: Vilenkin character × twiddle kernel -/
+/-! ## Corollary 32: Vilenkin character × twiddle kernel -/
 
 /-- The Vilenkin kernel: the character of the carry-free product group `∏ ℤ/b_i`,
 pairing digits only on the diagonal. -/
@@ -180,10 +180,10 @@ noncomputable def twiddleKernel (k : ℕ) (τ σ : FiniteRadixSpace b k) : ℂ :
   ∏ i : Fin (k + 1), ∏ j : Fin (k + 1),
     if i < j then zeta (blockProd b i ((j : ℕ) + 1)) ^ ((τ i : ℕ) * σ j) else 1
 
-/-- **Corollary 30 (character form).** The pulled-back character `χ_m(dec_k τ)` at
+/-- **Corollary 32 (character form).** The pulled-back character `χ_m(dec_k τ)` at
 frequency `m = rdec_k σ` is the Vilenkin character times the twiddle kernel.
 
-**fdrs.md**: Corollary 30 (Vilenkin × twiddle). -/
+**fdrs.md**: Corollary 32 (Vilenkin × twiddle). -/
 theorem character_factor (k : ℕ) (τ σ : FiniteRadixSpace b k) :
     zeta (placeValue b (k + 1)) ^ (reverseDecode b k σ * decodeFinite b k τ) =
       vilenkinKernel k τ σ * twiddleKernel k τ σ := by
@@ -208,10 +208,10 @@ theorem character_factor (k : ℕ) (τ σ : FiniteRadixSpace b k) :
 noncomputable def dft (N : ℕ) (x : ℕ → ℂ) (m : ℕ) : ℂ :=
   ∑ n ∈ Finset.range N, x n * zeta N ^ (m * n)
 
-/-- **Corollary 30 (transform form).** On `ℤ/B_{k+1}`, read through `dec_k`, the DFT
+/-- **Corollary 32 (transform form).** On `ℤ/B_{k+1}`, read through `dec_k`, the DFT
 at frequency `rdec_k σ` is the Vilenkin transform twisted by the twiddle kernel.
 
-**fdrs.md**: Corollary 30 (Vilenkin × twiddle). -/
+**fdrs.md**: Corollary 32 (Vilenkin × twiddle). -/
 theorem dft_factor (k : ℕ) (x : ℕ → ℂ) (σ : FiniteRadixSpace b k) :
     dft (placeValue b (k + 1)) x (reverseDecode b k σ) =
       ∑ τ : FiniteRadixSpace b k,
@@ -221,10 +221,10 @@ theorem dft_factor (k : ℕ) (x : ℕ → ℂ) (σ : FiniteRadixSpace b k) :
   rw [← character_factor]
   rfl
 
-/-- **Corollary 30 (spec normalization).** Phase 3 §1.1's normalized transform
+/-- **Corollary 32 (spec normalization).** Phase 3 §1.1's normalized transform
 `f̂(m) = (1/N) Σ_x f(x) · conj χ_m(x)`, at `m = rdec_k σ`.
 
-**fdrs.md**: Corollary 30 (Vilenkin × twiddle). -/
+**fdrs.md**: Corollary 32 (Vilenkin × twiddle). -/
 theorem fourier_factor (k : ℕ) (f : ℕ → ℂ) (σ : FiniteRadixSpace b k) :
     (1 / (placeValue b (k + 1) : ℂ)) *
         ∑ n ∈ Finset.range (placeValue b (k + 1)),
@@ -272,8 +272,7 @@ theorem twiddleKernel_trivial_iff (k : ℕ) :
         by_cases hi : i = i0
         · subst hi
           rw [if_pos rfl, Finset.prod_eq_single i1]
-          · have hlt : i0 < i1 := by simp [i0, i1, Fin.lt_def]
-            simp [hlt, hτ, hσ, i0, i1]
+          · simp [hτ, hσ, i0, i1]
           · intro j _ hj
             simp [hσ, hj]
           · simp
