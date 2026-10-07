@@ -42,3 +42,6 @@ explorations/
 /adelic-machine
 gosper-fdrs-handoff.md
 /archive
+
+# Rust tool build output
+/tools/*/target/

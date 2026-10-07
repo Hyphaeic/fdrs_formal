@@ -2039,6 +2039,8 @@ subsequence, via sub-tensor-axis savings — is recorded, not proven. Open,
 in the corpus's own terms: which radix schedules admit circuits below
 `N · Σ_i (2b_i − 1)` — equivalently, below the tensor-axis cost of their own
 Vilenkin stages?
+*(Search opened 2026-10-07: `docs/fourier/01-schedule-search.md` —
+measured, not proven.)*
 
 ## 1.8 The radix-2 butterfly (addendum, 2026-10-07)
 

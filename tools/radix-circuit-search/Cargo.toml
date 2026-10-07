@@ -1,0 +1,12 @@
+[package]
+name = "radix-circuit-search"
+version = "0.1.0"
+edition = "2021"
+description = "Search for exact Fourier circuits over radix schedules in family 130's gate model (fdrs.md Phase 3 §1.7–1.9)"
+license-file = "../../LICENSE"
+publish = false
+
+[dependencies]
+
+[profile.release]
+opt-level = 3

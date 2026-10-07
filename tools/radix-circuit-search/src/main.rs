@@ -1,0 +1,250 @@
+//! `radix-circuit-search` — the FDRS radix-schedule circuit search (fdrs.md Phase 3
+//! §1.4–1.9 and the open question of §1.7).
+//!
+//! For every length `N ≤ --max`, find the cheapest exact DFT circuit in family 130's
+//! gate model over plans built from dense and conjugate-pair kernels, Cooley–Tukey
+//! splits (explicit or folded twiddles) and Good–Thomas splits. Compare with the
+//! corpus's proven counts: Theorem 123 (`N · Σ (2b_i − 1)` on the prime schedule)
+//! and Theorem 125 (`(3/2) N log₂ N − N + 1` on powers of two).
+//!
+//! Every reported plan with `N ≤ --verify` is built as a straight-line program,
+//! its length checked against the planner's count, and its output checked against
+//! the naive DFT. Gate counts are exact; correctness is checked numerically (f64),
+//! not proven.
+
+mod circuit;
+mod complex;
+mod plan;
+
+use circuit::Builder;
+use complex::{root, C64};
+use plan::{Limits, Planner};
+use std::fmt::Write as _;
+use std::fs;
+
+fn prime_factors(mut n: usize) -> Vec<usize> {
+    let mut f = Vec::new();
+    let mut p = 2;
+    while p * p <= n {
+        while n % p == 0 {
+            f.push(p);
+            n /= p;
+        }
+        p += 1;
+    }
+    if n > 1 {
+        f.push(n);
+    }
+    f
+}
+
+/// Theorem 123 on the prime schedule (the cheapest schedule for that construction).
+fn thm123(n: usize) -> usize {
+    n * prime_factors(n).iter().map(|p| 2 * p - 1).sum::<usize>()
+}
+
+/// Theorem 125, for `N = 2^m`.
+fn thm125(n: usize) -> Option<usize> {
+    if n >= 2 && n.is_power_of_two() {
+        let m = n.trailing_zeros() as usize;
+        Some(3 * n * m / 2 - n + 1)
+    } else {
+        None
+    }
+}
+
+fn naive_dft(x: &[C64]) -> Vec<C64> {
+    let n = x.len();
+    (0..n)
+        .map(|k| (0..n).fold(C64::ZERO, |acc, j| acc + root(n, j * k) * x[j]))
+        .collect()
+}
+
+/// Deterministic pseudo-random input (xorshift).
+fn sample(n: usize, seed: u64) -> Vec<C64> {
+    let mut s = seed.wrapping_mul(0x9E37_79B9_7F4A_7C15) | 1;
+    let mut next = || {
+        s ^= s << 13;
+        s ^= s >> 7;
+        s ^= s << 17;
+        (s >> 11) as f64 / (1u64 << 53) as f64 * 2.0 - 1.0
+    };
+    (0..n).map(|_| C64::new(next(), next())).collect()
+}
+
+fn verify(pl: &Planner, n: usize) -> Result<(), String> {
+    let mut b = Builder::new(n);
+    let inputs: Vec<usize> = (0..n).collect();
+    let outs = pl.build(n, &mut b, &inputs);
+    let prog = b.finish(outs);
+    if prog.size() != pl.best[n] {
+        return Err(format!("N={n}: built {} gates, planned {}", prog.size(), pl.best[n]));
+    }
+    for seed in 1..=2u64 {
+        let x = sample(n, seed + n as u64);
+        let got = prog.eval(&x);
+        let want = naive_dft(&x);
+        let err = got.iter().zip(&want).map(|(a, b)| (*a - *b).abs()).fold(0.0, f64::max);
+        if err > 1e-9 * (n as f64) {
+            return Err(format!("N={n}: max error {err:e}"));
+        }
+    }
+    Ok(())
+}
+
+struct Args {
+    max: usize,
+    verify: usize,
+    csv: Option<String>,
+    md: Option<String>,
+}
+
+fn parse_args() -> Args {
+    let mut a = Args { max: 1024, verify: 256, csv: None, md: None };
+    let mut it = std::env::args().skip(1);
+    while let Some(flag) = it.next() {
+        let mut val = || it.next().unwrap_or_else(|| panic!("{flag} needs a value"));
+        match flag.as_str() {
+            "--max" => a.max = val().parse().expect("--max N"),
+            "--verify" => a.verify = val().parse().expect("--verify N"),
+            "--csv" => a.csv = Some(val()),
+            "--md" => a.md = Some(val()),
+            "-h" | "--help" => {
+                println!("radix-circuit-search [--max N] [--verify N] [--csv PATH] [--md PATH]");
+                std::process::exit(0);
+            }
+            other => panic!("unknown flag {other}"),
+        }
+    }
+    a
+}
+
+fn norm_const(gates: usize, n: usize) -> f64 {
+    gates as f64 / (n as f64 * (n as f64).log2())
+}
+
+fn main() {
+    let args = parse_args();
+    let pl = Planner::run(args.max, &Limits::default());
+
+    let mut verified = 0;
+    for n in 1..=args.verify.min(args.max) {
+        if let Err(e) = verify(&pl, n) {
+            eprintln!("VERIFY FAILED: {e}");
+            std::process::exit(1);
+        }
+        verified += 1;
+    }
+
+    // CSV: one row per length
+    let mut csv = String::from("N,best,thm123,thm125,best_over_thm123,c_norm,plan\n");
+    for n in 1..=args.max {
+        let c = if n >= 2 { format!("{:.4}", norm_const(pl.best[n], n)) } else { String::new() };
+        let r = if n >= 2 { format!("{:.4}", pl.best[n] as f64 / thm123(n) as f64) } else { String::new() };
+        let t5 = thm125(n).map(|v| v.to_string()).unwrap_or_default();
+        let _ = writeln!(csv, "{n},{},{},{t5},{r},{c},\"{}\"", pl.best[n], thm123(n), pl.describe(n));
+    }
+    if let Some(p) = &args.csv {
+        fs::write(p, &csv).expect("write csv");
+    }
+
+    // Markdown summary
+    let mut md = String::new();
+    let _ = writeln!(md, "# Radix-schedule circuit search — results\n");
+    let _ = writeln!(
+        md,
+        "Generated by `tools/radix-circuit-search` (`--max {}`); {verified} plans (all `N ≤ {}`) \
+         built and checked against the naive DFT. Gate counts are exact program lengths; \
+         correctness is checked numerically (f64), not proven.\n",
+        args.max,
+        args.verify.min(args.max)
+    );
+    let _ = writeln!(md, "## Powers of two\n");
+    let _ = writeln!(md, "| N | best | Thm 125 | best / (N log₂N) | plan |\n|---|---|---|---|---|");
+    let mut n = 2;
+    while n <= args.max {
+        let _ = writeln!(
+            md,
+            "| {n} | {} | {} | {:.4} | `{}` |",
+            pl.best[n],
+            thm125(n).unwrap(),
+            norm_const(pl.best[n], n),
+            pl.describe(n)
+        );
+        n *= 2;
+    }
+    let _ = writeln!(md, "\n## Small lengths (all N ≤ 32)\n");
+    let _ = writeln!(md, "| N | best | Thm 123 | best / Thm 123 | best / (N log₂N) | plan |\n|---|---|---|---|---|---|");
+    for n in 2..=32.min(args.max) {
+        let _ = writeln!(
+            md,
+            "| {n} | {} | {} | {:.3} | {:.3} | `{}` |",
+            pl.best[n],
+            thm123(n),
+            pl.best[n] as f64 / thm123(n) as f64,
+            norm_const(pl.best[n], n),
+            pl.describe(n)
+        );
+    }
+    // lowest normalized constants among N ≥ 64
+    let mut ranked: Vec<usize> = (64..=args.max).collect();
+    ranked.sort_by(|&a, &b| norm_const(pl.best[a], a).partial_cmp(&norm_const(pl.best[b], b)).unwrap());
+    let _ = writeln!(md, "\n## Cheapest lengths per `N log₂N` (N ≥ 64)\n");
+    let _ = writeln!(md, "| N | best | best / (N log₂N) | plan |\n|---|---|---|---|");
+    for &n in ranked.iter().take(15) {
+        let _ = writeln!(md, "| {n} | {} | {:.4} | `{}` |", pl.best[n], norm_const(pl.best[n], n), pl.describe(n));
+    }
+    // how often each top-level move wins
+    let mut counts = std::collections::BTreeMap::new();
+    for n in 2..=args.max {
+        let key = match pl.choice[n] {
+            plan::Choice::Identity => "identity",
+            plan::Choice::Dense => "dense",
+            plan::Choice::Pair => "pair",
+            plan::Choice::CT { .. } => "Cooley–Tukey",
+            plan::Choice::CTFold { .. } => "Cooley–Tukey, folded",
+            plan::Choice::PFA { .. } => "Good–Thomas",
+        };
+        *counts.entry(key).or_insert(0usize) += 1;
+    }
+    let _ = writeln!(md, "\n## Winning top-level move, N = 2…{}\n", args.max);
+    let _ = writeln!(md, "| move | lengths |\n|---|---|");
+    for (k, v) in &counts {
+        let _ = writeln!(md, "| {k} | {v} |");
+    }
+    if let Some(p) = &args.md {
+        fs::write(p, &md).expect("write md");
+    }
+    print!("{md}");
+}
+
+#[cfg(test)]
+mod tests {
+    use super::*;
+
+    #[test]
+    fn pair_kernel_cost_and_value() {
+        for n in [3usize, 5, 7, 9, 11, 15] {
+            let mut b = Builder::new(n);
+            let x: Vec<usize> = (0..n).collect();
+            let o = plan::build_pair(n, &mut b, &x);
+            let prog = b.finish(o);
+            assert_eq!(prog.size(), n * n - 1);
+            let v = sample(n, 7);
+            let err = prog.eval(&v).iter().zip(naive_dft(&v)).map(|(a, b)| (*a - b).abs()).fold(0.0, f64::max);
+            assert!(err < 1e-10, "n={n} err={err}");
+        }
+    }
+
+    #[test]
+    fn planner_matches_proven_counts() {
+        let pl = Planner::run(256, &Limits::default());
+        for n in 1..=256 {
+            verify(&pl, n).unwrap();
+            assert!(pl.best[n] <= thm123(n).max(0), "N={n} exceeds Theorem 123");
+            if let Some(t) = thm125(n) {
+                assert!(pl.best[n] <= t, "N={n} exceeds Theorem 125");
+            }
+        }
+    }
+}

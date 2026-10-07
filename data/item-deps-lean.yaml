@@ -1,11 +1,11 @@
 metadata:
   total_file_edges: 733
   total_raw_edges: 22299
-  total_item_edges: 7523
-  spurious_filtered: 3114
+  total_item_edges: 7563
+  spurious_filtered: 3110
   unmapped_files: 70
-  decl_resolved: 1937
-  file_fallback: 20362
+  decl_resolved: 2008
+  file_fallback: 20291
   source: lean_environment_decl_level
 dependencies:
 - from: corollary_1
@@ -723,9 +723,6 @@ dependencies:
   to: definition_105
   source: lean
 - from: corollary_29
-  to: definition_106
-  source: lean
-- from: corollary_29
   to: definition_119
   source: lean
 - from: corollary_29
@@ -1203,6 +1200,9 @@ dependencies:
   to: definition_116
   source: lean
 - from: definition_100
+  to: definition_99
+  source: lean
+- from: definition_100
   to: example_2
   source: lean
 - from: definition_100
@@ -1240,9 +1240,6 @@ dependencies:
   source: lean
 - from: definition_100
   to: proposition_119
-  source: lean
-- from: definition_100
-  to: proposition_99
   source: lean
 - from: definition_101
   to: definition_100
@@ -1455,9 +1452,6 @@ dependencies:
   to: definition_105
   source: lean
 - from: definition_104
-  to: definition_106
-  source: lean
-- from: definition_104
   to: definition_119
   source: lean
 - from: definition_104
@@ -1471,6 +1465,9 @@ dependencies:
   source: lean
 - from: definition_104
   to: definition_132
+  source: lean
+- from: definition_104
+  to: theorem_49
   source: lean
 - from: definition_104
   to: theorem_52
@@ -1507,6 +1504,9 @@ dependencies:
   source: lean
 - from: definition_106
   to: definition_104
+  source: lean
+- from: definition_106
+  to: definition_105
   source: lean
 - from: definition_106
   to: definition_119
@@ -1546,9 +1546,6 @@ dependencies:
   source: lean
 - from: definition_115
   to: definition_105
-  source: lean
-- from: definition_115
-  to: definition_106
   source: lean
 - from: definition_115
   to: definition_123
@@ -1659,9 +1656,6 @@ dependencies:
   to: definition_105
   source: lean
 - from: definition_121
-  to: definition_106
-  source: lean
-- from: definition_121
   to: definition_119
   source: lean
 - from: definition_121
@@ -1686,9 +1680,6 @@ dependencies:
   to: definition_105
   source: lean
 - from: definition_122
-  to: definition_106
-  source: lean
-- from: definition_122
   to: definition_119
   source: lean
 - from: definition_122
@@ -1711,9 +1702,6 @@ dependencies:
   source: lean
 - from: definition_123
   to: definition_105
-  source: lean
-- from: definition_123
-  to: definition_106
   source: lean
 - from: definition_123
   to: definition_119
@@ -1977,6 +1965,9 @@ dependencies:
   to: proposition_90
   source: lean
 - from: definition_143
+  to: proposition_94
+  source: lean
+- from: definition_143
   to: proposition_95
   source: lean
 - from: definition_143
@@ -2004,6 +1995,9 @@ dependencies:
   to: proposition_90
   source: lean
 - from: definition_145
+  to: proposition_94
+  source: lean
+- from: definition_145
   to: proposition_95
   source: lean
 - from: definition_145
@@ -2031,6 +2025,9 @@ dependencies:
   to: proposition_90
   source: lean
 - from: definition_146
+  to: proposition_94
+  source: lean
+- from: definition_146
   to: proposition_95
   source: lean
 - from: definition_146
@@ -2056,6 +2053,9 @@ dependencies:
   source: lean
 - from: definition_147
   to: proposition_90
+  source: lean
+- from: definition_147
+  to: proposition_94
   source: lean
 - from: definition_147
   to: proposition_95
@@ -3804,6 +3804,9 @@ dependencies:
   to: theorem_79
   source: lean
 - from: definition_192
+  to: definition_100
+  source: lean
+- from: definition_192
   to: definition_101
   source: lean
 - from: definition_192
@@ -3875,8 +3878,8 @@ dependencies:
 - from: definition_192
   to: theorem_105
   source: lean
-- from: definition_192
-  to: theorem_49
+- from: definition_193
+  to: definition_100
   source: lean
 - from: definition_193
   to: definition_101
@@ -3950,8 +3953,8 @@ dependencies:
 - from: definition_193
   to: theorem_105
   source: lean
-- from: definition_193
-  to: theorem_49
+- from: definition_194
+  to: definition_100
   source: lean
 - from: definition_194
   to: definition_101
@@ -4025,8 +4028,8 @@ dependencies:
 - from: definition_194
   to: theorem_105
   source: lean
-- from: definition_194
-  to: theorem_49
+- from: definition_195
+  to: definition_100
   source: lean
 - from: definition_195
   to: definition_101
@@ -4100,8 +4103,8 @@ dependencies:
 - from: definition_195
   to: theorem_105
   source: lean
-- from: definition_195
-  to: theorem_49
+- from: definition_196
+  to: definition_100
   source: lean
 - from: definition_196
   to: definition_101
@@ -4175,8 +4178,8 @@ dependencies:
 - from: definition_196
   to: theorem_105
   source: lean
-- from: definition_196
-  to: theorem_49
+- from: definition_197
+  to: definition_100
   source: lean
 - from: definition_197
   to: definition_101
@@ -4250,8 +4253,8 @@ dependencies:
 - from: definition_197
   to: theorem_105
   source: lean
-- from: definition_197
-  to: theorem_49
+- from: definition_198
+  to: definition_100
   source: lean
 - from: definition_198
   to: definition_101
@@ -4325,8 +4328,8 @@ dependencies:
 - from: definition_198
   to: theorem_105
   source: lean
-- from: definition_198
-  to: theorem_49
+- from: definition_199
+  to: definition_100
   source: lean
 - from: definition_199
   to: definition_101
@@ -4399,9 +4402,6 @@ dependencies:
   source: lean
 - from: definition_199
   to: theorem_105
-  source: lean
-- from: definition_199
-  to: theorem_49
   source: lean
 - from: definition_2
   to: definition_1
@@ -4428,6 +4428,9 @@ dependencies:
   to: proposition_15
   source: lean
 - from: definition_200
+  to: definition_100
+  source: lean
+- from: definition_200
   to: definition_101
   source: lean
 - from: definition_200
@@ -4499,8 +4502,8 @@ dependencies:
 - from: definition_200
   to: theorem_105
   source: lean
-- from: definition_200
-  to: theorem_49
+- from: definition_201
+  to: definition_100
   source: lean
 - from: definition_201
   to: definition_101
@@ -4574,8 +4577,8 @@ dependencies:
 - from: definition_201
   to: theorem_105
   source: lean
-- from: definition_201
-  to: theorem_49
+- from: definition_202
+  to: definition_100
   source: lean
 - from: definition_202
   to: definition_101
@@ -4649,8 +4652,8 @@ dependencies:
 - from: definition_202
   to: theorem_105
   source: lean
-- from: definition_202
-  to: theorem_49
+- from: definition_203
+  to: definition_100
   source: lean
 - from: definition_203
   to: definition_101
@@ -4724,8 +4727,8 @@ dependencies:
 - from: definition_203
   to: theorem_105
   source: lean
-- from: definition_203
-  to: theorem_49
+- from: definition_204
+  to: definition_100
   source: lean
 - from: definition_204
   to: definition_101
@@ -4799,8 +4802,8 @@ dependencies:
 - from: definition_204
   to: theorem_105
   source: lean
-- from: definition_204
-  to: theorem_49
+- from: definition_205
+  to: definition_100
   source: lean
 - from: definition_205
   to: definition_101
@@ -4874,8 +4877,8 @@ dependencies:
 - from: definition_205
   to: theorem_105
   source: lean
-- from: definition_205
-  to: theorem_49
+- from: definition_206
+  to: definition_100
   source: lean
 - from: definition_206
   to: definition_101
@@ -4949,8 +4952,8 @@ dependencies:
 - from: definition_206
   to: theorem_105
   source: lean
-- from: definition_206
-  to: theorem_49
+- from: definition_207
+  to: definition_100
   source: lean
 - from: definition_207
   to: definition_101
@@ -5023,9 +5026,6 @@ dependencies:
   source: lean
 - from: definition_207
   to: theorem_105
-  source: lean
-- from: definition_207
-  to: theorem_49
   source: lean
 - from: definition_209
   to: definition_192
@@ -5397,6 +5397,9 @@ dependencies:
   to: theorem_99
   source: lean
 - from: definition_211
+  to: definition_100
+  source: lean
+- from: definition_211
   to: definition_101
   source: lean
 - from: definition_211
@@ -5539,9 +5542,6 @@ dependencies:
   source: lean
 - from: definition_211
   to: theorem_105
-  source: lean
-- from: definition_211
-  to: theorem_49
   source: lean
 - from: definition_211
   to: theorem_83
@@ -6666,7 +6666,7 @@ dependencies:
   to: definition_9
   source: lean
 - from: definition_58
-  to: gate_4
+  to: gate_3
   source: lean
 - from: definition_58
   to: proposition_80
@@ -9828,6 +9828,9 @@ dependencies:
   to: theorem_38
   source: lean
 - from: definition_99
+  to: definition_100
+  source: lean
+- from: definition_99
   to: definition_101
   source: lean
 - from: definition_99
@@ -10160,6 +10163,108 @@ dependencies:
 - from: gate_2
   to: theorem_5
   source: lean
+- from: gate_3
+  to: corollary_24
+  source: lean
+- from: gate_3
+  to: corollary_25
+  source: lean
+- from: gate_3
+  to: corollary_26
+  source: lean
+- from: gate_3
+  to: corollary_27
+  source: lean
+- from: gate_3
+  to: definition_57
+  source: lean
+- from: gate_3
+  to: definition_59
+  source: lean
+- from: gate_3
+  to: definition_64
+  source: lean
+- from: gate_3
+  to: definition_65
+  source: lean
+- from: gate_3
+  to: definition_67
+  source: lean
+- from: gate_3
+  to: definition_68
+  source: lean
+- from: gate_3
+  to: definition_69
+  source: lean
+- from: gate_3
+  to: definition_70
+  source: lean
+- from: gate_3
+  to: definition_72
+  source: lean
+- from: gate_3
+  to: definition_73
+  source: lean
+- from: gate_3
+  to: definition_74
+  source: lean
+- from: gate_3
+  to: definition_75
+  source: lean
+- from: gate_3
+  to: definition_76
+  source: lean
+- from: gate_3
+  to: definition_77
+  source: lean
+- from: gate_3
+  to: definition_9
+  source: lean
+- from: gate_3
+  to: proposition_80
+  source: lean
+- from: gate_3
+  to: proposition_81
+  source: lean
+- from: gate_3
+  to: proposition_83
+  source: lean
+- from: gate_3
+  to: proposition_84
+  source: lean
+- from: gate_3
+  to: proposition_85
+  source: lean
+- from: gate_3
+  to: proposition_86
+  source: lean
+- from: gate_3
+  to: proposition_87
+  source: lean
+- from: gate_3
+  to: proposition_88
+  source: lean
+- from: gate_3
+  to: theorem_30
+  source: lean
+- from: gate_3
+  to: theorem_31
+  source: lean
+- from: gate_3
+  to: theorem_32
+  source: lean
+- from: gate_3
+  to: theorem_33
+  source: lean
+- from: gate_3
+  to: theorem_34
+  source: lean
+- from: gate_3
+  to: theorem_35
+  source: lean
+- from: gate_3
+  to: theorem_38
+  source: lean
 - from: gate_4
   to: corollary_24
   source: lean
@@ -10216,6 +10321,9 @@ dependencies:
   source: lean
 - from: gate_4
   to: definition_9
+  source: lean
+- from: gate_4
+  to: gate_3
   source: lean
 - from: gate_4
   to: proposition_80
@@ -10455,9 +10563,6 @@ dependencies:
   to: definition_105
   source: lean
 - from: proposition_100
-  to: definition_106
-  source: lean
-- from: proposition_100
   to: definition_119
   source: lean
 - from: proposition_100
@@ -10485,9 +10590,6 @@ dependencies:
   to: definition_105
   source: lean
 - from: proposition_101
-  to: definition_106
-  source: lean
-- from: proposition_101
   to: definition_119
   source: lean
 - from: proposition_101
@@ -10515,9 +10617,6 @@ dependencies:
   to: definition_105
   source: lean
 - from: proposition_102
-  to: definition_106
-  source: lean
-- from: proposition_102
   to: definition_119
   source: lean
 - from: proposition_102
@@ -10545,9 +10644,6 @@ dependencies:
   to: definition_105
   source: lean
 - from: proposition_103
-  to: definition_106
-  source: lean
-- from: proposition_103
   to: definition_119
   source: lean
 - from: proposition_103
@@ -10573,9 +10669,6 @@ dependencies:
   source: lean
 - from: proposition_104
   to: definition_105
-  source: lean
-- from: proposition_104
-  to: definition_106
   source: lean
 - from: proposition_104
   to: definition_119
@@ -10605,9 +10698,6 @@ dependencies:
   to: definition_105
   source: lean
 - from: proposition_105
-  to: definition_106
-  source: lean
-- from: proposition_105
   to: definition_119
   source: lean
 - from: proposition_105
@@ -10633,9 +10723,6 @@ dependencies:
   source: lean
 - from: proposition_106
   to: definition_105
-  source: lean
-- from: proposition_106
-  to: definition_106
   source: lean
 - from: proposition_106
   to: definition_119
@@ -10665,9 +10752,6 @@ dependencies:
   to: definition_105
   source: lean
 - from: proposition_107
-  to: definition_106
-  source: lean
-- from: proposition_107
   to: definition_119
   source: lean
 - from: proposition_107
@@ -10695,9 +10779,6 @@ dependencies:
   to: definition_105
   source: lean
 - from: proposition_108
-  to: definition_106
-  source: lean
-- from: proposition_108
   to: definition_119
   source: lean
 - from: proposition_108
@@ -10720,9 +10801,6 @@ dependencies:
   source: lean
 - from: proposition_109
   to: definition_105
-  source: lean
-- from: proposition_109
-  to: definition_106
   source: lean
 - from: proposition_109
   to: definition_119
@@ -11892,6 +11970,9 @@ dependencies:
   to: theorem_81
   source: lean
 - from: proposition_147
+  to: definition_100
+  source: lean
+- from: proposition_147
   to: definition_101
   source: lean
 - from: proposition_147
@@ -11963,8 +12044,8 @@ dependencies:
 - from: proposition_147
   to: theorem_105
   source: lean
-- from: proposition_147
-  to: theorem_49
+- from: proposition_148
+  to: definition_100
   source: lean
 - from: proposition_148
   to: definition_101
@@ -12038,8 +12119,8 @@ dependencies:
 - from: proposition_148
   to: theorem_105
   source: lean
-- from: proposition_148
-  to: theorem_49
+- from: proposition_149
+  to: definition_100
   source: lean
 - from: proposition_149
   to: definition_101
@@ -12112,9 +12193,6 @@ dependencies:
   source: lean
 - from: proposition_149
   to: theorem_105
-  source: lean
-- from: proposition_149
-  to: theorem_49
   source: lean
 - from: proposition_15
   to: definition_15
@@ -12141,6 +12219,9 @@ dependencies:
   to: theorem_1
   source: lean
 - from: proposition_150
+  to: definition_100
+  source: lean
+- from: proposition_150
   to: definition_101
   source: lean
 - from: proposition_150
@@ -12212,8 +12293,8 @@ dependencies:
 - from: proposition_150
   to: theorem_105
   source: lean
-- from: proposition_150
-  to: theorem_49
+- from: proposition_151
+  to: definition_100
   source: lean
 - from: proposition_151
   to: definition_101
@@ -12286,9 +12367,6 @@ dependencies:
   source: lean
 - from: proposition_151
   to: theorem_105
-  source: lean
-- from: proposition_151
-  to: theorem_49
   source: lean
 - from: proposition_152
   to: definition_192
@@ -13600,6 +13678,9 @@ dependencies:
   source: lean
 - from: proposition_46
   to: proposition_39
+  source: lean
+- from: proposition_46
+  to: proposition_45
   source: lean
 - from: proposition_46
   to: theorem_14
@@ -15357,25 +15438,100 @@ dependencies:
   to: definition_90
   source: lean
 - from: proposition_94
-  to: definition_81
+  to: corollary_24
   source: lean
 - from: proposition_94
-  to: definition_84
+  to: corollary_25
   source: lean
 - from: proposition_94
-  to: definition_85
+  to: corollary_26
   source: lean
 - from: proposition_94
-  to: definition_87
+  to: corollary_27
   source: lean
 - from: proposition_94
-  to: definition_88
+  to: definition_57
   source: lean
 - from: proposition_94
-  to: definition_89
+  to: definition_59
   source: lean
 - from: proposition_94
-  to: definition_90
+  to: definition_64
+  source: lean
+- from: proposition_94
+  to: definition_65
+  source: lean
+- from: proposition_94
+  to: definition_67
+  source: lean
+- from: proposition_94
+  to: definition_68
+  source: lean
+- from: proposition_94
+  to: definition_69
+  source: lean
+- from: proposition_94
+  to: definition_70
+  source: lean
+- from: proposition_94
+  to: definition_73
+  source: lean
+- from: proposition_94
+  to: definition_74
+  source: lean
+- from: proposition_94
+  to: definition_75
+  source: lean
+- from: proposition_94
+  to: definition_76
+  source: lean
+- from: proposition_94
+  to: definition_77
+  source: lean
+- from: proposition_94
+  to: proposition_80
+  source: lean
+- from: proposition_94
+  to: proposition_81
+  source: lean
+- from: proposition_94
+  to: proposition_83
+  source: lean
+- from: proposition_94
+  to: proposition_84
+  source: lean
+- from: proposition_94
+  to: proposition_85
+  source: lean
+- from: proposition_94
+  to: proposition_86
+  source: lean
+- from: proposition_94
+  to: proposition_87
+  source: lean
+- from: proposition_94
+  to: proposition_88
+  source: lean
+- from: proposition_94
+  to: theorem_30
+  source: lean
+- from: proposition_94
+  to: theorem_31
+  source: lean
+- from: proposition_94
+  to: theorem_32
+  source: lean
+- from: proposition_94
+  to: theorem_33
+  source: lean
+- from: proposition_94
+  to: theorem_34
+  source: lean
+- from: proposition_94
+  to: theorem_35
+  source: lean
+- from: proposition_94
+  to: theorem_38
   source: lean
 - from: proposition_95
   to: corollary_24
@@ -15664,9 +15820,6 @@ dependencies:
   source: lean
 - from: proposition_97
   to: theorem_38
-  source: lean
-- from: proposition_99
-  to: definition_100
   source: lean
 - from: proposition_99
   to: definition_101
@@ -15756,6 +15909,9 @@ dependencies:
   to: proposition_21
   source: lean
 - from: theorem_100
+  to: definition_100
+  source: lean
+- from: theorem_100
   to: definition_101
   source: lean
 - from: theorem_100
@@ -15827,8 +15983,8 @@ dependencies:
 - from: theorem_100
   to: theorem_105
   source: lean
-- from: theorem_100
-  to: theorem_49
+- from: theorem_101
+  to: definition_100
   source: lean
 - from: theorem_101
   to: definition_101
@@ -15902,8 +16058,8 @@ dependencies:
 - from: theorem_101
   to: theorem_105
   source: lean
-- from: theorem_101
-  to: theorem_49
+- from: theorem_102
+  to: definition_100
   source: lean
 - from: theorem_102
   to: definition_101
@@ -15976,9 +16132,6 @@ dependencies:
   source: lean
 - from: theorem_102
   to: theorem_105
-  source: lean
-- from: theorem_102
-  to: theorem_49
   source: lean
 - from: theorem_104
   to: definition_192
@@ -17133,6 +17286,9 @@ dependencies:
   to: theorem_99
   source: lean
 - from: theorem_111
+  to: definition_100
+  source: lean
+- from: theorem_111
   to: definition_101
   source: lean
 - from: theorem_111
@@ -17275,9 +17431,6 @@ dependencies:
   source: lean
 - from: theorem_111
   to: theorem_105
-  source: lean
-- from: theorem_111
-  to: theorem_49
   source: lean
 - from: theorem_111
   to: theorem_83
@@ -17331,6 +17484,9 @@ dependencies:
   to: theorem_99
   source: lean
 - from: theorem_112
+  to: definition_100
+  source: lean
+- from: theorem_112
   to: definition_101
   source: lean
 - from: theorem_112
@@ -17473,9 +17629,6 @@ dependencies:
   source: lean
 - from: theorem_112
   to: theorem_105
-  source: lean
-- from: theorem_112
-  to: theorem_49
   source: lean
 - from: theorem_112
   to: theorem_83
@@ -19653,34 +19806,10 @@ dependencies:
   to: theorem_38
   source: lean
 - from: theorem_49
-  to: definition_102
-  source: lean
-- from: theorem_49
-  to: definition_103
-  source: lean
-- from: theorem_49
-  to: definition_105
-  source: lean
-- from: theorem_49
-  to: definition_106
-  source: lean
-- from: theorem_49
-  to: definition_119
-  source: lean
-- from: theorem_49
-  to: definition_120
-  source: lean
-- from: theorem_49
-  to: definition_123
-  source: lean
-- from: theorem_49
   to: definition_131
   source: lean
 - from: theorem_49
   to: definition_132
-  source: lean
-- from: theorem_49
-  to: theorem_52
   source: lean
 - from: theorem_5
   to: definition_1
@@ -19723,9 +19852,6 @@ dependencies:
   source: lean
 - from: theorem_50
   to: definition_105
-  source: lean
-- from: theorem_50
-  to: definition_106
   source: lean
 - from: theorem_50
   to: definition_119
@@ -19840,9 +19966,6 @@ dependencies:
   source: lean
 - from: theorem_53
   to: definition_105
-  source: lean
-- from: theorem_53
-  to: definition_106
   source: lean
 - from: theorem_53
   to: definition_119
@@ -19977,6 +20100,9 @@ dependencies:
   to: proposition_90
   source: lean
 - from: theorem_58
+  to: proposition_94
+  source: lean
+- from: theorem_58
   to: proposition_95
   source: lean
 - from: theorem_58
@@ -20002,6 +20128,9 @@ dependencies:
   source: lean
 - from: theorem_59
   to: proposition_90
+  source: lean
+- from: theorem_59
+  to: proposition_94
   source: lean
 - from: theorem_59
   to: proposition_95
@@ -20052,6 +20181,9 @@ dependencies:
   to: proposition_90
   source: lean
 - from: theorem_60
+  to: proposition_94
+  source: lean
+- from: theorem_60
   to: proposition_95
   source: lean
 - from: theorem_60
@@ -20062,18 +20194,6 @@ dependencies:
   source: lean
 - from: theorem_60
   to: theorem_40
-  source: lean
-- from: theorem_61
-  to: definition_136
-  source: lean
-- from: theorem_61
-  to: definition_151
-  source: lean
-- from: theorem_61
-  to: definition_152
-  source: lean
-- from: theorem_61
-  to: definition_153
   source: lean
 - from: theorem_62
   to: definition_136
@@ -21273,6 +21393,9 @@ dependencies:
   to: theorem_81
   source: lean
 - from: theorem_83
+  to: definition_100
+  source: lean
+- from: theorem_83
   to: definition_101
   source: lean
 - from: theorem_83
@@ -21344,8 +21467,8 @@ dependencies:
 - from: theorem_83
   to: theorem_105
   source: lean
-- from: theorem_83
-  to: theorem_49
+- from: theorem_84
+  to: definition_100
   source: lean
 - from: theorem_84
   to: definition_101
@@ -21419,8 +21542,8 @@ dependencies:
 - from: theorem_84
   to: theorem_105
   source: lean
-- from: theorem_84
-  to: theorem_49
+- from: theorem_85
+  to: definition_100
   source: lean
 - from: theorem_85
   to: definition_101
@@ -21494,8 +21617,8 @@ dependencies:
 - from: theorem_85
   to: theorem_105
   source: lean
-- from: theorem_85
-  to: theorem_49
+- from: theorem_86
+  to: definition_100
   source: lean
 - from: theorem_86
   to: definition_101
@@ -21569,8 +21692,8 @@ dependencies:
 - from: theorem_86
   to: theorem_105
   source: lean
-- from: theorem_86
-  to: theorem_49
+- from: theorem_87
+  to: definition_100
   source: lean
 - from: theorem_87
   to: definition_101
@@ -21644,8 +21767,8 @@ dependencies:
 - from: theorem_87
   to: theorem_105
   source: lean
-- from: theorem_87
-  to: theorem_49
+- from: theorem_88
+  to: definition_100
   source: lean
 - from: theorem_88
   to: definition_101
@@ -21719,8 +21842,8 @@ dependencies:
 - from: theorem_88
   to: theorem_105
   source: lean
-- from: theorem_88
-  to: theorem_49
+- from: theorem_89
+  to: definition_100
   source: lean
 - from: theorem_89
   to: definition_101
@@ -21793,9 +21916,6 @@ dependencies:
   source: lean
 - from: theorem_89
   to: theorem_105
-  source: lean
-- from: theorem_89
-  to: theorem_49
   source: lean
 - from: theorem_9
   to: corollary_5
@@ -21828,6 +21948,9 @@ dependencies:
   to: theorem_6
   source: lean
 - from: theorem_90
+  to: definition_100
+  source: lean
+- from: theorem_90
   to: definition_101
   source: lean
 - from: theorem_90
@@ -21899,8 +22022,8 @@ dependencies:
 - from: theorem_90
   to: theorem_105
   source: lean
-- from: theorem_90
-  to: theorem_49
+- from: theorem_91
+  to: definition_100
   source: lean
 - from: theorem_91
   to: definition_101
@@ -21974,8 +22097,8 @@ dependencies:
 - from: theorem_91
   to: theorem_105
   source: lean
-- from: theorem_91
-  to: theorem_49
+- from: theorem_92
+  to: definition_100
   source: lean
 - from: theorem_92
   to: definition_101
@@ -22049,8 +22172,8 @@ dependencies:
 - from: theorem_92
   to: theorem_105
   source: lean
-- from: theorem_92
-  to: theorem_49
+- from: theorem_93
+  to: definition_100
   source: lean
 - from: theorem_93
   to: definition_101
@@ -22124,8 +22247,8 @@ dependencies:
 - from: theorem_93
   to: theorem_105
   source: lean
-- from: theorem_93
-  to: theorem_49
+- from: theorem_94
+  to: definition_100
   source: lean
 - from: theorem_94
   to: definition_101
@@ -22199,8 +22322,8 @@ dependencies:
 - from: theorem_94
   to: theorem_105
   source: lean
-- from: theorem_94
-  to: theorem_49
+- from: theorem_95
+  to: definition_100
   source: lean
 - from: theorem_95
   to: definition_101
@@ -22274,8 +22397,8 @@ dependencies:
 - from: theorem_95
   to: theorem_105
   source: lean
-- from: theorem_95
-  to: theorem_49
+- from: theorem_96
+  to: definition_100
   source: lean
 - from: theorem_96
   to: definition_101
@@ -22349,8 +22472,8 @@ dependencies:
 - from: theorem_96
   to: theorem_105
   source: lean
-- from: theorem_96
-  to: theorem_49
+- from: theorem_97
+  to: definition_100
   source: lean
 - from: theorem_97
   to: definition_101
@@ -22424,8 +22547,8 @@ dependencies:
 - from: theorem_97
   to: theorem_105
   source: lean
-- from: theorem_97
-  to: theorem_49
+- from: theorem_98
+  to: definition_100
   source: lean
 - from: theorem_98
   to: definition_101
@@ -22499,8 +22622,8 @@ dependencies:
 - from: theorem_98
   to: theorem_105
   source: lean
-- from: theorem_98
-  to: theorem_49
+- from: theorem_99
+  to: definition_100
   source: lean
 - from: theorem_99
   to: definition_101
@@ -22573,7 +22696,4 @@ dependencies:
   source: lean
 - from: theorem_99
   to: theorem_105
-  source: lean
-- from: theorem_99
-  to: theorem_49
   source: lean
