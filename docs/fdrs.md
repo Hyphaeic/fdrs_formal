@@ -2033,12 +2033,48 @@ builder), `FdrsFormal/NumberTheory/Characters/FFTCircuit.lean` (circuits).
 
 **Honest scope (§1.7).** Classical (Cooley–Tukey 1965). The staged construction
 folds twiddles into its scalars; the classical radix-2 butterfly reaches
-`1.5 · N log₂ N` and split-radix less, so `c > 3` is a property of this
+`1.5 · N log₂ N` (§1.8) and split-radix less, so `c > 3` is a property of this
 construction, not a threshold. What family 130 adds — every `c > 0` along a
 subsequence, via sub-tensor-axis savings — is recorded, not proven. Open,
 in the corpus's own terms: which radix schedules admit circuits below
 `N · Σ_i (2b_i − 1)` — equivalently, below the tensor-axis cost of their own
 Vilenkin stages?
+
+## 1.8 The radix-2 butterfly (addendum, 2026-10-07)
+
+### Proposition 159 (the binary butterfly)  [§1.8 · Phase 3, Fragment 2]
+
+The stage factor splits off its own digit:
+`S_i(t; ρ) = ζ_{b_i}^{t ρ_i} · ∏_{j>i} ζ_{B_{[i,j+1)}}^{t ρ_j}`, and the second
+factor does not see `ρ_i`. On a binary digit (`b_i = 2`, `ζ_2 = -1`), with
+`ρ^t := ρ[i := t]` and the *twiddle* `W_i(ρ) := ∏_{j>i} ζ_{B_{[i,j+1)}}^{ρ_j}`,
+[
+(T_i\,y)(\rho)=y(\rho^0)+(-1)^{\rho_i}\,W_i(\rho^0)\,y(\rho^1):
+]
+the two outputs of a pair `{ρ^0, ρ^1}` share the one product `W_i(ρ^0) y(ρ^1)`.
+
+### Theorem 124 (the butterfly circuit)  [§1.8 · Phase 3, Fragment 2]
+
+On the binary schedule, length `N = 2^{k+1}` has an exact Fourier circuit
+(Definition 216) with exactly
+[
+3\cdot 2^{k}\,(k+1)=\tfrac32\,N\log_2 N
+]
+gates: each of the `k + 1` stages runs `N/2` butterflies of three gates (scale by
+the twiddle, add, subtract). The pairs at digit `i` are numbered through
+`𝓡^{(k)} ≃ \{ρ : ρ_i = 0\} × \mathbb Z/2`, and outputs are named through
+`rdec_k` (Proposition 157).
+
+### Corollary 35 (the butterfly constant)  [§1.8 · Phase 3, Fragment 2]
+
+Family 130's statement holds for every `c > 3/2` by the butterfly circuits alone.
+
+*Lean:* `FdrsFormal/NumberTheory/Characters/FFTButterfly.lean`.
+
+**Honest scope (§1.8).** Classical (Cooley–Tukey 1965). The construction scales by
+every twiddle, trivial or not; skipping the `W = 1` products, and split-radix
+schemes, lower the constant further, and family 130 proves every `c > 0`. None
+of these is claimed here.
 
 ---
 

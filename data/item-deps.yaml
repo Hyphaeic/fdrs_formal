@@ -1,6 +1,6 @@
 metadata:
-  total_items: 544
-  total_deps: 296
+  total_items: 547
+  total_deps: 298
 dependencies:
 - from: definition_2
   to: proposition_1
@@ -194,6 +194,12 @@ dependencies:
 - from: proposition_158
   to: corollary_34
   ref_number: '34'
+- from: proposition_159
+  to: theorem_124
+  ref_number: '124'
+- from: theorem_124
+  to: corollary_35
+  ref_number: '35'
 - from: proposition_45
   to: proposition_44
   ref_number: '44'

@@ -34,7 +34,7 @@ builds explicit circuits and counts their gates exactly.
 **Honest scope.** Classical (Cooley–Tukey 1965). The construction folds twiddles
 into its scalars and spends `2 b_i - 1` gates per output per stage; the
 classical radix-2 butterfly (one twiddle, one add, one subtract per *pair*)
-reaches `1.5 · N log₂ N`, and split-radix lower. Family 130's theorem — every
+reaches `1.5 · N log₂ N` (`FFTButterfly.lean`, §1.8), and split-radix lower. Family 130's theorem — every
 `c > 0` along a subsequence — is recorded as `MainStatement` and is **not**
 proven here; what is proven is the `c > 3` instance and exact counts for every
 mixed-radix schedule.

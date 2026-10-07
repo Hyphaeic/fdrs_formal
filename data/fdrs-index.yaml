@@ -1,11 +1,11 @@
 metadata:
   spec_file: docs/fdrs.md
-  spec_lines: 9276
-  generated_at: '2026-10-07T17:56:27.823037'
-  total_items: 544
+  spec_lines: 9312
+  generated_at: '2026-10-07T18:51:02.716806'
+  total_items: 547
   status_summary:
-    proven: 538
-    missing: 4
+    proven: 542
+    missing: 3
     scaffold: 2
   status_legend:
     proven: meaningful statement, no sorry/axiom/scaffold, in the default build
@@ -2743,12 +2743,55 @@ items:
     - mainStatement_of_three_lt
   fragment: '2'
   section: '1.7'
+- id: proposition_159
+  type: proposition
+  phase: 3
+  global_num: 159
+  title: the binary butterfly
+  line: 2045
+  status: proven
+  in_root_build: true
+  lean_files:
+  - path: FdrsFormal/NumberTheory/Characters/FFTButterfly.lean
+    declarations:
+    - stageFactor_split
+    - stage_radixTwo
+  fragment: '2'
+  section: '1.8'
+- id: theorem_124
+  type: theorem
+  phase: 3
+  global_num: 124
+  title: the butterfly circuit
+  line: 2056
+  status: proven
+  in_root_build: true
+  lean_files:
+  - path: FdrsFormal/NumberTheory/Characters/FFTButterfly.lean
+    declarations:
+    - exists_butterfly_circuit
+  fragment: '2'
+  section: '1.8'
+- id: corollary_35
+  type: corollary
+  phase: 3
+  global_num: 35
+  title: the butterfly constant
+  line: 2068
+  status: proven
+  in_root_build: true
+  lean_files:
+  - path: FdrsFormal/NumberTheory/Characters/FFTButterfly.lean
+    declarations:
+    - mainStatement_of_three_halves_lt
+  fragment: '2'
+  section: '1.8'
 - id: proposition_43
   type: proposition
   phase: 3
   global_num: 43
   title: orthogonality over units
-  line: 2053
+  line: 2089
   status: proven
   in_root_build: true
   lean_files:
@@ -2774,7 +2817,7 @@ items:
   phase: 3
   global_num: 44
   title: orthogonality over characters gives residue projection on units
-  line: 2061
+  line: 2097
   status: proven
   in_root_build: true
   lean_files:
@@ -2800,7 +2843,7 @@ items:
   phase: 3
   global_num: 45
   title: character expansion of residue projectors
-  line: 2084
+  line: 2120
   status: proven
   in_root_build: true
   lean_files:
@@ -2809,16 +2852,9 @@ items:
     - genericFailure_dirichletTransform_blockProjection
   - path: FdrsFormal/NumberTheory/Valuations.lean
     declarations: []
-  - path: FdrsFormal/NumberTheory/Valuations/Definition.lean
+  - path: FdrsFormal/NumberTheory/Valuations/Squarefree.lean
     declarations:
-    - padicValuation
-    - padicValuation_one
-    - padicValuation_self
-    - divisibilityProjector
-    - exactValuationProjector
-    - exactValuationProjector_idempotent
-    - exactValuationProjector_orthogonal
-    - exactValuationProjector_partition
+    - squarefree_iff_no_prime_sq
   fragment: '2'
   section: '2.3'
 - id: proposition_46
@@ -2826,7 +2862,7 @@ items:
   phase: 3
   global_num: 46
   title: residue projectors factor
-  line: 2105
+  line: 2141
   status: proven
   in_root_build: true
   lean_files:
@@ -2845,73 +2881,7 @@ items:
   phase: 3
   global_num: 47
   title: Dirichlet characters factor
-  line: 2120
-  status: proven
-  in_root_build: true
-  lean_files:
-  - path: FdrsFormal/NumberTheory.lean
-    declarations:
-    - genericFailure_dirichletTransform_blockProjection
-  - path: FdrsFormal/NumberTheory/Valuations.lean
-    declarations: []
-  - path: FdrsFormal/NumberTheory/Valuations/Squarefree.lean
-    declarations:
-    - squarefree_iff_no_prime_sq
-  fragment: '2'
-  section: '3.2'
-- id: corollary_11
-  type: corollary
-  phase: 3
-  global_num: 11
-  title: projectors factor
-  line: 2129
-  status: proven
-  in_root_build: true
-  lean_files:
-  - path: FdrsFormal/NumberTheory.lean
-    declarations:
-    - genericFailure_dirichletTransform_blockProjection
-  - path: FdrsFormal/NumberTheory/Valuations.lean
-    declarations: []
-  - path: FdrsFormal/NumberTheory/Valuations/Squarefree.lean
-    declarations:
-    - squarefree_iff_no_prime_sq
-  fragment: '2'
-  section: '3.3'
-- id: definition_39
-  type: definition
-  phase: 3
-  global_num: 39
-  title: radix depth of a modulus
-  line: 2144
-  status: proven
-  in_root_build: true
-  lean_files:
-  - path: FdrsFormal/NumberTheory.lean
-    declarations:
-    - genericFailure_dirichletTransform_blockProjection
-  fragment: '2'
-  section: '4.1'
-- id: theorem_17
-  type: theorem
-  phase: 3
-  global_num: 17
-  title: additive residue classes are (\mathcal F_{k,L}
-  line: 2154
-  status: proven
-  in_root_build: true
-  lean_files:
-  - path: FdrsFormal/NumberTheory.lean
-    declarations:
-    - genericFailure_dirichletTransform_blockProjection
-  fragment: '2'
-  section: '4.2'
-- id: corollary_12
-  type: corollary
-  phase: 3
-  global_num: 12
-  title: same for (\mathrm{nat}_k
-  line: 2173
+  line: 2156
   status: proven
   in_root_build: true
   lean_files:
@@ -2936,13 +2906,90 @@ items:
     - twistTransformCovariance
     - commutationCriterion
   fragment: '2'
+  section: '3.2'
+- id: corollary_11
+  type: corollary
+  phase: 3
+  global_num: 11
+  title: projectors factor
+  line: 2165
+  status: proven
+  in_root_build: true
+  lean_files:
+  - path: FdrsFormal/NumberTheory.lean
+    declarations:
+    - genericFailure_dirichletTransform_blockProjection
+  - path: FdrsFormal/NumberTheory/ArithmeticFunctions/Operators.lean
+    declarations:
+    - dirichletTransform
+    - dirichletTransform_comp
+    - dirichletTransform_identity
+    - dirichletTransform_moebius_one
+    - multiplicationOp
+    - multiplicationOp_comp
+    - multiplicationOp_epsilon
+    - multiplicationOp_constantOne
+    - pointwiseMul
+    - pointwiseMul_comm
+  - path: FdrsFormal/NumberTheory/Characters/TwistTransform.lean
+    declarations:
+    - DirichletChar.apply_mul
+    - twistTransformCovariance
+    - commutationCriterion
+  fragment: '2'
+  section: '3.3'
+- id: definition_39
+  type: definition
+  phase: 3
+  global_num: 39
+  title: radix depth of a modulus
+  line: 2180
+  status: proven
+  in_root_build: true
+  lean_files:
+  - path: FdrsFormal/NumberTheory.lean
+    declarations:
+    - genericFailure_dirichletTransform_blockProjection
+  fragment: '2'
+  section: '4.1'
+- id: theorem_17
+  type: theorem
+  phase: 3
+  global_num: 17
+  title: additive residue classes are (\mathcal F_{k,L}
+  line: 2190
+  status: proven
+  in_root_build: true
+  lean_files:
+  - path: FdrsFormal/NumberTheory.lean
+    declarations:
+    - genericFailure_dirichletTransform_blockProjection
+  - path: FdrsFormal/NumberTheory/FactorizationLens/PowerKernel.lean
+    declarations:
+    - PurePowerKernel
+    - valuationFiberAction
+  fragment: '2'
+  section: '4.2'
+- id: corollary_12
+  type: corollary
+  phase: 3
+  global_num: 12
+  title: same for (\mathrm{nat}_k
+  line: 2209
+  status: proven
+  in_root_build: true
+  lean_files:
+  - path: FdrsFormal/NumberTheory.lean
+    declarations:
+    - genericFailure_dirichletTransform_blockProjection
+  fragment: '2'
   section: '4.3'
 - id: theorem_18
   type: theorem
   phase: 3
   global_num: 18
   title: Dirichlet characters become cylinder-measurable when the modulus divides some (B_L
-  line: 2179
+  line: 2215
   status: proven
   in_root_build: true
   lean_files:
@@ -2956,99 +3003,7 @@ items:
   phase: 3
   global_num: 40
   title: divisibility projector
-  line: 2244
-  status: proven
-  in_root_build: true
-  lean_files:
-  - path: FdrsFormal/NumberTheory.lean
-    declarations:
-    - genericFailure_dirichletTransform_blockProjection
-  - path: FdrsFormal/NumberTheory/FactorizationLens.lean
-    declarations: []
-  - path: FdrsFormal/NumberTheory/FactorizationLens/Definition.lean
-    declarations:
-    - valuationVector
-    - smoothPart
-    - freePart
-    - factorization_unique
-    - freePart_coprime
-  fragment: '3'
-  section: '1.1'
-- id: definition_41
-  type: definition
-  phase: 3
-  global_num: 41
-  title: exact valuation projector
-  line: 2251
-  status: proven
-  in_root_build: true
-  lean_files:
-  - path: FdrsFormal/NumberTheory.lean
-    declarations:
-    - genericFailure_dirichletTransform_blockProjection
-  - path: FdrsFormal/NumberTheory/FactorizationLens.lean
-    declarations: []
-  - path: FdrsFormal/NumberTheory/FactorizationLens/Definition.lean
-    declarations:
-    - valuationVector
-    - smoothPart
-    - freePart
-    - factorization_unique
-    - freePart_coprime
-  fragment: '3'
-  section: '1.2'
-- id: proposition_48
-  type: proposition
-  phase: 3
-  global_num: 48
-  title: orthogonal idempotents; partition of unity
-  line: 2259
-  status: proven
-  in_root_build: true
-  lean_files:
-  - path: FdrsFormal/NumberTheory.lean
-    declarations:
-    - genericFailure_dirichletTransform_blockProjection
-  - path: FdrsFormal/NumberTheory/FactorizationLens.lean
-    declarations: []
-  - path: FdrsFormal/NumberTheory/FactorizationLens/Definition.lean
-    declarations:
-    - valuationVector
-    - smoothPart
-    - freePart
-    - factorization_unique
-    - freePart_coprime
-  fragment: '3'
-  section: '1.3'
-- id: proposition_49
-  type: proposition
-  phase: 3
-  global_num: 49
-  title: cylinder measurability criterion
-  line: 2273
-  status: proven
-  in_root_build: true
-  lean_files:
-  - path: FdrsFormal/NumberTheory.lean
-    declarations:
-    - genericFailure_dirichletTransform_blockProjection
-  - path: FdrsFormal/NumberTheory/FactorizationLens.lean
-    declarations: []
-  - path: FdrsFormal/NumberTheory/FactorizationLens/Definition.lean
-    declarations:
-    - valuationVector
-    - smoothPart
-    - freePart
-    - factorization_unique
-    - freePart_coprime
-  fragment: '3'
-  section: '1.4'
-- id: corollary_13
-  type: corollary
-  phase: 3
-  global_num: 13
-  title: valuation gates at finite depth
-  line: 2283
+  line: 2280
   status: proven
   in_root_build: true
   lean_files:
@@ -3071,13 +3026,71 @@ items:
     - multiplicativeSigmaAlgebra
     - valuationFiltration_monotone
   fragment: '3'
-  section: '1.5'
-- id: definition_42
+  section: '1.1'
+- id: definition_41
   type: definition
   phase: 3
-  global_num: 42
-  title: ''
-  line: 2299
+  global_num: 41
+  title: exact valuation projector
+  line: 2287
+  status: proven
+  in_root_build: true
+  lean_files:
+  - path: FdrsFormal/NumberTheory.lean
+    declarations:
+    - genericFailure_dirichletTransform_blockProjection
+  - path: FdrsFormal/NumberTheory/FactorizationLens.lean
+    declarations: []
+  - path: FdrsFormal/NumberTheory/FactorizationLens/Definition.lean
+    declarations:
+    - valuationVector
+    - smoothPart
+    - freePart
+    - factorization_unique
+    - freePart_coprime
+  - path: FdrsFormal/NumberTheory/FactorizationLens/ValuationAlgebra.lean
+    declarations:
+    - truncatedValuationVector
+    - truncatedLens
+    - multiplicativeSigmaAlgebra
+    - valuationFiltration_monotone
+  fragment: '3'
+  section: '1.2'
+- id: proposition_48
+  type: proposition
+  phase: 3
+  global_num: 48
+  title: orthogonal idempotents; partition of unity
+  line: 2295
+  status: proven
+  in_root_build: true
+  lean_files:
+  - path: FdrsFormal/NumberTheory.lean
+    declarations:
+    - genericFailure_dirichletTransform_blockProjection
+  - path: FdrsFormal/NumberTheory/FactorizationLens.lean
+    declarations: []
+  - path: FdrsFormal/NumberTheory/FactorizationLens/Definition.lean
+    declarations:
+    - valuationVector
+    - smoothPart
+    - freePart
+    - factorization_unique
+    - freePart_coprime
+  - path: FdrsFormal/NumberTheory/FactorizationLens/ValuationAlgebra.lean
+    declarations:
+    - truncatedValuationVector
+    - truncatedLens
+    - multiplicativeSigmaAlgebra
+    - valuationFiltration_monotone
+  fragment: '3'
+  section: '1.3'
+- id: proposition_49
+  type: proposition
+  phase: 3
+  global_num: 49
+  title: cylinder measurability criterion
+  line: 2309
   status: proven
   in_root_build: true
   lean_files:
@@ -3099,6 +3112,52 @@ items:
     - divisibility_nesting
     - exactValuation_eq_diff
     - divisibilityPeriodicity
+  fragment: '3'
+  section: '1.4'
+- id: corollary_13
+  type: corollary
+  phase: 3
+  global_num: 13
+  title: valuation gates at finite depth
+  line: 2319
+  status: proven
+  in_root_build: true
+  lean_files:
+  - path: FdrsFormal/NumberTheory.lean
+    declarations:
+    - genericFailure_dirichletTransform_blockProjection
+  - path: FdrsFormal/NumberTheory/FactorizationLens.lean
+    declarations: []
+  - path: FdrsFormal/NumberTheory/FactorizationLens/Definition.lean
+    declarations:
+    - valuationVector
+    - smoothPart
+    - freePart
+    - factorization_unique
+    - freePart_coprime
+  fragment: '3'
+  section: '1.5'
+- id: definition_42
+  type: definition
+  phase: 3
+  global_num: 42
+  title: ''
+  line: 2335
+  status: proven
+  in_root_build: true
+  lean_files:
+  - path: FdrsFormal/NumberTheory.lean
+    declarations:
+    - genericFailure_dirichletTransform_blockProjection
+  - path: FdrsFormal/NumberTheory/FactorizationLens.lean
+    declarations: []
+  - path: FdrsFormal/NumberTheory/FactorizationLens/Definition.lean
+    declarations:
+    - valuationVector
+    - smoothPart
+    - freePart
+    - factorization_unique
+    - freePart_coprime
   fragment: '3'
   section: '2.1'
 - id: proposition_50
@@ -3106,7 +3165,7 @@ items:
   phase: 3
   global_num: 50
   title: idempotence
-  line: 2307
+  line: 2343
   status: proven
   in_root_build: true
   lean_files:
@@ -3122,12 +3181,11 @@ items:
     - freePart
     - factorization_unique
     - freePart_coprime
-  - path: FdrsFormal/NumberTheory/FactorizationLens/Periodicity.lean
+  - path: FdrsFormal/NumberTheory/FactorizationLens/ExponentConvolution.lean
     declarations:
-    - divisibility_periodic
-    - divisibility_nesting
-    - exactValuation_eq_diff
-    - divisibilityPeriodicity
+    - exponentAddition
+    - smoothRestriction
+    - exponentConvolutionIso
   fragment: '3'
   section: '2.2'
 - id: theorem_19
@@ -3135,7 +3193,7 @@ items:
   phase: 3
   global_num: 19
   title: squarefree projector as finite product of divisibility complements
-  line: 2317
+  line: 2353
   status: proven
   in_root_build: true
   lean_files:
@@ -3151,6 +3209,11 @@ items:
     - freePart
     - factorization_unique
     - freePart_coprime
+  - path: FdrsFormal/NumberTheory/FactorizationLens/ExponentConvolution.lean
+    declarations:
+    - exponentAddition
+    - smoothRestriction
+    - exponentConvolutionIso
   fragment: '3'
   section: '2.3'
 - id: corollary_14
@@ -3158,7 +3221,7 @@ items:
   phase: 3
   global_num: 14
   title: when squarefree is cylinder-measurable at some depth
-  line: 2331
+  line: 2367
   status: proven
   in_root_build: true
   lean_files:
@@ -3174,6 +3237,10 @@ items:
     - freePart
     - factorization_unique
     - freePart_coprime
+  - path: FdrsFormal/NumberTheory/FactorizationLens/FiberDecomposition.lean
+    declarations:
+    - FactorizationFiber
+    - factorizationFiberDecomp
   fragment: '3'
   section: '2.4'
 - id: theorem_20
@@ -3181,7 +3248,7 @@ items:
   phase: 3
   global_num: 20
   title: twist–transform covariance
-  line: 2350
+  line: 2386
   status: proven
   in_root_build: true
   lean_files:
@@ -3195,7 +3262,7 @@ items:
   phase: 3
   global_num: 15
   title: true commutation criterion
-  line: 2366
+  line: 2402
   status: proven
   in_root_build: true
   lean_files:
@@ -3209,7 +3276,7 @@ items:
   phase: 3
   global_num: 43
   title: pure (p
-  line: 2375
+  line: 2411
   status: proven
   in_root_build: true
   lean_files:
@@ -3223,7 +3290,7 @@ items:
   phase: 3
   global_num: 21
   title: valuation-fiber Toeplitz action
-  line: 2379
+  line: 2415
   status: proven
   in_root_build: true
   lean_files:
@@ -3237,7 +3304,7 @@ items:
   phase: 3
   global_num: 51
   title: generic failure of commutation with additive block projections
-  line: 2399
+  line: 2435
   status: proven
   in_root_build: true
   lean_files:
@@ -3251,7 +3318,7 @@ items:
   phase: 3
   global_num: 44
   title: multiplicative sigma-algebra at depth (E
-  line: 2473
+  line: 2509
   status: proven
   in_root_build: true
   lean_files:
@@ -3265,25 +3332,7 @@ items:
   phase: 3
   global_num: 52
   title: periodicity of divisibility
-  line: 2493
-  status: proven
-  in_root_build: true
-  lean_files:
-  - path: FdrsFormal/NumberTheory/FactorizationLens/Definition.lean
-    declarations:
-    - valuationVector
-    - smoothPart
-    - freePart
-    - factorization_unique
-    - freePart_coprime
-  fragment: '4'
-  section: '2.1'
-- id: theorem_22
-  type: theorem
-  phase: 3
-  global_num: 22
-  title: exponent convolution isomorphism
-  line: 2537
+  line: 2529
   status: proven
   in_root_build: true
   lean_files:
@@ -3300,13 +3349,31 @@ items:
     - smoothPart_valuation
     - roughPart_coprime
   fragment: '4'
+  section: '2.1'
+- id: theorem_22
+  type: theorem
+  phase: 3
+  global_num: 22
+  title: exponent convolution isomorphism
+  line: 2573
+  status: proven
+  in_root_build: true
+  lean_files:
+  - path: FdrsFormal/NumberTheory/FactorizationLens/Definition.lean
+    declarations:
+    - valuationVector
+    - smoothPart
+    - freePart
+    - factorization_unique
+    - freePart_coprime
+  fragment: '4'
   section: '3.1'
 - id: theorem_23
   type: theorem
   phase: 3
   global_num: 23
   title: factorization-fiber decomposition
-  line: 2563
+  line: 2599
   status: proven
   in_root_build: true
   lean_files:
@@ -3324,7 +3391,7 @@ items:
   phase: 3
   global_num: 16
   title: explicit valuation-lattice update rule
-  line: 2576
+  line: 2612
   status: proven
   in_root_build: true
   lean_files:
@@ -3342,7 +3409,7 @@ items:
   phase: 3
   global_num: 45
   title: augmented factorization state
-  line: 2598
+  line: 2634
   status: proven
   in_root_build: true
   lean_files:
@@ -3356,7 +3423,7 @@ items:
   phase: 3
   global_num: 53
   title: Dirichlet transforms are local/Markov on (\Lambda_P
-  line: 2608
+  line: 2644
   status: proven
   in_root_build: true
   lean_files:
@@ -3370,7 +3437,7 @@ items:
   phase: 3
   global_num: 54
   title: squarefree constraint on the (P
-  line: 2628
+  line: 2664
   status: proven
   in_root_build: true
   lean_files:
@@ -3384,7 +3451,7 @@ items:
   phase: 3
   global_num: 55
   title: Möbius on (P
-  line: 2638
+  line: 2674
   status: proven
   in_root_build: true
   lean_files:
@@ -3398,7 +3465,7 @@ items:
   phase: 4
   global_num: 46
   title: prime-set lens
-  line: 2700
+  line: 2736
   status: proven
   in_root_build: true
   lean_files:
@@ -3444,7 +3511,7 @@ items:
   phase: 4
   global_num: 4
   title: multiplication inside the Dirichlet basis
-  line: 2723
+  line: 2759
   status: proven
   in_root_build: true
   lean_files:
@@ -3490,7 +3557,7 @@ items:
   phase: 4
   global_num: 56
   title: representation of Dirichlet convolution
-  line: 2751
+  line: 2787
   status: proven
   in_root_build: true
   lean_files:
@@ -3536,7 +3603,7 @@ items:
   phase: 4
   global_num: 24
   title: 'monoid homomorphism: multiplication ↔ composition'
-  line: 2777
+  line: 2813
   status: proven
   in_root_build: true
   lean_files:
@@ -3550,7 +3617,7 @@ items:
   phase: 4
   global_num: 17
   title: prime-power instruction set
-  line: 2795
+  line: 2831
   status: proven
   in_root_build: true
   lean_files:
@@ -3596,7 +3663,7 @@ items:
   phase: 4
   global_num: 47
   title: (P
-  line: 2811
+  line: 2847
   status: proven
   in_root_build: true
   lean_files:
@@ -3642,7 +3709,7 @@ items:
   phase: 4
   global_num: 25
   title: 'lens-locality: (P'
-  line: 2819
+  line: 2855
   status: proven
   in_root_build: true
   lean_files:
@@ -3688,7 +3755,7 @@ items:
   phase: 4
   global_num: 48
   title: execution set / rhythm of (n
-  line: 2842
+  line: 2878
   status: proven
   in_root_build: true
   lean_files:
@@ -3734,7 +3801,7 @@ items:
   phase: 4
   global_num: 57
   title: periodicity on the integer line
-  line: 2850
+  line: 2886
   status: proven
   in_root_build: true
   lean_files:
@@ -3780,7 +3847,7 @@ items:
   phase: 4
   global_num: 58
   title: finite-depth cylinder realization when (n\mid B_L
-  line: 2859
+  line: 2895
   status: proven
   in_root_build: true
   lean_files:
@@ -3826,7 +3893,7 @@ items:
   phase: 4
   global_num: 49
   title: truncated Dirichlet product
-  line: 2911
+  line: 2947
   status: proven
   in_root_build: true
   lean_files:
@@ -3872,7 +3939,7 @@ items:
   phase: 4
   global_num: 59
   title: algebra laws
-  line: 2919
+  line: 2955
   status: proven
   in_root_build: true
   lean_files:
@@ -3918,7 +3985,7 @@ items:
   phase: 4
   global_num: 50
   title: compiled program operator
-  line: 2947
+  line: 2983
   status: proven
   in_root_build: true
   lean_files:
@@ -3964,7 +4031,7 @@ items:
   phase: 4
   global_num: 60
   title: representation / homomorphism
-  line: 2954
+  line: 2990
   status: proven
   in_root_build: true
   lean_files:
@@ -4010,7 +4077,7 @@ items:
   phase: 4
   global_num: 61
   title: multiplication = composition on basis programs
-  line: 2991
+  line: 3027
   status: proven
   in_root_build: true
   lean_files:
@@ -4056,7 +4123,7 @@ items:
   phase: 4
   global_num: 51
   title: divisor gate / rhythm
-  line: 3023
+  line: 3059
   status: proven
   in_root_build: true
   lean_files:
@@ -4102,7 +4169,7 @@ items:
   phase: 4
   global_num: 26
   title: compiled execution law
-  line: 3030
+  line: 3066
   status: proven
   in_root_build: true
   lean_files:
@@ -4148,7 +4215,7 @@ items:
   phase: 4
   global_num: 18
   title: causality / triangularity
-  line: 3042
+  line: 3078
   status: proven
   in_root_build: true
   lean_files:
@@ -4194,7 +4261,7 @@ items:
   phase: 4
   global_num: 27
   title: fiberwise locality of (P
-  line: 3062
+  line: 3098
   status: proven
   in_root_build: true
   lean_files:
@@ -4240,7 +4307,7 @@ items:
   phase: 4
   global_num: 19
   title: valuation-lattice convolution form
-  line: 3080
+  line: 3116
   status: proven
   in_root_build: true
   lean_files:
@@ -4286,7 +4353,7 @@ items:
   phase: 4
   global_num: 62
   title: finite-depth cylinder criterion
-  line: 3100
+  line: 3136
   status: proven
   in_root_build: true
   lean_files:
@@ -4332,7 +4399,7 @@ items:
   phase: 4
   global_num: 63
   title: projection algebra for a fixed modulus
-  line: 3169
+  line: 3205
   status: proven
   in_root_build: true
   lean_files:
@@ -4378,7 +4445,7 @@ items:
   phase: 4
   global_num: 64
   title: character expansion = Fourier probe form
-  line: 3182
+  line: 3218
   status: proven
   in_root_build: true
   lean_files:
@@ -4424,7 +4491,7 @@ items:
   phase: 4
   global_num: 28
   title: Möbius inversion as operator inverse
-  line: 3211
+  line: 3247
   status: proven
   in_root_build: true
   lean_files:
@@ -4470,7 +4537,7 @@ items:
   phase: 4
   global_num: 65
   title: projection + prime-square factorization
-  line: 3235
+  line: 3271
   status: proven
   in_root_build: true
   lean_files:
@@ -4481,9 +4548,34 @@ items:
     - blockMemory_is_measurable
     - blockSize_mono
     - liftOperator
-    - restrictOperator
-    - CoherentHierarchy
-    - conditionalExpectation_idempotent
+  - path: FdrsFormal/Integration/Complexity/Definition.lean
+    declarations:
+    - touchSet
+    - touchComplexity
+    - tickTouchSet
+    - tick_touchComplexity
+    - tick_touch_bound
+  - path: FdrsFormal/Integration/DualFiltrations/Definition.lean
+    declarations:
+    - blockSize
+    - additiveFiltrationLevel
+    - additiveFiltration_cylinder
+    - valuationVector
+    - smoothPart
+  - path: FdrsFormal/Integration/Primitives/MobiusInversion.lean
+    declarations:
+    - divisorSum
+    - mobiusUnmix
+    - mobiusInversion
+    - mobiusInversion_dual
+    - squarefreeProject
+  - path: FdrsFormal/Integration/Primitives/ResidueProjection.lean
+    declarations:
+    - blockSize
+    - residueProj
+    - residueProjFin
+    - residueProj_idempotent
+    - residueProj_orthogonal
   fragment: '4.1'
   section: '3.1'
 - id: theorem_29
@@ -4491,7 +4583,7 @@ items:
   phase: 4
   global_num: 29
   title: CRT identity
-  line: 3262
+  line: 3298
   status: proven
   in_root_build: true
   lean_files:
@@ -4537,7 +4629,7 @@ items:
   phase: 4
   global_num: 52
   title: general sieve filter
-  line: 3279
+  line: 3315
   status: proven
   in_root_build: true
   lean_files:
@@ -4583,7 +4675,7 @@ items:
   phase: 4
   global_num: 66
   title: idempotence + monotonic refinement
-  line: 3290
+  line: 3326
   status: proven
   in_root_build: true
   lean_files:
@@ -4629,7 +4721,7 @@ items:
   phase: 4
   global_num: 1
   title: squarefree as a sieve
-  line: 3302
+  line: 3338
   status: proven
   in_root_build: true
   lean_files:
@@ -4675,7 +4767,7 @@ items:
   phase: 4
   global_num: 67
   title: diagonal subalgebra closure
-  line: 3318
+  line: 3354
   status: proven
   in_root_build: true
   lean_files:
@@ -4721,7 +4813,7 @@ items:
   phase: 4
   global_num: 68
   title: Dirichlet core closure
-  line: 3326
+  line: 3362
   status: proven
   in_root_build: true
   lean_files:
@@ -4767,7 +4859,7 @@ items:
   phase: 4
   global_num: 69
   title: spectral interaction law with multiplicative probes
-  line: 3334
+  line: 3370
   status: proven
   in_root_build: true
   lean_files:
@@ -4813,7 +4905,7 @@ items:
   phase: 4
   global_num: 53
   title: lift to cylinder-constant functions
-  line: 3417
+  line: 3453
   status: proven
   in_root_build: true
   lean_files:
@@ -4859,7 +4951,7 @@ items:
   phase: 4
   global_num: 54
   title: restriction as conditional expectation / block average
-  line: 3425
+  line: 3461
   status: proven
   in_root_build: true
   lean_files:
@@ -4905,7 +4997,7 @@ items:
   phase: 4
   global_num: 70
   title: lift/restrict coherence
-  line: 3439
+  line: 3475
   status: proven
   in_root_build: true
   lean_files:
@@ -4951,7 +5043,7 @@ items:
   phase: 4
   global_num: 55
   title: coherent hierarchical memory
-  line: 3460
+  line: 3496
   status: proven
   in_root_build: true
   lean_files:
@@ -4997,7 +5089,7 @@ items:
   phase: 4
   global_num: 71
   title: equivalence with a single fine state
-  line: 3471
+  line: 3507
   status: proven
   in_root_build: true
   lean_files:
@@ -5043,7 +5135,7 @@ items:
   phase: 4
   global_num: 72
   title: depth-(L
-  line: 3493
+  line: 3529
   status: proven
   in_root_build: true
   lean_files:
@@ -5089,7 +5181,7 @@ items:
   phase: 4
   global_num: 20
   title: induced block operator
-  line: 3508
+  line: 3544
   status: proven
   in_root_build: true
   lean_files:
@@ -5135,7 +5227,7 @@ items:
   phase: 4
   global_num: 73
   title: closure under products and linear combinations
-  line: 3542
+  line: 3578
   status: proven
   in_root_build: true
   lean_files:
@@ -5181,7 +5273,7 @@ items:
   phase: 4
   global_num: 21
   title: CRTCompose is depth-max
-  line: 3556
+  line: 3592
   status: proven
   in_root_build: true
   lean_files:
@@ -5227,7 +5319,7 @@ items:
   phase: 4
   global_num: 56
   title: support of a gate at depth (L
-  line: 3573
+  line: 3609
   status: proven
   in_root_build: true
   lean_files:
@@ -5273,7 +5365,7 @@ items:
   phase: 4
   global_num: 74
   title: sparse update on block memory
-  line: 3580
+  line: 3616
   status: proven
   in_root_build: true
   lean_files:
@@ -5319,7 +5411,7 @@ items:
   phase: 4
   global_num: 75
   title: prefix odometer
-  line: 3610
+  line: 3646
   status: proven
   in_root_build: true
   lean_files:
@@ -5365,7 +5457,7 @@ items:
   phase: 4
   global_num: 76
   title: block-lift evaluation cost
-  line: 3667
+  line: 3703
   status: proven
   in_root_build: true
   lean_files:
@@ -5411,7 +5503,7 @@ items:
   phase: 4
   global_num: 77
   title: active block count
-  line: 3685
+  line: 3721
   status: proven
   in_root_build: true
   lean_files:
@@ -5457,7 +5549,7 @@ items:
   phase: 4
   global_num: 78
   title: per-fiber update cost
-  line: 3820
+  line: 3856
   status: proven
   in_root_build: true
   lean_files:
@@ -5471,7 +5563,7 @@ items:
   phase: 4
   global_num: 22
   title: global valuation-local cost
-  line: 3831
+  line: 3867
   status: proven
   in_root_build: true
   lean_files:
@@ -5517,7 +5609,32 @@ items:
   phase: 4
   global_num: 3
   title: Diagonal gates (constraints / phase
-  line: 3946
+  line: 3982
+  status: proven
+  in_root_build: true
+  lean_files:
+  - path: FdrsFormal/Modes/VariableRadix/Basic/Basic.lean
+    declarations: []
+  - path: FdrsFormal/Modes/VariableRadix/Basic/VariableSpace.lean
+    declarations:
+    - FiniteVariableSpace
+    - digitAt
+    - getPrefix
+    - ext
+    - digitAt_lt
+    - InfiniteVariableSpace
+    - getPrefix
+    - getPrefix_length
+    - getPrefix_valid
+    - ext
+  fragment: '4.4'
+  section: G1
+- id: gate_4
+  type: gate
+  phase: 4
+  global_num: 4
+  title: Dirichlet transforms (compiled programs
+  line: 3995
   status: proven
   in_root_build: true
   lean_files:
@@ -5557,41 +5674,36 @@ items:
     - residueProj_idempotent
     - residueProj_orthogonal
   fragment: '4.4'
-  section: G1
-- id: gate_4
-  type: gate
-  phase: 4
-  global_num: 4
-  title: Dirichlet transforms (compiled programs
-  line: 3959
-  status: proven
-  in_root_build: true
-  lean_files:
-  - path: FdrsFormal/Modes/VariableRadix/Basic/Basic.lean
-    declarations: []
-  - path: FdrsFormal/Modes/VariableRadix/Basic/RadixLaw.lean
-    declarations:
-    - PrefixWord
-    - emptyPrefix
-    - RadixLaw
-    - radix_pos
-    - radix_ge_one
-    - ofRadixSeq
-    - isPositionOnly
-    - ofRadixSeq_isPositionOnly
-  fragment: '4.4'
   section: G2
 - id: proposition_79
   type: proposition
   phase: 4
   global_num: 79
   title: closure of guarded instructions
-  line: 4046
-  status: missing
+  line: 4082
+  status: proven
   in_root_build: true
   lean_files:
+  - path: FdrsFormal/Modes/VariableRadix/Encoding/Bijection.lean
+    declarations:
+    - theoremA_finite
+    - finiteVariableRadixEquiv
+    - finiteVariableSpace_card
+    - FiniteVariableSpace.truncateToK
+    - infiniteZeros
+    - infiniteVariableSpace_nontrivial
+    - singleOneAt
+    - singleOneAt_injective
+    - infiniteVariableSpace_infinite
+    - truncateInfinite
   - path: FdrsFormal/Modes/VariableRadix/Encoding/Encoding.lean
     declarations: []
+  - path: FdrsFormal/Modes/VariableRadix/Encoding/OrderPreserving.lean
+    declarations:
+    - decode_lt_iff
+    - decode_inj
+    - encode_strictMono
+    - variableRadix_orderIso
   fragment: '4.4'
   section: '3.1'
 - id: corollary_23
@@ -5599,22 +5711,18 @@ items:
   phase: 4
   global_num: 23
   title: Markov locality
-  line: 4120
+  line: 4156
   status: proven
   in_root_build: true
   lean_files:
-  - path: FdrsFormal/Modes/VariableRadix/VariableTick/CarryAlgorithm.lean
+  - path: FdrsFormal/Modes/VariableRadix/VariableTick/Termination.lean
     declarations:
-    - carryIndex
-    - isMaximalDigit
-    - notMaximal_at_carryIndex
-    - allMaximal_after_carryIndex
-    - tickByCarry
-    - tickByCarry_eq_cyclicTick
-    - carryIndex_some_not_max
-    - tick_decode_succ
-    - carry_preserves_prefix
-    - carry_increments
+    - carry_terminates
+    - carryIndex_le
+    - carry_complexity
+    - isWorstCaseCarry
+    - worstCase_iff_allMaximal
+    - worstCase_wraps_to_zero
   - path: FdrsFormal/Modes/VariableRadix/VariableTick/VariableTick.lean
     declarations: []
   fragment: '4.4'
@@ -5624,7 +5732,7 @@ items:
   phase: 5
   global_num: 57
   title: branching function / radix law
-  line: 4154
+  line: 4190
   status: proven
   in_root_build: true
   lean_files:
@@ -5641,7 +5749,7 @@ items:
   phase: 5
   global_num: 58
   title: cylinder sets
-  line: 4198
+  line: 4234
   status: proven
   in_root_build: true
   lean_files:
@@ -5655,7 +5763,7 @@ items:
   phase: 5
   global_num: 59
   title: prefix metric
-  line: 4208
+  line: 4244
   status: proven
   in_root_build: true
   lean_files:
@@ -5701,7 +5809,7 @@ items:
   phase: 5
   global_num: 80
   title: ultrametric
-  line: 4219
+  line: 4255
   status: proven
   in_root_build: true
   lean_files:
@@ -5747,7 +5855,7 @@ items:
   phase: 5
   global_num: 24
   title: cylinders are clopen and form a basis
-  line: 4232
+  line: 4268
   status: proven
   in_root_build: true
   lean_files:
@@ -5793,7 +5901,7 @@ items:
   phase: 5
   global_num: 60
   title: lex order
-  line: 4246
+  line: 4282
   status: proven
   in_root_build: true
   lean_files:
@@ -5807,7 +5915,7 @@ items:
   phase: 5
   global_num: 61
   title: completion counts
-  line: 4254
+  line: 4290
   status: proven
   in_root_build: true
   lean_files:
@@ -5821,7 +5929,7 @@ items:
   phase: 5
   global_num: 62
   title: variable-base rank / decoding
-  line: 4269
+  line: 4305
   status: proven
   in_root_build: true
   lean_files:
@@ -5835,7 +5943,7 @@ items:
   phase: 5
   global_num: 30
   title: order-isomorphism to an integer interval
-  line: 4278
+  line: 4314
   status: proven
   in_root_build: true
   lean_files:
@@ -5881,7 +5989,7 @@ items:
   phase: 5
   global_num: 63
   title: finite-depth Tick, partial form
-  line: 4297
+  line: 4333
   status: proven
   in_root_build: true
   lean_files:
@@ -5895,7 +6003,7 @@ items:
   phase: 5
   global_num: 64
   title: finite-depth cyclic Tick
-  line: 4305
+  line: 4341
   status: proven
   in_root_build: true
   lean_files:
@@ -5941,7 +6049,7 @@ items:
   phase: 5
   global_num: 31
   title: Tick equals +1 in rank coordinates
-  line: 4334
+  line: 4370
   status: proven
   in_root_build: true
   lean_files:
@@ -5987,7 +6095,7 @@ items:
   phase: 5
   global_num: 65
   title: maximal path
-  line: 4353
+  line: 4389
   status: proven
   in_root_build: true
   lean_files:
@@ -6033,7 +6141,7 @@ items:
   phase: 5
   global_num: 66
   title: infinite Tick, partial
-  line: 4361
+  line: 4397
   status: proven
   in_root_build: true
   lean_files:
@@ -6047,7 +6155,7 @@ items:
   phase: 5
   global_num: 81
   title: no infinite carry
-  line: 4365
+  line: 4401
   status: proven
   in_root_build: true
   lean_files:
@@ -6093,7 +6201,7 @@ items:
   phase: 5
   global_num: 25
   title: well-founded tick index from a start state
-  line: 4373
+  line: 4409
   status: proven
   in_root_build: true
   lean_files:
@@ -6139,7 +6247,7 @@ items:
   phase: 5
   global_num: 82
   title: Tick computability
-  line: 4393
+  line: 4429
   status: proven
   in_root_build: true
   lean_files:
@@ -6153,7 +6261,7 @@ items:
   phase: 5
   global_num: 67
   title: prefix-determined radix law
-  line: 4447
+  line: 4483
   status: proven
   in_root_build: true
   lean_files:
@@ -6199,7 +6307,7 @@ items:
   phase: 5
   global_num: 32
   title: well-defined successor; no carry loops
-  line: 4453
+  line: 4489
   status: proven
   in_root_build: true
   lean_files:
@@ -6245,7 +6353,7 @@ items:
   phase: 5
   global_num: 68
   title: chart / reindexing isomorphism
-  line: 4475
+  line: 4511
   status: proven
   in_root_build: true
   lean_files:
@@ -6291,7 +6399,7 @@ items:
   phase: 5
   global_num: 33
   title: transport principle
-  line: 4489
+  line: 4525
   status: proven
   in_root_build: true
   lean_files:
@@ -6337,7 +6445,7 @@ items:
   phase: 5
   global_num: 69
   title: rechart map
-  line: 4510
+  line: 4546
   status: proven
   in_root_build: true
   lean_files:
@@ -6383,7 +6491,7 @@ items:
   phase: 5
   global_num: 83
   title: coherent composition across changing radices
-  line: 4519
+  line: 4555
   status: proven
   in_root_build: true
   lean_files:
@@ -6429,7 +6537,7 @@ items:
   phase: 5
   global_num: 70
   title: augmented state for variable-radix time
-  line: 4548
+  line: 4584
   status: proven
   in_root_build: true
   lean_files:
@@ -6475,7 +6583,7 @@ items:
   phase: 5
   global_num: 34
   title: Markov property
-  line: 4569
+  line: 4605
   status: proven
   in_root_build: true
   lean_files:
@@ -6521,7 +6629,7 @@ items:
   phase: 5
   global_num: 84
   title: finite-horizon DP always works
-  line: 4584
+  line: 4620
   status: proven
   in_root_build: true
   lean_files:
@@ -6567,7 +6675,7 @@ items:
   phase: 5
   global_num: 85
   title: infinite-horizon contraction condition
-  line: 4598
+  line: 4634
   status: proven
   in_root_build: true
   lean_files:
@@ -6613,7 +6721,43 @@ items:
   phase: 5
   global_num: 71
   title: radix chart
-  line: 4662
+  line: 4698
+  status: proven
+  in_root_build: true
+  lean_files:
+  - path: FdrsFormal/Modes/VariableRadix/SiblingUniformity/SiblingUniformity.lean
+    declarations: []
+  - path: FdrsFormal/Modes/VariableRadix/SiblingUniformity/WellDefined.lean
+    declarations:
+    - blockSize
+    - blockSize_eq_completionCount
+    - blockSize_pos
+    - completionCount_eq_radix_mul_blockSize
+    - blockSize_dvd_completionCount
+    - blockSize_mono
+    - blockSize_at_depth
+  fragment: '5.3'
+  section: '1.1'
+- id: definition_72
+  type: definition
+  phase: 5
+  global_num: 72
+  title: chart-invariant Tick
+  line: 4711
+  status: proven
+  in_root_build: true
+  lean_files:
+  - path: FdrsFormal/Modes/VariableRadix/Basic/VariableSpace.lean
+    declarations:
+    - InfiniteVariableSpace
+  fragment: '5.3'
+  section: '1.2'
+- id: theorem_35
+  type: theorem
+  phase: 5
+  global_num: 35
+  title: semantic stability under radix changes
+  line: 4724
   status: proven
   in_root_build: true
   lean_files:
@@ -6653,47 +6797,13 @@ items:
     - isValidPrefix'_nil
     - isValidPrefix'_append_singleton
   fragment: '5.3'
-  section: '1.1'
-- id: definition_72
-  type: definition
-  phase: 5
-  global_num: 72
-  title: chart-invariant Tick
-  line: 4675
-  status: proven
-  in_root_build: true
-  lean_files:
-  - path: FdrsFormal/Modes/VariableRadix/Basic/VariableSpace.lean
-    declarations:
-    - InfiniteVariableSpace
-  fragment: '5.3'
-  section: '1.2'
-- id: theorem_35
-  type: theorem
-  phase: 5
-  global_num: 35
-  title: semantic stability under radix changes
-  line: 4688
-  status: proven
-  in_root_build: true
-  lean_files:
-  - path: FdrsFormal/Modes/VariableRadix/SiblingUniformity/Definition.lean
-    declarations:
-    - isSiblingUniformAt
-    - isSiblingUniform
-    - positionOnly_siblingUniform
-    - siblingUniform_iff_uniformBlocks
-    - siblingUniform_product_formula
-  - path: FdrsFormal/Modes/VariableRadix/SiblingUniformity/SiblingUniformity.lean
-    declarations: []
-  fragment: '5.3'
   section: '1.3'
 - id: definition_73
   type: definition
   phase: 5
   global_num: 73
   title: arithmetic-cylinder property at depth (L
-  line: 4723
+  line: 4759
   status: proven
   in_root_build: true
   lean_files:
@@ -6739,21 +6849,45 @@ items:
   phase: 5
   global_num: 86
   title: prefix-relative modulus appearance
-  line: 4736
+  line: 4772
   status: proven
   in_root_build: true
   lean_files:
-  - path: FdrsFormal/Modes/VariableRadix/PrefixWeights/OdometerDecode.lean
+  - path: FdrsFormal/Integration/ThreeLineMediator/CoupledSystem.lean
     declarations:
-    - odometerDecode
-    - placeValue
-    - placeValue_pos
-    - placeValue_mono
-    - odometerDecode_sum
-    - digitContribution
-    - digitContribution_lt
-    - odometerDecode_lt
-    - odometerDecode_injective
+    - InstantiationMode
+    - ManifestSpace
+    - 'null'
+    - isManifested
+    - WellFormed
+  - path: FdrsFormal/Integration/ThreeLineMediator/Definition.lean
+    declarations:
+    - productRadix
+    - productRadix_apply
+    - placeValue_product
+    - projectA
+    - projectB
+  - path: FdrsFormal/Modes/VariableRadix/Basic/DigitAlphabet.lean
+    declarations:
+    - DigitAt
+    - ':'
+    - ':'
+    - card_ge_two
+    - zero
+  - path: FdrsFormal/Modes/VariableRadix/Basic/RadixLaw.lean
+    declarations:
+    - PrefixWord
+    - emptyPrefix
+    - RadixLaw
+    - radix_pos
+    - radix_ge_one
+  - path: FdrsFormal/Modes/VariableRadix/Basic/TreeStructure.lean
+    declarations:
+    - RadixLaw.shift
+    - isValidPrefix
+    - isValidPrefix'
+    - isValidPrefix'_nil
+    - isValidPrefix'_append_singleton
   fragment: '5.3'
   section: '2.2'
 - id: corollary_26
@@ -6761,7 +6895,7 @@ items:
   phase: 5
   global_num: 26
   title: global modulus-by-depth
-  line: 4770
+  line: 4806
   status: proven
   in_root_build: true
   lean_files:
@@ -6807,7 +6941,7 @@ items:
   phase: 5
   global_num: 36
   title: Markov property
-  line: 4797
+  line: 4833
   status: proven
   in_root_build: true
   lean_files:
@@ -6853,7 +6987,7 @@ items:
   phase: 5
   global_num: 37
   title: STOK/DP recursion viability under variable radices
-  line: 4819
+  line: 4855
   status: proven
   in_root_build: true
   lean_files:
@@ -6899,22 +7033,45 @@ items:
   phase: 5
   global_num: 74
   title: Sibling-uniform suffix counts, SU
-  line: 4890
+  line: 4926
   status: proven
   in_root_build: true
   lean_files:
-  - path: FdrsFormal/Modes/VariableRadix/PrefixWeights/ArithmeticCylinders.lean
+  - path: FdrsFormal/Integration/ThreeLineMediator/CoupledSystem.lean
     declarations:
-    - cylinderSet
-    - cylinderMin
-    - cylinderMin_mem
-    - cylinderSet_valid
-    - cylinderMin_is_min
-    - lex_lt_of_prefix_lt
-    - cylinder_rank_upper_bound
-    - cylinder_interval_le
-    - cylinder_eq_rank_interval
-    - cylinders_partition_by_congruence
+    - InstantiationMode
+    - ManifestSpace
+    - 'null'
+    - isManifested
+    - WellFormed
+  - path: FdrsFormal/Integration/ThreeLineMediator/Definition.lean
+    declarations:
+    - productRadix
+    - productRadix_apply
+    - placeValue_product
+    - projectA
+    - projectB
+  - path: FdrsFormal/Modes/VariableRadix/Basic/DigitAlphabet.lean
+    declarations:
+    - DigitAt
+    - ':'
+    - ':'
+    - card_ge_two
+    - zero
+  - path: FdrsFormal/Modes/VariableRadix/Basic/RadixLaw.lean
+    declarations:
+    - PrefixWord
+    - emptyPrefix
+    - RadixLaw
+    - radix_pos
+    - radix_ge_one
+  - path: FdrsFormal/Modes/VariableRadix/Basic/TreeStructure.lean
+    declarations:
+    - RadixLaw.shift
+    - isValidPrefix
+    - isValidPrefix'
+    - isValidPrefix'_nil
+    - isValidPrefix'_append_singleton
   fragment: '5.4'
   section: '1.1'
 - id: proposition_87
@@ -6922,7 +7079,7 @@ items:
   phase: 5
   global_num: 87
   title: SU ⇔ constant block sizes at each node
-  line: 4901
+  line: 4937
   status: proven
   in_root_build: true
   lean_files:
@@ -6968,7 +7125,7 @@ items:
   phase: 5
   global_num: 75
   title: local modulus / place value along a prefix
-  line: 4920
+  line: 4956
   status: proven
   in_root_build: true
   lean_files:
@@ -7014,7 +7171,7 @@ items:
   phase: 5
   global_num: 76
   title: odometer decoding
-  line: 4933
+  line: 4969
   status: proven
   in_root_build: true
   lean_files:
@@ -7060,7 +7217,7 @@ items:
   phase: 5
   global_num: 38
   title: SU ⇒ arithmetic cylinders with modulus (\beta_\omega(s
-  line: 4949
+  line: 4985
   status: proven
   in_root_build: true
   lean_files:
@@ -7106,7 +7263,7 @@ items:
   phase: 5
   global_num: 27
   title: prefix-relative modulus appearance
-  line: 4983
+  line: 5019
   status: proven
   in_root_build: true
   lean_files:
@@ -7152,7 +7309,7 @@ items:
   phase: 5
   global_num: 88
   title: level-only bases ⇒ (\beta_\omega(s
-  line: 4999
+  line: 5035
   status: proven
   in_root_build: true
   lean_files:
@@ -7198,7 +7355,7 @@ items:
   phase: 5
   global_num: 77
   title: Dual-Filtration Machine state
-  line: 5123
+  line: 5159
   status: proven
   in_root_build: true
   lean_files:
@@ -7244,25 +7401,7 @@ items:
   phase: 5
   global_num: 78
   title: one step of Dual-Filtration Machine
-  line: 5217
-  status: proven
-  in_root_build: true
-  lean_files:
-  - path: FdrsFormal/Modes/VariableRadix/MetricComparison.lean
-    declarations: []
-  - path: FdrsFormal/Modes/VariableRadix/MetricComparison/Definition.lean
-    declarations:
-    - metricDominance
-    - metricDominance_iff_prefixWeight
-    - dominance_implies_finer_resolution
-  fragment: '5.5'
-  section: '5.1'
-- id: theorem_39
-  type: theorem
-  phase: 5
-  global_num: 39
-  title: combined locality bound
-  line: 5250
+  line: 5253
   status: proven
   in_root_build: true
   lean_files:
@@ -7286,13 +7425,13 @@ items:
     - metricDominance_trans
     - ultrametricSpectrum_preorder
   fragment: '5.5'
-  section: '6.1'
-- id: proposition_89
-  type: proposition
+  section: '5.1'
+- id: theorem_39
+  type: theorem
   phase: 5
-  global_num: 89
-  title: closure under composition
-  line: 5284
+  global_num: 39
+  title: combined locality bound
+  line: 5286
   status: proven
   in_root_build: true
   lean_files:
@@ -7316,13 +7455,13 @@ items:
     - isConsistent
     - volumeToPrescribedRadix
   fragment: '5.5'
-  section: '7.1'
-- id: definition_79
-  type: definition
-  phase: 6
-  global_num: 79
-  title: Radix-induced ultrametric
-  line: 5333
+  section: '6.1'
+- id: proposition_89
+  type: proposition
+  phase: 5
+  global_num: 89
+  title: closure under composition
+  line: 5320
   status: proven
   in_root_build: true
   lean_files:
@@ -7334,29 +7473,19 @@ items:
     - contextDependentRadix
     - dnaCodonUltrametric
     - cacheOptimizedRadix
-  section: 6.1.1
-- id: definition_80
+  - path: FdrsFormal/Modes/VariableRadix/Design/VolumeConstraints.lean
+    declarations:
+    - VolumeFunction
+    - isConsistent
+    - volumeToPrescribedRadix
+  fragment: '5.5'
+  section: '7.1'
+- id: definition_79
   type: definition
   phase: 6
-  global_num: 80
-  title: Ultrametric spectrum
-  line: 5350
-  status: proven
-  in_root_build: true
-  lean_files:
-  - path: FdrsFormal/Modes/VariableRadix/MultiMetric.lean
-    declarations: []
-  - path: FdrsFormal/Modes/VariableRadix/MultiMetric/ObserverComplex.lean
-    declarations:
-    - MultiMetricObserver
-    - timelines_independent_metrics
-  section: 6.1.2
-- id: theorem_40
-  type: theorem
-  phase: 6
-  global_num: 40
-  title: SU implies proper ultrametric
-  line: 5364
+  global_num: 79
+  title: Radix-induced ultrametric
+  line: 5369
   status: proven
   in_root_build: true
   lean_files:
@@ -7370,13 +7499,19 @@ items:
     declarations:
     - pullbackMetric
     - pullback_ne_intrinsic
-  section: 6.2.1
-- id: proposition_90
-  type: proposition
+  - path: FdrsFormal/Modes/VariableRadix/MultiMetric/Residual.lean
+    declarations:
+    - residualPayload
+    - residualAsMetricDiscrepancy
+    - residualPayload_eq_zero_of_eq
+    - payload_measures_information_loss
+  section: 6.1.1
+- id: definition_80
+  type: definition
   phase: 6
-  global_num: 90
-  title: Cylinders are ultrametric balls
-  line: 5391
+  global_num: 80
+  title: Ultrametric spectrum
+  line: 5386
   status: proven
   in_root_build: true
   lean_files:
@@ -7406,13 +7541,57 @@ items:
     - extendPrefixToInfinite_mem_cylinder
     - lcpLength_ge_of_same_prefix
     - not_mem_cylinder_of_lcpLength_lt
-  section: 6.2.2
-- id: definition_81
-  type: definition
+  section: 6.1.2
+- id: theorem_40
+  type: theorem
   phase: 6
-  global_num: 81
-  title: Metric dominance
-  line: 5414
+  global_num: 40
+  title: SU implies proper ultrametric
+  line: 5400
+  status: proven
+  in_root_build: true
+  lean_files:
+  - path: FdrsFormal/Modes/VariableRadix/MultiMetric/ObserverComplex.lean
+    declarations:
+    - MultiMetricObserver
+    - timelines_independent_metrics
+  - path: FdrsFormal/Modes/VariableRadix/MultiMetric/Projection.lean
+    declarations:
+    - pullbackMetric
+    - pullback_ne_intrinsic
+  - path: FdrsFormal/Modes/VariableRadix/MultiMetric/Residual.lean
+    declarations:
+    - residualPayload
+    - residualAsMetricDiscrepancy
+    - residualPayload_eq_zero_of_eq
+    - payload_measures_information_loss
+  - path: FdrsFormal/Modes/VariableRadix/Realizability/Conditions.lean
+    declarations:
+    - cylinderInfinite
+    - variableRadixRadius
+    - UltrametricBall
+    - UltrametricBall.toSet
+    - hasCylinderCorrespondence
+    - extendPrefixToInfinite
+    - extendPrefixToInfinite_getPrefix
+    - extendPrefixToInfinite_mem_cylinder
+    - lcpLength_ge_of_same_prefix
+    - not_mem_cylinder_of_lcpLength_lt
+  - path: FdrsFormal/Modes/VariableRadix/Realizability/Sufficiency.lean
+    declarations:
+    - AbstractUltrametric
+    - AbstractRealizabilityConditions
+    - radixLawFromUltrametric
+    - radixLawFromUltrametric_su
+    - theoremB_sufficiency
+    - radixLaw_unique
+  section: 6.2.1
+- id: proposition_90
+  type: proposition
+  phase: 6
+  global_num: 90
+  title: Cylinders are ultrametric balls
+  line: 5427
   status: proven
   in_root_build: true
   lean_files:
@@ -7422,13 +7601,35 @@ items:
     - residualAsMetricDiscrepancy
     - residualPayload_eq_zero_of_eq
     - payload_measures_information_loss
+  section: 6.2.2
+- id: definition_81
+  type: definition
+  phase: 6
+  global_num: 81
+  title: Metric dominance
+  line: 5450
+  status: proven
+  in_root_build: true
+  lean_files:
+  - path: FdrsFormal/Modes/VariableRadix/Realizability/Spectrum.lean
+    declarations:
+    - UltrametricSpectrum
+    - ':'
+    - ultrametricDominance
+    - dominance_refl
+    - dominance_trans
+    - ':'
+    - spectrum_nonempty
+    - positionOnly_in_spectrum
+    - isMinimalInSpectrum
+    - isMaximalInSpectrum
   section: 6.3.1
 - id: theorem_41
   type: theorem
   phase: 6
   global_num: 41
   title: Metric spectrum forms a preorder
-  line: 5426
+  line: 5462
   status: proven
   in_root_build: true
   lean_files:
@@ -7441,7 +7642,7 @@ items:
   phase: 6
   global_num: 82
   title: Multi-metric observer complex
-  line: 5545
+  line: 5581
   status: proven
   in_root_build: true
   lean_files:
@@ -7454,7 +7655,7 @@ items:
   phase: 6
   global_num: 83
   title: Metric projection
-  line: 5560
+  line: 5596
   status: proven
   in_root_build: true
   lean_files:
@@ -7467,7 +7668,7 @@ items:
   phase: 6
   global_num: 42
   title: Residual as metric discrepancy
-  line: 5572
+  line: 5608
   status: proven
   in_root_build: true
   lean_files:
@@ -7480,7 +7681,7 @@ items:
   phase: 6
   global_num: 43
   title: Realizability criterion for ultrametrics
-  line: 5588
+  line: 5624
   status: proven
   in_root_build: true
   lean_files:
@@ -7493,48 +7694,6 @@ items:
   phase: 6
   global_num: 28
   title: Non-realizable ultrametrics
-  line: 5644
-  status: proven
-  in_root_build: true
-  lean_files:
-  - path: FdrsFormal/Modes/ContextDependent/Preservation/DepthL.lean
-    declarations:
-    - isStructurePreserving
-    - structurePreserving_prefixWeight
-    - structurePreserving_refl
-    - structurePreserving_symm
-    - structurePreserving_trans
-    - depthLEquivalent
-    - depthLEquivalent_equivalence
-    - structurePreserving_radix_agree
-    - structurePreserving_completionCount
-  - path: FdrsFormal/Modes/ContextDependent/Preservation/Preservation.lean
-    declarations: []
-  section: 6.6.2
-- id: theorem_44
-  type: theorem
-  phase: 6
-  global_num: 44
-  title: Locality bounds under designed metrics
-  line: 5655
-  status: proven
-  in_root_build: true
-  lean_files:
-  - path: FdrsFormal/Modes/ContextDependent/Preservation/OperatorPreserved.lean
-    declarations:
-    - theoremF_gates_valid
-    - theoremF_ultrametric_agrees
-    - theoremF_projection_commutes
-    - theoremF_complete
-    - safe_deep_change
-  - path: FdrsFormal/Modes/ContextDependent/Preservation/Preservation.lean
-    declarations: []
-  section: 6.7.1
-- id: proposition_91
-  type: proposition
-  phase: 6
-  global_num: 91
-  title: SU ⟹ proper ultrametric
   line: 5680
   status: proven
   in_root_build: true
@@ -7551,13 +7710,13 @@ items:
     - refinementChain_composed
   - path: FdrsFormal/Modes/ContextDependent/Preservation/Preservation.lean
     declarations: []
-  section: P6.1
-- id: proposition_92
-  type: proposition
+  section: 6.6.2
+- id: theorem_44
+  type: theorem
   phase: 6
-  global_num: 92
-  title: Cylinders are balls
-  line: 5682
+  global_num: 44
+  title: Locality bounds under designed metrics
+  line: 5691
   status: proven
   in_root_build: true
   lean_files:
@@ -7572,6 +7731,54 @@ items:
     - isRefinementChain
     - refinementChain_composed
   - path: FdrsFormal/Modes/ContextDependent/Preservation/Preservation.lean
+    declarations: []
+  section: 6.7.1
+- id: proposition_91
+  type: proposition
+  phase: 6
+  global_num: 91
+  title: SU ⟹ proper ultrametric
+  line: 5716
+  status: proven
+  in_root_build: true
+  lean_files:
+  - path: FdrsFormal/Modes/ContextDependent/Variations/MultiAgent.lean
+    declarations:
+    - (C₁
+    - (C₁
+    - ObserverComplex
+    - ObserverComplex.hasCSU
+    - independent_evolution
+    - CoupledDynamics
+    - CoupledDynamics.jointTransition
+    - CoupledDynamics.toProductDynamics
+    - CoupledSystem
+    - CoupledSystem.hasCSU
+  - path: FdrsFormal/Modes/ContextDependent/Variations/Variations.lean
+    declarations: []
+  section: P6.1
+- id: proposition_92
+  type: proposition
+  phase: 6
+  global_num: 92
+  title: Cylinders are balls
+  line: 5718
+  status: proven
+  in_root_build: true
+  lean_files:
+  - path: FdrsFormal/Modes/ContextDependent/Variations/MultiAgent.lean
+    declarations:
+    - (C₁
+    - (C₁
+    - ObserverComplex
+    - ObserverComplex.hasCSU
+    - independent_evolution
+    - CoupledDynamics
+    - CoupledDynamics.jointTransition
+    - CoupledDynamics.toProductDynamics
+    - CoupledSystem
+    - CoupledSystem.hasCSU
+  - path: FdrsFormal/Modes/ContextDependent/Variations/Variations.lean
     declarations: []
   section: P6.2
 - id: proposition_93
@@ -7579,21 +7786,23 @@ items:
   phase: 6
   global_num: 93
   title: Spectrum forms preorder
-  line: 5684
+  line: 5720
   status: proven
   in_root_build: true
   lean_files:
-  - path: FdrsFormal/Modes/ContextDependent/Preservation/MonotoneRefinement.lean
+  - path: FdrsFormal/Modes/ContextDependent/Variations/MultiAgent.lean
     declarations:
-    - isMonotoneRefining
-    - monotoneRefining_refl
-    - monotoneRefining_trans
-    - monotoneRefining_metric_dominance
-    - prefixWeight_mono_of_radix_le
-    - radix_increase_finer_metric
-    - isRefinementChain
-    - refinementChain_composed
-  - path: FdrsFormal/Modes/ContextDependent/Preservation/Preservation.lean
+    - (C₁
+    - (C₁
+    - ObserverComplex
+    - ObserverComplex.hasCSU
+    - independent_evolution
+    - CoupledDynamics
+    - CoupledDynamics.jointTransition
+    - CoupledDynamics.toProductDynamics
+    - CoupledSystem
+    - CoupledSystem.hasCSU
+  - path: FdrsFormal/Modes/ContextDependent/Variations/Variations.lean
     declarations: []
   section: P6.3
 - id: proposition_94
@@ -7601,21 +7810,23 @@ items:
   phase: 6
   global_num: 94
   title: Volume prescription
-  line: 5686
+  line: 5722
   status: proven
   in_root_build: true
   lean_files:
-  - path: FdrsFormal/Modes/ContextDependent/Preservation/MonotoneRefinement.lean
+  - path: FdrsFormal/Modes/ContextDependent/Variations/MultiAgent.lean
     declarations:
-    - isMonotoneRefining
-    - monotoneRefining_refl
-    - monotoneRefining_trans
-    - monotoneRefining_metric_dominance
-    - prefixWeight_mono_of_radix_le
-    - radix_increase_finer_metric
-    - isRefinementChain
-    - refinementChain_composed
-  - path: FdrsFormal/Modes/ContextDependent/Preservation/Preservation.lean
+    - (C₁
+    - (C₁
+    - ObserverComplex
+    - ObserverComplex.hasCSU
+    - independent_evolution
+    - CoupledDynamics
+    - CoupledDynamics.jointTransition
+    - CoupledDynamics.toProductDynamics
+    - CoupledSystem
+    - CoupledSystem.hasCSU
+  - path: FdrsFormal/Modes/ContextDependent/Variations/Variations.lean
     declarations: []
   section: P6.4
 - id: proposition_95
@@ -7623,21 +7834,23 @@ items:
   phase: 6
   global_num: 95
   title: Multi-metric observers
-  line: 5688
+  line: 5724
   status: proven
   in_root_build: true
   lean_files:
-  - path: FdrsFormal/Modes/ContextDependent/Preservation/MonotoneRefinement.lean
+  - path: FdrsFormal/Modes/ContextDependent/Variations/MultiAgent.lean
     declarations:
-    - isMonotoneRefining
-    - monotoneRefining_refl
-    - monotoneRefining_trans
-    - monotoneRefining_metric_dominance
-    - prefixWeight_mono_of_radix_le
-    - radix_increase_finer_metric
-    - isRefinementChain
-    - refinementChain_composed
-  - path: FdrsFormal/Modes/ContextDependent/Preservation/Preservation.lean
+    - (C₁
+    - (C₁
+    - ObserverComplex
+    - ObserverComplex.hasCSU
+    - independent_evolution
+    - CoupledDynamics
+    - CoupledDynamics.jointTransition
+    - CoupledDynamics.toProductDynamics
+    - CoupledSystem
+    - CoupledSystem.hasCSU
+  - path: FdrsFormal/Modes/ContextDependent/Variations/Variations.lean
     declarations: []
   section: P6.5
 - id: proposition_96
@@ -7645,21 +7858,23 @@ items:
   phase: 6
   global_num: 96
   title: Realizability criterion
-  line: 5690
+  line: 5726
   status: proven
   in_root_build: true
   lean_files:
-  - path: FdrsFormal/Modes/ContextDependent/Preservation/MonotoneRefinement.lean
+  - path: FdrsFormal/Modes/ContextDependent/Variations/MultiAgent.lean
     declarations:
-    - isMonotoneRefining
-    - monotoneRefining_refl
-    - monotoneRefining_trans
-    - monotoneRefining_metric_dominance
-    - prefixWeight_mono_of_radix_le
-    - radix_increase_finer_metric
-    - isRefinementChain
-    - refinementChain_composed
-  - path: FdrsFormal/Modes/ContextDependent/Preservation/Preservation.lean
+    - (C₁
+    - (C₁
+    - ObserverComplex
+    - ObserverComplex.hasCSU
+    - independent_evolution
+    - CoupledDynamics
+    - CoupledDynamics.jointTransition
+    - CoupledDynamics.toProductDynamics
+    - CoupledSystem
+    - CoupledSystem.hasCSU
+  - path: FdrsFormal/Modes/ContextDependent/Variations/Variations.lean
     declarations: []
   section: P6.6
 - id: proposition_97
@@ -7667,21 +7882,23 @@ items:
   phase: 6
   global_num: 97
   title: Custom locality
-  line: 5692
+  line: 5728
   status: proven
   in_root_build: true
   lean_files:
-  - path: FdrsFormal/Modes/ContextDependent/Preservation/MonotoneRefinement.lean
+  - path: FdrsFormal/Modes/ContextDependent/Variations/MultiAgent.lean
     declarations:
-    - isMonotoneRefining
-    - monotoneRefining_refl
-    - monotoneRefining_trans
-    - monotoneRefining_metric_dominance
-    - prefixWeight_mono_of_radix_le
-    - radix_increase_finer_metric
-    - isRefinementChain
-    - refinementChain_composed
-  - path: FdrsFormal/Modes/ContextDependent/Preservation/Preservation.lean
+    - (C₁
+    - (C₁
+    - ObserverComplex
+    - ObserverComplex.hasCSU
+    - independent_evolution
+    - CoupledDynamics
+    - CoupledDynamics.jointTransition
+    - CoupledDynamics.toProductDynamics
+    - CoupledSystem
+    - CoupledSystem.hasCSU
+  - path: FdrsFormal/Modes/ContextDependent/Variations/Variations.lean
     declarations: []
   section: P6.7
 - id: definition_84
@@ -7689,7 +7906,7 @@ items:
   phase: 7
   global_num: 84
   title: Context space
-  line: 5719
+  line: 5755
   status: proven
   in_root_build: true
   lean_files:
@@ -7713,55 +7930,97 @@ items:
   phase: 7
   global_num: 85
   title: Extended radix oracle
-  line: 5737
+  line: 5773
   status: proven
   in_root_build: true
   lean_files:
-  - path: FdrsFormal/Modes/ContextDependent/Variations/MultiAgent.lean
+  - path: FdrsFormal/Integration/ThreeLineMediator/Definition.lean
     declarations:
-    - (C₁
-    - (C₁
-    - ObserverComplex
-    - ObserverComplex.hasCSU
-    - independent_evolution
-    - CoupledDynamics
-    - CoupledDynamics.jointTransition
-    - CoupledDynamics.toProductDynamics
-    - CoupledSystem
-    - CoupledSystem.hasCSU
-  - path: FdrsFormal/Modes/ContextDependent/Variations/Variations.lean
-    declarations: []
+    - productRadix
+    - productRadix_apply
+    - placeValue_product
+    - projectA
+    - projectB
+  - path: FdrsFormal/Modes/ContextDependent/Basic/CSU.lean
+    declarations:
+    - hasCSU
+    - hasCSU_at
+    - csu_implies_su
+    - siblingUniform_of_succ
+    - csu_of_succ
+  - path: FdrsFormal/Modes/ContextDependent/Basic/ContextSpace.lean
+    declarations:
+    - ContextSpace
+    - InitialContext
+    - FiniteContextSpace
+    - CountableContextSpace
+    - (C
+  - path: FdrsFormal/Modes/ContextDependent/Basic/ExtendedOracle.lean
+    declarations:
+    - ExtendedOracle
+    - ExtendedOracle.atContext
+    - ExtendedOracle.isContextIndependent
+    - RadixLaw.toOracle
+    - ExtendedOracle.contextIndependent_iff_fromRadixLaw
+  - path: FdrsFormal/Modes/ContextDependent/Evolution/ContextDynamics.lean
+    declarations:
+    - EventSpace
+    - ':'
+    - ContextDynamics
+    - ContextDynamics.step
+    - ContextDynamics.isTrivial
   section: 7.1.2
 - id: definition_86
   type: definition
   phase: 7
   global_num: 86
   title: Contextual sibling uniformity - CSU
-  line: 5749
+  line: 5785
   status: proven
   in_root_build: true
   lean_files:
-  - path: FdrsFormal/Modes/ContextDependent/Variations/MultiAgent.lean
+  - path: FdrsFormal/Integration/ThreeLineMediator/Definition.lean
     declarations:
-    - (C₁
-    - (C₁
-    - ObserverComplex
-    - ObserverComplex.hasCSU
-    - independent_evolution
-    - CoupledDynamics
-    - CoupledDynamics.jointTransition
-    - CoupledDynamics.toProductDynamics
-    - CoupledSystem
-    - CoupledSystem.hasCSU
-  - path: FdrsFormal/Modes/ContextDependent/Variations/Variations.lean
-    declarations: []
+    - productRadix
+    - productRadix_apply
+    - placeValue_product
+    - projectA
+    - projectB
+  - path: FdrsFormal/Modes/ContextDependent/Basic/CSU.lean
+    declarations:
+    - hasCSU
+    - hasCSU_at
+    - csu_implies_su
+    - siblingUniform_of_succ
+    - csu_of_succ
+  - path: FdrsFormal/Modes/ContextDependent/Basic/ContextSpace.lean
+    declarations:
+    - ContextSpace
+    - InitialContext
+    - FiniteContextSpace
+    - CountableContextSpace
+    - (C
+  - path: FdrsFormal/Modes/ContextDependent/Basic/ExtendedOracle.lean
+    declarations:
+    - ExtendedOracle
+    - ExtendedOracle.atContext
+    - ExtendedOracle.isContextIndependent
+    - RadixLaw.toOracle
+    - ExtendedOracle.contextIndependent_iff_fromRadixLaw
+  - path: FdrsFormal/Modes/ContextDependent/Evolution/ContextDynamics.lean
+    declarations:
+    - EventSpace
+    - ':'
+    - ContextDynamics
+    - ContextDynamics.step
+    - ContextDynamics.isTrivial
   section: 7.1.3
 - id: definition_87
   type: definition
   phase: 7
   global_num: 87
   title: Context-indexed mixed-radix family
-  line: 5761
+  line: 5797
   status: proven
   in_root_build: true
   lean_files:
@@ -7774,7 +8033,7 @@ items:
   phase: 7
   global_num: 88
   title: Context dynamics
-  line: 5778
+  line: 5814
   status: proven
   in_root_build: true
   lean_files:
@@ -7819,52 +8078,28 @@ items:
   phase: 7
   global_num: 89
   title: Stateful context-dependent system
-  line: 5790
+  line: 5826
   status: proven
   in_root_build: true
   lean_files:
-  - path: FdrsFormal/Integration/ThreeLineMediator/Definition.lean
+  - path: FdrsFormal/Modes/ContextDependent/Variations/Stochastic.lean
     declarations:
-    - productRadix
-    - productRadix_apply
-    - placeValue_product
-    - projectA
-    - projectB
-  - path: FdrsFormal/Modes/ContextDependent/Basic/CSU.lean
-    declarations:
-    - hasCSU
-    - hasCSU_at
-    - csu_implies_su
-    - siblingUniform_of_succ
-    - csu_of_succ
-  - path: FdrsFormal/Modes/ContextDependent/Basic/ContextSpace.lean
-    declarations:
-    - ContextSpace
-    - InitialContext
-    - FiniteContextSpace
-    - CountableContextSpace
-    - (C
-  - path: FdrsFormal/Modes/ContextDependent/Basic/ExtendedOracle.lean
-    declarations:
-    - ExtendedOracle
-    - ExtendedOracle.atContext
-    - ExtendedOracle.isContextIndependent
-    - RadixLaw.toOracle
-    - ExtendedOracle.contextIndependent_iff_fromRadixLaw
-  - path: FdrsFormal/Modes/ContextDependent/Evolution/ContextDynamics.lean
-    declarations:
-    - EventSpace
-    - ':'
-    - ContextDynamics
-    - ContextDynamics.step
-    - ContextDynamics.isTrivial
+    - ProbSpace
+    - StochasticDynamics
+    - ContextDynamics.toStochastic
+    - StochasticSystem
+    - StochasticSystem.hasCSU
+    - stochastic_su_preservation
+    - stochastic_csu_preserved
+    - RandomTrace
+    - RandomTrace.contexts
   section: 7.2.2
 - id: definition_90
   type: definition
   phase: 7
   global_num: 90
   title: Trace of a stateful system
-  line: 5814
+  line: 5850
   status: proven
   in_root_build: true
   lean_files:
@@ -7909,7 +8144,7 @@ items:
   phase: 7
   global_num: 45
   title: Context-switching preserves SU
-  line: 5827
+  line: 5863
   status: proven
   in_root_build: true
   lean_files:
@@ -7922,7 +8157,7 @@ items:
   phase: 7
   global_num: 91
   title: Operational semantic modes
-  line: 5839
+  line: 5875
   status: proven
   in_root_build: true
   lean_files:
@@ -7935,7 +8170,7 @@ items:
   phase: 7
   global_num: 92
   title: Lazy vs eager realization
-  line: 5851
+  line: 5887
   status: proven
   in_root_build: true
   lean_files:
@@ -7980,202 +8215,63 @@ items:
   phase: 7
   global_num: 46
   title: Lazy-eager semantic equivalence
-  line: 5867
-  status: proven
+  line: 5903
+  status: missing
   in_root_build: true
   lean_files:
-  - path: FdrsFormal/Integration/ThreeLineMediator/Definition.lean
-    declarations:
-    - productRadix
-    - productRadix_apply
-    - placeValue_product
-    - projectA
-    - projectB
-  - path: FdrsFormal/Modes/ContextDependent/Basic/CSU.lean
-    declarations:
-    - hasCSU
-    - hasCSU_at
-    - csu_implies_su
-    - siblingUniform_of_succ
-    - csu_of_succ
-  - path: FdrsFormal/Modes/ContextDependent/Basic/ContextSpace.lean
-    declarations:
-    - ContextSpace
-    - InitialContext
-    - FiniteContextSpace
-    - CountableContextSpace
-    - (C
-  - path: FdrsFormal/Modes/ContextDependent/Basic/ExtendedOracle.lean
-    declarations:
-    - ExtendedOracle
-    - ExtendedOracle.atContext
-    - ExtendedOracle.isContextIndependent
-    - RadixLaw.toOracle
-    - ExtendedOracle.contextIndependent_iff_fromRadixLaw
-  - path: FdrsFormal/Modes/ContextDependent/Evolution/ContextDynamics.lean
-    declarations:
-    - EventSpace
-    - ':'
-    - ContextDynamics
-    - ContextDynamics.step
-    - ContextDynamics.isTrivial
+  - path: FdrsFormal/Composition.lean
+    declarations: []
   section: 7.3.3
 - id: definition_93
   type: definition
   phase: 7
   global_num: 93
   title: Structure-preserving context transition
-  line: 5879
-  status: proven
+  line: 5915
+  status: missing
   in_root_build: true
   lean_files:
-  - path: FdrsFormal/Integration/ThreeLineMediator/Definition.lean
-    declarations:
-    - productRadix
-    - productRadix_apply
-    - placeValue_product
-    - projectA
-    - projectB
-  - path: FdrsFormal/Modes/ContextDependent/Basic/CSU.lean
-    declarations:
-    - hasCSU
-    - hasCSU_at
-    - csu_implies_su
-    - siblingUniform_of_succ
-    - csu_of_succ
-  - path: FdrsFormal/Modes/ContextDependent/Basic/ContextSpace.lean
-    declarations:
-    - ContextSpace
-    - InitialContext
-    - FiniteContextSpace
-    - CountableContextSpace
-    - (C
-  - path: FdrsFormal/Modes/ContextDependent/Basic/ExtendedOracle.lean
-    declarations:
-    - ExtendedOracle
-    - ExtendedOracle.atContext
-    - ExtendedOracle.isContextIndependent
-    - RadixLaw.toOracle
-    - ExtendedOracle.contextIndependent_iff_fromRadixLaw
-  - path: FdrsFormal/Modes/ContextDependent/Evolution/ContextDynamics.lean
-    declarations:
-    - EventSpace
-    - ':'
-    - ContextDynamics
-    - ContextDynamics.step
-    - ContextDynamics.isTrivial
+  - path: FdrsFormal/Composition.lean
+    declarations: []
   section: 7.4.1
 - id: theorem_47
   type: theorem
   phase: 7
   global_num: 47
   title: Depth-L operators preserved
-  line: 5889
+  line: 5925
   status: proven
   in_root_build: true
   lean_files:
-  - path: FdrsFormal/Integration/ThreeLineMediator/Definition.lean
+  - path: FdrsFormal/Composition.lean
+    declarations: []
+  - path: FdrsFormal/Composition/TimelineGraphs/Identifiers.lean
     declarations:
-    - productRadix
-    - productRadix_apply
-    - placeValue_product
-    - projectA
-    - projectB
-  - path: FdrsFormal/Modes/ContextDependent/Basic/CSU.lean
-    declarations:
-    - hasCSU
-    - hasCSU_at
-    - csu_implies_su
-    - siblingUniform_of_succ
-    - csu_of_succ
-  - path: FdrsFormal/Modes/ContextDependent/Basic/ContextSpace.lean
-    declarations:
-    - ContextSpace
-    - InitialContext
-    - FiniteContextSpace
-    - CountableContextSpace
-    - (C
-  - path: FdrsFormal/Modes/ContextDependent/Basic/ExtendedOracle.lean
-    declarations:
-    - ExtendedOracle
-    - ExtendedOracle.atContext
-    - ExtendedOracle.isContextIndependent
-    - RadixLaw.toOracle
-    - ExtendedOracle.contextIndependent_iff_fromRadixLaw
-  - path: FdrsFormal/Modes/ContextDependent/Evolution/ContextDynamics.lean
-    declarations:
-    - EventSpace
-    - ':'
-    - ContextDynamics
-    - ContextDynamics.step
-    - ContextDynamics.isTrivial
+    - TimelineIdentifierSpace
+    - TimelineGraphSpec
   section: 7.4.2
 - id: definition_94
   type: definition
   phase: 7
   global_num: 94
   title: Monotone context refinement
-  line: 5910
-  status: missing
+  line: 5946
+  status: proven
   in_root_build: true
   lean_files:
   - path: FdrsFormal/Composition.lean
     declarations: []
+  - path: FdrsFormal/Composition/TimelineGraphs/Identifiers.lean
+    declarations:
+    - TimelineIdentifierSpace
+    - TimelineGraphSpec
   section: 7.4.3
 - id: proposition_98
   type: proposition
   phase: 7
   global_num: 98
   title: Metric dominance under refinement
-  line: 5920
-  status: proven
-  in_root_build: true
-  lean_files:
-  - path: FdrsFormal/Composition.lean
-    declarations: []
-  - path: FdrsFormal/Composition/TimelineGraphs/Identifiers.lean
-    declarations:
-    - TimelineIdentifierSpace
-    - TimelineGraphSpec
-  section: 7.4.4
-- id: definition_95
-  type: definition
-  phase: 7
-  global_num: 95
-  title: Multi-context observer complex
-  line: 5934
-  status: proven
-  in_root_build: true
-  lean_files:
-  - path: FdrsFormal/Composition.lean
-    declarations: []
-  - path: FdrsFormal/Composition/TimelineGraphs/Identifiers.lean
-    declarations:
-    - TimelineIdentifierSpace
-    - TimelineGraphSpec
-  section: 7.5.1
-- id: definition_96
-  type: definition
-  phase: 7
-  global_num: 96
-  title: Context-dependent schedule
-  line: 5947
-  status: proven
-  in_root_build: true
-  lean_files:
-  - path: FdrsFormal/Composition.lean
-    declarations: []
-  - path: FdrsFormal/Composition/TimelineGraphs/Identifiers.lean
-    declarations:
-    - TimelineIdentifierSpace
-    - TimelineGraphSpec
-  section: 7.5.2
-- id: definition_97
-  type: definition
-  phase: 7
-  global_num: 97
-  title: Context coupling maps
-  line: 5959
+  line: 5956
   status: proven
   in_root_build: true
   lean_files:
@@ -8188,13 +8284,68 @@ items:
     - JunctionDirection
     - JunctionPoint
     - isActiveCylinder
+  section: 7.4.4
+- id: definition_95
+  type: definition
+  phase: 7
+  global_num: 95
+  title: Multi-context observer complex
+  line: 5970
+  status: proven
+  in_root_build: true
+  lean_files:
+  - path: FdrsFormal/Composition.lean
+    declarations: []
+  - path: FdrsFormal/Composition/Junctions.lean
+    declarations: []
+  - path: FdrsFormal/Composition/Junctions/Types.lean
+    declarations:
+    - JunctionDirection
+    - JunctionPoint
+    - isActiveCylinder
+  section: 7.5.1
+- id: definition_96
+  type: definition
+  phase: 7
+  global_num: 96
+  title: Context-dependent schedule
+  line: 5983
+  status: proven
+  in_root_build: true
+  lean_files:
+  - path: FdrsFormal/Composition.lean
+    declarations: []
+  - path: FdrsFormal/Composition/Junctions.lean
+    declarations: []
+  - path: FdrsFormal/Composition/Routing/Events.lean
+    declarations:
+    - Event
+    - routingFunction
+  section: 7.5.2
+- id: definition_97
+  type: definition
+  phase: 7
+  global_num: 97
+  title: Context coupling maps
+  line: 5995
+  status: proven
+  in_root_build: true
+  lean_files:
+  - path: FdrsFormal/Composition.lean
+    declarations: []
+  - path: FdrsFormal/Composition/Junctions.lean
+    declarations: []
+  - path: FdrsFormal/Composition/Routing/Events.lean
+    declarations:
+    - Event
+    - routingFunction
   section: 7.5.3
 - id: theorem_48
   type: theorem
   phase: 7
   global_num: 48
   title: Independent context evolution
-  line: 5973
+  line: 6009
   status: missing
   in_root_build: true
   lean_files:
@@ -8208,7 +8359,7 @@ items:
   phase: 7
   global_num: 98
   title: Coupled context evolution
-  line: 5985
+  line: 6021
   status: proven
   in_root_build: true
   lean_files:
@@ -8216,89 +8367,19 @@ items:
     declarations: []
   - path: FdrsFormal/Composition/Junctions.lean
     declarations: []
-  - path: FdrsFormal/Composition/Routing/Events.lean
+  - path: FdrsFormal/Composition/Junctions/TransferSemantics.lean
     declarations:
-    - Event
-    - routingFunction
+    - TransferType
+    - applyTransfer
+    - totalTransfer_resets_source
+    - copyTransfer_preserves_source
   section: 7.5.5
 - id: definition_99
   type: definition
   phase: 7
   global_num: 99
   title: Computable oracle
-  line: 6002
-  status: proven
-  in_root_build: true
-  lean_files:
-  - path: FdrsFormal/Composition.lean
-    declarations: []
-  - path: FdrsFormal/Composition/Junctions.lean
-    declarations: []
-  - path: FdrsFormal/Composition/Routing/Events.lean
-    declarations:
-    - Event
-    - routingFunction
-  section: 7.6.1
-- id: definition_100
-  type: definition
-  phase: 7
-  global_num: 100
-  title: Finitely-supported oracle
-  line: 6008
-  status: missing
-  in_root_build: true
-  lean_files:
-  - path: FdrsFormal/Composition.lean
-    declarations: []
-  - path: FdrsFormal/Composition/Junctions.lean
-    declarations: []
-  section: 7.6.2
-- id: proposition_99
-  type: proposition
-  phase: 7
-  global_num: 99
-  title: Finite-depth realizability
-  line: 6014
-  status: proven
-  in_root_build: true
-  lean_files:
-  - path: FdrsFormal/Composition.lean
-    declarations: []
-  - path: FdrsFormal/Composition/Junctions.lean
-    declarations: []
-  - path: FdrsFormal/Composition/Junctions/TransferSemantics.lean
-    declarations:
-    - TransferType
-    - applyTransfer
-    - totalTransfer_resets_source
-    - copyTransfer_preserves_source
-  section: 7.6.3
-- id: definition_101
-  type: definition
-  phase: 7
-  global_num: 101
-  title: Stable oracle
-  line: 6028
-  status: proven
-  in_root_build: true
-  lean_files:
-  - path: FdrsFormal/Composition.lean
-    declarations: []
-  - path: FdrsFormal/Composition/Junctions.lean
-    declarations: []
-  - path: FdrsFormal/Composition/Junctions/TransferSemantics.lean
-    declarations:
-    - TransferType
-    - applyTransfer
-    - totalTransfer_resets_source
-    - copyTransfer_preserves_source
-  section: 7.6.4
-- id: definition_102
-  type: definition
-  phase: 7
-  global_num: 102
-  title: Context-independent prefix
-  line: 6040
+  line: 6038
   status: proven
   in_root_build: true
   lean_files:
@@ -8318,12 +8399,38 @@ items:
     - applyTransfer
     - totalTransfer_resets_source
     - copyTransfer_preserves_source
-  section: 7.7.1
-- id: definition_103
+  section: 7.6.1
+- id: definition_100
   type: definition
   phase: 7
-  global_num: 103
-  title: Deterministic context system
+  global_num: 100
+  title: Finitely-supported oracle
+  line: 6044
+  status: proven
+  in_root_build: true
+  lean_files:
+  - path: FdrsFormal/Composition.lean
+    declarations: []
+  - path: FdrsFormal/Composition/Junctions.lean
+    declarations: []
+  - path: FdrsFormal/Composition/Junctions/PayloadTransform.lean
+    declarations:
+    - PayloadTransform
+    - identityPayloadTransform
+    - projectionPayloadTransform
+    - contextDependentPayloadTransform
+  - path: FdrsFormal/Composition/Junctions/TransferSemantics.lean
+    declarations:
+    - TransferType
+    - applyTransfer
+    - totalTransfer_resets_source
+    - copyTransfer_preserves_source
+  section: 7.6.2
+- id: proposition_99
+  type: proposition
+  phase: 7
+  global_num: 99
+  title: Finite-depth realizability
   line: 6050
   status: proven
   in_root_build: true
@@ -8344,39 +8451,13 @@ items:
     - applyTransfer
     - totalTransfer_resets_source
     - copyTransfer_preserves_source
-  section: 7.7.2
-- id: definition_104
+  section: 7.6.3
+- id: definition_101
   type: definition
   phase: 7
-  global_num: 104
-  title: Stochastic context system
-  line: 6058
-  status: proven
-  in_root_build: true
-  lean_files:
-  - path: FdrsFormal/Composition.lean
-    declarations: []
-  - path: FdrsFormal/Composition/Junctions.lean
-    declarations: []
-  - path: FdrsFormal/Composition/Junctions/PayloadTransform.lean
-    declarations:
-    - PayloadTransform
-    - identityPayloadTransform
-    - projectionPayloadTransform
-    - contextDependentPayloadTransform
-  - path: FdrsFormal/Composition/Junctions/TransferSemantics.lean
-    declarations:
-    - TransferType
-    - applyTransfer
-    - totalTransfer_resets_source
-    - copyTransfer_preserves_source
-  section: 7.7.3
-- id: theorem_49
-  type: theorem
-  phase: 7
-  global_num: 49
-  title: Stochastic SU preservation
-  line: 6070
+  global_num: 101
+  title: Stable oracle
+  line: 6064
   status: proven
   in_root_build: true
   lean_files:
@@ -8400,13 +8481,13 @@ items:
     - applyTransfer
     - totalTransfer_resets_source
     - copyTransfer_preserves_source
-  section: 7.7.4
-- id: definition_105
+  section: 7.6.4
+- id: definition_102
   type: definition
   phase: 7
-  global_num: 105
-  title: Oracle embedding
-  line: 6080
+  global_num: 102
+  title: Context-independent prefix
+  line: 6076
   status: proven
   in_root_build: true
   lean_files:
@@ -8429,13 +8510,13 @@ items:
     - identityPayloadTransform
     - projectionPayloadTransform
     - contextDependentPayloadTransform
-  section: 7.8.1
-- id: definition_106
+  section: 7.7.1
+- id: definition_103
   type: definition
   phase: 7
-  global_num: 106
-  title: Oracle equivalence
-  line: 6093
+  global_num: 103
+  title: Deterministic context system
+  line: 6086
   status: proven
   in_root_build: true
   lean_files:
@@ -8466,12 +8547,43 @@ items:
     - identityPayloadTransform
     - projectionPayloadTransform
     - contextDependentPayloadTransform
-  section: 7.8.2
-- id: theorem_50
+  section: 7.7.2
+- id: definition_104
+  type: definition
+  phase: 7
+  global_num: 104
+  title: Stochastic context system
+  line: 6094
+  status: proven
+  in_root_build: true
+  lean_files:
+  - path: FdrsFormal/Composition.lean
+    declarations: []
+  - path: FdrsFormal/Composition/Injection.lean
+    declarations: []
+  - path: FdrsFormal/Composition/Injection/Definition.lean
+    declarations:
+    - inject
+    - injectAtCylinder
+  - path: FdrsFormal/Composition/Injection/Locality.lean
+    declarations:
+    - isLLocal
+    - lLocal_preserves_bounds
+    - stub_inject_isLLocal
+  - path: FdrsFormal/Composition/Injection/Queue.lean
+    declarations:
+    - InjectionQueueEntry
+    - InjectionQueue
+    - enqueue
+    - dequeue
+    - isBounded
+    - queueSize
+  section: 7.7.3
+- id: theorem_49
   type: theorem
   phase: 7
-  global_num: 50
-  title: Equivalence preserves all structural properties
+  global_num: 49
+  title: Stochastic SU preservation
   line: 6106
   status: proven
   in_root_build: true
@@ -8500,197 +8612,53 @@ items:
     - dequeue
     - isBounded
     - queueSize
-  section: 7.8.3
-- id: proposition_100
-  type: proposition
-  phase: 7
-  global_num: 100
-  title: Context-switching preserves SU
-  line: 6119
-  status: proven
-  in_root_build: true
-  lean_files:
-  - path: FdrsFormal/Composition.lean
-    declarations: []
-  - path: FdrsFormal/Composition/Injection/Locality.lean
-    declarations:
-    - isLLocal
-    - lLocal_preserves_bounds
-    - stub_inject_isLLocal
-  - path: FdrsFormal/Composition/Injection/Queue.lean
-    declarations:
-    - InjectionQueueEntry
-    - InjectionQueue
-    - enqueue
-    - dequeue
-    - isBounded
-    - queueSize
-  - path: FdrsFormal/Composition/RoutingGraph/Graph.lean
-    declarations:
-    - Vertex
-    - ruleSrc
-    - ruleTgt
-    - vertices
-    - successors
-    - predecessors
-    - fanout
-    - depthStep
-    - depthIter
-    - depthIter_le
-  section: P7.1
-- id: proposition_101
-  type: proposition
-  phase: 7
-  global_num: 101
-  title: Lazy-eager equivalence
-  line: 6121
-  status: proven
-  in_root_build: true
-  lean_files:
-  - path: FdrsFormal/Composition.lean
-    declarations: []
-  - path: FdrsFormal/Composition/Injection/Locality.lean
-    declarations:
-    - isLLocal
-    - lLocal_preserves_bounds
-    - stub_inject_isLLocal
-  - path: FdrsFormal/Composition/Injection/Queue.lean
-    declarations:
-    - InjectionQueueEntry
-    - InjectionQueue
-    - enqueue
-    - dequeue
-    - isBounded
-    - queueSize
-  - path: FdrsFormal/Composition/RoutingGraph/Graph.lean
-    declarations:
-    - Vertex
-    - ruleSrc
-    - ruleTgt
-    - vertices
-    - successors
-    - predecessors
-    - fanout
-    - depthStep
-    - depthIter
-    - depthIter_le
-  section: P7.2
-- id: proposition_102
-  type: proposition
-  phase: 7
-  global_num: 102
-  title: Structure-preserving transitions
-  line: 6123
-  status: proven
-  in_root_build: true
-  lean_files:
-  - path: FdrsFormal/Composition.lean
-    declarations: []
-  - path: FdrsFormal/Composition/Injection/Locality.lean
-    declarations:
-    - isLLocal
-    - lLocal_preserves_bounds
-    - stub_inject_isLLocal
-  - path: FdrsFormal/Composition/Injection/Queue.lean
-    declarations:
-    - InjectionQueueEntry
-    - InjectionQueue
-    - enqueue
-    - dequeue
-    - isBounded
-    - queueSize
-  - path: FdrsFormal/Composition/RoutingGraph/Graph.lean
-    declarations:
-    - Vertex
-    - ruleSrc
-    - ruleTgt
-    - vertices
-    - successors
-    - predecessors
-    - fanout
-    - depthStep
-    - depthIter
-    - depthIter_le
-  section: P7.3
-- id: proposition_103
-  type: proposition
-  phase: 7
-  global_num: 103
-  title: Refinement induces metric dominance
-  line: 6125
-  status: proven
-  in_root_build: true
-  lean_files:
-  - path: FdrsFormal/Composition.lean
-    declarations: []
-  - path: FdrsFormal/Composition/Injection/Locality.lean
-    declarations:
-    - isLLocal
-    - lLocal_preserves_bounds
-    - stub_inject_isLLocal
-  - path: FdrsFormal/Composition/Injection/Queue.lean
-    declarations:
-    - InjectionQueueEntry
-    - InjectionQueue
-    - enqueue
-    - dequeue
-    - isBounded
-    - queueSize
-  - path: FdrsFormal/Composition/RoutingGraph/Graph.lean
-    declarations:
-    - Vertex
-    - ruleSrc
-    - ruleTgt
-    - vertices
-    - successors
-    - predecessors
-    - fanout
-    - depthStep
-    - depthIter
-    - depthIter_le
-  section: P7.4
-- id: proposition_104
-  type: proposition
-  phase: 7
-  global_num: 104
-  title: Independent factorization
-  line: 6127
-  status: proven
-  in_root_build: true
-  lean_files:
-  - path: FdrsFormal/Composition.lean
-    declarations: []
-  - path: FdrsFormal/Composition/Injection/Locality.lean
-    declarations:
-    - isLLocal
-    - lLocal_preserves_bounds
-    - stub_inject_isLLocal
-  - path: FdrsFormal/Composition/Injection/Queue.lean
-    declarations:
-    - InjectionQueueEntry
-    - InjectionQueue
-    - enqueue
-    - dequeue
-    - isBounded
-    - queueSize
-  - path: FdrsFormal/Composition/RoutingGraph/Graph.lean
-    declarations:
-    - Vertex
-    - ruleSrc
-    - ruleTgt
-    - vertices
-    - successors
-    - predecessors
-    - fanout
-    - depthStep
-    - depthIter
-    - depthIter_le
-  section: P7.5
-- id: proposition_105
-  type: proposition
+  section: 7.7.4
+- id: definition_105
+  type: definition
   phase: 7
   global_num: 105
-  title: Finite realizability
+  title: Oracle embedding
+  line: 6116
+  status: proven
+  in_root_build: true
+  lean_files:
+  - path: FdrsFormal/Composition.lean
+    declarations: []
+  - path: FdrsFormal/Composition/Injection/Definition.lean
+    declarations:
+    - inject
+    - injectAtCylinder
+  - path: FdrsFormal/Composition/Injection/Locality.lean
+    declarations:
+    - isLLocal
+    - lLocal_preserves_bounds
+    - stub_inject_isLLocal
+  - path: FdrsFormal/Composition/Injection/Queue.lean
+    declarations:
+    - InjectionQueueEntry
+    - InjectionQueue
+    - enqueue
+    - dequeue
+    - isBounded
+    - queueSize
+  - path: FdrsFormal/Composition/RoutingGraph/Graph.lean
+    declarations:
+    - Vertex
+    - ruleSrc
+    - ruleTgt
+    - vertices
+    - successors
+    - predecessors
+    - fanout
+    - depthStep
+    - depthIter
+    - depthIter_le
+  section: 7.8.1
+- id: definition_106
+  type: definition
+  phase: 7
+  global_num: 106
+  title: Oracle equivalence
   line: 6129
   status: proven
   in_root_build: true
@@ -8722,26 +8690,274 @@ items:
     - depthStep
     - depthIter
     - depthIter_le
+  section: 7.8.2
+- id: theorem_50
+  type: theorem
+  phase: 7
+  global_num: 50
+  title: Equivalence preserves all structural properties
+  line: 6142
+  status: proven
+  in_root_build: true
+  lean_files:
+  - path: FdrsFormal/Composition.lean
+    declarations: []
+  - path: FdrsFormal/Composition/Injection/Queue.lean
+    declarations:
+    - InjectionQueueEntry
+    - InjectionQueue
+    - enqueue
+    - dequeue
+    - isBounded
+    - queueSize
+  - path: FdrsFormal/Composition/RoutingGraph/Graph.lean
+    declarations:
+    - Vertex
+    - ruleSrc
+    - ruleTgt
+    - vertices
+    - successors
+    - predecessors
+    - fanout
+    - depthStep
+    - depthIter
+    - depthIter_le
+  - path: FdrsFormal/Composition/Verification/CompileTime.lean
+    declarations:
+    - acyclicity_decidable
+    - bounded_fanout_decidable
+    - bounded_depth_decidable
+    - reachability_decidable
+    - deadlock_freedom_decidable
+    - deadlockFree_iff_acyclic
+  section: 7.8.3
+- id: proposition_100
+  type: proposition
+  phase: 7
+  global_num: 100
+  title: Context-switching preserves SU
+  line: 6155
+  status: proven
+  in_root_build: true
+  lean_files:
+  - path: FdrsFormal/Composition.lean
+    declarations: []
+  - path: FdrsFormal/Composition/RoutingGraph/Graph.lean
+    declarations:
+    - Vertex
+    - ruleSrc
+    - ruleTgt
+    - vertices
+    - successors
+    - predecessors
+    - fanout
+    - depthStep
+    - depthIter
+    - depthIter_le
+  - path: FdrsFormal/Composition/TimingBounds/RoutingAnalysis.lean
+    declarations:
+    - routingDepth
+    - finiteRoutingDepth
+    - localTimelineCost
+    - routingOverheadCost
+    - layer
+    - layerMax
+    - compositeLatencyBound
+    - compositeTimingBound
+    - maxRoutingDepth
+    - staticRoutingCompileTimeBound
+  section: P7.1
+- id: proposition_101
+  type: proposition
+  phase: 7
+  global_num: 101
+  title: Lazy-eager equivalence
+  line: 6157
+  status: proven
+  in_root_build: true
+  lean_files:
+  - path: FdrsFormal/Composition.lean
+    declarations: []
+  - path: FdrsFormal/Composition/RoutingGraph/Graph.lean
+    declarations:
+    - Vertex
+    - ruleSrc
+    - ruleTgt
+    - vertices
+    - successors
+    - predecessors
+    - fanout
+    - depthStep
+    - depthIter
+    - depthIter_le
+  - path: FdrsFormal/Composition/TimingBounds/RoutingAnalysis.lean
+    declarations:
+    - routingDepth
+    - finiteRoutingDepth
+    - localTimelineCost
+    - routingOverheadCost
+    - layer
+    - layerMax
+    - compositeLatencyBound
+    - compositeTimingBound
+    - maxRoutingDepth
+    - staticRoutingCompileTimeBound
+  section: P7.2
+- id: proposition_102
+  type: proposition
+  phase: 7
+  global_num: 102
+  title: Structure-preserving transitions
+  line: 6159
+  status: proven
+  in_root_build: true
+  lean_files:
+  - path: FdrsFormal/Composition.lean
+    declarations: []
+  - path: FdrsFormal/Composition/RoutingGraph/Graph.lean
+    declarations:
+    - Vertex
+    - ruleSrc
+    - ruleTgt
+    - vertices
+    - successors
+    - predecessors
+    - fanout
+    - depthStep
+    - depthIter
+    - depthIter_le
+  - path: FdrsFormal/Composition/TimingBounds/RoutingAnalysis.lean
+    declarations:
+    - routingDepth
+    - finiteRoutingDepth
+    - localTimelineCost
+    - routingOverheadCost
+    - layer
+    - layerMax
+    - compositeLatencyBound
+    - compositeTimingBound
+    - maxRoutingDepth
+    - staticRoutingCompileTimeBound
+  section: P7.3
+- id: proposition_103
+  type: proposition
+  phase: 7
+  global_num: 103
+  title: Refinement induces metric dominance
+  line: 6161
+  status: proven
+  in_root_build: true
+  lean_files:
+  - path: FdrsFormal/Composition.lean
+    declarations: []
+  - path: FdrsFormal/Composition/RoutingGraph/Graph.lean
+    declarations:
+    - Vertex
+    - ruleSrc
+    - ruleTgt
+    - vertices
+    - successors
+    - predecessors
+    - fanout
+    - depthStep
+    - depthIter
+    - depthIter_le
+  - path: FdrsFormal/Composition/TimingBounds/RoutingAnalysis.lean
+    declarations:
+    - routingDepth
+    - finiteRoutingDepth
+    - localTimelineCost
+    - routingOverheadCost
+    - layer
+    - layerMax
+    - compositeLatencyBound
+    - compositeTimingBound
+    - maxRoutingDepth
+    - staticRoutingCompileTimeBound
+  section: P7.4
+- id: proposition_104
+  type: proposition
+  phase: 7
+  global_num: 104
+  title: Independent factorization
+  line: 6163
+  status: proven
+  in_root_build: true
+  lean_files:
+  - path: FdrsFormal/Composition.lean
+    declarations: []
+  - path: FdrsFormal/Composition/RoutingGraph/Graph.lean
+    declarations:
+    - Vertex
+    - ruleSrc
+    - ruleTgt
+    - vertices
+    - successors
+    - predecessors
+    - fanout
+    - depthStep
+    - depthIter
+    - depthIter_le
+  - path: FdrsFormal/Composition/TimingBounds/RoutingAnalysis.lean
+    declarations:
+    - routingDepth
+    - finiteRoutingDepth
+    - localTimelineCost
+    - routingOverheadCost
+    - layer
+    - layerMax
+    - compositeLatencyBound
+    - compositeTimingBound
+    - maxRoutingDepth
+    - staticRoutingCompileTimeBound
+  section: P7.5
+- id: proposition_105
+  type: proposition
+  phase: 7
+  global_num: 105
+  title: Finite realizability
+  line: 6165
+  status: proven
+  in_root_build: true
+  lean_files:
+  - path: FdrsFormal/Composition.lean
+    declarations: []
+  - path: FdrsFormal/Composition/RoutingGraph/Graph.lean
+    declarations:
+    - Vertex
+    - ruleSrc
+    - ruleTgt
+    - vertices
+    - successors
+    - predecessors
+    - fanout
+    - depthStep
+    - depthIter
+    - depthIter_le
+  - path: FdrsFormal/Composition/TimingBounds/RoutingAnalysis.lean
+    declarations:
+    - routingDepth
+    - finiteRoutingDepth
+    - localTimelineCost
+    - routingOverheadCost
+    - layer
+    - layerMax
+    - compositeLatencyBound
+    - compositeTimingBound
+    - maxRoutingDepth
+    - staticRoutingCompileTimeBound
   section: P7.6
 - id: proposition_106
   type: proposition
   phase: 7
   global_num: 106
   title: Stochastic SU preservation
-  line: 6131
+  line: 6167
   status: proven
   in_root_build: true
   lean_files:
   - path: FdrsFormal/Composition.lean
     declarations: []
-  - path: FdrsFormal/Composition/Injection/Queue.lean
-    declarations:
-    - InjectionQueueEntry
-    - InjectionQueue
-    - enqueue
-    - dequeue
-    - isBounded
-    - queueSize
   - path: FdrsFormal/Composition/RoutingGraph/Graph.lean
     declarations:
     - Vertex
@@ -8754,61 +8970,49 @@ items:
     - depthStep
     - depthIter
     - depthIter_le
-  - path: FdrsFormal/Composition/Verification/CompileTime.lean
+  - path: FdrsFormal/Composition/TimingBounds/RoutingAnalysis.lean
     declarations:
-    - acyclicity_decidable
-    - bounded_fanout_decidable
-    - bounded_depth_decidable
-    - reachability_decidable
-    - deadlock_freedom_decidable
-    - deadlockFree_iff_acyclic
+    - routingDepth
+    - finiteRoutingDepth
+    - localTimelineCost
+    - routingOverheadCost
+    - layer
+    - layerMax
+    - compositeLatencyBound
+    - compositeTimingBound
+    - maxRoutingDepth
+    - staticRoutingCompileTimeBound
   section: P7.7
 - id: proposition_107
   type: proposition
   phase: 7
   global_num: 107
   title: Oracle equivalence invariance
-  line: 6133
+  line: 6169
   status: proven
   in_root_build: true
   lean_files:
   - path: FdrsFormal/Composition.lean
     declarations: []
-  - path: FdrsFormal/Composition/Injection/Queue.lean
+  - path: FdrsFormal/Composition/TimingBounds/RoutingAnalysis.lean
     declarations:
-    - InjectionQueueEntry
-    - InjectionQueue
-    - enqueue
-    - dequeue
-    - isBounded
-    - queueSize
-  - path: FdrsFormal/Composition/RoutingGraph/Graph.lean
-    declarations:
-    - Vertex
-    - ruleSrc
-    - ruleTgt
-    - vertices
-    - successors
-    - predecessors
-    - fanout
-    - depthStep
-    - depthIter
-    - depthIter_le
-  - path: FdrsFormal/Composition/Verification/CompileTime.lean
-    declarations:
-    - acyclicity_decidable
-    - bounded_fanout_decidable
-    - bounded_depth_decidable
-    - reachability_decidable
-    - deadlock_freedom_decidable
-    - deadlockFree_iff_acyclic
+    - routingDepth
+    - finiteRoutingDepth
+    - localTimelineCost
+    - routingOverheadCost
+    - layer
+    - layerMax
+    - compositeLatencyBound
+    - compositeTimingBound
+    - maxRoutingDepth
+    - staticRoutingCompileTimeBound
   section: P7.8
 - id: definition_107
   type: definition
   phase: 8
   global_num: 107
   title: Timeline identifier space
-  line: 6158
+  line: 6194
   status: proven
   in_root_build: true
   lean_files:
@@ -8821,7 +9025,7 @@ items:
   phase: 8
   global_num: 108
   title: Timeline graph structure
-  line: 6172
+  line: 6208
   status: proven
   in_root_build: true
   lean_files:
@@ -8834,7 +9038,7 @@ items:
   phase: 8
   global_num: 109
   title: Junction point types
-  line: 6189
+  line: 6225
   status: proven
   in_root_build: true
   lean_files:
@@ -8847,7 +9051,7 @@ items:
   phase: 8
   global_num: 110
   title: Active cylinder in timeline
-  line: 6202
+  line: 6238
   status: proven
   in_root_build: true
   lean_files:
@@ -8860,7 +9064,7 @@ items:
   phase: 8
   global_num: 111
   title: Event space for timeline graphs
-  line: 6214
+  line: 6250
   status: proven
   in_root_build: true
   lean_files:
@@ -8873,7 +9077,7 @@ items:
   phase: 8
   global_num: 112
   title: Routing function
-  line: 6227
+  line: 6263
   status: proven
   in_root_build: true
   lean_files:
@@ -8886,7 +9090,7 @@ items:
   phase: 8
   global_num: 113
   title: Transfer types
-  line: 6249
+  line: 6285
   status: proven
   in_root_build: true
   lean_files:
@@ -8899,7 +9103,7 @@ items:
   phase: 8
   global_num: 114
   title: Payload transform
-  line: 6270
+  line: 6306
   status: proven
   in_root_build: true
   lean_files:
@@ -8912,46 +9116,32 @@ items:
   phase: 8
   global_num: 115
   title: Static routing table
-  line: 6285
+  line: 6321
   status: proven
   in_root_build: true
   lean_files:
   - path: FdrsFormal/Composition.lean
     declarations: []
-  - path: FdrsFormal/Composition/Lifecycle.lean
-    declarations: []
-  - path: FdrsFormal/Composition/Lifecycle/BoundedSpawn.lean
-    declarations:
-    - hasBoundedSpawn
-    - activeCount
-    - hasBoundedSpawn_of_activeCount
-    - spawn_preserves_bounded
-    - boundedSpawn_preserves_timing
-  - path: FdrsFormal/Composition/Lifecycle/Spawn.lean
-    declarations:
-    - SpawnConfig
-    - spawn
-    - spawned_is_active
-    - spawn_preserves_others
-    - dynamicTaskSpawnExample
-  - path: FdrsFormal/Composition/Lifecycle/States.lean
-    declarations:
-    - LifecycleState
-    - isValidTransition
-    - LifecycleMap
   - path: FdrsFormal/Composition/Lifecycle/Terminate.lean
     declarations:
     - terminate
     - terminated_is_terminated
     - terminate_routes_final_state
     - terminate_routes_final_state_holds
+  - path: FdrsFormal/Composition/Synchronization.lean
+    declarations: []
+  - path: FdrsFormal/Composition/Synchronization/Multicast.lean
+    declarations:
+    - isMulticast
+    - multicastFanout
+    - timerOverflow_multicast
   section: 8.2.5
 - id: definition_116
   type: definition
   phase: 8
   global_num: 116
   title: Injection operation
-  line: 6300
+  line: 6336
   status: scaffold
   in_root_build: true
   lean_files:
@@ -8964,7 +9154,7 @@ items:
   phase: 8
   global_num: 117
   title: Injection locality
-  line: 6310
+  line: 6346
   status: proven
   in_root_build: true
   lean_files:
@@ -8977,7 +9167,7 @@ items:
   phase: 8
   global_num: 118
   title: Injection queue for asynchrony
-  line: 6322
+  line: 6358
   status: proven
   in_root_build: true
   lean_files:
@@ -8990,7 +9180,7 @@ items:
   phase: 8
   global_num: 51
   title: Injection preserves CSU
-  line: 6336
+  line: 6372
   status: proven
   in_root_build: true
   lean_files:
@@ -9003,7 +9193,7 @@ items:
   phase: 8
   global_num: 119
   title: Routing dependency graph
-  line: 6350
+  line: 6386
   status: proven
   in_root_build: true
   lean_files:
@@ -9016,7 +9206,7 @@ items:
   phase: 8
   global_num: 120
   title: Acyclic routing
-  line: 6361
+  line: 6397
   status: proven
   in_root_build: true
   lean_files:
@@ -9029,7 +9219,7 @@ items:
   phase: 8
   global_num: 52
   title: Acyclic routing implies deadlock-freedom
-  line: 6369
+  line: 6405
   status: proven
   in_root_build: true
   lean_files:
@@ -9045,7 +9235,7 @@ items:
   phase: 8
   global_num: 121
   title: Routing depth
-  line: 6389
+  line: 6425
   status: proven
   in_root_build: true
   lean_files:
@@ -9058,7 +9248,7 @@ items:
   phase: 8
   global_num: 108
   title: Finite routing depth
-  line: 6399
+  line: 6435
   status: proven
   in_root_build: true
   lean_files:
@@ -9071,7 +9261,7 @@ items:
   phase: 8
   global_num: 122
   title: Local timeline operation cost
-  line: 6411
+  line: 6447
   status: proven
   in_root_build: true
   lean_files:
@@ -9084,7 +9274,7 @@ items:
   phase: 8
   global_num: 123
   title: Routing operation overhead
-  line: 6421
+  line: 6457
   status: proven
   in_root_build: true
   lean_files:
@@ -9100,7 +9290,7 @@ items:
   phase: 8
   global_num: 53
   title: Composite timing bound - Main Result
-  line: 6434
+  line: 6470
   status: proven
   in_root_build: true
   lean_files:
@@ -9113,7 +9303,7 @@ items:
   phase: 8
   global_num: 29
   title: Static routing compile-time bound
-  line: 6455
+  line: 6491
   status: proven
   in_root_build: true
   lean_files:
@@ -9126,7 +9316,7 @@ items:
   phase: 8
   global_num: 124
   title: Timeline lifecycle states
-  line: 6477
+  line: 6513
   status: proven
   in_root_build: true
   lean_files:
@@ -9139,7 +9329,7 @@ items:
   phase: 8
   global_num: 125
   title: Spawn operation
-  line: 6489
+  line: 6525
   status: proven
   in_root_build: true
   lean_files:
@@ -9153,7 +9343,7 @@ items:
   phase: 8
   global_num: 126
   title: Terminate operation
-  line: 6503
+  line: 6539
   status: proven
   in_root_build: true
   lean_files:
@@ -9166,7 +9356,7 @@ items:
   phase: 8
   global_num: 127
   title: Bounded spawn system
-  line: 6516
+  line: 6552
   status: proven
   in_root_build: true
   lean_files:
@@ -9179,7 +9369,7 @@ items:
   phase: 8
   global_num: 54
   title: Bounded spawn preserves global timing bounds
-  line: 6528
+  line: 6564
   status: proven
   in_root_build: true
   lean_files:
@@ -9192,7 +9382,7 @@ items:
   phase: 8
   global_num: 128
   title: Multicast routing
-  line: 6554
+  line: 6590
   status: proven
   in_root_build: true
   lean_files:
@@ -9205,7 +9395,7 @@ items:
   phase: 8
   global_num: 129
   title: Synchronization point
-  line: 6566
+  line: 6602
   status: proven
   in_root_build: true
   lean_files:
@@ -9218,7 +9408,7 @@ items:
   phase: 8
   global_num: 130
   title: Join semantics
-  line: 6576
+  line: 6612
   status: proven
   in_root_build: true
   lean_files:
@@ -9231,7 +9421,7 @@ items:
   phase: 8
   global_num: 55
   title: Multicast-join duality
-  line: 6593
+  line: 6629
   status: proven
   in_root_build: true
   lean_files:
@@ -9244,7 +9434,7 @@ items:
   phase: 8
   global_num: 131
   title: Routing specification language
-  line: 6603
+  line: 6639
   status: proven
   in_root_build: true
   lean_files:
@@ -9257,7 +9447,7 @@ items:
   phase: 8
   global_num: 132
   title: Compiled routing table
-  line: 6620
+  line: 6656
   status: proven
   in_root_build: true
   lean_files:
@@ -9270,7 +9460,7 @@ items:
   phase: 8
   global_num: 109
   title: Compile-time decidable properties
-  line: 6630
+  line: 6666
   status: proven
   in_root_build: true
   lean_files:
@@ -9287,7 +9477,7 @@ items:
   phase: 8
   global_num: 133
   title: Verified routing specification
-  line: 6646
+  line: 6682
   status: proven
   in_root_build: true
   lean_files:
@@ -9300,7 +9490,7 @@ items:
   phase: 8
   global_num: 134
   title: Routed observer complex
-  line: 6658
+  line: 6694
   status: proven
   in_root_build: true
   lean_files:
@@ -9313,7 +9503,7 @@ items:
   phase: 8
   global_num: 56
   title: Observer complex as special case of routing
-  line: 6673
+  line: 6709
   status: proven
   in_root_build: true
   lean_files:
@@ -9326,7 +9516,7 @@ items:
   phase: 8
   global_num: 57
   title: Residual payload as junction accumulation
-  line: 6685
+  line: 6721
   status: proven
   in_root_build: true
   lean_files:
@@ -9339,7 +9529,7 @@ items:
   phase: 8
   global_num: 2
   title: Multi-Timeline RTOS Architecture
-  line: 6701
+  line: 6737
   status: proven
   in_root_build: true
   lean_files:
@@ -9375,7 +9565,7 @@ items:
   phase: 8
   global_num: 3
   title: Interrupt as Timeline Injection
-  line: 6728
+  line: 6764
   status: proven
   in_root_build: true
   lean_files:
@@ -9411,7 +9601,7 @@ items:
   phase: 8
   global_num: 4
   title: Dynamic Task Spawning
-  line: 6763
+  line: 6799
   status: proven
   in_root_build: true
   lean_files:
@@ -9447,7 +9637,7 @@ items:
   phase: 8
   global_num: 110
   title: Injection preserves CSU
-  line: 6788
+  line: 6824
   status: proven
   in_root_build: true
   lean_files:
@@ -9483,7 +9673,7 @@ items:
   phase: 8
   global_num: 111
   title: Acyclic routing ⟹ deadlock-free
-  line: 6790
+  line: 6826
   status: proven
   in_root_build: true
   lean_files:
@@ -9519,7 +9709,7 @@ items:
   phase: 8
   global_num: 112
   title: Finite depth under acyclicity
-  line: 6792
+  line: 6828
   status: proven
   in_root_build: true
   lean_files:
@@ -9555,7 +9745,7 @@ items:
   phase: 8
   global_num: 113
   title: Composite timing bound
-  line: 6794
+  line: 6830
   status: proven
   in_root_build: true
   lean_files:
@@ -9591,7 +9781,7 @@ items:
   phase: 8
   global_num: 114
   title: Static routing compile-time bound
-  line: 6796
+  line: 6832
   status: proven
   in_root_build: true
   lean_files:
@@ -9627,7 +9817,7 @@ items:
   phase: 8
   global_num: 115
   title: Bounded spawn timing preservation
-  line: 6798
+  line: 6834
   status: proven
   in_root_build: true
   lean_files:
@@ -9663,7 +9853,7 @@ items:
   phase: 8
   global_num: 116
   title: Multicast-join duality
-  line: 6800
+  line: 6836
   status: proven
   in_root_build: true
   lean_files:
@@ -9699,7 +9889,7 @@ items:
   phase: 8
   global_num: 117
   title: Observer complex embedding
-  line: 6802
+  line: 6838
   status: proven
   in_root_build: true
   lean_files:
@@ -9735,7 +9925,7 @@ items:
   phase: 8
   global_num: 118
   title: Compile-time verification
-  line: 6804
+  line: 6840
   status: proven
   in_root_build: true
   lean_files:
@@ -9771,7 +9961,7 @@ items:
   phase: 8
   global_num: 119
   title: Residual as undelivered accumulation
-  line: 6806
+  line: 6842
   status: proven
   in_root_build: true
   lean_files:
@@ -9807,51 +9997,93 @@ items:
   phase: 9
   global_num: 135
   title: Extended radix sequence
-  line: 7119
+  line: 7155
   status: proven
   in_root_build: true
   lean_files:
-  - path: FdrsFormal/Modes/ExtendedBase/SpatialThermometer.lean
+  - path: FdrsFormal/Modes/BaseZeroSea/Projection.lean
     declarations:
-    - SpatialDigit
-    - SpatialDigit.ext
-    - spatialTick
-    - spatialRadixWall
-    - algebraicTick
-    - spatialToAlgebraic
-    - algebraicToSpatial
-    - spatialAlgebraicIsomorphism
-    - spatialToAlgebraic_algebraicToSpatial
-    - algebraicToSpatial_spatialToAlgebraic
+    - windowToDigitProjection
+    - windowToDigitProjection_val
+    - windowToDigitProjection_in_activeZone
+    - Phase9ConstraintProfile
+    - phase9_no_consumption
+  - path: FdrsFormal/Modes/ExtendedBase/ArithmeticCylinder.lean
+    declarations:
+    - effectiveBase_eq_of_ge_two
+    - effectiveBase_eq_one_of_lt_two
+    - generalizedPlaceValue_eq_prod
+    - generalizedPlaceValue_eq_capacity_prod
+    - arithmeticCylinderExtension
+  - path: FdrsFormal/Modes/ExtendedBase/CarryRouteUnification.lean
+    declarations:
+    - SpatialCylinder
+    - cylinderValid
+    - cylinderUpdate
+    - cylinderUpdate_at
+    - cylinderUpdate_ne
+  - path: FdrsFormal/Modes/ExtendedBase/Definition.lean
+    declarations:
+    - ExtendedDigit
+    - ExtendedDigit.ext
+    - ExtendedDigit.zero
+    - ExtendedDigit.one
+    - ExtendedRep
+  - path: FdrsFormal/Modes/ExtendedBase/ExtendedTick.lean
+    declarations:
+    - extendedTick
+    - wireTransparency
+    - barrierWrap
   section: 9.1.1
 - id: definition_136
   type: definition
   phase: 9
   global_num: 136
   title: Extended digit alphabets
-  line: 7123
+  line: 7159
   status: proven
   in_root_build: true
   lean_files:
-  - path: FdrsFormal/Modes/ExtendedBase/SpatialThermometer.lean
+  - path: FdrsFormal/Modes/BaseZeroSea/Projection.lean
     declarations:
-    - SpatialDigit
-    - SpatialDigit.ext
-    - spatialTick
-    - spatialRadixWall
-    - algebraicTick
-    - spatialToAlgebraic
-    - algebraicToSpatial
-    - spatialAlgebraicIsomorphism
-    - spatialToAlgebraic_algebraicToSpatial
-    - algebraicToSpatial_spatialToAlgebraic
+    - windowToDigitProjection
+    - windowToDigitProjection_val
+    - windowToDigitProjection_in_activeZone
+    - Phase9ConstraintProfile
+    - phase9_no_consumption
+  - path: FdrsFormal/Modes/ExtendedBase/ArithmeticCylinder.lean
+    declarations:
+    - effectiveBase_eq_of_ge_two
+    - effectiveBase_eq_one_of_lt_two
+    - generalizedPlaceValue_eq_prod
+    - generalizedPlaceValue_eq_capacity_prod
+    - arithmeticCylinderExtension
+  - path: FdrsFormal/Modes/ExtendedBase/CarryRouteUnification.lean
+    declarations:
+    - SpatialCylinder
+    - cylinderValid
+    - cylinderUpdate
+    - cylinderUpdate_at
+    - cylinderUpdate_ne
+  - path: FdrsFormal/Modes/ExtendedBase/Definition.lean
+    declarations:
+    - ExtendedDigit
+    - ExtendedDigit.ext
+    - ExtendedDigit.zero
+    - ExtendedDigit.one
+    - ExtendedRep
+  - path: FdrsFormal/Modes/ExtendedBase/ExtendedTick.lean
+    declarations:
+    - extendedTick
+    - wireTransparency
+    - barrierWrap
   section: 9.1.2
 - id: definition_137
   type: definition
   phase: 9
   global_num: 137
   title: Active and capacity index sets
-  line: 7132
+  line: 7168
   status: proven
   in_root_build: true
   lean_files:
@@ -9864,7 +10096,7 @@ items:
   phase: 9
   global_num: 138
   title: Effective base
-  line: 7138
+  line: 7174
   status: proven
   in_root_build: true
   lean_files:
@@ -9877,7 +10109,7 @@ items:
   phase: 9
   global_num: 139
   title: Generalized cumulative radix products
-  line: 7151
+  line: 7187
   status: proven
   in_root_build: true
   lean_files:
@@ -9890,7 +10122,7 @@ items:
   phase: 9
   global_num: 120
   title: Monotonicity preserved
-  line: 7159
+  line: 7195
   status: proven
   in_root_build: true
   lean_files:
@@ -9903,7 +10135,7 @@ items:
   phase: 9
   global_num: 121
   title: Recovery of original
-  line: 7165
+  line: 7201
   status: proven
   in_root_build: true
   lean_files:
@@ -9916,7 +10148,7 @@ items:
   phase: 9
   global_num: 140
   title: Representable subspace
-  line: 7173
+  line: 7209
   status: proven
   in_root_build: true
   lean_files:
@@ -9929,7 +10161,7 @@ items:
   phase: 9
   global_num: 141
   title: Extended decode
-  line: 7180
+  line: 7216
   status: proven
   in_root_build: true
   lean_files:
@@ -9942,7 +10174,7 @@ items:
   phase: 9
   global_num: 142
   title: Extended encode
-  line: 7189
+  line: 7225
   status: proven
   in_root_build: true
   lean_files:
@@ -9955,7 +10187,7 @@ items:
   phase: 9
   global_num: 122
   title: Bijection on representable subspace
-  line: 7196
+  line: 7232
   status: proven
   in_root_build: true
   lean_files:
@@ -9968,7 +10200,7 @@ items:
   phase: 9
   global_num: 143
   title: Tick with extended bases
-  line: 7208
+  line: 7244
   status: proven
   in_root_build: true
   lean_files:
@@ -9981,7 +10213,7 @@ items:
   phase: 9
   global_num: 58
   title: Wire transparency
-  line: 7218
+  line: 7254
   status: proven
   in_root_build: true
   lean_files:
@@ -9994,7 +10226,7 @@ items:
   phase: 9
   global_num: 59
   title: Barrier wrap
-  line: 7228
+  line: 7264
   status: proven
   in_root_build: true
   lean_files:
@@ -10007,7 +10239,7 @@ items:
   phase: 9
   global_num: 123
   title: Sigma-algebra contribution by base type
-  line: 7238
+  line: 7274
   status: proven
   in_root_build: true
   lean_files:
@@ -10020,7 +10252,7 @@ items:
   phase: 9
   global_num: 124
   title: Extended β_ω(s
-  line: 7245
+  line: 7281
   status: proven
   in_root_build: true
   lean_files:
@@ -10033,7 +10265,7 @@ items:
   phase: 9
   global_num: 125
   title: Arithmetic-cylinder property extension
-  line: 7254
+  line: 7290
   status: proven
   in_root_build: true
   lean_files:
@@ -10046,7 +10278,7 @@ items:
   phase: 9
   global_num: 144
   title: Instantiation API
-  line: 7267
+  line: 7303
   status: proven
   in_root_build: true
   lean_files:
@@ -10059,7 +10291,7 @@ items:
   phase: 9
   global_num: 145
   title: Spatial digit capacity
-  line: 7324
+  line: 7360
   status: proven
   in_root_build: true
   lean_files:
@@ -10072,7 +10304,7 @@ items:
   phase: 9
   global_num: 146
   title: Spatial tick
-  line: 7334
+  line: 7370
   status: proven
   in_root_build: true
   lean_files:
@@ -10085,7 +10317,7 @@ items:
   phase: 9
   global_num: 147
   title: Spatial radix wall
-  line: 7343
+  line: 7379
   status: proven
   in_root_build: true
   lean_files:
@@ -10098,7 +10330,7 @@ items:
   phase: 9
   global_num: 60
   title: Spatial-algebraic isomorphism
-  line: 7353
+  line: 7389
   status: proven
   in_root_build: true
   lean_files:
@@ -10111,7 +10343,7 @@ items:
   phase: 9
   global_num: 148
   title: Carry event classification
-  line: 7374
+  line: 7410
   status: proven
   in_root_build: true
   lean_files:
@@ -10135,7 +10367,7 @@ items:
   phase: 9
   global_num: 149
   title: Carry-as-route
-  line: 7383
+  line: 7419
   status: proven
   in_root_build: true
   lean_files:
@@ -10148,7 +10380,7 @@ items:
   phase: 9
   global_num: 150
   title: Unified spatial tick
-  line: 7394
+  line: 7430
   status: proven
   in_root_build: true
   lean_files:
@@ -10161,7 +10393,7 @@ items:
   phase: 9
   global_num: 61
   title: Fractal unification — carry is overflow route
-  line: 7398
+  line: 7434
   status: proven
   in_root_build: true
   lean_files:
@@ -10185,7 +10417,7 @@ items:
   phase: 10
   global_num: 151
   title: Base-zero sea
-  line: 7435
+  line: 7471
   status: proven
   in_root_build: true
   lean_files:
@@ -10198,7 +10430,7 @@ items:
   phase: 10
   global_num: 152
   title: Observation windows and radix walls
-  line: 7446
+  line: 7482
   status: proven
   in_root_build: true
   lean_files:
@@ -10211,7 +10443,7 @@ items:
   phase: 10
   global_num: 153
   title: Legacy thread
-  line: 7460
+  line: 7496
   status: proven
   in_root_build: true
   lean_files:
@@ -10224,7 +10456,7 @@ items:
   phase: 10
   global_num: 154
   title: Deterministic creation step
-  line: 7470
+  line: 7506
   status: proven
   in_root_build: true
   lean_files:
@@ -10237,7 +10469,7 @@ items:
   phase: 10
   global_num: 155
   title: Consumption target rule
-  line: 7488
+  line: 7524
   status: proven
   in_root_build: true
   lean_files:
@@ -10250,7 +10482,7 @@ items:
   phase: 10
   global_num: 156
   title: Consumption schedule
-  line: 7501
+  line: 7537
   status: proven
   in_root_build: true
   lean_files:
@@ -10263,7 +10495,7 @@ items:
   phase: 10
   global_num: 157
   title: Unified deterministic sea tick
-  line: 7509
+  line: 7545
   status: proven
   in_root_build: true
   lean_files:
@@ -10276,7 +10508,7 @@ items:
   phase: 10
   global_num: 126
   title: Deterministic totality
-  line: 7526
+  line: 7562
   status: proven
   in_root_build: true
   lean_files:
@@ -10289,7 +10521,7 @@ items:
   phase: 10
   global_num: 127
   title: Closure and validity invariants
-  line: 7534
+  line: 7570
   status: proven
   in_root_build: true
   lean_files:
@@ -10302,7 +10534,7 @@ items:
   phase: 10
   global_num: 128
   title: Legacy-length balance law
-  line: 7542
+  line: 7578
   status: proven
   in_root_build: true
   lean_files:
@@ -10315,7 +10547,7 @@ items:
   phase: 10
   global_num: 62
   title: Deterministic sea dynamics is a well-defined transition system
-  line: 7553
+  line: 7589
   status: proven
   in_root_build: true
   lean_files:
@@ -10328,7 +10560,7 @@ items:
   phase: 10
   global_num: 158
   title: Window-to-digit projection
-  line: 7567
+  line: 7603
   status: proven
   in_root_build: true
   lean_files:
@@ -10341,7 +10573,7 @@ items:
   phase: 10
   global_num: 159
   title: Phase-9 constraint profile
-  line: 7575
+  line: 7611
   status: proven
   in_root_build: true
   lean_files:
@@ -10354,7 +10586,7 @@ items:
   phase: 10
   global_num: 63
   title: Phase 9 is a special case of Phase 10
-  line: 7584
+  line: 7620
   status: proven
   in_root_build: true
   lean_files:
@@ -10367,7 +10599,7 @@ items:
   phase: 10
   global_num: 160
   title: Digit module in a base-zero sea
-  line: 7609
+  line: 7645
   status: proven
   in_root_build: true
   lean_files:
@@ -10380,7 +10612,7 @@ items:
   phase: 10
   global_num: 161
   title: Sustainment and resistance functional
-  line: 7625
+  line: 7661
   status: proven
   in_root_build: true
   lean_files:
@@ -10393,7 +10625,7 @@ items:
   phase: 10
   global_num: 129
   title: Deterministic persistence criterion
-  line: 7641
+  line: 7677
   status: proven
   in_root_build: true
   lean_files:
@@ -10406,7 +10638,7 @@ items:
   phase: 10
   global_num: 162
   title: Emergent effective base
-  line: 7650
+  line: 7686
   status: proven
   in_root_build: true
   lean_files:
@@ -10419,7 +10651,7 @@ items:
   phase: 10
   global_num: 130
   title: Resistance-base monotonicity under fixed observation resolution
-  line: 7666
+  line: 7702
   status: proven
   in_root_build: true
   lean_files:
@@ -10432,7 +10664,7 @@ items:
   phase: 10
   global_num: 163
   title: Coupled-digit sea network
-  line: 7674
+  line: 7710
   status: proven
   in_root_build: true
   lean_files:
@@ -10445,7 +10677,7 @@ items:
   phase: 10
   global_num: 64
   title: Classical mixed-radix line as a single-lineage special case
-  line: 7698
+  line: 7734
   status: proven
   in_root_build: true
   lean_files:
@@ -10458,7 +10690,7 @@ items:
   phase: 11
   global_num: 164
   title: Non-stationary radix tree
-  line: 7737
+  line: 7773
   status: proven
   in_root_build: true
   lean_files:
@@ -10471,7 +10703,7 @@ items:
   phase: 11
   global_num: 165
   title: Depth and heterogeneity
-  line: 7749
+  line: 7785
   status: proven
   in_root_build: true
   lean_files:
@@ -10484,7 +10716,7 @@ items:
   phase: 11
   global_num: 131
   title: Leaf count identity
-  line: 7759
+  line: 7795
   status: proven
   in_root_build: true
   lean_files:
@@ -10498,7 +10730,7 @@ items:
   phase: 11
   global_num: 132
   title: Homogeneous recovery
-  line: 7768
+  line: 7804
   status: proven
   in_root_build: true
   lean_files:
@@ -10512,7 +10744,7 @@ items:
   phase: 11
   global_num: 166
   title: Tree-adapted signal
-  line: 7780
+  line: 7816
   status: proven
   in_root_build: true
   lean_files:
@@ -10525,7 +10757,7 @@ items:
   phase: 11
   global_num: 167
   title: Node projection and layer
-  line: 7789
+  line: 7825
   status: proven
   in_root_build: true
   lean_files:
@@ -10538,7 +10770,7 @@ items:
   phase: 11
   global_num: 5
   title: Within-node layer properties
-  line: 7807
+  line: 7843
   status: proven
   in_root_build: true
   lean_files:
@@ -10552,7 +10784,7 @@ items:
   phase: 11
   global_num: 65
   title: Orthogonal decomposition
-  line: 7818
+  line: 7854
   status: proven
   in_root_build: true
   lean_files:
@@ -10566,7 +10798,7 @@ items:
   phase: 11
   global_num: 30
   title: Exact adapted signals
-  line: 7832
+  line: 7868
   status: proven
   in_root_build: true
   lean_files:
@@ -10579,7 +10811,7 @@ items:
   phase: 11
   global_num: 168
   title: Signal taxonomy
-  line: 7842
+  line: 7878
   status: proven
   in_root_build: true
   lean_files:
@@ -10592,7 +10824,7 @@ items:
   phase: 11
   global_num: 133
   title: Strict class hierarchy
-  line: 7854
+  line: 7890
   status: proven
   in_root_build: true
   lean_files:
@@ -10605,7 +10837,7 @@ items:
   phase: 11
   global_num: 169
   title: Root-periodic energy fraction
-  line: 7864
+  line: 7900
   status: proven
   in_root_build: true
   lean_files:
@@ -10618,7 +10850,7 @@ items:
   phase: 11
   global_num: 66
   title: Fourier ceiling
-  line: 7874
+  line: 7910
   status: proven
   in_root_build: true
   lean_files:
@@ -10631,7 +10863,7 @@ items:
   phase: 11
   global_num: 134
   title: Homogeneous ceiling trivial
-  line: 7884
+  line: 7920
   status: proven
   in_root_build: true
   lean_files:
@@ -10644,7 +10876,7 @@ items:
   phase: 11
   global_num: 170
   title: Minimum uniform cells
-  line: 7894
+  line: 7930
   status: proven
   in_root_build: true
   lean_files:
@@ -10657,7 +10889,7 @@ items:
   phase: 11
   global_num: 171
   title: Representation gap
-  line: 7902
+  line: 7938
   status: proven
   in_root_build: true
   lean_files:
@@ -10670,7 +10902,7 @@ items:
   phase: 11
   global_num: 135
   title: 'Representation gap: collapse and strict gap'
-  line: 7910
+  line: 7946
   status: proven
   in_root_build: true
   lean_files:
@@ -10684,7 +10916,7 @@ items:
   phase: 11
   global_num: 67
   title: Depth-2 gap formula
-  line: 7920
+  line: 7956
   status: proven
   in_root_build: true
   lean_files:
@@ -10697,7 +10929,7 @@ items:
   phase: 11
   global_num: 31
   title: Compensated heterogeneity
-  line: 7930
+  line: 7966
   status: proven
   in_root_build: true
   lean_files:
@@ -10710,7 +10942,7 @@ items:
   phase: 11
   global_num: 172
   title: Tree block projection
-  line: 7940
+  line: 7976
   status: proven
   in_root_build: true
   lean_files:
@@ -10723,7 +10955,7 @@ items:
   phase: 11
   global_num: 136
   title: Projection properties
-  line: 7948
+  line: 7984
   status: proven
   in_root_build: true
   lean_files:
@@ -10739,7 +10971,7 @@ items:
   phase: 11
   global_num: 68
   title: Connection to FDRS filtration
-  line: 7960
+  line: 7996
   status: proven
   in_root_build: true
   lean_files:
@@ -10752,7 +10984,7 @@ items:
   phase: 11
   global_num: 173
   title: F-statistic for radix selection
-  line: 7974
+  line: 8010
   status: proven
   in_root_build: true
   lean_files:
@@ -10765,7 +10997,7 @@ items:
   phase: 11
   global_num: 137
   title: Detection power scaling
-  line: 7987
+  line: 8023
   status: proven
   in_root_build: true
   lean_files:
@@ -10778,7 +11010,7 @@ items:
   phase: 11
   global_num: 174
   title: DCC
-  line: 8001
+  line: 8037
   status: scaffold
   in_root_build: true
   lean_files:
@@ -10792,7 +11024,7 @@ items:
   phase: 11
   global_num: 138
   title: DCC characterizes taxonomy
-  line: 8009
+  line: 8045
   status: proven
   in_root_build: true
   lean_files:
@@ -10805,7 +11037,7 @@ items:
   phase: 11
   global_num: 69
   title: Vilenkin is special case
-  line: 8026
+  line: 8062
   status: proven
   in_root_build: true
   lean_files:
@@ -10818,7 +11050,7 @@ items:
   phase: 12
   global_num: 175
   title: unit complement
-  line: 8059
+  line: 8095
   status: proven
   in_root_build: true
   lean_files:
@@ -10831,7 +11063,7 @@ items:
   phase: 12
   global_num: 176
   title: unit pair and parts
-  line: 8067
+  line: 8103
   status: proven
   in_root_build: true
   lean_files:
@@ -10844,7 +11076,7 @@ items:
   phase: 12
   global_num: 139
   title: complement properties
-  line: 8075
+  line: 8111
   status: proven
   in_root_build: true
   lean_files:
@@ -10860,7 +11092,7 @@ items:
   phase: 12
   global_num: 140
   title: ordering split
-  line: 8090
+  line: 8126
   status: proven
   in_root_build: true
   lean_files:
@@ -10876,7 +11108,7 @@ items:
   phase: 12
   global_num: 177
   title: fit count, completion residue, overflow carry
-  line: 8117
+  line: 8153
   status: proven
   in_root_build: true
   lean_files:
@@ -10891,7 +11123,7 @@ items:
   phase: 12
   global_num: 141
   title: basic carry arithmetic
-  line: 8127
+  line: 8163
   status: proven
   in_root_build: true
   lean_files:
@@ -10906,7 +11138,7 @@ items:
   phase: 12
   global_num: 142
   title: irrational sharpening
-  line: 8140
+  line: 8176
   status: proven
   in_root_build: true
   lean_files:
@@ -10921,7 +11153,7 @@ items:
   phase: 12
   global_num: 143
   title: greater/lesser part specialization
-  line: 8152
+  line: 8188
   status: proven
   in_root_build: true
   lean_files:
@@ -10937,7 +11169,7 @@ items:
   phase: 13
   global_num: 178
   title: Product radix and the observer-line mediator
-  line: 8207
+  line: 8243
   status: proven
   in_root_build: true
   lean_files:
@@ -10977,7 +11209,7 @@ items:
   phase: 13
   global_num: 144
   title: 'Mediator ≅ A × B: the round-trip identities'
-  line: 8213
+  line: 8249
   status: proven
   in_root_build: true
   lean_files:
@@ -10990,7 +11222,7 @@ items:
   phase: 13
   global_num: 70
   title: Place value and overflow rate factor under the product mediator
-  line: 8223
+  line: 8259
   status: proven
   in_root_build: true
   lean_files:
@@ -11030,7 +11262,7 @@ items:
   phase: 13
   global_num: 179
   title: Coupling, the coupled system, and manifest instantiation
-  line: 8238
+  line: 8274
   status: proven
   in_root_build: true
   lean_files:
@@ -11070,7 +11302,7 @@ items:
   phase: 13
   global_num: 145
   title: Independence of coupling and radix; manifestation absorbs carry
-  line: 8244
+  line: 8280
   status: proven
   in_root_build: true
   lean_files:
@@ -11110,7 +11342,7 @@ items:
   phase: 13
   global_num: 146
   title: Overflow-rate ratio and the discrete → real comparison
-  line: 8250
+  line: 8286
   status: proven
   in_root_build: true
   lean_files:
@@ -11150,7 +11382,7 @@ items:
   phase: 13
   global_num: 180
   title: Subshift / transfer-matrix prefix gauge
-  line: 8262
+  line: 8298
   status: proven
   in_root_build: true
   lean_files:
@@ -11190,7 +11422,7 @@ items:
   phase: 13
   global_num: 71
   title: 'Defensive perimeter: the free `d = 1` gauge recovers the place value'
-  line: 8268
+  line: 8304
   status: proven
   in_root_build: true
   lean_files:
@@ -11230,7 +11462,7 @@ items:
   phase: 13
   global_num: 181
   title: The convergent-pair ledger
-  line: 8278
+  line: 8314
   status: proven
   in_root_build: true
   lean_files:
@@ -11243,7 +11475,7 @@ items:
   phase: 13
   global_num: 72
   title: The bracket invariant
-  line: 8284
+  line: 8320
   status: proven
   in_root_build: true
   lean_files:
@@ -11283,7 +11515,7 @@ items:
   phase: 13
   global_num: 73
   title: 'Gauge growth: `q_k > 0` and `q_k → ∞`, even for `φ`'
-  line: 8292
+  line: 8328
   status: proven
   in_root_build: true
   lean_files:
@@ -11323,7 +11555,7 @@ items:
   phase: 13
   global_num: 182
   title: Admissible point, prefix, and the gauge at depth
-  line: 8304
+  line: 8340
   status: proven
   in_root_build: true
   lean_files:
@@ -11363,7 +11595,7 @@ items:
   phase: 13
   global_num: 183
   title: The gauge-induced continued-fraction distance
-  line: 8310
+  line: 8346
   status: proven
   in_root_build: true
   lean_files:
@@ -11403,7 +11635,7 @@ items:
   phase: 13
   global_num: 74
   title: '`cfDist` is a genuine ultrametric'
-  line: 8316
+  line: 8352
   status: proven
   in_root_build: true
   lean_files:
@@ -11443,7 +11675,7 @@ items:
   phase: 13
   global_num: 75
   title: '`ball = cylinder`'
-  line: 8324
+  line: 8360
   status: proven
   in_root_build: true
   lean_files:
@@ -11483,7 +11715,7 @@ items:
   phase: 13
   global_num: 184
   title: Carry frequency of a generated timeline
-  line: 8341
+  line: 8377
   status: proven
   in_root_build: true
   lean_files:
@@ -11523,7 +11755,7 @@ items:
   phase: 13
   global_num: 76
   title: '`cfOverflowRate` is positive, antitone, and vanishing'
-  line: 8347
+  line: 8383
   status: proven
   in_root_build: true
   lean_files:
@@ -11536,7 +11768,7 @@ items:
   phase: 13
   global_num: 185
   title: Parry transition kernel of the golden-mean shift
-  line: 8363
+  line: 8399
   status: proven
   in_root_build: true
   lean_files:
@@ -11576,7 +11808,7 @@ items:
   phase: 13
   global_num: 77
   title: Mass conservation and the Markov kernel
-  line: 8369
+  line: 8405
   status: proven
   in_root_build: true
   lean_files:
@@ -11616,7 +11848,7 @@ items:
   phase: 13
   global_num: 186
   title: Parry stationary law
-  line: 8377
+  line: 8413
   status: proven
   in_root_build: true
   lean_files:
@@ -11629,7 +11861,7 @@ items:
   phase: 13
   global_num: 78
   title: Stationarity
-  line: 8383
+  line: 8419
   status: proven
   in_root_build: true
   lean_files:
@@ -11642,7 +11874,7 @@ items:
   phase: 13
   global_num: 187
   title: Parry path measure via Ionescu–Tulcea
-  line: 8391
+  line: 8427
   status: proven
   in_root_build: true
   lean_files:
@@ -11682,7 +11914,7 @@ items:
   phase: 13
   global_num: 79
   title: Lévy upward convergence — "Group G" — on the golden timeline
-  line: 8397
+  line: 8433
   status: proven
   in_root_build: true
   lean_files:
@@ -11722,7 +11954,7 @@ items:
   phase: 13
   global_num: 188
   title: Homographic emission — single stream
-  line: 8411
+  line: 8447
   status: proven
   in_root_build: true
   lean_files:
@@ -11735,7 +11967,7 @@ items:
   phase: 13
   global_num: 80
   title: Exactness and channel independence
-  line: 8417
+  line: 8453
   status: proven
   in_root_build: true
   lean_files:
@@ -11748,7 +11980,7 @@ items:
   phase: 13
   global_num: 189
   title: The bihomographic tensor — two-stream mediator, Timeline C
-  line: 8425
+  line: 8461
   status: proven
   in_root_build: true
   lean_files:
@@ -11788,7 +12020,7 @@ items:
   phase: 13
   global_num: 81
   title: Channel commutations
-  line: 8431
+  line: 8467
   status: proven
   in_root_build: true
   lean_files:
@@ -11801,7 +12033,7 @@ items:
   phase: 13
   global_num: 82
   title: Emission soundness — the four-corner trap
-  line: 8439
+  line: 8475
   status: proven
   in_root_build: true
   lean_files:
@@ -11814,7 +12046,7 @@ items:
   phase: 13
   global_num: 190
   title: The two-stream driver
-  line: 8447
+  line: 8483
   status: proven
   in_root_build: true
   lean_files:
@@ -11827,7 +12059,7 @@ items:
   phase: 13
   global_num: 191
   title: The hyper-Gosper clock
-  line: 8455
+  line: 8491
   status: proven
   in_root_build: true
   lean_files:
@@ -11840,7 +12072,7 @@ items:
   phase: 14
   global_num: 192
   title: prefix gauge
-  line: 8496
+  line: 8532
   status: proven
   in_root_build: true
   lean_files:
@@ -11884,7 +12116,7 @@ items:
   phase: 14
   global_num: 83
   title: gauge ⇒ ultrametric; ball = cylinder
-  line: 8503
+  line: 8539
   status: proven
   in_root_build: true
   lean_files:
@@ -11928,7 +12160,7 @@ items:
   phase: 14
   global_num: 147
   title: the corpus instances
-  line: 8511
+  line: 8547
   status: proven
   in_root_build: true
   lean_files:
@@ -11972,7 +12204,7 @@ items:
   phase: 14
   global_num: 193
   title: coupled fiber law; coupled completion counts
-  line: 8520
+  line: 8556
   status: proven
   in_root_build: true
   lean_files:
@@ -12016,7 +12248,7 @@ items:
   phase: 14
   global_num: 84
   title: level-only coupling preserves SU
-  line: 8527
+  line: 8563
   status: proven
   in_root_build: true
   lean_files:
@@ -12060,7 +12292,7 @@ items:
   phase: 14
   global_num: 148
   title: the ragged witness, machine-checked
-  line: 8532
+  line: 8568
   status: proven
   in_root_build: true
   lean_files:
@@ -12104,7 +12336,7 @@ items:
   phase: 14
   global_num: 85
   title: geometry survives raggedness
-  line: 8539
+  line: 8575
   status: proven
   in_root_build: true
   lean_files:
@@ -12148,7 +12380,7 @@ items:
   phase: 14
   global_num: 194
   title: transfer structure; uncertainty ledger; trap gate
-  line: 8548
+  line: 8584
   status: proven
   in_root_build: true
   lean_files:
@@ -12192,7 +12424,7 @@ items:
   phase: 14
   global_num: 86
   title: admissibility-trap soundness
-  line: 8555
+  line: 8591
   status: proven
   in_root_build: true
   lean_files:
@@ -12236,7 +12468,7 @@ items:
   phase: 14
   global_num: 195
   title: depth-decided observables
-  line: 8569
+  line: 8605
   status: proven
   in_root_build: true
   lean_files:
@@ -12280,7 +12512,7 @@ items:
   phase: 14
   global_num: 87
   title: indistinguishability below the gauge; strict hierarchy
-  line: 8573
+  line: 8609
   status: proven
   in_root_build: true
   lean_files:
@@ -12324,7 +12556,7 @@ items:
   phase: 14
   global_num: 196
   title: completion mass and observed flux
-  line: 8585
+  line: 8621
   status: proven
   in_root_build: true
   lean_files:
@@ -12368,7 +12600,7 @@ items:
   phase: 14
   global_num: 88
   title: the partition law; zero leak
-  line: 8590
+  line: 8626
   status: proven
   in_root_build: true
   lean_files:
@@ -12412,7 +12644,7 @@ items:
   phase: 14
   global_num: 197
   title: the coupled interface machine; balance
-  line: 8600
+  line: 8636
   status: proven
   in_root_build: true
   lean_files:
@@ -12456,7 +12688,7 @@ items:
   phase: 14
   global_num: 89
   title: the interface balance law
-  line: 8607
+  line: 8643
   status: proven
   in_root_build: true
   lean_files:
@@ -12500,7 +12732,7 @@ items:
   phase: 14
   global_num: 198
   title: place-local transfer rules
-  line: 8615
+  line: 8651
   status: proven
   in_root_build: true
   lean_files:
@@ -12544,7 +12776,7 @@ items:
   phase: 14
   global_num: 90
   title: 'conservation rigidity: factorization, no-go, boundary'
-  line: 8620
+  line: 8656
   status: proven
   in_root_build: true
   lean_files:
@@ -12588,7 +12820,7 @@ items:
   phase: 14
   global_num: 149
   title: witnesses on both sides of the boundary
-  line: 8634
+  line: 8670
   status: proven
   in_root_build: true
   lean_files:
@@ -12632,7 +12864,7 @@ items:
   phase: 14
   global_num: 199
   title: schedules, trace equivalence, projections
-  line: 8644
+  line: 8680
   status: proven
   in_root_build: true
   lean_files:
@@ -12676,7 +12908,7 @@ items:
   phase: 14
   global_num: 91
   title: the scalar trace-gauge no-go, machine-checked
-  line: 8652
+  line: 8688
   status: proven
   in_root_build: true
   lean_files:
@@ -12720,7 +12952,7 @@ items:
   phase: 14
   global_num: 200
   title: the observer-glued network distance
-  line: 8664
+  line: 8700
   status: proven
   in_root_build: true
   lean_files:
@@ -12764,7 +12996,7 @@ items:
   phase: 14
   global_num: 92
   title: the glued network ultrametric
-  line: 8669
+  line: 8705
   status: proven
   in_root_build: true
   lean_files:
@@ -12808,7 +13040,7 @@ items:
   phase: 14
   global_num: 201
   title: coupling graph; size as an edge cocycle
-  line: 8720
+  line: 8756
   status: proven
   in_root_build: true
   lean_files:
@@ -12852,7 +13084,7 @@ items:
   phase: 14
   global_num: 93
   title: the holonomy dichotomy — the full iff
-  line: 8734
+  line: 8770
   status: proven
   in_root_build: true
   lean_files:
@@ -12896,7 +13128,7 @@ items:
   phase: 14
   global_num: 150
   title: witnesses on both sides
-  line: 8741
+  line: 8777
   status: proven
   in_root_build: true
   lean_files:
@@ -12940,7 +13172,7 @@ items:
   phase: 14
   global_num: 202
   title: currency; transport vs trigger
-  line: 8754
+  line: 8790
   status: proven
   in_root_build: true
   lean_files:
@@ -12984,7 +13216,7 @@ items:
   phase: 14
   global_num: 94
   title: currency-generic interface balance
-  line: 8765
+  line: 8801
   status: proven
   in_root_build: true
   lean_files:
@@ -13028,7 +13260,7 @@ items:
   phase: 14
   global_num: 203
   title: windows; the length window; grant uniformity
-  line: 8774
+  line: 8810
   status: proven
   in_root_build: true
   lean_files:
@@ -13072,7 +13304,7 @@ items:
   phase: 14
   global_num: 95
   title: the shared clock; clock windows are accountable
-  line: 8785
+  line: 8821
   status: proven
   in_root_build: true
   lean_files:
@@ -13116,7 +13348,7 @@ items:
   phase: 14
   global_num: 96
   title: the window boundary, CLOSED for the alternating machine
-  line: 8793
+  line: 8829
   status: proven
   in_root_build: true
   lean_files:
@@ -13160,7 +13392,7 @@ items:
   phase: 14
   global_num: 204
   title: the exact splice
-  line: 8804
+  line: 8840
   status: proven
   in_root_build: true
   lean_files:
@@ -13204,7 +13436,7 @@ items:
   phase: 14
   global_num: 97
   title: synthetic fractions; the gauge half of dilation
-  line: 8813
+  line: 8849
   status: proven
   in_root_build: true
   lean_files:
@@ -13248,7 +13480,7 @@ items:
   phase: 14
   global_num: 98
   title: dilation, dynamic half — exact nesting is conservative
-  line: 8825
+  line: 8861
   status: proven
   in_root_build: true
   lean_files:
@@ -13292,7 +13524,7 @@ items:
   phase: 14
   global_num: 205
   title: group-valued coupling graph
-  line: 8843
+  line: 8879
   status: proven
   in_root_build: true
   lean_files:
@@ -13336,7 +13568,7 @@ items:
   phase: 14
   global_num: 99
   title: group holonomy dichotomy — gain-graph balance
-  line: 8851
+  line: 8887
   status: proven
   in_root_build: true
   lean_files:
@@ -13380,7 +13612,7 @@ items:
   phase: 14
   global_num: 151
   title: non-abelian frustrated witnesses, discrete and continuous
-  line: 8861
+  line: 8897
   status: proven
   in_root_build: true
   lean_files:
@@ -13424,7 +13656,7 @@ items:
   phase: 14
   global_num: 206
   title: sector emission — the floor-free trap
-  line: 8869
+  line: 8905
   status: proven
   in_root_build: true
   lean_files:
@@ -13468,7 +13700,7 @@ items:
   phase: 14
   global_num: 100
   title: sector-trap soundness — the fourth certificate
-  line: 8877
+  line: 8913
   status: proven
   in_root_build: true
   lean_files:
@@ -13512,7 +13744,7 @@ items:
   phase: 14
   global_num: 207
   title: exact SE2 motions; pose regions; tractable engines
-  line: 8886
+  line: 8922
   status: proven
   in_root_build: true
   lean_files:
@@ -13556,7 +13788,7 @@ items:
   phase: 14
   global_num: 101
   title: 'the certified non-commutative engine: soundness and the tight traps'
-  line: 8896
+  line: 8932
   status: proven
   in_root_build: true
   lean_files:
@@ -13600,7 +13832,7 @@ items:
   phase: 14
   global_num: 102
   title: the tight tractable engine
-  line: 8909
+  line: 8945
   status: proven
   in_root_build: true
   lean_files:
@@ -13644,7 +13876,7 @@ items:
   phase: 14
   global_num: 208
   title: the network machine; the latency discipline
-  line: 8950
+  line: 8986
   status: proven
   in_root_build: true
   lean_files:
@@ -13656,7 +13888,7 @@ items:
   phase: 14
   global_num: 103
   title: 'the probe gate: the two-node network IS the SU4b machine'
-  line: 8961
+  line: 8997
   status: proven
   in_root_build: true
   lean_files:
@@ -13668,7 +13900,7 @@ items:
   phase: 14
   global_num: 209
   title: '`complexStep` — the three-clause firing'
-  line: 8970
+  line: 9006
   status: proven
   in_root_build: true
   lean_files:
@@ -13680,7 +13912,7 @@ items:
   phase: 14
   global_num: 104
   title: conservative extension, twice; the fan-out witnesses
-  line: 8985
+  line: 9021
   status: proven
   in_root_build: true
   lean_files:
@@ -13692,7 +13924,7 @@ items:
   phase: 14
   global_num: 105
   title: causality must not be frustrated — well-formedness is grading
-  line: 8994
+  line: 9030
   status: proven
   in_root_build: true
   lean_files:
@@ -13704,7 +13936,7 @@ items:
   phase: 14
   global_num: 106
   title: 'network balance: SU6b''s generic law, per edge'
-  line: 9004
+  line: 9040
   status: proven
   in_root_build: true
   lean_files:
@@ -13716,7 +13948,7 @@ items:
   phase: 14
   global_num: 210
   title: non-blocking couplability; the decidable fixpoint check
-  line: 9020
+  line: 9056
   status: proven
   in_root_build: true
   lean_files:
@@ -13728,7 +13960,7 @@ items:
   phase: 14
   global_num: 107
   title: couplability certificate soundness
-  line: 9030
+  line: 9066
   status: proven
   in_root_build: true
   lean_files:
@@ -13740,7 +13972,7 @@ items:
   phase: 14
   global_num: 152
   title: witnesses on both sides of couplability
-  line: 9037
+  line: 9073
   status: proven
   in_root_build: true
   lean_files:
@@ -13752,7 +13984,7 @@ items:
   phase: 14
   global_num: 108
   title: per-node traps on the network — Theorem 86 transported verbatim
-  line: 9045
+  line: 9081
   status: proven
   in_root_build: true
   lean_files:
@@ -13764,7 +13996,7 @@ items:
   phase: 14
   global_num: 109
   title: the conditional Kahn diamond — determinacy, local form
-  line: 9058
+  line: 9094
   status: proven
   in_root_build: true
   lean_files:
@@ -13776,7 +14008,7 @@ items:
   phase: 14
   global_num: 110
   title: network liveness — the factored guarantee
-  line: 9073
+  line: 9109
   status: proven
   in_root_build: true
   lean_files:
@@ -13788,7 +14020,7 @@ items:
   phase: 14
   global_num: 111
   title: a timeline graph IS a network shape; time-ordering IS grading
-  line: 9097
+  line: 9133
   status: proven
   in_root_build: true
   lean_files:
@@ -13800,7 +14032,7 @@ items:
   phase: 14
   global_num: 211
   title: the queue-backed edge register
-  line: 9111
+  line: 9147
   status: proven
   in_root_build: true
   lean_files:
@@ -13812,7 +14044,7 @@ items:
   phase: 14
   global_num: 112
   title: queue balance at every capacity; capacity-one IS the currency register
-  line: 9118
+  line: 9154
   status: proven
   in_root_build: true
   lean_files:
@@ -13824,7 +14056,7 @@ items:
   phase: 14
   global_num: 212
   title: the 25519 digit ring
-  line: 9141
+  line: 9177
   status: proven
   in_root_build: true
   lean_files:
@@ -13836,7 +14068,7 @@ items:
   phase: 14
   global_num: 113
   title: a carry is a value-preserving redistribution
-  line: 9151
+  line: 9187
   status: proven
   in_root_build: true
   lean_files:
@@ -13848,7 +14080,7 @@ items:
   phase: 14
   global_num: 114
   title: the wrap has holonomy 19, not 1
-  line: 9160
+  line: 9196
   status: proven
   in_root_build: true
   lean_files:
@@ -13860,7 +14092,7 @@ items:
   phase: 14
   global_num: 115
   title: the schedule restores the bound — lazy reduction licensed
-  line: 9168
+  line: 9204
   status: proven
   in_root_build: true
   lean_files:
@@ -13872,7 +14104,7 @@ items:
   phase: 14
   global_num: 213
   title: position gauge; the gauged completion
-  line: 9201
+  line: 9237
   status: proven
   in_root_build: true
   lean_files:
@@ -13885,7 +14117,7 @@ items:
   phase: 14
   global_num: 116
   title: the Moran frame — dimension squeezed by count against gauge
-  line: 9217
+  line: 9253
   status: proven
   in_root_build: true
   lean_files:
@@ -13899,7 +14131,7 @@ items:
   phase: 14
   global_num: 117
   title: every number line is one-dimensional
-  line: 9230
+  line: 9266
   status: proven
   in_root_build: true
   lean_files:
@@ -13911,7 +14143,7 @@ items:
   phase: 14
   global_num: 118
   title: the gauge programs the dimension
-  line: 9240
+  line: 9276
   status: proven
   in_root_build: true
   lean_files:
@@ -13923,7 +14155,7 @@ items:
   phase: 14
   global_num: 153
   title: the §6.4.3 growth regimes, computed
-  line: 9248
+  line: 9284
   status: proven
   in_root_build: true
   lean_files:
@@ -13932,13 +14164,13 @@ items:
     - dimH_factorialGauge_eq_zero
     - dimH_polyGauge_eq_top
 lean_summary:
-  total_files: 313
+  total_files: 314
   total_axioms: 0
   axioms_true: 0
   total_sorries: 0
   sorry_files: []
-  total_theorems: 1554
-  total_defs: 892
+  total_theorems: 1566
+  total_defs: 903
   total_lemmas: 26
   total_stubs: 0
   stubs_by_kind:
