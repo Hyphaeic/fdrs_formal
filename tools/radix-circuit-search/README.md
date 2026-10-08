@@ -10,17 +10,20 @@ Two planners run side by side:
   splits. Every count is a theorem (fdrs.md Corollary 37); `--lean` writes the
   per-length certificates (`SearchCertificates.lean`).
 - **extended** — the grammar plus Rader (primes) and Bluestein (any length).
-  Measured only: programs are built and checked numerically, not proven.
+  Every count is a theorem (fdrs.md Corollary 38); `--lean-ext` writes the
+  certificates for the lengths where it beats the grammar
+  (`SearchCertificatesExt.lean`).
 
 ```bash
 cargo test --release
 cargo run --release -- --max 2048 --verify 2048 \
   --csv ../../data/fourier-search/best-plans.csv \
   --md  ../../data/fourier-search/summary.md
-# Lean certificates for the grammar plans (default build covers N ≤ 512)
+# Lean certificates (default build covers N ≤ 512)
 cargo run --release -- --max 512 --verify 0 \
-  --lean ../../FdrsFormal/NumberTheory/Characters/SearchCertificates.lean
+  --lean ../../FdrsFormal/NumberTheory/Characters/SearchCertificates.lean \
+  --lean-ext ../../FdrsFormal/NumberTheory/Characters/SearchCertificatesExt.lean
 ```
 
 Gate counts are exact program lengths. Correctness of every built program is checked
-numerically (f64); the grammar counts are additionally proven in Lean.
+numerically (f64); both planners' counts are additionally proven in Lean.

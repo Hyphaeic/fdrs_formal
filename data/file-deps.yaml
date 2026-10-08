@@ -1,6 +1,6 @@
 metadata:
-  total_files: 318
-  total_edges: 670
+  total_files: 320
+  total_edges: 674
   total_modules: 19
 modules:
   Analysis:
@@ -292,7 +292,9 @@ modules:
   - FdrsFormal/NumberTheory/Characters/MixedRadixStages.lean
   - FdrsFormal/NumberTheory/Characters/Oracle.lean
   - FdrsFormal/NumberTheory/Characters/PairKernel.lean
+  - FdrsFormal/NumberTheory/Characters/RaderBluestein.lean
   - FdrsFormal/NumberTheory/Characters/SearchCertificates.lean
+  - FdrsFormal/NumberTheory/Characters/SearchCertificatesExt.lean
   - FdrsFormal/NumberTheory/Characters/TwistTransform.lean
   - FdrsFormal/NumberTheory/CylinderMeasurability.lean
   - FdrsFormal/NumberTheory/FactorizationLens.lean
@@ -1542,8 +1544,12 @@ file_edges:
   to: FdrsFormal/NumberTheory/Characters/MixedRadixFFT.lean
 - from: FdrsFormal/NumberTheory/Characters/PairKernel.lean
   to: FdrsFormal/NumberTheory/Characters/FFTCircuit.lean
+- from: FdrsFormal/NumberTheory/Characters/RaderBluestein.lean
+  to: FdrsFormal/NumberTheory/Characters/CircuitCompose.lean
 - from: FdrsFormal/NumberTheory/Characters/SearchCertificates.lean
   to: FdrsFormal/NumberTheory/Characters/CircuitCompose.lean
+- from: FdrsFormal/NumberTheory/Characters/SearchCertificatesExt.lean
+  to: FdrsFormal/NumberTheory/Characters/RaderBluestein.lean
 - from: FdrsFormal/NumberTheory/Characters/TwistTransform.lean
   to: FdrsFormal/NumberTheory/Characters/DirichletCharacters.lean
 - from: FdrsFormal/NumberTheory/Characters/TwistTransform.lean
@@ -1576,6 +1582,10 @@ file_edges:
   to: FdrsFormal/NumberTheory/Characters/CircuitCompose.lean
 - from: FdrsFormal/NumberTheory/Characters.lean
   to: FdrsFormal/NumberTheory/Characters/SearchCertificates.lean
+- from: FdrsFormal/NumberTheory/Characters.lean
+  to: FdrsFormal/NumberTheory/Characters/RaderBluestein.lean
+- from: FdrsFormal/NumberTheory/Characters.lean
+  to: FdrsFormal/NumberTheory/Characters/SearchCertificatesExt.lean
 - from: FdrsFormal/NumberTheory/CylinderMeasurability.lean
   to: FdrsFormal/Core/Primitives.lean
 - from: FdrsFormal/NumberTheory/CylinderMeasurability.lean

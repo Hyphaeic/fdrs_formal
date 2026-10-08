@@ -1,10 +1,10 @@
 metadata:
   spec_file: docs/fdrs.md
-  spec_lines: 9421
-  generated_at: '2026-10-08T11:17:03.895092'
-  total_items: 555
+  spec_lines: 9468
+  generated_at: '2026-10-08T15:00:45.205984'
+  total_items: 559
   status_summary:
-    proven: 550
+    proven: 554
     missing: 3
     scaffold: 2
   status_legend:
@@ -14041,14 +14041,71 @@ items:
     - Plan.exists_circuit
   fragment: '2'
   section: '1.11'
+- id: proposition_161
+  type: proposition
+  phase: 3
+  global_num: 161
+  title: orthogonality; cyclic convolution
+  line: 9425
+  status: proven
+  in_root_build: true
+  lean_files:
+  - path: FdrsFormal/NumberTheory/Characters/RaderBluestein.lean
+    declarations:
+    - sum_zeta_pow_mul
+    - cyclic_conv
+  fragment: '2'
+  section: '1.12'
+- id: theorem_129
+  type: theorem
+  phase: 3
+  global_num: 129
+  title: Rader's prime transform
+  line: 9435
+  status: proven
+  in_root_build: true
+  lean_files:
+  - path: FdrsFormal/NumberTheory/Characters/RaderBluestein.lean
+    declarations:
+    - exists_rader_circuit
+  fragment: '2'
+  section: '1.12'
+- id: theorem_130
+  type: theorem
+  phase: 3
+  global_num: 130
+  title: Bluestein's chirp transform
+  line: 9444
+  status: proven
+  in_root_build: true
+  lean_files:
+  - path: FdrsFormal/NumberTheory/Characters/RaderBluestein.lean
+    declarations:
+    - exists_bluestein_circuit
+  fragment: '2'
+  section: '1.12'
+- id: corollary_38
+  type: corollary
+  phase: 3
+  global_num: 38
+  title: extended plans are circuits
+  line: 9454
+  status: proven
+  in_root_build: true
+  lean_files:
+  - path: FdrsFormal/NumberTheory/Characters/RaderBluestein.lean
+    declarations:
+    - XPlan.exists_circuit
+  fragment: '2'
+  section: '1.12'
 lean_summary:
-  total_files: 318
+  total_files: 320
   total_axioms: 0
   axioms_true: 0
   total_sorries: 0
   sorry_files: []
-  total_theorems: 2133
-  total_defs: 943
+  total_theorems: 2508
+  total_defs: 969
   total_lemmas: 26
   total_stubs: 0
   stubs_by_kind:

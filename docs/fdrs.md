@@ -1844,7 +1844,7 @@ Let (*_k) be cyclic convolution on (\mathcal R^{(k)}) (equivalently (\mathbb Z/N
 ]
 *Proof.* Substitute definitions and change variables (z=x-y). ∎
 
-**Meaning:** additive characters are exact “frequency probes” of the time convolution algebra. *(Addenda §1.4–1.11 — the mixed-radix Fourier arc — sit at the end of this document, so that earlier line references stay stable.)*
+**Meaning:** additive characters are exact “frequency probes” of the time convolution algebra. *(Addenda §1.4–1.12 — the mixed-radix Fourier arc — sit at the end of this document, so that earlier line references stay stable.)*
 
 ---
 
@@ -9083,7 +9083,7 @@ frontier in the design record, not claimed.
 
 ---
 
-# Phase 3 addenda — the mixed-radix Fourier arc (§1.4–1.11)
+# Phase 3 addenda — the mixed-radix Fourier arc (§1.4–1.12)
 
 *(Numbered as Phase 3, Fragment 2, continuing §1.3 "Convolution diagonalization". Placed at the end of the document so that line references into earlier phases stay stable.)*
 
@@ -9374,8 +9374,8 @@ reuses `A_m, B_m` because `ζ^{(n−m)j} = ζ^{m(n−j)}`.
 
 **Honest scope (§1.10).** Classical (the real-symmetry split of the DFT kernel).
 Not claimed minimal; it is the prime kernel of the radix-schedule search
-(`docs/fourier/01-schedule-search.md`), where Rader's reduction is the open
-improvement for large primes.
+(`docs/fourier/01-schedule-search.md`), where Rader's reduction (Theorem 129)
+replaces it for large primes.
 
 ## 1.11 Composing circuits; the search grammar proven (addendum, 2026-10-08)
 
@@ -9419,3 +9419,50 @@ length `2 ≤ N ≤ 512` (511 theorems in the default build).
 
 **Honest scope (§1.11).** Classical (Cooley–Tukey 1965; Good 1958, Thomas 1963).
 Upper bounds only: Corollary 37 says nothing about optimality outside the grammar.
+
+## 1.12 Rader and Bluestein; the extended search proven (addendum, 2026-10-08)
+
+### Proposition 161 (orthogonality; cyclic convolution)  [§1.12 · Phase 3, Fragment 2]
+
+`Σ_{k<n} ζ_n^{ks} = n` if `n ∣ s` and `0` otherwise. Consequently, with
+`A = F_n a`, `B = F_n b` and `D = F_n(B·A/n)` (forward transforms only),
+[
+D_{(n-r) \bmod n} = \sum_{q<n} a_q\, b_{(r-q) \bmod n} \qquad (r<n):
+]
+a cyclic convolution costs two forward transforms and `n` scales; the inverse is
+read off the forward transform at the mirrored index.
+
+### Theorem 129 (Rader's prime transform)  [§1.12 · Phase 3, Fragment 2]
+
+For a prime `p = n + 1`, an exact Fourier circuit `C` for length `n` gives one for
+length `p` with exactly `2|C| + 2n + 1` gates. With `g` a generator of
+`(ℤ/p)^×`, `a_q = x_{g^q}` and `b_t = ζ_p^{g^{−t}}`:
+`X_0 = x_0 + A_0`, and `X_{g^s} = x_0 + (a ⊛ b)_{(−s) mod n}` by Proposition 161,
+because `g^s · g^q ≡ g^{−((−s) − q)} (mod p)`. Gates: a copy of `C`, one addition
+for `X_0`, `n` scales, a second copy, `n` additions of `x_0`.
+
+### Theorem 130 (Bluestein's chirp transform)  [§1.12 · Phase 3, Fragment 2]
+
+For `N ≥ 1` and `M ≥ 2N − 1`, an exact circuit `C` for length `M` gives one for
+length `N` with exactly `2|C| + M + 2·#{j < N : 2N ∤ j²}` gates. Since
+`2jk = j² + k² − (k − j)²`, `X_k = w_k Σ_j (w_j x_j) h_{k−j}` with
+`w_j = ζ_{2N}^{j²}` and `h_d = ζ_{2N}^{−d²}`; for `M ≥ 2N − 1` this linear
+convolution is a cyclic one of length `M` with the filter placed at `t` and
+`M − t` (`t < N`) and the input padded by the zero register. Chirp factors equal
+to `1` are not gates.
+
+### Corollary 38 (extended plans are circuits)  [§1.12 · Phase 3, Fragment 2]
+
+Every valid plan of the extended grammar — Corollary 37's, plus Rader on a plan of
+length `p − 1` (`p` prime, checked by trial division in the kernel) and Bluestein
+at length `N` on a plan of length `M ≥ 2N − 1` — yields an exact Fourier circuit of
+its length with exactly its cost. The generated module
+`SearchCertificatesExt.lean` certifies, in the kernel, every length `N ≤ 512` at
+which the extended search beats the grammar (355 theorems in the default build).
+
+*Lean:* `FdrsFormal/NumberTheory/Characters/RaderBluestein.lean`,
+`FdrsFormal/NumberTheory/Characters/SearchCertificatesExt.lean`.
+
+**Honest scope (§1.12).** Classical (Rader 1968; Bluestein 1970). Upper bounds
+only: every count of the radix-schedule search is now a theorem, but nothing is
+claimed about optimality.

@@ -360,10 +360,12 @@ impl Planner {
         Some(match self.choice[n] {
             Choice::Identity => return None,
             Choice::Dense if n == 2 => ".two".to_string(),
-            Choice::Dense | Choice::CTFold { .. } | Choice::Rader | Choice::Bluestein { .. } => {
-                return None
-            }
+            Choice::Dense | Choice::CTFold { .. } => return None,
             Choice::Pair => format!("(.pair {})", (n - 1) / 2),
+            Choice::Rader => format!("(.rader {})", self.lean_term(n - 1)?),
+            Choice::Bluestein { m } => {
+                format!("(.bluestein {n} {})", self.base.as_ref()?.lean_term(m)?)
+            }
             Choice::CT { n1 } => format!("(.ct {} {})", self.lean_term(n1)?, self.lean_term(n / n1)?),
             Choice::PFA { n1 } => format!("(.pfa {} {})", self.lean_term(n1)?, self.lean_term(n / n1)?),
         })

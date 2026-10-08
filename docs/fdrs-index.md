@@ -1,10 +1,10 @@
 # FDRS Specification Index
 
-Auto-generated from `data/fdrs-index.yaml` (2026-10-08T11:17:03.895092)
+Auto-generated from `data/fdrs-index.yaml` (2026-10-08T15:00:45.205984)
 
-**555 items** from `docs/fdrs.md` (9421 lines)
+**559 items** from `docs/fdrs.md` (9468 lines)
 
-Status: missing: 3 | proven: 550 | scaffold: 2
+Status: missing: 3 | proven: 554 | scaffold: 2
 
 ## Phase 1
 
@@ -621,3 +621,7 @@ Status: missing: 3 | proven: 550 | scaffold: 2
 | theorem_127 | theorem | 127 | the positional split | 9389 | ✅ proven | FdrsFormal/NumberTheory/Characters/CircuitCompose.lean |
 | theorem_128 | theorem | 128 | the residue split | 9399 | ✅ proven | FdrsFormal/NumberTheory/Characters/CircuitCompose.lean |
 | corollary_37 | corollary | 37 | plans are circuits | 9407 | ✅ proven | FdrsFormal/NumberTheory/Characters/CircuitCompose.lean |
+| proposition_161 | proposition | 161 | orthogonality; cyclic convolution | 9425 | ✅ proven | FdrsFormal/NumberTheory/Characters/RaderBluestein.lean |
+| theorem_129 | theorem | 129 | Rader's prime transform | 9435 | ✅ proven | FdrsFormal/NumberTheory/Characters/RaderBluestein.lean |
+| theorem_130 | theorem | 130 | Bluestein's chirp transform | 9444 | ✅ proven | FdrsFormal/NumberTheory/Characters/RaderBluestein.lean |
+| corollary_38 | corollary | 38 | extended plans are circuits | 9454 | ✅ proven | FdrsFormal/NumberTheory/Characters/RaderBluestein.lean |
