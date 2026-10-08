@@ -7,7 +7,8 @@ of exactly its cost, and `SearchCertificates.lean` checks each length `N ≤ 512
 the kernel (all `N ≤ 2048` were checked once, about 5 minutes, outside the default
 build). **Extended** counts (adding Rader and Bluestein): fdrs.md Corollary 38 does
 the same for the extended grammar, and `SearchCertificatesExt.lean` checks each
-length `N ≤ 512` where the extended plan wins (355 lengths). Optimality is not
+length `N ≤ 512` where the extended plan wins (355 lengths; all 1727 such
+`N ≤ 2048` were checked once, in chunks, about 12 minutes). Optimality is not
 claimed anywhere.*
 
 ## 1. The question
@@ -137,7 +138,8 @@ Open:
 - Proven: every grammar count (Corollary 37), instantiated in the kernel for
   `N ≤ 512` in the default build and for all `N ≤ 2048` once.
 - Proven: every extended count (Corollary 38, via Theorems 129–130), instantiated
-  in the kernel for the 355 improved lengths `N ≤ 512` in the default build.
+  in the kernel for the 355 improved lengths `N ≤ 512` in the default build and for
+  all 1727 improved lengths `N ≤ 2048` once.
 - Also checked numerically: every built program, grammar and extended, `N ≤ 2048`
   (f64), as a cross-check of the tool against the theorems.
 - Not claimed: optimality outside the plan grammar (or inside it, beyond what the

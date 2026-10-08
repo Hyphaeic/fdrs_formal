@@ -1,8 +1,8 @@
 # FDRS Specification Index
 
-Auto-generated from `data/fdrs-index.yaml` (2026-10-08T15:00:45.205984)
+Auto-generated from `data/fdrs-index.yaml` (2026-10-08T15:11:29.815691)
 
-**559 items** from `docs/fdrs.md` (9468 lines)
+**559 items** from `docs/fdrs.md` (9469 lines)
 
 Status: missing: 3 | proven: 554 | scaffold: 2
 

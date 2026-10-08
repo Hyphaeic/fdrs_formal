@@ -9458,7 +9458,8 @@ length `p − 1` (`p` prime, checked by trial division in the kernel) and Bluest
 at length `N` on a plan of length `M ≥ 2N − 1` — yields an exact Fourier circuit of
 its length with exactly its cost. The generated module
 `SearchCertificatesExt.lean` certifies, in the kernel, every length `N ≤ 512` at
-which the extended search beats the grammar (355 theorems in the default build).
+which the extended search beats the grammar (355 theorems in the default build;
+all 1727 such lengths `N ≤ 2048` were checked once, in chunks, about 12 minutes).
 
 *Lean:* `FdrsFormal/NumberTheory/Characters/RaderBluestein.lean`,
 `FdrsFormal/NumberTheory/Characters/SearchCertificatesExt.lean`.

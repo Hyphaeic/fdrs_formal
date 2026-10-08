@@ -253,7 +253,8 @@ fn main() {
          certified per length by `--lean` (`SearchCertificates.lean`: `N ≤ 512` in the default build; \
          all `N ≤ 2048` checked once, about 5 min). **Extended** counts (adding Rader \
          and Bluestein) are theorems too: fdrs.md Corollary 38, certified by `--lean-ext` \
-         (`SearchCertificatesExt.lean`: every improved `N ≤ 512` in the default build).\n",
+         (`SearchCertificatesExt.lean`: every improved `N ≤ 512` in the default build; all \
+         1727 improved `N ≤ 2048` checked once, about 12 min).\n",
         args.max,
         args.verify.min(args.max)
     );
