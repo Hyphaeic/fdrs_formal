@@ -1844,297 +1844,7 @@ Let (*_k) be cyclic convolution on (\mathcal R^{(k)}) (equivalently (\mathbb Z/N
 ]
 *Proof.* Substitute definitions and change variables (z=x-y). ∎
 
-**Meaning:** additive characters are exact “frequency probes” of the time convolution algebra.
-
-## 1.4 The mixed-radix Fourier factorization (addendum, 2026-10-07)
-
-*(Provenance: OpenAI's mathematics collection, family 130 — exact Fourier
-circuits below `n log n`, obtained from savings on tensor-axis computations
-over digit coordinates. Those circuits act on exactly the decomposition below;
-this addendum states it on the corpus's own `dec_k` chart. The mathematics is
-the classical Cooley–Tukey index calculus; no new theorems are claimed.)*
-
-Write `B_{[i,j)} := ∏_{i ≤ l < j} b_l`, so `B_j = B_i · B_{[i,j)}` and
-`N = B_{k+1}`. Read a **frequency** in the reversed schedule:
-`rdec_k(σ) := Σ_j σ_j · B_{[j+1,k+1)}` for `σ ∈ 𝓡^{(k)}`, and write
-`ζ_n := exp(2πi/n)`.
-
-### Theorem 119 (the triangular phase)  [§1.4 · Phase 3, Fragment 2]
-
-For `τ, σ ∈ 𝓡^{(k)}`:
-[
-\zeta_N^{\operatorname{dec}_k(\tau)\cdot\operatorname{rdec}_k(\sigma)}
-=\prod_{i\le j}\zeta_{B_{[i,j+1)}}^{\tau_i\sigma_j}.
-]
-Digit pairs with `i > j` contribute nothing.
-*Proof.* Expand the product of the two digit sums. For `i ≤ j`,
-`N = B_{[i,j+1)} · (B_i · B_{[j+1,k+1)})`, so the pair's weight coarsens `ζ_N`
-to `ζ_{B_{[i,j+1)}}`; for `i > j`, `B_i · B_{[j+1,k+1)} = N · B_{[j+1,i)}`. ∎
-
-### Corollary 32 (Vilenkin character × twiddle kernel)  [§1.4 · Phase 3, Fragment 2]
-
-The diagonal `i = j` of Theorem 119 is `V(τ,σ) = ∏_i ζ_{b_i}^{τ_iσ_i}`, the
-character of the carry-free group `∏_i ℤ/b_i` (the Vilenkin character); the
-strict upper triangle is the **twiddle kernel**
-`T(τ,σ) = ∏_{i<j} ζ_{B_{[i,j+1)}}^{τ_iσ_j}`. Hence
-`χ_{rdec σ}(dec τ) = V(τ,σ)·T(τ,σ)` and, for the transform of §1.1,
-[
-\widehat f(\operatorname{rdec}_k\sigma)=\frac1N\sum_{\tau\in\mathcal R^{(k)}}
-f(\operatorname{dec}_k\tau)\,\overline{V(\tau,\sigma)}\,\overline{T(\tau,\sigma)}.
-]
-The DFT on `ℤ/B_{k+1}` is the Vilenkin transform twisted by the twiddles.
-
-### Proposition 154 (the twiddle boundary)  [§1.4 · Phase 3, Fragment 2]
-
-`T ≡ 1` on `𝓡^{(k)} × 𝓡^{(k)}` **iff** `k = 0`. With two or more digits,
-`τ = e_0, σ = e_1` gives `T = ζ_{b_0b_1} ≠ 1`.
-*Reading:* through the positional chart, `ℤ/B` is a *twisted* product of its
-digit groups on every multi-digit line; the twist is the carry. (Good's
-coprime-factor chart, which is CRT rather than positional, removes the twist
-when the radices are pairwise coprime — not formalized here.)
-
-### Proposition 155 (stage locality)  [§1.4 · Phase 3, Fragment 2]
-
-The phase is a product of stage factors
-`S_i(τ_i; σ) = ∏_{j ≥ i} ζ_{B_{[i,j+1)}}^{τ_iσ_j}`, and `S_i` depends on `σ`
-only through the digits `σ_j`, `j ≥ i`. Summing out `τ_k` first (needing only
-`σ_k`), then `τ_{k-1}` (needing `σ_{k-1}, σ_k`), and so on, is the mixed-radix
-Cooley–Tukey FFT.
-
-*Lean:* `FdrsFormal/NumberTheory/Characters/MixedRadixFFT.lean`.
-
-**Honest scope (§1.4).** No operation count is formalized here; §1.5 runs the
-stage recursion as an algorithm and counts its reads, and §1.6 gives the
-Good–Thomas chart. Open question raised by family 130 for variable radix: which
-radix schedules admit a Fourier circuit beating the tensor-axis cost of their
-own Vilenkin transform?
-
-## 1.5 The staged transform and its read count (addendum, 2026-10-07)
-
-### Definition 214 (stage operators; the staged transform)  [§1.5 · Phase 3, Fragment 2]
-
-For `y : 𝓡^{(k)} → ℂ` and a digit position `i`, the *stage operator* sums out
-digit `i` in place against the stage factor of Proposition 155:
-[
-(T_i\,y)(\rho):=\sum_{t<b_i} y(\rho[i:=t])\,S_i(t;\rho).
-]
-The *staged transform* is `T_0 ∘ T_1 ∘ ⋯ ∘ T_k`. Its intermediate arrays live on
-`𝓡^{(k)}` itself: after `T_k, …, T_i`, positions `< i` still hold time digits and
-positions `≥ i` hold frequency digits.
-
-### Theorem 120 (the staged transform is the DFT)  [§1.5 · Phase 3, Fragment 2]
-
-`(T_0 ⋯ T_k\, y)(σ) = Σ_τ y(τ)\, ζ_N^{rdec σ · dec τ}`; in particular, on
-`y = x ∘ dec_k` it returns `DFT_N(x)` at `rdec_k σ`.
-*Proof.* Induct on the number of stages with the invariant: after `n` stages the
-array is `Σ_τ y(τ) [τ_l = ρ_l \text{ for unprocessed } l] ∏_{\text{processed } l}
-S_l(τ_l; ρ)`. One stage collapses the sum over `t` onto `t = τ_i`, and the
-earlier factors do not see position `i` (Proposition 155). ∎
-
-### Proposition 156 (the read count)  [§1.5 · Phase 3, Fragment 2]
-
-Say a transform *reads at most `r` entries per output* if each output entry is
-determined by some `r` input entries. Then (i) stage `T_i` reads at most `b_i`;
-(ii) the dense transform `y ↦ Σ_τ y(τ) ζ_N^{rdec σ · dec τ}` reads at most `r`
-**iff** `N ≤ r` (every kernel entry is a nonzero root of unity); (iii)
-`Σ_{i≤k} b_i ≤ B_{k+1}` on every schedule. So the staged transform reads
-`N · Σ_i b_i ≤ N²` entries against the dense `N²`.
-
-*Lean:* `FdrsFormal/NumberTheory/Characters/MixedRadixStages.lean`.
-
-**Honest scope (§1.5).** Classical (Cooley–Tukey 1965). The measure is reads per
-output (row sparsity of a sparse factorization), not a gate count; twiddles are
-folded into the stage coefficients. In family 130's gate model each stage is one
-tensor-axis call of a `b_i × b_i` matrix between free monomial maps, and that
-family's sub-tensor-axis savings are invisible to this measure.
-
-## 1.6 The Good–Thomas chart (addendum, 2026-10-07)
-
-Proposition 154 showed the positional chart twists `ℤ/B` against its digit
-groups on every multi-digit line. This section shows the twist belongs to the
-chart, not the group, exactly when the radices are pairwise coprime.
-
-### Definition 215 (the residue and Good charts)  [§1.6 · Phase 3, Fragment 2]
-
-The *residue chart* `crt(n) := (n mod b_i)_{i≤k}` and *Good's output chart*
-`rur(σ) := Σ_i σ_i · ∏_{l≠i} b_l`.
-
-### Theorem 121 (the untwisted phase)  [§1.6 · Phase 3, Fragment 2]
-
-For every schedule, `ζ_N^{rur(σ) · n} = V(crt(n), σ) = ∏_i ζ_{b_i}^{(n \bmod b_i)\,σ_i}`.
-*Proof.* `ζ_N^{σ_i ∏_{l≠i} b_l · n} = ζ_{b_i}^{σ_i n}`, which depends on `n` only
-mod `b_i`. ∎
-
-### Theorem 122 (the coprime boundary)  [§1.6 · Phase 3, Fragment 2]
-
-The residue chart `ℤ/B_{k+1} → 𝓡^{(k)}` is a bijection **iff** `b_0, …, b_k`
-are pairwise coprime; in that case Good's chart `𝓡^{(k)} → ℤ/B_{k+1}` is a
-bijection too. If `g = gcd(b_i, b_j) > 1`, the nonzero class `N/g` has every
-residue `0`.
-
-### Corollary 33 (Good–Thomas)  [§1.6 · Phase 3, Fragment 2]
-
-For pairwise-coprime radices the DFT on `ℤ/B_{k+1}`, with inputs read through
-the residue chart and outputs through Good's chart, *is* the Vilenkin transform
-of `∏_i ℤ/b_i` — no twiddle factors. Read with Proposition 154: positional chart,
-twisted on every multi-digit line; residue chart, untwisted, and a chart at all
-exactly in the coprime case.
-
-*Lean:* `FdrsFormal/NumberTheory/Characters/GoodThomas.lean`.
-
-**Honest scope (§1.6).** Classical: Good (1958), Thomas (1963). The corpus
-contributes the placement next to Proposition 154 and the machine-checked
-artifact.
-
-## 1.7 Gate counts in the exact Fourier model (addendum, 2026-10-07)
-
-### Definition 216 (the exact Fourier gate model)  [§1.7 · Phase 3, Fragment 2]
-
-The scalar linear-circuit model of OpenAI's family 130 (re-stated with the
-semantics of its comparator statement `ExactFourier.lean`, openai/math, Apache
-License 2.0): a *gate* adds, subtracts, or multiplies by a predetermined complex
-scalar one or two available values and costs one; a *program* is a
-topologically ordered scalar DAG whose `k`-th gate may read the `n` inputs, the
-constant `0`, and the `k` earlier gates; a *circuit* names its `n` outputs among
-the available values (permutations and fan-out are free) and *computes* `A` if
-it returns `A x` on every input `x`. The *size* is the number of gates.
-Family 130's theorem — for every `c > 0`, arbitrarily long lengths admit exact
-Fourier circuits with fewer than `c · n log₂ n` gates — is recorded as the
-proposition `MainStatement` and is not proven in this corpus.
-
-### Proposition 157 (the frequency chart is a bijection)  [§1.7 · Phase 3, Fragment 2]
-
-`rdec_k : 𝓡^{(k)} → ℤ/B_{k+1}` is a bijection: it is `dec_k` of the reversed
-schedule `(b_k, b_{k-1}, …, b_0)` applied to the reversed digit string.
-
-### Theorem 123 (the staged circuit)  [§1.7 · Phase 3, Fragment 2]
-
-For every radix schedule, the DFT of length `N = B_{k+1}` is computed exactly by
-a circuit with
-[
-N\cdot\sum_{i\le k}(2b_i-1)
-]
-gates: stage `i` (Definition 214) spends one `b_i`-term linear-combination block
-— `2b_i - 1` gates — per output, inputs are read through `dec_k`, and outputs are
-named through `rdec_k` (Proposition 157).
-
-### Proposition 158 (the dense circuit)  [§1.7 · Phase 3, Fragment 2]
-
-Every length `n ≥ 1` has an exact Fourier circuit with `n(2n - 1)` gates.
-
-### Corollary 34 (the binary count)  [§1.7 · Phase 3, Fragment 2]
-
-On the binary schedule, length `N = 2^{k+1}` has an exact circuit with
-`3 · N · log₂ N` gates; hence family 130's statement holds for every `c > 3` by
-the staged construction alone.
-
-*Lean:* `FdrsFormal/NumberTheory/Characters/FourierCircuit.lean` (model and
-builder), `FdrsFormal/NumberTheory/Characters/FFTCircuit.lean` (circuits).
-
-**Honest scope (§1.7).** Classical (Cooley–Tukey 1965). The staged construction
-folds twiddles into its scalars; the classical radix-2 butterfly reaches
-`1.5 · N log₂ N` (§1.8) and split-radix less, so `c > 3` is a property of this
-construction, not a threshold. What family 130 adds — every `c > 0` along a
-subsequence, via sub-tensor-axis savings — is recorded, not proven. Open,
-in the corpus's own terms: which radix schedules admit circuits below
-`N · Σ_i (2b_i − 1)` — equivalently, below the tensor-axis cost of their own
-Vilenkin stages?
-*(Search opened 2026-10-07: `docs/fourier/01-schedule-search.md` —
-measured, not proven.)*
-
-## 1.8 The radix-2 butterfly (addendum, 2026-10-07)
-
-### Proposition 159 (the binary butterfly)  [§1.8 · Phase 3, Fragment 2]
-
-The stage factor splits off its own digit:
-`S_i(t; ρ) = ζ_{b_i}^{t ρ_i} · ∏_{j>i} ζ_{B_{[i,j+1)}}^{t ρ_j}`, and the second
-factor does not see `ρ_i`. On a binary digit (`b_i = 2`, `ζ_2 = -1`), with
-`ρ^t := ρ[i := t]` and the *twiddle* `W_i(ρ) := ∏_{j>i} ζ_{B_{[i,j+1)}}^{ρ_j}`,
-[
-(T_i\,y)(\rho)=y(\rho^0)+(-1)^{\rho_i}\,W_i(\rho^0)\,y(\rho^1):
-]
-the two outputs of a pair `{ρ^0, ρ^1}` share the one product `W_i(ρ^0) y(ρ^1)`.
-
-### Theorem 124 (the butterfly circuit)  [§1.8 · Phase 3, Fragment 2]
-
-On the binary schedule, length `N = 2^{k+1}` has an exact Fourier circuit
-(Definition 216) with exactly
-[
-3\cdot 2^{k}\,(k+1)=\tfrac32\,N\log_2 N
-]
-gates: each of the `k + 1` stages runs `N/2` butterflies of three gates (scale by
-the twiddle, add, subtract). The pairs at digit `i` are numbered through
-`𝓡^{(k)} ≃ \{ρ : ρ_i = 0\} × \mathbb Z/2`, and outputs are named through
-`rdec_k` (Proposition 157).
-
-### Corollary 35 (the butterfly constant)  [§1.8 · Phase 3, Fragment 2]
-
-Family 130's statement holds for every `c > 3/2` by the butterfly circuits alone.
-
-*Lean:* `FdrsFormal/NumberTheory/Characters/FFTButterfly.lean`.
-
-**Honest scope (§1.8).** Classical (Cooley–Tukey 1965). The construction scales by
-every twiddle, trivial or not; skipping the `W = 1` products is §1.9; split-radix
-schemes and family 130's every-`c > 0` theorem are not claimed here.
-
-## 1.9 Skipping trivial twiddles (addendum, 2026-10-07)
-
-### Proposition 160 (trivial twiddles)  [§1.9 · Phase 3, Fragment 2]
-
-On the binary schedule, `W_i(ρ) = 1` **iff** `ρ_j = 0` for every `j > i`.
-*Proof.* `W_i(ρ) = ζ_M^E` with `M = 2^{k+1-i}` and `E = Σ_{j>i} 2^{k-j} ρ_j ≤ 2^{k-i} - 1 < M`;
-`ζ_M` is a primitive `M`-th root, so `ζ_M^E = 1` iff `M ∣ E` iff `E = 0`. ∎
-Hence digit `i` carries exactly `2^i` trivial pairs (the points vanishing at and
-above `i`), and its butterflies cost `3 · 2^k − 2^i` gates when trivial twiddles
-are skipped. No twiddle equals `-1` (`E < M/2`).
-
-### Theorem 125 (the skipping circuit)  [§1.9 · Phase 3, Fragment 2]
-
-Length `N = 2^{k+1}` has an exact Fourier circuit (Definition 216) with exactly
-[
-\tfrac32\,N\log_2 N-N+1
-]
-gates (over `ℕ`: `size + 2^{k+1} = 3 · 2^k (k+1) + 1`): trivial pairs use two gates
-(add, subtract), the others three.
-
-### Corollary 36 (the gap)  [§1.9 · Phase 3, Fragment 2]
-
-Against Theorem 124 the saving is exactly `N − 1` gates, and
-[
-\frac{\text{size}}{N\log_2N}=\frac32-\frac{N-1}{N\log_2N}.
-]
-The normalized constant rises toward `3/2` like `3/2 − 1/log₂N` (`N = 2: 1`;
-`N = 4: 1.125`; `N = 16: ≈1.266`; `N = 1024: ≈1.400`): skipping trivial
-twiddles moves the lower-order term, never the constant.
-
-*Lean:* `FdrsFormal/NumberTheory/Characters/FFTTwiddleSkip.lean`.
-
-**Honest scope (§1.9).** Classical (radix-2 with `N log₂ N` additions and
-`(N/2) log₂ N − N + 1` multiplications). In this gate model a multiplication by
-`±i` is a charged scale gate, so the radix-4 and split-radix savings of the
-real-arithmetic literature do not transfer as they stand; family 130 shows the
-constant itself can be pushed to any `c > 0` along a subsequence. Neither is
-claimed here.
-
-## 1.10 The conjugate-pair kernel (addendum, 2026-10-08)
-
-### Theorem 126 (the conjugate-pair kernel)  [§1.10 · Phase 3, Fragment 2]
-
-Every odd length `n = 2h + 1` has an exact Fourier circuit (Definition 216) with
-exactly `n² − 1` gates. With `ζ = ζ_n`, `j, m = 1, …, h`:
-`s_j = x_j + x_{n−j}`, `d_j = x_j − x_{n−j}`; `X_0 = x_0 + Σ_j s_j`;
-`A_m = x_0 + Σ_j α_{mj} s_j`, `B_m = Σ_j β_{mj} d_j`, `X_m = A_m + B_m`,
-`X_{n−m} = A_m − B_m`, where `α_{mj} = (ζ^{mj} + ζ^{m(n−j)})/2` and
-`β_{mj} = (ζ^{mj} − ζ^{m(n−j)})/2`. The count is `2h + h + h(4h + 1) = n² − 1`,
-about half the dense `n(2n − 1)` of Proposition 158; the mirror frequency `n − m`
-reuses `A_m, B_m` because `ζ^{(n−m)j} = ζ^{m(n−j)}`.
-
-*Lean:* `FdrsFormal/NumberTheory/Characters/PairKernel.lean`.
-
-**Honest scope (§1.10).** Classical (the real-symmetry split of the DFT kernel).
-Not claimed minimal; it is the prime kernel of the radix-schedule search
-(`docs/fourier/01-schedule-search.md`), where Rader's reduction is the open
-improvement for large primes.
+**Meaning:** additive characters are exact “frequency probes” of the time convolution algebra. *(Addenda §1.4–1.10 — the mixed-radix Fourier arc — sit at the end of this document, so that earlier line references stay stable.)*
 
 ---
 
@@ -9370,3 +9080,299 @@ frontier in the design record, not claimed.
 **Addendum status (2026-07-02, §14.8–14.11):** the digit-coupling layer lands the three-obstruction picture (raggedness · bilaterality · frustration) with the holonomy dichotomy proven as a full iff and witnessed on both sides; conservation becomes currency-generic (mirrors conserve in the event currency); the window boundary is closed for the alternating machine (accountable ⟺ grant-uniform); exact nesting is conservative (resolution, never arithmetic); and the non-abelian arc lifts grading to arbitrary groups (gain-graph balance, machine-checked, with dihedral and SE(2) frustrated witnesses) and extends certified emission to the floor-free sector trap and the tight SE(2) pose engine. Next: the SU7 network machine.
 **Addendum status (2026-07-12, §14.12–14.14):** the SU7 network arc is COMPLETE and numbered — the coupled radix network as a verified abstract machine: probe gate passed (the 2-node network IS the SU4b interface machine), the three-clause `complexStep` with fan-out lawfulness as a guard and well-formedness as dependency grading (Phase 8's deadlock certificate reused verbatim; causal frustration recorded as candidate obstruction only), per-edge SU6b balance with fan-out exactness, decidable couplability with witnesses on both sides, per-node traps transported verbatim, the conditional Kahn diamond with the independence condition *derived* from the latency discipline, and liveness in factored form. The Phase-8 concretization bridge welds the June network layer to the machine (a timeline graph IS a network shape; time-ordering IS grading; queue registers balance at every capacity, capacity-one being the currency register). The application capstone reads GF(2^255−19) as a variable-radix digit ring: carries are ledger-balanced redistributions, the wrap has holonomy 19 (nontrivial, in the §14.8 sense), and the eleven-carry schedule provably restores the digit bound — the corpus vocabulary load-bearing in production field arithmetic.
 **Addendum status (2026-09-04, §14.15):** the dimension arc lands the corpus's first analytic invariant. The Borel bridge welds Definition 21's measure to Definition 9's metric (product σ-algebra = Borel σ-algebra, cylinders generating both); the gauged completion carries any designed position gauge as a full metric/measure instance stack; the Moran frame squeezes `dimH` between count and gauge; and the four computed instances — canonical ⇒ 1 (every number line is one-dimensional, for every radix schedule), designed `2^⌈L/r⌉` ⇒ r (the gauge programs the dimension), factorial ⇒ 0, polynomial ⇒ ∞ — sweep `[0, ∞]` over one fixed binary tree. Classical mathematics (Moran/Falconer/Billingsley), machine-checked, axiom-clean; **r is the tree↔gauge exchange rate, and number systems are exactly the r = 1 locus.**
+
+---
+
+# Phase 3 addenda — the mixed-radix Fourier arc (§1.4–1.10)
+
+*(Numbered as Phase 3, Fragment 2, continuing §1.3 "Convolution diagonalization". Placed at the end of the document so that line references into earlier phases stay stable.)*
+
+## 1.4 The mixed-radix Fourier factorization (addendum, 2026-10-07)
+
+*(Provenance: OpenAI's mathematics collection, family 130 — exact Fourier
+circuits below `n log n`, obtained from savings on tensor-axis computations
+over digit coordinates. Those circuits act on exactly the decomposition below;
+this addendum states it on the corpus's own `dec_k` chart. The mathematics is
+the classical Cooley–Tukey index calculus; no new theorems are claimed.)*
+
+Write `B_{[i,j)} := ∏_{i ≤ l < j} b_l`, so `B_j = B_i · B_{[i,j)}` and
+`N = B_{k+1}`. Read a **frequency** in the reversed schedule:
+`rdec_k(σ) := Σ_j σ_j · B_{[j+1,k+1)}` for `σ ∈ 𝓡^{(k)}`, and write
+`ζ_n := exp(2πi/n)`.
+
+### Theorem 119 (the triangular phase)  [§1.4 · Phase 3, Fragment 2]
+
+For `τ, σ ∈ 𝓡^{(k)}`:
+[
+\zeta_N^{\operatorname{dec}_k(\tau)\cdot\operatorname{rdec}_k(\sigma)}
+=\prod_{i\le j}\zeta_{B_{[i,j+1)}}^{\tau_i\sigma_j}.
+]
+Digit pairs with `i > j` contribute nothing.
+*Proof.* Expand the product of the two digit sums. For `i ≤ j`,
+`N = B_{[i,j+1)} · (B_i · B_{[j+1,k+1)})`, so the pair's weight coarsens `ζ_N`
+to `ζ_{B_{[i,j+1)}}`; for `i > j`, `B_i · B_{[j+1,k+1)} = N · B_{[j+1,i)}`. ∎
+
+### Corollary 32 (Vilenkin character × twiddle kernel)  [§1.4 · Phase 3, Fragment 2]
+
+The diagonal `i = j` of Theorem 119 is `V(τ,σ) = ∏_i ζ_{b_i}^{τ_iσ_i}`, the
+character of the carry-free group `∏_i ℤ/b_i` (the Vilenkin character); the
+strict upper triangle is the **twiddle kernel**
+`T(τ,σ) = ∏_{i<j} ζ_{B_{[i,j+1)}}^{τ_iσ_j}`. Hence
+`χ_{rdec σ}(dec τ) = V(τ,σ)·T(τ,σ)` and, for the transform of §1.1,
+[
+\widehat f(\operatorname{rdec}_k\sigma)=\frac1N\sum_{\tau\in\mathcal R^{(k)}}
+f(\operatorname{dec}_k\tau)\,\overline{V(\tau,\sigma)}\,\overline{T(\tau,\sigma)}.
+]
+The DFT on `ℤ/B_{k+1}` is the Vilenkin transform twisted by the twiddles.
+
+### Proposition 154 (the twiddle boundary)  [§1.4 · Phase 3, Fragment 2]
+
+`T ≡ 1` on `𝓡^{(k)} × 𝓡^{(k)}` **iff** `k = 0`. With two or more digits,
+`τ = e_0, σ = e_1` gives `T = ζ_{b_0b_1} ≠ 1`.
+*Reading:* through the positional chart, `ℤ/B` is a *twisted* product of its
+digit groups on every multi-digit line; the twist is the carry. (Good's
+coprime-factor chart, which is CRT rather than positional, removes the twist
+when the radices are pairwise coprime — not formalized here.)
+
+### Proposition 155 (stage locality)  [§1.4 · Phase 3, Fragment 2]
+
+The phase is a product of stage factors
+`S_i(τ_i; σ) = ∏_{j ≥ i} ζ_{B_{[i,j+1)}}^{τ_iσ_j}`, and `S_i` depends on `σ`
+only through the digits `σ_j`, `j ≥ i`. Summing out `τ_k` first (needing only
+`σ_k`), then `τ_{k-1}` (needing `σ_{k-1}, σ_k`), and so on, is the mixed-radix
+Cooley–Tukey FFT.
+
+*Lean:* `FdrsFormal/NumberTheory/Characters/MixedRadixFFT.lean`.
+
+**Honest scope (§1.4).** No operation count is formalized here; §1.5 runs the
+stage recursion as an algorithm and counts its reads, and §1.6 gives the
+Good–Thomas chart. Open question raised by family 130 for variable radix: which
+radix schedules admit a Fourier circuit beating the tensor-axis cost of their
+own Vilenkin transform?
+
+## 1.5 The staged transform and its read count (addendum, 2026-10-07)
+
+### Definition 214 (stage operators; the staged transform)  [§1.5 · Phase 3, Fragment 2]
+
+For `y : 𝓡^{(k)} → ℂ` and a digit position `i`, the *stage operator* sums out
+digit `i` in place against the stage factor of Proposition 155:
+[
+(T_i\,y)(\rho):=\sum_{t<b_i} y(\rho[i:=t])\,S_i(t;\rho).
+]
+The *staged transform* is `T_0 ∘ T_1 ∘ ⋯ ∘ T_k`. Its intermediate arrays live on
+`𝓡^{(k)}` itself: after `T_k, …, T_i`, positions `< i` still hold time digits and
+positions `≥ i` hold frequency digits.
+
+### Theorem 120 (the staged transform is the DFT)  [§1.5 · Phase 3, Fragment 2]
+
+`(T_0 ⋯ T_k\, y)(σ) = Σ_τ y(τ)\, ζ_N^{rdec σ · dec τ}`; in particular, on
+`y = x ∘ dec_k` it returns `DFT_N(x)` at `rdec_k σ`.
+*Proof.* Induct on the number of stages with the invariant: after `n` stages the
+array is `Σ_τ y(τ) [τ_l = ρ_l \text{ for unprocessed } l] ∏_{\text{processed } l}
+S_l(τ_l; ρ)`. One stage collapses the sum over `t` onto `t = τ_i`, and the
+earlier factors do not see position `i` (Proposition 155). ∎
+
+### Proposition 156 (the read count)  [§1.5 · Phase 3, Fragment 2]
+
+Say a transform *reads at most `r` entries per output* if each output entry is
+determined by some `r` input entries. Then (i) stage `T_i` reads at most `b_i`;
+(ii) the dense transform `y ↦ Σ_τ y(τ) ζ_N^{rdec σ · dec τ}` reads at most `r`
+**iff** `N ≤ r` (every kernel entry is a nonzero root of unity); (iii)
+`Σ_{i≤k} b_i ≤ B_{k+1}` on every schedule. So the staged transform reads
+`N · Σ_i b_i ≤ N²` entries against the dense `N²`.
+
+*Lean:* `FdrsFormal/NumberTheory/Characters/MixedRadixStages.lean`.
+
+**Honest scope (§1.5).** Classical (Cooley–Tukey 1965). The measure is reads per
+output (row sparsity of a sparse factorization), not a gate count; twiddles are
+folded into the stage coefficients. In family 130's gate model each stage is one
+tensor-axis call of a `b_i × b_i` matrix between free monomial maps, and that
+family's sub-tensor-axis savings are invisible to this measure.
+
+## 1.6 The Good–Thomas chart (addendum, 2026-10-07)
+
+Proposition 154 showed the positional chart twists `ℤ/B` against its digit
+groups on every multi-digit line. This section shows the twist belongs to the
+chart, not the group, exactly when the radices are pairwise coprime.
+
+### Definition 215 (the residue and Good charts)  [§1.6 · Phase 3, Fragment 2]
+
+The *residue chart* `crt(n) := (n mod b_i)_{i≤k}` and *Good's output chart*
+`rur(σ) := Σ_i σ_i · ∏_{l≠i} b_l`.
+
+### Theorem 121 (the untwisted phase)  [§1.6 · Phase 3, Fragment 2]
+
+For every schedule, `ζ_N^{rur(σ) · n} = V(crt(n), σ) = ∏_i ζ_{b_i}^{(n \bmod b_i)\,σ_i}`.
+*Proof.* `ζ_N^{σ_i ∏_{l≠i} b_l · n} = ζ_{b_i}^{σ_i n}`, which depends on `n` only
+mod `b_i`. ∎
+
+### Theorem 122 (the coprime boundary)  [§1.6 · Phase 3, Fragment 2]
+
+The residue chart `ℤ/B_{k+1} → 𝓡^{(k)}` is a bijection **iff** `b_0, …, b_k`
+are pairwise coprime; in that case Good's chart `𝓡^{(k)} → ℤ/B_{k+1}` is a
+bijection too. If `g = gcd(b_i, b_j) > 1`, the nonzero class `N/g` has every
+residue `0`.
+
+### Corollary 33 (Good–Thomas)  [§1.6 · Phase 3, Fragment 2]
+
+For pairwise-coprime radices the DFT on `ℤ/B_{k+1}`, with inputs read through
+the residue chart and outputs through Good's chart, *is* the Vilenkin transform
+of `∏_i ℤ/b_i` — no twiddle factors. Read with Proposition 154: positional chart,
+twisted on every multi-digit line; residue chart, untwisted, and a chart at all
+exactly in the coprime case.
+
+*Lean:* `FdrsFormal/NumberTheory/Characters/GoodThomas.lean`.
+
+**Honest scope (§1.6).** Classical: Good (1958), Thomas (1963). The corpus
+contributes the placement next to Proposition 154 and the machine-checked
+artifact.
+
+## 1.7 Gate counts in the exact Fourier model (addendum, 2026-10-07)
+
+### Definition 216 (the exact Fourier gate model)  [§1.7 · Phase 3, Fragment 2]
+
+The scalar linear-circuit model of OpenAI's family 130 (re-stated with the
+semantics of its comparator statement `ExactFourier.lean`, openai/math, Apache
+License 2.0): a *gate* adds, subtracts, or multiplies by a predetermined complex
+scalar one or two available values and costs one; a *program* is a
+topologically ordered scalar DAG whose `k`-th gate may read the `n` inputs, the
+constant `0`, and the `k` earlier gates; a *circuit* names its `n` outputs among
+the available values (permutations and fan-out are free) and *computes* `A` if
+it returns `A x` on every input `x`. The *size* is the number of gates.
+Family 130's theorem — for every `c > 0`, arbitrarily long lengths admit exact
+Fourier circuits with fewer than `c · n log₂ n` gates — is recorded as the
+proposition `MainStatement` and is not proven in this corpus.
+
+### Proposition 157 (the frequency chart is a bijection)  [§1.7 · Phase 3, Fragment 2]
+
+`rdec_k : 𝓡^{(k)} → ℤ/B_{k+1}` is a bijection: it is `dec_k` of the reversed
+schedule `(b_k, b_{k-1}, …, b_0)` applied to the reversed digit string.
+
+### Theorem 123 (the staged circuit)  [§1.7 · Phase 3, Fragment 2]
+
+For every radix schedule, the DFT of length `N = B_{k+1}` is computed exactly by
+a circuit with
+[
+N\cdot\sum_{i\le k}(2b_i-1)
+]
+gates: stage `i` (Definition 214) spends one `b_i`-term linear-combination block
+— `2b_i - 1` gates — per output, inputs are read through `dec_k`, and outputs are
+named through `rdec_k` (Proposition 157).
+
+### Proposition 158 (the dense circuit)  [§1.7 · Phase 3, Fragment 2]
+
+Every length `n ≥ 1` has an exact Fourier circuit with `n(2n - 1)` gates.
+
+### Corollary 34 (the binary count)  [§1.7 · Phase 3, Fragment 2]
+
+On the binary schedule, length `N = 2^{k+1}` has an exact circuit with
+`3 · N · log₂ N` gates; hence family 130's statement holds for every `c > 3` by
+the staged construction alone.
+
+*Lean:* `FdrsFormal/NumberTheory/Characters/FourierCircuit.lean` (model and
+builder), `FdrsFormal/NumberTheory/Characters/FFTCircuit.lean` (circuits).
+
+**Honest scope (§1.7).** Classical (Cooley–Tukey 1965). The staged construction
+folds twiddles into its scalars; the classical radix-2 butterfly reaches
+`1.5 · N log₂ N` (§1.8) and split-radix less, so `c > 3` is a property of this
+construction, not a threshold. What family 130 adds — every `c > 0` along a
+subsequence, via sub-tensor-axis savings — is recorded, not proven. Open,
+in the corpus's own terms: which radix schedules admit circuits below
+`N · Σ_i (2b_i − 1)` — equivalently, below the tensor-axis cost of their own
+Vilenkin stages?
+*(Search opened 2026-10-07: `docs/fourier/01-schedule-search.md` —
+measured, not proven.)*
+
+## 1.8 The radix-2 butterfly (addendum, 2026-10-07)
+
+### Proposition 159 (the binary butterfly)  [§1.8 · Phase 3, Fragment 2]
+
+The stage factor splits off its own digit:
+`S_i(t; ρ) = ζ_{b_i}^{t ρ_i} · ∏_{j>i} ζ_{B_{[i,j+1)}}^{t ρ_j}`, and the second
+factor does not see `ρ_i`. On a binary digit (`b_i = 2`, `ζ_2 = -1`), with
+`ρ^t := ρ[i := t]` and the *twiddle* `W_i(ρ) := ∏_{j>i} ζ_{B_{[i,j+1)}}^{ρ_j}`,
+[
+(T_i\,y)(\rho)=y(\rho^0)+(-1)^{\rho_i}\,W_i(\rho^0)\,y(\rho^1):
+]
+the two outputs of a pair `{ρ^0, ρ^1}` share the one product `W_i(ρ^0) y(ρ^1)`.
+
+### Theorem 124 (the butterfly circuit)  [§1.8 · Phase 3, Fragment 2]
+
+On the binary schedule, length `N = 2^{k+1}` has an exact Fourier circuit
+(Definition 216) with exactly
+[
+3\cdot 2^{k}\,(k+1)=\tfrac32\,N\log_2 N
+]
+gates: each of the `k + 1` stages runs `N/2` butterflies of three gates (scale by
+the twiddle, add, subtract). The pairs at digit `i` are numbered through
+`𝓡^{(k)} ≃ \{ρ : ρ_i = 0\} × \mathbb Z/2`, and outputs are named through
+`rdec_k` (Proposition 157).
+
+### Corollary 35 (the butterfly constant)  [§1.8 · Phase 3, Fragment 2]
+
+Family 130's statement holds for every `c > 3/2` by the butterfly circuits alone.
+
+*Lean:* `FdrsFormal/NumberTheory/Characters/FFTButterfly.lean`.
+
+**Honest scope (§1.8).** Classical (Cooley–Tukey 1965). The construction scales by
+every twiddle, trivial or not; skipping the `W = 1` products is §1.9; split-radix
+schemes and family 130's every-`c > 0` theorem are not claimed here.
+
+## 1.9 Skipping trivial twiddles (addendum, 2026-10-07)
+
+### Proposition 160 (trivial twiddles)  [§1.9 · Phase 3, Fragment 2]
+
+On the binary schedule, `W_i(ρ) = 1` **iff** `ρ_j = 0` for every `j > i`.
+*Proof.* `W_i(ρ) = ζ_M^E` with `M = 2^{k+1-i}` and `E = Σ_{j>i} 2^{k-j} ρ_j ≤ 2^{k-i} - 1 < M`;
+`ζ_M` is a primitive `M`-th root, so `ζ_M^E = 1` iff `M ∣ E` iff `E = 0`. ∎
+Hence digit `i` carries exactly `2^i` trivial pairs (the points vanishing at and
+above `i`), and its butterflies cost `3 · 2^k − 2^i` gates when trivial twiddles
+are skipped. No twiddle equals `-1` (`E < M/2`).
+
+### Theorem 125 (the skipping circuit)  [§1.9 · Phase 3, Fragment 2]
+
+Length `N = 2^{k+1}` has an exact Fourier circuit (Definition 216) with exactly
+[
+\tfrac32\,N\log_2 N-N+1
+]
+gates (over `ℕ`: `size + 2^{k+1} = 3 · 2^k (k+1) + 1`): trivial pairs use two gates
+(add, subtract), the others three.
+
+### Corollary 36 (the gap)  [§1.9 · Phase 3, Fragment 2]
+
+Against Theorem 124 the saving is exactly `N − 1` gates, and
+[
+\frac{\text{size}}{N\log_2N}=\frac32-\frac{N-1}{N\log_2N}.
+]
+The normalized constant rises toward `3/2` like `3/2 − 1/log₂N` (`N = 2: 1`;
+`N = 4: 1.125`; `N = 16: ≈1.266`; `N = 1024: ≈1.400`): skipping trivial
+twiddles moves the lower-order term, never the constant.
+
+*Lean:* `FdrsFormal/NumberTheory/Characters/FFTTwiddleSkip.lean`.
+
+**Honest scope (§1.9).** Classical (radix-2 with `N log₂ N` additions and
+`(N/2) log₂ N − N + 1` multiplications). In this gate model a multiplication by
+`±i` is a charged scale gate, so the radix-4 and split-radix savings of the
+real-arithmetic literature do not transfer as they stand; family 130 shows the
+constant itself can be pushed to any `c > 0` along a subsequence. Neither is
+claimed here.
+
+## 1.10 The conjugate-pair kernel (addendum, 2026-10-08)
+
+### Theorem 126 (the conjugate-pair kernel)  [§1.10 · Phase 3, Fragment 2]
+
+Every odd length `n = 2h + 1` has an exact Fourier circuit (Definition 216) with
+exactly `n² − 1` gates. With `ζ = ζ_n`, `j, m = 1, …, h`:
+`s_j = x_j + x_{n−j}`, `d_j = x_j − x_{n−j}`; `X_0 = x_0 + Σ_j s_j`;
+`A_m = x_0 + Σ_j α_{mj} s_j`, `B_m = Σ_j β_{mj} d_j`, `X_m = A_m + B_m`,
+`X_{n−m} = A_m − B_m`, where `α_{mj} = (ζ^{mj} + ζ^{m(n−j)})/2` and
+`β_{mj} = (ζ^{mj} − ζ^{m(n−j)})/2`. The count is `2h + h + h(4h + 1) = n² − 1`,
+about half the dense `n(2n − 1)` of Proposition 158; the mirror frequency `n − m`
+reuses `A_m, B_m` because `ζ^{(n−m)j} = ζ^{m(n−j)}`.
+
+*Lean:* `FdrsFormal/NumberTheory/Characters/PairKernel.lean`.
+
+**Honest scope (§1.10).** Classical (the real-symmetry split of the DFT kernel).
+Not claimed minimal; it is the prime kernel of the radix-schedule search
+(`docs/fourier/01-schedule-search.md`), where Rader's reduction is the open
+improvement for large primes.
