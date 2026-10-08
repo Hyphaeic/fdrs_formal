@@ -57,6 +57,11 @@ impl Builder {
         self.n_inputs + self.gates.len()
     }
 
+    /// The constant-zero register.
+    pub fn zero(&self) -> usize {
+        self.n_inputs
+    }
+
     pub fn add(&mut self, a: usize, b: usize) -> usize {
         self.push(Gate::Add(a, b))
     }

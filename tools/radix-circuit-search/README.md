@@ -4,12 +4,23 @@ Search for exact DFT circuits over FDRS radix schedules in family 130's gate mod
 (fdrs.md Definition 216). Design record and findings:
 [`docs/fourier/01-schedule-search.md`](../../docs/fourier/01-schedule-search.md).
 
+Two planners run side by side:
+
+- **grammar** — 2-point butterfly, conjugate-pair kernel, positional and residue
+  splits. Every count is a theorem (fdrs.md Corollary 37); `--lean` writes the
+  per-length certificates (`SearchCertificates.lean`).
+- **extended** — the grammar plus Rader (primes) and Bluestein (any length).
+  Measured only: programs are built and checked numerically, not proven.
+
 ```bash
 cargo test --release
 cargo run --release -- --max 2048 --verify 2048 \
   --csv ../../data/fourier-search/best-plans.csv \
   --md  ../../data/fourier-search/summary.md
+# Lean certificates for the grammar plans (default build covers N ≤ 512)
+cargo run --release -- --max 512 --verify 0 \
+  --lean ../../FdrsFormal/NumberTheory/Characters/SearchCertificates.lean
 ```
 
-Gate counts are exact program lengths; correctness is checked numerically (f64),
-not proven.
+Gate counts are exact program lengths. Correctness of every built program is checked
+numerically (f64); the grammar counts are additionally proven in Lean.

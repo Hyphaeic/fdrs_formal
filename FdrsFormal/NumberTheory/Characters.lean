@@ -31,6 +31,9 @@ Additive and multiplicative (Dirichlet) characters with orthogonality and CRT.
 8. **FFTButterfly**: The binary stage is a butterfly; `(3/2) N log₂ N` gates (§1.8)
 9. **FFTTwiddleSkip**: Trivial twiddles skipped; exactly `(3/2) N log₂ N − N + 1` gates (§1.9)
 10. **PairKernel**: Odd lengths in `n² − 1` gates by mirror pairing (§1.10)
+11. **CircuitCompose**: Positional and residue splits for arbitrary circuits; plans are
+    circuits (§1.11)
+12. **SearchCertificates** (generated): every search count for `N ≤ 512` as a theorem
 
 ## Mathematical References
 
@@ -56,3 +59,5 @@ import FdrsFormal.NumberTheory.Characters.FFTCircuit
 import FdrsFormal.NumberTheory.Characters.FFTButterfly
 import FdrsFormal.NumberTheory.Characters.FFTTwiddleSkip
 import FdrsFormal.NumberTheory.Characters.PairKernel
+import FdrsFormal.NumberTheory.Characters.CircuitCompose
+import FdrsFormal.NumberTheory.Characters.SearchCertificates

@@ -1844,7 +1844,7 @@ Let (*_k) be cyclic convolution on (\mathcal R^{(k)}) (equivalently (\mathbb Z/N
 ]
 *Proof.* Substitute definitions and change variables (z=x-y). ∎
 
-**Meaning:** additive characters are exact “frequency probes” of the time convolution algebra. *(Addenda §1.4–1.10 — the mixed-radix Fourier arc — sit at the end of this document, so that earlier line references stay stable.)*
+**Meaning:** additive characters are exact “frequency probes” of the time convolution algebra. *(Addenda §1.4–1.11 — the mixed-radix Fourier arc — sit at the end of this document, so that earlier line references stay stable.)*
 
 ---
 
@@ -9083,7 +9083,7 @@ frontier in the design record, not claimed.
 
 ---
 
-# Phase 3 addenda — the mixed-radix Fourier arc (§1.4–1.10)
+# Phase 3 addenda — the mixed-radix Fourier arc (§1.4–1.11)
 
 *(Numbered as Phase 3, Fragment 2, continuing §1.3 "Convolution diagonalization". Placed at the end of the document so that line references into earlier phases stay stable.)*
 
@@ -9376,3 +9376,46 @@ reuses `A_m, B_m` because `ζ^{(n−m)j} = ζ^{m(n−j)}`.
 Not claimed minimal; it is the prime kernel of the radix-schedule search
 (`docs/fourier/01-schedule-search.md`), where Rader's reduction is the open
 improvement for large primes.
+
+## 1.11 Composing circuits; the search grammar proven (addendum, 2026-10-08)
+
+### Definition 217 (embedding a circuit)  [§1.11 · Phase 3, Fragment 2]
+
+A circuit on `n` inputs is *embedded* in a larger register file by reading its
+input `i` from a chosen register `inAddr(i)`, its constant from a register holding
+`0`, and placing its gates in a fresh block `base, base + 1, …`; every register of
+the original lands at a relocated address and keeps its value.
+
+### Theorem 127 (the positional split)  [§1.11 · Phase 3, Fragment 2]
+
+From exact Fourier circuits `C₁, C₂` for lengths `n₁, n₂ ≥ 1`, the Cooley–Tukey
+split gives an exact circuit for `n₁n₂` with
+[
+n_1|C_2| + n_2|C_1| + \#\{(a,p) : a<n_1,\ p<n_2,\ n_1n_2 \nmid ap\}
+]
+gates: `n₁` copies of `C₂` on `x[n₁c + a]`, one scale per nontrivial twiddle
+`ζ_N^{ap}`, and `n₂` copies of `C₁`; output `p + n₂q` is copy `p`'s output `q`.
+
+### Theorem 128 (the residue split)  [§1.11 · Phase 3, Fragment 2]
+
+For coprime `n₁, n₂`, the same circuits give an exact circuit for `n₁n₂` with
+`n₁|C₂| + n₂|C₁|` gates and no twiddles: inner copies read `x[(n₂a + n₁c) mod N]`,
+and output `k` is outer copy `k mod n₂`'s output `k mod n₁`. The re-indexing
+`(a, c) ↦ (n₂a + n₁c) mod N` is a bijection onto `[0, N)` because it is injective
+on a set of size `N`.
+
+### Corollary 37 (plans are circuits)  [§1.11 · Phase 3, Fragment 2]
+
+Every valid plan of the radix-schedule search's grammar — the 2-point butterfly
+(2 gates), the conjugate-pair kernel (Theorem 126), and the splits of
+Theorems 127–128 — yields an exact Fourier circuit of its length with exactly
+its cost. Consequently each count the search reports is a theorem once its plan's
+validity, length and cost are evaluated; the generated module
+`SearchCertificates.lean` does this in the kernel (`decide +kernel`) for every
+length `2 ≤ N ≤ 512` (511 theorems in the default build).
+
+*Lean:* `FdrsFormal/NumberTheory/Characters/CircuitCompose.lean`,
+`FdrsFormal/NumberTheory/Characters/SearchCertificates.lean`.
+
+**Honest scope (§1.11).** Classical (Cooley–Tukey 1965; Good 1958, Thomas 1963).
+Upper bounds only: Corollary 37 says nothing about optimality outside the grammar.
