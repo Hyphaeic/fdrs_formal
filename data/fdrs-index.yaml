@@ -1,10 +1,10 @@
 metadata:
   spec_file: docs/fdrs.md
-  spec_lines: 9469
-  generated_at: '2026-10-08T15:11:29.815691'
-  total_items: 559
+  spec_lines: 9526
+  generated_at: '2026-10-08T17:28:10.420381'
+  total_items: 563
   status_summary:
-    proven: 554
+    proven: 558
     missing: 3
     scaffold: 2
   status_legend:
@@ -14098,14 +14098,72 @@ items:
     - XPlan.exists_circuit
   fragment: '2'
   section: '1.12'
+- id: proposition_162
+  type: proposition
+  phase: 1
+  global_num: 162
+  title: multiplicative place values
+  line: 9482
+  status: proven
+  in_root_build: true
+  lean_files:
+  - path: FdrsFormal/Operations/Multiplication.lean
+    declarations:
+    - placeValue_mul_iff_local
+    - placeValue_mul_iff
+  fragment: '2'
+  section: '3.5'
+- id: definition_218
+  type: definition
+  phase: 1
+  global_num: 218
+  title: digit convolution and the carry sweep
+  line: 9494
+  status: proven
+  in_root_build: true
+  lean_files:
+  - path: FdrsFormal/Operations/Multiplication.lean
+    declarations:
+    - digitConv
+  fragment: '2'
+  section: '3.5'
+- id: theorem_131
+  type: theorem
+  phase: 1
+  global_num: 131
+  title: multiplication is digit convolution plus carries
+  line: 9505
+  status: proven
+  in_root_build: true
+  lean_files:
+  - path: FdrsFormal/Operations/Multiplication.lean
+    declarations:
+    - digitVal_conv
+    - mul_eq_carrySweep
+  fragment: '2'
+  section: '3.5'
+- id: corollary_39
+  type: corollary
+  phase: 1
+  global_num: 39
+  title: the variable-radix boundary
+  line: 9514
+  status: proven
+  in_root_build: true
+  lean_files:
+  - path: FdrsFormal/Operations/Multiplication.lean
+    declarations:
+    - conv_correct_iff
+  fragment: '2'
+  section: '3.5'
 lean_summary:
-  total_files: 320
+  total_files: 321
   total_axioms: 0
   axioms_true: 0
   total_sorries: 0
   sorry_files: []
-  total_theorems: 2508
-  total_defs: 969
+  total_theorems: 2524
+  total_defs: 976
   total_lemmas: 26
   total_stubs: 0
   stubs_by_kind:

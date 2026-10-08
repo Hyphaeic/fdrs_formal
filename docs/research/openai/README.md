@@ -44,10 +44,10 @@ uniform version).
 
 Ordered by (FDRS content) × (feasibility). Effort: S / M / L.
 
-1. **Constant radix ⇔ multiplicative place values** (109 survey, Prop "162"). `B_i B_j
+1. **[done — fdrs.md §3.5, Prop 162]** **Constant radix ⇔ multiplicative place values** (109 survey, Prop "162"). `B_i B_j
    = B_{i+j}` for all `i, j` iff `b` is constant. **S.** The multiplication twin of
    Prop 154: on a variable schedule, multiplication is not a digit convolution.
-2. **Digit convolution + carries = product, constant radix** (109 survey, Thm "131",
+2. **[done — fdrs.md §3.5, Def 218, Thm 131, Cor 39]** **Digit convolution + carries = product, constant radix** (109 survey, Thm "131",
    Cor "39"). Generalises `Field25519Carry.carryStep` to any `RadixSeq`; the
    boundary corollary for variable schedules. **M.**
 3. **Vilenkin orthogonality, Plancherel, digit averaging `E_i`, influences**

@@ -431,7 +431,7 @@ By Proposition 6, (\pi_L(\tau)=\pi_L(\tau')) implies (\operatorname{dec}(\tau)\e
 ]
 Apply Proposition 6 in reverse to conclude the first (L) digits (prefix) of the sums match. ∎
 
-This is the formal “multi-rate locality” statement: the first (L) digits of the result depend **only** on the first (L) digits of the inputs (no dependence on higher digits).
+This is the formal “multi-rate locality” statement: the first (L) digits of the result depend **only** on the first (L) digits of the inputs (no dependence on higher digits). *(Addendum §3.5 — multiplication as digit convolution, and where it fails on variable schedules — sits at the end of this document.)*
 
 ---
 
@@ -9467,3 +9467,60 @@ all 1727 such lengths `N ≤ 2048` were checked once, in chunks, about 12 minute
 **Honest scope (§1.12).** Classical (Rader 1968; Bluestein 1970). Upper bounds
 only: every count of the radix-schedule search is now a theorem, but nothing is
 claimed about optimality.
+
+# Phase 1 addendum — multiplication as digit convolution (§3.5)
+
+*(Numbered as Phase 1, Fragment 2, continuing §3 "Addition". Placed at the end of the document so that line references into earlier phases stay stable.)*
+
+*(Provenance: OpenAI's mathematics collection, family 109 — integer multiplication
+below `n log n` — whose first reduction is radix-digit convolution followed by carry
+propagation. This addendum states that reduction on the corpus's schedules and
+determines exactly where it holds. Research notes: `docs/research/openai/`.)*
+
+## 3.5 Multiplication as digit convolution (addendum, 2026-10-08)
+
+### Proposition 162 (multiplicative place values)  [§3.5 · Phase 1, Fragment 2]
+
+For a radix schedule (b),
+[
+B_iB_j=B_{i+j}\ \text{for all } i,j \iff b_l=b_0\ \text{for all } l .
+]
+Locally: (B_iB_j=B_{i+j}) for all (i,j\le k) iff (b_l=b_0) for every (l<2k).
+
+**Proof.** If (b_l=b_0) below (n), then (B_m=b_0^m) for (m\le n), so (B_iB_j=B_{i+j}) when (i+j\le n). Conversely, (i=1) gives (b_0B_l=B_{l+1}=B_lb_l), so (b_l=b_0) for (l<k); for (k\le l<2k) write (l=k+j) with (j<k): (B_kB_{j+1}=B_{l+1}=B_lb_l) and (B_kB_{j+1}=B_kB_jb_0=B_lb_0). ∎
+
+Since always (B_{i+j}=B_i\,B_{[i,i+j)}), constancy is exactly shift-invariance of block products: (B_{[i,i+j)}=B_j).
+
+### Definition 218 (digit convolution and the carry sweep)  [§3.5 · Phase 1, Fragment 2]
+
+For digit lists (x,y:\mathbb N\to\mathbb N) (entries unrestricted),
+[
+(x\star y)_m=\sum_{i\le m}x_iy_{m-i},\qquad
+\operatorname{val}_n(d)=\sum_{i<n}d_iB_i .
+]
+A **carry at (i)** replaces (d_i) by (d_i\bmod b_i) and adds (\lfloor d_i/b_i\rfloor) to (d_{i+1}); the **carry sweep** (\operatorname{sw}_n(d)) carries at (0,1,\dots,n-1) in order. For (x\in\mathcal R^{(k)}), (\bar x) is its digit list extended by zeros.
+
+A carry at (i) preserves (\operatorname{val}_N) whenever (i+1<N) (because (B_{i+1}=B_ib_i)); after (\operatorname{sw}_n), digits (0,\dots,n-1) are canonical, digits above (n) are untouched, and (\operatorname{val}_N) is preserved for (N>n).
+
+### Theorem 131 (multiplication is digit convolution plus carries)  [§3.5 · Phase 1, Fragment 2]
+
+Let (b) be constant. For (x,y\in\mathcal R^{(k)}):
+
+1. (\operatorname{val}_{2k+1}(\bar x\star\bar y)=\operatorname{dec}_k(x)\cdot\operatorname{dec}_k(y));
+2. (\operatorname{dec}_k(x)\operatorname{dec}_k(y)<B_{2k+2}), and (\operatorname{sw}_{2k+1}(\bar x\star\bar y)) restricted to positions (0,\dots,2k+1) is exactly (\operatorname{enc}_{2k+1}(\operatorname{dec}_k(x)\operatorname{dec}_k(y))).
+
+**Proof.** (1): expand the product and re-index the convolution by ((i,j)=(i,m-i)); Proposition 162 turns (B_iB_j) into (B_{i+j}). (2): (B_{k+1}^2=B_{2k+2}) bounds the product; the sweep preserves value and makes positions (0..2k) canonical; the top digit (s_{2k+1}) satisfies (s_{2k+1}B_{2k+1}\le\operatorname{val}<B_{2k+2}=B_{2k+1}b_{2k+1}), so it is canonical too; uniqueness of digits (Proposition 1) finishes. ∎
+
+### Corollary 39 (the variable-radix boundary)  [§3.5 · Phase 1, Fragment 2]
+
+On (\mathcal R^{(k)}),
+[
+\big(\forall x,y:\ \operatorname{val}_{2k+1}(\bar x\star\bar y)=\operatorname{dec}_k(x)\operatorname{dec}_k(y)\big)\iff b_l=b_0\ \text{for every } l<2k .
+]
+Unit digit vectors (e_i,e_j) give (\bar e_i\star\bar e_j=\bar e_{i+j}), reducing the converse to Proposition 162. The smallest failure: (b=(2,3,3,\dots)), (k=1): (B_1B_1=4\ne6=B_2).
+
+**Meaning.** Multiplication is a convolution in the digit chart only on constant stretches of the schedule; on a variable schedule the product needs another chart (the residue chart of §1.6 is the one fast algorithms use). This is the multiplicative counterpart of Proposition 154: there the carry-free twist is trivial only for a single digit, here the digit convolution is the product only for a constant radix.
+
+*Lean:* `FdrsFormal/Operations/Multiplication.lean`.
+
+**Honest scope (§3.5).** Classical (positional multiplication; Kronecker substitution). The corpus contributes the statement on mixed-radix schedules and its sharp boundary. Nothing about the cost of multiplication is claimed.

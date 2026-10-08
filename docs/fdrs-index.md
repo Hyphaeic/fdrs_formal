@@ -1,10 +1,10 @@
 # FDRS Specification Index
 
-Auto-generated from `data/fdrs-index.yaml` (2026-10-08T15:11:29.815691)
+Auto-generated from `data/fdrs-index.yaml` (2026-10-08T17:28:10.420381)
 
-**559 items** from `docs/fdrs.md` (9469 lines)
+**563 items** from `docs/fdrs.md` (9526 lines)
 
-Status: missing: 3 | proven: 554 | scaffold: 2
+Status: missing: 3 | proven: 558 | scaffold: 2
 
 ## Phase 1
 
@@ -625,3 +625,11 @@ Status: missing: 3 | proven: 554 | scaffold: 2
 | theorem_129 | theorem | 129 | Rader's prime transform | 9435 | ✅ proven | FdrsFormal/NumberTheory/Characters/RaderBluestein.lean |
 | theorem_130 | theorem | 130 | Bluestein's chirp transform | 9444 | ✅ proven | FdrsFormal/NumberTheory/Characters/RaderBluestein.lean |
 | corollary_38 | corollary | 38 | extended plans are circuits | 9454 | ✅ proven | FdrsFormal/NumberTheory/Characters/RaderBluestein.lean |
+## Phase 1
+
+| ID | Type | Number | Title | Line | Status | Lean File |
+|---|---|---|---|---|---|---|
+| proposition_162 | proposition | 162 | multiplicative place values | 9482 | ✅ proven | FdrsFormal/Operations/Multiplication.lean |
+| definition_218 | definition | 218 | digit convolution and the carry sweep | 9494 | ✅ proven | FdrsFormal/Operations/Multiplication.lean |
+| theorem_131 | theorem | 131 | multiplication is digit convolution plus carries | 9505 | ✅ proven | FdrsFormal/Operations/Multiplication.lean |
+| corollary_39 | corollary | 39 | the variable-radix boundary | 9514 | ✅ proven | FdrsFormal/Operations/Multiplication.lean |
