@@ -1,10 +1,10 @@
 # FDRS Specification Index
 
-Auto-generated from `data/fdrs-index.yaml` (2026-10-08T10:59:20.712223)
+Auto-generated from `data/fdrs-index.yaml` (2026-10-08T11:17:03.895092)
 
-**551 items** from `docs/fdrs.md` (9378 lines)
+**555 items** from `docs/fdrs.md` (9421 lines)
 
-Status: missing: 3 | proven: 546 | scaffold: 2
+Status: missing: 3 | proven: 550 | scaffold: 2
 
 ## Phase 1
 
@@ -617,3 +617,7 @@ Status: missing: 3 | proven: 546 | scaffold: 2
 | theorem_125 | theorem | 125 | the skipping circuit | 9332 | ✅ proven | FdrsFormal/NumberTheory/Characters/FFTTwiddleSkip.lean |
 | corollary_36 | corollary | 36 | the gap | 9341 | ✅ proven | FdrsFormal/NumberTheory/Characters/FFTTwiddleSkip.lean |
 | theorem_126 | theorem | 126 | the conjugate-pair kernel | 9362 | ✅ proven | FdrsFormal/NumberTheory/Characters/PairKernel.lean |
+| definition_217 | definition | 217 | embedding a circuit | 9382 | ✅ proven | FdrsFormal/NumberTheory/Characters/CircuitCompose.lean |
+| theorem_127 | theorem | 127 | the positional split | 9389 | ✅ proven | FdrsFormal/NumberTheory/Characters/CircuitCompose.lean |
+| theorem_128 | theorem | 128 | the residue split | 9399 | ✅ proven | FdrsFormal/NumberTheory/Characters/CircuitCompose.lean |
+| corollary_37 | corollary | 37 | plans are circuits | 9407 | ✅ proven | FdrsFormal/NumberTheory/Characters/CircuitCompose.lean |

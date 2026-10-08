@@ -209,7 +209,8 @@ fn main() {
          grammar plan and the extended plan ({verified} lengths) were built and checked against \
          the naive DFT. Gate counts are exact program lengths. **Grammar** counts (dense ≤ 2, \
          conjugate pair, positional and residue splits) are theorems: fdrs.md Corollary 37, \
-         certified per length in `SearchCertificates.lean`. **Extended** counts (adding Rader \
+         certified per length by `--lean` (`SearchCertificates.lean`: `N ≤ 512` in the default build; \
+         all `N ≤ 2048` checked once, about 5 min). **Extended** counts (adding Rader \
          and Bluestein) are measured only: correctness checked numerically (f64), not proven.\n",
         args.max,
         args.verify.min(args.max)
@@ -299,7 +300,7 @@ fn main() {
         };
         *counts.entry(key).or_insert(0usize) += 1;
     }
-    let _ = writeln!(md, "\n## Winning top-level move, N = 2…{}\n", args.max);
+    let _ = writeln!(md, "\n## Winning top-level move (proven grammar), N = 2…{}\n", args.max);
     let _ = writeln!(md, "| move | lengths |\n|---|---|");
     for (k, v) in &counts {
         let _ = writeln!(md, "| {k} | {v} |");

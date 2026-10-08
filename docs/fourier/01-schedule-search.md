@@ -1,9 +1,13 @@
 # Design record 01 — the radix-schedule circuit search
 
-*Status: opened 2026-10-07. Measured, not proven: every number below is the exact
-gate count of a straight-line program that was built and checked numerically
-against the naive DFT. None of it is a theorem until it is formalized. The proven
-counts it is compared with are fdrs.md Phase 3 §1.7–1.9 (Theorems 123–125).*
+*Status: opened 2026-10-07; updated 2026-10-08. Two kinds of numbers live here.
+**Grammar** counts (dense ≤ 2, conjugate pair, positional and residue splits) are
+**theorems**: fdrs.md Corollary 37 proves every plan of that grammar is an exact
+circuit of exactly its cost, and `SearchCertificates.lean` checks each reported
+length `N ≤ 512` in the kernel (all `N ≤ 2048` were checked once, about 5 minutes,
+outside the default build). **Extended** counts (adding Rader and Bluestein) are
+**measured**: exact lengths of programs that were built and checked numerically
+(f64) against the naive DFT, not proven.*
 
 ## 1. The question
 
@@ -29,9 +33,11 @@ A **plan** for length `N` is one of:
 |---|---|---|
 | `D_N` dense — each output a combination of all inputs, `±1` coefficients unscaled | `Σ_k Σ_{j≥1} (1 or 2)` | Proposition 158, sharpened |
 | `P_N` conjugate pair, odd `N = 2h+1` — `s_j = x_j + x_{N−j}`, `d_j = x_j − x_{N−j}`, cosines on `s`, sines on `d` | `N² − 1` | Theorem 126 (proven) |
-| `CT(n₁, n₂)` positional split, explicit twiddles, `W = 1` skipped | `n₁C(n₂) + n₂C(n₁) + #{(a,p) : N ∤ ap}` | Theorem 120 / 125 |
-| `CTF(n₁, n₂)` positional split, twiddles folded into the outer combinations | `n₁C(n₂) + Σ_k Σ_{a≥1} (1 or 2)` | Theorem 123's move |
-| `PFA(n₁, n₂)`, `gcd = 1` — residue chart in, Good's chart out | `n₁C(n₂) + n₂C(n₁)` | Corollary 33 |
+| `CT(n₁, n₂)` positional split, explicit twiddles, `W = 1` skipped | `n₁C(n₂) + n₂C(n₁) + #{(a,p) : N ∤ ap}` | Theorem 127 (proven) |
+| `CTF(n₁, n₂)` positional split, twiddles folded into the outer combinations | `n₁C(n₂) + Σ_k Σ_{a≥1} (1 or 2)` | Theorem 123's move (never wins) |
+| `PFA(n₁, n₂)`, `gcd = 1` — residue chart in, Good's chart out | `n₁C(n₂) + n₂C(n₁)` | Theorem 128 (proven) |
+| `Rader_p` (extended), prime `p` — cyclic convolution of length `p − 1` via two DFTs of length `p − 1` | `2C(p−1) + 2p − 1` | measured |
+| `Bluestein_N[M]` (extended), any `N` — chirp, cyclic convolution at `2N − 1 ≤ M ≤ 4N` via two grammar DFTs of length `M` | `2C(M) + M + 2·#{j : 2N ∤ j²}` | measured |
 
 A dynamic program takes, for each `N`, the cheapest plan with the cheapest
 sub-plans. Read in FDRS terms, a plan tree is an **ordered radix schedule together
@@ -47,11 +53,16 @@ cargo run --release -- --max 2048 --verify 2048 \
   --md  ../../data/fourier-search/summary.md
 ```
 
-Every plan for `N ≤ 2048` was built as a program; its length matched the planner's
-count and its output matched the naive DFT (two pseudo-random inputs, f64, error
-`≤ 10⁻⁹ N`). Full tables: `data/fourier-search/`.
+Every grammar plan and every extended plan for `N ≤ 2048` was built as a program;
+its length matched the planner's count and its output matched the naive DFT (two
+pseudo-random inputs, f64, error `≤ 10⁻⁹ N`). `--lean PATH` writes the Lean
+certificates for the grammar plans. Full tables: `data/fourier-search/`.
 
-## 3. Findings (measured)
+## 3. Findings
+
+Findings 1–6 concern the proven grammar (counts are theorems; optimality *within*
+the grammar is a property of the dynamic program, not proven). Finding 7 is
+measured.
 
 1. **Powers of two: Theorem 125 is the optimum of the grammar.** For every
    `N = 2^m ≤ 2048` the best plan is radix-2 Cooley–Tukey with trivial twiddles
@@ -69,41 +80,58 @@ count and its output matched the naive DFT (two pseudo-random inputs, f64, error
    `144 = 12·12` costs `1537` by `CT(PFA(3,4), PFA(3,4))` against `1561` for the best
    residue split `9·16`; likewise `72, 225, 400, 441, 576`. The chart choice depends
    on the *balance* of the schedule, not only on coprimality.
-5. **Primes are the bottleneck.** With only the conjugate-pair kernel, a prime
-   `p` costs `p² − 1` (`N = 2039`: about `4·10⁶` gates). This is the grammar's gap,
-   not a lower bound: Rader's and Bluestein's reductions are not yet in it.
+5. **Primes are the bottleneck of the grammar.** With only the conjugate-pair
+   kernel, a prime `p` costs `p² − 1` (`N = 2039`: about `4·10⁶` gates); the worst
+   normalized grammar cost for `N ≥ 64` is about `185 · N log₂ N`.
 6. **Cheapest lengths per `N log₂ N`.** For `N ≥ 64` they are the powers of two,
    followed by `3·2^m` via `PFA(P3, radix-2)` (e.g. `96: 1.397`, `192: 1.408`).
+7. **Rader and Bluestein remove the prime bottleneck (measured).** The extended
+   planner improves 1727 of the 2047 lengths. Primes gain most: `257: 66048 → 6147`
+   (Rader over radix-2), `1021: 23×`, `1999: 35×`, `2039: 28×` (Bluestein at
+   `M = 4096`). Rader recurses — `1031 → 1030 = 2·5·103`, `103 → 102 = 2·3·17`,
+   `17 → 16` — so its cost follows the factorization of `p − 1`. The worst
+   normalized extended cost for `N ≥ 64` falls from about `185` to `8.2`
+   (`N = 167`, Bluestein at `M = 384`); the median is `3.6`.
 
-## 4. Formal targets this suggests
+## 4. Formal status
 
-In order of payoff and difficulty:
+Done (2026-10-08):
 
-- **The conjugate-pair kernel** — every odd `N` has an exact circuit with
-  `N² − 1` gates. General, self-contained, and it already halves Proposition 158.
-- **Composition theorems** turning the planner's recurrences into proofs:
-  `C(N) ≤ n₁C(n₂) + n₂C(n₁)` for coprime splits (from Theorems 121–122), and
-  `C(N) ≤ n₁C(n₂) + n₂C(n₁) + #{(a,p) : N ∤ ap}` in general (from Theorem 119).
-  Together with the kernels, every count in `data/fourier-search/` would become a
-  proven upper bound.
+- **The conjugate-pair kernel** — Theorem 126 (`PairKernel.lean`).
+- **Composition theorems** — Theorem 127 (positional split) and Theorem 128
+  (residue split) for arbitrary circuits, and Corollary 37: every grammar plan is an
+  exact circuit of exactly its cost (`CircuitCompose.lean`). The grammar column of
+  `data/fourier-search/` is therefore a table of theorems; `SearchCertificates.lean`
+  instantiates it for every `N ≤ 512`.
+
+Open:
+
+- **Rader and Bluestein** as theorems — both reduce to a cyclic convolution through
+  forward DFTs, with the inverse read off a forward transform; the composition
+  machinery of `CircuitCompose.lean` (embedding, rows of copies) is what they need.
 - **Finding 4 as a statement.** A precise version of "balanced positional beats
   unbalanced residue" for `N = m²`.
 
 ## 5. Next search steps
 
-- Add **Rader** (prime `p` → cyclic convolution of length `p − 1`) and **Bluestein**
-  (any `N` → convolution at a power of two) to the grammar; finding 5 should move.
-- **Exhaustive minimality for tiny `N`.** Search all circuits with scales from a
-  finite constant pool to test whether `D2 = 2`, `P3 = 8`, `CT(2,2) = 9` are minimal.
+- **Exhaustive minimality for tiny `N` — not attempted, and naive search will not
+  do it.** Deciding whether `P3 = 8` is minimal means excluding every 7-gate
+  circuit; with values as linear forms and even a small finite constant pool the
+  branching is about `250` per gate, `≈ 10¹⁶` sequences. A workable route needs a
+  different formulation — e.g. a SAT/SMT encoding over a finite field where the DFT
+  exists, or rank-based lower bounds — before any search.
 - **Family 130's question on FDRS schedules.** Test small tensor powers `F_q^{⊗b}`
   (the Vilenkin transform of the constant schedule) for sub-tensor-axis savings in
   the call-count sense of family 130.
 
 ## 6. Anti-confabulation ledger
 
-- Measured: all gate counts are exact lengths of programs that were built.
-  Correctness is checked numerically in f64, not proven.
-- Not claimed: optimality outside the plan grammar; any lower bound; anything about
-  family 130's sub-`N log N` regime.
+- Proven: every grammar count (Corollary 37), instantiated in the kernel for
+  `N ≤ 512` in the default build and for all `N ≤ 2048` once.
+- Measured: extended counts (Rader, Bluestein). Exact program lengths; correctness
+  checked numerically in f64, not proven.
+- Not claimed: optimality outside the plan grammar (or inside it, beyond what the
+  dynamic program computes); any lower bound; anything about family 130's
+  sub-`N log N` regime.
 - Proven elsewhere in the corpus and only *re-observed* here: Theorem 123
   (staged), Theorem 125 (binary, skipping), Corollary 33 (Good–Thomas, no twiddles).

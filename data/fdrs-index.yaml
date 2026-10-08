@@ -1,10 +1,10 @@
 metadata:
   spec_file: docs/fdrs.md
-  spec_lines: 9378
-  generated_at: '2026-10-08T10:59:20.712223'
-  total_items: 551
+  spec_lines: 9421
+  generated_at: '2026-10-08T11:17:03.895092'
+  total_items: 555
   status_summary:
-    proven: 546
+    proven: 550
     missing: 3
     scaffold: 2
   status_legend:
@@ -13985,14 +13985,70 @@ items:
     - exists_pair_circuit
   fragment: '2'
   section: '1.10'
+- id: definition_217
+  type: definition
+  phase: 3
+  global_num: 217
+  title: embedding a circuit
+  line: 9382
+  status: proven
+  in_root_build: true
+  lean_files:
+  - path: FdrsFormal/NumberTheory/Characters/CircuitCompose.lean
+    declarations:
+    - Program.toGates
+  fragment: '2'
+  section: '1.11'
+- id: theorem_127
+  type: theorem
+  phase: 3
+  global_num: 127
+  title: the positional split
+  line: 9389
+  status: proven
+  in_root_build: true
+  lean_files:
+  - path: FdrsFormal/NumberTheory/Characters/CircuitCompose.lean
+    declarations:
+    - exists_ct_circuit
+  fragment: '2'
+  section: '1.11'
+- id: theorem_128
+  type: theorem
+  phase: 3
+  global_num: 128
+  title: the residue split
+  line: 9399
+  status: proven
+  in_root_build: true
+  lean_files:
+  - path: FdrsFormal/NumberTheory/Characters/CircuitCompose.lean
+    declarations:
+    - exists_pfa_circuit
+  fragment: '2'
+  section: '1.11'
+- id: corollary_37
+  type: corollary
+  phase: 3
+  global_num: 37
+  title: plans are circuits
+  line: 9407
+  status: proven
+  in_root_build: true
+  lean_files:
+  - path: FdrsFormal/NumberTheory/Characters/CircuitCompose.lean
+    declarations:
+    - Plan.exists_circuit
+  fragment: '2'
+  section: '1.11'
 lean_summary:
-  total_files: 316
+  total_files: 318
   total_axioms: 0
   axioms_true: 0
   total_sorries: 0
   sorry_files: []
-  total_theorems: 1601
-  total_defs: 924
+  total_theorems: 2133
+  total_defs: 943
   total_lemmas: 26
   total_stubs: 0
   stubs_by_kind:
