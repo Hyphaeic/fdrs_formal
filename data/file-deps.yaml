@@ -1,6 +1,6 @@
 metadata:
-  total_files: 315
-  total_edges: 664
+  total_files: 316
+  total_edges: 666
   total_modules: 19
 modules:
   Analysis:
@@ -290,6 +290,7 @@ modules:
   - FdrsFormal/NumberTheory/Characters/MixedRadixFFT.lean
   - FdrsFormal/NumberTheory/Characters/MixedRadixStages.lean
   - FdrsFormal/NumberTheory/Characters/Oracle.lean
+  - FdrsFormal/NumberTheory/Characters/PairKernel.lean
   - FdrsFormal/NumberTheory/Characters/TwistTransform.lean
   - FdrsFormal/NumberTheory/CylinderMeasurability.lean
   - FdrsFormal/NumberTheory/FactorizationLens.lean
@@ -1535,6 +1536,8 @@ file_edges:
   to: FdrsFormal/Core/Finite/Bijection.lean
 - from: FdrsFormal/NumberTheory/Characters/MixedRadixStages.lean
   to: FdrsFormal/NumberTheory/Characters/MixedRadixFFT.lean
+- from: FdrsFormal/NumberTheory/Characters/PairKernel.lean
+  to: FdrsFormal/NumberTheory/Characters/FFTCircuit.lean
 - from: FdrsFormal/NumberTheory/Characters/TwistTransform.lean
   to: FdrsFormal/NumberTheory/Characters/DirichletCharacters.lean
 - from: FdrsFormal/NumberTheory/Characters/TwistTransform.lean
@@ -1561,6 +1564,8 @@ file_edges:
   to: FdrsFormal/NumberTheory/Characters/FFTButterfly.lean
 - from: FdrsFormal/NumberTheory/Characters.lean
   to: FdrsFormal/NumberTheory/Characters/FFTTwiddleSkip.lean
+- from: FdrsFormal/NumberTheory/Characters.lean
+  to: FdrsFormal/NumberTheory/Characters/PairKernel.lean
 - from: FdrsFormal/NumberTheory/CylinderMeasurability.lean
   to: FdrsFormal/Core/Primitives.lean
 - from: FdrsFormal/NumberTheory/CylinderMeasurability.lean

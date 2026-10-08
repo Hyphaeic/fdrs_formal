@@ -1,10 +1,10 @@
 # FDRS Specification Index
 
-Auto-generated from `data/fdrs-index.yaml` (2026-10-07T19:35:47.735561)
+Auto-generated from `data/fdrs-index.yaml` (2026-10-08T10:57:32.771299)
 
-**550 items** from `docs/fdrs.md` (9352 lines)
+**551 items** from `docs/fdrs.md` (9372 lines)
 
-Status: missing: 3 | proven: 545 | scaffold: 2
+Status: missing: 7 | proven: 542 | scaffold: 2
 
 ## Phase 1
 
@@ -151,464 +151,465 @@ Status: missing: 3 | proven: 545 | scaffold: 2
 | proposition_160 | proposition | 160 | trivial twiddles | 2082 | ✅ proven | FdrsFormal/NumberTheory/Characters/FFTTwiddleSkip.lean |
 | theorem_125 | theorem | 125 | the skipping circuit | 2091 | ✅ proven | FdrsFormal/NumberTheory/Characters/FFTTwiddleSkip.lean |
 | corollary_36 | corollary | 36 | the gap | 2100 | ✅ proven | FdrsFormal/NumberTheory/Characters/FFTTwiddleSkip.lean |
-| proposition_43 | proposition | 43 | orthogonality over units | 2129 | ✅ proven | FdrsFormal/NumberTheory.lean |
-| proposition_44 | proposition | 44 | orthogonality over characters gives residue projec | 2137 | ✅ proven | FdrsFormal/NumberTheory.lean |
-| proposition_45 | proposition | 45 | character expansion of residue projectors | 2160 | ✅ proven | FdrsFormal/NumberTheory.lean |
-| proposition_46 | proposition | 46 | residue projectors factor | 2181 | ✅ proven | FdrsFormal/NumberTheory.lean |
-| proposition_47 | proposition | 47 | Dirichlet characters factor | 2196 | ✅ proven | FdrsFormal/NumberTheory.lean |
-| corollary_11 | corollary | 11 | projectors factor | 2205 | ✅ proven | FdrsFormal/NumberTheory.lean |
-| definition_39 | definition | 39 | radix depth of a modulus | 2220 | ✅ proven | FdrsFormal/NumberTheory.lean |
-| theorem_17 | theorem | 17 | additive residue classes are (\mathcal F_{k,L} | 2230 | ✅ proven | FdrsFormal/NumberTheory.lean |
-| corollary_12 | corollary | 12 | same for (\mathrm{nat}_k | 2249 | ✅ proven | FdrsFormal/NumberTheory.lean |
-| theorem_18 | theorem | 18 | Dirichlet characters become cylinder-measurable wh | 2255 | ✅ proven | FdrsFormal/NumberTheory.lean |
-| definition_40 | definition | 40 | divisibility projector | 2320 | ✅ proven | FdrsFormal/NumberTheory.lean |
-| definition_41 | definition | 41 | exact valuation projector | 2327 | ✅ proven | FdrsFormal/NumberTheory.lean |
-| proposition_48 | proposition | 48 | orthogonal idempotents; partition of unity | 2335 | ✅ proven | FdrsFormal/NumberTheory.lean |
-| proposition_49 | proposition | 49 | cylinder measurability criterion | 2349 | ✅ proven | FdrsFormal/NumberTheory.lean |
-| corollary_13 | corollary | 13 | valuation gates at finite depth | 2359 | ✅ proven | FdrsFormal/NumberTheory.lean |
-| definition_42 | definition | 42 |  | 2375 | ✅ proven | FdrsFormal/NumberTheory.lean |
-| proposition_50 | proposition | 50 | idempotence | 2383 | ✅ proven | FdrsFormal/NumberTheory.lean |
-| theorem_19 | theorem | 19 | squarefree projector as finite product of divisibi | 2393 | ✅ proven | FdrsFormal/NumberTheory.lean |
-| corollary_14 | corollary | 14 | when squarefree is cylinder-measurable at some dep | 2407 | ✅ proven | FdrsFormal/NumberTheory.lean |
-| theorem_20 | theorem | 20 | twist–transform covariance | 2426 | ✅ proven | FdrsFormal/NumberTheory/Characters/TwistTransform.lean |
-| corollary_15 | corollary | 15 | true commutation criterion | 2442 | ✅ proven | FdrsFormal/NumberTheory/Characters/TwistTransform.lean |
-| definition_43 | definition | 43 | pure (p | 2451 | ✅ proven | FdrsFormal/NumberTheory/FactorizationLens/PowerKernel.lean |
-| theorem_21 | theorem | 21 | valuation-fiber Toeplitz action | 2455 | ✅ proven | FdrsFormal/NumberTheory/FactorizationLens/PowerKernel.lean |
-| proposition_51 | proposition | 51 | generic failure of commutation with additive block | 2475 | ✅ proven | FdrsFormal/NumberTheory/CylinderMeasurability.lean |
-| definition_44 | definition | 44 | multiplicative sigma-algebra at depth (E | 2549 | ✅ proven | FdrsFormal/NumberTheory/FactorizationLens/ValuationAlgebra.lean |
-| proposition_52 | proposition | 52 | periodicity of divisibility | 2569 | ✅ proven | FdrsFormal/NumberTheory/FactorizationLens/Definition.lean |
-| theorem_22 | theorem | 22 | exponent convolution isomorphism | 2613 | ✅ proven | FdrsFormal/NumberTheory/FactorizationLens/Definition.lean |
-| theorem_23 | theorem | 23 | factorization-fiber decomposition | 2639 | ✅ proven | FdrsFormal/NumberTheory/FactorizationLens/Definition.lean |
-| corollary_16 | corollary | 16 | explicit valuation-lattice update rule | 2652 | ✅ proven | FdrsFormal/NumberTheory/FactorizationLens/Definition.lean |
-| definition_45 | definition | 45 | augmented factorization state | 2674 | ✅ proven | FdrsFormal/NumberTheory/FactorizationLens/MarkovProperty.lean |
-| proposition_53 | proposition | 53 | Dirichlet transforms are local/Markov on (\Lambda_ | 2684 | ✅ proven | FdrsFormal/NumberTheory/FactorizationLens/MarkovProperty.lean |
-| proposition_54 | proposition | 54 | squarefree constraint on the (P | 2704 | ✅ proven | FdrsFormal/NumberTheory/FactorizationLens/SquarefreeOnLattice.lean |
-| proposition_55 | proposition | 55 | Möbius on (P | 2714 | ✅ proven | FdrsFormal/NumberTheory/FactorizationLens/SquarefreeOnLattice.lean |
+| theorem_126 | theorem | 126 | the conjugate-pair kernel | 2121 | ✅ proven | FdrsFormal/NumberTheory/Characters/PairKernel.lean |
+| proposition_43 | proposition | 43 | orthogonality over units | 2149 | ✅ proven | FdrsFormal/NumberTheory.lean |
+| proposition_44 | proposition | 44 | orthogonality over characters gives residue projec | 2157 | ✅ proven | FdrsFormal/NumberTheory.lean |
+| proposition_45 | proposition | 45 | character expansion of residue projectors | 2180 | ✅ proven | FdrsFormal/NumberTheory.lean |
+| proposition_46 | proposition | 46 | residue projectors factor | 2201 | ✅ proven | FdrsFormal/NumberTheory.lean |
+| proposition_47 | proposition | 47 | Dirichlet characters factor | 2216 | ✅ proven | FdrsFormal/NumberTheory.lean |
+| corollary_11 | corollary | 11 | projectors factor | 2225 | ✅ proven | FdrsFormal/NumberTheory.lean |
+| definition_39 | definition | 39 | radix depth of a modulus | 2240 | ✅ proven | FdrsFormal/NumberTheory.lean |
+| theorem_17 | theorem | 17 | additive residue classes are (\mathcal F_{k,L} | 2250 | ✅ proven | FdrsFormal/NumberTheory.lean |
+| corollary_12 | corollary | 12 | same for (\mathrm{nat}_k | 2269 | ✅ proven | FdrsFormal/NumberTheory.lean |
+| theorem_18 | theorem | 18 | Dirichlet characters become cylinder-measurable wh | 2275 | ✅ proven | FdrsFormal/NumberTheory.lean |
+| definition_40 | definition | 40 | divisibility projector | 2340 | ✅ proven | FdrsFormal/NumberTheory.lean |
+| definition_41 | definition | 41 | exact valuation projector | 2347 | ✅ proven | FdrsFormal/NumberTheory.lean |
+| proposition_48 | proposition | 48 | orthogonal idempotents; partition of unity | 2355 | ✅ proven | FdrsFormal/NumberTheory.lean |
+| proposition_49 | proposition | 49 | cylinder measurability criterion | 2369 | ✅ proven | FdrsFormal/NumberTheory.lean |
+| corollary_13 | corollary | 13 | valuation gates at finite depth | 2379 | ✅ proven | FdrsFormal/NumberTheory.lean |
+| definition_42 | definition | 42 |  | 2395 | ✅ proven | FdrsFormal/NumberTheory.lean |
+| proposition_50 | proposition | 50 | idempotence | 2403 | ✅ proven | FdrsFormal/NumberTheory.lean |
+| theorem_19 | theorem | 19 | squarefree projector as finite product of divisibi | 2413 | ✅ proven | FdrsFormal/NumberTheory.lean |
+| corollary_14 | corollary | 14 | when squarefree is cylinder-measurable at some dep | 2427 | ✅ proven | FdrsFormal/NumberTheory.lean |
+| theorem_20 | theorem | 20 | twist–transform covariance | 2446 | ✅ proven | FdrsFormal/NumberTheory/Characters/TwistTransform.lean |
+| corollary_15 | corollary | 15 | true commutation criterion | 2462 | ✅ proven | FdrsFormal/NumberTheory/Characters/TwistTransform.lean |
+| definition_43 | definition | 43 | pure (p | 2471 | ✅ proven | FdrsFormal/NumberTheory/FactorizationLens/PowerKernel.lean |
+| theorem_21 | theorem | 21 | valuation-fiber Toeplitz action | 2475 | ✅ proven | FdrsFormal/NumberTheory/FactorizationLens/PowerKernel.lean |
+| proposition_51 | proposition | 51 | generic failure of commutation with additive block | 2495 | ✅ proven | FdrsFormal/NumberTheory/CylinderMeasurability.lean |
+| definition_44 | definition | 44 | multiplicative sigma-algebra at depth (E | 2569 | ✅ proven | FdrsFormal/NumberTheory/FactorizationLens/ValuationAlgebra.lean |
+| proposition_52 | proposition | 52 | periodicity of divisibility | 2589 | ✅ proven | FdrsFormal/NumberTheory/FactorizationLens/Definition.lean |
+| theorem_22 | theorem | 22 | exponent convolution isomorphism | 2633 | ✅ proven | FdrsFormal/NumberTheory/FactorizationLens/Definition.lean |
+| theorem_23 | theorem | 23 | factorization-fiber decomposition | 2659 | ✅ proven | FdrsFormal/NumberTheory/FactorizationLens/Definition.lean |
+| corollary_16 | corollary | 16 | explicit valuation-lattice update rule | 2672 | ✅ proven | FdrsFormal/NumberTheory/FactorizationLens/Definition.lean |
+| definition_45 | definition | 45 | augmented factorization state | 2694 | ✅ proven | FdrsFormal/NumberTheory/FactorizationLens/MarkovProperty.lean |
+| proposition_53 | proposition | 53 | Dirichlet transforms are local/Markov on (\Lambda_ | 2704 | ✅ proven | FdrsFormal/NumberTheory/FactorizationLens/MarkovProperty.lean |
+| proposition_54 | proposition | 54 | squarefree constraint on the (P | 2724 | ✅ proven | FdrsFormal/NumberTheory/FactorizationLens/SquarefreeOnLattice.lean |
+| proposition_55 | proposition | 55 | Möbius on (P | 2734 | ✅ proven | FdrsFormal/NumberTheory/FactorizationLens/SquarefreeOnLattice.lean |
 ## Phase 4
 
 | ID | Type | Number | Title | Line | Status | Lean File |
 |---|---|---|---|---|---|---|
-| definition_46 | definition | 46 | prime-set lens | 2776 | ✅ proven | FdrsFormal/Integration/BlockMemory/Definition.lean |
-| lemma_4 | lemma | 4 | multiplication inside the Dirichlet basis | 2799 | ✅ proven | FdrsFormal/Integration/BlockMemory/Definition.lean |
-| proposition_56 | proposition | 56 | representation of Dirichlet convolution | 2827 | ✅ proven | FdrsFormal/Integration/BlockMemory/Definition.lean |
-| theorem_24 | theorem | 24 | monoid homomorphism: multiplication ↔ composition | 2853 | ✅ proven | FdrsFormal/Integration/Programs/IntegerSemantics.lean |
-| corollary_17 | corollary | 17 | prime-power instruction set | 2871 | ✅ proven | FdrsFormal/Integration/BlockMemory/Definition.lean |
-| definition_47 | definition | 47 | (P | 2887 | ✅ proven | FdrsFormal/Integration/BlockMemory/Definition.lean |
-| theorem_25 | theorem | 25 | lens-locality: (P | 2895 | ✅ proven | FdrsFormal/Integration/BlockMemory/Definition.lean |
-| definition_48 | definition | 48 | execution set / rhythm of (n | 2918 | ✅ proven | FdrsFormal/Integration/BlockMemory/Definition.lean |
-| proposition_57 | proposition | 57 | periodicity on the integer line | 2926 | ✅ proven | FdrsFormal/Integration/BlockMemory/Definition.lean |
-| proposition_58 | proposition | 58 | finite-depth cylinder realization when (n\mid B_L | 2935 | ✅ proven | FdrsFormal/Integration/BlockMemory/Definition.lean |
-| definition_49 | definition | 49 | truncated Dirichlet product | 2987 | ✅ proven | FdrsFormal/Integration/BlockMemory/Definition.lean |
-| proposition_59 | proposition | 59 | algebra laws | 2995 | ✅ proven | FdrsFormal/Integration/BlockMemory/Definition.lean |
-| definition_50 | definition | 50 | compiled program operator | 3023 | ✅ proven | FdrsFormal/Integration/BlockMemory/Definition.lean |
-| proposition_60 | proposition | 60 | representation / homomorphism | 3030 | ✅ proven | FdrsFormal/Integration/BlockMemory/Definition.lean |
-| proposition_61 | proposition | 61 | multiplication = composition on basis programs | 3067 | ✅ proven | FdrsFormal/Integration/BlockMemory/Definition.lean |
-| definition_51 | definition | 51 | divisor gate / rhythm | 3099 | ✅ proven | FdrsFormal/Integration/BlockMemory/Definition.lean |
-| theorem_26 | theorem | 26 | compiled execution law | 3106 | ✅ proven | FdrsFormal/Integration/BlockMemory/Definition.lean |
-| corollary_18 | corollary | 18 | causality / triangularity | 3118 | ✅ proven | FdrsFormal/Integration/BlockMemory/Definition.lean |
-| theorem_27 | theorem | 27 | fiberwise locality of (P | 3138 | ✅ proven | FdrsFormal/Integration/BlockMemory/Definition.lean |
-| corollary_19 | corollary | 19 | valuation-lattice convolution form | 3156 | ✅ proven | FdrsFormal/Integration/BlockMemory/Definition.lean |
-| proposition_62 | proposition | 62 | finite-depth cylinder criterion | 3176 | ✅ proven | FdrsFormal/Integration/BlockMemory/Definition.lean |
-| proposition_63 | proposition | 63 | projection algebra for a fixed modulus | 3245 | ✅ proven | FdrsFormal/Integration/BlockMemory/Definition.lean |
-| proposition_64 | proposition | 64 | character expansion = Fourier probe form | 3258 | ✅ proven | FdrsFormal/Integration/BlockMemory/Definition.lean |
-| theorem_28 | theorem | 28 | Möbius inversion as operator inverse | 3287 | ✅ proven | FdrsFormal/Integration/BlockMemory/Definition.lean |
-| proposition_65 | proposition | 65 | projection + prime-square factorization | 3311 | ✅ proven | FdrsFormal/Integration/BlockMemory/Definition.lean |
-| theorem_29 | theorem | 29 | CRT identity | 3338 | ✅ proven | FdrsFormal/Integration/BlockMemory/Definition.lean |
-| definition_52 | definition | 52 | general sieve filter | 3355 | ✅ proven | FdrsFormal/Integration/BlockMemory/Definition.lean |
-| proposition_66 | proposition | 66 | idempotence + monotonic refinement | 3366 | ✅ proven | FdrsFormal/Integration/BlockMemory/Definition.lean |
-| example_1 | example | 1 | squarefree as a sieve | 3378 | ✅ proven | FdrsFormal/Integration/BlockMemory/Definition.lean |
-| proposition_67 | proposition | 67 | diagonal subalgebra closure | 3394 | ✅ proven | FdrsFormal/Integration/BlockMemory/Definition.lean |
-| proposition_68 | proposition | 68 | Dirichlet core closure | 3402 | ✅ proven | FdrsFormal/Integration/BlockMemory/Definition.lean |
-| proposition_69 | proposition | 69 | spectral interaction law with multiplicative probe | 3410 | ✅ proven | FdrsFormal/Integration/BlockMemory/Definition.lean |
-| definition_53 | definition | 53 | lift to cylinder-constant functions | 3493 | ✅ proven | FdrsFormal/Integration/BlockMemory/Definition.lean |
-| definition_54 | definition | 54 | restriction as conditional expectation / block ave | 3501 | ✅ proven | FdrsFormal/Integration/BlockMemory/Definition.lean |
-| proposition_70 | proposition | 70 | lift/restrict coherence | 3515 | ✅ proven | FdrsFormal/Integration/BlockMemory/Definition.lean |
-| definition_55 | definition | 55 | coherent hierarchical memory | 3536 | ✅ proven | FdrsFormal/Integration/BlockMemory/Definition.lean |
-| proposition_71 | proposition | 71 | equivalence with a single fine state | 3547 | ✅ proven | FdrsFormal/Integration/BlockMemory/Definition.lean |
-| proposition_72 | proposition | 72 | depth-(L | 3569 | ✅ proven | FdrsFormal/Integration/BlockMemory/Definition.lean |
-| corollary_20 | corollary | 20 | induced block operator | 3584 | ✅ proven | FdrsFormal/Integration/BlockMemory/Definition.lean |
-| proposition_73 | proposition | 73 | closure under products and linear combinations | 3618 | ✅ proven | FdrsFormal/Integration/BlockMemory/Definition.lean |
-| corollary_21 | corollary | 21 | CRTCompose is depth-max | 3632 | ✅ proven | FdrsFormal/Integration/BlockMemory/Definition.lean |
-| definition_56 | definition | 56 | support of a gate at depth (L | 3649 | ✅ proven | FdrsFormal/Integration/BlockMemory/Definition.lean |
-| proposition_74 | proposition | 74 | sparse update on block memory | 3656 | ✅ proven | FdrsFormal/Integration/BlockMemory/Definition.lean |
-| proposition_75 | proposition | 75 | prefix odometer | 3686 | ✅ proven | FdrsFormal/Integration/BlockMemory/Definition.lean |
-| proposition_76 | proposition | 76 | block-lift evaluation cost | 3743 | ✅ proven | FdrsFormal/Integration/BlockMemory/Definition.lean |
-| proposition_77 | proposition | 77 | active block count | 3761 | ✅ proven | FdrsFormal/Integration/BlockMemory/Definition.lean |
-| proposition_78 | proposition | 78 | per-fiber update cost | 3896 | ✅ proven | FdrsFormal/Integration/Complexity/Definition.lean |
-| corollary_22 | corollary | 22 | global valuation-local cost | 3907 | ✅ proven | FdrsFormal/Integration/BlockMemory/Definition.lean |
-| gate_3 | gate | 3 | Diagonal gates (constraints / phase | 4022 | ✅ proven | FdrsFormal/Modes/VariableRadix/InducedUltrametric/Axioms.lean |
-| gate_4 | gate | 4 | Dirichlet transforms (compiled programs | 4035 | ✅ proven | FdrsFormal/Modes/VariableRadix/InducedUltrametric/CylinderBalls.lean |
-| proposition_79 | proposition | 79 | closure of guarded instructions | 4122 | ✅ proven | FdrsFormal/Modes/VariableRadix/VariableTick/CarryAlgorithm.lean |
-| corollary_23 | corollary | 23 | Markov locality | 4196 | ✅ proven | FdrsFormal/Integration/BlockMemory/Definition.lean |
+| definition_46 | definition | 46 | prime-set lens | 2796 | ✅ proven | FdrsFormal/Integration/BlockMemory/Definition.lean |
+| lemma_4 | lemma | 4 | multiplication inside the Dirichlet basis | 2819 | ✅ proven | FdrsFormal/Integration/BlockMemory/Definition.lean |
+| proposition_56 | proposition | 56 | representation of Dirichlet convolution | 2847 | ✅ proven | FdrsFormal/Integration/BlockMemory/Definition.lean |
+| theorem_24 | theorem | 24 | monoid homomorphism: multiplication ↔ composition | 2873 | ✅ proven | FdrsFormal/Integration/Programs/IntegerSemantics.lean |
+| corollary_17 | corollary | 17 | prime-power instruction set | 2891 | ✅ proven | FdrsFormal/Integration/BlockMemory/Definition.lean |
+| definition_47 | definition | 47 | (P | 2907 | ✅ proven | FdrsFormal/Integration/BlockMemory/Definition.lean |
+| theorem_25 | theorem | 25 | lens-locality: (P | 2915 | ✅ proven | FdrsFormal/Integration/BlockMemory/Definition.lean |
+| definition_48 | definition | 48 | execution set / rhythm of (n | 2938 | ✅ proven | FdrsFormal/Integration/BlockMemory/Definition.lean |
+| proposition_57 | proposition | 57 | periodicity on the integer line | 2946 | ✅ proven | FdrsFormal/Integration/BlockMemory/Definition.lean |
+| proposition_58 | proposition | 58 | finite-depth cylinder realization when (n\mid B_L | 2955 | ✅ proven | FdrsFormal/Integration/BlockMemory/Definition.lean |
+| definition_49 | definition | 49 | truncated Dirichlet product | 3007 | ✅ proven | FdrsFormal/Integration/BlockMemory/Definition.lean |
+| proposition_59 | proposition | 59 | algebra laws | 3015 | ✅ proven | FdrsFormal/Integration/BlockMemory/Definition.lean |
+| definition_50 | definition | 50 | compiled program operator | 3043 | ✅ proven | FdrsFormal/Integration/BlockMemory/Definition.lean |
+| proposition_60 | proposition | 60 | representation / homomorphism | 3050 | ✅ proven | FdrsFormal/Integration/BlockMemory/Definition.lean |
+| proposition_61 | proposition | 61 | multiplication = composition on basis programs | 3087 | ✅ proven | FdrsFormal/Integration/BlockMemory/Definition.lean |
+| definition_51 | definition | 51 | divisor gate / rhythm | 3119 | ✅ proven | FdrsFormal/Integration/BlockMemory/Definition.lean |
+| theorem_26 | theorem | 26 | compiled execution law | 3126 | ✅ proven | FdrsFormal/Integration/BlockMemory/Definition.lean |
+| corollary_18 | corollary | 18 | causality / triangularity | 3138 | ✅ proven | FdrsFormal/Integration/BlockMemory/Definition.lean |
+| theorem_27 | theorem | 27 | fiberwise locality of (P | 3158 | ✅ proven | FdrsFormal/Integration/BlockMemory/Definition.lean |
+| corollary_19 | corollary | 19 | valuation-lattice convolution form | 3176 | ✅ proven | FdrsFormal/Integration/BlockMemory/Definition.lean |
+| proposition_62 | proposition | 62 | finite-depth cylinder criterion | 3196 | ✅ proven | FdrsFormal/Integration/BlockMemory/Definition.lean |
+| proposition_63 | proposition | 63 | projection algebra for a fixed modulus | 3265 | ✅ proven | FdrsFormal/Integration/BlockMemory/Definition.lean |
+| proposition_64 | proposition | 64 | character expansion = Fourier probe form | 3278 | ✅ proven | FdrsFormal/Integration/BlockMemory/Definition.lean |
+| theorem_28 | theorem | 28 | Möbius inversion as operator inverse | 3307 | ✅ proven | FdrsFormal/Integration/BlockMemory/Definition.lean |
+| proposition_65 | proposition | 65 | projection + prime-square factorization | 3331 | ✅ proven | FdrsFormal/Integration/BlockMemory/Definition.lean |
+| theorem_29 | theorem | 29 | CRT identity | 3358 | ✅ proven | FdrsFormal/Integration/BlockMemory/Definition.lean |
+| definition_52 | definition | 52 | general sieve filter | 3375 | ✅ proven | FdrsFormal/Integration/BlockMemory/Definition.lean |
+| proposition_66 | proposition | 66 | idempotence + monotonic refinement | 3386 | ✅ proven | FdrsFormal/Integration/BlockMemory/Definition.lean |
+| example_1 | example | 1 | squarefree as a sieve | 3398 | ✅ proven | FdrsFormal/Integration/BlockMemory/Definition.lean |
+| proposition_67 | proposition | 67 | diagonal subalgebra closure | 3414 | ✅ proven | FdrsFormal/Integration/BlockMemory/Definition.lean |
+| proposition_68 | proposition | 68 | Dirichlet core closure | 3422 | ✅ proven | FdrsFormal/Integration/BlockMemory/Definition.lean |
+| proposition_69 | proposition | 69 | spectral interaction law with multiplicative probe | 3430 | ✅ proven | FdrsFormal/Integration/BlockMemory/Definition.lean |
+| definition_53 | definition | 53 | lift to cylinder-constant functions | 3513 | ✅ proven | FdrsFormal/Integration/BlockMemory/Definition.lean |
+| definition_54 | definition | 54 | restriction as conditional expectation / block ave | 3521 | ✅ proven | FdrsFormal/Integration/BlockMemory/Definition.lean |
+| proposition_70 | proposition | 70 | lift/restrict coherence | 3535 | ✅ proven | FdrsFormal/Integration/BlockMemory/Definition.lean |
+| definition_55 | definition | 55 | coherent hierarchical memory | 3556 | ✅ proven | FdrsFormal/Integration/BlockMemory/Definition.lean |
+| proposition_71 | proposition | 71 | equivalence with a single fine state | 3567 | ✅ proven | FdrsFormal/Integration/BlockMemory/Definition.lean |
+| proposition_72 | proposition | 72 | depth-(L | 3589 | ✅ proven | FdrsFormal/Integration/BlockMemory/Definition.lean |
+| corollary_20 | corollary | 20 | induced block operator | 3604 | ✅ proven | FdrsFormal/Integration/BlockMemory/Definition.lean |
+| proposition_73 | proposition | 73 | closure under products and linear combinations | 3638 | ✅ proven | FdrsFormal/Integration/Complexity/Definition.lean |
+| corollary_21 | corollary | 21 | CRTCompose is depth-max | 3652 | ✅ proven | FdrsFormal/Integration/BlockMemory/Definition.lean |
+| definition_56 | definition | 56 | support of a gate at depth (L | 3669 | ✅ proven | FdrsFormal/Integration/BlockMemory/Definition.lean |
+| proposition_74 | proposition | 74 | sparse update on block memory | 3676 | ✅ proven | FdrsFormal/Integration/BlockMemory/Definition.lean |
+| proposition_75 | proposition | 75 | prefix odometer | 3706 | ✅ proven | FdrsFormal/Integration/BlockMemory/Definition.lean |
+| proposition_76 | proposition | 76 | block-lift evaluation cost | 3763 | ✅ proven | FdrsFormal/Integration/BlockMemory/Definition.lean |
+| proposition_77 | proposition | 77 | active block count | 3781 | ✅ proven | FdrsFormal/Integration/BlockMemory/Definition.lean |
+| proposition_78 | proposition | 78 | per-fiber update cost | 3916 | ✅ proven | FdrsFormal/Integration/Complexity/Definition.lean |
+| corollary_22 | corollary | 22 | global valuation-local cost | 3927 | ✅ proven | FdrsFormal/Integration/BlockMemory/Definition.lean |
+| gate_3 | gate | 3 | Diagonal gates (constraints / phase | 4042 | ✅ proven | FdrsFormal/Integration/BlockMemory/Definition.lean |
+| gate_4 | gate | 4 | Dirichlet transforms (compiled programs | 4055 | ❌ missing | FdrsFormal/Modes/VariableRadix/Encoding/Encoding.lean |
+| proposition_79 | proposition | 79 | closure of guarded instructions | 4142 | ✅ proven | FdrsFormal/Modes/VariableRadix/VariableTick/Correctness.lean |
+| corollary_23 | corollary | 23 | Markov locality | 4216 | ✅ proven | FdrsFormal/Integration/BlockMemory/Definition.lean |
 ## Phase 5
 
 | ID | Type | Number | Title | Line | Status | Lean File |
 |---|---|---|---|---|---|---|
-| definition_57 | definition | 57 | branching function / radix law | 4230 | ✅ proven | FdrsFormal/Modes/VariableRadix/Basic/RadixLaw.lean |
-| definition_58 | definition | 58 | cylinder sets | 4274 | ✅ proven | FdrsFormal/Modes/VariableRadix/InducedUltrametric/CylinderBalls.lean |
-| definition_59 | definition | 59 | prefix metric | 4284 | ✅ proven | FdrsFormal/Integration/ThreeLineMediator/CoupledSystem.lean |
-| proposition_80 | proposition | 80 | ultrametric | 4295 | ✅ proven | FdrsFormal/Integration/ThreeLineMediator/CoupledSystem.lean |
-| corollary_24 | corollary | 24 | cylinders are clopen and form a basis | 4308 | ✅ proven | FdrsFormal/Integration/ThreeLineMediator/CoupledSystem.lean |
-| definition_60 | definition | 60 | lex order | 4322 | ✅ proven | FdrsFormal/Modes/VariableRadix/Encoding/LexOrder.lean |
-| definition_61 | definition | 61 | completion counts | 4330 | ✅ proven | FdrsFormal/Modes/VariableRadix/Encoding/SubtreeCards.lean |
-| definition_62 | definition | 62 | variable-base rank / decoding | 4345 | ✅ proven | FdrsFormal/Modes/VariableRadix/Encoding/Ranking.lean |
-| theorem_30 | theorem | 30 | order-isomorphism to an integer interval | 4354 | ✅ proven | FdrsFormal/Integration/ThreeLineMediator/CoupledSystem.lean |
-| definition_63 | definition | 63 | finite-depth Tick, partial form | 4373 | ✅ proven | FdrsFormal/Modes/VariableRadix/VariableTick/Definition.lean |
-| definition_64 | definition | 64 | finite-depth cyclic Tick | 4381 | ✅ proven | FdrsFormal/Integration/ThreeLineMediator/CoupledSystem.lean |
-| theorem_31 | theorem | 31 | Tick equals +1 in rank coordinates | 4410 | ✅ proven | FdrsFormal/Integration/ThreeLineMediator/CoupledSystem.lean |
-| definition_65 | definition | 65 | maximal path | 4429 | ✅ proven | FdrsFormal/Integration/ThreeLineMediator/CoupledSystem.lean |
-| definition_66 | definition | 66 | infinite Tick, partial | 4437 | ✅ proven | FdrsFormal/Modes/VariableRadix/VariableTick/Definition.lean |
-| proposition_81 | proposition | 81 | no infinite carry | 4441 | ✅ proven | FdrsFormal/Integration/ThreeLineMediator/CoupledSystem.lean |
-| corollary_25 | corollary | 25 | well-founded tick index from a start state | 4449 | ✅ proven | FdrsFormal/Integration/ThreeLineMediator/CoupledSystem.lean |
-| proposition_82 | proposition | 82 | Tick computability | 4469 | ✅ proven | FdrsFormal/Integration/Complexity/Definition.lean |
-| definition_67 | definition | 67 | prefix-determined radix law | 4523 | ✅ proven | FdrsFormal/Integration/ThreeLineMediator/CoupledSystem.lean |
-| theorem_32 | theorem | 32 | well-defined successor; no carry loops | 4529 | ✅ proven | FdrsFormal/Integration/ThreeLineMediator/CoupledSystem.lean |
-| definition_68 | definition | 68 | chart / reindexing isomorphism | 4551 | ✅ proven | FdrsFormal/Integration/ThreeLineMediator/CoupledSystem.lean |
-| theorem_33 | theorem | 33 | transport principle | 4565 | ✅ proven | FdrsFormal/Integration/ThreeLineMediator/CoupledSystem.lean |
-| definition_69 | definition | 69 | rechart map | 4586 | ✅ proven | FdrsFormal/Integration/ThreeLineMediator/CoupledSystem.lean |
-| proposition_83 | proposition | 83 | coherent composition across changing radices | 4595 | ✅ proven | FdrsFormal/Integration/ThreeLineMediator/CoupledSystem.lean |
-| definition_70 | definition | 70 | augmented state for variable-radix time | 4624 | ✅ proven | FdrsFormal/Integration/ThreeLineMediator/CoupledSystem.lean |
-| theorem_34 | theorem | 34 | Markov property | 4645 | ✅ proven | FdrsFormal/Integration/ThreeLineMediator/CoupledSystem.lean |
-| proposition_84 | proposition | 84 | finite-horizon DP always works | 4660 | ✅ proven | FdrsFormal/Integration/ThreeLineMediator/CoupledSystem.lean |
-| proposition_85 | proposition | 85 | infinite-horizon contraction condition | 4674 | ✅ proven | FdrsFormal/Integration/ThreeLineMediator/CoupledSystem.lean |
-| definition_71 | definition | 71 | radix chart | 4738 | ✅ proven | FdrsFormal/Modes/VariableRadix/PrefixWeights/OdometerDecode.lean |
-| definition_72 | definition | 72 | chart-invariant Tick | 4751 | ✅ proven | FdrsFormal/Modes/VariableRadix/Basic/VariableSpace.lean |
-| theorem_35 | theorem | 35 | semantic stability under radix changes | 4764 | ✅ proven | FdrsFormal/Integration/ThreeLineMediator/CoupledSystem.lean |
-| definition_73 | definition | 73 | arithmetic-cylinder property at depth (L | 4799 | ✅ proven | FdrsFormal/Integration/ThreeLineMediator/CoupledSystem.lean |
-| proposition_86 | proposition | 86 | prefix-relative modulus appearance | 4812 | ✅ proven | FdrsFormal/Integration/ThreeLineMediator/CoupledSystem.lean |
-| corollary_26 | corollary | 26 | global modulus-by-depth | 4846 | ✅ proven | FdrsFormal/Integration/ThreeLineMediator/CoupledSystem.lean |
-| theorem_36 | theorem | 36 | Markov property | 4873 | ✅ proven | FdrsFormal/Modes/VariableRadix/PrefixWeights/ArithmeticCylinders.lean |
-| theorem_37 | theorem | 37 | STOK/DP recursion viability under variable radices | 4895 | ✅ proven | FdrsFormal/Modes/VariableRadix/PrefixWeights/ArithmeticCylinders.lean |
-| definition_74 | definition | 74 | Sibling-uniform suffix counts, SU | 4966 | ✅ proven | FdrsFormal/Integration/ThreeLineMediator/CoupledSystem.lean |
-| proposition_87 | proposition | 87 | SU ⇔ constant block sizes at each node | 4977 | ✅ proven | FdrsFormal/Integration/ThreeLineMediator/CoupledSystem.lean |
-| definition_75 | definition | 75 | local modulus / place value along a prefix | 4996 | ✅ proven | FdrsFormal/Integration/ThreeLineMediator/CoupledSystem.lean |
-| definition_76 | definition | 76 | odometer decoding | 5009 | ✅ proven | FdrsFormal/Integration/ThreeLineMediator/CoupledSystem.lean |
-| theorem_38 | theorem | 38 | SU ⇒ arithmetic cylinders with modulus (\beta_\ome | 5025 | ✅ proven | FdrsFormal/Integration/ThreeLineMediator/CoupledSystem.lean |
-| corollary_27 | corollary | 27 | prefix-relative modulus appearance | 5059 | ✅ proven | FdrsFormal/Integration/ThreeLineMediator/CoupledSystem.lean |
-| proposition_88 | proposition | 88 | level-only bases ⇒ (\beta_\omega(s | 5075 | ✅ proven | FdrsFormal/Integration/ThreeLineMediator/CoupledSystem.lean |
-| definition_77 | definition | 77 | Dual-Filtration Machine state | 5199 | ✅ proven | FdrsFormal/Integration/ThreeLineMediator/CoupledSystem.lean |
-| definition_78 | definition | 78 | one step of Dual-Filtration Machine | 5293 | ✅ proven | FdrsFormal/Modes/VariableRadix/Design.lean |
-| theorem_39 | theorem | 39 | combined locality bound | 5326 | ✅ proven | FdrsFormal/Modes/VariableRadix/Design.lean |
-| proposition_89 | proposition | 89 | closure under composition | 5360 | ✅ proven | FdrsFormal/Modes/VariableRadix/MultiMetric.lean |
+| definition_57 | definition | 57 | branching function / radix law | 4250 | ✅ proven | FdrsFormal/Modes/VariableRadix/Basic/RadixLaw.lean |
+| definition_58 | definition | 58 | cylinder sets | 4294 | ✅ proven | FdrsFormal/Modes/VariableRadix/InducedUltrametric/CylinderBalls.lean |
+| definition_59 | definition | 59 | prefix metric | 4304 | ✅ proven | FdrsFormal/Integration/ThreeLineMediator/CoupledSystem.lean |
+| proposition_80 | proposition | 80 | ultrametric | 4315 | ✅ proven | FdrsFormal/Integration/ThreeLineMediator/CoupledSystem.lean |
+| corollary_24 | corollary | 24 | cylinders are clopen and form a basis | 4328 | ✅ proven | FdrsFormal/Integration/ThreeLineMediator/CoupledSystem.lean |
+| definition_60 | definition | 60 | lex order | 4342 | ✅ proven | FdrsFormal/Modes/VariableRadix/Encoding/LexOrder.lean |
+| definition_61 | definition | 61 | completion counts | 4350 | ✅ proven | FdrsFormal/Modes/VariableRadix/Encoding/SubtreeCards.lean |
+| definition_62 | definition | 62 | variable-base rank / decoding | 4365 | ✅ proven | FdrsFormal/Modes/VariableRadix/Encoding/Ranking.lean |
+| theorem_30 | theorem | 30 | order-isomorphism to an integer interval | 4374 | ✅ proven | FdrsFormal/Integration/ThreeLineMediator/CoupledSystem.lean |
+| definition_63 | definition | 63 | finite-depth Tick, partial form | 4393 | ✅ proven | FdrsFormal/Modes/VariableRadix/VariableTick/Definition.lean |
+| definition_64 | definition | 64 | finite-depth cyclic Tick | 4401 | ✅ proven | FdrsFormal/Integration/ThreeLineMediator/CoupledSystem.lean |
+| theorem_31 | theorem | 31 | Tick equals +1 in rank coordinates | 4430 | ✅ proven | FdrsFormal/Integration/ThreeLineMediator/CoupledSystem.lean |
+| definition_65 | definition | 65 | maximal path | 4449 | ✅ proven | FdrsFormal/Integration/ThreeLineMediator/CoupledSystem.lean |
+| definition_66 | definition | 66 | infinite Tick, partial | 4457 | ✅ proven | FdrsFormal/Modes/VariableRadix/VariableTick/Definition.lean |
+| proposition_81 | proposition | 81 | no infinite carry | 4461 | ✅ proven | FdrsFormal/Integration/ThreeLineMediator/CoupledSystem.lean |
+| corollary_25 | corollary | 25 | well-founded tick index from a start state | 4469 | ✅ proven | FdrsFormal/Integration/ThreeLineMediator/CoupledSystem.lean |
+| proposition_82 | proposition | 82 | Tick computability | 4489 | ✅ proven | FdrsFormal/Integration/Complexity/Definition.lean |
+| definition_67 | definition | 67 | prefix-determined radix law | 4543 | ✅ proven | FdrsFormal/Integration/ThreeLineMediator/CoupledSystem.lean |
+| theorem_32 | theorem | 32 | well-defined successor; no carry loops | 4549 | ✅ proven | FdrsFormal/Integration/ThreeLineMediator/CoupledSystem.lean |
+| definition_68 | definition | 68 | chart / reindexing isomorphism | 4571 | ✅ proven | FdrsFormal/Integration/ThreeLineMediator/CoupledSystem.lean |
+| theorem_33 | theorem | 33 | transport principle | 4585 | ✅ proven | FdrsFormal/Integration/ThreeLineMediator/CoupledSystem.lean |
+| definition_69 | definition | 69 | rechart map | 4606 | ✅ proven | FdrsFormal/Integration/ThreeLineMediator/CoupledSystem.lean |
+| proposition_83 | proposition | 83 | coherent composition across changing radices | 4615 | ✅ proven | FdrsFormal/Integration/ThreeLineMediator/CoupledSystem.lean |
+| definition_70 | definition | 70 | augmented state for variable-radix time | 4644 | ✅ proven | FdrsFormal/Integration/ThreeLineMediator/CoupledSystem.lean |
+| theorem_34 | theorem | 34 | Markov property | 4665 | ✅ proven | FdrsFormal/Integration/ThreeLineMediator/CoupledSystem.lean |
+| proposition_84 | proposition | 84 | finite-horizon DP always works | 4680 | ✅ proven | FdrsFormal/Integration/ThreeLineMediator/CoupledSystem.lean |
+| proposition_85 | proposition | 85 | infinite-horizon contraction condition | 4694 | ✅ proven | FdrsFormal/Modes/VariableRadix/SiblingUniformity/Definition.lean |
+| definition_71 | definition | 71 | radix chart | 4758 | ✅ proven | FdrsFormal/Integration/ThreeLineMediator/CoupledSystem.lean |
+| definition_72 | definition | 72 | chart-invariant Tick | 4771 | ✅ proven | FdrsFormal/Modes/VariableRadix/Basic/VariableSpace.lean |
+| theorem_35 | theorem | 35 | semantic stability under radix changes | 4784 | ✅ proven | FdrsFormal/Integration/ThreeLineMediator/CoupledSystem.lean |
+| definition_73 | definition | 73 | arithmetic-cylinder property at depth (L | 4819 | ✅ proven | FdrsFormal/Integration/ThreeLineMediator/CoupledSystem.lean |
+| proposition_86 | proposition | 86 | prefix-relative modulus appearance | 4832 | ✅ proven | FdrsFormal/Integration/ThreeLineMediator/CoupledSystem.lean |
+| corollary_26 | corollary | 26 | global modulus-by-depth | 4866 | ✅ proven | FdrsFormal/Integration/ThreeLineMediator/CoupledSystem.lean |
+| theorem_36 | theorem | 36 | Markov property | 4893 | ✅ proven | FdrsFormal/Modes/VariableRadix/PrefixWeights/ArithmeticCylinders.lean |
+| theorem_37 | theorem | 37 | STOK/DP recursion viability under variable radices | 4915 | ✅ proven | FdrsFormal/Integration/ThreeLineMediator/CoupledSystem.lean |
+| definition_74 | definition | 74 | Sibling-uniform suffix counts, SU | 4986 | ✅ proven | FdrsFormal/Integration/ThreeLineMediator/CoupledSystem.lean |
+| proposition_87 | proposition | 87 | SU ⇔ constant block sizes at each node | 4997 | ✅ proven | FdrsFormal/Integration/ThreeLineMediator/CoupledSystem.lean |
+| definition_75 | definition | 75 | local modulus / place value along a prefix | 5016 | ✅ proven | FdrsFormal/Integration/ThreeLineMediator/CoupledSystem.lean |
+| definition_76 | definition | 76 | odometer decoding | 5029 | ✅ proven | FdrsFormal/Integration/ThreeLineMediator/CoupledSystem.lean |
+| theorem_38 | theorem | 38 | SU ⇒ arithmetic cylinders with modulus (\beta_\ome | 5045 | ✅ proven | FdrsFormal/Integration/ThreeLineMediator/CoupledSystem.lean |
+| corollary_27 | corollary | 27 | prefix-relative modulus appearance | 5079 | ✅ proven | FdrsFormal/Integration/ThreeLineMediator/CoupledSystem.lean |
+| proposition_88 | proposition | 88 | level-only bases ⇒ (\beta_\omega(s | 5095 | ✅ proven | FdrsFormal/Integration/ThreeLineMediator/CoupledSystem.lean |
+| definition_77 | definition | 77 | Dual-Filtration Machine state | 5219 | ✅ proven | FdrsFormal/Modes/VariableRadix/MetricComparison.lean |
+| definition_78 | definition | 78 | one step of Dual-Filtration Machine | 5313 | ✅ proven | FdrsFormal/Modes/VariableRadix/Design.lean |
+| theorem_39 | theorem | 39 | combined locality bound | 5346 | ✅ proven | FdrsFormal/Modes/VariableRadix/MultiMetric.lean |
+| proposition_89 | proposition | 89 | closure under composition | 5380 | ✅ proven | FdrsFormal/Modes/VariableRadix/MultiMetric.lean |
 ## Phase 6
 
 | ID | Type | Number | Title | Line | Status | Lean File |
 |---|---|---|---|---|---|---|
-| definition_79 | definition | 79 | Radix-induced ultrametric | 5409 | ✅ proven | FdrsFormal/Modes/VariableRadix/MultiMetric/Projection.lean |
-| definition_80 | definition | 80 | Ultrametric spectrum | 5426 | ✅ proven | FdrsFormal/Modes/VariableRadix/MultiMetric/Residual.lean |
-| theorem_40 | theorem | 40 | SU implies proper ultrametric | 5440 | ✅ proven | FdrsFormal/Modes/ExtendedBase/Definition.lean |
-| proposition_90 | proposition | 90 | Cylinders are ultrametric balls | 5467 | ✅ proven | FdrsFormal/Modes/ExtendedBase/Definition.lean |
-| definition_81 | definition | 81 | Metric dominance | 5490 | ✅ proven | FdrsFormal/Modes/ContextDependent/Basic/Basic.lean |
-| theorem_41 | theorem | 41 | Metric spectrum forms a preorder | 5502 | ✅ proven | FdrsFormal/Modes/VariableRadix/MetricComparison/Properties.lean |
-| definition_82 | definition | 82 | Multi-metric observer complex | 5621 | ✅ proven | FdrsFormal/Modes/VariableRadix/MultiMetric/ObserverComplex.lean |
-| definition_83 | definition | 83 | Metric projection | 5636 | ✅ proven | FdrsFormal/Modes/VariableRadix/MultiMetric/Projection.lean |
-| theorem_42 | theorem | 42 | Residual as metric discrepancy | 5648 | ✅ proven | FdrsFormal/Modes/VariableRadix/MultiMetric/Residual.lean |
-| theorem_43 | theorem | 43 | Realizability criterion for ultrametrics | 5664 | ✅ proven | FdrsFormal/Modes/VariableRadix/Realizability/MetricRealizability.lean |
-| corollary_28 | corollary | 28 | Non-realizable ultrametrics | 5720 | ✅ proven | FdrsFormal/Modes/ContextDependent/Variations/MultiAgent.lean |
-| theorem_44 | theorem | 44 | Locality bounds under designed metrics | 5731 | ✅ proven | FdrsFormal/Modes/ContextDependent/Variations/MultiAgent.lean |
-| proposition_91 | proposition | 91 | SU ⟹ proper ultrametric | 5756 | ✅ proven | FdrsFormal/Modes/ContextDependent/Variations/MultiAgent.lean |
-| proposition_92 | proposition | 92 | Cylinders are balls | 5758 | ✅ proven | FdrsFormal/Modes/ContextDependent/Variations/MultiAgent.lean |
-| proposition_93 | proposition | 93 | Spectrum forms preorder | 5760 | ✅ proven | FdrsFormal/Modes/ContextDependent/Variations/MultiAgent.lean |
-| proposition_94 | proposition | 94 | Volume prescription | 5762 | ✅ proven | FdrsFormal/Modes/ExtendedBase/Definition.lean |
-| proposition_95 | proposition | 95 | Multi-metric observers | 5764 | ✅ proven | FdrsFormal/Modes/ExtendedBase/Definition.lean |
-| proposition_96 | proposition | 96 | Realizability criterion | 5766 | ✅ proven | FdrsFormal/Modes/ExtendedBase/Definition.lean |
-| proposition_97 | proposition | 97 | Custom locality | 5768 | ✅ proven | FdrsFormal/Modes/ExtendedBase/Definition.lean |
+| definition_79 | definition | 79 | Radix-induced ultrametric | 5429 | ✅ proven | FdrsFormal/Modes/VariableRadix/Design/Examples.lean |
+| definition_80 | definition | 80 | Ultrametric spectrum | 5446 | ✅ proven | FdrsFormal/Modes/ExtendedBase/Definition.lean |
+| theorem_40 | theorem | 40 | SU implies proper ultrametric | 5460 | ✅ proven | FdrsFormal/Modes/ExtendedBase/Definition.lean |
+| proposition_90 | proposition | 90 | Cylinders are ultrametric balls | 5487 | ✅ proven | FdrsFormal/Modes/ContextDependent/Basic/Basic.lean |
+| definition_81 | definition | 81 | Metric dominance | 5510 | ❌ missing | FdrsFormal/Modes/ContextDependent/Basic/Basic.lean |
+| theorem_41 | theorem | 41 | Metric spectrum forms a preorder | 5522 | ✅ proven | FdrsFormal/Modes/VariableRadix/MetricComparison/Properties.lean |
+| definition_82 | definition | 82 | Multi-metric observer complex | 5641 | ✅ proven | FdrsFormal/Modes/VariableRadix/MultiMetric/ObserverComplex.lean |
+| definition_83 | definition | 83 | Metric projection | 5656 | ✅ proven | FdrsFormal/Modes/VariableRadix/MultiMetric/Projection.lean |
+| theorem_42 | theorem | 42 | Residual as metric discrepancy | 5668 | ✅ proven | FdrsFormal/Modes/VariableRadix/MultiMetric/Residual.lean |
+| theorem_43 | theorem | 43 | Realizability criterion for ultrametrics | 5684 | ✅ proven | FdrsFormal/Modes/VariableRadix/Realizability/MetricRealizability.lean |
+| corollary_28 | corollary | 28 | Non-realizable ultrametrics | 5740 | ✅ proven | FdrsFormal/Modes/ContextDependent/Variations/MultiAgent.lean |
+| theorem_44 | theorem | 44 | Locality bounds under designed metrics | 5751 | ✅ proven | FdrsFormal/Modes/ContextDependent/Variations/MultiAgent.lean |
+| proposition_91 | proposition | 91 | SU ⟹ proper ultrametric | 5776 | ✅ proven | FdrsFormal/Modes/ExtendedBase/Definition.lean |
+| proposition_92 | proposition | 92 | Cylinders are balls | 5778 | ✅ proven | FdrsFormal/Modes/ExtendedBase/Definition.lean |
+| proposition_93 | proposition | 93 | Spectrum forms preorder | 5780 | ✅ proven | FdrsFormal/Modes/ExtendedBase/Definition.lean |
+| proposition_94 | proposition | 94 | Volume prescription | 5782 | ✅ proven | FdrsFormal/Modes/ExtendedBase/Definition.lean |
+| proposition_95 | proposition | 95 | Multi-metric observers | 5784 | ✅ proven | FdrsFormal/Modes/ExtendedBase/Definition.lean |
+| proposition_96 | proposition | 96 | Realizability criterion | 5786 | ✅ proven | FdrsFormal/Modes/ExtendedBase/Definition.lean |
+| proposition_97 | proposition | 97 | Custom locality | 5788 | ✅ proven | FdrsFormal/Modes/ExtendedBase/Definition.lean |
 ## Phase 7
 
 | ID | Type | Number | Title | Line | Status | Lean File |
 |---|---|---|---|---|---|---|
-| definition_84 | definition | 84 | Context space | 5795 | ✅ proven | FdrsFormal/Integration/ThreeLineMediator/Definition.lean |
-| definition_85 | definition | 85 | Extended radix oracle | 5813 | ✅ proven | FdrsFormal/Integration/ThreeLineMediator/Definition.lean |
-| definition_86 | definition | 86 | Contextual sibling uniformity - CSU | 5825 | ✅ proven | FdrsFormal/Modes/ContextDependent/Variations/Stochastic.lean |
-| definition_87 | definition | 87 | Context-indexed mixed-radix family | 5837 | ✅ proven | FdrsFormal/Modes/ContextDependent/Basic/ExtendedOracle.lean |
-| definition_88 | definition | 88 | Context dynamics | 5854 | ✅ proven | FdrsFormal/Integration/ThreeLineMediator/Definition.lean |
-| definition_89 | definition | 89 | Stateful context-dependent system | 5866 | ✅ proven | FdrsFormal/Integration/ThreeLineMediator/Definition.lean |
-| definition_90 | definition | 90 | Trace of a stateful system | 5890 | ✅ proven | FdrsFormal/Integration/ThreeLineMediator/Definition.lean |
-| theorem_45 | theorem | 45 | Context-switching preserves SU | 5903 | ✅ proven | FdrsFormal/Modes/ContextDependent/Evolution/Preservation.lean |
-| definition_91 | definition | 91 | Operational semantic modes | 5915 | ✅ proven | FdrsFormal/Modes/ContextDependent/Realization/SemanticModes.lean |
-| definition_92 | definition | 92 | Lazy vs eager realization | 5927 | ✅ proven | FdrsFormal/Composition.lean |
-| theorem_46 | theorem | 46 | Lazy-eager semantic equivalence | 5943 | ✅ proven | FdrsFormal/Composition.lean |
-| definition_93 | definition | 93 | Structure-preserving context transition | 5955 | ✅ proven | FdrsFormal/Composition.lean |
-| theorem_47 | theorem | 47 | Depth-L operators preserved | 5965 | ✅ proven | FdrsFormal/Composition.lean |
-| definition_94 | definition | 94 | Monotone context refinement | 5986 | ✅ proven | FdrsFormal/Composition.lean |
-| proposition_98 | proposition | 98 | Metric dominance under refinement | 5996 | ✅ proven | FdrsFormal/Composition.lean |
-| definition_95 | definition | 95 | Multi-context observer complex | 6010 | ❌ missing | FdrsFormal/Composition.lean |
-| definition_96 | definition | 96 | Context-dependent schedule | 6023 | ✅ proven | FdrsFormal/Composition.lean |
-| definition_97 | definition | 97 | Context coupling maps | 6035 | ✅ proven | FdrsFormal/Composition.lean |
-| theorem_48 | theorem | 48 | Independent context evolution | 6049 | ✅ proven | FdrsFormal/Composition.lean |
-| definition_98 | definition | 98 | Coupled context evolution | 6061 | ✅ proven | FdrsFormal/Composition.lean |
-| definition_99 | definition | 99 | Computable oracle | 6078 | ✅ proven | FdrsFormal/Composition.lean |
-| definition_100 | definition | 100 | Finitely-supported oracle | 6084 | ✅ proven | FdrsFormal/Composition.lean |
-| proposition_99 | proposition | 99 | Finite-depth realizability | 6090 | ✅ proven | FdrsFormal/Composition.lean |
-| definition_101 | definition | 101 | Stable oracle | 6104 | ✅ proven | FdrsFormal/Composition.lean |
-| definition_102 | definition | 102 | Context-independent prefix | 6116 | ✅ proven | FdrsFormal/Composition.lean |
-| definition_103 | definition | 103 | Deterministic context system | 6126 | ✅ proven | FdrsFormal/Composition.lean |
-| definition_104 | definition | 104 | Stochastic context system | 6134 | ✅ proven | FdrsFormal/Composition.lean |
-| theorem_49 | theorem | 49 | Stochastic SU preservation | 6146 | ✅ proven | FdrsFormal/Composition.lean |
-| definition_105 | definition | 105 | Oracle embedding | 6156 | ✅ proven | FdrsFormal/Composition.lean |
-| definition_106 | definition | 106 | Oracle equivalence | 6169 | ✅ proven | FdrsFormal/Composition.lean |
-| theorem_50 | theorem | 50 | Equivalence preserves all structural properties | 6182 | ✅ proven | FdrsFormal/Composition.lean |
-| proposition_100 | proposition | 100 | Context-switching preserves SU | 6195 | ✅ proven | FdrsFormal/Composition.lean |
-| proposition_101 | proposition | 101 | Lazy-eager equivalence | 6197 | ✅ proven | FdrsFormal/Composition.lean |
-| proposition_102 | proposition | 102 | Structure-preserving transitions | 6199 | ✅ proven | FdrsFormal/Composition.lean |
-| proposition_103 | proposition | 103 | Refinement induces metric dominance | 6201 | ✅ proven | FdrsFormal/Composition.lean |
-| proposition_104 | proposition | 104 | Independent factorization | 6203 | ✅ proven | FdrsFormal/Composition.lean |
-| proposition_105 | proposition | 105 | Finite realizability | 6205 | ✅ proven | FdrsFormal/Composition.lean |
-| proposition_106 | proposition | 106 | Stochastic SU preservation | 6207 | ✅ proven | FdrsFormal/Composition.lean |
-| proposition_107 | proposition | 107 | Oracle equivalence invariance | 6209 | ✅ proven | FdrsFormal/Composition.lean |
+| definition_84 | definition | 84 | Context space | 5815 | ✅ proven | FdrsFormal/Integration/ThreeLineMediator/Definition.lean |
+| definition_85 | definition | 85 | Extended radix oracle | 5833 | ✅ proven | FdrsFormal/Modes/ContextDependent/Variations/Stochastic.lean |
+| definition_86 | definition | 86 | Contextual sibling uniformity - CSU | 5845 | ✅ proven | FdrsFormal/Integration/ThreeLineMediator/Definition.lean |
+| definition_87 | definition | 87 | Context-indexed mixed-radix family | 5857 | ✅ proven | FdrsFormal/Modes/ContextDependent/Basic/ExtendedOracle.lean |
+| definition_88 | definition | 88 | Context dynamics | 5874 | ✅ proven | FdrsFormal/Integration/ThreeLineMediator/Definition.lean |
+| definition_89 | definition | 89 | Stateful context-dependent system | 5886 | ✅ proven | FdrsFormal/Integration/ThreeLineMediator/Definition.lean |
+| definition_90 | definition | 90 | Trace of a stateful system | 5910 | ❌ missing | FdrsFormal/Composition.lean |
+| theorem_45 | theorem | 45 | Context-switching preserves SU | 5923 | ✅ proven | FdrsFormal/Modes/ContextDependent/Evolution/Preservation.lean |
+| definition_91 | definition | 91 | Operational semantic modes | 5935 | ✅ proven | FdrsFormal/Modes/ContextDependent/Realization/SemanticModes.lean |
+| definition_92 | definition | 92 | Lazy vs eager realization | 5947 | ✅ proven | FdrsFormal/Composition.lean |
+| theorem_46 | theorem | 46 | Lazy-eager semantic equivalence | 5963 | ✅ proven | FdrsFormal/Composition.lean |
+| definition_93 | definition | 93 | Structure-preserving context transition | 5975 | ❌ missing | FdrsFormal/Composition.lean |
+| theorem_47 | theorem | 47 | Depth-L operators preserved | 5985 | ✅ proven | FdrsFormal/Composition.lean |
+| definition_94 | definition | 94 | Monotone context refinement | 6006 | ❌ missing | FdrsFormal/Composition.lean |
+| proposition_98 | proposition | 98 | Metric dominance under refinement | 6016 | ✅ proven | FdrsFormal/Composition.lean |
+| definition_95 | definition | 95 | Multi-context observer complex | 6030 | ✅ proven | FdrsFormal/Composition.lean |
+| definition_96 | definition | 96 | Context-dependent schedule | 6043 | ✅ proven | FdrsFormal/Composition.lean |
+| definition_97 | definition | 97 | Context coupling maps | 6055 | ✅ proven | FdrsFormal/Composition.lean |
+| theorem_48 | theorem | 48 | Independent context evolution | 6069 | ✅ proven | FdrsFormal/Composition.lean |
+| definition_98 | definition | 98 | Coupled context evolution | 6081 | ✅ proven | FdrsFormal/Composition.lean |
+| definition_99 | definition | 99 | Computable oracle | 6098 | ✅ proven | FdrsFormal/Composition.lean |
+| definition_100 | definition | 100 | Finitely-supported oracle | 6104 | ✅ proven | FdrsFormal/Composition.lean |
+| proposition_99 | proposition | 99 | Finite-depth realizability | 6110 | ✅ proven | FdrsFormal/Composition.lean |
+| definition_101 | definition | 101 | Stable oracle | 6124 | ✅ proven | FdrsFormal/Composition.lean |
+| definition_102 | definition | 102 | Context-independent prefix | 6136 | ✅ proven | FdrsFormal/Composition.lean |
+| definition_103 | definition | 103 | Deterministic context system | 6146 | ✅ proven | FdrsFormal/Composition.lean |
+| definition_104 | definition | 104 | Stochastic context system | 6154 | ✅ proven | FdrsFormal/Composition.lean |
+| theorem_49 | theorem | 49 | Stochastic SU preservation | 6166 | ✅ proven | FdrsFormal/Composition.lean |
+| definition_105 | definition | 105 | Oracle embedding | 6176 | ✅ proven | FdrsFormal/Composition.lean |
+| definition_106 | definition | 106 | Oracle equivalence | 6189 | ✅ proven | FdrsFormal/Composition.lean |
+| theorem_50 | theorem | 50 | Equivalence preserves all structural properties | 6202 | ✅ proven | FdrsFormal/Composition.lean |
+| proposition_100 | proposition | 100 | Context-switching preserves SU | 6215 | ✅ proven | FdrsFormal/Composition.lean |
+| proposition_101 | proposition | 101 | Lazy-eager equivalence | 6217 | ✅ proven | FdrsFormal/Composition.lean |
+| proposition_102 | proposition | 102 | Structure-preserving transitions | 6219 | ✅ proven | FdrsFormal/Composition.lean |
+| proposition_103 | proposition | 103 | Refinement induces metric dominance | 6221 | ✅ proven | FdrsFormal/Composition.lean |
+| proposition_104 | proposition | 104 | Independent factorization | 6223 | ✅ proven | FdrsFormal/Composition.lean |
+| proposition_105 | proposition | 105 | Finite realizability | 6225 | ✅ proven | FdrsFormal/Composition.lean |
+| proposition_106 | proposition | 106 | Stochastic SU preservation | 6227 | ✅ proven | FdrsFormal/Composition.lean |
+| proposition_107 | proposition | 107 | Oracle equivalence invariance | 6229 | ✅ proven | FdrsFormal/Composition.lean |
 ## Phase 8
 
 | ID | Type | Number | Title | Line | Status | Lean File |
 |---|---|---|---|---|---|---|
-| definition_107 | definition | 107 | Timeline identifier space | 6234 | ✅ proven | FdrsFormal/Composition/TimelineGraphs/Identifiers.lean |
-| definition_108 | definition | 108 | Timeline graph structure | 6248 | ✅ proven | FdrsFormal/Composition/TimelineGraphs/Identifiers.lean |
-| definition_109 | definition | 109 | Junction point types | 6265 | ✅ proven | FdrsFormal/Composition/Junctions/Types.lean |
-| definition_110 | definition | 110 | Active cylinder in timeline | 6278 | ✅ proven | FdrsFormal/Composition/Junctions/Types.lean |
-| definition_111 | definition | 111 | Event space for timeline graphs | 6290 | ✅ proven | FdrsFormal/Composition/Routing/Events.lean |
-| definition_112 | definition | 112 | Routing function | 6303 | ✅ proven | FdrsFormal/Composition/Routing/Events.lean |
-| definition_113 | definition | 113 | Transfer types | 6325 | ✅ proven | FdrsFormal/Composition/Junctions/TransferSemantics.lean |
-| definition_114 | definition | 114 | Payload transform | 6346 | ✅ proven | FdrsFormal/Composition/Junctions/PayloadTransform.lean |
-| definition_115 | definition | 115 | Static routing table | 6361 | ✅ proven | FdrsFormal/Composition.lean |
-| definition_116 | definition | 116 | Injection operation | 6376 | 🟠 scaffold | FdrsFormal/Composition/Injection/Definition.lean |
-| definition_117 | definition | 117 | Injection locality | 6386 | ✅ proven | FdrsFormal/Composition/Injection/Locality.lean |
-| definition_118 | definition | 118 | Injection queue for asynchrony | 6398 | ✅ proven | FdrsFormal/Composition/Injection/Queue.lean |
-| theorem_51 | theorem | 51 | Injection preserves CSU | 6412 | ✅ proven | FdrsFormal/Composition/Injection/Preservation.lean |
-| definition_119 | definition | 119 | Routing dependency graph | 6426 | ✅ proven | FdrsFormal/Composition/RoutingGraph/Graph.lean |
-| definition_120 | definition | 120 | Acyclic routing | 6437 | ✅ proven | FdrsFormal/Composition/RoutingGraph/Graph.lean |
-| theorem_52 | theorem | 52 | Acyclic routing implies deadlock-freedom | 6445 | ✅ proven | FdrsFormal/Composition/RoutingGraph/Graph.lean |
-| definition_121 | definition | 121 | Routing depth | 6465 | ✅ proven | FdrsFormal/Composition/TimingBounds/RoutingAnalysis.lean |
-| proposition_108 | proposition | 108 | Finite routing depth | 6475 | ✅ proven | FdrsFormal/Composition/TimingBounds/RoutingAnalysis.lean |
-| definition_122 | definition | 122 | Local timeline operation cost | 6487 | ✅ proven | FdrsFormal/Composition/TimingBounds/RoutingAnalysis.lean |
-| definition_123 | definition | 123 | Routing operation overhead | 6497 | ✅ proven | FdrsFormal/Composition/RoutingGraph/Graph.lean |
-| theorem_53 | theorem | 53 | Composite timing bound - Main Result | 6510 | ✅ proven | FdrsFormal/Composition/TimingBounds/RoutingAnalysis.lean |
-| corollary_29 | corollary | 29 | Static routing compile-time bound | 6531 | ✅ proven | FdrsFormal/Composition/TimingBounds/RoutingAnalysis.lean |
-| definition_124 | definition | 124 | Timeline lifecycle states | 6553 | ✅ proven | FdrsFormal/Composition/Lifecycle/States.lean |
-| definition_125 | definition | 125 | Spawn operation | 6565 | ✅ proven | FdrsFormal/Composition/Lifecycle/Spawn.lean |
-| definition_126 | definition | 126 | Terminate operation | 6579 | ✅ proven | FdrsFormal/Composition/Lifecycle/Terminate.lean |
-| definition_127 | definition | 127 | Bounded spawn system | 6592 | ✅ proven | FdrsFormal/Composition/Lifecycle/BoundedSpawn.lean |
-| theorem_54 | theorem | 54 | Bounded spawn preserves global timing bounds | 6604 | ✅ proven | FdrsFormal/Composition/Lifecycle/BoundedSpawn.lean |
-| definition_128 | definition | 128 | Multicast routing | 6630 | ✅ proven | FdrsFormal/Composition/Synchronization/Multicast.lean |
-| definition_129 | definition | 129 | Synchronization point | 6642 | ✅ proven | FdrsFormal/Composition/Synchronization/Join.lean |
-| definition_130 | definition | 130 | Join semantics | 6652 | ✅ proven | FdrsFormal/Composition/Synchronization/Join.lean |
-| theorem_55 | theorem | 55 | Multicast-join duality | 6669 | ✅ proven | FdrsFormal/Composition/Synchronization/Duality.lean |
-| definition_131 | definition | 131 | Routing specification language | 6679 | ✅ proven | FdrsFormal/Composition/Verification/Specification.lean |
-| definition_132 | definition | 132 | Compiled routing table | 6696 | ✅ proven | FdrsFormal/Composition/Verification/Specification.lean |
-| proposition_109 | proposition | 109 | Compile-time decidable properties | 6706 | ✅ proven | FdrsFormal/Composition/Verification/CompileTime.lean |
-| definition_133 | definition | 133 | Verified routing specification | 6722 | ✅ proven | FdrsFormal/Composition/Verification/Verified.lean |
-| definition_134 | definition | 134 | Routed observer complex | 6734 | ✅ proven | FdrsFormal/Composition/ObserverIntegration/RoutedObserver.lean |
-| theorem_56 | theorem | 56 | Observer complex as special case of routing | 6749 | ✅ proven | FdrsFormal/Composition/ObserverIntegration/Embedding.lean |
-| theorem_57 | theorem | 57 | Residual payload as junction accumulation | 6761 | ✅ proven | FdrsFormal/Composition/ObserverIntegration/ResidualPayload.lean |
-| example_2 | example | 2 | Multi-Timeline RTOS Architecture | 6777 | ✅ proven | FdrsFormal/Composition/DeadlockAnalysis/Definition.lean |
-| example_3 | example | 3 | Interrupt as Timeline Injection | 6804 | ✅ proven | FdrsFormal/Composition/DeadlockAnalysis/Definition.lean |
-| example_4 | example | 4 | Dynamic Task Spawning | 6839 | ✅ proven | FdrsFormal/Composition/DeadlockAnalysis/Definition.lean |
-| proposition_110 | proposition | 110 | Injection preserves CSU | 6864 | ✅ proven | FdrsFormal/Composition/DeadlockAnalysis/Definition.lean |
-| proposition_111 | proposition | 111 | Acyclic routing ⟹ deadlock-free | 6866 | ✅ proven | FdrsFormal/Composition/DeadlockAnalysis/Definition.lean |
-| proposition_112 | proposition | 112 | Finite depth under acyclicity | 6868 | ✅ proven | FdrsFormal/Composition/DeadlockAnalysis/Definition.lean |
-| proposition_113 | proposition | 113 | Composite timing bound | 6870 | ✅ proven | FdrsFormal/Composition/DeadlockAnalysis/Definition.lean |
-| proposition_114 | proposition | 114 | Static routing compile-time bound | 6872 | ✅ proven | FdrsFormal/Composition/DeadlockAnalysis/Definition.lean |
-| proposition_115 | proposition | 115 | Bounded spawn timing preservation | 6874 | ✅ proven | FdrsFormal/Composition/DeadlockAnalysis/Definition.lean |
-| proposition_116 | proposition | 116 | Multicast-join duality | 6876 | ✅ proven | FdrsFormal/Composition/DeadlockAnalysis/Definition.lean |
-| proposition_117 | proposition | 117 | Observer complex embedding | 6878 | ✅ proven | FdrsFormal/Composition/DeadlockAnalysis/Definition.lean |
-| proposition_118 | proposition | 118 | Compile-time verification | 6880 | ✅ proven | FdrsFormal/Composition/DeadlockAnalysis/Definition.lean |
-| proposition_119 | proposition | 119 | Residual as undelivered accumulation | 6882 | ✅ proven | FdrsFormal/Composition/DeadlockAnalysis/Definition.lean |
+| definition_107 | definition | 107 | Timeline identifier space | 6254 | ✅ proven | FdrsFormal/Composition/TimelineGraphs/Identifiers.lean |
+| definition_108 | definition | 108 | Timeline graph structure | 6268 | ✅ proven | FdrsFormal/Composition/TimelineGraphs/Identifiers.lean |
+| definition_109 | definition | 109 | Junction point types | 6285 | ✅ proven | FdrsFormal/Composition/Junctions/Types.lean |
+| definition_110 | definition | 110 | Active cylinder in timeline | 6298 | ✅ proven | FdrsFormal/Composition/Junctions/Types.lean |
+| definition_111 | definition | 111 | Event space for timeline graphs | 6310 | ✅ proven | FdrsFormal/Composition/Routing/Events.lean |
+| definition_112 | definition | 112 | Routing function | 6323 | ✅ proven | FdrsFormal/Composition/Routing/Events.lean |
+| definition_113 | definition | 113 | Transfer types | 6345 | ✅ proven | FdrsFormal/Composition/Junctions/TransferSemantics.lean |
+| definition_114 | definition | 114 | Payload transform | 6366 | ✅ proven | FdrsFormal/Composition/Junctions/PayloadTransform.lean |
+| definition_115 | definition | 115 | Static routing table | 6381 | ✅ proven | FdrsFormal/Composition.lean |
+| definition_116 | definition | 116 | Injection operation | 6396 | 🟠 scaffold | FdrsFormal/Composition/Injection/Definition.lean |
+| definition_117 | definition | 117 | Injection locality | 6406 | ✅ proven | FdrsFormal/Composition/Injection/Locality.lean |
+| definition_118 | definition | 118 | Injection queue for asynchrony | 6418 | ✅ proven | FdrsFormal/Composition/Injection/Queue.lean |
+| theorem_51 | theorem | 51 | Injection preserves CSU | 6432 | ✅ proven | FdrsFormal/Composition/Injection/Preservation.lean |
+| definition_119 | definition | 119 | Routing dependency graph | 6446 | ✅ proven | FdrsFormal/Composition/RoutingGraph/Graph.lean |
+| definition_120 | definition | 120 | Acyclic routing | 6457 | ✅ proven | FdrsFormal/Composition/RoutingGraph/Graph.lean |
+| theorem_52 | theorem | 52 | Acyclic routing implies deadlock-freedom | 6465 | ✅ proven | FdrsFormal/Composition/RoutingGraph/Graph.lean |
+| definition_121 | definition | 121 | Routing depth | 6485 | ✅ proven | FdrsFormal/Composition/TimingBounds/RoutingAnalysis.lean |
+| proposition_108 | proposition | 108 | Finite routing depth | 6495 | ✅ proven | FdrsFormal/Composition/TimingBounds/RoutingAnalysis.lean |
+| definition_122 | definition | 122 | Local timeline operation cost | 6507 | ✅ proven | FdrsFormal/Composition/TimingBounds/RoutingAnalysis.lean |
+| definition_123 | definition | 123 | Routing operation overhead | 6517 | ✅ proven | FdrsFormal/Composition/RoutingGraph/Graph.lean |
+| theorem_53 | theorem | 53 | Composite timing bound - Main Result | 6530 | ✅ proven | FdrsFormal/Composition/TimingBounds/RoutingAnalysis.lean |
+| corollary_29 | corollary | 29 | Static routing compile-time bound | 6551 | ✅ proven | FdrsFormal/Composition/TimingBounds/RoutingAnalysis.lean |
+| definition_124 | definition | 124 | Timeline lifecycle states | 6573 | ✅ proven | FdrsFormal/Composition/Lifecycle/States.lean |
+| definition_125 | definition | 125 | Spawn operation | 6585 | ✅ proven | FdrsFormal/Composition/Lifecycle/Spawn.lean |
+| definition_126 | definition | 126 | Terminate operation | 6599 | ✅ proven | FdrsFormal/Composition/Lifecycle/Terminate.lean |
+| definition_127 | definition | 127 | Bounded spawn system | 6612 | ✅ proven | FdrsFormal/Composition/Lifecycle/BoundedSpawn.lean |
+| theorem_54 | theorem | 54 | Bounded spawn preserves global timing bounds | 6624 | ✅ proven | FdrsFormal/Composition/Lifecycle/BoundedSpawn.lean |
+| definition_128 | definition | 128 | Multicast routing | 6650 | ✅ proven | FdrsFormal/Composition/Synchronization/Multicast.lean |
+| definition_129 | definition | 129 | Synchronization point | 6662 | ✅ proven | FdrsFormal/Composition/Synchronization/Join.lean |
+| definition_130 | definition | 130 | Join semantics | 6672 | ✅ proven | FdrsFormal/Composition/Synchronization/Join.lean |
+| theorem_55 | theorem | 55 | Multicast-join duality | 6689 | ✅ proven | FdrsFormal/Composition/Synchronization/Duality.lean |
+| definition_131 | definition | 131 | Routing specification language | 6699 | ✅ proven | FdrsFormal/Composition/Verification/Specification.lean |
+| definition_132 | definition | 132 | Compiled routing table | 6716 | ✅ proven | FdrsFormal/Composition/Verification/Specification.lean |
+| proposition_109 | proposition | 109 | Compile-time decidable properties | 6726 | ✅ proven | FdrsFormal/Composition/Verification/CompileTime.lean |
+| definition_133 | definition | 133 | Verified routing specification | 6742 | ✅ proven | FdrsFormal/Composition/Verification/Verified.lean |
+| definition_134 | definition | 134 | Routed observer complex | 6754 | ✅ proven | FdrsFormal/Composition/ObserverIntegration/RoutedObserver.lean |
+| theorem_56 | theorem | 56 | Observer complex as special case of routing | 6769 | ✅ proven | FdrsFormal/Composition/ObserverIntegration/Embedding.lean |
+| theorem_57 | theorem | 57 | Residual payload as junction accumulation | 6781 | ✅ proven | FdrsFormal/Composition/ObserverIntegration/ResidualPayload.lean |
+| example_2 | example | 2 | Multi-Timeline RTOS Architecture | 6797 | ✅ proven | FdrsFormal/Composition/DeadlockAnalysis/Definition.lean |
+| example_3 | example | 3 | Interrupt as Timeline Injection | 6824 | ✅ proven | FdrsFormal/Composition/DeadlockAnalysis/Definition.lean |
+| example_4 | example | 4 | Dynamic Task Spawning | 6859 | ✅ proven | FdrsFormal/Composition/DeadlockAnalysis/Definition.lean |
+| proposition_110 | proposition | 110 | Injection preserves CSU | 6884 | ✅ proven | FdrsFormal/Composition/DeadlockAnalysis/Definition.lean |
+| proposition_111 | proposition | 111 | Acyclic routing ⟹ deadlock-free | 6886 | ✅ proven | FdrsFormal/Composition/DeadlockAnalysis/Definition.lean |
+| proposition_112 | proposition | 112 | Finite depth under acyclicity | 6888 | ✅ proven | FdrsFormal/Composition/DeadlockAnalysis/Definition.lean |
+| proposition_113 | proposition | 113 | Composite timing bound | 6890 | ❌ missing | FdrsFormal/Modes/ExtendedBase.lean |
+| proposition_114 | proposition | 114 | Static routing compile-time bound | 6892 | ❌ missing | FdrsFormal/Modes/ExtendedBase.lean |
+| proposition_115 | proposition | 115 | Bounded spawn timing preservation | 6894 | ✅ proven | FdrsFormal/Modes/ExtendedBase.lean |
+| proposition_116 | proposition | 116 | Multicast-join duality | 6896 | ✅ proven | FdrsFormal/Modes/ExtendedBase.lean |
+| proposition_117 | proposition | 117 | Observer complex embedding | 6898 | ✅ proven | FdrsFormal/Modes/ExtendedBase.lean |
+| proposition_118 | proposition | 118 | Compile-time verification | 6900 | ✅ proven | FdrsFormal/Modes/ExtendedBase.lean |
+| proposition_119 | proposition | 119 | Residual as undelivered accumulation | 6902 | ✅ proven | FdrsFormal/Modes/ExtendedBase.lean |
 ## Phase 9
 
 | ID | Type | Number | Title | Line | Status | Lean File |
 |---|---|---|---|---|---|---|
-| definition_135 | definition | 135 | Extended radix sequence | 7195 | ❌ missing | FdrsFormal/Modes/BaseZeroSea.lean |
-| definition_136 | definition | 136 | Extended digit alphabets | 7199 | ✅ proven | FdrsFormal/Modes/BaseZeroSea.lean |
-| definition_137 | definition | 137 | Active and capacity index sets | 7208 | ✅ proven | FdrsFormal/Modes/ExtendedBase/IndexSets.lean |
-| definition_138 | definition | 138 | Effective base | 7214 | ✅ proven | FdrsFormal/Modes/ExtendedBase/IndexSets.lean |
-| definition_139 | definition | 139 | Generalized cumulative radix products | 7227 | ✅ proven | FdrsFormal/Modes/ExtendedBase/PlaceValues.lean |
-| proposition_120 | proposition | 120 | Monotonicity preserved | 7235 | ✅ proven | FdrsFormal/Modes/ExtendedBase/PlaceValues.lean |
-| proposition_121 | proposition | 121 | Recovery of original | 7241 | ✅ proven | FdrsFormal/Modes/ExtendedBase/PlaceValues.lean |
-| definition_140 | definition | 140 | Representable subspace | 7249 | ✅ proven | FdrsFormal/Modes/ExtendedBase/Definition.lean |
-| definition_141 | definition | 141 | Extended decode | 7256 | ✅ proven | FdrsFormal/Modes/ExtendedBase/Definition.lean |
-| definition_142 | definition | 142 | Extended encode | 7265 | ✅ proven | FdrsFormal/Modes/ExtendedBase/Definition.lean |
-| proposition_122 | proposition | 122 | Bijection on representable subspace | 7272 | ✅ proven | FdrsFormal/Modes/ExtendedBase/Definition.lean |
-| definition_143 | definition | 143 | Tick with extended bases | 7284 | ✅ proven | FdrsFormal/Modes/ExtendedBase/ExtendedTick.lean |
-| theorem_58 | theorem | 58 | Wire transparency | 7294 | ✅ proven | FdrsFormal/Modes/ExtendedBase/ExtendedTick.lean |
-| theorem_59 | theorem | 59 | Barrier wrap | 7304 | ✅ proven | FdrsFormal/Modes/ExtendedBase/ExtendedTick.lean |
-| proposition_123 | proposition | 123 | Sigma-algebra contribution by base type | 7314 | ✅ proven | FdrsFormal/Modes/ExtendedBase/SigmaAlgebra.lean |
-| proposition_124 | proposition | 124 | Extended β_ω(s | 7321 | ✅ proven | FdrsFormal/Modes/ExtendedBase/OdometerWeight.lean |
-| proposition_125 | proposition | 125 | Arithmetic-cylinder property extension | 7330 | ✅ proven | FdrsFormal/Modes/ExtendedBase/ArithmeticCylinder.lean |
-| definition_144 | definition | 144 | Instantiation API | 7343 | ✅ proven | FdrsFormal/Modes/ExtendedBase/Instantiate.lean |
-| definition_145 | definition | 145 | Spatial digit capacity | 7400 | ✅ proven | FdrsFormal/Modes/ExtendedBase/SpatialThermometer.lean |
-| definition_146 | definition | 146 | Spatial tick | 7410 | ✅ proven | FdrsFormal/Modes/ExtendedBase/SpatialThermometer.lean |
-| definition_147 | definition | 147 | Spatial radix wall | 7419 | ✅ proven | FdrsFormal/Modes/ExtendedBase/SpatialThermometer.lean |
-| theorem_60 | theorem | 60 | Spatial-algebraic isomorphism | 7429 | ✅ proven | FdrsFormal/Modes/ExtendedBase/SpatialThermometer.lean |
-| definition_148 | definition | 148 | Carry event classification | 7450 | ✅ proven | FdrsFormal/Modes/BaseZeroSea.lean |
-| definition_149 | definition | 149 | Carry-as-route | 7459 | ✅ proven | FdrsFormal/Modes/ExtendedBase/CarryRouteUnification.lean |
-| definition_150 | definition | 150 | Unified spatial tick | 7470 | ✅ proven | FdrsFormal/Modes/ExtendedBase/CarryRouteUnification.lean |
-| theorem_61 | theorem | 61 | Fractal unification — carry is overflow route | 7474 | ❌ missing | FdrsFormal/Modes/BaseZeroSea.lean |
+| definition_135 | definition | 135 | Extended radix sequence | 7215 | ✅ proven | FdrsFormal/Modes/BaseZeroSea.lean |
+| definition_136 | definition | 136 | Extended digit alphabets | 7219 | ✅ proven | FdrsFormal/Modes/BaseZeroSea.lean |
+| definition_137 | definition | 137 | Active and capacity index sets | 7228 | ✅ proven | FdrsFormal/Modes/ExtendedBase/IndexSets.lean |
+| definition_138 | definition | 138 | Effective base | 7234 | ✅ proven | FdrsFormal/Modes/ExtendedBase/IndexSets.lean |
+| definition_139 | definition | 139 | Generalized cumulative radix products | 7247 | ✅ proven | FdrsFormal/Modes/ExtendedBase/PlaceValues.lean |
+| proposition_120 | proposition | 120 | Monotonicity preserved | 7255 | ✅ proven | FdrsFormal/Modes/ExtendedBase/PlaceValues.lean |
+| proposition_121 | proposition | 121 | Recovery of original | 7261 | ✅ proven | FdrsFormal/Modes/ExtendedBase/PlaceValues.lean |
+| definition_140 | definition | 140 | Representable subspace | 7269 | ✅ proven | FdrsFormal/Modes/ExtendedBase/Definition.lean |
+| definition_141 | definition | 141 | Extended decode | 7276 | ✅ proven | FdrsFormal/Modes/ExtendedBase/Definition.lean |
+| definition_142 | definition | 142 | Extended encode | 7285 | ✅ proven | FdrsFormal/Modes/ExtendedBase/Definition.lean |
+| proposition_122 | proposition | 122 | Bijection on representable subspace | 7292 | ✅ proven | FdrsFormal/Modes/ExtendedBase/Definition.lean |
+| definition_143 | definition | 143 | Tick with extended bases | 7304 | ✅ proven | FdrsFormal/Modes/ExtendedBase/ExtendedTick.lean |
+| theorem_58 | theorem | 58 | Wire transparency | 7314 | ✅ proven | FdrsFormal/Modes/ExtendedBase/ExtendedTick.lean |
+| theorem_59 | theorem | 59 | Barrier wrap | 7324 | ✅ proven | FdrsFormal/Modes/ExtendedBase/ExtendedTick.lean |
+| proposition_123 | proposition | 123 | Sigma-algebra contribution by base type | 7334 | ✅ proven | FdrsFormal/Modes/ExtendedBase/SigmaAlgebra.lean |
+| proposition_124 | proposition | 124 | Extended β_ω(s | 7341 | ✅ proven | FdrsFormal/Modes/ExtendedBase/OdometerWeight.lean |
+| proposition_125 | proposition | 125 | Arithmetic-cylinder property extension | 7350 | ✅ proven | FdrsFormal/Modes/ExtendedBase/ArithmeticCylinder.lean |
+| definition_144 | definition | 144 | Instantiation API | 7363 | ✅ proven | FdrsFormal/Modes/ExtendedBase/Instantiate.lean |
+| definition_145 | definition | 145 | Spatial digit capacity | 7420 | ✅ proven | FdrsFormal/Modes/ExtendedBase/SpatialThermometer.lean |
+| definition_146 | definition | 146 | Spatial tick | 7430 | ✅ proven | FdrsFormal/Modes/ExtendedBase/SpatialThermometer.lean |
+| definition_147 | definition | 147 | Spatial radix wall | 7439 | ✅ proven | FdrsFormal/Modes/ExtendedBase/SpatialThermometer.lean |
+| theorem_60 | theorem | 60 | Spatial-algebraic isomorphism | 7449 | ✅ proven | FdrsFormal/Modes/ExtendedBase/SpatialThermometer.lean |
+| definition_148 | definition | 148 | Carry event classification | 7470 | ✅ proven | FdrsFormal/Modes/BaseZeroSea.lean |
+| definition_149 | definition | 149 | Carry-as-route | 7479 | ✅ proven | FdrsFormal/Modes/ExtendedBase/CarryRouteUnification.lean |
+| definition_150 | definition | 150 | Unified spatial tick | 7490 | ✅ proven | FdrsFormal/Modes/ExtendedBase/CarryRouteUnification.lean |
+| theorem_61 | theorem | 61 | Fractal unification — carry is overflow route | 7494 | ✅ proven | FdrsFormal/Modes/BaseZeroSea/Projection.lean |
 ## Phase 10
 
 | ID | Type | Number | Title | Line | Status | Lean File |
 |---|---|---|---|---|---|---|
-| definition_151 | definition | 151 | Base-zero sea | 7511 | ✅ proven | FdrsFormal/Modes/BaseZeroSea/Basic.lean |
-| definition_152 | definition | 152 | Observation windows and radix walls | 7522 | ✅ proven | FdrsFormal/Modes/BaseZeroSea/Basic.lean |
-| definition_153 | definition | 153 | Legacy thread | 7536 | ✅ proven | FdrsFormal/Modes/BaseZeroSea/Basic.lean |
-| definition_154 | definition | 154 | Deterministic creation step | 7546 | ✅ proven | FdrsFormal/Modes/BaseZeroSea/Dynamics.lean |
-| definition_155 | definition | 155 | Consumption target rule | 7564 | ✅ proven | FdrsFormal/Modes/BaseZeroSea/Dynamics.lean |
-| definition_156 | definition | 156 | Consumption schedule | 7577 | ✅ proven | FdrsFormal/Modes/BaseZeroSea/Dynamics.lean |
-| definition_157 | definition | 157 | Unified deterministic sea tick | 7585 | ✅ proven | FdrsFormal/Modes/BaseZeroSea/Dynamics.lean |
-| proposition_126 | proposition | 126 | Deterministic totality | 7602 | ✅ proven | FdrsFormal/Modes/BaseZeroSea/Properties.lean |
-| proposition_127 | proposition | 127 | Closure and validity invariants | 7610 | ✅ proven | FdrsFormal/Modes/BaseZeroSea/Properties.lean |
-| proposition_128 | proposition | 128 | Legacy-length balance law | 7618 | ✅ proven | FdrsFormal/Modes/BaseZeroSea/Properties.lean |
-| theorem_62 | theorem | 62 | Deterministic sea dynamics is a well-defined trans | 7629 | ✅ proven | FdrsFormal/Modes/BaseZeroSea/Properties.lean |
-| definition_158 | definition | 158 | Window-to-digit projection | 7643 | ✅ proven | FdrsFormal/Modes/BaseZeroSea/Projection.lean |
-| definition_159 | definition | 159 | Phase-9 constraint profile | 7651 | ✅ proven | FdrsFormal/Modes/BaseZeroSea/Projection.lean |
-| theorem_63 | theorem | 63 | Phase 9 is a special case of Phase 10 | 7660 | ✅ proven | FdrsFormal/Modes/BaseZeroSea/Projection.lean |
-| definition_160 | definition | 160 | Digit module in a base-zero sea | 7685 | ✅ proven | FdrsFormal/Modes/BaseZeroSea/Modules.lean |
-| definition_161 | definition | 161 | Sustainment and resistance functional | 7701 | ✅ proven | FdrsFormal/Modes/BaseZeroSea/Modules.lean |
-| proposition_129 | proposition | 129 | Deterministic persistence criterion | 7717 | ✅ proven | FdrsFormal/Modes/BaseZeroSea/Modules.lean |
-| definition_162 | definition | 162 | Emergent effective base | 7726 | ✅ proven | FdrsFormal/Modes/BaseZeroSea/Modules.lean |
-| proposition_130 | proposition | 130 | Resistance-base monotonicity under fixed observati | 7742 | ✅ proven | FdrsFormal/Modes/BaseZeroSea/Modules.lean |
-| definition_163 | definition | 163 | Coupled-digit sea network | 7750 | ✅ proven | FdrsFormal/Modes/BaseZeroSea/Modules.lean |
-| theorem_64 | theorem | 64 | Classical mixed-radix line as a single-lineage spe | 7774 | ✅ proven | FdrsFormal/Modes/BaseZeroSea/Modules.lean |
+| definition_151 | definition | 151 | Base-zero sea | 7531 | ✅ proven | FdrsFormal/Modes/BaseZeroSea/Basic.lean |
+| definition_152 | definition | 152 | Observation windows and radix walls | 7542 | ✅ proven | FdrsFormal/Modes/BaseZeroSea/Basic.lean |
+| definition_153 | definition | 153 | Legacy thread | 7556 | ✅ proven | FdrsFormal/Modes/BaseZeroSea/Basic.lean |
+| definition_154 | definition | 154 | Deterministic creation step | 7566 | ✅ proven | FdrsFormal/Modes/BaseZeroSea/Dynamics.lean |
+| definition_155 | definition | 155 | Consumption target rule | 7584 | ✅ proven | FdrsFormal/Modes/BaseZeroSea/Dynamics.lean |
+| definition_156 | definition | 156 | Consumption schedule | 7597 | ✅ proven | FdrsFormal/Modes/BaseZeroSea/Dynamics.lean |
+| definition_157 | definition | 157 | Unified deterministic sea tick | 7605 | ✅ proven | FdrsFormal/Modes/BaseZeroSea/Dynamics.lean |
+| proposition_126 | proposition | 126 | Deterministic totality | 7622 | ✅ proven | FdrsFormal/Modes/BaseZeroSea/Properties.lean |
+| proposition_127 | proposition | 127 | Closure and validity invariants | 7630 | ✅ proven | FdrsFormal/Modes/BaseZeroSea/Properties.lean |
+| proposition_128 | proposition | 128 | Legacy-length balance law | 7638 | ✅ proven | FdrsFormal/Modes/BaseZeroSea/Properties.lean |
+| theorem_62 | theorem | 62 | Deterministic sea dynamics is a well-defined trans | 7649 | ✅ proven | FdrsFormal/Modes/BaseZeroSea/Properties.lean |
+| definition_158 | definition | 158 | Window-to-digit projection | 7663 | ✅ proven | FdrsFormal/Modes/BaseZeroSea/Projection.lean |
+| definition_159 | definition | 159 | Phase-9 constraint profile | 7671 | ✅ proven | FdrsFormal/Modes/BaseZeroSea/Projection.lean |
+| theorem_63 | theorem | 63 | Phase 9 is a special case of Phase 10 | 7680 | ✅ proven | FdrsFormal/Modes/BaseZeroSea/Projection.lean |
+| definition_160 | definition | 160 | Digit module in a base-zero sea | 7705 | ✅ proven | FdrsFormal/Modes/BaseZeroSea/Modules.lean |
+| definition_161 | definition | 161 | Sustainment and resistance functional | 7721 | ✅ proven | FdrsFormal/Modes/BaseZeroSea/Modules.lean |
+| proposition_129 | proposition | 129 | Deterministic persistence criterion | 7737 | ✅ proven | FdrsFormal/Modes/BaseZeroSea/Modules.lean |
+| definition_162 | definition | 162 | Emergent effective base | 7746 | ✅ proven | FdrsFormal/Modes/BaseZeroSea/Modules.lean |
+| proposition_130 | proposition | 130 | Resistance-base monotonicity under fixed observati | 7762 | ✅ proven | FdrsFormal/Modes/BaseZeroSea/Modules.lean |
+| definition_163 | definition | 163 | Coupled-digit sea network | 7770 | ✅ proven | FdrsFormal/Modes/BaseZeroSea/Modules.lean |
+| theorem_64 | theorem | 64 | Classical mixed-radix line as a single-lineage spe | 7794 | ✅ proven | FdrsFormal/Modes/BaseZeroSea/Modules.lean |
 ## Phase 11
 
 | ID | Type | Number | Title | Line | Status | Lean File |
 |---|---|---|---|---|---|---|
-| definition_164 | definition | 164 | Non-stationary radix tree | 7813 | ✅ proven | FdrsFormal/Analysis/DigitConditional/Tree.lean |
-| definition_165 | definition | 165 | Depth and heterogeneity | 7825 | ✅ proven | FdrsFormal/Analysis/DigitConditional/Tree.lean |
-| proposition_131 | proposition | 131 | Leaf count identity | 7835 | ✅ proven | FdrsFormal/Analysis/DigitConditional/Tree.lean |
-| proposition_132 | proposition | 132 | Homogeneous recovery | 7844 | ✅ proven | FdrsFormal/Analysis/DigitConditional/Tree.lean |
-| definition_166 | definition | 166 | Tree-adapted signal | 7856 | ✅ proven | FdrsFormal/Analysis/DigitConditional/Decomposition.lean |
-| definition_167 | definition | 167 | Node projection and layer | 7865 | ✅ proven | FdrsFormal/Analysis/DigitConditional/Decomposition.lean |
-| lemma_5 | lemma | 5 | Within-node layer properties | 7883 | ✅ proven | FdrsFormal/Analysis/DigitConditional/Decomposition.lean |
-| theorem_65 | theorem | 65 | Orthogonal decomposition | 7894 | ✅ proven | FdrsFormal/Analysis/DigitConditional/Decomposition.lean |
-| corollary_30 | corollary | 30 | Exact adapted signals | 7908 | ✅ proven | FdrsFormal/Analysis/DigitConditional/Decomposition.lean |
-| definition_168 | definition | 168 | Signal taxonomy | 7918 | ✅ proven | FdrsFormal/Analysis/DigitConditional/SignalClass.lean |
-| proposition_133 | proposition | 133 | Strict class hierarchy | 7930 | ✅ proven | FdrsFormal/Analysis/DigitConditional/SignalClass.lean |
-| definition_169 | definition | 169 | Root-periodic energy fraction | 7940 | ✅ proven | FdrsFormal/Analysis/DigitConditional/FourierCeiling.lean |
-| theorem_66 | theorem | 66 | Fourier ceiling | 7950 | ✅ proven | FdrsFormal/Analysis/DigitConditional/FourierCeiling.lean |
-| proposition_134 | proposition | 134 | Homogeneous ceiling trivial | 7960 | ✅ proven | FdrsFormal/Analysis/DigitConditional/FourierCeiling.lean |
-| definition_170 | definition | 170 | Minimum uniform cells | 7970 | ✅ proven | FdrsFormal/Analysis/DigitConditional/RepresentationGap.lean |
-| definition_171 | definition | 171 | Representation gap | 7978 | ✅ proven | FdrsFormal/Analysis/DigitConditional/RepresentationGap.lean |
-| proposition_135 | proposition | 135 | Representation gap: collapse and strict gap | 7986 | ✅ proven | FdrsFormal/Analysis/DigitConditional/RepresentationGap.lean |
-| theorem_67 | theorem | 67 | Depth-2 gap formula | 7996 | ✅ proven | FdrsFormal/Analysis/DigitConditional/RepresentationGap.lean |
-| corollary_31 | corollary | 31 | Compensated heterogeneity | 8006 | ✅ proven | FdrsFormal/Analysis/DigitConditional/RepresentationGap.lean |
-| definition_172 | definition | 172 | Tree block projection | 8016 | ✅ proven | FdrsFormal/Analysis/DigitConditional/Projection.lean |
-| proposition_136 | proposition | 136 | Projection properties | 8024 | ✅ proven | FdrsFormal/Analysis/DigitConditional/Projection.lean |
-| theorem_68 | theorem | 68 | Connection to FDRS filtration | 8036 | ✅ proven | FdrsFormal/Analysis/DigitConditional/Projection.lean |
-| definition_173 | definition | 173 | F-statistic for radix selection | 8050 | ✅ proven | FdrsFormal/Analysis/DigitConditional/Detection.lean |
-| proposition_137 | proposition | 137 | Detection power scaling | 8063 | ✅ proven | FdrsFormal/Analysis/DigitConditional/Detection.lean |
-| definition_174 | definition | 174 | DCC | 8077 | 🟠 scaffold | FdrsFormal/Analysis/DigitConditional/Complexity.lean |
-| proposition_138 | proposition | 138 | DCC characterizes taxonomy | 8085 | ✅ proven | FdrsFormal/Analysis/DigitConditional/Complexity.lean |
-| theorem_69 | theorem | 69 | Vilenkin is special case | 8102 | ✅ proven | FdrsFormal/Analysis/DigitConditional/SpecialCase.lean |
+| definition_164 | definition | 164 | Non-stationary radix tree | 7833 | ✅ proven | FdrsFormal/Analysis/DigitConditional/Tree.lean |
+| definition_165 | definition | 165 | Depth and heterogeneity | 7845 | ✅ proven | FdrsFormal/Analysis/DigitConditional/Tree.lean |
+| proposition_131 | proposition | 131 | Leaf count identity | 7855 | ✅ proven | FdrsFormal/Analysis/DigitConditional/Tree.lean |
+| proposition_132 | proposition | 132 | Homogeneous recovery | 7864 | ✅ proven | FdrsFormal/Analysis/DigitConditional/Tree.lean |
+| definition_166 | definition | 166 | Tree-adapted signal | 7876 | ✅ proven | FdrsFormal/Analysis/DigitConditional/Decomposition.lean |
+| definition_167 | definition | 167 | Node projection and layer | 7885 | ✅ proven | FdrsFormal/Analysis/DigitConditional/Decomposition.lean |
+| lemma_5 | lemma | 5 | Within-node layer properties | 7903 | ✅ proven | FdrsFormal/Analysis/DigitConditional/Decomposition.lean |
+| theorem_65 | theorem | 65 | Orthogonal decomposition | 7914 | ✅ proven | FdrsFormal/Analysis/DigitConditional/Decomposition.lean |
+| corollary_30 | corollary | 30 | Exact adapted signals | 7928 | ✅ proven | FdrsFormal/Analysis/DigitConditional/Decomposition.lean |
+| definition_168 | definition | 168 | Signal taxonomy | 7938 | ✅ proven | FdrsFormal/Analysis/DigitConditional/SignalClass.lean |
+| proposition_133 | proposition | 133 | Strict class hierarchy | 7950 | ✅ proven | FdrsFormal/Analysis/DigitConditional/SignalClass.lean |
+| definition_169 | definition | 169 | Root-periodic energy fraction | 7960 | ✅ proven | FdrsFormal/Analysis/DigitConditional/FourierCeiling.lean |
+| theorem_66 | theorem | 66 | Fourier ceiling | 7970 | ✅ proven | FdrsFormal/Analysis/DigitConditional/FourierCeiling.lean |
+| proposition_134 | proposition | 134 | Homogeneous ceiling trivial | 7980 | ✅ proven | FdrsFormal/Analysis/DigitConditional/FourierCeiling.lean |
+| definition_170 | definition | 170 | Minimum uniform cells | 7990 | ✅ proven | FdrsFormal/Analysis/DigitConditional/RepresentationGap.lean |
+| definition_171 | definition | 171 | Representation gap | 7998 | ✅ proven | FdrsFormal/Analysis/DigitConditional/RepresentationGap.lean |
+| proposition_135 | proposition | 135 | Representation gap: collapse and strict gap | 8006 | ✅ proven | FdrsFormal/Analysis/DigitConditional/RepresentationGap.lean |
+| theorem_67 | theorem | 67 | Depth-2 gap formula | 8016 | ✅ proven | FdrsFormal/Analysis/DigitConditional/RepresentationGap.lean |
+| corollary_31 | corollary | 31 | Compensated heterogeneity | 8026 | ✅ proven | FdrsFormal/Analysis/DigitConditional/RepresentationGap.lean |
+| definition_172 | definition | 172 | Tree block projection | 8036 | ✅ proven | FdrsFormal/Analysis/DigitConditional/Projection.lean |
+| proposition_136 | proposition | 136 | Projection properties | 8044 | ✅ proven | FdrsFormal/Analysis/DigitConditional/Projection.lean |
+| theorem_68 | theorem | 68 | Connection to FDRS filtration | 8056 | ✅ proven | FdrsFormal/Analysis/DigitConditional/Projection.lean |
+| definition_173 | definition | 173 | F-statistic for radix selection | 8070 | ✅ proven | FdrsFormal/Analysis/DigitConditional/Detection.lean |
+| proposition_137 | proposition | 137 | Detection power scaling | 8083 | ✅ proven | FdrsFormal/Analysis/DigitConditional/Detection.lean |
+| definition_174 | definition | 174 | DCC | 8097 | 🟠 scaffold | FdrsFormal/Analysis/DigitConditional/Complexity.lean |
+| proposition_138 | proposition | 138 | DCC characterizes taxonomy | 8105 | ✅ proven | FdrsFormal/Analysis/DigitConditional/Complexity.lean |
+| theorem_69 | theorem | 69 | Vilenkin is special case | 8122 | ✅ proven | FdrsFormal/Analysis/DigitConditional/SpecialCase.lean |
 ## Phase 12
 
 | ID | Type | Number | Title | Line | Status | Lean File |
 |---|---|---|---|---|---|---|
-| definition_175 | definition | 175 | unit complement | 8135 | ✅ proven | FdrsFormal/Core/UnitComplement.lean |
-| definition_176 | definition | 176 | unit pair and parts | 8143 | ✅ proven | FdrsFormal/Core/UnitComplement.lean |
-| proposition_139 | proposition | 139 | complement properties | 8151 | ✅ proven | FdrsFormal/Core/UnitComplement.lean |
-| proposition_140 | proposition | 140 | ordering split | 8166 | ✅ proven | FdrsFormal/Core/UnitComplement.lean |
-| definition_177 | definition | 177 | fit count, completion residue, overflow carry | 8193 | ✅ proven | FdrsFormal/Core/UnitCarry.lean |
-| proposition_141 | proposition | 141 | basic carry arithmetic | 8203 | ✅ proven | FdrsFormal/Core/UnitCarry.lean |
-| proposition_142 | proposition | 142 | irrational sharpening | 8216 | ✅ proven | FdrsFormal/Core/UnitCarry.lean |
-| proposition_143 | proposition | 143 | greater/lesser part specialization | 8228 | ✅ proven | FdrsFormal/Core/UnitCarry.lean |
+| definition_175 | definition | 175 | unit complement | 8155 | ✅ proven | FdrsFormal/Core/UnitComplement.lean |
+| definition_176 | definition | 176 | unit pair and parts | 8163 | ✅ proven | FdrsFormal/Core/UnitComplement.lean |
+| proposition_139 | proposition | 139 | complement properties | 8171 | ✅ proven | FdrsFormal/Core/UnitComplement.lean |
+| proposition_140 | proposition | 140 | ordering split | 8186 | ✅ proven | FdrsFormal/Core/UnitComplement.lean |
+| definition_177 | definition | 177 | fit count, completion residue, overflow carry | 8213 | ✅ proven | FdrsFormal/Core/UnitCarry.lean |
+| proposition_141 | proposition | 141 | basic carry arithmetic | 8223 | ✅ proven | FdrsFormal/Core/UnitCarry.lean |
+| proposition_142 | proposition | 142 | irrational sharpening | 8236 | ✅ proven | FdrsFormal/Core/UnitCarry.lean |
+| proposition_143 | proposition | 143 | greater/lesser part specialization | 8248 | ✅ proven | FdrsFormal/Core/UnitCarry.lean |
 ## Phase 13
 
 | ID | Type | Number | Title | Line | Status | Lean File |
 |---|---|---|---|---|---|---|
-| definition_178 | definition | 178 | Product radix and the observer-line mediator | 8283 | ✅ proven | FdrsFormal/Integration/ThreeLineMediator/Definition.lean |
-| proposition_144 | proposition | 144 | Mediator ≅ A × B: the round-trip identities | 8289 | ✅ proven | FdrsFormal/Integration/ThreeLineMediator/Definition.lean |
-| theorem_70 | theorem | 70 | Place value and overflow rate factor under the pro | 8299 | ✅ proven | FdrsFormal/Integration/ThreeLineMediator/Definition.lean |
-| definition_179 | definition | 179 | Coupling, the coupled system, and manifest instant | 8314 | ✅ proven | FdrsFormal/Integration/ThreeLineMediator/Definition.lean |
-| proposition_145 | proposition | 145 | Independence of coupling and radix; manifestation  | 8320 | ✅ proven | FdrsFormal/Integration/ThreeLineMediator/Definition.lean |
-| proposition_146 | proposition | 146 | Overflow-rate ratio and the discrete → real compar | 8326 | ✅ proven | FdrsFormal/Integration/ThreeLineMediator/Definition.lean |
-| definition_180 | definition | 180 | Subshift / transfer-matrix prefix gauge | 8338 | ✅ proven | FdrsFormal/Integration/ThreeLineMediator/Definition.lean |
-| theorem_71 | theorem | 71 | Defensive perimeter: the free `d = 1` gauge recove | 8344 | ✅ proven | FdrsFormal/Integration/ThreeLineMediator/Definition.lean |
-| definition_181 | definition | 181 | The convergent-pair ledger | 8354 | ✅ proven | FdrsFormal/Modes/VariableRadix/SubshiftWeight.lean |
-| theorem_72 | theorem | 72 | The bracket invariant | 8360 | ✅ proven | FdrsFormal/Integration/ThreeLineMediator/Definition.lean |
-| theorem_73 | theorem | 73 | Gauge growth: `q_k > 0` and `q_k → ∞`, even for `φ | 8368 | ✅ proven | FdrsFormal/Integration/ThreeLineMediator/Definition.lean |
-| definition_182 | definition | 182 | Admissible point, prefix, and the gauge at depth | 8380 | ✅ proven | FdrsFormal/Integration/ThreeLineMediator/Definition.lean |
-| definition_183 | definition | 183 | The gauge-induced continued-fraction distance | 8386 | ✅ proven | FdrsFormal/Integration/ThreeLineMediator/Definition.lean |
-| theorem_74 | theorem | 74 | `cfDist` is a genuine ultrametric | 8392 | ✅ proven | FdrsFormal/Integration/ThreeLineMediator/Definition.lean |
-| theorem_75 | theorem | 75 | `ball = cylinder` | 8400 | ✅ proven | FdrsFormal/Integration/ThreeLineMediator/Definition.lean |
-| definition_184 | definition | 184 | Carry frequency of a generated timeline | 8417 | ✅ proven | FdrsFormal/Integration/ThreeLineMediator/Definition.lean |
-| theorem_76 | theorem | 76 | `cfOverflowRate` is positive, antitone, and vanish | 8423 | ✅ proven | FdrsFormal/Modes/VariableRadix/CarryFrequency.lean |
-| definition_185 | definition | 185 | Parry transition kernel of the golden-mean shift | 8439 | ✅ proven | FdrsFormal/Integration/ThreeLineMediator/Definition.lean |
-| theorem_77 | theorem | 77 | Mass conservation and the Markov kernel | 8445 | ✅ proven | FdrsFormal/Integration/ThreeLineMediator/Definition.lean |
-| definition_186 | definition | 186 | Parry stationary law | 8453 | ✅ proven | FdrsFormal/Modes/VariableRadix/SubshiftParry.lean |
-| theorem_78 | theorem | 78 | Stationarity | 8459 | ✅ proven | FdrsFormal/Modes/VariableRadix/SubshiftParry.lean |
-| definition_187 | definition | 187 | Parry path measure via Ionescu–Tulcea | 8467 | ✅ proven | FdrsFormal/Integration/ThreeLineMediator/Definition.lean |
-| theorem_79 | theorem | 79 | Lévy upward convergence — "Group G" — on the golde | 8473 | ✅ proven | FdrsFormal/Integration/ThreeLineMediator/Definition.lean |
-| definition_188 | definition | 188 | Homographic emission — single stream | 8487 | ✅ proven | FdrsFormal/Modes/VariableRadix/HomographicCarry.lean |
-| theorem_80 | theorem | 80 | Exactness and channel independence | 8493 | ✅ proven | FdrsFormal/Modes/VariableRadix/HomographicCarry.lean |
-| definition_189 | definition | 189 | The bihomographic tensor — two-stream mediator, Ti | 8501 | ✅ proven | FdrsFormal/Integration/ThreeLineMediator/Definition.lean |
-| theorem_81 | theorem | 81 | Channel commutations | 8507 | ✅ proven | FdrsFormal/Modes/VariableRadix/Bihomographic.lean |
-| theorem_82 | theorem | 82 | Emission soundness — the four-corner trap | 8515 | ✅ proven | FdrsFormal/Modes/VariableRadix/BihomographicSound.lean |
-| definition_190 | definition | 190 | The two-stream driver | 8523 | ✅ proven | FdrsFormal/Modes/VariableRadix/BihomographicDriver.lean |
-| definition_191 | definition | 191 | The hyper-Gosper clock | 8531 | ✅ proven | FdrsFormal/Modes/VariableRadix/HyperGosper.lean |
+| definition_178 | definition | 178 | Product radix and the observer-line mediator | 8303 | ✅ proven | FdrsFormal/Integration/ThreeLineMediator/Definition.lean |
+| proposition_144 | proposition | 144 | Mediator ≅ A × B: the round-trip identities | 8309 | ✅ proven | FdrsFormal/Integration/ThreeLineMediator/Definition.lean |
+| theorem_70 | theorem | 70 | Place value and overflow rate factor under the pro | 8319 | ✅ proven | FdrsFormal/Integration/ThreeLineMediator/Definition.lean |
+| definition_179 | definition | 179 | Coupling, the coupled system, and manifest instant | 8334 | ✅ proven | FdrsFormal/Integration/ThreeLineMediator/Definition.lean |
+| proposition_145 | proposition | 145 | Independence of coupling and radix; manifestation  | 8340 | ✅ proven | FdrsFormal/Integration/ThreeLineMediator/Definition.lean |
+| proposition_146 | proposition | 146 | Overflow-rate ratio and the discrete → real compar | 8346 | ✅ proven | FdrsFormal/Integration/ThreeLineMediator/Definition.lean |
+| definition_180 | definition | 180 | Subshift / transfer-matrix prefix gauge | 8358 | ✅ proven | FdrsFormal/Integration/ThreeLineMediator/Definition.lean |
+| theorem_71 | theorem | 71 | Defensive perimeter: the free `d = 1` gauge recove | 8364 | ✅ proven | FdrsFormal/Integration/ThreeLineMediator/Definition.lean |
+| definition_181 | definition | 181 | The convergent-pair ledger | 8374 | ✅ proven | FdrsFormal/Modes/VariableRadix/SubshiftWeight.lean |
+| theorem_72 | theorem | 72 | The bracket invariant | 8380 | ✅ proven | FdrsFormal/Integration/ThreeLineMediator/Definition.lean |
+| theorem_73 | theorem | 73 | Gauge growth: `q_k > 0` and `q_k → ∞`, even for `φ | 8388 | ✅ proven | FdrsFormal/Integration/ThreeLineMediator/Definition.lean |
+| definition_182 | definition | 182 | Admissible point, prefix, and the gauge at depth | 8400 | ✅ proven | FdrsFormal/Integration/ThreeLineMediator/Definition.lean |
+| definition_183 | definition | 183 | The gauge-induced continued-fraction distance | 8406 | ✅ proven | FdrsFormal/Integration/ThreeLineMediator/Definition.lean |
+| theorem_74 | theorem | 74 | `cfDist` is a genuine ultrametric | 8412 | ✅ proven | FdrsFormal/Integration/ThreeLineMediator/Definition.lean |
+| theorem_75 | theorem | 75 | `ball = cylinder` | 8420 | ✅ proven | FdrsFormal/Integration/ThreeLineMediator/Definition.lean |
+| definition_184 | definition | 184 | Carry frequency of a generated timeline | 8437 | ✅ proven | FdrsFormal/Integration/ThreeLineMediator/Definition.lean |
+| theorem_76 | theorem | 76 | `cfOverflowRate` is positive, antitone, and vanish | 8443 | ✅ proven | FdrsFormal/Modes/VariableRadix/CarryFrequency.lean |
+| definition_185 | definition | 185 | Parry transition kernel of the golden-mean shift | 8459 | ✅ proven | FdrsFormal/Integration/ThreeLineMediator/Definition.lean |
+| theorem_77 | theorem | 77 | Mass conservation and the Markov kernel | 8465 | ✅ proven | FdrsFormal/Integration/ThreeLineMediator/Definition.lean |
+| definition_186 | definition | 186 | Parry stationary law | 8473 | ✅ proven | FdrsFormal/Modes/VariableRadix/SubshiftParry.lean |
+| theorem_78 | theorem | 78 | Stationarity | 8479 | ✅ proven | FdrsFormal/Modes/VariableRadix/SubshiftParry.lean |
+| definition_187 | definition | 187 | Parry path measure via Ionescu–Tulcea | 8487 | ✅ proven | FdrsFormal/Integration/ThreeLineMediator/Definition.lean |
+| theorem_79 | theorem | 79 | Lévy upward convergence — "Group G" — on the golde | 8493 | ✅ proven | FdrsFormal/Integration/ThreeLineMediator/Definition.lean |
+| definition_188 | definition | 188 | Homographic emission — single stream | 8507 | ✅ proven | FdrsFormal/Modes/VariableRadix/HomographicCarry.lean |
+| theorem_80 | theorem | 80 | Exactness and channel independence | 8513 | ✅ proven | FdrsFormal/Modes/VariableRadix/HomographicCarry.lean |
+| definition_189 | definition | 189 | The bihomographic tensor — two-stream mediator, Ti | 8521 | ✅ proven | FdrsFormal/Integration/ThreeLineMediator/Definition.lean |
+| theorem_81 | theorem | 81 | Channel commutations | 8527 | ✅ proven | FdrsFormal/Modes/VariableRadix/Bihomographic.lean |
+| theorem_82 | theorem | 82 | Emission soundness — the four-corner trap | 8535 | ✅ proven | FdrsFormal/Modes/VariableRadix/BihomographicSound.lean |
+| definition_190 | definition | 190 | The two-stream driver | 8543 | ✅ proven | FdrsFormal/Modes/VariableRadix/BihomographicDriver.lean |
+| definition_191 | definition | 191 | The hyper-Gosper clock | 8551 | ✅ proven | FdrsFormal/Modes/VariableRadix/HyperGosper.lean |
 ## Phase 14
 
 | ID | Type | Number | Title | Line | Status | Lean File |
 |---|---|---|---|---|---|---|
-| definition_192 | definition | 192 | prefix gauge | 8572 | ✅ proven | FdrsFormal/Applications/Field25519Carry.lean |
-| theorem_83 | theorem | 83 | gauge ⇒ ultrametric; ball = cylinder | 8579 | ✅ proven | FdrsFormal/Applications/Field25519Carry.lean |
-| proposition_147 | proposition | 147 | the corpus instances | 8587 | ✅ proven | FdrsFormal/Applications/Field25519Carry.lean |
-| definition_193 | definition | 193 | coupled fiber law; coupled completion counts | 8596 | ✅ proven | FdrsFormal/Applications/Field25519Carry.lean |
-| theorem_84 | theorem | 84 | level-only coupling preserves SU | 8603 | ✅ proven | FdrsFormal/Applications/Field25519Carry.lean |
-| proposition_148 | proposition | 148 | the ragged witness, machine-checked | 8608 | ✅ proven | FdrsFormal/Applications/Field25519Carry.lean |
-| theorem_85 | theorem | 85 | geometry survives raggedness | 8615 | ✅ proven | FdrsFormal/Applications/Field25519Carry.lean |
-| definition_194 | definition | 194 | transfer structure; uncertainty ledger; trap gate | 8624 | ✅ proven | FdrsFormal/Applications/Field25519Carry.lean |
-| theorem_86 | theorem | 86 | admissibility-trap soundness | 8631 | ✅ proven | FdrsFormal/Applications/Field25519Carry.lean |
-| definition_195 | definition | 195 | depth-decided observables | 8645 | ✅ proven | FdrsFormal/Applications/Field25519Carry.lean |
-| theorem_87 | theorem | 87 | indistinguishability below the gauge; strict hiera | 8649 | ✅ proven | FdrsFormal/Applications/Field25519Carry.lean |
-| definition_196 | definition | 196 | completion mass and observed flux | 8661 | ✅ proven | FdrsFormal/Applications/Field25519Carry.lean |
-| theorem_88 | theorem | 88 | the partition law; zero leak | 8666 | ✅ proven | FdrsFormal/Applications/Field25519Carry.lean |
-| definition_197 | definition | 197 | the coupled interface machine; balance | 8676 | ✅ proven | FdrsFormal/Applications/Field25519Carry.lean |
-| theorem_89 | theorem | 89 | the interface balance law | 8683 | ✅ proven | FdrsFormal/Applications/Field25519Carry.lean |
-| definition_198 | definition | 198 | place-local transfer rules | 8691 | ✅ proven | FdrsFormal/Applications/Field25519Carry.lean |
-| theorem_90 | theorem | 90 | conservation rigidity: factorization, no-go, bound | 8696 | ✅ proven | FdrsFormal/Applications/Field25519Carry.lean |
-| proposition_149 | proposition | 149 | witnesses on both sides of the boundary | 8710 | ✅ proven | FdrsFormal/Applications/Field25519Carry.lean |
-| definition_199 | definition | 199 | schedules, trace equivalence, projections | 8720 | ✅ proven | FdrsFormal/Applications/Field25519Carry.lean |
-| theorem_91 | theorem | 91 | the scalar trace-gauge no-go, machine-checked | 8728 | ✅ proven | FdrsFormal/Applications/Field25519Carry.lean |
-| definition_200 | definition | 200 | the observer-glued network distance | 8740 | ✅ proven | FdrsFormal/Applications/Field25519Carry.lean |
-| theorem_92 | theorem | 92 | the glued network ultrametric | 8745 | ✅ proven | FdrsFormal/Applications/Field25519Carry.lean |
-| definition_201 | definition | 201 | coupling graph; size as an edge cocycle | 8796 | ✅ proven | FdrsFormal/Applications/Field25519Carry.lean |
-| theorem_93 | theorem | 93 | the holonomy dichotomy — the full iff | 8810 | ✅ proven | FdrsFormal/Applications/Field25519Carry.lean |
-| proposition_150 | proposition | 150 | witnesses on both sides | 8817 | ✅ proven | FdrsFormal/Applications/Field25519Carry.lean |
-| definition_202 | definition | 202 | currency; transport vs trigger | 8830 | ✅ proven | FdrsFormal/Applications/Field25519Carry.lean |
-| theorem_94 | theorem | 94 | currency-generic interface balance | 8841 | ✅ proven | FdrsFormal/Applications/Field25519Carry.lean |
-| definition_203 | definition | 203 | windows; the length window; grant uniformity | 8850 | ✅ proven | FdrsFormal/Applications/Field25519Carry.lean |
-| theorem_95 | theorem | 95 | the shared clock; clock windows are accountable | 8861 | ✅ proven | FdrsFormal/Applications/Field25519Carry.lean |
-| theorem_96 | theorem | 96 | the window boundary, CLOSED for the alternating ma | 8869 | ✅ proven | FdrsFormal/Applications/Field25519Carry.lean |
-| definition_204 | definition | 204 | the exact splice | 8880 | ✅ proven | FdrsFormal/Applications/Field25519Carry.lean |
-| theorem_97 | theorem | 97 | synthetic fractions; the gauge half of dilation | 8889 | ✅ proven | FdrsFormal/Applications/Field25519Carry.lean |
-| theorem_98 | theorem | 98 | dilation, dynamic half — exact nesting is conserva | 8901 | ✅ proven | FdrsFormal/Applications/Field25519Carry.lean |
-| definition_205 | definition | 205 | group-valued coupling graph | 8919 | ✅ proven | FdrsFormal/Applications/Field25519Carry.lean |
-| theorem_99 | theorem | 99 | group holonomy dichotomy — gain-graph balance | 8927 | ✅ proven | FdrsFormal/Applications/Field25519Carry.lean |
-| proposition_151 | proposition | 151 | non-abelian frustrated witnesses, discrete and con | 8937 | ✅ proven | FdrsFormal/Applications/Field25519Carry.lean |
-| definition_206 | definition | 206 | sector emission — the floor-free trap | 8945 | ✅ proven | FdrsFormal/Applications/Field25519Carry.lean |
-| theorem_100 | theorem | 100 | sector-trap soundness — the fourth certificate | 8953 | ✅ proven | FdrsFormal/Applications/Field25519Carry.lean |
-| definition_207 | definition | 207 | exact SE2 motions; pose regions; tractable engines | 8962 | ✅ proven | FdrsFormal/Applications/Field25519Carry.lean |
-| theorem_101 | theorem | 101 | the certified non-commutative engine: soundness an | 8972 | ✅ proven | FdrsFormal/Applications/Field25519Carry.lean |
-| theorem_102 | theorem | 102 | the tight tractable engine | 8985 | ✅ proven | FdrsFormal/Applications/Field25519Carry.lean |
-| definition_208 | definition | 208 | the network machine; the latency discipline | 9026 | ✅ proven | FdrsFormal/Modes/SyntheticPlace/NetworkConfig.lean |
-| theorem_103 | theorem | 103 | the probe gate: the two-node network IS the SU4b m | 9037 | ✅ proven | FdrsFormal/Modes/SyntheticPlace/NetworkConfig.lean |
-| definition_209 | definition | 209 | `complexStep` — the three-clause firing | 9046 | ✅ proven | FdrsFormal/Modes/SyntheticPlace/NetworkComplexStep.lean |
-| theorem_104 | theorem | 104 | conservative extension, twice; the fan-out witness | 9061 | ✅ proven | FdrsFormal/Modes/SyntheticPlace/NetworkComplexStep.lean |
-| theorem_105 | theorem | 105 | causality must not be frustrated — well-formedness | 9070 | ✅ proven | FdrsFormal/Modes/SyntheticPlace/NetworkComplexStep.lean |
-| theorem_106 | theorem | 106 | network balance: SU6b's generic law, per edge | 9080 | ✅ proven | FdrsFormal/Modes/SyntheticPlace/NetworkBalance.lean |
-| definition_210 | definition | 210 | non-blocking couplability; the decidable fixpoint  | 9096 | ✅ proven | FdrsFormal/Modes/SyntheticPlace/NetworkCouplability.lean |
-| theorem_107 | theorem | 107 | couplability certificate soundness | 9106 | ✅ proven | FdrsFormal/Modes/SyntheticPlace/NetworkCouplability.lean |
-| proposition_152 | proposition | 152 | witnesses on both sides of couplability | 9113 | ✅ proven | FdrsFormal/Modes/SyntheticPlace/NetworkCouplability.lean |
-| theorem_108 | theorem | 108 | per-node traps on the network — Theorem 86 transpo | 9121 | ✅ proven | FdrsFormal/Modes/SyntheticPlace/NetworkTraps.lean |
-| theorem_109 | theorem | 109 | the conditional Kahn diamond — determinacy, local  | 9134 | ✅ proven | FdrsFormal/Modes/SyntheticPlace/NetworkDeterminacy.lean |
-| theorem_110 | theorem | 110 | network liveness — the factored guarantee | 9149 | ✅ proven | FdrsFormal/Modes/SyntheticPlace/NetworkLiveness.lean |
-| theorem_111 | theorem | 111 | a timeline graph IS a network shape; time-ordering | 9173 | ✅ proven | FdrsFormal/Modes/SyntheticPlace/NetworkBridge.lean |
-| definition_211 | definition | 211 | the queue-backed edge register | 9187 | ✅ proven | FdrsFormal/Modes/SyntheticPlace/NetworkBridge.lean |
-| theorem_112 | theorem | 112 | queue balance at every capacity; capacity-one IS t | 9194 | ✅ proven | FdrsFormal/Modes/SyntheticPlace/NetworkBridge.lean |
-| definition_212 | definition | 212 | the 25519 digit ring | 9217 | ✅ proven | FdrsFormal/Applications/Field25519Carry.lean |
-| theorem_113 | theorem | 113 | a carry is a value-preserving redistribution | 9227 | ✅ proven | FdrsFormal/Applications/Field25519Carry.lean |
-| theorem_114 | theorem | 114 | the wrap has holonomy 19, not 1 | 9236 | ✅ proven | FdrsFormal/Applications/Field25519Carry.lean |
-| theorem_115 | theorem | 115 | the schedule restores the bound — lazy reduction l | 9244 | ✅ proven | FdrsFormal/Applications/Field25519Carry.lean |
-| definition_213 | definition | 213 | position gauge; the gauged completion | 9277 | ✅ proven | FdrsFormal/Modes/SyntheticPlace/Dimension.lean |
-| theorem_116 | theorem | 116 | the Moran frame — dimension squeezed by count agai | 9293 | ✅ proven | FdrsFormal/Modes/SyntheticPlace/Dimension.lean |
-| theorem_117 | theorem | 117 | every number line is one-dimensional | 9306 | ✅ proven | FdrsFormal/Modes/SyntheticPlace/Dimension.lean |
-| theorem_118 | theorem | 118 | the gauge programs the dimension | 9316 | ✅ proven | FdrsFormal/Modes/SyntheticPlace/Dimension.lean |
-| proposition_153 | proposition | 153 | the §6.4.3 growth regimes, computed | 9324 | ✅ proven | FdrsFormal/Modes/SyntheticPlace/Dimension.lean |
+| definition_192 | definition | 192 | prefix gauge | 8592 | ✅ proven | FdrsFormal/Applications/Field25519Carry.lean |
+| theorem_83 | theorem | 83 | gauge ⇒ ultrametric; ball = cylinder | 8599 | ✅ proven | FdrsFormal/Applications/Field25519Carry.lean |
+| proposition_147 | proposition | 147 | the corpus instances | 8607 | ✅ proven | FdrsFormal/Applications/Field25519Carry.lean |
+| definition_193 | definition | 193 | coupled fiber law; coupled completion counts | 8616 | ✅ proven | FdrsFormal/Applications/Field25519Carry.lean |
+| theorem_84 | theorem | 84 | level-only coupling preserves SU | 8623 | ✅ proven | FdrsFormal/Applications/Field25519Carry.lean |
+| proposition_148 | proposition | 148 | the ragged witness, machine-checked | 8628 | ✅ proven | FdrsFormal/Applications/Field25519Carry.lean |
+| theorem_85 | theorem | 85 | geometry survives raggedness | 8635 | ✅ proven | FdrsFormal/Applications/Field25519Carry.lean |
+| definition_194 | definition | 194 | transfer structure; uncertainty ledger; trap gate | 8644 | ✅ proven | FdrsFormal/Applications/Field25519Carry.lean |
+| theorem_86 | theorem | 86 | admissibility-trap soundness | 8651 | ✅ proven | FdrsFormal/Applications/Field25519Carry.lean |
+| definition_195 | definition | 195 | depth-decided observables | 8665 | ✅ proven | FdrsFormal/Applications/Field25519Carry.lean |
+| theorem_87 | theorem | 87 | indistinguishability below the gauge; strict hiera | 8669 | ✅ proven | FdrsFormal/Applications/Field25519Carry.lean |
+| definition_196 | definition | 196 | completion mass and observed flux | 8681 | ✅ proven | FdrsFormal/Applications/Field25519Carry.lean |
+| theorem_88 | theorem | 88 | the partition law; zero leak | 8686 | ✅ proven | FdrsFormal/Applications/Field25519Carry.lean |
+| definition_197 | definition | 197 | the coupled interface machine; balance | 8696 | ✅ proven | FdrsFormal/Applications/Field25519Carry.lean |
+| theorem_89 | theorem | 89 | the interface balance law | 8703 | ✅ proven | FdrsFormal/Applications/Field25519Carry.lean |
+| definition_198 | definition | 198 | place-local transfer rules | 8711 | ✅ proven | FdrsFormal/Applications/Field25519Carry.lean |
+| theorem_90 | theorem | 90 | conservation rigidity: factorization, no-go, bound | 8716 | ✅ proven | FdrsFormal/Applications/Field25519Carry.lean |
+| proposition_149 | proposition | 149 | witnesses on both sides of the boundary | 8730 | ✅ proven | FdrsFormal/Applications/Field25519Carry.lean |
+| definition_199 | definition | 199 | schedules, trace equivalence, projections | 8740 | ✅ proven | FdrsFormal/Applications/Field25519Carry.lean |
+| theorem_91 | theorem | 91 | the scalar trace-gauge no-go, machine-checked | 8748 | ✅ proven | FdrsFormal/Applications/Field25519Carry.lean |
+| definition_200 | definition | 200 | the observer-glued network distance | 8760 | ✅ proven | FdrsFormal/Applications/Field25519Carry.lean |
+| theorem_92 | theorem | 92 | the glued network ultrametric | 8765 | ✅ proven | FdrsFormal/Applications/Field25519Carry.lean |
+| definition_201 | definition | 201 | coupling graph; size as an edge cocycle | 8816 | ✅ proven | FdrsFormal/Applications/Field25519Carry.lean |
+| theorem_93 | theorem | 93 | the holonomy dichotomy — the full iff | 8830 | ✅ proven | FdrsFormal/Applications/Field25519Carry.lean |
+| proposition_150 | proposition | 150 | witnesses on both sides | 8837 | ✅ proven | FdrsFormal/Applications/Field25519Carry.lean |
+| definition_202 | definition | 202 | currency; transport vs trigger | 8850 | ✅ proven | FdrsFormal/Applications/Field25519Carry.lean |
+| theorem_94 | theorem | 94 | currency-generic interface balance | 8861 | ✅ proven | FdrsFormal/Applications/Field25519Carry.lean |
+| definition_203 | definition | 203 | windows; the length window; grant uniformity | 8870 | ✅ proven | FdrsFormal/Applications/Field25519Carry.lean |
+| theorem_95 | theorem | 95 | the shared clock; clock windows are accountable | 8881 | ✅ proven | FdrsFormal/Applications/Field25519Carry.lean |
+| theorem_96 | theorem | 96 | the window boundary, CLOSED for the alternating ma | 8889 | ✅ proven | FdrsFormal/Applications/Field25519Carry.lean |
+| definition_204 | definition | 204 | the exact splice | 8900 | ✅ proven | FdrsFormal/Applications/Field25519Carry.lean |
+| theorem_97 | theorem | 97 | synthetic fractions; the gauge half of dilation | 8909 | ✅ proven | FdrsFormal/Applications/Field25519Carry.lean |
+| theorem_98 | theorem | 98 | dilation, dynamic half — exact nesting is conserva | 8921 | ✅ proven | FdrsFormal/Applications/Field25519Carry.lean |
+| definition_205 | definition | 205 | group-valued coupling graph | 8939 | ✅ proven | FdrsFormal/Applications/Field25519Carry.lean |
+| theorem_99 | theorem | 99 | group holonomy dichotomy — gain-graph balance | 8947 | ✅ proven | FdrsFormal/Applications/Field25519Carry.lean |
+| proposition_151 | proposition | 151 | non-abelian frustrated witnesses, discrete and con | 8957 | ✅ proven | FdrsFormal/Applications/Field25519Carry.lean |
+| definition_206 | definition | 206 | sector emission — the floor-free trap | 8965 | ✅ proven | FdrsFormal/Applications/Field25519Carry.lean |
+| theorem_100 | theorem | 100 | sector-trap soundness — the fourth certificate | 8973 | ✅ proven | FdrsFormal/Applications/Field25519Carry.lean |
+| definition_207 | definition | 207 | exact SE2 motions; pose regions; tractable engines | 8982 | ✅ proven | FdrsFormal/Applications/Field25519Carry.lean |
+| theorem_101 | theorem | 101 | the certified non-commutative engine: soundness an | 8992 | ✅ proven | FdrsFormal/Applications/Field25519Carry.lean |
+| theorem_102 | theorem | 102 | the tight tractable engine | 9005 | ✅ proven | FdrsFormal/Applications/Field25519Carry.lean |
+| definition_208 | definition | 208 | the network machine; the latency discipline | 9046 | ✅ proven | FdrsFormal/Modes/SyntheticPlace/NetworkConfig.lean |
+| theorem_103 | theorem | 103 | the probe gate: the two-node network IS the SU4b m | 9057 | ✅ proven | FdrsFormal/Modes/SyntheticPlace/NetworkConfig.lean |
+| definition_209 | definition | 209 | `complexStep` — the three-clause firing | 9066 | ✅ proven | FdrsFormal/Modes/SyntheticPlace/NetworkComplexStep.lean |
+| theorem_104 | theorem | 104 | conservative extension, twice; the fan-out witness | 9081 | ✅ proven | FdrsFormal/Modes/SyntheticPlace/NetworkComplexStep.lean |
+| theorem_105 | theorem | 105 | causality must not be frustrated — well-formedness | 9090 | ✅ proven | FdrsFormal/Modes/SyntheticPlace/NetworkComplexStep.lean |
+| theorem_106 | theorem | 106 | network balance: SU6b's generic law, per edge | 9100 | ✅ proven | FdrsFormal/Modes/SyntheticPlace/NetworkBalance.lean |
+| definition_210 | definition | 210 | non-blocking couplability; the decidable fixpoint  | 9116 | ✅ proven | FdrsFormal/Modes/SyntheticPlace/NetworkCouplability.lean |
+| theorem_107 | theorem | 107 | couplability certificate soundness | 9126 | ✅ proven | FdrsFormal/Modes/SyntheticPlace/NetworkCouplability.lean |
+| proposition_152 | proposition | 152 | witnesses on both sides of couplability | 9133 | ✅ proven | FdrsFormal/Modes/SyntheticPlace/NetworkCouplability.lean |
+| theorem_108 | theorem | 108 | per-node traps on the network — Theorem 86 transpo | 9141 | ✅ proven | FdrsFormal/Modes/SyntheticPlace/NetworkTraps.lean |
+| theorem_109 | theorem | 109 | the conditional Kahn diamond — determinacy, local  | 9154 | ✅ proven | FdrsFormal/Modes/SyntheticPlace/NetworkDeterminacy.lean |
+| theorem_110 | theorem | 110 | network liveness — the factored guarantee | 9169 | ✅ proven | FdrsFormal/Modes/SyntheticPlace/NetworkLiveness.lean |
+| theorem_111 | theorem | 111 | a timeline graph IS a network shape; time-ordering | 9193 | ✅ proven | FdrsFormal/Modes/SyntheticPlace/NetworkBridge.lean |
+| definition_211 | definition | 211 | the queue-backed edge register | 9207 | ✅ proven | FdrsFormal/Modes/SyntheticPlace/NetworkBridge.lean |
+| theorem_112 | theorem | 112 | queue balance at every capacity; capacity-one IS t | 9214 | ✅ proven | FdrsFormal/Modes/SyntheticPlace/NetworkBridge.lean |
+| definition_212 | definition | 212 | the 25519 digit ring | 9237 | ✅ proven | FdrsFormal/Applications/Field25519Carry.lean |
+| theorem_113 | theorem | 113 | a carry is a value-preserving redistribution | 9247 | ✅ proven | FdrsFormal/Applications/Field25519Carry.lean |
+| theorem_114 | theorem | 114 | the wrap has holonomy 19, not 1 | 9256 | ✅ proven | FdrsFormal/Applications/Field25519Carry.lean |
+| theorem_115 | theorem | 115 | the schedule restores the bound — lazy reduction l | 9264 | ✅ proven | FdrsFormal/Applications/Field25519Carry.lean |
+| definition_213 | definition | 213 | position gauge; the gauged completion | 9297 | ✅ proven | FdrsFormal/Modes/SyntheticPlace/Dimension.lean |
+| theorem_116 | theorem | 116 | the Moran frame — dimension squeezed by count agai | 9313 | ✅ proven | FdrsFormal/Modes/SyntheticPlace/Dimension.lean |
+| theorem_117 | theorem | 117 | every number line is one-dimensional | 9326 | ✅ proven | FdrsFormal/Modes/SyntheticPlace/Dimension.lean |
+| theorem_118 | theorem | 118 | the gauge programs the dimension | 9336 | ✅ proven | FdrsFormal/Modes/SyntheticPlace/Dimension.lean |
+| proposition_153 | proposition | 153 | the §6.4.3 growth regimes, computed | 9344 | ✅ proven | FdrsFormal/Modes/SyntheticPlace/Dimension.lean |

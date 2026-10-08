@@ -28,7 +28,7 @@ A **plan** for length `N` is one of:
 | plan | gates | corpus counterpart |
 |---|---|---|
 | `D_N` dense — each output a combination of all inputs, `±1` coefficients unscaled | `Σ_k Σ_{j≥1} (1 or 2)` | Proposition 158, sharpened |
-| `P_N` conjugate pair, odd `N = 2h+1` — `s_j = x_j + x_{N−j}`, `d_j = x_j − x_{N−j}`, cosines on `s`, sines on `d` | `N² − 1` | — (new kernel) |
+| `P_N` conjugate pair, odd `N = 2h+1` — `s_j = x_j + x_{N−j}`, `d_j = x_j − x_{N−j}`, cosines on `s`, sines on `d` | `N² − 1` | Theorem 126 (proven) |
 | `CT(n₁, n₂)` positional split, explicit twiddles, `W = 1` skipped | `n₁C(n₂) + n₂C(n₁) + #{(a,p) : N ∤ ap}` | Theorem 120 / 125 |
 | `CTF(n₁, n₂)` positional split, twiddles folded into the outer combinations | `n₁C(n₂) + Σ_k Σ_{a≥1} (1 or 2)` | Theorem 123's move |
 | `PFA(n₁, n₂)`, `gcd = 1` — residue chart in, Good's chart out | `n₁C(n₂) + n₂C(n₁)` | Corollary 33 |

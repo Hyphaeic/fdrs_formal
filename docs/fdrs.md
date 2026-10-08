@@ -2116,6 +2116,26 @@ real-arithmetic literature do not transfer as they stand; family 130 shows the
 constant itself can be pushed to any `c > 0` along a subsequence. Neither is
 claimed here.
 
+## 1.10 The conjugate-pair kernel (addendum, 2026-10-08)
+
+### Theorem 126 (the conjugate-pair kernel)  [§1.10 · Phase 3, Fragment 2]
+
+Every odd length `n = 2h + 1` has an exact Fourier circuit (Definition 216) with
+exactly `n² − 1` gates. With `ζ = ζ_n`, `j, m = 1, …, h`:
+`s_j = x_j + x_{n−j}`, `d_j = x_j − x_{n−j}`; `X_0 = x_0 + Σ_j s_j`;
+`A_m = x_0 + Σ_j α_{mj} s_j`, `B_m = Σ_j β_{mj} d_j`, `X_m = A_m + B_m`,
+`X_{n−m} = A_m − B_m`, where `α_{mj} = (ζ^{mj} + ζ^{m(n−j)})/2` and
+`β_{mj} = (ζ^{mj} − ζ^{m(n−j)})/2`. The count is `2h + h + h(4h + 1) = n² − 1`,
+about half the dense `n(2n − 1)` of Proposition 158; the mirror frequency `n − m`
+reuses `A_m, B_m` because `ζ^{(n−m)j} = ζ^{m(n−j)}`.
+
+*Lean:* `FdrsFormal/NumberTheory/Characters/PairKernel.lean`.
+
+**Honest scope (§1.10).** Classical (the real-symmetry split of the DFT kernel).
+Not claimed minimal; it is the prime kernel of the radix-schedule search
+(`docs/fourier/01-schedule-search.md`), where Rader's reduction is the open
+improvement for large primes.
+
 ---
 
 # 2. Multiplicative probes: Dirichlet characters mod (q)
