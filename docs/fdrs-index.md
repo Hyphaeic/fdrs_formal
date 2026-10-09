@@ -1,10 +1,10 @@
 # FDRS Specification Index
 
-Auto-generated from `data/fdrs-index.yaml` (2026-10-09T13:39:28.300043)
+Auto-generated from `data/fdrs-index.yaml` (2026-10-09T13:51:55.087325)
 
-**571 items** from `docs/fdrs.md` (9596 lines)
+**577 items** from `docs/fdrs.md` (9643 lines)
 
-Status: missing: 3 | proven: 566 | scaffold: 2
+Status: missing: 3 | proven: 572 | scaffold: 2
 
 ## Phase 1
 
@@ -645,3 +645,9 @@ Status: missing: 3 | proven: 566 | scaffold: 2
 | definition_220 | definition | 220 | negacyclic convolution | 9574 | ✅ proven | FdrsFormal/NumberTheory/Characters/Negacyclic.lean |
 | proposition_164 | proposition | 164 | the negacyclic twist | 9582 | ✅ proven | FdrsFormal/NumberTheory/Characters/Negacyclic.lean |
 | corollary_42 | corollary | 42 | the complex twist | 9590 | ✅ proven | FdrsFormal/NumberTheory/Characters/Negacyclic.lean |
+| definition_221 | definition | 221 | Vilenkin coefficients, digit averaging, influence | 9602 | ✅ proven | FdrsFormal/NumberTheory/Characters/VilenkinAnalysis.lean |
+| theorem_133 | theorem | 133 | Vilenkin orthogonality and Plancherel | 9612 | ✅ proven | FdrsFormal/NumberTheory/Characters/VilenkinAnalysis.lean |
+| theorem_134 | theorem | 134 | the spectral formula for influences | 9618 | ✅ proven | FdrsFormal/NumberTheory/Characters/VilenkinAnalysis.lean |
+| proposition_165 | proposition | 165 | the Poincaré inequality | 9626 | ✅ proven | FdrsFormal/NumberTheory/Characters/VilenkinAnalysis.lean |
+| proposition_166 | proposition | 166 | half-shift parity | 9630 | ✅ proven | FdrsFormal/NumberTheory/Characters/VilenkinAnalysis.lean |
+| corollary_43 | corollary | 43 | sign-changing functions | 9637 | ✅ proven | FdrsFormal/NumberTheory/Characters/VilenkinAnalysis.lean |

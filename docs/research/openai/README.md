@@ -50,11 +50,11 @@ Ordered by (FDRS content) × (feasibility). Effort: S / M / L.
 2. **[done — fdrs.md §3.5, Def 218, Thm 131, Cor 39]** **Digit convolution + carries = product, constant radix** (109 survey, Thm "131",
    Cor "39"). Generalises `Field25519Carry.carryStep` to any `RadixSeq`; the
    boundary corollary for variable schedules. **M.**
-3. **Vilenkin orthogonality, Plancherel, digit averaging `E_i`, influences**
+3. **[done — fdrs.md §1.15, Def 221, Thms 133–134, Props 165–166, Cor 43]** **Vilenkin orthogonality, Plancherel, digit averaging `E_i`, influences**
    (106 survey, Def "218"–Thm "132"). `D_i(f)² = Σ_{σ_i≠0} |f̂(σ)|²`, Efron–Stein on
    `∏ ℤ/b_i`, Poincaré with constant 1; prefix projection `P_L = E_L ⋯ E_k`. Builds on
    `vilenkinKernel`, Haar bases, `finiteBlockProjection`. **M–L.**
-4. **Half-shift parity** (106 survey, Prop "163", Cor "39"). On even schedules,
+4. **[done — fdrs.md §1.15, Prop 166, Cor 43]** **Half-shift parity** (106 survey, Prop "163", Cor "39"). On even schedules,
    `f ∘ h = −f` iff `f̂` lives on odd digit sums. **S–M.**
 5. **[done — fdrs.md §1.13, Def 219, Prop 163, Thm 132, Cor 40–41]** **Residue chart carries convolution** (109 survey, Prop "165"). Cyclic convolution
    of length `N` is `(k+1)`-dimensional convolution on the Vilenkin group under

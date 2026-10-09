@@ -65,3 +65,4 @@ import FdrsFormal.NumberTheory.Characters.RaderBluestein
 import FdrsFormal.NumberTheory.Characters.SearchCertificatesExt
 import FdrsFormal.NumberTheory.Characters.ResidueConvolution
 import FdrsFormal.NumberTheory.Characters.Negacyclic
+import FdrsFormal.NumberTheory.Characters.VilenkinAnalysis

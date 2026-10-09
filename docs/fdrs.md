@@ -1844,7 +1844,7 @@ Let (*_k) be cyclic convolution on (\mathcal R^{(k)}) (equivalently (\mathbb Z/N
 ]
 *Proof.* Substitute definitions and change variables (z=x-y). ∎
 
-**Meaning:** additive characters are exact “frequency probes” of the time convolution algebra. *(Addenda §1.4–1.14 — the mixed-radix Fourier arc — sit at the end of this document, so that earlier line references stay stable.)*
+**Meaning:** additive characters are exact “frequency probes” of the time convolution algebra. *(Addenda §1.4–1.15 — the mixed-radix Fourier arc — sit at the end of this document, so that earlier line references stay stable.)*
 
 ---
 
@@ -9594,3 +9594,50 @@ w^n\,(f\circledast^-_r g)_n=\big((w^{\cdot}f)\circledast_r(w^{\cdot}g)\big)_n,\q
 *Lean:* `FdrsFormal/NumberTheory/Characters/Negacyclic.lean`.
 
 **Honest scope (§1.14).** Classical (weighted convolution; Nussbaumer 1980). The ring form (\mathbb C[y]/(y^r+1)) and synthetic roots of unity are not formalized. No cost is claimed.
+
+## 1.15 Analysis on the carry-free group (addendum, 2026-10-09)
+
+*(Provenance: OpenAI family 106 — hardness of finding large independent sets in three-colorable graphs — whose soundness proof runs on influences of functions that change sign under a half-shift of a product of cyclic grids. This addendum states that calculus on (\mathcal R^{(k)}\cong\prod\mathbb Z/b_i) with the Vilenkin kernel (V(\tau,\sigma)=\prod_i\zeta_{b_i}^{\tau_i\sigma_i}) of §1.4. Research notes: `docs/research/openai/`.)*
+
+### Definition 221 (Vilenkin coefficients, digit averaging, influence)  [§1.15 · Phase 3, Fragment 2]
+
+For (f:\mathcal R^{(k)}\to\mathbb C) and (N=B_{k+1}):
+[
+\hat f(\sigma)=\tfrac1N\sum_\tau f(\tau)\,\overline{V(\tau,\sigma)},\qquad
+(E_if)(\tau)=\tfrac1{b_i}\sum_{t<b_i}f(\tau[i:=t]),\qquad
+D_i(f)^2=\tfrac1N\sum_\tau|f(\tau)-(E_if)(\tau)|^2 .
+]
+On an even schedule ((2\mid b_i)) the **half-shift** is (h(\tau)_i=\tau_i+b_i/2\bmod b_i).
+
+### Theorem 133 (Vilenkin orthogonality and Plancherel)  [§1.15 · Phase 3, Fragment 2]
+
+(\sum_\tau V(\tau,\sigma)\overline{V(\tau,\sigma')}=N[\sigma=\sigma']); hence (f=\sum_\sigma\hat f(\sigma)V(\cdot,\sigma)), (\tfrac1N\sum_\tau f\bar g=\sum_\sigma\hat f\,\overline{\hat g}), and (\tfrac1N\sum_\tau|f|^2=\sum_\sigma|\hat f|^2).
+
+**Proof.** The sum factors over digits (\sum_\tau\prod_i=\prod_i\sum_{t<b_i}); each factor is (b_i[\sigma_i=\sigma'_i]) by orthogonality of the powers of (\zeta_{b_i}) (Proposition 161). ∎
+
+### Theorem 134 (the spectral formula for influences)  [§1.15 · Phase 3, Fragment 2]
+
+(E_iV(\cdot,\sigma)=[\sigma_i=0]\,V(\cdot,\sigma)), so (\widehat{E_if}(\sigma)=[\sigma_i=0]\hat f(\sigma)) and
+[
+D_i(f)^2=\sum_{\sigma:\ \sigma_i\ne0}|\hat f(\sigma)|^2 .
+]
+Averaging over a digit is the Efron–Stein projection onto characters that ignore it.
+
+### Proposition 165 (the Poincaré inequality)  [§1.15 · Phase 3, Fragment 2]
+
+(\tfrac1N\sum_\tau|f(\tau)-\hat f(0)|^2\le\sum_iD_i(f)^2): every (\sigma\ne0) has a nonzero digit, so its weight (|\hat f(\sigma)|^2) appears in at least one influence.
+
+### Proposition 166 (half-shift parity)  [§1.15 · Phase 3, Fragment 2]
+
+On an even schedule (V(h\tau,\sigma)=(-1)^{|\sigma|}V(\tau,\sigma)) with (|\sigma|=\sum_i\sigma_i) (because (\zeta_{b}^{b/2}=-1)), and
+[
+f\circ h=-f\iff \hat f(\sigma)=0\ \text{whenever } |\sigma| \text{ is even.}
+]
+
+### Corollary 43 (sign-changing functions)  [§1.15 · Phase 3, Fragment 2]
+
+If (f\circ h=-f) then (\hat f(0)=0) and (\tfrac1N\sum_\tau|f(\tau)|^2\le\sum_iD_i(f)^2): a function that flips sign under the half-shift cannot have small total influence without having small energy. This is the finite, mixed-radix form of the step in family 106 where an independent set yields odd functions whose substantial variance forces an influential coordinate.
+
+*Lean:* `FdrsFormal/NumberTheory/Characters/VilenkinAnalysis.lean`.
+
+**Honest scope (§1.15).** Classical (Vilenkin 1947; Efron–Stein 1981; Poincaré via Fourier weights). Family 106's dimension-free junta theorem, its Lipschitz and metric structure, and its alignment lemma are not formalized; only the finite spectral calculus is.

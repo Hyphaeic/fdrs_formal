@@ -1,10 +1,10 @@
 metadata:
   spec_file: docs/fdrs.md
-  spec_lines: 9596
-  generated_at: '2026-10-09T13:39:28.300043'
-  total_items: 571
+  spec_lines: 9643
+  generated_at: '2026-10-09T13:51:55.087325'
+  total_items: 577
   status_summary:
-    proven: 566
+    proven: 572
     missing: 3
     scaffold: 2
   status_legend:
@@ -14270,14 +14270,107 @@ items:
     - negConv_twist_zeta
   fragment: '2'
   section: '1.14'
+- id: definition_221
+  type: definition
+  phase: 3
+  global_num: 221
+  title: Vilenkin coefficients, digit averaging, influence
+  line: 9602
+  status: proven
+  in_root_build: true
+  lean_files:
+  - path: FdrsFormal/NumberTheory/Characters/VilenkinAnalysis.lean
+    declarations:
+    - vHat
+    - digitAvg
+    - influenceSq
+    - halfShift
+  fragment: '2'
+  section: '1.15'
+- id: theorem_133
+  type: theorem
+  phase: 3
+  global_num: 133
+  title: Vilenkin orthogonality and Plancherel
+  line: 9612
+  status: proven
+  in_root_build: true
+  lean_files:
+  - path: FdrsFormal/NumberTheory/Characters/VilenkinAnalysis.lean
+    declarations:
+    - vilenkin_orthogonal
+    - vilenkin_inversion
+    - vilenkin_parseval
+    - vilenkin_plancherel
+  fragment: '2'
+  section: '1.15'
+- id: theorem_134
+  type: theorem
+  phase: 3
+  global_num: 134
+  title: the spectral formula for influences
+  line: 9618
+  status: proven
+  in_root_build: true
+  lean_files:
+  - path: FdrsFormal/NumberTheory/Characters/VilenkinAnalysis.lean
+    declarations:
+    - vHat_digitAvg
+    - influenceSq_eq
+  fragment: '2'
+  section: '1.15'
+- id: proposition_165
+  type: proposition
+  phase: 3
+  global_num: 165
+  title: the Poincaré inequality
+  line: 9626
+  status: proven
+  in_root_build: true
+  lean_files:
+  - path: FdrsFormal/NumberTheory/Characters/VilenkinAnalysis.lean
+    declarations:
+    - variance_le_sum_influence
+  fragment: '2'
+  section: '1.15'
+- id: proposition_166
+  type: proposition
+  phase: 3
+  global_num: 166
+  title: half-shift parity
+  line: 9630
+  status: proven
+  in_root_build: true
+  lean_files:
+  - path: FdrsFormal/NumberTheory/Characters/VilenkinAnalysis.lean
+    declarations:
+    - kernel_halfShift
+    - odd_iff_vHat
+  fragment: '2'
+  section: '1.15'
+- id: corollary_43
+  type: corollary
+  phase: 3
+  global_num: 43
+  title: sign-changing functions
+  line: 9637
+  status: proven
+  in_root_build: true
+  lean_files:
+  - path: FdrsFormal/NumberTheory/Characters/VilenkinAnalysis.lean
+    declarations:
+    - odd_mean_zero
+    - odd_energy_le_sum_influence
+  fragment: '2'
+  section: '1.15'
 lean_summary:
-  total_files: 323
+  total_files: 324
   total_axioms: 0
   axioms_true: 0
   total_sorries: 0
   sorry_files: []
-  total_theorems: 2532
-  total_defs: 981
+  total_theorems: 2562
+  total_defs: 986
   total_lemmas: 26
   total_stubs: 0
   stubs_by_kind:

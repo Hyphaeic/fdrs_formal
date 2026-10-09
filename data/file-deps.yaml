@@ -1,6 +1,6 @@
 metadata:
-  total_files: 323
-  total_edges: 682
+  total_files: 324
+  total_edges: 685
   total_modules: 19
 modules:
   Analysis:
@@ -298,6 +298,7 @@ modules:
   - FdrsFormal/NumberTheory/Characters/SearchCertificates.lean
   - FdrsFormal/NumberTheory/Characters/SearchCertificatesExt.lean
   - FdrsFormal/NumberTheory/Characters/TwistTransform.lean
+  - FdrsFormal/NumberTheory/Characters/VilenkinAnalysis.lean
   - FdrsFormal/NumberTheory/CylinderMeasurability.lean
   - FdrsFormal/NumberTheory/FactorizationLens.lean
   - FdrsFormal/NumberTheory/FactorizationLens/AugmentedState.lean
@@ -1567,6 +1568,10 @@ file_edges:
   to: FdrsFormal/NumberTheory/Characters/DirichletCharacters.lean
 - from: FdrsFormal/NumberTheory/Characters/TwistTransform.lean
   to: FdrsFormal/NumberTheory/ArithmeticFunctions/DirichletConv.lean
+- from: FdrsFormal/NumberTheory/Characters/VilenkinAnalysis.lean
+  to: FdrsFormal/NumberTheory/Characters/Negacyclic.lean
+- from: FdrsFormal/NumberTheory/Characters/VilenkinAnalysis.lean
+  to: FdrsFormal/NumberTheory/Characters/RaderBluestein.lean
 - from: FdrsFormal/NumberTheory/Characters.lean
   to: FdrsFormal/NumberTheory/Characters/AdditiveCharacters.lean
 - from: FdrsFormal/NumberTheory/Characters.lean
@@ -1603,6 +1608,8 @@ file_edges:
   to: FdrsFormal/NumberTheory/Characters/ResidueConvolution.lean
 - from: FdrsFormal/NumberTheory/Characters.lean
   to: FdrsFormal/NumberTheory/Characters/Negacyclic.lean
+- from: FdrsFormal/NumberTheory/Characters.lean
+  to: FdrsFormal/NumberTheory/Characters/VilenkinAnalysis.lean
 - from: FdrsFormal/NumberTheory/CylinderMeasurability.lean
   to: FdrsFormal/Core/Primitives.lean
 - from: FdrsFormal/NumberTheory/CylinderMeasurability.lean
