@@ -59,7 +59,7 @@ Ordered by (FDRS content) × (feasibility). Effort: S / M / L.
 5. **[done — fdrs.md §1.13, Def 219, Prop 163, Thm 132, Cor 40–41]** **Residue chart carries convolution** (109 survey, Prop "165"). Cyclic convolution
    of length `N` is `(k+1)`-dimensional convolution on the Vilenkin group under
    pairwise-coprime radices; convolution twin of Corollary 33. **M.**
-6. **Negacyclic twist** (109 survey, Prop "164"). `w_j = ζ_{2r}^j` turns negacyclic
+6. **[done — fdrs.md §1.14, Def 220, Prop 164, Cor 42]** **Negacyclic twist** (109 survey, Prop "164"). `w_j = ζ_{2r}^j` turns negacyclic
    into cyclic convolution. **S–M.**
 7. **Digit-field interchange by three shears** (109 survey, Def "220"/Prop "163").
    `FiniteRadixSpace` position swap as shears plus a within-digit negation, with

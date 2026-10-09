@@ -64,3 +64,4 @@ import FdrsFormal.NumberTheory.Characters.SearchCertificates
 import FdrsFormal.NumberTheory.Characters.RaderBluestein
 import FdrsFormal.NumberTheory.Characters.SearchCertificatesExt
 import FdrsFormal.NumberTheory.Characters.ResidueConvolution
+import FdrsFormal.NumberTheory.Characters.Negacyclic

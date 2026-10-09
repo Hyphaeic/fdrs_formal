@@ -1,10 +1,10 @@
 metadata:
   spec_file: docs/fdrs.md
-  spec_lines: 9568
-  generated_at: '2026-10-09T07:57:38.639473'
-  total_items: 568
+  spec_lines: 9596
+  generated_at: '2026-10-09T13:39:28.300043'
+  total_items: 571
   status_summary:
-    proven: 563
+    proven: 566
     missing: 3
     scaffold: 2
   status_legend:
@@ -14228,14 +14228,56 @@ items:
     - mul_eq_vConv
   fragment: '2'
   section: '1.13'
+- id: definition_220
+  type: definition
+  phase: 3
+  global_num: 220
+  title: negacyclic convolution
+  line: 9574
+  status: proven
+  in_root_build: true
+  lean_files:
+  - path: FdrsFormal/NumberTheory/Characters/Negacyclic.lean
+    declarations:
+    - negConv
+  fragment: '2'
+  section: '1.14'
+- id: proposition_164
+  type: proposition
+  phase: 3
+  global_num: 164
+  title: the negacyclic twist
+  line: 9582
+  status: proven
+  in_root_build: true
+  lean_files:
+  - path: FdrsFormal/NumberTheory/Characters/Negacyclic.lean
+    declarations:
+    - negConv_twist
+  fragment: '2'
+  section: '1.14'
+- id: corollary_42
+  type: corollary
+  phase: 3
+  global_num: 42
+  title: the complex twist
+  line: 9590
+  status: proven
+  in_root_build: true
+  lean_files:
+  - path: FdrsFormal/NumberTheory/Characters/Negacyclic.lean
+    declarations:
+    - negConv_twist_zeta
+  fragment: '2'
+  section: '1.14'
 lean_summary:
-  total_files: 322
+  total_files: 323
   total_axioms: 0
   axioms_true: 0
   total_sorries: 0
   sorry_files: []
-  total_theorems: 2529
-  total_defs: 980
+  total_theorems: 2532
+  total_defs: 981
   total_lemmas: 26
   total_stubs: 0
   stubs_by_kind:

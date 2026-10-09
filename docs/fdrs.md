@@ -1844,7 +1844,7 @@ Let (*_k) be cyclic convolution on (\mathcal R^{(k)}) (equivalently (\mathbb Z/N
 ]
 *Proof.* Substitute definitions and change variables (z=x-y). ∎
 
-**Meaning:** additive characters are exact “frequency probes” of the time convolution algebra. *(Addenda §1.4–1.13 — the mixed-radix Fourier arc — sit at the end of this document, so that earlier line references stay stable.)*
+**Meaning:** additive characters are exact “frequency probes” of the time convolution algebra. *(Addenda §1.4–1.14 — the mixed-radix Fourier arc — sit at the end of this document, so that earlier line references stay stable.)*
 
 ---
 
@@ -9566,3 +9566,31 @@ Theorem 131 (digits → convolution), Corollary 40 (convolution → cyclic) and 
 *Lean:* `FdrsFormal/NumberTheory/Characters/ResidueConvolution.lean`.
 
 **Honest scope (§1.13).** Classical (Agarwal–Cooley 1977, CRT reduction of cyclic to multidimensional convolution; Kronecker substitution). The corpus contributes the statements on its charts and the chain to Theorem 131. No cost is claimed.
+
+## 1.14 The negacyclic twist (addendum, 2026-10-09)
+
+*(Provenance: OpenAI family 109, whose last cyclic axis is turned into the ring (\mathbb C[y]/(y^r+1)) by a phase twist.)*
+
+### Definition 220 (negacyclic convolution)  [§1.14 · Phase 3, Fragment 2]
+
+Over a commutative ring, for (n<r),
+[
+(f\circledast^-_r g)_n=\sum_{m\le n}f_mg_{n-m}-\sum_{n<m<r}f_mg_{n+r-m},
+]
+the coefficients of a product modulo (y^r+1): a term that wraps past (r) returns with a minus sign.
+
+### Proposition 164 (the negacyclic twist)  [§1.14 · Phase 3, Fragment 2]
+
+If (w^r=-1), then for every (n<r)
+[
+w^n\,(f\circledast^-_r g)_n=\big((w^{\cdot}f)\circledast_r(w^{\cdot}g)\big)_n,\qquad (w^{\cdot}f)_m=w^mf_m .
+]
+**Proof.** Term by term: for (m\le n), (w^mw^{n-m}=w^n); for (m>n) the cyclic index is (n+r-m) and (w^mw^{n+r-m}=w^{n+r}=-w^n), which supplies the sign. ∎
+
+### Corollary 42 (the complex twist)  [§1.14 · Phase 3, Fragment 2]
+
+(\zeta_{2r}^r=-1), so negacyclic convolution of length (r) over (\mathbb C) is cyclic convolution of length (r) twisted by (\zeta_{2r}^m) on both inputs and untwisted by (\zeta_{2r}^{-n}) at the output. With Theorem 132 and Proposition 161 it is computable by forward transforms alone.
+
+*Lean:* `FdrsFormal/NumberTheory/Characters/Negacyclic.lean`.
+
+**Honest scope (§1.14).** Classical (weighted convolution; Nussbaumer 1980). The ring form (\mathbb C[y]/(y^r+1)) and synthetic roots of unity are not formalized. No cost is claimed.

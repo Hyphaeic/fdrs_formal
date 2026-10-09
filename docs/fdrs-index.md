@@ -1,10 +1,10 @@
 # FDRS Specification Index
 
-Auto-generated from `data/fdrs-index.yaml` (2026-10-09T07:57:38.639473)
+Auto-generated from `data/fdrs-index.yaml` (2026-10-09T13:39:28.300043)
 
-**568 items** from `docs/fdrs.md` (9568 lines)
+**571 items** from `docs/fdrs.md` (9596 lines)
 
-Status: missing: 3 | proven: 563 | scaffold: 2
+Status: missing: 3 | proven: 566 | scaffold: 2
 
 ## Phase 1
 
@@ -642,3 +642,6 @@ Status: missing: 3 | proven: 563 | scaffold: 2
 | theorem_132 | theorem | 132 | the residue chart carries convolution | 9546 | ✅ proven | FdrsFormal/NumberTheory/Characters/ResidueConvolution.lean |
 | corollary_40 | corollary | 40 | padding removes the wrap | 9554 | ✅ proven | FdrsFormal/NumberTheory/Characters/ResidueConvolution.lean |
 | corollary_41 | corollary | 41 | the multiplication chain | 9558 | ✅ proven | FdrsFormal/NumberTheory/Characters/ResidueConvolution.lean |
+| definition_220 | definition | 220 | negacyclic convolution | 9574 | ✅ proven | FdrsFormal/NumberTheory/Characters/Negacyclic.lean |
+| proposition_164 | proposition | 164 | the negacyclic twist | 9582 | ✅ proven | FdrsFormal/NumberTheory/Characters/Negacyclic.lean |
+| corollary_42 | corollary | 42 | the complex twist | 9590 | ✅ proven | FdrsFormal/NumberTheory/Characters/Negacyclic.lean |
