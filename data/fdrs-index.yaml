@@ -1,10 +1,10 @@
 metadata:
   spec_file: docs/fdrs.md
-  spec_lines: 9643
-  generated_at: '2026-10-09T13:51:55.087325'
-  total_items: 577
+  spec_lines: 9674
+  generated_at: '2026-10-09T16:39:25.047413'
+  total_items: 580
   status_summary:
-    proven: 572
+    proven: 575
     missing: 3
     scaffold: 2
   status_legend:
@@ -14363,14 +14363,57 @@ items:
     - odd_energy_le_sum_influence
   fragment: '2'
   section: '1.15'
+- id: definition_222
+  type: definition
+  phase: 1
+  global_num: 222
+  title: address shears and digit swap
+  line: 9651
+  status: proven
+  in_root_build: true
+  lean_files:
+  - path: FdrsFormal/Operations/DigitShear.lean
+    declarations:
+    - shear
+    - swapDigits
+  fragment: '2'
+  section: '3.6'
+- id: proposition_167
+  type: proposition
+  phase: 1
+  global_num: 167
+  title: a swap is three shears
+  line: 9655
+  status: proven
+  in_root_build: true
+  lean_files:
+  - path: FdrsFormal/Operations/DigitShear.lean
+    declarations:
+    - swap_eq_shears
+  fragment: '2'
+  section: '3.6'
+- id: proposition_168
+  type: proposition
+  phase: 1
+  global_num: 168
+  title: the address displacement of a swap
+  line: 9664
+  status: proven
+  in_root_build: true
+  lean_files:
+  - path: FdrsFormal/Operations/DigitShear.lean
+    declarations:
+    - decodeFinite_swapDigits
+  fragment: '2'
+  section: '3.6'
 lean_summary:
-  total_files: 324
+  total_files: 325
   total_axioms: 0
   axioms_true: 0
   total_sorries: 0
   sorry_files: []
-  total_theorems: 2562
-  total_defs: 986
+  total_theorems: 2569
+  total_defs: 990
   total_lemmas: 26
   total_stubs: 0
   stubs_by_kind:

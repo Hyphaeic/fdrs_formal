@@ -431,7 +431,7 @@ By Proposition 6, (\pi_L(\tau)=\pi_L(\tau')) implies (\operatorname{dec}(\tau)\e
 ]
 Apply Proposition 6 in reverse to conclude the first (L) digits (prefix) of the sums match. ∎
 
-This is the formal “multi-rate locality” statement: the first (L) digits of the result depend **only** on the first (L) digits of the inputs (no dependence on higher digits). *(Addendum §3.5 — multiplication as digit convolution, and where it fails on variable schedules — sits at the end of this document.)*
+This is the formal “multi-rate locality” statement: the first (L) digits of the result depend **only** on the first (L) digits of the inputs (no dependence on higher digits). *(Addenda §3.5–3.6 — multiplication as digit convolution and where it fails on variable schedules; address shears and digit interchange — sit at the end of this document.)*
 
 ---
 
@@ -9641,3 +9641,34 @@ If (f\circ h=-f) then (\hat f(0)=0) and (\tfrac1N\sum_\tau|f(\tau)|^2\le\sum_iD_
 *Lean:* `FdrsFormal/NumberTheory/Characters/VilenkinAnalysis.lean`.
 
 **Honest scope (§1.15).** Classical (Vilenkin 1947; Efron–Stein 1981; Poincaré via Fourier weights). Family 106's dimension-free junta theorem, its Lipschitz and metric structure, and its alignment lemma are not formalized; only the finite spectral calculus is.
+
+# Phase 1 addendum, continued — address shears and digit interchange (§3.6)
+
+*(Phase 1, Fragment 2. Provenance: OpenAI family 109, which interchanges two address fields of an array not by moving data but by three shears ((H,D)\mapsto(H+D,D)) over a residue ring. In FDRS a field of (u) bits is a single digit of radix (2^u), so a field interchange is a swap of two equal-radix digits.)*
+
+## 3.6 Address shears and digit interchange (addendum, 2026-10-09)
+
+### Definition 222 (address shears and digit swap)  [§3.6 · Phase 1, Fragment 2]
+
+For positions (i\ne j) of (\mathcal R^{(k)}): the **shear** (\mathrm{sh}_{i\leftarrow j}) replaces (\tau_i) by (\tau_i+\tau_j\bmod b_i); its inverse (\mathrm{sh}^{-1}_{i\leftarrow j}) by (\tau_i-\tau_j\bmod b_i); (\mathrm{neg}_j) replaces (\tau_j) by (-\tau_j\bmod b_j) (a digit permutation, Definition 37). When (b_i=b_j), (\mathrm{swap}_{ij}) exchanges (\tau_i) and (\tau_j). All other digits are unchanged.
+
+### Proposition 167 (a swap is three shears)  [§3.6 · Phase 1, Fragment 2]
+
+Shears are bijections of (\mathcal R^{(k)}) ((\mathrm{sh}^{-1}) inverts (\mathrm{sh}) on both sides), and for (b_i=b_j)
+[
+\mathrm{swap}_{ij}=\mathrm{neg}_j\circ\mathrm{sh}_{i\leftarrow j}\circ\mathrm{sh}^{-1}_{j\leftarrow i}\circ\mathrm{sh}_{i\leftarrow j}:\quad
+(u,v)\mapsto(u+v,v)\mapsto(u+v,-u)\mapsto(v,-u)\mapsto(v,u).
+]
+Each identity is checked digitwise in (\mathbb Z/b_i).
+
+### Proposition 168 (the address displacement of a swap)  [§3.6 · Phase 1, Fragment 2]
+
+Changing digit (i) from (\tau_i) to (v) moves the address by ((v-\tau_i)B_i); hence for (b_i=b_j)
+[
+\operatorname{dec}(\mathrm{swap}_{ij}\tau)=\operatorname{dec}\tau+(\tau_j-\tau_i)(B_i-B_j)
+]
+over (\mathbb Z). A field interchange is a permutation of addresses whose displacement is not local: it depends on the two place values, which is why it cannot be done by a bounded number of scans in the order of the stored stream, and why family 109 builds it from shears instead.
+
+*Lean:* `FdrsFormal/Operations/DigitShear.lean`.
+
+**Honest scope (§3.6).** Classical (the three-shear factorisation of a transposition). Family 109's cost bound for the tape implementation is not formalized; only the algebra on the digit chart is.

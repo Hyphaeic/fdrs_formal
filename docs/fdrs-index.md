@@ -1,10 +1,10 @@
 # FDRS Specification Index
 
-Auto-generated from `data/fdrs-index.yaml` (2026-10-09T13:51:55.087325)
+Auto-generated from `data/fdrs-index.yaml` (2026-10-09T16:39:25.047413)
 
-**577 items** from `docs/fdrs.md` (9643 lines)
+**580 items** from `docs/fdrs.md` (9674 lines)
 
-Status: missing: 3 | proven: 572 | scaffold: 2
+Status: missing: 3 | proven: 575 | scaffold: 2
 
 ## Phase 1
 
@@ -651,3 +651,10 @@ Status: missing: 3 | proven: 572 | scaffold: 2
 | proposition_165 | proposition | 165 | the Poincaré inequality | 9626 | ✅ proven | FdrsFormal/NumberTheory/Characters/VilenkinAnalysis.lean |
 | proposition_166 | proposition | 166 | half-shift parity | 9630 | ✅ proven | FdrsFormal/NumberTheory/Characters/VilenkinAnalysis.lean |
 | corollary_43 | corollary | 43 | sign-changing functions | 9637 | ✅ proven | FdrsFormal/NumberTheory/Characters/VilenkinAnalysis.lean |
+## Phase 1
+
+| ID | Type | Number | Title | Line | Status | Lean File |
+|---|---|---|---|---|---|---|
+| definition_222 | definition | 222 | address shears and digit swap | 9651 | ✅ proven | FdrsFormal/Operations/DigitShear.lean |
+| proposition_167 | proposition | 167 | a swap is three shears | 9655 | ✅ proven | FdrsFormal/Operations/DigitShear.lean |
+| proposition_168 | proposition | 168 | the address displacement of a swap | 9664 | ✅ proven | FdrsFormal/Operations/DigitShear.lean |

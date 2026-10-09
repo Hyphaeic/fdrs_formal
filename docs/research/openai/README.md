@@ -61,7 +61,7 @@ Ordered by (FDRS content) × (feasibility). Effort: S / M / L.
    pairwise-coprime radices; convolution twin of Corollary 33. **M.**
 6. **[done — fdrs.md §1.14, Def 220, Prop 164, Cor 42]** **Negacyclic twist** (109 survey, Prop "164"). `w_j = ζ_{2r}^j` turns negacyclic
    into cyclic convolution. **S–M.**
-7. **Digit-field interchange by three shears** (109 survey, Def "220"/Prop "163").
+7. **[done — fdrs.md §3.6, Def 222, Props 167–168]** **Digit-field interchange by three shears** (109 survey, Def "220"/Prop "163").
    `FiniteRadixSpace` position swap as shears plus a within-digit negation, with
    `dec(swap τ) = dec τ + (τ_j − τ_i)(B_i − B_j)`. **M.**
 8. **Bilinear gate model and an exact convolution circuit** (109 survey, Def "219",
