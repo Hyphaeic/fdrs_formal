@@ -1,10 +1,10 @@
 metadata:
   spec_file: docs/fdrs.md
-  spec_lines: 9750
-  generated_at: '2026-10-09T18:12:57.010041'
-  total_items: 589
+  spec_lines: 9790
+  generated_at: '2026-10-09T18:26:49.064922'
+  total_items: 595
   status_summary:
-    proven: 584
+    proven: 590
     missing: 3
     scaffold: 2
   status_legend:
@@ -14538,14 +14538,103 @@ items:
     - mul_via_residues_exact
   fragment: '2'
   section: '3.7'
+- id: definition_225
+  type: definition
+  phase: 1
+  global_num: 225
+  title: carry networks
+  line: 9758
+  status: proven
+  in_root_build: true
+  lean_files:
+  - path: FdrsFormal/Operations/CarryNetwork.lean
+    declarations:
+    - CarryNet
+    - carry
+  fragment: '2'
+  section: '3.8'
+- id: theorem_137
+  type: theorem
+  phase: 1
+  global_num: 137
+  title: carries conserve value
+  line: 9762
+  status: proven
+  in_root_build: true
+  lean_files:
+  - path: FdrsFormal/Operations/CarryNetwork.lean
+    declarations:
+    - val_run
+  fragment: '2'
+  section: '3.8'
+- id: theorem_138
+  type: theorem
+  phase: 1
+  global_num: 138
+  title: the ledger balances
+  line: 9766
+  status: proven
+  in_root_build: true
+  lean_files:
+  - path: FdrsFormal/Operations/CarryNetwork.lean
+    declarations:
+    - run_balance
+  fragment: '2'
+  section: '3.8'
+- id: definition_226
+  type: definition
+  phase: 1
+  global_num: 226
+  title: the radix lattice
+  line: 9774
+  status: proven
+  in_root_build: true
+  lean_files:
+  - path: FdrsFormal/Operations/CarryNetwork.lean
+    declarations:
+    - latticeWeight
+    - latticeLines
+    - latticeNet
+  fragment: '2'
+  section: '3.8'
+- id: theorem_139
+  type: theorem
+  phase: 1
+  global_num: 139
+  title: products live on the radix lattice
+  line: 9778
+  status: proven
+  in_root_build: true
+  lean_files:
+  - path: FdrsFormal/Operations/CarryNetwork.lean
+    declarations:
+    - lattice_outer
+    - lattice_route_product
+  fragment: '2'
+  section: '3.8'
+- id: proposition_171
+  type: proposition
+  phase: 1
+  global_num: 171
+  title: parallel routes
+  line: 9782
+  status: proven
+  in_root_build: true
+  lean_files:
+  - path: FdrsFormal/Operations/CarryNetwork.lean
+    declarations:
+    - ratio_mul_eq
+    - square_routes
+  fragment: '2'
+  section: '3.8'
 lean_summary:
-  total_files: 327
+  total_files: 328
   total_axioms: 0
   axioms_true: 0
   total_sorries: 0
   sorry_files: []
-  total_theorems: 2592
-  total_defs: 1012
+  total_theorems: 2604
+  total_defs: 1023
   total_lemmas: 26
   total_stubs: 0
   stubs_by_kind:

@@ -1,10 +1,10 @@
 # FDRS Specification Index
 
-Auto-generated from `data/fdrs-index.yaml` (2026-10-09T18:12:57.010041)
+Auto-generated from `data/fdrs-index.yaml` (2026-10-09T18:26:49.064922)
 
-**589 items** from `docs/fdrs.md` (9750 lines)
+**595 items** from `docs/fdrs.md` (9790 lines)
 
-Status: missing: 3 | proven: 584 | scaffold: 2
+Status: missing: 3 | proven: 590 | scaffold: 2
 
 ## Phase 1
 
@@ -675,3 +675,9 @@ Status: missing: 3 | proven: 584 | scaffold: 2
 | proposition_170 | proposition | 170 | both changes of chart are triangular | 9728 | ✅ proven | FdrsFormal/NumberTheory/Characters/ResidueMultiplication.lean |
 | theorem_136 | theorem | 136 | Garner's carry lines invert the residue chart | 9732 | ✅ proven | FdrsFormal/NumberTheory/Characters/ResidueMultiplication.lean |
 | corollary_46 | corollary | 46 | multiplication through residues | 9738 | ✅ proven | FdrsFormal/NumberTheory/Characters/ResidueMultiplication.lean |
+| definition_225 | definition | 225 | carry networks | 9758 | ✅ proven | FdrsFormal/Operations/CarryNetwork.lean |
+| theorem_137 | theorem | 137 | carries conserve value | 9762 | ✅ proven | FdrsFormal/Operations/CarryNetwork.lean |
+| theorem_138 | theorem | 138 | the ledger balances | 9766 | ✅ proven | FdrsFormal/Operations/CarryNetwork.lean |
+| definition_226 | definition | 226 | the radix lattice | 9774 | ✅ proven | FdrsFormal/Operations/CarryNetwork.lean |
+| theorem_139 | theorem | 139 | products live on the radix lattice | 9778 | ✅ proven | FdrsFormal/Operations/CarryNetwork.lean |
+| proposition_171 | proposition | 171 | parallel routes | 9782 | ✅ proven | FdrsFormal/Operations/CarryNetwork.lean |

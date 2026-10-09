@@ -431,7 +431,7 @@ By Proposition 6, (\pi_L(\tau)=\pi_L(\tau')) implies (\operatorname{dec}(\tau)\e
 ]
 Apply Proposition 6 in reverse to conclude the first (L) digits (prefix) of the sums match. ∎
 
-This is the formal “multi-rate locality” statement: the first (L) digits of the result depend **only** on the first (L) digits of the inputs (no dependence on higher digits). *(Addenda §3.5–3.7 — multiplication as digit convolution and where it fails on variable schedules; address shears and digit interchange; multiplication on mixed schedules through residues and carry lines — sit at the end of this document.)*
+This is the formal “multi-rate locality” statement: the first (L) digits of the result depend **only** on the first (L) digits of the inputs (no dependence on higher digits). *(Addenda §3.5–3.8 — multiplication as digit convolution and where it fails on variable schedules; address shears and digit interchange; multiplication on mixed schedules through residues and carry lines; carry networks and the radix lattice — sit at the end of this document.)*
 
 ---
 
@@ -9748,3 +9748,43 @@ exactly the product when it is below (B_{k+1}). Mixed-radix multiplication is: o
 *Lean:* `FdrsFormal/NumberTheory/Characters/ResidueMultiplication.lean`.
 
 **Honest scope (§3.7).** Classical (residue number systems; Garner 1959). The corpus contributes the statement on two charts of one schedule and the carry-line reading. No cost is claimed; base extension for products beyond (B_{k+1}) is not formalized.
+
+# Phase 1 addendum, continued — carry networks and the radix lattice (§3.8)
+
+*(Phase 1, Fragment 2. Carries as first-class structure: they move along radix lines, accumulate, are recorded in a ledger, and — for products of several numbers — live on a lattice with one family of radix lines per factor.)*
+
+## 3.8 Carry networks and the radix lattice (addendum, 2026-10-09)
+
+### Definition 225 (carry networks)  [§3.8 · Phase 1, Fragment 2]
+
+A **carry network** is a finite set of cells with weights (w(u)) and a list of **radix lines** (u\to v) with ratio (\rho\ge1), (u\ne v), and (w(v)=\rho\,w(u)). A state (d) has value (\sum_uw(u)d(u)). A **carry** along (u\to v) keeps (d(u)\bmod\rho) and sends (\lfloor d(u)/\rho\rfloor) to (v); a **route** is a sequence of carries; its **ledger** lists every transfer ((u,v,\rho,\text{amount})). A digit schedule is a path network with lines (i\to i+1) of ratio (b_i) (the sweep of Definition 218 is one route).
+
+### Theorem 137 (carries conserve value)  [§3.8 · Phase 1, Fragment 2]
+
+Every route along the network's radix lines preserves the value of the state.
+
+### Theorem 138 (the ledger balances)  [§3.8 · Phase 1, Fragment 2]
+
+For every route and every cell (u),
+[
+d_{\text{final}}(u)=d_{\text{initial}}(u)+\sum_{\text{transfers into }u}\text{amount}-\sum_{\text{transfers out of }u}\rho\cdot\text{amount}.
+]
+This is the "issued = consumed + pending" ledger of Theorem 89 and Theorem 113, cell by cell, for any network and any route.
+
+### Definition 226 (the radix lattice)  [§3.8 · Phase 1, Fragment 2]
+
+For (r) schedules (b^{(1)},\dots,b^{(r)}) and lengths (k_s), the **radix lattice** has cells (\tau=(\tau_1,\dots,\tau_r)), (\tau_s\le k_s), weights (w(\tau)=\prod_sB^{(s)}_{\tau_s}), and from each cell one radix line along each factor (s), (\tau\to\tau+e_s), of ratio (b^{(s)}_{\tau_s}).
+
+### Theorem 139 (products live on the radix lattice)  [§3.8 · Phase 1, Fragment 2]
+
+The **outer digit product** (d(\tau)=\prod_sx^{(s)}_{\tau_s}) has value (\prod_s\operatorname{dec}x^{(s)}), with no carries; every route of carries on the lattice preserves it. A product of (r) numbers on (r) different schedules is exact on the lattice; collapsing it to one schedule is a choice of route.
+
+### Proposition 171 (parallel routes)  [§3.8 · Phase 1, Fragment 2]
+
+Two paths of radix lines from (u) to (z) have the same product of ratios (zero curvature: (w(z)=\rho_1\rho_2w(u)=\rho_1'\rho_2'w(u))). A load (\rho_1\rho_2t) at (u) sent around either side of a square reaches (z) as the same state (t), with ledgers ([(u\to v,\rho_2t),(v\to z,t)]) and ([(u\to v',\rho_2't),(v'\to z,t)]): the state is route-independent; the ledger differs by a circulation. On the radix lattice every square commutes ((b^{(s)}b^{(s')}=b^{(s')}b^{(s)})), so carries may be routed along any factor's lines.
+
+**Meaning.** Carries are not discarded by normalisation; they are flows on radix lines with an exact ledger. The value is a conserved quantity of the flow, the final state depends only on where the flow ends, and the ledger records the route. A modular digit ring (Theorem 114, holonomy 19) is the case this section excludes: there a cycle of lines returns with a nontrivial factor.
+
+*Lean:* `FdrsFormal/Operations/CarryNetwork.lean`.
+
+**Honest scope (§3.8).** Elementary. Normal forms of lattice states in a single target schedule, carry networks with modular wrap (nonzero holonomy), and schedules for the carry streams themselves are not formalized.
