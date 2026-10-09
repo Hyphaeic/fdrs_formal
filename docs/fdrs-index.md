@@ -1,10 +1,10 @@
 # FDRS Specification Index
 
-Auto-generated from `data/fdrs-index.yaml` (2026-10-09T17:10:54.789597)
+Auto-generated from `data/fdrs-index.yaml` (2026-10-09T18:12:57.010041)
 
-**584 items** from `docs/fdrs.md` (9708 lines)
+**589 items** from `docs/fdrs.md` (9750 lines)
 
-Status: missing: 3 | proven: 579 | scaffold: 2
+Status: missing: 3 | proven: 584 | scaffold: 2
 
 ## Phase 1
 
@@ -666,3 +666,12 @@ Status: missing: 3 | proven: 579 | scaffold: 2
 | theorem_135 | theorem | 135 | the exact convolution circuit | 9686 | ✅ proven | FdrsFormal/NumberTheory/Characters/BilinearCircuit.lean |
 | corollary_44 | corollary | 44 | convolution circuits from search plans | 9694 | ✅ proven | FdrsFormal/NumberTheory/Characters/BilinearCircuit.lean |
 | corollary_45 | corollary | 45 | exact multiplication | 9698 | ✅ proven | FdrsFormal/NumberTheory/Characters/BilinearCircuit.lean |
+## Phase 1
+
+| ID | Type | Number | Title | Line | Status | Lean File |
+|---|---|---|---|---|---|---|
+| definition_224 | definition | 224 | residue product and Garner's carry lines | 9716 | ✅ proven | FdrsFormal/NumberTheory/Characters/ResidueMultiplication.lean |
+| proposition_169 | proposition | 169 | the residue chart is multiplicative | 9724 | ✅ proven | FdrsFormal/NumberTheory/Characters/ResidueMultiplication.lean |
+| proposition_170 | proposition | 170 | both changes of chart are triangular | 9728 | ✅ proven | FdrsFormal/NumberTheory/Characters/ResidueMultiplication.lean |
+| theorem_136 | theorem | 136 | Garner's carry lines invert the residue chart | 9732 | ✅ proven | FdrsFormal/NumberTheory/Characters/ResidueMultiplication.lean |
+| corollary_46 | corollary | 46 | multiplication through residues | 9738 | ✅ proven | FdrsFormal/NumberTheory/Characters/ResidueMultiplication.lean |

@@ -1,10 +1,10 @@
 metadata:
   spec_file: docs/fdrs.md
-  spec_lines: 9708
-  generated_at: '2026-10-09T17:10:54.789597'
-  total_items: 584
+  spec_lines: 9750
+  generated_at: '2026-10-09T18:12:57.010041'
+  total_items: 589
   status_summary:
-    proven: 579
+    proven: 584
     missing: 3
     scaffold: 2
   status_legend:
@@ -14464,14 +14464,88 @@ items:
     - mul_eq_conv_circuit
   fragment: '2'
   section: '1.16'
+- id: definition_224
+  type: definition
+  phase: 1
+  global_num: 224
+  title: residue product and Garner's carry lines
+  line: 9716
+  status: proven
+  in_root_build: true
+  lean_files:
+  - path: FdrsFormal/NumberTheory/Characters/ResidueMultiplication.lean
+    declarations:
+    - vMul
+    - garnerAcc
+    - garner
+  fragment: '2'
+  section: '3.7'
+- id: proposition_169
+  type: proposition
+  phase: 1
+  global_num: 169
+  title: the residue chart is multiplicative
+  line: 9724
+  status: proven
+  in_root_build: true
+  lean_files:
+  - path: FdrsFormal/NumberTheory/Characters/ResidueMultiplication.lean
+    declarations:
+    - crtChart_mul
+  fragment: '2'
+  section: '3.7'
+- id: proposition_170
+  type: proposition
+  phase: 1
+  global_num: 170
+  title: both changes of chart are triangular
+  line: 9728
+  status: proven
+  in_root_build: true
+  lean_files:
+  - path: FdrsFormal/NumberTheory/Characters/ResidueMultiplication.lean
+    declarations:
+    - crtChart_decode
+  fragment: '2'
+  section: '3.7'
+- id: theorem_136
+  type: theorem
+  phase: 1
+  global_num: 136
+  title: Garner's carry lines invert the residue chart
+  line: 9732
+  status: proven
+  in_root_build: true
+  lean_files:
+  - path: FdrsFormal/NumberTheory/Characters/ResidueMultiplication.lean
+    declarations:
+    - crtChart_garner
+    - garner_crtChart
+  fragment: '2'
+  section: '3.7'
+- id: corollary_46
+  type: corollary
+  phase: 1
+  global_num: 46
+  title: multiplication through residues
+  line: 9738
+  status: proven
+  in_root_build: true
+  lean_files:
+  - path: FdrsFormal/NumberTheory/Characters/ResidueMultiplication.lean
+    declarations:
+    - mul_via_residues
+    - mul_via_residues_exact
+  fragment: '2'
+  section: '3.7'
 lean_summary:
-  total_files: 326
+  total_files: 327
   total_axioms: 0
   axioms_true: 0
   total_sorries: 0
   sorry_files: []
-  total_theorems: 2579
-  total_defs: 1007
+  total_theorems: 2592
+  total_defs: 1012
   total_lemmas: 26
   total_stubs: 0
   stubs_by_kind:

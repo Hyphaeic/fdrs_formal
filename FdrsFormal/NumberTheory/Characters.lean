@@ -67,3 +67,4 @@ import FdrsFormal.NumberTheory.Characters.ResidueConvolution
 import FdrsFormal.NumberTheory.Characters.Negacyclic
 import FdrsFormal.NumberTheory.Characters.VilenkinAnalysis
 import FdrsFormal.NumberTheory.Characters.BilinearCircuit
+import FdrsFormal.NumberTheory.Characters.ResidueMultiplication

@@ -431,7 +431,7 @@ By Proposition 6, (\pi_L(\tau)=\pi_L(\tau')) implies (\operatorname{dec}(\tau)\e
 ]
 Apply Proposition 6 in reverse to conclude the first (L) digits (prefix) of the sums match. ∎
 
-This is the formal “multi-rate locality” statement: the first (L) digits of the result depend **only** on the first (L) digits of the inputs (no dependence on higher digits). *(Addenda §3.5–3.6 — multiplication as digit convolution and where it fails on variable schedules; address shears and digit interchange — sit at the end of this document.)*
+This is the formal “multi-rate locality” statement: the first (L) digits of the result depend **only** on the first (L) digits of the inputs (no dependence on higher digits). *(Addenda §3.5–3.7 — multiplication as digit convolution and where it fails on variable schedules; address shears and digit interchange; multiplication on mixed schedules through residues and carry lines — sit at the end of this document.)*
 
 ---
 
@@ -9706,3 +9706,45 @@ so with Theorem 135 an exact product of (k+1)-digit numbers costs (3|C|+M) exact
 *Lean:* `FdrsFormal/NumberTheory/Characters/BilinearCircuit.lean`.
 
 **Honest scope (§1.16).** Classical (convolution through the DFT). The product gate carries a constant factor, so the (1/M) normalisation costs nothing; this is part of the model, stated openly. Exact complex arithmetic at unit cost: nothing about bit complexity, precision, or family 109's (O(n(\log n)^{1-\kappa})) bound is claimed; no lower bound is claimed.
+
+# Phase 1 addendum, continued — multiplication on mixed schedules (§3.7)
+
+*(Phase 1, Fragment 2. On a variable schedule the positional chart does not make multiplication a convolution (Corollary 39). The residue chart of the same schedule makes it carry-free, and every carry moves into the change of chart — where it runs along triangular carry lines.)*
+
+## 3.7 Multiplication through residues; Garner's carry lines (addendum, 2026-10-09)
+
+### Definition 224 (residue product and Garner's carry lines)  [§3.7 · Phase 1, Fragment 2]
+
+On (\mathcal R^{(k)}) the **residue product** is ((\tau\cdot\sigma)_i=\tau_i\sigma_i\bmod b_i). For residues (r), **Garner's carry line** into position (i) is the accumulated value (V_0=0), (V_{i+1}=V_i+g_iB_i), with **Garner's digit**
+[
+g_i=(r_i-V_i)\,B_i^{-1}\bmod b_i .
+]
+Each digit is fed by the line below it; the line carries the whole history (V_i=\sum_{l<i}g_lB_l).
+
+### Proposition 169 (the residue chart is multiplicative)  [§3.7 · Phase 1, Fragment 2]
+
+On every schedule (\rho(nm)=\rho(n)\cdot\rho(m)) digitwise, and (\rho(n\bmod B_{k+1})=\rho(n)). With Proposition 163 and Theorem 122: for pairwise-coprime radices (\rho:\mathbb Z/B_{k+1}\to\prod\mathbb Z/b_i) is a ring isomorphism — both operations are carry-free.
+
+### Proposition 170 (both changes of chart are triangular)  [§3.7 · Phase 1, Fragment 2]
+
+(\operatorname{dec}x\equiv\sum_{l\le i}x_lB_l\pmod{b_i}): residue (i) reads positional digits (0,\dots,i) only, because (b_i\mid B_l) for (l>i).
+
+### Theorem 136 (Garner's carry lines invert the residue chart)  [§3.7 · Phase 1, Fragment 2]
+
+For pairwise-coprime radices, (\rho(\operatorname{dec}(g))=r): Garner's digits are the positional digits of the CRT solution, and (g(\rho(\operatorname{dec}x))=x). The inverse change of chart is triangular too: positional digit (i) depends on residue (i) and the carry line (V_i) only.
+
+**Proof.** By induction along the line: for (l<i), (B_i\equiv0\pmod{b_l}), so adding (g_iB_i) does not disturb residue (l); at (l=i), (V_i+(r_i-V_i)B_i^{-1}B_i\equiv r_i) because (B_i) is a unit mod (b_i) (coprimality). Injectivity of (\rho) (Theorem 122) and uniqueness of digits give the converse. ∎
+
+### Corollary 46 (multiplication through residues)  [§3.7 · Phase 1, Fragment 2]
+
+On a pairwise-coprime schedule,
+[
+\operatorname{dec}\Big(g\big(\rho(\operatorname{dec}x)\cdot\rho(\operatorname{dec}y)\big)\Big)=\operatorname{dec}x\cdot\operatorname{dec}y\bmod B_{k+1},
+]
+exactly the product when it is below (B_{k+1}). Mixed-radix multiplication is: one triangular change of chart, a carry-free digitwise product, and one triangular change back along Garner's carry lines.
+
+**Meaning.** In the positional chart the carries of a product are scattered by the non-multiplicative place values (Corollary 39). In the residue chart they vanish from the operation and reappear, ordered, in the change of chart: one carry line per radix, each accumulating the full history of the lines below it.
+
+*Lean:* `FdrsFormal/NumberTheory/Characters/ResidueMultiplication.lean`.
+
+**Honest scope (§3.7).** Classical (residue number systems; Garner 1959). The corpus contributes the statement on two charts of one schedule and the carry-line reading. No cost is claimed; base extension for products beyond (B_{k+1}) is not formalized.
