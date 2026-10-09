@@ -1,6 +1,6 @@
 metadata:
-  total_files: 328
-  total_edges: 694
+  total_files: 329
+  total_edges: 696
   total_modules: 19
 modules:
   Analysis:
@@ -321,6 +321,7 @@ modules:
   - FdrsFormal/Operations/Addition.lean
   - FdrsFormal/Operations/Addition/Correctness.lean
   - FdrsFormal/Operations/CarryNetwork.lean
+  - FdrsFormal/Operations/CarryStreams.lean
   - FdrsFormal/Operations/DigitShear.lean
   - FdrsFormal/Operations/Multiplication.lean
   - FdrsFormal/Operations/Predecessor.lean
@@ -1704,6 +1705,8 @@ file_edges:
   to: FdrsFormal/Operations/Addition/Correctness.lean
 - from: FdrsFormal/Operations/CarryNetwork.lean
   to: FdrsFormal/Core/Finite.lean
+- from: FdrsFormal/Operations/CarryStreams.lean
+  to: FdrsFormal/Operations/CarryNetwork.lean
 - from: FdrsFormal/Operations/DigitShear.lean
   to: FdrsFormal/Core/Finite.lean
 - from: FdrsFormal/Operations/Multiplication.lean
@@ -1746,6 +1749,8 @@ file_edges:
   to: FdrsFormal/Operations/DigitShear.lean
 - from: FdrsFormal/Operations.lean
   to: FdrsFormal/Operations/CarryNetwork.lean
+- from: FdrsFormal/Operations.lean
+  to: FdrsFormal/Operations/CarryStreams.lean
 - from: FdrsFormal/Topology/Compactness/Properties.lean
   to: FdrsFormal/Topology/Ultrametric.lean
 - from: FdrsFormal/Topology/Compactness.lean

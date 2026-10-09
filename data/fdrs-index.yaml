@@ -1,10 +1,10 @@
 metadata:
   spec_file: docs/fdrs.md
-  spec_lines: 9790
-  generated_at: '2026-10-09T18:26:49.064922'
-  total_items: 595
+  spec_lines: 9844
+  generated_at: '2026-10-09T18:54:16.141453'
+  total_items: 602
   status_summary:
-    proven: 590
+    proven: 597
     missing: 3
     scaffold: 2
   status_legend:
@@ -14627,14 +14627,116 @@ items:
     - square_routes
   fragment: '2'
   section: '3.8'
+- id: theorem_140
+  type: theorem
+  phase: 1
+  global_num: 140
+  title: the cut law for carries
+  line: 9798
+  status: proven
+  in_root_build: true
+  lean_files:
+  - path: FdrsFormal/Operations/CarryStreams.lean
+    declarations:
+    - cut_law
+  fragment: '2'
+  section: '3.9'
+- id: proposition_172
+  type: proposition
+  phase: 1
+  global_num: 172
+  title: carry mass
+  line: 9806
+  status: proven
+  in_root_build: true
+  lean_files:
+  - path: FdrsFormal/Operations/CarryStreams.lean
+    declarations:
+    - carry_mass
+    - counter_mass
+  fragment: '2'
+  section: '3.9'
+- id: definition_227
+  type: definition
+  phase: 1
+  global_num: 227
+  title: carry streams
+  line: 9814
+  status: proven
+  in_root_build: true
+  lean_files:
+  - path: FdrsFormal/Operations/CarryStreams.lean
+    declarations:
+    - pathNet
+    - lineFlux
+    - sweepTo
+  fragment: '2'
+  section: '3.9'
+- id: theorem_141
+  type: theorem
+  phase: 1
+  global_num: 141
+  title: flux across a cut of a schedule
+  line: 9818
+  status: proven
+  in_root_build: true
+  lean_files:
+  - path: FdrsFormal/Operations/CarryStreams.lean
+    declarations:
+    - flux_eq
+  fragment: '2'
+  section: '3.9'
+- id: theorem_142
+  type: theorem
+  phase: 1
+  global_num: 142
+  title: carry streams are route-independent
+  line: 9822
+  status: proven
+  in_root_build: true
+  lean_files:
+  - path: FdrsFormal/Operations/CarryStreams.lean
+    declarations:
+    - stream_eq
+  fragment: '2'
+  section: '3.9'
+- id: corollary_47
+  type: corollary
+  phase: 1
+  global_num: 47
+  title: counter streams are tails, and they nest
+  line: 9830
+  status: proven
+  in_root_build: true
+  lean_files:
+  - path: FdrsFormal/Operations/CarryStreams.lean
+    declarations:
+    - counter_stream
+    - counter_stream_nest
+  fragment: '2'
+  section: '3.9'
+- id: corollary_48
+  type: corollary
+  phase: 1
+  global_num: 48
+  title: the carry recurrence
+  line: 9834
+  status: proven
+  in_root_build: true
+  lean_files:
+  - path: FdrsFormal/Operations/CarryStreams.lean
+    declarations:
+    - stream_recurrence
+  fragment: '2'
+  section: '3.9'
 lean_summary:
-  total_files: 328
+  total_files: 329
   total_axioms: 0
   axioms_true: 0
   total_sorries: 0
   sorry_files: []
-  total_theorems: 2604
-  total_defs: 1023
+  total_theorems: 2627
+  total_defs: 1030
   total_lemmas: 26
   total_stubs: 0
   stubs_by_kind:

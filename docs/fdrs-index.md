@@ -1,10 +1,10 @@
 # FDRS Specification Index
 
-Auto-generated from `data/fdrs-index.yaml` (2026-10-09T18:26:49.064922)
+Auto-generated from `data/fdrs-index.yaml` (2026-10-09T18:54:16.141453)
 
-**595 items** from `docs/fdrs.md` (9790 lines)
+**602 items** from `docs/fdrs.md` (9844 lines)
 
-Status: missing: 3 | proven: 590 | scaffold: 2
+Status: missing: 3 | proven: 597 | scaffold: 2
 
 ## Phase 1
 
@@ -681,3 +681,10 @@ Status: missing: 3 | proven: 590 | scaffold: 2
 | definition_226 | definition | 226 | the radix lattice | 9774 | ✅ proven | FdrsFormal/Operations/CarryNetwork.lean |
 | theorem_139 | theorem | 139 | products live on the radix lattice | 9778 | ✅ proven | FdrsFormal/Operations/CarryNetwork.lean |
 | proposition_171 | proposition | 171 | parallel routes | 9782 | ✅ proven | FdrsFormal/Operations/CarryNetwork.lean |
+| theorem_140 | theorem | 140 | the cut law for carries | 9798 | ✅ proven | FdrsFormal/Operations/CarryStreams.lean |
+| proposition_172 | proposition | 172 | carry mass | 9806 | ✅ proven | FdrsFormal/Operations/CarryStreams.lean |
+| definition_227 | definition | 227 | carry streams | 9814 | ✅ proven | FdrsFormal/Operations/CarryStreams.lean |
+| theorem_141 | theorem | 141 | flux across a cut of a schedule | 9818 | ✅ proven | FdrsFormal/Operations/CarryStreams.lean |
+| theorem_142 | theorem | 142 | carry streams are route-independent | 9822 | ✅ proven | FdrsFormal/Operations/CarryStreams.lean |
+| corollary_47 | corollary | 47 | counter streams are tails, and they nest | 9830 | ✅ proven | FdrsFormal/Operations/CarryStreams.lean |
+| corollary_48 | corollary | 48 | the carry recurrence | 9834 | ✅ proven | FdrsFormal/Operations/CarryStreams.lean |

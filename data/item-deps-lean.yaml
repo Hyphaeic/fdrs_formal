@@ -1,11 +1,11 @@
 metadata:
-  total_file_edges: 785
-  total_raw_edges: 56624
-  total_item_edges: 8001
+  total_file_edges: 791
+  total_raw_edges: 56933
+  total_item_edges: 8051
   spurious_filtered: 2920
   unmapped_files: 58
-  decl_resolved: 2846
-  file_fallback: 53778
+  decl_resolved: 2965
+  file_fallback: 53968
   source: lean_environment_decl_level
 dependencies:
 - from: corollary_1
@@ -1432,6 +1432,42 @@ dependencies:
   source: lean
 - from: corollary_46
   to: theorem_122
+  source: lean
+- from: corollary_47
+  to: definition_225
+  source: lean
+- from: corollary_47
+  to: definition_226
+  source: lean
+- from: corollary_47
+  to: proposition_171
+  source: lean
+- from: corollary_47
+  to: theorem_137
+  source: lean
+- from: corollary_47
+  to: theorem_138
+  source: lean
+- from: corollary_47
+  to: theorem_139
+  source: lean
+- from: corollary_48
+  to: definition_225
+  source: lean
+- from: corollary_48
+  to: definition_226
+  source: lean
+- from: corollary_48
+  to: proposition_171
+  source: lean
+- from: corollary_48
+  to: theorem_137
+  source: lean
+- from: corollary_48
+  to: theorem_138
+  source: lean
+- from: corollary_48
+  to: theorem_139
   source: lean
 - from: corollary_5
   to: definition_1
@@ -6184,6 +6220,30 @@ dependencies:
   source: lean
 - from: definition_224
   to: theorem_122
+  source: lean
+- from: definition_225
+  to: definition_1
+  source: lean
+- from: definition_226
+  to: definition_1
+  source: lean
+- from: definition_227
+  to: definition_225
+  source: lean
+- from: definition_227
+  to: definition_226
+  source: lean
+- from: definition_227
+  to: proposition_171
+  source: lean
+- from: definition_227
+  to: theorem_137
+  source: lean
+- from: definition_227
+  to: theorem_138
+  source: lean
+- from: definition_227
+  to: theorem_139
   source: lean
 - from: definition_23
   to: definition_15
@@ -14156,6 +14216,27 @@ dependencies:
 - from: proposition_170
   to: theorem_122
   source: lean
+- from: proposition_171
+  to: definition_1
+  source: lean
+- from: proposition_172
+  to: definition_225
+  source: lean
+- from: proposition_172
+  to: definition_226
+  source: lean
+- from: proposition_172
+  to: proposition_171
+  source: lean
+- from: proposition_172
+  to: theorem_137
+  source: lean
+- from: proposition_172
+  to: theorem_138
+  source: lean
+- from: proposition_172
+  to: theorem_139
+  source: lean
 - from: proposition_18
   to: definition_15
   source: lean
@@ -19166,6 +19247,21 @@ dependencies:
 - from: theorem_136
   to: theorem_122
   source: lean
+- from: theorem_137
+  to: definition_1
+  source: lean
+- from: theorem_138
+  to: definition_1
+  source: lean
+- from: theorem_139
+  to: definition_1
+  source: lean
+- from: theorem_139
+  to: definition_2
+  source: lean
+- from: theorem_139
+  to: proposition_1
+  source: lean
 - from: theorem_14
   to: corollary_10
   source: lean
@@ -19180,6 +19276,60 @@ dependencies:
   source: lean
 - from: theorem_14
   to: proposition_39
+  source: lean
+- from: theorem_140
+  to: definition_225
+  source: lean
+- from: theorem_140
+  to: definition_226
+  source: lean
+- from: theorem_140
+  to: proposition_171
+  source: lean
+- from: theorem_140
+  to: theorem_137
+  source: lean
+- from: theorem_140
+  to: theorem_138
+  source: lean
+- from: theorem_140
+  to: theorem_139
+  source: lean
+- from: theorem_141
+  to: definition_225
+  source: lean
+- from: theorem_141
+  to: definition_226
+  source: lean
+- from: theorem_141
+  to: proposition_171
+  source: lean
+- from: theorem_141
+  to: theorem_137
+  source: lean
+- from: theorem_141
+  to: theorem_138
+  source: lean
+- from: theorem_141
+  to: theorem_139
+  source: lean
+- from: theorem_142
+  to: definition_225
+  source: lean
+- from: theorem_142
+  to: definition_226
+  source: lean
+- from: theorem_142
+  to: proposition_171
+  source: lean
+- from: theorem_142
+  to: theorem_137
+  source: lean
+- from: theorem_142
+  to: theorem_138
+  source: lean
+- from: theorem_142
+  to: theorem_139
   source: lean
 - from: theorem_15
   to: corollary_10

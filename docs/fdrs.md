@@ -431,7 +431,7 @@ By Proposition 6, (\pi_L(\tau)=\pi_L(\tau')) implies (\operatorname{dec}(\tau)\e
 ]
 Apply Proposition 6 in reverse to conclude the first (L) digits (prefix) of the sums match. ∎
 
-This is the formal “multi-rate locality” statement: the first (L) digits of the result depend **only** on the first (L) digits of the inputs (no dependence on higher digits). *(Addenda §3.5–3.8 — multiplication as digit convolution and where it fails on variable schedules; address shears and digit interchange; multiplication on mixed schedules through residues and carry lines; carry networks and the radix lattice — sit at the end of this document.)*
+This is the formal “multi-rate locality” statement: the first (L) digits of the result depend **only** on the first (L) digits of the inputs (no dependence on higher digits). *(Addenda §3.5–3.9 — multiplication as digit convolution and where it fails on variable schedules; address shears and digit interchange; multiplication on mixed schedules through residues and carry lines; carry networks and the radix lattice; carry streams — sit at the end of this document.)*
 
 ---
 
@@ -9788,3 +9788,57 @@ Two paths of radix lines from (u) to (z) have the same product of ratios (zero c
 *Lean:* `FdrsFormal/Operations/CarryNetwork.lean`.
 
 **Honest scope (§3.8).** Elementary. Normal forms of lattice states in a single target schedule, carry networks with modular wrap (nonzero holonomy), and schedules for the carry streams themselves are not formalized.
+
+# Phase 1 addendum, continued — carry streams (§3.9)
+
+*(Phase 1, Fragment 2. The ledger of §3.8 records what crossed each radix line; on a digit schedule these line totals — the carry streams — are forced by the start and end states, are themselves FDRS data, and nest.)*
+
+## 3.9 Carry streams (addendum, 2026-10-09)
+
+### Theorem 140 (the cut law for carries)  [§3.9 · Phase 1, Fragment 2]
+
+For any carry network, any route and any set of cells (U),
+[
+\sum_{u\in U}w(u)\,d_{\text{end}}(u)=\sum_{u\in U}w(u)\,d_{\text{start}}(u)+\sum_{\text{transfers}}\Big([\text{dst}\in U]\,w(\text{dst})\,a-[\text{src}\in U]\,w(\text{src})\,\rho\,a\Big):
+]
+the value in (U) changes exactly by the weighted flow across its boundary (internal transfers cancel, since (w(\text{dst})=\rho\,w(\text{src}))).
+
+### Proposition 172 (carry mass)  [§3.9 · Phase 1, Fragment 2]
+
+Every unit sent along a line of ratio (\rho) removes (\rho-1) units of digit mass: (\sum_ud_{\text{end}}(u)+\sum_{\text{transfers}}(\rho-1)a=\sum_ud_{\text{start}}(u)). Counting to (T) on a schedule by the sweep,
+[
+\sum_u d_{\text{end}}(u)+\sum_{i<K}(b_i-1)\Big\lfloor\frac{T}{B_{i+1}}\Big\rfloor=T ,
+]
+a Legendre-type identity on any schedule; for a constant prime radix (p) it is Legendre's ((p-1)v_p(T!)=T-s_p(T)).
+
+### Definition 227 (carry streams)  [§3.9 · Phase 1, Fragment 2]
+
+The schedule as a path network: cells (0,\dots,K), weights (B_i), lines (i\to i+1) of ratio (b_i) for (i<K). The **carry stream** (F_i) of a route is the total it sends along line (i); (V_{\le i}(d)=\sum_{u\le i}B_ud(u)) is the value of the block (0..i); the **sweep** carries along lines (0,1,\dots,K-1) in order.
+
+### Theorem 141 (flux across a cut of a schedule)  [§3.9 · Phase 1, Fragment 2]
+
+For every route along the schedule's lines, (B_{i+1}\,F_i=V_{\le i}(\text{start})-V_{\le i}(\text{end})): only line (i) crosses the cut between (0..i) and the rest.
+
+### Theorem 142 (carry streams are route-independent)  [§3.9 · Phase 1, Fragment 2]
+
+If a route ends with canonical digits on (0..i), then
+[
+F_i=\Big\lfloor\frac{V_{\le i}(\text{start})}{B_{i+1}}\Big\rfloor,\qquad V_{\le i}(\text{end})=V_{\le i}(\text{start})\bmod B_{i+1}.
+]
+Every route — every order of carrying, every interleaving of a history of operations — sends exactly the same amount along every line. On a schedule (a tree of lines) the ledger totals are forced; freedom appears only with cycles (Proposition 171).
+
+### Corollary 47 (counter streams are tails, and they nest)  [§3.9 · Phase 1, Fragment 2]
+
+Counting to (T) (load (T) at cell (0), any route ending canonical — the sweep is one): (F_i=\lfloor T/B_{i+1}\rfloor), the number written by the digits of (T) above position (i). The streams nest: (F_{i+1}=\lfloor F_i/b_{i+1}\rfloor) — line (i)'s stream, read as a counter on the shifted schedule ((b_{i+1},b_{i+2},\dots)), carries exactly line (i+1)'s stream.
+
+### Corollary 48 (the carry recurrence)  [§3.9 · Phase 1, Fragment 2]
+
+For any history (any start state (d): stacked digits of many operations) and any route ending canonical on (0..i+1),
+[
+F_{i+1}=\Big\lfloor\frac{F_i+d_{i+1}}{b_{i+1}}\Big\rfloor :
+]
+the stream into a line plus the line's own digit mass, carried at the line's radix. The carry streams of every history are the carries of a single sweep of its stacked digits — a carry stream is a digit sequence that is itself carried, line by line.
+
+*Lean:* `FdrsFormal/Operations/CarryStreams.lean`.
+
+**Honest scope (§3.9).** Elementary; Legendre's formula is classical. The corpus contributes the cut law, route independence of streams on schedules, and the nesting of streams. Streams on the radix lattice (where cycles leave a circulation free) and schedules chosen for the streams themselves are not formalized.

@@ -164,12 +164,82 @@ fn show(name: &str, l: &Lattice, target: u128) {
     }
 }
 
+
+/// Carry streams on one schedule (fdrs.md §3.9): run a history of additions by three
+/// different routes and compare the per-line totals with ⌊V_{≤i} / B_{i+1}⌋.
+fn streams(b: &[u128], nums: &[u128]) {
+    let k = nums.iter().map(|&x| digits(x, b).len()).max().unwrap_or(1) + 4;
+    let pb = place_values(b, k + 1);
+    let mut stacked = vec![0u128; k + 1];
+    for &x in nums {
+        for (i, d) in digits(x, b).into_iter().enumerate() {
+            stacked[i] += d;
+        }
+    }
+    // route A: stack everything, one sweep
+    let sweep = |d: &mut Vec<u128>, f: &mut Vec<u128>| {
+        for i in 0..k {
+            let q = d[i] / radix(b, i);
+            d[i] %= radix(b, i);
+            d[i + 1] += q;
+            f[i] += q;
+        }
+    };
+    let mut fa = vec![0u128; k];
+    let mut da = stacked.clone();
+    sweep(&mut da, &mut fa);
+    // route B: add one number at a time, sweep after each
+    let mut fb = vec![0u128; k];
+    let mut db = vec![0u128; k + 1];
+    for &x in nums {
+        for (i, d) in digits(x, b).into_iter().enumerate() {
+            db[i] += d;
+        }
+        sweep(&mut db, &mut fb);
+    }
+    // route C: carry lines in reverse order, repeatedly, until canonical
+    let mut fc = vec![0u128; k];
+    let mut dc = stacked.clone();
+    loop {
+        let mut moved = false;
+        for i in (0..k).rev() {
+            let q = dc[i] / radix(b, i);
+            if q > 0 {
+                dc[i] %= radix(b, i);
+                dc[i + 1] += q;
+                fc[i] += q;
+                moved = true;
+            }
+        }
+        if !moved {
+            break;
+        }
+    }
+    let total: u128 = nums.iter().sum();
+    println!("history: {} numbers on schedule {b:?}, total {total}", nums.len());
+    println!("  line  radix  stack-sweep  one-by-one  reverse  ⌊V≤i/B(i+1)⌋");
+    for i in 0..k {
+        let v: u128 = (0..=i).map(|u| stacked[u] * pb[u]).sum();
+        let pred = v / pb[i + 1];
+        let ok = fa[i] == pred && fb[i] == pred && fc[i] == pred;
+        println!("  {i:>4}  {:>5}  {:>11}  {:>10}  {:>7}  {:>12} {}", radix(b, i), fa[i], fb[i], fc[i],
+            pred, if ok { "✓" } else { "✗" });
+    }
+    assert!(da == db && db == dc, "all routes end in the same canonical digits");
+}
+
 fn main() {
     let args: Vec<String> = std::env::args().collect();
     let get = |flag: &str, default: &str| -> String {
         args.iter().position(|a| a == flag).and_then(|p| args.get(p + 1).cloned())
             .unwrap_or_else(|| default.to_string())
     };
+    if let Some(p) = args.iter().position(|a| a == "--streams") {
+        let b = parse_list(&get("--b", "2,3,5"));
+        let nums = parse_list(args.get(p + 1).map(|s| s.as_str()).unwrap_or("29,50,77,13,99"));
+        streams(&b, &nums);
+        return;
+    }
     let b = parse_list(&get("--b", "2,3,5"));
     let c = parse_list(&get("--c", "3,4,7"));
     let x: u128 = get("--x", "29").parse().unwrap();
