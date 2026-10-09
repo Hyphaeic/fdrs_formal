@@ -56,7 +56,7 @@ Ordered by (FDRS content) × (feasibility). Effort: S / M / L.
    `vilenkinKernel`, Haar bases, `finiteBlockProjection`. **M–L.**
 4. **Half-shift parity** (106 survey, Prop "163", Cor "39"). On even schedules,
    `f ∘ h = −f` iff `f̂` lives on odd digit sums. **S–M.**
-5. **Residue chart carries convolution** (109 survey, Prop "165"). Cyclic convolution
+5. **[done — fdrs.md §1.13, Def 219, Prop 163, Thm 132, Cor 40–41]** **Residue chart carries convolution** (109 survey, Prop "165"). Cyclic convolution
    of length `N` is `(k+1)`-dimensional convolution on the Vilenkin group under
    pairwise-coprime radices; convolution twin of Corollary 33. **M.**
 6. **Negacyclic twist** (109 survey, Prop "164"). `w_j = ζ_{2r}^j` turns negacyclic

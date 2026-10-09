@@ -1844,7 +1844,7 @@ Let (*_k) be cyclic convolution on (\mathcal R^{(k)}) (equivalently (\mathbb Z/N
 ]
 *Proof.* Substitute definitions and change variables (z=x-y). ∎
 
-**Meaning:** additive characters are exact “frequency probes” of the time convolution algebra. *(Addenda §1.4–1.12 — the mixed-radix Fourier arc — sit at the end of this document, so that earlier line references stay stable.)*
+**Meaning:** additive characters are exact “frequency probes” of the time convolution algebra. *(Addenda §1.4–1.13 — the mixed-radix Fourier arc — sit at the end of this document, so that earlier line references stay stable.)*
 
 ---
 
@@ -9524,3 +9524,45 @@ Unit digit vectors (e_i,e_j) give (\bar e_i\star\bar e_j=\bar e_{i+j}), reducing
 *Lean:* `FdrsFormal/Operations/Multiplication.lean`.
 
 **Honest scope (§3.5).** Classical (positional multiplication; Kronecker substitution). The corpus contributes the statement on mixed-radix schedules and its sharp boundary. Nothing about the cost of multiplication is claimed.
+
+# Phase 3 addenda, continued — convolution in the residue chart (§1.13)
+
+*(Phase 3, Fragment 2, continuing §1.6 "Good–Thomas". Provenance: OpenAI family 109, whose second reduction places a one-dimensional convolution on a product of coprime cyclic axes by a Chinese-remainder map.)*
+
+## 1.13 The residue chart carries convolution (addendum, 2026-10-09)
+
+### Definition 219 (Vilenkin and cyclic convolution)  [§1.13 · Phase 3, Fragment 2]
+
+On (\mathcal R^{(k)}) put the **carry-free** operations ((\tau\pm\sigma)_i=\tau_i\pm\sigma_i \bmod b_i), so (\mathcal R^{(k)}\cong\prod_i\mathbb Z/b_i). Over a commutative semiring (R):
+[
+(F\ast G)(\tau)=\sum_{\sigma\in\mathcal R^{(k)}}F(\sigma)\,G(\tau-\sigma),\qquad
+(f\circledast_N g)_n=\sum_{m<N}f_m\,g_{(n-m)\bmod N}.
+]
+
+### Proposition 163 (the residue chart is additive)  [§1.13 · Phase 3, Fragment 2]
+
+For every schedule, the residue chart (\rho(n)=(n\bmod b_i)_i) satisfies (\rho(n+m)=\rho(n)+\rho(m)), and with (N=B_{k+1}), (\rho((n-m)\bmod N)=\rho(n)-\rho(m)) (since (b_i\mid N)). Coprimality is not needed; it is needed only for (\rho) to be a bijection (Theorem 122).
+
+### Theorem 132 (the residue chart carries convolution)  [§1.13 · Phase 3, Fragment 2]
+
+For pairwise-coprime radices, (N=B_{k+1}), and (e^{-1}) the inverse of the residue chart on (\mathbb Z/N):
+[
+(f\circledast_N g)_n=\big((f\circ e^{-1})\ast(g\circ e^{-1})\big)(\rho(n)).
+]
+Cyclic convolution of length (N) is convolution on the carry-free group (\prod\mathbb Z/b_i): the convolution twin of Corollary 33, with no twiddles and no carries.
+
+### Corollary 40 (padding removes the wrap)  [§1.13 · Phase 3, Fragment 2]
+
+If (x,y) are supported on (0,\dots,k) and (N\ge2k+1), then ((x\star y)_m=(x\circledast_N y)_m) for every (m<N).
+
+### Corollary 41 (the multiplication chain)  [§1.13 · Phase 3, Fragment 2]
+
+Let the digit schedule (b) be constant and the residue schedule (c) pairwise coprime on (0,\dots,K) with (C_{K+1}\ge2k+1). For (x,y\in\mathcal R_b^{(k)}), with (X=\bar x\circ e_c^{-1}) and (Y=\bar y\circ e_c^{-1}),
+[
+\operatorname{dec}_k(x)\cdot\operatorname{dec}_k(y)=\sum_{m\le2k}(X\ast Y)(\rho_c(m))\,B_m .
+]
+Theorem 131 (digits → convolution), Corollary 40 (convolution → cyclic) and Theorem 132 (cyclic → carry-free group) compose: integer multiplication becomes convolution on (\prod\mathbb Z/c_i), the starting point of family 109's transform pipeline. By Corollary 39 the first link needs a constant digit schedule; by Theorem 122 the last needs coprime residue radices — the two charts play opposite roles.
+
+*Lean:* `FdrsFormal/NumberTheory/Characters/ResidueConvolution.lean`.
+
+**Honest scope (§1.13).** Classical (Agarwal–Cooley 1977, CRT reduction of cyclic to multidimensional convolution; Kronecker substitution). The corpus contributes the statements on its charts and the chain to Theorem 131. No cost is claimed.

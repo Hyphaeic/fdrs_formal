@@ -1,10 +1,10 @@
 metadata:
   spec_file: docs/fdrs.md
-  spec_lines: 9526
-  generated_at: '2026-10-08T17:28:10.420381'
-  total_items: 563
+  spec_lines: 9568
+  generated_at: '2026-10-09T07:57:38.639473'
+  total_items: 568
   status_summary:
-    proven: 558
+    proven: 563
     missing: 3
     scaffold: 2
   status_legend:
@@ -14156,14 +14156,86 @@ items:
     - conv_correct_iff
   fragment: '2'
   section: '3.5'
+- id: definition_219
+  type: definition
+  phase: 3
+  global_num: 219
+  title: Vilenkin and cyclic convolution
+  line: 9534
+  status: proven
+  in_root_build: true
+  lean_files:
+  - path: FdrsFormal/NumberTheory/Characters/ResidueConvolution.lean
+    declarations:
+    - vAdd
+    - vConv
+  fragment: '2'
+  section: '1.13'
+- id: proposition_163
+  type: proposition
+  phase: 3
+  global_num: 163
+  title: the residue chart is additive
+  line: 9542
+  status: proven
+  in_root_build: true
+  lean_files:
+  - path: FdrsFormal/NumberTheory/Characters/ResidueConvolution.lean
+    declarations:
+    - crtChart_add
+    - crtChart_cycSub
+  fragment: '2'
+  section: '1.13'
+- id: theorem_132
+  type: theorem
+  phase: 3
+  global_num: 132
+  title: the residue chart carries convolution
+  line: 9546
+  status: proven
+  in_root_build: true
+  lean_files:
+  - path: FdrsFormal/NumberTheory/Characters/ResidueConvolution.lean
+    declarations:
+    - cycConv_eq_vConv
+  fragment: '2'
+  section: '1.13'
+- id: corollary_40
+  type: corollary
+  phase: 3
+  global_num: 40
+  title: padding removes the wrap
+  line: 9554
+  status: proven
+  in_root_build: true
+  lean_files:
+  - path: FdrsFormal/NumberTheory/Characters/ResidueConvolution.lean
+    declarations:
+    - digitConv_eq_cycConv
+  fragment: '2'
+  section: '1.13'
+- id: corollary_41
+  type: corollary
+  phase: 3
+  global_num: 41
+  title: the multiplication chain
+  line: 9558
+  status: proven
+  in_root_build: true
+  lean_files:
+  - path: FdrsFormal/NumberTheory/Characters/ResidueConvolution.lean
+    declarations:
+    - mul_eq_vConv
+  fragment: '2'
+  section: '1.13'
 lean_summary:
-  total_files: 321
+  total_files: 322
   total_axioms: 0
   axioms_true: 0
   total_sorries: 0
   sorry_files: []
-  total_theorems: 2524
-  total_defs: 976
+  total_theorems: 2529
+  total_defs: 980
   total_lemmas: 26
   total_stubs: 0
   stubs_by_kind:

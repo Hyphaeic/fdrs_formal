@@ -1,10 +1,10 @@
 # FDRS Specification Index
 
-Auto-generated from `data/fdrs-index.yaml` (2026-10-08T17:28:10.420381)
+Auto-generated from `data/fdrs-index.yaml` (2026-10-09T07:57:38.639473)
 
-**563 items** from `docs/fdrs.md` (9526 lines)
+**568 items** from `docs/fdrs.md` (9568 lines)
 
-Status: missing: 3 | proven: 558 | scaffold: 2
+Status: missing: 3 | proven: 563 | scaffold: 2
 
 ## Phase 1
 
@@ -633,3 +633,12 @@ Status: missing: 3 | proven: 558 | scaffold: 2
 | definition_218 | definition | 218 | digit convolution and the carry sweep | 9494 | ✅ proven | FdrsFormal/Operations/Multiplication.lean |
 | theorem_131 | theorem | 131 | multiplication is digit convolution plus carries | 9505 | ✅ proven | FdrsFormal/Operations/Multiplication.lean |
 | corollary_39 | corollary | 39 | the variable-radix boundary | 9514 | ✅ proven | FdrsFormal/Operations/Multiplication.lean |
+## Phase 3
+
+| ID | Type | Number | Title | Line | Status | Lean File |
+|---|---|---|---|---|---|---|
+| definition_219 | definition | 219 | Vilenkin and cyclic convolution | 9534 | ✅ proven | FdrsFormal/NumberTheory/Characters/ResidueConvolution.lean |
+| proposition_163 | proposition | 163 | the residue chart is additive | 9542 | ✅ proven | FdrsFormal/NumberTheory/Characters/ResidueConvolution.lean |
+| theorem_132 | theorem | 132 | the residue chart carries convolution | 9546 | ✅ proven | FdrsFormal/NumberTheory/Characters/ResidueConvolution.lean |
+| corollary_40 | corollary | 40 | padding removes the wrap | 9554 | ✅ proven | FdrsFormal/NumberTheory/Characters/ResidueConvolution.lean |
+| corollary_41 | corollary | 41 | the multiplication chain | 9558 | ✅ proven | FdrsFormal/NumberTheory/Characters/ResidueConvolution.lean |
