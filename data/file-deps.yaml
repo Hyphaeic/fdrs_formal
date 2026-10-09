@@ -1,6 +1,6 @@
 metadata:
-  total_files: 325
-  total_edges: 687
+  total_files: 326
+  total_edges: 690
   total_modules: 19
 modules:
   Analysis:
@@ -280,6 +280,7 @@ modules:
   - FdrsFormal/NumberTheory/ArithmeticFunctions/TensorPullback.lean
   - FdrsFormal/NumberTheory/Characters.lean
   - FdrsFormal/NumberTheory/Characters/AdditiveCharacters.lean
+  - FdrsFormal/NumberTheory/Characters/BilinearCircuit.lean
   - FdrsFormal/NumberTheory/Characters/CRT.lean
   - FdrsFormal/NumberTheory/Characters/CircuitCompose.lean
   - FdrsFormal/NumberTheory/Characters/DirichletCharacters.lean
@@ -405,9 +406,9 @@ module_edges:
 - from: NumberTheory
   to: FunctionSpaces
 - from: NumberTheory
-  to: Core
-- from: NumberTheory
   to: Operations
+- from: NumberTheory
+  to: Core
 - from: NumberTheory.lean
   to: NumberTheory
 - from: Operations
@@ -1525,6 +1526,10 @@ file_edges:
   to: FdrsFormal/NumberTheory/ArithmeticFunctions/TensorPullback.lean
 - from: FdrsFormal/NumberTheory/ArithmeticFunctions.lean
   to: FdrsFormal/NumberTheory/ArithmeticFunctions/CyclicConvolution.lean
+- from: FdrsFormal/NumberTheory/Characters/BilinearCircuit.lean
+  to: FdrsFormal/NumberTheory/Characters/RaderBluestein.lean
+- from: FdrsFormal/NumberTheory/Characters/BilinearCircuit.lean
+  to: FdrsFormal/Operations/Multiplication.lean
 - from: FdrsFormal/NumberTheory/Characters/CRT.lean
   to: FdrsFormal/NumberTheory/Characters/DirichletCharacters.lean
 - from: FdrsFormal/NumberTheory/Characters/CircuitCompose.lean
@@ -1611,6 +1616,8 @@ file_edges:
   to: FdrsFormal/NumberTheory/Characters/Negacyclic.lean
 - from: FdrsFormal/NumberTheory/Characters.lean
   to: FdrsFormal/NumberTheory/Characters/VilenkinAnalysis.lean
+- from: FdrsFormal/NumberTheory/Characters.lean
+  to: FdrsFormal/NumberTheory/Characters/BilinearCircuit.lean
 - from: FdrsFormal/NumberTheory/CylinderMeasurability.lean
   to: FdrsFormal/Core/Primitives.lean
 - from: FdrsFormal/NumberTheory/CylinderMeasurability.lean

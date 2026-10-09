@@ -1844,7 +1844,7 @@ Let (*_k) be cyclic convolution on (\mathcal R^{(k)}) (equivalently (\mathbb Z/N
 ]
 *Proof.* Substitute definitions and change variables (z=x-y). ∎
 
-**Meaning:** additive characters are exact “frequency probes” of the time convolution algebra. *(Addenda §1.4–1.15 — the mixed-radix Fourier arc — sit at the end of this document, so that earlier line references stay stable.)*
+**Meaning:** additive characters are exact “frequency probes” of the time convolution algebra. *(Addenda §1.4–1.16 — the mixed-radix Fourier arc — sit at the end of this document, so that earlier line references stay stable.)*
 
 ---
 
@@ -9672,3 +9672,37 @@ over (\mathbb Z). A field interchange is a permutation of addresses whose displa
 *Lean:* `FdrsFormal/Operations/DigitShear.lean`.
 
 **Honest scope (§3.6).** Classical (the three-shear factorisation of a transposition). Family 109's cost bound for the tape implementation is not formalized; only the algebra on the digit chart is.
+
+# Phase 3 addenda, continued — exact convolution and multiplication circuits (§1.16)
+
+## 1.16 Exact convolution and multiplication circuits (addendum, 2026-10-09)
+
+*(Phase 3, Fragment 2. Provenance: OpenAI family 109. Definition 216's gate model is linear and cannot multiply two inputs; this addendum adds a product gate and closes the chain digits → convolution → Fourier circuits with an exact gate count.)*
+
+### Definition 223 (the bilinear gate model)  [§1.16 · Phase 3, Fragment 2]
+
+A **bilinear gate** is a gate of Definition 216 or a scaled product (c\cdot v_i\cdot v_j) ((c\in\mathbb C) fixed). A **bilinear circuit** on inputs (x,y\in\mathbb C^n) starts from registers (x_0,\dots,x_{n-1},y_0,\dots,y_{n-1},0), appends one register per gate, and names its outputs; its size counts every gate. **Acyclic convolution** is ((x\star y)_r=\sum_{i\le r}x_iy_{r-i}), (r<2n-1).
+
+### Theorem 135 (the exact convolution circuit)  [§1.16 · Phase 3, Fragment 2]
+
+If (C) is an exact Fourier circuit of length (M\ge2n-1), the acyclic convolution of two length-(n) vectors has an exact bilinear circuit with
+[
+3|C|+M \text{ gates, exactly } M \text{ of them products:}
+]
+a copy of (C) on (x) padded by the zero register, a copy on (y), the (M) products (\tfrac1M A_kB_k), and a third copy read at ((M-r)\bmod M) (Proposition 161); padding to (M\ge2n-1) removes the wrap (Corollary 40).
+
+### Corollary 44 (convolution circuits from search plans)  [§1.16 · Phase 3, Fragment 2]
+
+Every valid extended plan (P) (Corollary 38) with (P.\mathrm{len}\ge2n-1) yields such a circuit with (3\,P.\mathrm{cost}+P.\mathrm{len}) gates. For instance, two 64-term vectors convolve exactly in (3\cdot1217+128=3779) gates (128 products) from the 128-point binary plan, checked in the kernel; the schoolbook circuit uses (64^2+63^2=8065).
+
+### Corollary 45 (exact multiplication)  [§1.16 · Phase 3, Fragment 2]
+
+On a constant digit schedule, for (x,y\in\mathcal R^{(k)}) and any circuit (B) computing acyclic convolution of length (k+1),
+[
+\operatorname{dec}_k(x)\operatorname{dec}_k(y)=\sum_{m\le2k}B(\bar x,\bar y)_m\,B_m ,
+]
+so with Theorem 135 an exact product of (k+1)-digit numbers costs (3|C|+M) exact complex gates plus the place-value recombination (Theorem 131 turns that into canonical digits by the carry sweep).
+
+*Lean:* `FdrsFormal/NumberTheory/Characters/BilinearCircuit.lean`.
+
+**Honest scope (§1.16).** Classical (convolution through the DFT). The product gate carries a constant factor, so the (1/M) normalisation costs nothing; this is part of the model, stated openly. Exact complex arithmetic at unit cost: nothing about bit complexity, precision, or family 109's (O(n(\log n)^{1-\kappa})) bound is claimed; no lower bound is claimed.

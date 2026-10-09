@@ -64,7 +64,7 @@ Ordered by (FDRS content) × (feasibility). Effort: S / M / L.
 7. **[done — fdrs.md §3.6, Def 222, Props 167–168]** **Digit-field interchange by three shears** (109 survey, Def "220"/Prop "163").
    `FiniteRadixSpace` position swap as shears plus a within-digit negation, with
    `dec(swap τ) = dec τ + (τ_j − τ_i)(B_i − B_j)`. **M.**
-8. **Bilinear gate model and an exact convolution circuit** (109 survey, Def "219",
+8. **[done — fdrs.md §1.16, Def 223, Thm 135, Cor 44–45]** **Bilinear gate model and an exact convolution circuit** (109 survey, Def "219",
    Thm "132"). Product gate; `3|C| + M` gates for acyclic convolution from any exact
    Fourier circuit of length `M ≥ 2n − 1`. **L** (touches every builder lemma).
 9. **Phase metric and thirds coloring; rational product laws** (106 survey,

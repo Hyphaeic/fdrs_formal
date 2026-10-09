@@ -1,10 +1,10 @@
 # FDRS Specification Index
 
-Auto-generated from `data/fdrs-index.yaml` (2026-10-09T16:39:25.047413)
+Auto-generated from `data/fdrs-index.yaml` (2026-10-09T17:10:54.789597)
 
-**580 items** from `docs/fdrs.md` (9674 lines)
+**584 items** from `docs/fdrs.md` (9708 lines)
 
-Status: missing: 3 | proven: 575 | scaffold: 2
+Status: missing: 3 | proven: 579 | scaffold: 2
 
 ## Phase 1
 
@@ -658,3 +658,11 @@ Status: missing: 3 | proven: 575 | scaffold: 2
 | definition_222 | definition | 222 | address shears and digit swap | 9651 | ✅ proven | FdrsFormal/Operations/DigitShear.lean |
 | proposition_167 | proposition | 167 | a swap is three shears | 9655 | ✅ proven | FdrsFormal/Operations/DigitShear.lean |
 | proposition_168 | proposition | 168 | the address displacement of a swap | 9664 | ✅ proven | FdrsFormal/Operations/DigitShear.lean |
+## Phase 3
+
+| ID | Type | Number | Title | Line | Status | Lean File |
+|---|---|---|---|---|---|---|
+| definition_223 | definition | 223 | the bilinear gate model | 9682 | ✅ proven | FdrsFormal/NumberTheory/Characters/BilinearCircuit.lean |
+| theorem_135 | theorem | 135 | the exact convolution circuit | 9686 | ✅ proven | FdrsFormal/NumberTheory/Characters/BilinearCircuit.lean |
+| corollary_44 | corollary | 44 | convolution circuits from search plans | 9694 | ✅ proven | FdrsFormal/NumberTheory/Characters/BilinearCircuit.lean |
+| corollary_45 | corollary | 45 | exact multiplication | 9698 | ✅ proven | FdrsFormal/NumberTheory/Characters/BilinearCircuit.lean |

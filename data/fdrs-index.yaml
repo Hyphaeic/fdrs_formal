@@ -1,10 +1,10 @@
 metadata:
   spec_file: docs/fdrs.md
-  spec_lines: 9674
-  generated_at: '2026-10-09T16:39:25.047413'
-  total_items: 580
+  spec_lines: 9708
+  generated_at: '2026-10-09T17:10:54.789597'
+  total_items: 584
   status_summary:
-    proven: 575
+    proven: 579
     missing: 3
     scaffold: 2
   status_legend:
@@ -14406,14 +14406,72 @@ items:
     - decodeFinite_swapDigits
   fragment: '2'
   section: '3.6'
+- id: definition_223
+  type: definition
+  phase: 3
+  global_num: 223
+  title: the bilinear gate model
+  line: 9682
+  status: proven
+  in_root_build: true
+  lean_files:
+  - path: FdrsFormal/NumberTheory/Characters/BilinearCircuit.lean
+    declarations:
+    - BGate
+    - BCircuit
+    - acyclicConv
+  fragment: '2'
+  section: '1.16'
+- id: theorem_135
+  type: theorem
+  phase: 3
+  global_num: 135
+  title: the exact convolution circuit
+  line: 9686
+  status: proven
+  in_root_build: true
+  lean_files:
+  - path: FdrsFormal/NumberTheory/Characters/BilinearCircuit.lean
+    declarations:
+    - exists_conv_circuit
+  fragment: '2'
+  section: '1.16'
+- id: corollary_44
+  type: corollary
+  phase: 3
+  global_num: 44
+  title: convolution circuits from search plans
+  line: 9694
+  status: proven
+  in_root_build: true
+  lean_files:
+  - path: FdrsFormal/NumberTheory/Characters/BilinearCircuit.lean
+    declarations:
+    - XPlan.exists_conv_circuit
+  fragment: '2'
+  section: '1.16'
+- id: corollary_45
+  type: corollary
+  phase: 3
+  global_num: 45
+  title: exact multiplication
+  line: 9698
+  status: proven
+  in_root_build: true
+  lean_files:
+  - path: FdrsFormal/NumberTheory/Characters/BilinearCircuit.lean
+    declarations:
+    - mul_eq_conv_circuit
+  fragment: '2'
+  section: '1.16'
 lean_summary:
-  total_files: 325
+  total_files: 326
   total_axioms: 0
   axioms_true: 0
   total_sorries: 0
   sorry_files: []
-  total_theorems: 2569
-  total_defs: 990
+  total_theorems: 2579
+  total_defs: 1007
   total_lemmas: 26
   total_stubs: 0
   stubs_by_kind:
