@@ -1,0 +1,7 @@
+[package]
+name = "carry-lattice"
+version = "0.1.0"
+edition = "2021"
+description = "Explore carry routes and ledgers on the FDRS radix lattice (fdrs.md §3.8)"
+
+[dependencies]
