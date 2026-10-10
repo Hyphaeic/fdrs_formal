@@ -1,6 +1,6 @@
 metadata:
-  total_files: 330
-  total_edges: 699
+  total_files: 331
+  total_edges: 703
   total_modules: 19
 modules:
   Analysis:
@@ -203,6 +203,7 @@ modules:
   - FdrsFormal/Modes/SyntheticPlace/NetworkLiveness.lean
   - FdrsFormal/Modes/SyntheticPlace/NetworkTraps.lean
   - FdrsFormal/Modes/SyntheticPlace/Restriction.lean
+  - FdrsFormal/Modes/SyntheticPlace/RingUnrolling.lean
   - FdrsFormal/Modes/SyntheticPlace/SE2Engine.lean
   - FdrsFormal/Modes/SyntheticPlace/SE2Pose.lean
   - FdrsFormal/Modes/SyntheticPlace/SE2Tight.lean
@@ -403,6 +404,10 @@ module_edges:
   to: Topology
 - from: Modes
   to: FunctionSpaces
+- from: Modes
+  to: Operations
+- from: Modes
+  to: Applications
 - from: Modes.lean
   to: Modes
 - from: Modes.lean
@@ -1186,6 +1191,12 @@ file_edges:
   to: FdrsFormal/Modes/SyntheticPlace/AdmissibilityTrap.lean
 - from: FdrsFormal/Modes/SyntheticPlace/Restriction.lean
   to: FdrsFormal/Modes/SyntheticPlace/GaugeUltrametric.lean
+- from: FdrsFormal/Modes/SyntheticPlace/RingUnrolling.lean
+  to: FdrsFormal/Modes/SyntheticPlace/HolonomyCover.lean
+- from: FdrsFormal/Modes/SyntheticPlace/RingUnrolling.lean
+  to: FdrsFormal/Operations/CarryStreams.lean
+- from: FdrsFormal/Modes/SyntheticPlace/RingUnrolling.lean
+  to: FdrsFormal/Applications/Field25519Carry.lean
 - from: FdrsFormal/Modes/SyntheticPlace/SE2Pose.lean
   to: FdrsFormal/Modes/SyntheticPlace/GroupGrading.lean
 - from: FdrsFormal/Modes/SyntheticPlace/SE2Tight.lean
@@ -1232,6 +1243,8 @@ file_edges:
   to: FdrsFormal/Modes/SyntheticPlace/GroupGrading.lean
 - from: FdrsFormal/Modes/SyntheticPlace.lean
   to: FdrsFormal/Modes/SyntheticPlace/HolonomyCover.lean
+- from: FdrsFormal/Modes/SyntheticPlace.lean
+  to: FdrsFormal/Modes/SyntheticPlace/RingUnrolling.lean
 - from: FdrsFormal/Modes/SyntheticPlace.lean
   to: FdrsFormal/Modes/SyntheticPlace/CircleEmit.lean
 - from: FdrsFormal/Modes/SyntheticPlace.lean

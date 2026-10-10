@@ -431,7 +431,7 @@ By Proposition 6, (\pi_L(\tau)=\pi_L(\tau')) implies (\operatorname{dec}(\tau)\e
 ]
 Apply Proposition 6 in reverse to conclude the first (L) digits (prefix) of the sums match. ∎
 
-This is the formal “multi-rate locality” statement: the first (L) digits of the result depend **only** on the first (L) digits of the inputs (no dependence on higher digits). *(Addenda §3.5–3.10 — multiplication as digit convolution and where it fails on variable schedules; address shears and digit interchange; multiplication on mixed schedules through residues and carry lines; carry networks and the radix lattice; carry streams; the holonomy cover — sit at the end of this document.)*
+This is the formal “multi-rate locality” statement: the first (L) digits of the result depend **only** on the first (L) digits of the inputs (no dependence on higher digits). *(Addenda §3.5–3.11 — multiplication as digit convolution and where it fails on variable schedules; address shears and digit interchange; multiplication on mixed schedules through residues and carry lines; carry networks and the radix lattice; carry streams; the holonomy cover; carrying around a frustrated ring — sit at the end of this document.)*
 
 ---
 
@@ -9880,3 +9880,33 @@ Sheets ((u,g)) and ((v,g')) are joined in the cover iff some walk (u\to v) of (\
 *Lean:* `FdrsFormal/Modes/SyntheticPlace/HolonomyCover.lean` (reusing `GroupGrading.lean` and `Grading.lean`).
 
 **Honest scope (§3.10).** Classical (derived graphs of voltage graphs, Gross 1974; gain-graph balance, Zaslavsky 1989). The corpus contributes the reading of frustrated carries as sheets, the forward (carry-only) path-back criterion, and the witnesses on its own complexes. Carry networks on the cover (integral weights per sheet) and context-dependent radix laws for new sheets (Definition 57) are not yet connected formally.
+
+# Phase 1 addendum, continued — carrying around a frustrated ring (§3.11)
+
+*(Phase 1, Fragment 2. Joins the holonomy cover (§3.10) to carry networks (§3.8–3.9): carries around a frustrated digit ring, kept on the cover, are ordinary carries on a periodic schedule. Reuses Definition 201 / Theorem 93 (§14.8), the cover and its lifting (§3.10), the streams (§3.9), and the 25519 digit ring (Definition 212, Theorem 114).)*
+
+## 3.11 Carrying around a frustrated ring (addendum, 2026-10-10)
+
+### Definition 229 (the ring complex and its unrolling)  [§3.11 · Phase 1, Fragment 2]
+
+A **ring** of (n+1) places overflows place (i) into place (i+1\bmod(n+1)) at an integer ratio (\rho_i\ge2) (a coupling complex, Definition 201). Its **periodic schedule** is (b_j=\rho_{j\bmod(n+1)}), with place values (B_j); its **helix** is the forward walk of (K) crossings from place (0).
+
+### Theorem 146 (the cover of a frustrated ring is a number line)  [§3.11 · Phase 1, Fragment 2]
+
+Lifted to the holonomy cover from sheet (1), the helix reaches place (K\bmod(n+1)) on sheet (B_K), the (K)-th place value of the periodic schedule; distinct crossings land on distinct cells (the place values are strictly increasing). The forward cover of the ring is a path whose cells carry the weights (B_K) and whose lines have ratios (b_K): exactly the path network of the periodic schedule (Definition 227).
+
+### Proposition 174 (each lap multiplies by the holonomy)  [§3.11 · Phase 1, Fragment 2]
+
+With (h=B_{n+1}=\prod_i\rho_i), the loop's holonomy, (B_{i+(n+1)}=h\,B_i): each lap multiplies the place value by the holonomy (Corollary 49 on the schedule). Since (h\ge2), the ring itself admits no consistent weight (Theorem 93).
+
+### Corollary 50 (carries around a frustrated ring)  [§3.11 · Phase 1, Fragment 2]
+
+Kept on the cover, carries around the ring conserve value, balance their ledger, and have forced streams (Theorems 137–142): counting (T) units entering place (0) and carried around (the sweep), the (i)-th crossing carries exactly (\lfloor T/B_{i+1}\rfloor) — Corollary 47 on the periodic schedule.
+
+### Proposition 175 (the 25519 ring unrolled)  [§3.11 · Phase 1, Fragment 2]
+
+The 25519 digit ring (ten places, radices (2^{26},2^{25},\dots), Definition 212) unrolls to its weight ladder: (B_i=2^{W_i}). After one lap the sheet is (2^{255}); over the integers the cover never returns to sheet (1), and modulo (p=2^{255}-19) the lap is identified with multiplication by (19) (Theorem 114) — the path back exists only in the quotient, and it costs a factor (19).
+
+*Lean:* `FdrsFormal/Modes/SyntheticPlace/RingUnrolling.lean`.
+
+**Honest scope (§3.11).** Elementary (the cyclic cover of a cycle is a path). The corpus contributes the identification of carries around a frustrated digit ring with carries on a periodic schedule, and the 25519 instance. Rings with fractional ratios, branching complexes, and context-dependent radices for new sheets are not covered.

@@ -1,10 +1,10 @@
 # FDRS Specification Index
 
-Auto-generated from `data/fdrs-index.yaml` (2026-10-10T10:28:02.234539)
+Auto-generated from `data/fdrs-index.yaml` (2026-10-10T10:46:32.535941)
 
-**608 items** from `docs/fdrs.md` (9882 lines)
+**613 items** from `docs/fdrs.md` (9912 lines)
 
-Status: missing: 3 | proven: 603 | scaffold: 2
+Status: missing: 3 | proven: 608 | scaffold: 2
 
 ## Phase 1
 
@@ -694,3 +694,8 @@ Status: missing: 3 | proven: 603 | scaffold: 2
 | theorem_145 | theorem | 145 | paths back | 9864 | ✅ proven | FdrsFormal/Modes/SyntheticPlace/HolonomyCover.lean |
 | corollary_49 | corollary | 49 | laps | 9868 | ✅ proven | FdrsFormal/Modes/SyntheticPlace/HolonomyCover.lean |
 | proposition_173 | proposition | 173 | witnesses | 9872 | ✅ proven | FdrsFormal/Modes/SyntheticPlace/HolonomyCover.lean |
+| definition_229 | definition | 229 | the ring complex and its unrolling | 9890 | ✅ proven | FdrsFormal/Modes/SyntheticPlace/RingUnrolling.lean |
+| theorem_146 | theorem | 146 | the cover of a frustrated ring is a number line | 9894 | ✅ proven | FdrsFormal/Modes/SyntheticPlace/RingUnrolling.lean |
+| proposition_174 | proposition | 174 | each lap multiplies by the holonomy | 9898 | ✅ proven | FdrsFormal/Modes/SyntheticPlace/RingUnrolling.lean |
+| corollary_50 | corollary | 50 | carries around a frustrated ring | 9902 | ✅ proven | FdrsFormal/Modes/SyntheticPlace/RingUnrolling.lean |
+| proposition_175 | proposition | 175 | the 25519 ring unrolled | 9906 | ✅ proven | FdrsFormal/Modes/SyntheticPlace/RingUnrolling.lean |

@@ -1,10 +1,10 @@
 metadata:
   spec_file: docs/fdrs.md
-  spec_lines: 9882
-  generated_at: '2026-10-10T10:28:02.234539'
-  total_items: 608
+  spec_lines: 9912
+  generated_at: '2026-10-10T10:46:32.535941'
+  total_items: 613
   status_summary:
-    proven: 603
+    proven: 608
     missing: 3
     scaffold: 2
   status_legend:
@@ -14820,14 +14820,88 @@ items:
     - twoLoops_forward_path_back
   fragment: '2'
   section: '3.10'
+- id: definition_229
+  type: definition
+  phase: 1
+  global_num: 229
+  title: the ring complex and its unrolling
+  line: 9890
+  status: proven
+  in_root_build: true
+  lean_files:
+  - path: FdrsFormal/Modes/SyntheticPlace/RingUnrolling.lean
+    declarations:
+    - ringGraph
+    - ringSchedule
+  fragment: '2'
+  section: '3.11'
+- id: theorem_146
+  type: theorem
+  phase: 1
+  global_num: 146
+  title: the cover of a frustrated ring is a number line
+  line: 9894
+  status: proven
+  in_root_build: true
+  lean_files:
+  - path: FdrsFormal/Modes/SyntheticPlace/RingUnrolling.lean
+    declarations:
+    - helix_lift
+    - helix_injective
+  fragment: '2'
+  section: '3.11'
+- id: proposition_174
+  type: proposition
+  phase: 1
+  global_num: 174
+  title: each lap multiplies by the holonomy
+  line: 9898
+  status: proven
+  in_root_build: true
+  lean_files:
+  - path: FdrsFormal/Modes/SyntheticPlace/RingUnrolling.lean
+    declarations:
+    - placeValue_period
+    - ring_not_gradable
+  fragment: '2'
+  section: '3.11'
+- id: corollary_50
+  type: corollary
+  phase: 1
+  global_num: 50
+  title: carries around a frustrated ring
+  line: 9902
+  status: proven
+  in_root_build: true
+  lean_files:
+  - path: FdrsFormal/Modes/SyntheticPlace/RingUnrolling.lean
+    declarations:
+    - ring_counter_stream
+  fragment: '2'
+  section: '3.11'
+- id: proposition_175
+  type: proposition
+  phase: 1
+  global_num: 175
+  title: the 25519 ring unrolled
+  line: 9906
+  status: proven
+  in_root_build: true
+  lean_files:
+  - path: FdrsFormal/Modes/SyntheticPlace/RingUnrolling.lean
+    declarations:
+    - field25519_unrolls
+    - field25519_lap_holonomy
+  fragment: '2'
+  section: '3.11'
 lean_summary:
-  total_files: 330
+  total_files: 331
   total_axioms: 0
   axioms_true: 0
   total_sorries: 0
   sorry_files: []
-  total_theorems: 2657
-  total_defs: 1042
+  total_theorems: 2671
+  total_defs: 1048
   total_lemmas: 26
   total_stubs: 0
   stubs_by_kind:
