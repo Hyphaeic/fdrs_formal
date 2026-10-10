@@ -1,6 +1,6 @@
 metadata:
-  total_files: 331
-  total_edges: 703
+  total_files: 332
+  total_edges: 706
   total_modules: 19
 modules:
   Analysis:
@@ -180,6 +180,7 @@ modules:
   - FdrsFormal/Modes/ExtendedBase/SpatialThermometer.lean
   - FdrsFormal/Modes/SyntheticPlace.lean
   - FdrsFormal/Modes/SyntheticPlace/AdmissibilityTrap.lean
+  - FdrsFormal/Modes/SyntheticPlace/CarryQuotient.lean
   - FdrsFormal/Modes/SyntheticPlace/CircleEmit.lean
   - FdrsFormal/Modes/SyntheticPlace/Composition.lean
   - FdrsFormal/Modes/SyntheticPlace/Conservation.lean
@@ -400,6 +401,8 @@ module_edges:
   to: Core.lean
 - from: Modes
   to: Composition
+- from: Modes
+  to: NumberTheory
 - from: Modes
   to: Topology
 - from: Modes
@@ -1133,6 +1136,10 @@ file_edges:
   to: FdrsFormal/Modes/ExtendedBase/SpatialThermometer.lean
 - from: FdrsFormal/Modes/ExtendedBase.lean
   to: FdrsFormal/Modes/ExtendedBase/CarryRouteUnification.lean
+- from: FdrsFormal/Modes/SyntheticPlace/CarryQuotient.lean
+  to: FdrsFormal/Modes/SyntheticPlace/RingUnrolling.lean
+- from: FdrsFormal/Modes/SyntheticPlace/CarryQuotient.lean
+  to: FdrsFormal/NumberTheory/Characters/Negacyclic.lean
 - from: FdrsFormal/Modes/SyntheticPlace/Composition.lean
   to: FdrsFormal/Modes/SyntheticPlace/GaugeUltrametric.lean
 - from: FdrsFormal/Modes/SyntheticPlace/Conservation.lean
@@ -1245,6 +1252,8 @@ file_edges:
   to: FdrsFormal/Modes/SyntheticPlace/HolonomyCover.lean
 - from: FdrsFormal/Modes/SyntheticPlace.lean
   to: FdrsFormal/Modes/SyntheticPlace/RingUnrolling.lean
+- from: FdrsFormal/Modes/SyntheticPlace.lean
+  to: FdrsFormal/Modes/SyntheticPlace/CarryQuotient.lean
 - from: FdrsFormal/Modes/SyntheticPlace.lean
   to: FdrsFormal/Modes/SyntheticPlace/CircleEmit.lean
 - from: FdrsFormal/Modes/SyntheticPlace.lean

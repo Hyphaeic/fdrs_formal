@@ -1,10 +1,10 @@
 metadata:
   spec_file: docs/fdrs.md
-  spec_lines: 9912
-  generated_at: '2026-10-10T10:46:32.535941'
-  total_items: 613
+  spec_lines: 9954
+  generated_at: '2026-10-10T17:39:00.305242'
+  total_items: 620
   status_summary:
-    proven: 608
+    proven: 615
     missing: 3
     scaffold: 2
   status_legend:
@@ -14894,14 +14894,122 @@ items:
     - field25519_lap_holonomy
   fragment: '2'
   section: '3.11'
+- id: definition_230
+  type: definition
+  phase: 1
+  global_num: 230
+  title: the carry lattice of a wrapped ring
+  line: 9920
+  status: proven
+  in_root_build: true
+  lean_files:
+  - path: FdrsFormal/Modes/SyntheticPlace/CarryQuotient.lean
+    declarations:
+    - carryVec
+    - carryLattice
+    - value
+  fragment: '2'
+  section: '3.12'
+- id: theorem_147
+  type: theorem
+  phase: 1
+  global_num: 147
+  title: the carry quotient
+  line: 9924
+  status: proven
+  in_root_build: true
+  lean_files:
+  - path: FdrsFormal/Modes/SyntheticPlace/CarryQuotient.lean
+    declarations:
+    - ker_ev
+    - carry_equiv_iff
+    - carryQuotient
+    - class_eq
+  fragment: '2'
+  section: '3.12'
+- id: proposition_176
+  type: proposition
+  phase: 1
+  global_num: 176
+  title: frustration is torsion
+  line: 9932
+  status: proven
+  in_root_build: true
+  lean_files:
+  - path: FdrsFormal/Modes/SyntheticPlace/CarryQuotient.lean
+    declarations:
+    - card_carryQuotient
+    - balancedQuotient
+  fragment: '2'
+  section: '3.12'
+- id: definition_231
+  type: definition
+  phase: 1
+  global_num: 231
+  title: wrapped convolution
+  line: 9936
+  status: proven
+  in_root_build: true
+  lean_files:
+  - path: FdrsFormal/Modes/SyntheticPlace/CarryQuotient.lean
+    declarations:
+    - wrapConv
+  fragment: '2'
+  section: '3.12'
+- id: theorem_148
+  type: theorem
+  phase: 1
+  global_num: 148
+  title: wrapped convolution is multiplication modulo (X^N-c
+  line: 9940
+  status: proven
+  in_root_build: true
+  lean_files:
+  - path: FdrsFormal/Modes/SyntheticPlace/CarryQuotient.lean
+    declarations:
+    - evalAt_wrapConv
+  fragment: '2'
+  section: '3.12'
+- id: corollary_51
+  type: corollary
+  phase: 1
+  global_num: 51
+  title: multiplication on the carry quotient
+  line: 9944
+  status: proven
+  in_root_build: true
+  lean_files:
+  - path: FdrsFormal/Modes/SyntheticPlace/CarryQuotient.lean
+    declarations:
+    - ev_wrapConv
+  fragment: '2'
+  section: '3.12'
+- id: proposition_177
+  type: proposition
+  phase: 1
+  global_num: 177
+  title: cyclic, negacyclic, and 25519
+  line: 9948
+  status: proven
+  in_root_build: true
+  lean_files:
+  - path: FdrsFormal/Modes/SyntheticPlace/CarryQuotient.lean
+    declarations:
+    - cycConv_eq_wrapConv
+    - negConv_eq_wrapConv
+    - field25519_gap
+    - field25519_carry_quotient
+    - field25519_carry_equiv_iff
+  fragment: '2'
+  section: '3.12'
 lean_summary:
-  total_files: 331
+  total_files: 332
   total_axioms: 0
   axioms_true: 0
   total_sorries: 0
   sorry_files: []
-  total_theorems: 2671
-  total_defs: 1048
+  total_theorems: 2700
+  total_defs: 1062
   total_lemmas: 26
   total_stubs: 0
   stubs_by_kind:

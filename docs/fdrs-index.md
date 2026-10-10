@@ -1,10 +1,10 @@
 # FDRS Specification Index
 
-Auto-generated from `data/fdrs-index.yaml` (2026-10-10T10:46:32.535941)
+Auto-generated from `data/fdrs-index.yaml` (2026-10-10T17:39:00.305242)
 
-**613 items** from `docs/fdrs.md` (9912 lines)
+**620 items** from `docs/fdrs.md` (9954 lines)
 
-Status: missing: 3 | proven: 608 | scaffold: 2
+Status: missing: 3 | proven: 615 | scaffold: 2
 
 ## Phase 1
 
@@ -699,3 +699,10 @@ Status: missing: 3 | proven: 608 | scaffold: 2
 | proposition_174 | proposition | 174 | each lap multiplies by the holonomy | 9898 | ✅ proven | FdrsFormal/Modes/SyntheticPlace/RingUnrolling.lean |
 | corollary_50 | corollary | 50 | carries around a frustrated ring | 9902 | ✅ proven | FdrsFormal/Modes/SyntheticPlace/RingUnrolling.lean |
 | proposition_175 | proposition | 175 | the 25519 ring unrolled | 9906 | ✅ proven | FdrsFormal/Modes/SyntheticPlace/RingUnrolling.lean |
+| definition_230 | definition | 230 | the carry lattice of a wrapped ring | 9920 | ✅ proven | FdrsFormal/Modes/SyntheticPlace/CarryQuotient.lean |
+| theorem_147 | theorem | 147 | the carry quotient | 9924 | ✅ proven | FdrsFormal/Modes/SyntheticPlace/CarryQuotient.lean |
+| proposition_176 | proposition | 176 | frustration is torsion | 9932 | ✅ proven | FdrsFormal/Modes/SyntheticPlace/CarryQuotient.lean |
+| definition_231 | definition | 231 | wrapped convolution | 9936 | ✅ proven | FdrsFormal/Modes/SyntheticPlace/CarryQuotient.lean |
+| theorem_148 | theorem | 148 | wrapped convolution is multiplication modulo (X^N- | 9940 | ✅ proven | FdrsFormal/Modes/SyntheticPlace/CarryQuotient.lean |
+| corollary_51 | corollary | 51 | multiplication on the carry quotient | 9944 | ✅ proven | FdrsFormal/Modes/SyntheticPlace/CarryQuotient.lean |
+| proposition_177 | proposition | 177 | cyclic, negacyclic, and 25519 | 9948 | ✅ proven | FdrsFormal/Modes/SyntheticPlace/CarryQuotient.lean |
