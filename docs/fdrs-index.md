@@ -1,10 +1,10 @@
 # FDRS Specification Index
 
-Auto-generated from `data/fdrs-index.yaml` (2026-10-10T17:39:00.305242)
+Auto-generated from `data/fdrs-index.yaml` (2026-10-10T18:09:45.910402)
 
-**620 items** from `docs/fdrs.md` (9954 lines)
+**625 items** from `docs/fdrs.md` (9987 lines)
 
-Status: missing: 3 | proven: 615 | scaffold: 2
+Status: missing: 3 | proven: 620 | scaffold: 2
 
 ## Phase 1
 
@@ -706,3 +706,8 @@ Status: missing: 3 | proven: 615 | scaffold: 2
 | theorem_148 | theorem | 148 | wrapped convolution is multiplication modulo (X^N- | 9940 | ✅ proven | FdrsFormal/Modes/SyntheticPlace/CarryQuotient.lean |
 | corollary_51 | corollary | 51 | multiplication on the carry quotient | 9944 | ✅ proven | FdrsFormal/Modes/SyntheticPlace/CarryQuotient.lean |
 | proposition_177 | proposition | 177 | cyclic, negacyclic, and 25519 | 9948 | ✅ proven | FdrsFormal/Modes/SyntheticPlace/CarryQuotient.lean |
+| definition_232 | definition | 232 | mixed wrapped convolution and product-closed rings | 9962 | ✅ proven | FdrsFormal/Modes/SyntheticPlace/MixedRingProduct.lean |
+| theorem_149 | theorem | 149 | mixed wrapped convolution is multiplication | 9966 | ✅ proven | FdrsFormal/Modes/SyntheticPlace/MixedRingProduct.lean |
+| theorem_150 | theorem | 150 | multiplication on a product-closed ring | 9970 | ✅ proven | FdrsFormal/Modes/SyntheticPlace/MixedRingProduct.lean |
+| proposition_178 | proposition | 178 | constant rings close; the (2,3 | 9974 | ✅ proven | FdrsFormal/Modes/SyntheticPlace/MixedRingProduct.lean |
+| proposition_179 | proposition | 179 | the 25519 product | 9978 | ✅ proven | FdrsFormal/Modes/SyntheticPlace/MixedRingProduct.lean |

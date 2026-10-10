@@ -52,6 +52,7 @@ import FdrsFormal.Modes.SyntheticPlace.GroupGrading
 import FdrsFormal.Modes.SyntheticPlace.HolonomyCover
 import FdrsFormal.Modes.SyntheticPlace.RingUnrolling
 import FdrsFormal.Modes.SyntheticPlace.CarryQuotient
+import FdrsFormal.Modes.SyntheticPlace.MixedRingProduct
 import FdrsFormal.Modes.SyntheticPlace.CircleEmit
 import FdrsFormal.Modes.SyntheticPlace.SE2Pose
 import FdrsFormal.Modes.SyntheticPlace.SE2Engine

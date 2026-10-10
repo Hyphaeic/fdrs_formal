@@ -1,6 +1,6 @@
 metadata:
-  total_files: 332
-  total_edges: 706
+  total_files: 333
+  total_edges: 708
   total_modules: 19
 modules:
   Analysis:
@@ -192,6 +192,7 @@ modules:
   - FdrsFormal/Modes/SyntheticPlace/GroupGrading.lean
   - FdrsFormal/Modes/SyntheticPlace/HolonomyCover.lean
   - FdrsFormal/Modes/SyntheticPlace/InterfaceBalance.lean
+  - FdrsFormal/Modes/SyntheticPlace/MixedRingProduct.lean
   - FdrsFormal/Modes/SyntheticPlace/NestedChain.lean
   - FdrsFormal/Modes/SyntheticPlace/NestedDilation.lean
   - FdrsFormal/Modes/SyntheticPlace/NetworkBalance.lean
@@ -1158,6 +1159,8 @@ file_edges:
   to: FdrsFormal/Modes/SyntheticPlace/Grading.lean
 - from: FdrsFormal/Modes/SyntheticPlace/InterfaceBalance.lean
   to: FdrsFormal/Modes/SyntheticPlace/Composition.lean
+- from: FdrsFormal/Modes/SyntheticPlace/MixedRingProduct.lean
+  to: FdrsFormal/Modes/SyntheticPlace/CarryQuotient.lean
 - from: FdrsFormal/Modes/SyntheticPlace/NestedChain.lean
   to: FdrsFormal/Modes/SyntheticPlace/Grading.lean
 - from: FdrsFormal/Modes/SyntheticPlace/NestedDilation.lean
@@ -1254,6 +1257,8 @@ file_edges:
   to: FdrsFormal/Modes/SyntheticPlace/RingUnrolling.lean
 - from: FdrsFormal/Modes/SyntheticPlace.lean
   to: FdrsFormal/Modes/SyntheticPlace/CarryQuotient.lean
+- from: FdrsFormal/Modes/SyntheticPlace.lean
+  to: FdrsFormal/Modes/SyntheticPlace/MixedRingProduct.lean
 - from: FdrsFormal/Modes/SyntheticPlace.lean
   to: FdrsFormal/Modes/SyntheticPlace/CircleEmit.lean
 - from: FdrsFormal/Modes/SyntheticPlace.lean

@@ -1,10 +1,10 @@
 metadata:
   spec_file: docs/fdrs.md
-  spec_lines: 9954
-  generated_at: '2026-10-10T17:39:00.305242'
-  total_items: 620
+  spec_lines: 9987
+  generated_at: '2026-10-10T18:09:45.910402'
+  total_items: 625
   status_summary:
-    proven: 615
+    proven: 620
     missing: 3
     scaffold: 2
   status_legend:
@@ -15002,14 +15002,90 @@ items:
     - field25519_carry_equiv_iff
   fragment: '2'
   section: '3.12'
+- id: definition_232
+  type: definition
+  phase: 1
+  global_num: 232
+  title: mixed wrapped convolution and product-closed rings
+  line: 9962
+  status: proven
+  in_root_build: true
+  lean_files:
+  - path: FdrsFormal/Modes/SyntheticPlace/MixedRingProduct.lean
+    declarations:
+    - mixedConv
+    - ProductClosed
+    - kappa
+  fragment: '2'
+  section: '3.13'
+- id: theorem_149
+  type: theorem
+  phase: 1
+  global_num: 149
+  title: mixed wrapped convolution is multiplication
+  line: 9966
+  status: proven
+  in_root_build: true
+  lean_files:
+  - path: FdrsFormal/Modes/SyntheticPlace/MixedRingProduct.lean
+    declarations:
+    - evalW_mixedConv
+  fragment: '2'
+  section: '3.13'
+- id: theorem_150
+  type: theorem
+  phase: 1
+  global_num: 150
+  title: multiplication on a product-closed ring
+  line: 9970
+  status: proven
+  in_root_build: true
+  lean_files:
+  - path: FdrsFormal/Modes/SyntheticPlace/MixedRingProduct.lean
+    declarations:
+    - ev_mixedConv
+  fragment: '2'
+  section: '3.13'
+- id: proposition_178
+  type: proposition
+  phase: 1
+  global_num: 178
+  title: constant rings close; the (2,3
+  line: 9974
+  status: proven
+  in_root_build: true
+  lean_files:
+  - path: FdrsFormal/Modes/SyntheticPlace/MixedRingProduct.lean
+    declarations:
+    - const_productClosed
+    - const_kappa
+    - ring23_not_productClosed
+  fragment: '2'
+  section: '3.13'
+- id: proposition_179
+  type: proposition
+  phase: 1
+  global_num: 179
+  title: the 25519 product
+  line: 9978
+  status: proven
+  in_root_build: true
+  lean_files:
+  - path: FdrsFormal/Modes/SyntheticPlace/MixedRingProduct.lean
+    declarations:
+    - field25519_productClosed
+    - field25519_kappa
+    - field25519_mul
+  fragment: '2'
+  section: '3.13'
 lean_summary:
-  total_files: 332
+  total_files: 333
   total_axioms: 0
   axioms_true: 0
   total_sorries: 0
   sorry_files: []
-  total_theorems: 2700
-  total_defs: 1062
+  total_theorems: 2714
+  total_defs: 1068
   total_lemmas: 26
   total_stubs: 0
   stubs_by_kind:

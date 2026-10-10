@@ -431,7 +431,7 @@ By Proposition 6, (\pi_L(\tau)=\pi_L(\tau')) implies (\operatorname{dec}(\tau)\e
 ]
 Apply Proposition 6 in reverse to conclude the first (L) digits (prefix) of the sums match. ∎
 
-This is the formal “multi-rate locality” statement: the first (L) digits of the result depend **only** on the first (L) digits of the inputs (no dependence on higher digits). *(Addenda §3.5–3.12 — multiplication as digit convolution and where it fails on variable schedules; address shears and digit interchange; multiplication on mixed schedules through residues and carry lines; carry networks and the radix lattice; carry streams; the holonomy cover; carrying around a frustrated ring; the carry quotient of a wrapped ring — sit at the end of this document.)*
+This is the formal “multi-rate locality” statement: the first (L) digits of the result depend **only** on the first (L) digits of the inputs (no dependence on higher digits). *(Addenda §3.5–3.13 — multiplication as digit convolution and where it fails on variable schedules; address shears and digit interchange; multiplication on mixed schedules through residues and carry lines; carry networks and the radix lattice; carry streams; the holonomy cover; carrying around a frustrated ring; the carry quotient of a wrapped ring; multiplication on a mixed ring — sit at the end of this document.)*
 
 ---
 
@@ -9952,3 +9952,36 @@ Wrapped convolution with (c=1) is cyclic convolution (§1.13) and with (c=-1) ne
 *Lean:* `FdrsFormal/Modes/SyntheticPlace/CarryQuotient.lean` (reusing `RingUnrolling.lean`, `ResidueConvolution.lean`, `Negacyclic.lean`, `Field25519Carry.lean`).
 
 **Honest scope (§3.12).** Classical: the quotient is the cokernel of a cyclic bidiagonal matrix with determinant (\pm(B-c)), and Theorem 148 is the arithmetic of (R[X]/(X^N-c)). The corpus contributes the reading of carry-equivalence on its digit rings as this cokernel, the wrap gain as the choice of modulus, and the 25519 instance. The convolution law is proved for constant rings only; general carry networks (several loops, invariant factors) are not covered.
+
+# Phase 1 addendum, continued — multiplication on a mixed ring (§3.13)
+
+*(Phase 1, Fragment 2. Extends the multiplication law of §3.12 from constant rings to mixed ones. Reuses the carry quotient (Theorem 147), the lap identity (Proposition 174), and the 25519 ring and its modulus (Propositions 175, 177).)*
+
+## 3.13 Multiplication on a mixed ring (addendum, 2026-10-10)
+
+### Definition 232 (mixed wrapped convolution and product-closed rings)  [§3.13 · Phase 1, Fragment 2]
+
+On a ring with periodic place values (B_i) (Definition 229), the product of the unit at place (m) and the unit at place (j) has weight (B_mB_j). The ring is **product-closed** if (B_{m+j}\mid B_mB_j) for all places (m,j) ((m+j) may pass the top; (B) is read on the periodic schedule). Its **product coefficients** are (\kappa(m,j)=B_mB_j/B_{m+j}). The **mixed wrapped convolution** with gain (c) and coefficients (\kappa) is ((f\circledast_{c,\kappa}g)_k=\sum_m\epsilon_{m,k}\,\kappa(m,k-m)\,f_m\,g_{k-m}), with (k-m) mod (N) and (\epsilon_{m,k}=1) if (m\le k), (c) otherwise.
+
+### Theorem 149 (mixed wrapped convolution is multiplication)  [§3.13 · Phase 1, Fragment 2]
+
+In a commutative ring, if weights (W) satisfy (W_mW_{k-m}=\epsilon_{m,k}\,\kappa(m,k-m)\,W_k) for all (m,k), then (\sum_k(f\circledast_{c,\kappa}g)_kW_k=\big(\sum_kf_kW_k\big)\big(\sum_kg_kW_k\big)). Theorem 148 is the case (W_k=X^k), (\kappa=1).
+
+### Theorem 150 (multiplication on a product-closed ring)  [§3.13 · Phase 1, Fragment 2]
+
+On a product-closed ring with wrap gain (c), the weights (B_k) satisfy the hypothesis of Theorem 149 modulo (B-c): without a wrap (B_mB_{k-m}=\kappa B_k); with a wrap (B_mB_{k-m}=\kappa B_{k+N}=\kappa B_NB_k\equiv\kappa\,c\,B_k) (Proposition 174). Hence the carry class of the mixed wrapped convolution of two states is the product of their classes in (\mathbb Z/(B-c)) (Theorem 147): limb multiplication is mixed wrapped convolution followed by carries.
+
+### Proposition 178 (constant rings close; the (2,3) ring does not)  [§3.13 · Phase 1, Fragment 2]
+
+Constant rings are product-closed with (\kappa=1), recovering Corollary 51. The ring with radices ((2,3)) is not product-closed: (B_1B_1=4) is not a multiple of (B_2=6), so the product of two units at place (1) cannot land on a single place and must be spread across places.
+
+### Proposition 179 (the 25519 product)  [§3.13 · Phase 1, Fragment 2]
+
+The 25519 ring is product-closed, with (\kappa(m,j)=2) when (m) and (j) are both odd and (1) otherwise (the weight ladder satisfies (W_m+W_j=W_{m+j}+[m,j\text{ odd}])). Its product is the schoolbook formula in which (a_mb_{k-m}) enters limb (k) with gain (19) if it wraps, (2) if (m) and (k-m) are both odd, and (38) if both:
+[
+\sum_k(a\circledast b)_k\,2^{W_k}\equiv\Big(\sum_ia_i2^{W_i}\Big)\Big(\sum_ib_i2^{W_i}\Big)\pmod p.
+]
+
+*Lean:* `FdrsFormal/Modes/SyntheticPlace/MixedRingProduct.lean` (reusing `CarryQuotient.lean`, `RingUnrolling.lean`, `Field25519Carry.lean`).
+
+**Honest scope (§3.13).** Classical as arithmetic: the 25519 formula is the standard radix-(2^{25.5}) schoolbook multiplication. The corpus contributes the derivation of its gains from the ring's unrolled weights ((\kappa) from the schedule, (c) from the lap), the product-closed criterion, and the obstruction on rings such as ((2,3)). Products on rings that are not product-closed (spread over several places) are not covered.
