@@ -1,6 +1,6 @@
 metadata:
-  total_files: 329
-  total_edges: 696
+  total_files: 330
+  total_edges: 699
   total_modules: 19
 modules:
   Analysis:
@@ -189,6 +189,7 @@ modules:
   - FdrsFormal/Modes/SyntheticPlace/GaugeUltrametric.lean
   - FdrsFormal/Modes/SyntheticPlace/Grading.lean
   - FdrsFormal/Modes/SyntheticPlace/GroupGrading.lean
+  - FdrsFormal/Modes/SyntheticPlace/HolonomyCover.lean
   - FdrsFormal/Modes/SyntheticPlace/InterfaceBalance.lean
   - FdrsFormal/Modes/SyntheticPlace/NestedChain.lean
   - FdrsFormal/Modes/SyntheticPlace/NestedDilation.lean
@@ -1139,6 +1140,10 @@ file_edges:
   to: FdrsFormal/FunctionSpaces/Measure/ProductMeasure.lean
 - from: FdrsFormal/Modes/SyntheticPlace/GaugeUltrametric.lean
   to: FdrsFormal/Modes/VariableRadix/SubshiftMetric.lean
+- from: FdrsFormal/Modes/SyntheticPlace/HolonomyCover.lean
+  to: FdrsFormal/Modes/SyntheticPlace/GroupGrading.lean
+- from: FdrsFormal/Modes/SyntheticPlace/HolonomyCover.lean
+  to: FdrsFormal/Modes/SyntheticPlace/Grading.lean
 - from: FdrsFormal/Modes/SyntheticPlace/InterfaceBalance.lean
   to: FdrsFormal/Modes/SyntheticPlace/Composition.lean
 - from: FdrsFormal/Modes/SyntheticPlace/NestedChain.lean
@@ -1225,6 +1230,8 @@ file_edges:
   to: FdrsFormal/Modes/SyntheticPlace/NestedDilation.lean
 - from: FdrsFormal/Modes/SyntheticPlace.lean
   to: FdrsFormal/Modes/SyntheticPlace/GroupGrading.lean
+- from: FdrsFormal/Modes/SyntheticPlace.lean
+  to: FdrsFormal/Modes/SyntheticPlace/HolonomyCover.lean
 - from: FdrsFormal/Modes/SyntheticPlace.lean
   to: FdrsFormal/Modes/SyntheticPlace/CircleEmit.lean
 - from: FdrsFormal/Modes/SyntheticPlace.lean

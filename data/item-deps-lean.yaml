@@ -1,11 +1,11 @@
 metadata:
-  total_file_edges: 791
-  total_raw_edges: 56933
+  total_file_edges: 794
+  total_raw_edges: 57377
   total_item_edges: 8051
   spurious_filtered: 2920
   unmapped_files: 58
-  decl_resolved: 2965
-  file_fallback: 53968
+  decl_resolved: 3063
+  file_fallback: 54314
   source: lean_environment_decl_level
 dependencies:
 - from: corollary_1

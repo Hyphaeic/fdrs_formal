@@ -1,10 +1,10 @@
 # FDRS Specification Index
 
-Auto-generated from `data/fdrs-index.yaml` (2026-10-09T18:54:16.141453)
+Auto-generated from `data/fdrs-index.yaml` (2026-10-10T10:28:02.234539)
 
-**602 items** from `docs/fdrs.md` (9844 lines)
+**608 items** from `docs/fdrs.md` (9882 lines)
 
-Status: missing: 3 | proven: 597 | scaffold: 2
+Status: missing: 3 | proven: 603 | scaffold: 2
 
 ## Phase 1
 
@@ -688,3 +688,9 @@ Status: missing: 3 | proven: 597 | scaffold: 2
 | theorem_142 | theorem | 142 | carry streams are route-independent | 9822 | ✅ proven | FdrsFormal/Operations/CarryStreams.lean |
 | corollary_47 | corollary | 47 | counter streams are tails, and they nest | 9830 | ✅ proven | FdrsFormal/Operations/CarryStreams.lean |
 | corollary_48 | corollary | 48 | the carry recurrence | 9834 | ✅ proven | FdrsFormal/Operations/CarryStreams.lean |
+| definition_228 | definition | 228 | the holonomy cover | 9852 | ✅ proven | FdrsFormal/Modes/SyntheticPlace/HolonomyCover.lean |
+| theorem_143 | theorem | 143 | the holonomy cover is gradable | 9856 | ✅ proven | FdrsFormal/Modes/SyntheticPlace/HolonomyCover.lean |
+| theorem_144 | theorem | 144 | walks lift; sheets record holonomy | 9860 | ✅ proven | FdrsFormal/Modes/SyntheticPlace/HolonomyCover.lean |
+| theorem_145 | theorem | 145 | paths back | 9864 | ✅ proven | FdrsFormal/Modes/SyntheticPlace/HolonomyCover.lean |
+| corollary_49 | corollary | 49 | laps | 9868 | ✅ proven | FdrsFormal/Modes/SyntheticPlace/HolonomyCover.lean |
+| proposition_173 | proposition | 173 | witnesses | 9872 | ✅ proven | FdrsFormal/Modes/SyntheticPlace/HolonomyCover.lean |

@@ -1,10 +1,10 @@
 metadata:
   spec_file: docs/fdrs.md
-  spec_lines: 9844
-  generated_at: '2026-10-09T18:54:16.141453'
-  total_items: 602
+  spec_lines: 9882
+  generated_at: '2026-10-10T10:28:02.234539'
+  total_items: 608
   status_summary:
-    proven: 597
+    proven: 603
     missing: 3
     scaffold: 2
   status_legend:
@@ -14729,14 +14729,105 @@ items:
     - stream_recurrence
   fragment: '2'
   section: '3.9'
+- id: definition_228
+  type: definition
+  phase: 1
+  global_num: 228
+  title: the holonomy cover
+  line: 9852
+  status: proven
+  in_root_build: true
+  lean_files:
+  - path: FdrsFormal/Modes/SyntheticPlace/HolonomyCover.lean
+    declarations:
+    - cover
+    - liftWalk
+  fragment: '2'
+  section: '3.10'
+- id: theorem_143
+  type: theorem
+  phase: 1
+  global_num: 143
+  title: the holonomy cover is gradable
+  line: 9856
+  status: proven
+  in_root_build: true
+  lean_files:
+  - path: FdrsFormal/Modes/SyntheticPlace/HolonomyCover.lean
+    declarations:
+    - cover_gradable
+    - cover_holonomy
+  fragment: '2'
+  section: '3.10'
+- id: theorem_144
+  type: theorem
+  phase: 1
+  global_num: 144
+  title: walks lift; sheets record holonomy
+  line: 9860
+  status: proven
+  in_root_build: true
+  lean_files:
+  - path: FdrsFormal/Modes/SyntheticPlace/HolonomyCover.lean
+    declarations:
+    - lift_isWalk
+  fragment: '2'
+  section: '3.10'
+- id: theorem_145
+  type: theorem
+  phase: 1
+  global_num: 145
+  title: paths back
+  line: 9864
+  status: proven
+  in_root_build: true
+  lean_files:
+  - path: FdrsFormal/Modes/SyntheticPlace/HolonomyCover.lean
+    declarations:
+    - path_back_iff
+    - forward_path_back_iff
+  fragment: '2'
+  section: '3.10'
+- id: corollary_49
+  type: corollary
+  phase: 1
+  global_num: 49
+  title: laps
+  line: 9868
+  status: proven
+  in_root_build: true
+  lean_files:
+  - path: FdrsFormal/Modes/SyntheticPlace/HolonomyCover.lean
+    declarations:
+    - lap_sheet
+    - lap_returns_iff
+  fragment: '2'
+  section: '3.10'
+- id: proposition_173
+  type: proposition
+  phase: 1
+  global_num: 173
+  title: witnesses
+  line: 9872
+  status: proven
+  in_root_build: true
+  lean_files:
+  - path: FdrsFormal/Modes/SyntheticPlace/HolonomyCover.lean
+    declarations:
+    - triangle_laps_never_return
+    - triangle_no_forward_path_back
+    - dihedral_returns_after_two
+    - twoLoops_forward_path_back
+  fragment: '2'
+  section: '3.10'
 lean_summary:
-  total_files: 329
+  total_files: 330
   total_axioms: 0
   axioms_true: 0
   total_sorries: 0
   sorry_files: []
-  total_theorems: 2627
-  total_defs: 1030
+  total_theorems: 2657
+  total_defs: 1042
   total_lemmas: 26
   total_stubs: 0
   stubs_by_kind:

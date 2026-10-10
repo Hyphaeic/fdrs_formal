@@ -49,6 +49,7 @@ import FdrsFormal.Modes.SyntheticPlace.NestedDilation
 
 -- SU6′: the non-abelian arc
 import FdrsFormal.Modes.SyntheticPlace.GroupGrading
+import FdrsFormal.Modes.SyntheticPlace.HolonomyCover
 import FdrsFormal.Modes.SyntheticPlace.CircleEmit
 import FdrsFormal.Modes.SyntheticPlace.SE2Pose
 import FdrsFormal.Modes.SyntheticPlace.SE2Engine

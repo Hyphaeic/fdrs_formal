@@ -431,7 +431,7 @@ By Proposition 6, (\pi_L(\tau)=\pi_L(\tau')) implies (\operatorname{dec}(\tau)\e
 ]
 Apply Proposition 6 in reverse to conclude the first (L) digits (prefix) of the sums match. ∎
 
-This is the formal “multi-rate locality” statement: the first (L) digits of the result depend **only** on the first (L) digits of the inputs (no dependence on higher digits). *(Addenda §3.5–3.9 — multiplication as digit convolution and where it fails on variable schedules; address shears and digit interchange; multiplication on mixed schedules through residues and carry lines; carry networks and the radix lattice; carry streams — sit at the end of this document.)*
+This is the formal “multi-rate locality” statement: the first (L) digits of the result depend **only** on the first (L) digits of the inputs (no dependence on higher digits). *(Addenda §3.5–3.10 — multiplication as digit convolution and where it fails on variable schedules; address shears and digit interchange; multiplication on mixed schedules through residues and carry lines; carry networks and the radix lattice; carry streams; the holonomy cover — sit at the end of this document.)*
 
 ---
 
@@ -9842,3 +9842,41 @@ the stream into a line plus the line's own digit mass, carried at the line's rad
 *Lean:* `FdrsFormal/Operations/CarryStreams.lean`.
 
 **Honest scope (§3.9).** Elementary; Legendre's formula is classical. The corpus contributes the cut law, route independence of streams on schedules, and the nesting of streams. Streams on the radix lattice (where cycles leave a circulation free) and schedules chosen for the streams themselves are not formalized.
+
+# Phase 1 addendum, continued — the holonomy cover (§3.10)
+
+*(Phase 1, Fragment 2, continuing the carry arc §3.8–3.9 and building on the coupling complexes of §14.8 (Definition 201, Theorems 93 and 99). A frustrated complex — a loop of nontrivial holonomy — has no consistent weight, so carries around the loop cannot be merged back into the ring (Theorem 114's wrap, holonomy 19, is one). Instead of forcing them, the carries are expanded onto new sheets that hold them at their exact weight; the history of the operations is the sheet label; a path back exists only where the history allows it.)*
+
+## 3.10 The holonomy cover (addendum, 2026-10-10)
+
+### Definition 228 (the holonomy cover)  [§3.10 · Phase 1, Fragment 2]
+
+For a group-valued complex (\Gamma) on places (V) (§14.8: edges (u\to v) with ratios (\rho\in G)), the **holonomy cover** has places (V\times G) — one **sheet** per group element — and lifts each edge (u\to v) of ratio (\rho) from sheet (g) to ((u,g)\to(v,\rho g)). Walks of (\Gamma) **lift** to the cover from any starting sheet and walks of the cover **project** to (\Gamma). A ℚ-valued complex (Definition 201) is a group complex over (\mathbb Q^\times).
+
+### Theorem 143 (the holonomy cover is gradable)  [§3.10 · Phase 1, Fragment 2]
+
+The sheet label is a global potential of the cover; by Theorem 99 every closed walk of the cover has holonomy (1). Every frustration of (\Gamma) is resolved upstairs: the cover is a place where frustrated carries live at their exact weight.
+
+### Theorem 144 (walks lift; sheets record holonomy)  [§3.10 · Phase 1, Fragment 2]
+
+A walk (u\to v) of (\Gamma) lifts from sheet (h) to a walk of the cover ending on sheet (\mathrm{hol}(\text{walk})\cdot h); along any walk of the cover the sheet is multiplied by the holonomy of its projection. The sheet is the history.
+
+### Theorem 145 (paths back)  [§3.10 · Phase 1, Fragment 2]
+
+Sheets ((u,g)) and ((v,g')) are joined in the cover iff some walk (u\to v) of (\Gamma) has holonomy (g'g^{-1}); the same holds for **forward** walks (carries only, no borrows) with forward walks of (\Gamma). A path back to an earlier sheet emerges exactly when the complex contains a history with the right holonomy.
+
+### Corollary 49 (laps)  [§3.10 · Phase 1, Fragment 2]
+
+(m) laps of a loop of holonomy (h) move the sheet from (g) to (h^mg); the history returns iff (h^m=1).
+
+### Proposition 173 (witnesses)  [§3.10 · Phase 1, Fragment 2]
+
+1. **Frustration grows sheets.** The ℚ frustrated triangle of Proposition 150 (holonomy (8)) lands on a new sheet (8^m) every lap and never returns along the loop; its cover has **no forward path back** from sheet (8) to sheet (1) at any place — every carry-only history has holonomy (2^n\ge1).
+2. **A path back after enough history.** The dihedral frustrated triangle of Theorem 99 does not close after one lap but does after two: ((sr\,0)^2=1).
+3. **A hop across parts.** Adding a second loop through the same place with ratio (1/2) per edge (holonomy (1/8)) opens a forward path back from sheet (8) to sheet (1) — through the other part of the complex, which the first loop alone never provides.
+
+**Meaning.** Carries that cannot merge into a ring are not lost: they live on the sheets of the cover, which records the history as accumulated holonomy and is gradable, so the conservation and ledger laws of §3.8–3.9 apply there. Whether a history can return is a property of the whole complex — its holonomy group — not of any single loop.
+
+*Lean:* `FdrsFormal/Modes/SyntheticPlace/HolonomyCover.lean` (reusing `GroupGrading.lean` and `Grading.lean`).
+
+**Honest scope (§3.10).** Classical (derived graphs of voltage graphs, Gross 1974; gain-graph balance, Zaslavsky 1989). The corpus contributes the reading of frustrated carries as sheets, the forward (carry-only) path-back criterion, and the witnesses on its own complexes. Carry networks on the cover (integral weights per sheet) and context-dependent radix laws for new sheets (Definition 57) are not yet connected formally.
