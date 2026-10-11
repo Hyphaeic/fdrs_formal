@@ -1,10 +1,10 @@
 metadata:
   spec_file: docs/fdrs.md
-  spec_lines: 9987
-  generated_at: '2026-10-10T18:09:45.910402'
-  total_items: 625
+  spec_lines: 10017
+  generated_at: '2026-10-11T22:52:33.273807'
+  total_items: 630
   status_summary:
-    proven: 620
+    proven: 625
     missing: 3
     scaffold: 2
   status_legend:
@@ -15078,14 +15078,92 @@ items:
     - field25519_mul
   fragment: '2'
   section: '3.13'
+- id: definition_233
+  type: definition
+  phase: 1
+  global_num: 233
+  title: product tables and landing
+  line: 9995
+  status: proven
+  in_root_build: true
+  lean_files:
+  - path: FdrsFormal/Modes/SyntheticPlace/ProductSpread.lean
+    declarations:
+    - ProductTable
+    - Lands
+    - ResidueClosed
+  fragment: '2'
+  section: '3.14'
+- id: theorem_151
+  type: theorem
+  phase: 1
+  global_num: 151
+  title: product tables multiply
+  line: 9999
+  status: proven
+  in_root_build: true
+  lean_files:
+  - path: FdrsFormal/Modes/SyntheticPlace/ProductSpread.lean
+    declarations:
+    - ev_spreadMul
+    - collapse_table
+  fragment: '2'
+  section: '3.14'
+- id: theorem_152
+  type: theorem
+  phase: 1
+  global_num: 152
+  title: the landing criterion
+  line: 10003
+  status: proven
+  in_root_build: true
+  lean_files:
+  - path: FdrsFormal/Modes/SyntheticPlace/ProductSpread.lean
+    declarations:
+    - lands_iff_gcd
+    - lands_iff
+  fragment: '2'
+  section: '3.14'
+- id: corollary_52
+  type: corollary
+  phase: 1
+  global_num: 52
+  title: residue closure
+  line: 10007
+  status: proven
+  in_root_build: true
+  lean_files:
+  - path: FdrsFormal/Modes/SyntheticPlace/ProductSpread.lean
+    declarations:
+    - residueClosed_of_coprime
+  fragment: '2'
+  section: '3.14'
+- id: proposition_180
+  type: proposition
+  phase: 1
+  global_num: 180
+  title: the (2,3,2
+  line: 10011
+  status: proven
+  in_root_build: true
+  lean_files:
+  - path: FdrsFormal/Modes/SyntheticPlace/ProductSpread.lean
+    declarations:
+    - ring232_not_productClosed
+    - ring232_residue_one
+    - ring232_kappa_eight
+    - ring232_blocked
+    - ring232_spread
+  fragment: '2'
+  section: '3.14'
 lean_summary:
-  total_files: 333
+  total_files: 334
   total_axioms: 0
   axioms_true: 0
   total_sorries: 0
   sorry_files: []
-  total_theorems: 2714
-  total_defs: 1068
+  total_theorems: 2734
+  total_defs: 1075
   total_lemmas: 26
   total_stubs: 0
   stubs_by_kind:

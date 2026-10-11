@@ -1,10 +1,10 @@
 # FDRS Specification Index
 
-Auto-generated from `data/fdrs-index.yaml` (2026-10-10T18:09:45.910402)
+Auto-generated from `data/fdrs-index.yaml` (2026-10-11T22:52:33.273807)
 
-**625 items** from `docs/fdrs.md` (9987 lines)
+**630 items** from `docs/fdrs.md` (10017 lines)
 
-Status: missing: 3 | proven: 620 | scaffold: 2
+Status: missing: 3 | proven: 625 | scaffold: 2
 
 ## Phase 1
 
@@ -711,3 +711,8 @@ Status: missing: 3 | proven: 620 | scaffold: 2
 | theorem_150 | theorem | 150 | multiplication on a product-closed ring | 9970 | ✅ proven | FdrsFormal/Modes/SyntheticPlace/MixedRingProduct.lean |
 | proposition_178 | proposition | 178 | constant rings close; the (2,3 | 9974 | ✅ proven | FdrsFormal/Modes/SyntheticPlace/MixedRingProduct.lean |
 | proposition_179 | proposition | 179 | the 25519 product | 9978 | ✅ proven | FdrsFormal/Modes/SyntheticPlace/MixedRingProduct.lean |
+| definition_233 | definition | 233 | product tables and landing | 9995 | ✅ proven | FdrsFormal/Modes/SyntheticPlace/ProductSpread.lean |
+| theorem_151 | theorem | 151 | product tables multiply | 9999 | ✅ proven | FdrsFormal/Modes/SyntheticPlace/ProductSpread.lean |
+| theorem_152 | theorem | 152 | the landing criterion | 10003 | ✅ proven | FdrsFormal/Modes/SyntheticPlace/ProductSpread.lean |
+| corollary_52 | corollary | 52 | residue closure | 10007 | ✅ proven | FdrsFormal/Modes/SyntheticPlace/ProductSpread.lean |
+| proposition_180 | proposition | 180 | the (2,3,2 | 10011 | ✅ proven | FdrsFormal/Modes/SyntheticPlace/ProductSpread.lean |

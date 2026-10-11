@@ -1,6 +1,6 @@
 metadata:
-  total_files: 333
-  total_edges: 708
+  total_files: 334
+  total_edges: 710
   total_modules: 19
 modules:
   Analysis:
@@ -204,6 +204,7 @@ modules:
   - FdrsFormal/Modes/SyntheticPlace/NetworkGauge.lean
   - FdrsFormal/Modes/SyntheticPlace/NetworkLiveness.lean
   - FdrsFormal/Modes/SyntheticPlace/NetworkTraps.lean
+  - FdrsFormal/Modes/SyntheticPlace/ProductSpread.lean
   - FdrsFormal/Modes/SyntheticPlace/Restriction.lean
   - FdrsFormal/Modes/SyntheticPlace/RingUnrolling.lean
   - FdrsFormal/Modes/SyntheticPlace/SE2Engine.lean
@@ -1199,6 +1200,8 @@ file_edges:
   to: FdrsFormal/Modes/SyntheticPlace/NetworkCouplability.lean
 - from: FdrsFormal/Modes/SyntheticPlace/NetworkTraps.lean
   to: FdrsFormal/Modes/SyntheticPlace/AdmissibilityTrap.lean
+- from: FdrsFormal/Modes/SyntheticPlace/ProductSpread.lean
+  to: FdrsFormal/Modes/SyntheticPlace/MixedRingProduct.lean
 - from: FdrsFormal/Modes/SyntheticPlace/Restriction.lean
   to: FdrsFormal/Modes/SyntheticPlace/GaugeUltrametric.lean
 - from: FdrsFormal/Modes/SyntheticPlace/RingUnrolling.lean
@@ -1259,6 +1262,8 @@ file_edges:
   to: FdrsFormal/Modes/SyntheticPlace/CarryQuotient.lean
 - from: FdrsFormal/Modes/SyntheticPlace.lean
   to: FdrsFormal/Modes/SyntheticPlace/MixedRingProduct.lean
+- from: FdrsFormal/Modes/SyntheticPlace.lean
+  to: FdrsFormal/Modes/SyntheticPlace/ProductSpread.lean
 - from: FdrsFormal/Modes/SyntheticPlace.lean
   to: FdrsFormal/Modes/SyntheticPlace/CircleEmit.lean
 - from: FdrsFormal/Modes/SyntheticPlace.lean

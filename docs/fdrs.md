@@ -431,7 +431,7 @@ By Proposition 6, (\pi_L(\tau)=\pi_L(\tau')) implies (\operatorname{dec}(\tau)\e
 ]
 Apply Proposition 6 in reverse to conclude the first (L) digits (prefix) of the sums match. ∎
 
-This is the formal “multi-rate locality” statement: the first (L) digits of the result depend **only** on the first (L) digits of the inputs (no dependence on higher digits). *(Addenda §3.5–3.13 — multiplication as digit convolution and where it fails on variable schedules; address shears and digit interchange; multiplication on mixed schedules through residues and carry lines; carry networks and the radix lattice; carry streams; the holonomy cover; carrying around a frustrated ring; the carry quotient of a wrapped ring; multiplication on a mixed ring — sit at the end of this document.)*
+This is the formal “multi-rate locality” statement: the first (L) digits of the result depend **only** on the first (L) digits of the inputs (no dependence on higher digits). *(Addenda §3.5–3.14 — multiplication as digit convolution and where it fails on variable schedules; address shears and digit interchange; multiplication on mixed schedules through residues and carry lines; carry networks and the radix lattice; carry streams; the holonomy cover; carrying around a frustrated ring; the carry quotient of a wrapped ring; multiplication on a mixed ring; products that do not close — sit at the end of this document.)*
 
 ---
 
@@ -9985,3 +9985,33 @@ The 25519 ring is product-closed, with (\kappa(m,j)=2) when (m) and (j) are both
 *Lean:* `FdrsFormal/Modes/SyntheticPlace/MixedRingProduct.lean` (reusing `CarryQuotient.lean`, `RingUnrolling.lean`, `Field25519Carry.lean`).
 
 **Honest scope (§3.13).** Classical as arithmetic: the 25519 formula is the standard radix-(2^{25.5}) schoolbook multiplication. The corpus contributes the derivation of its gains from the ring's unrolled weights ((\kappa) from the schedule, (c) from the lap), the product-closed criterion, and the obstruction on rings such as ((2,3)). Products on rings that are not product-closed (spread over several places) are not covered.
+
+# Phase 1 addendum, continued — products that do not close (§3.14)
+
+*(Phase 1, Fragment 2. Rings that are not product-closed (§3.13): where can their products land once the ring is closed by its wrap? Reuses the carry quotient (Theorem 147) and mixed wrapped convolution (Theorem 149).)*
+
+## 3.14 Products that do not close (addendum, 2026-10-11)
+
+### Definition 233 (product tables and landing)  [§3.14 · Phase 1, Fragment 2]
+
+On a ring with wrap gain (c) (Definition 230), a **product table** assigns to each pair of places (m,j) a state (T(m,j)) whose carry class is that of (B_mB_j); the product of two states through it is (\sum_{m,j}a_mb_j\,T(m,j)), possibly spread over several places. The product of places (m) and (j) **lands** on its target place (k=m+j\bmod N) if some integer (t) gives (t\,\epsilon\,B_k\equiv B_mB_j\pmod{B-c}), with (\epsilon=c) if the target passes the top and (1) otherwise. A ring is **residue-closed** if every product lands.
+
+### Theorem 151 (product tables multiply)  [§3.14 · Phase 1, Fragment 2]
+
+The carry class of the product of two states through any product table is the product of their classes. Every ring has a product table (collapse every product onto place (0)).
+
+### Theorem 152 (the landing criterion)  [§3.14 · Phase 1, Fragment 2]
+
+(t\,w\equiv v\pmod M) is solvable in integers iff (\gcd(w,M)\mid v). Hence the product of places (m,j) lands on its target iff (\gcd(\epsilon B_{m+j},\,|B-c|)\mid B_mB_j).
+
+### Corollary 52 (residue closure)  [§3.14 · Phase 1, Fragment 2]
+
+On a residue-closed ring, multiplication is mixed wrapped convolution (Definition 232) with residue coefficients (\kappa(m,j)) solving (\kappa\,\epsilon\,B_{m+j}\equiv B_mB_j): the carry class of the convolution is the product of the classes. If the wrap gain is coprime to the lap value, every weight and the gain are units modulo (B-c), so every ring is residue-closed.
+
+### Proposition 180 (the (2,3,2) witnesses)  [§3.14 · Phase 1, Fragment 2]
+
+The ring with radices ((2,3,2)) (place values (1,2,6), lap value (12)) is not product-closed: (B_1B_1=4) is not a multiple of (B_2=6). With wrap gain (1) (arithmetic modulo (11)) it is residue-closed, and the coefficient (4/6) is (8): (8\cdot6\equiv4\pmod{11}). With wrap gain (3) (arithmetic modulo (9)) the product of two units at place (1) does not land on place (2) ((\gcd(6,9)=3\nmid4)); it spreads, here exactly to two units at place (1).
+
+*Lean:* `FdrsFormal/Modes/SyntheticPlace/ProductSpread.lean` (reusing `CarryQuotient.lean`, `MixedRingProduct.lean`).
+
+**Honest scope (§3.14).** Elementary (linear congruences, Bézout). The corpus contributes the landing criterion for its carry rings, the separation of integer closure (§3.13) from residue closure, and the witnesses. The canonical spread of a blocked product — which places and which residue lines carry it — is not determined.
