@@ -1,10 +1,10 @@
 # FDRS Specification Index
 
-Auto-generated from `data/fdrs-index.yaml` (2026-10-12T16:00:15.988396)
+Auto-generated from `data/fdrs-index.yaml` (2026-10-12T16:17:36.301350)
 
-**647 items** from `docs/fdrs.md` (10115 lines)
+**652 items** from `docs/fdrs.md` (10145 lines)
 
-Status: missing: 3 | proven: 642 | scaffold: 2
+Status: missing: 3 | proven: 647 | scaffold: 2
 
 ## Phase 1
 
@@ -733,3 +733,8 @@ Status: missing: 3 | proven: 642 | scaffold: 2
 | theorem_159 | theorem | 159 | the ring closes, the line leaks | 10101 | ✅ proven | FdrsFormal/Modes/SyntheticPlace/CarryHop.lean |
 | theorem_160 | theorem | 160 | the hop is the path back | 10105 | ✅ proven | FdrsFormal/Modes/SyntheticPlace/CarryHop.lean |
 | proposition_183 | proposition | 183 | the (2,3,2 | 10109 | ✅ proven | FdrsFormal/Modes/SyntheticPlace/CarryHop.lean |
+| definition_237 | definition | 237 | branch histories | 10123 | ✅ proven | FdrsFormal/Modes/SyntheticPlace/ContextBranch.lean |
+| theorem_161 | theorem | 161 | dead cells | 10127 | ✅ proven | FdrsFormal/Modes/SyntheticPlace/ContextBranch.lean |
+| theorem_162 | theorem | 162 | custom-sized branches are faithful | 10131 | ✅ proven | FdrsFormal/Modes/SyntheticPlace/ContextBranch.lean |
+| corollary_56 | corollary | 56 | the normal form of the complex | 10135 | ✅ proven | FdrsFormal/Modes/SyntheticPlace/ContextBranch.lean |
+| proposition_184 | proposition | 184 | the (2,3,2 | 10139 | ✅ proven | FdrsFormal/Modes/SyntheticPlace/ContextBranch.lean |

@@ -1,10 +1,10 @@
 metadata:
   spec_file: docs/fdrs.md
-  spec_lines: 10115
-  generated_at: '2026-10-12T16:00:15.988396'
-  total_items: 647
+  spec_lines: 10145
+  generated_at: '2026-10-12T16:17:36.301350'
+  total_items: 652
   status_summary:
-    proven: 642
+    proven: 647
     missing: 3
     scaffold: 2
   status_legend:
@@ -15386,6 +15386,7 @@ items:
     - ring_closes
     - line_dies
     - line_leaks
+    - periodic_line_leaks
   fragment: '2'
   section: '3.17'
 - id: theorem_160
@@ -15417,14 +15418,89 @@ items:
     - ring232_no_back
   fragment: '2'
   section: '3.17'
+- id: definition_237
+  type: definition
+  phase: 1
+  global_num: 237
+  title: branch histories
+  line: 10123
+  status: proven
+  in_root_build: true
+  lean_files:
+  - path: FdrsFormal/Modes/SyntheticPlace/ContextBranch.lean
+    declarations:
+    - histSchedule
+    - histLaw
+    - lineState
+  fragment: '2'
+  section: '3.18'
+- id: theorem_161
+  type: theorem
+  phase: 1
+  global_num: 161
+  title: dead cells
+  line: 10127
+  status: proven
+  in_root_build: true
+  lean_files:
+  - path: FdrsFormal/Modes/SyntheticPlace/ContextBranch.lean
+    declarations:
+    - cell_dead_iff
+  fragment: '2'
+  section: '3.18'
+- id: theorem_162
+  type: theorem
+  phase: 1
+  global_num: 162
+  title: custom-sized branches are faithful
+  line: 10131
+  status: proven
+  in_root_build: true
+  lean_files:
+  - path: FdrsFormal/Modes/SyntheticPlace/ContextBranch.lean
+    declarations:
+    - faithful
+  fragment: '2'
+  section: '3.18'
+- id: corollary_56
+  type: corollary
+  phase: 1
+  global_num: 56
+  title: the normal form of the complex
+  line: 10135
+  status: proven
+  in_root_build: true
+  lean_files:
+  - path: FdrsFormal/Modes/SyntheticPlace/ContextBranch.lean
+    declarations:
+    - normal_form
+  fragment: '2'
+  section: '3.18'
+- id: proposition_184
+  type: proposition
+  phase: 1
+  global_num: 184
+  title: the (2,3,2
+  line: 10139
+  status: proven
+  in_root_build: true
+  lean_files:
+  - path: FdrsFormal/Modes/SyntheticPlace/ContextBranch.lean
+    declarations:
+    - split18
+    - hist23_faithful
+    - digits_five
+    - periodic_redundant
+  fragment: '2'
+  section: '3.18'
 lean_summary:
-  total_files: 337
+  total_files: 338
   total_axioms: 0
   axioms_true: 0
   total_sorries: 0
   sorry_files: []
-  total_theorems: 2802
-  total_defs: 1087
+  total_theorems: 2814
+  total_defs: 1093
   total_lemmas: 26
   total_stubs: 0
   stubs_by_kind:

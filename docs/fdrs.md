@@ -431,7 +431,7 @@ By Proposition 6, (\pi_L(\tau)=\pi_L(\tau')) implies (\operatorname{dec}(\tau)\e
 ]
 Apply Proposition 6 in reverse to conclude the first (L) digits (prefix) of the sums match. ∎
 
-This is the formal “multi-rate locality” statement: the first (L) digits of the result depend **only** on the first (L) digits of the inputs (no dependence on higher digits). *(Addenda §3.5–3.17 — multiplication as digit convolution and where it fails on variable schedules; address shears and digit interchange; multiplication on mixed schedules through residues and carry lines; carry networks and the radix lattice; carry streams; the holonomy cover; carrying around a frustrated ring; the carry quotient of a wrapped ring; multiplication on a mixed ring; products that do not close; rings and lines, the free/tied split; the radix complex of a wrapped ring; the hop — sit at the end of this document.)*
+This is the formal “multi-rate locality” statement: the first (L) digits of the result depend **only** on the first (L) digits of the inputs (no dependence on higher digits). *(Addenda §3.5–3.18 — multiplication as digit convolution and where it fails on variable schedules; address shears and digit interchange; multiplication on mixed schedules through residues and carry lines; carry networks and the radix lattice; carry streams; the holonomy cover; carrying around a frustrated ring; the carry quotient of a wrapped ring; multiplication on a mixed ring; products that do not close; rings and lines, the free/tied split; the radix complex of a wrapped ring; the hop; context branches — sit at the end of this document.)*
 
 ---
 
@@ -10113,3 +10113,33 @@ For the ((2,3,2)) ring with wrap gain (-3) and a line of depth (3): the unit at 
 *Lean:* `FdrsFormal/Modes/SyntheticPlace/CarryHop.lean` (reusing `CarryQuotient.lean`, `BranchComplex.lean`, `RingLineSplit.lean`, `ProductSpread.lean`).
 
 **Honest scope (§3.17).** Elementary (a change of presentation of (\mathbb Z/M)). The corpus contributes the two-branch carry complex with an explicit hop move, the sorting of residues onto branches by carries, and the separation of paths back with and without the hop. The line is attached at a single cell; several lines, hops at other cells, and context-chosen radices for the line are not covered.
+
+# Phase 1 addendum, continued — context branches (§3.18)
+
+*(Phase 1, Fragment 2. The line of the hop complex (§3.17) enters only through its place values, so it can be chosen. Chooses it from the history of the residue types it holds, as a Definition 57 radix law. Reuses the hop complex (Definition 236, Theorem 158 — whose Lean is stated for an arbitrary line schedule (\beta)), the branch idempotents (Definition 235), the finite radix spaces (Definition 2, Proposition 1), and radix laws (Definition 57).)*
+
+## 3.18 Context branches (addendum, 2026-10-12)
+
+### Definition 237 (branch histories)  [§3.18 · Phase 1, Fragment 2]
+
+A **branch history** is a finite list of radices (h_0,h_1,\dots) (each (\ge2)). Its **schedule** is the list followed by (2)s, and its **radix law** is the corresponding position-only law of Definition 57. The hop complex of Definition 236 may carry any line schedule (\beta) (place values (W_k)); Theorem 158 holds for every (\beta). A digit string (\sigma) on the (d+1) line cells is the line state with (\sigma_k) units at cell (k).
+
+### Theorem 161 (dead cells)  [§3.18 · Phase 1, Fragment 2]
+
+A unit at line cell (k) is equivalent to nothing iff (M_2\mid W_k). A line keeps tied residue only above its first dead cell.
+
+### Theorem 162 (custom-sized branches are faithful)  [§3.18 · Phase 1, Fragment 2]
+
+If the line's radices multiply to exactly the tied modulus, (W_{d+1}=M_2), the map sending a digit string on the (d+1) cells to its value modulo (M_2) is a bijection onto (\mathbb Z/M_2): one string per tied residue.
+
+### Corollary 56 (the normal form of the complex)  [§3.18 · Phase 1, Fragment 2]
+
+On a custom-sized branch, every complex state of value (W) is equivalent to (\varepsilon_{\rm free}W) units at ring cell (0) together with exactly one digit string on the branch: the free share sits at the ring root, the tied share is written exactly once on the line.
+
+### Proposition 184 (the (2,3,2), c = −18 branches)  [§3.18 · Phase 1, Fragment 2]
+
+For the ((2,3,2)) ring with wrap gain (-18): (M=30=5\cdot6), free part (5), tied part (6) (dividing ((-18)^1)). The histories ((2,3)) and ((3,2)) both give faithful branches of two cells; the tied residue (5) is written ((1,2)) on the first ((1+2\cdot2)) and ((2,1)) on the second ((2+1\cdot3)) — the same residue, recorded by the history that built its branch. On the ring's own periodic line, cell (2) (weight (6)) is dead: a nonzero digit string equivalent to nothing.
+
+*Lean:* `FdrsFormal/Modes/SyntheticPlace/ContextBranch.lean` (reusing `CarryHop.lean`, `BranchComplex.lean`, `Core/Finite/Bijection.lean`, `Modes/VariableRadix/Basic/RadixLaw.lean`, `ProductSpread.lean`).
+
+**Honest scope (§3.18).** Elementary (mixed-radix bijections and CRT). The corpus contributes the freedom to choose the line of the hop complex, the dead-cell criterion, the exactness of custom-sized branches with the resulting normal form, and branch histories as Definition 57 radix laws. The branch law is position-only along the branch; laws that branch on the digits themselves (trees of lines), and several tied primes, are not covered.
