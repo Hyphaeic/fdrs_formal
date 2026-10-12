@@ -431,7 +431,7 @@ By Proposition 6, (\pi_L(\tau)=\pi_L(\tau')) implies (\operatorname{dec}(\tau)\e
 ]
 Apply Proposition 6 in reverse to conclude the first (L) digits (prefix) of the sums match. ∎
 
-This is the formal “multi-rate locality” statement: the first (L) digits of the result depend **only** on the first (L) digits of the inputs (no dependence on higher digits). *(Addenda §3.5–3.19 — multiplication as digit convolution and where it fails on variable schedules; address shears and digit interchange; multiplication on mixed schedules through residues and carry lines; carry networks and the radix lattice; carry streams; the holonomy cover; carrying around a frustrated ring; the carry quotient of a wrapped ring; multiplication on a mixed ring; products that do not close; rings and lines, the free/tied split; the radix complex of a wrapped ring; the hop; context branches; operation-driven branches — sit at the end of this document.)*
+This is the formal “multi-rate locality” statement: the first (L) digits of the result depend **only** on the first (L) digits of the inputs (no dependence on higher digits). *(Addenda §3.5–3.20 — multiplication as digit convolution and where it fails on variable schedules; address shears and digit interchange; multiplication on mixed schedules through residues and carry lines; carry networks and the radix lattice; carry streams; the holonomy cover; carrying around a frustrated ring; the carry quotient of a wrapped ring; multiplication on a mixed ring; products that do not close; rings and lines, the free/tied split; the radix complex of a wrapped ring; the hop; context branches; operation-driven branches; coupled branches — sit at the end of this document.)*
 
 ---
 
@@ -10181,3 +10181,37 @@ On the ((2,3,2)) ring with wrap gain (-18) (tied part (6)): recording the types 
 *Lean:* `FdrsFormal/Modes/SyntheticPlace/OperationBranch.lean` (reusing `Modes/ContextDependent` — `ExtendedOracle`, `StatefulSystem`, `isStructurePreserving` —, `Modes/VariableRadix` — `RadixLaw`, `prefixWeight` —, `CarryHop.lean`, `ContextBranch.lean`, `BranchComplex.lean`, `Core/Finite/Bijection.lean`).
 
 **Honest scope (§3.19).** The ingredients are elementary; the contribution is the bridge — branches of the hop complex as context-indexed radix spaces of stateful systems with the complex's operations as events, and the transfer of Definition 93 into invariance of the complex. A branch is read along one path (the zero path) of its context's tree; branches that fork on digits, coupled contexts across several branches (Definition 98), and stochastic contexts are not covered.
+
+# Phase 1 addendum, continued — coupled branches (§3.20)
+
+*(Phase 1, Fragment 2. One branch per residue type, each with its own context, coupled through the residue in flight — the multi-context observer complex of Definitions 95–98 on the hop complex: the free ring plays the interpreter, the branches play the timelines. Reuses the carry quotient (Theorem 147), the line machinery of the hop complex (Definition 236), digit strings on lines (Definition 237), branches of contexts (Definition 238), extended radix oracles (Definition 85), and residual payload as in-flight accumulation (Theorem 57).)*
+
+## 3.20 Coupled branches (addendum, 2026-10-12)
+
+### Definition 239 (the two-branch complex)  [§3.20 · Phase 1, Fragment 2]
+
+A **two-tied split** of the modulus (M=|B-c|) is (M=F\,T_A\,T_B) with (F,T_A,T_B) pairwise coprime, (F) coprime to the wrap gain and (T_A,T_B) dividing a power of it. Its idempotents (\varepsilon_F,\varepsilon_A,\varepsilon_B) are (\equiv1) modulo their own part and (\equiv0) modulo the other two. The **two-branch complex** has ring cells, (d_A+1) cells on line (A) (schedule (\beta_A)) and (d_B+1) cells on line (B) (schedule (\beta_B)); its moves are ring carries, line carries on each line, and two hops ((\varepsilon_A) units off the ring root onto (A)'s root, (\varepsilon_B) units onto (B)'s); the value of ((x,y^A,y^B)) is (\sum x_kB_k+\varepsilon_A\sum y^A_kW^A_k+\varepsilon_B\sum y^B_kW^B_k) modulo (M).
+
+### Theorem 165 (the two-branch complex keeps the arithmetic)  [§3.20 · Phase 1, Fragment 2]
+
+A state is a combination of moves iff its value vanishes modulo (M); two states differ by moves iff their values agree; states modulo moves are exactly (\mathbb Z/M), for any two line schedules and lengths.
+
+### Theorem 166 (the joint normal form)  [§3.20 · Phase 1, Fragment 2]
+
+If both branches are exactly sized ((W^A_{d_A+1}=T_A), (W^B_{d_B+1}=T_B)), every state of value (W) is equivalent to (\varepsilon_FW) units at the ring root together with exactly one pair of digit strings — one on each branch: each residue type is written once, on its own branch.
+
+### Definition 240 (coupled branch systems)  [§3.20 · Phase 1, Fragment 2]
+
+The **payload** of an operation of residue (w) is ((w\bmod T_A,\ w\bmod T_B)) — the residue it sends, in flight, to each type. A **coupled branch system** has a context space and an extended radix oracle per branch (Definition 85) and feed rules updating each branch's context from both payloads (payload feedback, Definition 98); its **run** on a sequence of operation residues feeds them in order. Each context's branch is read along its zero path (Definition 238).
+
+### Theorem 167 (payloads and coupled evolution)  [§3.20 · Phase 1, Fragment 2]
+
+States that differ by moves send the same payload to every type. Branches are opaque to each other: content on branch (A) sends no payload to (B) and conversely, while a branch's own content is exactly its payload. Hence the coupled evolution is gauge-invariant: feeding a coupled branch system with the values of two sequences of states that differ step by step by moves gives the same run — carries and hops never change what a branch is told.
+
+### Proposition 188 (coupled-branch witnesses)  [§3.20 · Phase 1, Fragment 2]
+
+On the ((2,3,2)) ring with wrap gain (-18): (M=30=5\cdot2\cdot3). Under the cross-feeding rule — a branch records a radix of its own type when the *other* type is in flight — the operation (5) grows both branches to exact size (((2)) and ((3))), the operation (15) grows only (B) (no (B)-residue in flight to trigger (A)), and (35\equiv5) drives the same run as (5); after (5) the complex has a unique joint normal form.
+
+*Lean:* `FdrsFormal/Modes/SyntheticPlace/CoupledBranches.lean` (reusing `CarryQuotient.lean`, `CarryHop.lean`, `ContextBranch.lean`, `OperationBranch.lean`, `BranchComplex.lean`, `Modes/ContextDependent`, `Core/Finite/Bijection.lean`).
+
+**Honest scope (§3.20).** Elementary (three-factor CRT and its idempotents). The corpus contributes the multi-branch hop complex with its joint normal form and the reading of Definition 98's payload feedback on it, with the gauge invariance of the coupled evolution. Two tied types are treated (not an arbitrary family); branches fork on no digits; stochastic contexts are not covered.

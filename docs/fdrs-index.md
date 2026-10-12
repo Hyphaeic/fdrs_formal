@@ -1,10 +1,10 @@
 # FDRS Specification Index
 
-Auto-generated from `data/fdrs-index.yaml` (2026-10-12T17:00:24.936506)
+Auto-generated from `data/fdrs-index.yaml` (2026-10-12T18:28:41.015900)
 
-**659 items** from `docs/fdrs.md` (10183 lines)
+**665 items** from `docs/fdrs.md` (10217 lines)
 
-Status: missing: 3 | proven: 654 | scaffold: 2
+Status: missing: 3 | proven: 660 | scaffold: 2
 
 ## Phase 1
 
@@ -745,3 +745,9 @@ Status: missing: 3 | proven: 654 | scaffold: 2
 | proposition_186 | proposition | 186 | terminating a branch is lossless | 10169 | ✅ proven | FdrsFormal/Modes/SyntheticPlace/OperationBranch.lean |
 | corollary_57 | corollary | 57 | operations as events | 10173 | ✅ proven | FdrsFormal/Modes/SyntheticPlace/OperationBranch.lean |
 | proposition_187 | proposition | 187 | operation-driven witnesses | 10177 | ✅ proven | FdrsFormal/Modes/SyntheticPlace/OperationBranch.lean |
+| definition_239 | definition | 239 | the two-branch complex | 10191 | ✅ proven | FdrsFormal/Modes/SyntheticPlace/CoupledBranches.lean |
+| theorem_165 | theorem | 165 | the two-branch complex keeps the arithmetic | 10195 | ✅ proven | FdrsFormal/Modes/SyntheticPlace/CoupledBranches.lean |
+| theorem_166 | theorem | 166 | the joint normal form | 10199 | ✅ proven | FdrsFormal/Modes/SyntheticPlace/CoupledBranches.lean |
+| definition_240 | definition | 240 | coupled branch systems | 10203 | ✅ proven | FdrsFormal/Modes/SyntheticPlace/CoupledBranches.lean |
+| theorem_167 | theorem | 167 | payloads and coupled evolution | 10207 | ✅ proven | FdrsFormal/Modes/SyntheticPlace/CoupledBranches.lean |
+| proposition_188 | proposition | 188 | coupled-branch witnesses | 10211 | ✅ proven | FdrsFormal/Modes/SyntheticPlace/CoupledBranches.lean |

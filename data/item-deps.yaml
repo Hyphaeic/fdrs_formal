@@ -1,6 +1,6 @@
 metadata:
-  total_items: 659
-  total_deps: 421
+  total_items: 665
+  total_deps: 430
 dependencies:
 - from: definition_2
   to: proposition_1
@@ -1263,5 +1263,32 @@ dependencies:
   to: definition_93
   ref_number: '93'
 - from: proposition_187
+  to: definition_98
+  ref_number: '98'
+- from: proposition_187
+  to: theorem_147
+  ref_number: '147'
+- from: proposition_187
+  to: definition_85
+  ref_number: '85'
+- from: proposition_187
+  to: theorem_57
+  ref_number: '57'
+- from: definition_239
+  to: theorem_165
+  ref_number: '165'
+- from: definition_240
+  to: definition_85
+  ref_number: '85'
+- from: definition_240
+  to: definition_98
+  ref_number: '98'
+- from: definition_240
+  to: definition_238
+  ref_number: '238'
+- from: definition_240
+  to: theorem_167
+  ref_number: '167'
+- from: proposition_188
   to: definition_98
   ref_number: '98'

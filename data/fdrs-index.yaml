@@ -1,10 +1,10 @@
 metadata:
   spec_file: docs/fdrs.md
-  spec_lines: 10183
-  generated_at: '2026-10-12T17:00:24.936506'
-  total_items: 659
+  spec_lines: 10217
+  generated_at: '2026-10-12T18:28:41.015900'
+  total_items: 665
   status_summary:
-    proven: 654
+    proven: 660
     missing: 3
     scaffold: 2
   status_legend:
@@ -15597,14 +15597,112 @@ items:
     - rec_complex_unchanged
   fragment: '2'
   section: '3.19'
+- id: definition_239
+  type: definition
+  phase: 1
+  global_num: 239
+  title: the two-branch complex
+  line: 10191
+  status: proven
+  in_root_build: true
+  lean_files:
+  - path: FdrsFormal/Modes/SyntheticPlace/CoupledBranches.lean
+    declarations:
+    - TwoTiedSplit
+    - cpLattice
+    - cpValue
+  fragment: '2'
+  section: '3.20'
+- id: theorem_165
+  type: theorem
+  phase: 1
+  global_num: 165
+  title: the two-branch complex keeps the arithmetic
+  line: 10195
+  status: proven
+  in_root_build: true
+  lean_files:
+  - path: FdrsFormal/Modes/SyntheticPlace/CoupledBranches.lean
+    declarations:
+    - ker_cpEv
+    - cp_equiv_iff
+    - cpQuotient
+  fragment: '2'
+  section: '3.20'
+- id: theorem_166
+  type: theorem
+  phase: 1
+  global_num: 166
+  title: the joint normal form
+  line: 10199
+  status: proven
+  in_root_build: true
+  lean_files:
+  - path: FdrsFormal/Modes/SyntheticPlace/CoupledBranches.lean
+    declarations:
+    - joint_normal_form
+  fragment: '2'
+  section: '3.20'
+- id: definition_240
+  type: definition
+  phase: 1
+  global_num: 240
+  title: coupled branch systems
+  line: 10203
+  status: proven
+  in_root_build: true
+  lean_files:
+  - path: FdrsFormal/Modes/SyntheticPlace/CoupledBranches.lean
+    declarations:
+    - Coupling
+    - run
+  fragment: '2'
+  section: '3.20'
+- id: theorem_167
+  type: theorem
+  phase: 1
+  global_num: 167
+  title: payloads and coupled evolution
+  line: 10207
+  status: proven
+  in_root_build: true
+  lean_files:
+  - path: FdrsFormal/Modes/SyntheticPlace/CoupledBranches.lean
+    declarations:
+    - payload_invariant
+    - opaque_AB
+    - opaque_BA
+    - payload_A_of_A
+    - run_gauge
+  fragment: '2'
+  section: '3.20'
+- id: proposition_188
+  type: proposition
+  phase: 1
+  global_num: 188
+  title: coupled-branch witnesses
+  line: 10211
+  status: proven
+  in_root_build: true
+  lean_files:
+  - path: FdrsFormal/Modes/SyntheticPlace/CoupledBranches.lean
+    declarations:
+    - split30
+    - crossRec
+    - cross_run_five
+    - cross_run_fifteen
+    - cross_run_gauge
+    - cross_normal_form
+  fragment: '2'
+  section: '3.20'
 lean_summary:
-  total_files: 339
+  total_files: 340
   total_axioms: 0
   axioms_true: 0
   total_sorries: 0
   sorry_files: []
-  total_theorems: 2828
-  total_defs: 1095
+  total_theorems: 2873
+  total_defs: 1116
   total_lemmas: 26
   total_stubs: 0
   stubs_by_kind:
