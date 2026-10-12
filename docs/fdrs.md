@@ -431,7 +431,7 @@ By Proposition 6, (\pi_L(\tau)=\pi_L(\tau')) implies (\operatorname{dec}(\tau)\e
 ]
 Apply Proposition 6 in reverse to conclude the first (L) digits (prefix) of the sums match. ∎
 
-This is the formal “multi-rate locality” statement: the first (L) digits of the result depend **only** on the first (L) digits of the inputs (no dependence on higher digits). *(Addenda §3.5–3.14 — multiplication as digit convolution and where it fails on variable schedules; address shears and digit interchange; multiplication on mixed schedules through residues and carry lines; carry networks and the radix lattice; carry streams; the holonomy cover; carrying around a frustrated ring; the carry quotient of a wrapped ring; multiplication on a mixed ring; products that do not close — sit at the end of this document.)*
+This is the formal “multi-rate locality” statement: the first (L) digits of the result depend **only** on the first (L) digits of the inputs (no dependence on higher digits). *(Addenda §3.5–3.15 — multiplication as digit convolution and where it fails on variable schedules; address shears and digit interchange; multiplication on mixed schedules through residues and carry lines; carry networks and the radix lattice; carry streams; the holonomy cover; carrying around a frustrated ring; the carry quotient of a wrapped ring; multiplication on a mixed ring; products that do not close; rings and lines, the free/tied split — sit at the end of this document.)*
 
 ---
 
@@ -10015,3 +10015,33 @@ The ring with radices ((2,3,2)) (place values (1,2,6), lap value (12)) is not pr
 *Lean:* `FdrsFormal/Modes/SyntheticPlace/ProductSpread.lean` (reusing `CarryQuotient.lean`, `MixedRingProduct.lean`).
 
 **Honest scope (§3.14).** Elementary (linear congruences, Bézout). The corpus contributes the landing criterion for its carry rings, the separation of integer closure (§3.13) from residue closure, and the witnesses. The canonical spread of a blocked product — which places and which residue lines carry it — is not determined.
+
+# Phase 1 addendum, continued — rings and lines: the free/tied split (§3.15)
+
+*(Phase 1, Fragment 2. Where blocked products go (§3.14). Splits the carry quotient into a part where the wrapped ring closes and a part where it opens into a line. Reuses the carry quotient (Theorem 147), the lap identity (Proposition 174), and the landing criterion (Theorem 152).)*
+
+## 3.15 Rings and lines: the free/tied split (addendum, 2026-10-12)
+
+### Definition 234 (the free/tied split)  [§3.15 · Phase 1, Fragment 2]
+
+A **free/tied split** of the modulus (M=|B-c|) of a wrapped ring (Definition 230) is a factorization (M=M_1M_2) with (M_1,M_2) coprime, the **free** part (M_1) coprime to the wrap gain (c), and the **tied** part (M_2) dividing a power (c^r). (Since (B\equiv c\pmod M), the free part is also coprime to every weight, and every prime of the tied part divides (B).)
+
+### Theorem 153 (the free part is a ring, the tied part a line)  [§3.15 · Phase 1, Fragment 2]
+
+Each lap multiplies a weight by the lap value: (B_{k+LN}=B^LB_k). Modulo the free part (c) is a unit, so for some (L\ge1), (B_{k+LN}\equiv B_k\pmod{M_1}) for all (k): after (L) laps the helix of §3.11 returns to its starting sheet — a path back exists in the quotient, and its length is the order of the wrap gain. Modulo the tied part, (B_{k+rN}\equiv0\pmod{M_2}) for all (k): after (r) laps every weight vanishes, so tied residues cannot circulate; they live on a finite line of depth (r) laps.
+
+### Theorem 154 (two-line spread)  [§3.15 · Phase 1, Fragment 2]
+
+If (t_1w\equiv v\pmod{M_1}) and (s_2w'\equiv v\pmod{M_2}) with (M_1,M_2) coprime, then some (t,s) give (tw+sw'\equiv v\pmod{M_1M_2}): a residue landing on one place modulo (M_1) and on another modulo (M_2) spreads over the two modulo (M_1M_2).
+
+### Corollary 53 (every product spreads over two places)  [§3.15 · Phase 1, Fragment 2]
+
+On a ring with a free/tied split, every product of places (m,j) is carried by two places: its target (m+j\bmod N), which holds the free residue (every weight is a unit modulo (M_1), so the product lands there), and its own place (m), which holds the tied residue exactly ((B_mB_j=B_j\cdot B_m)). Blocking (Theorem 152) is purely a tied phenomenon.
+
+### Proposition 181 (the (2,3,2), c = −3 witnesses)  [§3.15 · Phase 1, Fragment 2]
+
+The ((2,3,2)) ring with wrap gain (-3) has (M=15=5\cdot3): free part (5), tied part (3) (dividing ((-3)^1)). The product of two units at place (1) is blocked at place (2) ((\gcd(6,15)=3\nmid4)) and spreads to (9) units at place (2) plus (5) units at place (1) ((9\cdot6+5\cdot2\equiv4\pmod{15})). Modulo (5) the helix closes after (4) laps ((12\equiv2), (2^4\equiv1)); modulo (3) every weight past the first lap vanishes.
+
+*Lean:* `FdrsFormal/Modes/SyntheticPlace/RingLineSplit.lean` (reusing `CarryQuotient.lean`, `RingUnrolling.lean`, `ProductSpread.lean`).
+
+**Honest scope (§3.15).** Elementary (CRT, finite order of a unit). The corpus contributes the reading of the carry quotient as a closing ring (free) glued to an opening line (tied), the path back as the order of the wrap gain, and the two-place spread. Existence of the canonical split for every modulus (the (c)-primary part of (M)) is supplied as data, not proved; the two places of Corollary 53 are a valid spread, not shown to be optimal.

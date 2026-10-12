@@ -1,10 +1,10 @@
 # FDRS Specification Index
 
-Auto-generated from `data/fdrs-index.yaml` (2026-10-11T22:52:33.273807)
+Auto-generated from `data/fdrs-index.yaml` (2026-10-12T15:01:42.439984)
 
-**630 items** from `docs/fdrs.md` (10017 lines)
+**635 items** from `docs/fdrs.md` (10047 lines)
 
-Status: missing: 3 | proven: 625 | scaffold: 2
+Status: missing: 3 | proven: 630 | scaffold: 2
 
 ## Phase 1
 
@@ -716,3 +716,8 @@ Status: missing: 3 | proven: 625 | scaffold: 2
 | theorem_152 | theorem | 152 | the landing criterion | 10003 | ✅ proven | FdrsFormal/Modes/SyntheticPlace/ProductSpread.lean |
 | corollary_52 | corollary | 52 | residue closure | 10007 | ✅ proven | FdrsFormal/Modes/SyntheticPlace/ProductSpread.lean |
 | proposition_180 | proposition | 180 | the (2,3,2 | 10011 | ✅ proven | FdrsFormal/Modes/SyntheticPlace/ProductSpread.lean |
+| definition_234 | definition | 234 | the free/tied split | 10025 | ✅ proven | FdrsFormal/Modes/SyntheticPlace/RingLineSplit.lean |
+| theorem_153 | theorem | 153 | the free part is a ring, the tied part a line | 10029 | ✅ proven | FdrsFormal/Modes/SyntheticPlace/RingLineSplit.lean |
+| theorem_154 | theorem | 154 | two-line spread | 10033 | ✅ proven | FdrsFormal/Modes/SyntheticPlace/RingLineSplit.lean |
+| corollary_53 | corollary | 53 | every product spreads over two places | 10037 | ✅ proven | FdrsFormal/Modes/SyntheticPlace/RingLineSplit.lean |
+| proposition_181 | proposition | 181 | the (2,3,2 | 10041 | ✅ proven | FdrsFormal/Modes/SyntheticPlace/RingLineSplit.lean |

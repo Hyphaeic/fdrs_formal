@@ -1,10 +1,10 @@
 metadata:
   spec_file: docs/fdrs.md
-  spec_lines: 10017
-  generated_at: '2026-10-11T22:52:33.273807'
-  total_items: 630
+  spec_lines: 10047
+  generated_at: '2026-10-12T15:01:42.439984'
+  total_items: 635
   status_summary:
-    proven: 625
+    proven: 630
     missing: 3
     scaffold: 2
   status_legend:
@@ -15156,14 +15156,89 @@ items:
     - ring232_spread
   fragment: '2'
   section: '3.14'
+- id: definition_234
+  type: definition
+  phase: 1
+  global_num: 234
+  title: the free/tied split
+  line: 10025
+  status: proven
+  in_root_build: true
+  lean_files:
+  - path: FdrsFormal/Modes/SyntheticPlace/RingLineSplit.lean
+    declarations:
+    - FreeTiedSplit
+  fragment: '2'
+  section: '3.15'
+- id: theorem_153
+  type: theorem
+  phase: 1
+  global_num: 153
+  title: the free part is a ring, the tied part a line
+  line: 10029
+  status: proven
+  in_root_build: true
+  lean_files:
+  - path: FdrsFormal/Modes/SyntheticPlace/RingLineSplit.lean
+    declarations:
+    - free_helix_closes
+    - tied_line_dies
+  fragment: '2'
+  section: '3.15'
+- id: theorem_154
+  type: theorem
+  phase: 1
+  global_num: 154
+  title: two-line spread
+  line: 10033
+  status: proven
+  in_root_build: true
+  lean_files:
+  - path: FdrsFormal/Modes/SyntheticPlace/RingLineSplit.lean
+    declarations:
+    - two_line_spread
+  fragment: '2'
+  section: '3.15'
+- id: corollary_53
+  type: corollary
+  phase: 1
+  global_num: 53
+  title: every product spreads over two places
+  line: 10037
+  status: proven
+  in_root_build: true
+  lean_files:
+  - path: FdrsFormal/Modes/SyntheticPlace/RingLineSplit.lean
+    declarations:
+    - product_spreads
+  fragment: '2'
+  section: '3.15'
+- id: proposition_181
+  type: proposition
+  phase: 1
+  global_num: 181
+  title: the (2,3,2
+  line: 10041
+  status: proven
+  in_root_build: true
+  lean_files:
+  - path: FdrsFormal/Modes/SyntheticPlace/RingLineSplit.lean
+    declarations:
+    - ring232_split
+    - ring232_blocked_15
+    - ring232_spread_15
+    - ring232_free_closes
+    - ring232_tied_dies
+  fragment: '2'
+  section: '3.15'
 lean_summary:
-  total_files: 334
+  total_files: 335
   total_axioms: 0
   axioms_true: 0
   total_sorries: 0
   sorry_files: []
-  total_theorems: 2734
-  total_defs: 1075
+  total_theorems: 2747
+  total_defs: 1076
   total_lemmas: 26
   total_stubs: 0
   stubs_by_kind:
