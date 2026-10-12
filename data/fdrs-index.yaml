@@ -1,10 +1,10 @@
 metadata:
   spec_file: docs/fdrs.md
-  spec_lines: 10259
-  generated_at: '2026-10-12T19:48:04.645702'
-  total_items: 673
+  spec_lines: 10289
+  generated_at: '2026-10-12T20:28:40.299162'
+  total_items: 678
   status_summary:
-    proven: 668
+    proven: 673
     missing: 3
     scaffold: 2
   status_legend:
@@ -15821,14 +15821,89 @@ items:
     - rule_run_gauge
   fragment: '2'
   section: '3.21'
+- id: definition_244
+  type: definition
+  phase: 1
+  global_num: 244
+  title: the canonical split
+  line: 10267
+  status: proven
+  in_root_build: true
+  lean_files:
+  - path: FdrsFormal/Modes/SyntheticPlace/CanonicalSplit.lean
+    declarations:
+    - tiedPrimes
+    - primePart
+    - canonFree
+  fragment: '2'
+  section: '3.22'
+- id: theorem_172
+  type: theorem
+  phase: 1
+  global_num: 172
+  title: the canonical split is a family split
+  line: 10271
+  status: proven
+  in_root_build: true
+  lean_files:
+  - path: FdrsFormal/Modes/SyntheticPlace/CanonicalSplit.lean
+    declarations:
+    - canon_mul
+    - canonicalSplit
+  fragment: '2'
+  section: '3.22'
+- id: theorem_173
+  type: theorem
+  phase: 1
+  global_num: 173
+  title: the free and tied parts are forced
+  line: 10275
+  status: proven
+  in_root_build: true
+  lean_files:
+  - path: FdrsFormal/Modes/SyntheticPlace/CanonicalSplit.lean
+    declarations:
+    - free_forced
+    - tied_forced
+  fragment: '2'
+  section: '3.22'
+- id: corollary_59
+  type: corollary
+  phase: 1
+  global_num: 59
+  title: the rule closes the loop
+  line: 10279
+  status: proven
+  in_root_build: true
+  lean_files:
+  - path: FdrsFormal/Modes/SyntheticPlace/CanonicalSplit.lean
+    declarations:
+    - canonical_rule_normal_form
+  fragment: '2'
+  section: '3.22'
+- id: proposition_190
+  type: proposition
+  phase: 1
+  global_num: 190
+  title: the canonical split of the (2,3,5
+  line: 10283
+  status: proven
+  in_root_build: true
+  lean_files:
+  - path: FdrsFormal/Modes/SyntheticPlace/CanonicalSplit.lean
+    declarations:
+    - canonFree_235
+    - canonTied_235
+  fragment: '2'
+  section: '3.22'
 lean_summary:
-  total_files: 341
+  total_files: 342
   total_axioms: 0
   axioms_true: 0
   total_sorries: 0
   sorry_files: []
-  total_theorems: 2912
-  total_defs: 1133
+  total_theorems: 2926
+  total_defs: 1139
   total_lemmas: 26
   total_stubs: 0
   stubs_by_kind:

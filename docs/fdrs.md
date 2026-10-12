@@ -431,7 +431,7 @@ By Proposition 6, (\pi_L(\tau)=\pi_L(\tau')) implies (\operatorname{dec}(\tau)\e
 ]
 Apply Proposition 6 in reverse to conclude the first (L) digits (prefix) of the sums match. ∎
 
-This is the formal “multi-rate locality” statement: the first (L) digits of the result depend **only** on the first (L) digits of the inputs (no dependence on higher digits). *(Addenda §3.5–3.21 — multiplication as digit convolution and where it fails on variable schedules; address shears and digit interchange; multiplication on mixed schedules through residues and carry lines; carry networks and the radix lattice; carry streams; the holonomy cover; carrying around a frustrated ring; the carry quotient of a wrapped ring; multiplication on a mixed ring; products that do not close; rings and lines, the free/tied split; the radix complex of a wrapped ring; the hop; context branches; operation-driven branches; coupled branches; families of residue types — sit at the end of this document.)*
+This is the formal “multi-rate locality” statement: the first (L) digits of the result depend **only** on the first (L) digits of the inputs (no dependence on higher digits). *(Addenda §3.5–3.22 — multiplication as digit convolution and where it fails on variable schedules; address shears and digit interchange; multiplication on mixed schedules through residues and carry lines; carry networks and the radix lattice; carry streams; the holonomy cover; carrying around a frustrated ring; the carry quotient of a wrapped ring; multiplication on a mixed ring; products that do not close; rings and lines, the free/tied split; the radix complex of a wrapped ring; the hop; context branches; operation-driven branches; coupled branches; families of residue types; the canonical split — sit at the end of this document.)*
 
 ---
 
@@ -10257,3 +10257,33 @@ On the ring ((2,3,5)) (lap value (30)) with wrap gain (-180): (M=210=7\cdot2\cdo
 *Lean:* `FdrsFormal/Modes/SyntheticPlace/FamilyBranches.lean` (reusing `CoupledBranches.lean`, `CarryQuotient.lean`, `CarryHop.lean`, `ContextBranch.lean`, `OperationBranch.lean`, `BranchComplex.lean`, `Modes/ContextDependent`, `Core/Finite/Bijection.lean`).
 
 **Honest scope (§3.21).** Elementary (CRT for a finite family and its idempotents). The corpus contributes the family hop complex with its normal form, Definition 98's payload feedback for any number of residue types, and a concrete growth rule with its exact growth law. The split is supplied as data; branches fork on no digits; contexts are deterministic.
+
+# Phase 1 addendum, continued — the canonical split (§3.22)
+
+*(Phase 1, Fragment 2. §3.15–3.21 took the free/tied split of the carry modulus as data; here it is derived from the ring and its wrap gain alone. Reuses family splits, the rule and its normal form (Definitions 241–243, Theorem 171), and the carry modulus (Definition 230).)*
+
+## 3.22 The canonical split (addendum, 2026-10-12)
+
+### Definition 244 (the canonical split)  [§3.22 · Phase 1, Fragment 2]
+
+For a wrapped ring with carry modulus (M=|B-c|\ne0): the **tied primes** are the primes dividing both (M) and the wrap gain (c); the **free primes** are the other primes of (M). The **canonical residue types** are the prime-power parts (p^{v_p(M)}) at the tied primes; the **canonical free part** is the product of the prime-power parts at the free primes, and the **canonical tied part** the product of the types.
+
+### Theorem 172 (the canonical split is a family split)  [§3.22 · Phase 1, Fragment 2]
+
+The canonical free and tied parts multiply to (M), and the tied primes index a family split of (M) (Definition 241) whose types are the canonical prime-power parts: they are pairwise coprime and coprime to the free part, the free part is coprime to (c), and each type divides (c^{M}). No data beyond the ring and its wrap gain is needed.
+
+### Theorem 173 (the free and tied parts are forced)  [§3.22 · Phase 1, Fragment 2]
+
+Every family split of (M), whatever its types, has exactly the canonical free part, and its types multiply to exactly the canonical tied part. Only the grouping of tied primes into types is a choice; the canonical split takes the finest grouping, one prime per type.
+
+### Corollary 59 (the rule closes the loop)  [§3.22 · Phase 1, Fragment 2]
+
+Under the canonical split every type is at least (2), so after one operation nonzero modulo two residue types the cross-feeding rule (Definition 243) has grown every branch to exact size, and every state of the resulting complex has a unique family normal form (Theorem 171). Ring, wrap gain and operations determine everything.
+
+### Proposition 190 (the canonical split of the (2,3,5) ring)  [§3.22 · Phase 1, Fragment 2]
+
+For the ring ((2,3,5)) with wrap gain (-180) ((M=210)): the canonical free part is (7) and the canonical tied part is (30=2\cdot3\cdot5), read off from the split of Proposition 189 by Theorem 173.
+
+*Lean:* `FdrsFormal/Modes/SyntheticPlace/CanonicalSplit.lean` (reusing `FamilyBranches.lean`, `CarryQuotient.lean`, Mathlib's prime factorization).
+
+**Honest scope (§3.22).** Elementary (unique factorization). The corpus contributes the identification of residue types with the prime-power parts of the carry modulus at the primes shared with the wrap gain, the forcing of the free and tied parts, and the resulting data-free pipeline from a wrapped ring to its family normal form. The balanced case (M=0) is excluded; prime factors are not evaluated by the kernel, so witnesses go through Theorem 173.

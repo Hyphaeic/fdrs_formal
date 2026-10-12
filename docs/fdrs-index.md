@@ -1,10 +1,10 @@
 # FDRS Specification Index
 
-Auto-generated from `data/fdrs-index.yaml` (2026-10-12T19:48:04.645702)
+Auto-generated from `data/fdrs-index.yaml` (2026-10-12T20:28:40.299162)
 
-**673 items** from `docs/fdrs.md` (10259 lines)
+**678 items** from `docs/fdrs.md` (10289 lines)
 
-Status: missing: 3 | proven: 668 | scaffold: 2
+Status: missing: 3 | proven: 673 | scaffold: 2
 
 ## Phase 1
 
@@ -759,3 +759,8 @@ Status: missing: 3 | proven: 668 | scaffold: 2
 | definition_243 | definition | 243 | the cross-feeding rule | 10245 | ✅ proven | FdrsFormal/Modes/SyntheticPlace/FamilyBranches.lean |
 | theorem_171 | theorem | 171 | the rule | 10249 | ✅ proven | FdrsFormal/Modes/SyntheticPlace/FamilyBranches.lean |
 | proposition_189 | proposition | 189 | three residue types | 10253 | ✅ proven | FdrsFormal/Modes/SyntheticPlace/FamilyBranches.lean |
+| definition_244 | definition | 244 | the canonical split | 10267 | ✅ proven | FdrsFormal/Modes/SyntheticPlace/CanonicalSplit.lean |
+| theorem_172 | theorem | 172 | the canonical split is a family split | 10271 | ✅ proven | FdrsFormal/Modes/SyntheticPlace/CanonicalSplit.lean |
+| theorem_173 | theorem | 173 | the free and tied parts are forced | 10275 | ✅ proven | FdrsFormal/Modes/SyntheticPlace/CanonicalSplit.lean |
+| corollary_59 | corollary | 59 | the rule closes the loop | 10279 | ✅ proven | FdrsFormal/Modes/SyntheticPlace/CanonicalSplit.lean |
+| proposition_190 | proposition | 190 | the canonical split of the (2,3,5 | 10283 | ✅ proven | FdrsFormal/Modes/SyntheticPlace/CanonicalSplit.lean |
