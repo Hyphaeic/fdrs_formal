@@ -431,7 +431,7 @@ By Proposition 6, (\pi_L(\tau)=\pi_L(\tau')) implies (\operatorname{dec}(\tau)\e
 ]
 Apply Proposition 6 in reverse to conclude the first (L) digits (prefix) of the sums match. ∎
 
-This is the formal “multi-rate locality” statement: the first (L) digits of the result depend **only** on the first (L) digits of the inputs (no dependence on higher digits). *(Addenda §3.5–3.20 — multiplication as digit convolution and where it fails on variable schedules; address shears and digit interchange; multiplication on mixed schedules through residues and carry lines; carry networks and the radix lattice; carry streams; the holonomy cover; carrying around a frustrated ring; the carry quotient of a wrapped ring; multiplication on a mixed ring; products that do not close; rings and lines, the free/tied split; the radix complex of a wrapped ring; the hop; context branches; operation-driven branches; coupled branches — sit at the end of this document.)*
+This is the formal “multi-rate locality” statement: the first (L) digits of the result depend **only** on the first (L) digits of the inputs (no dependence on higher digits). *(Addenda §3.5–3.21 — multiplication as digit convolution and where it fails on variable schedules; address shears and digit interchange; multiplication on mixed schedules through residues and carry lines; carry networks and the radix lattice; carry streams; the holonomy cover; carrying around a frustrated ring; the carry quotient of a wrapped ring; multiplication on a mixed ring; products that do not close; rings and lines, the free/tied split; the radix complex of a wrapped ring; the hop; context branches; operation-driven branches; coupled branches; families of residue types — sit at the end of this document.)*
 
 ---
 
@@ -10215,3 +10215,45 @@ On the ((2,3,2)) ring with wrap gain (-18): (M=30=5\cdot2\cdot3). Under the cros
 *Lean:* `FdrsFormal/Modes/SyntheticPlace/CoupledBranches.lean` (reusing `CarryQuotient.lean`, `CarryHop.lean`, `ContextBranch.lean`, `OperationBranch.lean`, `BranchComplex.lean`, `Modes/ContextDependent`, `Core/Finite/Bijection.lean`).
 
 **Honest scope (§3.20).** Elementary (three-factor CRT and its idempotents). The corpus contributes the multi-branch hop complex with its joint normal form and the reading of Definition 98's payload feedback on it, with the gauge invariance of the coupled evolution. Two tied types are treated (not an arbitrary family); branches fork on no digits; stochastic contexts are not covered.
+
+# Phase 1 addendum, continued — families of residue types (§3.21)
+
+*(Phase 1, Fragment 2. Extends §3.20 from two residue types to an arbitrary finite family, each with its own branch, and gives a rule that grows the branches from the operations alone. Reuses the two-branch machinery (idempotents, line collapse, faithfulness — §3.20), the carry quotient (Theorem 147), lines and digit strings (Definitions 236–237), branches of contexts and the recording oracle (Definition 238), and payload feedback (Definition 98).)*
+
+## 3.21 Families of residue types (addendum, 2026-10-12)
+
+### Definition 241 (the family complex)  [§3.21 · Phase 1, Fragment 2]
+
+A **family split** of (M=|B-c|) is (M=F\prod_{i\in\iota}T_i) for a finite family of **residue types** (T_i), with (F) and the (T_i) pairwise coprime, (F) coprime to the wrap gain and each (T_i) dividing a power of it. Its idempotents (\varepsilon_i) ((\equiv1) modulo (T_i), (\equiv0) modulo (F) and every (T_j), (j\ne i)) and (\varepsilon_F) come from Bézout. The **family complex** has ring cells and one line per type ((d_i+1) cells, schedule (\beta_i)); its moves are ring carries, line carries on every branch, and one hop per type ((\varepsilon_i) units off the ring root onto branch (i)'s root); the value of ((x,(y^i))) is (\sum x_kB_k+\sum_i\varepsilon_i\sum_ky^i_kW^i_k) modulo (M).
+
+### Theorem 168 (the family complex keeps the arithmetic)  [§3.21 · Phase 1, Fragment 2]
+
+A state is a combination of moves iff its value vanishes modulo (M); two states differ by moves iff their values agree; states modulo moves are exactly (\mathbb Z/M), for any family of schedules and lengths.
+
+### Theorem 169 (the family normal form)  [§3.21 · Phase 1, Fragment 2]
+
+If every branch is exactly sized ((W^i_{d_i+1}=T_i)), every state of value (W) is equivalent to (\varepsilon_FW) units at the ring root together with exactly one family of digit strings — one per branch.
+
+### Definition 242 (family coupling)  [§3.21 · Phase 1, Fragment 2]
+
+The **payload vector** of an operation of residue (w) is ((w\bmod T_j)_j). A **family coupling** has an extended radix oracle per branch (Definition 85) and a feed rule updating each branch's context from the whole payload vector (Definition 98); its **run** feeds a sequence of operations in order. Each context's branch is read along its zero path (Definition 238).
+
+### Theorem 170 (payloads and coupled evolution, families)  [§3.21 · Phase 1, Fragment 2]
+
+Payloads are invariant under every move; branches are mutually opaque — content on branch (i) sends no payload to any type (j\ne i), and its payload to (i) is its own value; hence a family coupling fed with the values of two sequences of states differing step by step by moves runs identically.
+
+### Definition 243 (the cross-feeding rule)  [§3.21 · Phase 1, Fragment 2]
+
+**The rule:** branch (i) records a radix of its own type (T_i) whenever some other type is in flight (its payload is nonzero). Its oracle is the recording oracle of Definition 238.
+
+### Theorem 171 (the rule)  [§3.21 · Phase 1, Fragment 2]
+
+From empty records, one operation of residue (w) grows branch (i) to the record ((T_i)) iff (w\not\equiv0) modulo some type (j\ne i). An operation nonzero modulo two distinct types therefore grows every branch; a grown branch is exactly sized ((W^i_1=T_i), for (T_i\ge2)); so after one such operation every state of the complex built from the grown branches has a unique family normal form.
+
+### Proposition 189 (three residue types)  [§3.21 · Phase 1, Fragment 2]
+
+On the ring ((2,3,5)) (lap value (30)) with wrap gain (-180): (M=210=7\cdot2\cdot3\cdot5), free part (7), types (2,3,5). Under the rule, operation (1) grows all three branches to exact size; operation (15) (nonzero only modulo (2)) leaves branch (2) empty and grows branches (3) and (5); operation (211\equiv1) drives the same run as (1).
+
+*Lean:* `FdrsFormal/Modes/SyntheticPlace/FamilyBranches.lean` (reusing `CoupledBranches.lean`, `CarryQuotient.lean`, `CarryHop.lean`, `ContextBranch.lean`, `OperationBranch.lean`, `BranchComplex.lean`, `Modes/ContextDependent`, `Core/Finite/Bijection.lean`).
+
+**Honest scope (§3.21).** Elementary (CRT for a finite family and its idempotents). The corpus contributes the family hop complex with its normal form, Definition 98's payload feedback for any number of residue types, and a concrete growth rule with its exact growth law. The split is supplied as data; branches fork on no digits; contexts are deterministic.

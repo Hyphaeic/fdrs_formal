@@ -1,6 +1,6 @@
 metadata:
-  total_files: 340
-  total_edges: 724
+  total_files: 341
+  total_edges: 726
   total_modules: 19
 modules:
   Analysis:
@@ -191,6 +191,7 @@ modules:
   - FdrsFormal/Modes/SyntheticPlace/CoupledBranches.lean
   - FdrsFormal/Modes/SyntheticPlace/CurrencyBalance.lean
   - FdrsFormal/Modes/SyntheticPlace/Dimension.lean
+  - FdrsFormal/Modes/SyntheticPlace/FamilyBranches.lean
   - FdrsFormal/Modes/SyntheticPlace/GaugeUltrametric.lean
   - FdrsFormal/Modes/SyntheticPlace/Grading.lean
   - FdrsFormal/Modes/SyntheticPlace/GroupGrading.lean
@@ -1168,6 +1169,8 @@ file_edges:
   to: FdrsFormal/Topology/Filtration/Definition.lean
 - from: FdrsFormal/Modes/SyntheticPlace/Dimension.lean
   to: FdrsFormal/FunctionSpaces/Measure/ProductMeasure.lean
+- from: FdrsFormal/Modes/SyntheticPlace/FamilyBranches.lean
+  to: FdrsFormal/Modes/SyntheticPlace/CoupledBranches.lean
 - from: FdrsFormal/Modes/SyntheticPlace/GaugeUltrametric.lean
   to: FdrsFormal/Modes/VariableRadix/SubshiftMetric.lean
 - from: FdrsFormal/Modes/SyntheticPlace/HolonomyCover.lean
@@ -1298,6 +1301,8 @@ file_edges:
   to: FdrsFormal/Modes/SyntheticPlace/OperationBranch.lean
 - from: FdrsFormal/Modes/SyntheticPlace.lean
   to: FdrsFormal/Modes/SyntheticPlace/CoupledBranches.lean
+- from: FdrsFormal/Modes/SyntheticPlace.lean
+  to: FdrsFormal/Modes/SyntheticPlace/FamilyBranches.lean
 - from: FdrsFormal/Modes/SyntheticPlace.lean
   to: FdrsFormal/Modes/SyntheticPlace/CircleEmit.lean
 - from: FdrsFormal/Modes/SyntheticPlace.lean

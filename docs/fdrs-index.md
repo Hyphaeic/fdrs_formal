@@ -1,10 +1,10 @@
 # FDRS Specification Index
 
-Auto-generated from `data/fdrs-index.yaml` (2026-10-12T18:28:41.015900)
+Auto-generated from `data/fdrs-index.yaml` (2026-10-12T19:48:04.645702)
 
-**665 items** from `docs/fdrs.md` (10217 lines)
+**673 items** from `docs/fdrs.md` (10259 lines)
 
-Status: missing: 3 | proven: 660 | scaffold: 2
+Status: missing: 3 | proven: 668 | scaffold: 2
 
 ## Phase 1
 
@@ -751,3 +751,11 @@ Status: missing: 3 | proven: 660 | scaffold: 2
 | definition_240 | definition | 240 | coupled branch systems | 10203 | ✅ proven | FdrsFormal/Modes/SyntheticPlace/CoupledBranches.lean |
 | theorem_167 | theorem | 167 | payloads and coupled evolution | 10207 | ✅ proven | FdrsFormal/Modes/SyntheticPlace/CoupledBranches.lean |
 | proposition_188 | proposition | 188 | coupled-branch witnesses | 10211 | ✅ proven | FdrsFormal/Modes/SyntheticPlace/CoupledBranches.lean |
+| definition_241 | definition | 241 | the family complex | 10225 | ✅ proven | FdrsFormal/Modes/SyntheticPlace/FamilyBranches.lean |
+| theorem_168 | theorem | 168 | the family complex keeps the arithmetic | 10229 | ✅ proven | FdrsFormal/Modes/SyntheticPlace/FamilyBranches.lean |
+| theorem_169 | theorem | 169 | the family normal form | 10233 | ✅ proven | FdrsFormal/Modes/SyntheticPlace/FamilyBranches.lean |
+| definition_242 | definition | 242 | family coupling | 10237 | ✅ proven | FdrsFormal/Modes/SyntheticPlace/FamilyBranches.lean |
+| theorem_170 | theorem | 170 | payloads and coupled evolution, families | 10241 | ✅ proven | FdrsFormal/Modes/SyntheticPlace/FamilyBranches.lean |
+| definition_243 | definition | 243 | the cross-feeding rule | 10245 | ✅ proven | FdrsFormal/Modes/SyntheticPlace/FamilyBranches.lean |
+| theorem_171 | theorem | 171 | the rule | 10249 | ✅ proven | FdrsFormal/Modes/SyntheticPlace/FamilyBranches.lean |
+| proposition_189 | proposition | 189 | three residue types | 10253 | ✅ proven | FdrsFormal/Modes/SyntheticPlace/FamilyBranches.lean |
