@@ -1,10 +1,10 @@
 # FDRS Specification Index
 
-Auto-generated from `data/fdrs-index.yaml` (2026-10-12T16:17:36.301350)
+Auto-generated from `data/fdrs-index.yaml` (2026-10-12T17:00:24.936506)
 
-**652 items** from `docs/fdrs.md` (10145 lines)
+**659 items** from `docs/fdrs.md` (10183 lines)
 
-Status: missing: 3 | proven: 647 | scaffold: 2
+Status: missing: 3 | proven: 654 | scaffold: 2
 
 ## Phase 1
 
@@ -738,3 +738,10 @@ Status: missing: 3 | proven: 647 | scaffold: 2
 | theorem_162 | theorem | 162 | custom-sized branches are faithful | 10131 | ✅ proven | FdrsFormal/Modes/SyntheticPlace/ContextBranch.lean |
 | corollary_56 | corollary | 56 | the normal form of the complex | 10135 | ✅ proven | FdrsFormal/Modes/SyntheticPlace/ContextBranch.lean |
 | proposition_184 | proposition | 184 | the (2,3,2 | 10139 | ✅ proven | FdrsFormal/Modes/SyntheticPlace/ContextBranch.lean |
+| definition_238 | definition | 238 | the branch of a context | 10153 | ✅ proven | FdrsFormal/Modes/SyntheticPlace/OperationBranch.lean |
+| theorem_163 | theorem | 163 | faithfulness is exact sizing | 10157 | ✅ proven | FdrsFormal/Modes/SyntheticPlace/OperationBranch.lean |
+| theorem_164 | theorem | 164 | structure-preserving changes leave the complex unc | 10161 | ✅ proven | FdrsFormal/Modes/SyntheticPlace/OperationBranch.lean |
+| proposition_185 | proposition | 185 | refinement by divisibility | 10165 | ✅ proven | FdrsFormal/Modes/SyntheticPlace/OperationBranch.lean |
+| proposition_186 | proposition | 186 | terminating a branch is lossless | 10169 | ✅ proven | FdrsFormal/Modes/SyntheticPlace/OperationBranch.lean |
+| corollary_57 | corollary | 57 | operations as events | 10173 | ✅ proven | FdrsFormal/Modes/SyntheticPlace/OperationBranch.lean |
+| proposition_187 | proposition | 187 | operation-driven witnesses | 10177 | ✅ proven | FdrsFormal/Modes/SyntheticPlace/OperationBranch.lean |

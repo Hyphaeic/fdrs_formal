@@ -431,7 +431,7 @@ By Proposition 6, (\pi_L(\tau)=\pi_L(\tau')) implies (\operatorname{dec}(\tau)\e
 ]
 Apply Proposition 6 in reverse to conclude the first (L) digits (prefix) of the sums match. ∎
 
-This is the formal “multi-rate locality” statement: the first (L) digits of the result depend **only** on the first (L) digits of the inputs (no dependence on higher digits). *(Addenda §3.5–3.18 — multiplication as digit convolution and where it fails on variable schedules; address shears and digit interchange; multiplication on mixed schedules through residues and carry lines; carry networks and the radix lattice; carry streams; the holonomy cover; carrying around a frustrated ring; the carry quotient of a wrapped ring; multiplication on a mixed ring; products that do not close; rings and lines, the free/tied split; the radix complex of a wrapped ring; the hop; context branches — sit at the end of this document.)*
+This is the formal “multi-rate locality” statement: the first (L) digits of the result depend **only** on the first (L) digits of the inputs (no dependence on higher digits). *(Addenda §3.5–3.19 — multiplication as digit convolution and where it fails on variable schedules; address shears and digit interchange; multiplication on mixed schedules through residues and carry lines; carry networks and the radix lattice; carry streams; the holonomy cover; carrying around a frustrated ring; the carry quotient of a wrapped ring; multiplication on a mixed ring; products that do not close; rings and lines, the free/tied split; the radix complex of a wrapped ring; the hop; context branches; operation-driven branches — sit at the end of this document.)*
 
 ---
 
@@ -10143,3 +10143,41 @@ For the ((2,3,2)) ring with wrap gain (-18): (M=30=5\cdot6), free part (5), tied
 *Lean:* `FdrsFormal/Modes/SyntheticPlace/ContextBranch.lean` (reusing `CarryHop.lean`, `BranchComplex.lean`, `Core/Finite/Bijection.lean`, `Modes/VariableRadix/Basic/RadixLaw.lean`, `ProductSpread.lean`).
 
 **Honest scope (§3.18).** Elementary (mixed-radix bijections and CRT). The corpus contributes the freedom to choose the line of the hop complex, the dead-cell criterion, the exactness of custom-sized branches with the resulting normal form, and branch histories as Definition 57 radix laws. The branch law is position-only along the branch; laws that branch on the digits themselves (trees of lines), and several tied primes, are not covered.
+
+# Phase 1 addendum, continued — operation-driven branches (§3.19)
+
+*(Phase 1, Fragment 2. §3.18 read a branch's radices as a fixed list. Here branches are built from the corpus's context-dependent radix systems — extended radix oracles and stateful systems (Definitions 84–93) — with the complex's own operations as the events. Reuses the hop complex (Definition 236), dead cells and faithfulness (Theorems 161–162), spawn and terminate (Definitions 125–126), prefix weights, and structure preservation (Definition 93).)*
+
+## 3.19 Operation-driven branches (addendum, 2026-10-12)
+
+### Definition 238 (the branch of a context)  [§3.19 · Phase 1, Fragment 2]
+
+For a stateful radix system (\mathcal S=(\Omega,\mathcal C,c_0,\Gamma,\mathcal E)) (Definition 89) and a context (c), the **branch of (c)** is the mixed-radix space of (\omega_c) (Definition 87) read along its zero path: the line schedule (k\mapsto\omega_c(0^k)), whose place values are the prefix weights (\beta_c(0^k)). The **recording system** has context the list of residue types produced so far, event a newly produced type (q\ge2) (appended to the list), and oracle (\Omega(s,\text{rec})=) the (|s|)-th recorded type ((2) beyond the record).
+
+### Theorem 163 (faithfulness is exact sizing)  [§3.19 · Phase 1, Fragment 2]
+
+Digit strings on a line of (d+1) cells are in bijection with tied residues iff (W_{d+1}=M_2) (converse of Theorem 162).
+
+### Theorem 164 (structure-preserving changes leave the complex unchanged)  [§3.19 · Phase 1, Fragment 2]
+
+Two line schedules that agree below depth (D) build the same hop complex of depth (D) — the same moves and the same values. Hence if a context transition (c\to c') preserves structure at depth (L) (Definition 93), the complexes built from the branches of (c) and (c') coincide for every line of depth (D\le L+1): a branch can grow below depth (L) without disturbing anything held above it.
+
+### Proposition 185 (refinement by divisibility)  [§3.19 · Phase 1, Fragment 2]
+
+If every weight of a line schedule (\beta) divides the corresponding weight of (\beta'), every cell dead on (\beta) is dead on (\beta'): refinement by divisibility kills cells, never revives them.
+
+### Proposition 186 (terminating a branch is lossless)  [§3.19 · Phase 1, Fragment 2]
+
+Any line content (y) is equivalent to (\varepsilon_{\rm tied}\sum_ky_kW_k) units at the ring root: terminating a branch routes its final residue back to the ring (Definition 126) without loss.
+
+### Corollary 57 (operations as events)  [§3.19 · Phase 1, Fragment 2]
+
+After events (q_0,\dots,q_d) (all (\ge2)) the recording system's context is ((q_0,\dots,q_d)); the branch it spawns is the history branch of §3.18 (Definition 237), and it is faithful iff (\prod_iq_i=M_2).
+
+### Proposition 187 (operation-driven witnesses)  [§3.19 · Phase 1, Fragment 2]
+
+On the ((2,3,2)) ring with wrap gain (-18) (tied part (6)): recording the types ((3,2)) spawns a faithful branch; recording ((2,2)) does not ((4\ne6)). The event that extends the record ((3,2)\to(3,2,5)) preserves structure at depth (1), so every hop complex of depth (\le2) is unchanged by it.
+
+*Lean:* `FdrsFormal/Modes/SyntheticPlace/OperationBranch.lean` (reusing `Modes/ContextDependent` — `ExtendedOracle`, `StatefulSystem`, `isStructurePreserving` —, `Modes/VariableRadix` — `RadixLaw`, `prefixWeight` —, `CarryHop.lean`, `ContextBranch.lean`, `BranchComplex.lean`, `Core/Finite/Bijection.lean`).
+
+**Honest scope (§3.19).** The ingredients are elementary; the contribution is the bridge — branches of the hop complex as context-indexed radix spaces of stateful systems with the complex's operations as events, and the transfer of Definition 93 into invariance of the complex. A branch is read along one path (the zero path) of its context's tree; branches that fork on digits, coupled contexts across several branches (Definition 98), and stochastic contexts are not covered.

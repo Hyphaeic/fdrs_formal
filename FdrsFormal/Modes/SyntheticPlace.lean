@@ -58,6 +58,7 @@ import FdrsFormal.Modes.SyntheticPlace.RingLineSplit
 import FdrsFormal.Modes.SyntheticPlace.BranchComplex
 import FdrsFormal.Modes.SyntheticPlace.CarryHop
 import FdrsFormal.Modes.SyntheticPlace.ContextBranch
+import FdrsFormal.Modes.SyntheticPlace.OperationBranch
 import FdrsFormal.Modes.SyntheticPlace.CircleEmit
 import FdrsFormal.Modes.SyntheticPlace.SE2Pose
 import FdrsFormal.Modes.SyntheticPlace.SE2Engine

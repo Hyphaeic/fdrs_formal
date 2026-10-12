@@ -1,10 +1,10 @@
 metadata:
   spec_file: docs/fdrs.md
-  spec_lines: 10145
-  generated_at: '2026-10-12T16:17:36.301350'
-  total_items: 652
+  spec_lines: 10183
+  generated_at: '2026-10-12T17:00:24.936506'
+  total_items: 659
   status_summary:
-    proven: 647
+    proven: 654
     missing: 3
     scaffold: 2
   status_legend:
@@ -15493,14 +15493,118 @@ items:
     - periodic_redundant
   fragment: '2'
   section: '3.18'
+- id: definition_238
+  type: definition
+  phase: 1
+  global_num: 238
+  title: the branch of a context
+  line: 10153
+  status: proven
+  in_root_build: true
+  lean_files:
+  - path: FdrsFormal/Modes/SyntheticPlace/OperationBranch.lean
+    declarations:
+    - branchSchedule
+    - recordSys
+  fragment: '2'
+  section: '3.19'
+- id: theorem_163
+  type: theorem
+  phase: 1
+  global_num: 163
+  title: faithfulness is exact sizing
+  line: 10157
+  status: proven
+  in_root_build: true
+  lean_files:
+  - path: FdrsFormal/Modes/SyntheticPlace/OperationBranch.lean
+    declarations:
+    - faithful_iff
+  fragment: '2'
+  section: '3.19'
+- id: theorem_164
+  type: theorem
+  phase: 1
+  global_num: 164
+  title: structure-preserving changes leave the complex unchanged
+  line: 10161
+  status: proven
+  in_root_build: true
+  lean_files:
+  - path: FdrsFormal/Modes/SyntheticPlace/OperationBranch.lean
+    declarations:
+    - preserving_complex
+  fragment: '2'
+  section: '3.19'
+- id: proposition_185
+  type: proposition
+  phase: 1
+  global_num: 185
+  title: refinement by divisibility
+  line: 10165
+  status: proven
+  in_root_build: true
+  lean_files:
+  - path: FdrsFormal/Modes/SyntheticPlace/OperationBranch.lean
+    declarations:
+    - refining_dead
+  fragment: '2'
+  section: '3.19'
+- id: proposition_186
+  type: proposition
+  phase: 1
+  global_num: 186
+  title: terminating a branch is lossless
+  line: 10169
+  status: proven
+  in_root_build: true
+  lean_files:
+  - path: FdrsFormal/Modes/SyntheticPlace/OperationBranch.lean
+    declarations:
+    - terminate_lossless
+  fragment: '2'
+  section: '3.19'
+- id: corollary_57
+  type: corollary
+  phase: 1
+  global_num: 57
+  title: operations as events
+  line: 10173
+  status: proven
+  in_root_build: true
+  lean_files:
+  - path: FdrsFormal/Modes/SyntheticPlace/OperationBranch.lean
+    declarations:
+    - record_context
+    - record_schedule
+    - record_faithful_iff
+  fragment: '2'
+  section: '3.19'
+- id: proposition_187
+  type: proposition
+  phase: 1
+  global_num: 187
+  title: operation-driven witnesses
+  line: 10177
+  status: proven
+  in_root_build: true
+  lean_files:
+  - path: FdrsFormal/Modes/SyntheticPlace/OperationBranch.lean
+    declarations:
+    - rec32_faithful
+    - rec22_not_faithful
+    - rec_preserving
+    - rec_complex_unchanged
+  fragment: '2'
+  section: '3.19'
 lean_summary:
-  total_files: 338
+  total_files: 339
   total_axioms: 0
   axioms_true: 0
   total_sorries: 0
   sorry_files: []
-  total_theorems: 2814
-  total_defs: 1093
+  total_theorems: 2828
+  total_defs: 1095
   total_lemmas: 26
   total_stubs: 0
   stubs_by_kind:
