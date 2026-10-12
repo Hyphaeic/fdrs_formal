@@ -1,6 +1,6 @@
 metadata:
-  total_files: 336
-  total_edges: 714
+  total_files: 337
+  total_edges: 716
   total_modules: 19
 modules:
   Analysis:
@@ -181,6 +181,7 @@ modules:
   - FdrsFormal/Modes/SyntheticPlace.lean
   - FdrsFormal/Modes/SyntheticPlace/AdmissibilityTrap.lean
   - FdrsFormal/Modes/SyntheticPlace/BranchComplex.lean
+  - FdrsFormal/Modes/SyntheticPlace/CarryHop.lean
   - FdrsFormal/Modes/SyntheticPlace/CarryQuotient.lean
   - FdrsFormal/Modes/SyntheticPlace/CircleEmit.lean
   - FdrsFormal/Modes/SyntheticPlace/Composition.lean
@@ -1142,6 +1143,8 @@ file_edges:
   to: FdrsFormal/Modes/ExtendedBase/CarryRouteUnification.lean
 - from: FdrsFormal/Modes/SyntheticPlace/BranchComplex.lean
   to: FdrsFormal/Modes/SyntheticPlace/RingLineSplit.lean
+- from: FdrsFormal/Modes/SyntheticPlace/CarryHop.lean
+  to: FdrsFormal/Modes/SyntheticPlace/BranchComplex.lean
 - from: FdrsFormal/Modes/SyntheticPlace/CarryQuotient.lean
   to: FdrsFormal/Modes/SyntheticPlace/RingUnrolling.lean
 - from: FdrsFormal/Modes/SyntheticPlace/CarryQuotient.lean
@@ -1274,6 +1277,8 @@ file_edges:
   to: FdrsFormal/Modes/SyntheticPlace/RingLineSplit.lean
 - from: FdrsFormal/Modes/SyntheticPlace.lean
   to: FdrsFormal/Modes/SyntheticPlace/BranchComplex.lean
+- from: FdrsFormal/Modes/SyntheticPlace.lean
+  to: FdrsFormal/Modes/SyntheticPlace/CarryHop.lean
 - from: FdrsFormal/Modes/SyntheticPlace.lean
   to: FdrsFormal/Modes/SyntheticPlace/CircleEmit.lean
 - from: FdrsFormal/Modes/SyntheticPlace.lean

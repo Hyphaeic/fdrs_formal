@@ -1,10 +1,10 @@
 # FDRS Specification Index
 
-Auto-generated from `data/fdrs-index.yaml` (2026-10-12T15:22:54.945329)
+Auto-generated from `data/fdrs-index.yaml` (2026-10-12T16:00:15.988396)
 
-**641 items** from `docs/fdrs.md` (10081 lines)
+**647 items** from `docs/fdrs.md` (10115 lines)
 
-Status: missing: 3 | proven: 636 | scaffold: 2
+Status: missing: 3 | proven: 642 | scaffold: 2
 
 ## Phase 1
 
@@ -727,3 +727,9 @@ Status: missing: 3 | proven: 636 | scaffold: 2
 | theorem_157 | theorem | 157 | the branches are orthogonal | 10067 | ✅ proven | FdrsFormal/Modes/SyntheticPlace/BranchComplex.lean |
 | corollary_54 | corollary | 54 | the path back is a hop | 10071 | ✅ proven | FdrsFormal/Modes/SyntheticPlace/BranchComplex.lean |
 | proposition_182 | proposition | 182 | the (2,3,2 | 10075 | ✅ proven | FdrsFormal/Modes/SyntheticPlace/BranchComplex.lean |
+| definition_236 | definition | 236 | the two-branch carry complex | 10089 | ✅ proven | FdrsFormal/Modes/SyntheticPlace/CarryHop.lean |
+| theorem_158 | theorem | 158 | the complex keeps the arithmetic | 10093 | ✅ proven | FdrsFormal/Modes/SyntheticPlace/CarryHop.lean |
+| corollary_55 | corollary | 55 | every state sorts onto its branches | 10097 | ✅ proven | FdrsFormal/Modes/SyntheticPlace/CarryHop.lean |
+| theorem_159 | theorem | 159 | the ring closes, the line leaks | 10101 | ✅ proven | FdrsFormal/Modes/SyntheticPlace/CarryHop.lean |
+| theorem_160 | theorem | 160 | the hop is the path back | 10105 | ✅ proven | FdrsFormal/Modes/SyntheticPlace/CarryHop.lean |
+| proposition_183 | proposition | 183 | the (2,3,2 | 10109 | ✅ proven | FdrsFormal/Modes/SyntheticPlace/CarryHop.lean |

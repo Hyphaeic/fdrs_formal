@@ -1,10 +1,10 @@
 metadata:
   spec_file: docs/fdrs.md
-  spec_lines: 10081
-  generated_at: '2026-10-12T15:22:54.945329'
-  total_items: 641
+  spec_lines: 10115
+  generated_at: '2026-10-12T16:00:15.988396'
+  total_items: 647
   status_summary:
-    proven: 636
+    proven: 642
     missing: 3
     scaffold: 2
   status_legend:
@@ -15325,14 +15325,106 @@ items:
     - ring232_line
   fragment: '2'
   section: '3.16'
+- id: definition_236
+  type: definition
+  phase: 1
+  global_num: 236
+  title: the two-branch carry complex
+  line: 10089
+  status: proven
+  in_root_build: true
+  lean_files:
+  - path: FdrsFormal/Modes/SyntheticPlace/CarryHop.lean
+    declarations:
+    - lineCarry
+    - hopVec
+    - hopLattice
+    - cxValue
+  fragment: '2'
+  section: '3.17'
+- id: theorem_158
+  type: theorem
+  phase: 1
+  global_num: 158
+  title: the complex keeps the arithmetic
+  line: 10093
+  status: proven
+  in_root_build: true
+  lean_files:
+  - path: FdrsFormal/Modes/SyntheticPlace/CarryHop.lean
+    declarations:
+    - ker_cxEv
+    - cx_equiv_iff
+    - cxQuotient
+  fragment: '2'
+  section: '3.17'
+- id: corollary_55
+  type: corollary
+  phase: 1
+  global_num: 55
+  title: every state sorts onto its branches
+  line: 10097
+  status: proven
+  in_root_build: true
+  lean_files:
+  - path: FdrsFormal/Modes/SyntheticPlace/CarryHop.lean
+    declarations:
+    - sort_branches
+  fragment: '2'
+  section: '3.17'
+- id: theorem_159
+  type: theorem
+  phase: 1
+  global_num: 159
+  title: the ring closes, the line leaks
+  line: 10101
+  status: proven
+  in_root_build: true
+  lean_files:
+  - path: FdrsFormal/Modes/SyntheticPlace/CarryHop.lean
+    declarations:
+    - ring_closes
+    - line_dies
+    - line_leaks
+  fragment: '2'
+  section: '3.17'
+- id: theorem_160
+  type: theorem
+  phase: 1
+  global_num: 160
+  title: the hop is the path back
+  line: 10105
+  status: proven
+  in_root_build: true
+  lean_files:
+  - path: FdrsFormal/Modes/SyntheticPlace/CarryHop.lean
+    declarations:
+    - hop_path_back
+  fragment: '2'
+  section: '3.17'
+- id: proposition_183
+  type: proposition
+  phase: 1
+  global_num: 183
+  title: the (2,3,2
+  line: 10109
+  status: proven
+  in_root_build: true
+  lean_files:
+  - path: FdrsFormal/Modes/SyntheticPlace/CarryHop.lean
+    declarations:
+    - ring232_hop_back
+    - ring232_no_back
+  fragment: '2'
+  section: '3.17'
 lean_summary:
-  total_files: 336
+  total_files: 337
   total_axioms: 0
   axioms_true: 0
   total_sorries: 0
   sorry_files: []
-  total_theorems: 2776
-  total_defs: 1078
+  total_theorems: 2802
+  total_defs: 1087
   total_lemmas: 26
   total_stubs: 0
   stubs_by_kind:

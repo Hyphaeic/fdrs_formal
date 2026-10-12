@@ -431,7 +431,7 @@ By Proposition 6, (\pi_L(\tau)=\pi_L(\tau')) implies (\operatorname{dec}(\tau)\e
 ]
 Apply Proposition 6 in reverse to conclude the first (L) digits (prefix) of the sums match. ∎
 
-This is the formal “multi-rate locality” statement: the first (L) digits of the result depend **only** on the first (L) digits of the inputs (no dependence on higher digits). *(Addenda §3.5–3.16 — multiplication as digit convolution and where it fails on variable schedules; address shears and digit interchange; multiplication on mixed schedules through residues and carry lines; carry networks and the radix lattice; carry streams; the holonomy cover; carrying around a frustrated ring; the carry quotient of a wrapped ring; multiplication on a mixed ring; products that do not close; rings and lines, the free/tied split; the radix complex of a wrapped ring — sit at the end of this document.)*
+This is the formal “multi-rate locality” statement: the first (L) digits of the result depend **only** on the first (L) digits of the inputs (no dependence on higher digits). *(Addenda §3.5–3.17 — multiplication as digit convolution and where it fails on variable schedules; address shears and digit interchange; multiplication on mixed schedules through residues and carry lines; carry networks and the radix lattice; carry streams; the holonomy cover; carrying around a frustrated ring; the carry quotient of a wrapped ring; multiplication on a mixed ring; products that do not close; rings and lines, the free/tied split; the radix complex of a wrapped ring; the hop — sit at the end of this document.)*
 
 ---
 
@@ -10079,3 +10079,37 @@ For the ((2,3,2)) ring with wrap gain (-3) ((M=15=5\cdot3)): the idempotents are
 *Lean:* `FdrsFormal/Modes/SyntheticPlace/BranchComplex.lean` (reusing `RingLineSplit.lean`, `CarryQuotient.lean`, `Core/Finite/Bijection.lean`, `ProductSpread.lean`).
 
 **Honest scope (§3.16).** Elementary (CRT idempotents, eventually periodic sequences). The corpus contributes the reading of the carry quotient as a two-branch radix complex — a closing ring and an open line — the tied branch as a finite radix space, and the path back as a hop between branches. Several tied primes (several lines), coupling of branches through carries rather than products, and context-chosen radices for new branches are not covered.
+
+# Phase 1 addendum, continued — the hop (§3.17)
+
+*(Phase 1, Fragment 2. The branches of §3.16 do not couple through products; here they couple through a carry. Builds the two-branch radix complex as a carry network with an explicit hop move. Reuses the carry lattice and Theorem 147 (§3.12), the branch idempotents and the dying line (§3.16), and the split and its closing ring (§3.15).)*
+
+## 3.17 The hop (addendum, 2026-10-12)
+
+### Definition 236 (the two-branch carry complex)  [§3.17 · Phase 1, Fragment 2]
+
+For a wrapped ring with a free/tied split (Definition 234), the **two-branch carry complex** has the (N) ring cells (weights (B_k)) and (D+1) **line cells** (weights (B_k) of the open periodic schedule). Its moves are the ring carries (Definition 230); the **line carries** ((b_k) units at line cell (k) become one unit at line cell (k+1)); and the **hop**: (\varepsilon_{\rm tied}) units leave ring cell (0) and one unit appears at line cell (0). The value of a state ((x,y)) is (\sum_kx_kB_k+\varepsilon_{\rm tied}\sum_ky_kB_k) modulo (M).
+
+### Theorem 158 (the complex keeps the arithmetic)  [§3.17 · Phase 1, Fragment 2]
+
+A complex state is a combination of ring carries, line carries and hops iff its value vanishes modulo (M); two states differ by moves iff their values agree; and states modulo moves are exactly (\mathbb Z/M), for every length of line. Adding a line and a hop adds room for residues, not new residues.
+
+### Corollary 55 (every state sorts onto its branches)  [§3.17 · Phase 1, Fragment 2]
+
+Every complex state of value (W) is move-equivalent to (\varepsilon_{\rm free}W) units at ring cell (0) and (W) units at line cell (0): carries and hops sort its free share onto the ring and its tied share onto the line.
+
+### Theorem 159 (the ring closes, the line leaks)  [§3.17 · Phase 1, Fragment 2]
+
+For some (L\ge1), free content on the ring is invariant under (L) laps of holonomy: (\varepsilon_{\rm free}a) units at ring cell (k) are equivalent to (\varepsilon_{\rm free}aB^L) units there. Line content multiplied by (B^r) is equivalent to nothing, and on a line of depth (rN) anything at the last cell falls off: it is equivalent to nothing.
+
+### Theorem 160 (the hop is the path back)  [§3.17 · Phase 1, Fragment 2]
+
+For some (L'\ge1) and every ring cell (k): the unit at (k) is equivalent to (\varepsilon_{\rm free}B^{L'}) units at (k) together with (B_k) units at line cell (0) — it returns around the ring with its tied share parked on the line by a hop. If (B_k) carries tied residue ((M_2\nmid B_k)), the unit at (k) is not equivalent to (B^{L'}) units at (k) alone: there is no path back on the ring without the hop.
+
+### Proposition 183 (the (2,3,2), c = −3 hop)  [§3.17 · Phase 1, Fragment 2]
+
+For the ((2,3,2)) ring with wrap gain (-3) and a line of depth (3): the unit at ring cell (0) is equivalent to (6\cdot12^4) units at ring cell (0) plus one unit at line cell (0) ((6\cdot20736+10\equiv1\pmod{15})); it is not equivalent to (12^4) units at ring cell (0) alone ((12^4\equiv6\not\equiv1)).
+
+*Lean:* `FdrsFormal/Modes/SyntheticPlace/CarryHop.lean` (reusing `CarryQuotient.lean`, `BranchComplex.lean`, `RingLineSplit.lean`, `ProductSpread.lean`).
+
+**Honest scope (§3.17).** Elementary (a change of presentation of (\mathbb Z/M)). The corpus contributes the two-branch carry complex with an explicit hop move, the sorting of residues onto branches by carries, and the separation of paths back with and without the hop. The line is attached at a single cell; several lines, hops at other cells, and context-chosen radices for the line are not covered.
