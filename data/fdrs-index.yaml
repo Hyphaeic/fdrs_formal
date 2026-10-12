@@ -1,10 +1,10 @@
 metadata:
   spec_file: docs/fdrs.md
-  spec_lines: 10047
-  generated_at: '2026-10-12T15:01:42.439984'
-  total_items: 635
+  spec_lines: 10081
+  generated_at: '2026-10-12T15:22:54.945329'
+  total_items: 641
   status_summary:
-    proven: 630
+    proven: 636
     missing: 3
     scaffold: 2
   status_legend:
@@ -15231,14 +15231,108 @@ items:
     - ring232_tied_dies
   fragment: '2'
   section: '3.15'
+- id: definition_235
+  type: definition
+  phase: 1
+  global_num: 235
+  title: the branch idempotents
+  line: 10055
+  status: proven
+  in_root_build: true
+  lean_files:
+  - path: FdrsFormal/Modes/SyntheticPlace/BranchComplex.lean
+    declarations:
+    - freeIdem
+    - tiedIdem
+  fragment: '2'
+  section: '3.16'
+- id: theorem_155
+  type: theorem
+  phase: 1
+  global_num: 155
+  title: the helix in the quotient is a rho
+  line: 10059
+  status: proven
+  in_root_build: true
+  lean_files:
+  - path: FdrsFormal/Modes/SyntheticPlace/BranchComplex.lean
+    declarations:
+    - helix_rho
+    - no_return
+  fragment: '2'
+  section: '3.16'
+- id: theorem_156
+  type: theorem
+  phase: 1
+  global_num: 156
+  title: the tied branch is a radix line
+  line: 10063
+  status: proven
+  in_root_build: true
+  lean_files:
+  - path: FdrsFormal/Modes/SyntheticPlace/BranchComplex.lean
+    declarations:
+    - tied_dvd_line
+    - tied_line_digits
+  fragment: '2'
+  section: '3.16'
+- id: theorem_157
+  type: theorem
+  phase: 1
+  global_num: 157
+  title: the branches are orthogonal
+  line: 10067
+  status: proven
+  in_root_build: true
+  lean_files:
+  - path: FdrsFormal/Modes/SyntheticPlace/BranchComplex.lean
+    declarations:
+    - idem_sum
+    - idem_orth
+    - mixed_vanish
+    - mul_split
+    - idem_unique
+  fragment: '2'
+  section: '3.16'
+- id: corollary_54
+  type: corollary
+  phase: 1
+  global_num: 54
+  title: the path back is a hop
+  line: 10071
+  status: proven
+  in_root_build: true
+  lean_files:
+  - path: FdrsFormal/Modes/SyntheticPlace/BranchComplex.lean
+    declarations:
+    - path_back_hop
+  fragment: '2'
+  section: '3.16'
+- id: proposition_182
+  type: proposition
+  phase: 1
+  global_num: 182
+  title: the (2,3,2
+  line: 10075
+  status: proven
+  in_root_build: true
+  lean_files:
+  - path: FdrsFormal/Modes/SyntheticPlace/BranchComplex.lean
+    declarations:
+    - ring232_freeIdem
+    - ring232_rho
+    - ring232_no_return
+    - ring232_line
+  fragment: '2'
+  section: '3.16'
 lean_summary:
-  total_files: 335
+  total_files: 336
   total_axioms: 0
   axioms_true: 0
   total_sorries: 0
   sorry_files: []
-  total_theorems: 2747
-  total_defs: 1076
+  total_theorems: 2776
+  total_defs: 1078
   total_lemmas: 26
   total_stubs: 0
   stubs_by_kind:

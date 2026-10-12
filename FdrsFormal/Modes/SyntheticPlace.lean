@@ -55,6 +55,7 @@ import FdrsFormal.Modes.SyntheticPlace.CarryQuotient
 import FdrsFormal.Modes.SyntheticPlace.MixedRingProduct
 import FdrsFormal.Modes.SyntheticPlace.ProductSpread
 import FdrsFormal.Modes.SyntheticPlace.RingLineSplit
+import FdrsFormal.Modes.SyntheticPlace.BranchComplex
 import FdrsFormal.Modes.SyntheticPlace.CircleEmit
 import FdrsFormal.Modes.SyntheticPlace.SE2Pose
 import FdrsFormal.Modes.SyntheticPlace.SE2Engine

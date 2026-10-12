@@ -1,10 +1,10 @@
 # FDRS Specification Index
 
-Auto-generated from `data/fdrs-index.yaml` (2026-10-12T15:01:42.439984)
+Auto-generated from `data/fdrs-index.yaml` (2026-10-12T15:22:54.945329)
 
-**635 items** from `docs/fdrs.md` (10047 lines)
+**641 items** from `docs/fdrs.md` (10081 lines)
 
-Status: missing: 3 | proven: 630 | scaffold: 2
+Status: missing: 3 | proven: 636 | scaffold: 2
 
 ## Phase 1
 
@@ -721,3 +721,9 @@ Status: missing: 3 | proven: 630 | scaffold: 2
 | theorem_154 | theorem | 154 | two-line spread | 10033 | ✅ proven | FdrsFormal/Modes/SyntheticPlace/RingLineSplit.lean |
 | corollary_53 | corollary | 53 | every product spreads over two places | 10037 | ✅ proven | FdrsFormal/Modes/SyntheticPlace/RingLineSplit.lean |
 | proposition_181 | proposition | 181 | the (2,3,2 | 10041 | ✅ proven | FdrsFormal/Modes/SyntheticPlace/RingLineSplit.lean |
+| definition_235 | definition | 235 | the branch idempotents | 10055 | ✅ proven | FdrsFormal/Modes/SyntheticPlace/BranchComplex.lean |
+| theorem_155 | theorem | 155 | the helix in the quotient is a rho | 10059 | ✅ proven | FdrsFormal/Modes/SyntheticPlace/BranchComplex.lean |
+| theorem_156 | theorem | 156 | the tied branch is a radix line | 10063 | ✅ proven | FdrsFormal/Modes/SyntheticPlace/BranchComplex.lean |
+| theorem_157 | theorem | 157 | the branches are orthogonal | 10067 | ✅ proven | FdrsFormal/Modes/SyntheticPlace/BranchComplex.lean |
+| corollary_54 | corollary | 54 | the path back is a hop | 10071 | ✅ proven | FdrsFormal/Modes/SyntheticPlace/BranchComplex.lean |
+| proposition_182 | proposition | 182 | the (2,3,2 | 10075 | ✅ proven | FdrsFormal/Modes/SyntheticPlace/BranchComplex.lean |

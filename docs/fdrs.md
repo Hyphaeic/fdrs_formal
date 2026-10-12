@@ -431,7 +431,7 @@ By Proposition 6, (\pi_L(\tau)=\pi_L(\tau')) implies (\operatorname{dec}(\tau)\e
 ]
 Apply Proposition 6 in reverse to conclude the first (L) digits (prefix) of the sums match. ∎
 
-This is the formal “multi-rate locality” statement: the first (L) digits of the result depend **only** on the first (L) digits of the inputs (no dependence on higher digits). *(Addenda §3.5–3.15 — multiplication as digit convolution and where it fails on variable schedules; address shears and digit interchange; multiplication on mixed schedules through residues and carry lines; carry networks and the radix lattice; carry streams; the holonomy cover; carrying around a frustrated ring; the carry quotient of a wrapped ring; multiplication on a mixed ring; products that do not close; rings and lines, the free/tied split — sit at the end of this document.)*
+This is the formal “multi-rate locality” statement: the first (L) digits of the result depend **only** on the first (L) digits of the inputs (no dependence on higher digits). *(Addenda §3.5–3.16 — multiplication as digit convolution and where it fails on variable schedules; address shears and digit interchange; multiplication on mixed schedules through residues and carry lines; carry networks and the radix lattice; carry streams; the holonomy cover; carrying around a frustrated ring; the carry quotient of a wrapped ring; multiplication on a mixed ring; products that do not close; rings and lines, the free/tied split; the radix complex of a wrapped ring — sit at the end of this document.)*
 
 ---
 
@@ -10045,3 +10045,37 @@ The ((2,3,2)) ring with wrap gain (-3) has (M=15=5\cdot3): free part (5), tied p
 *Lean:* `FdrsFormal/Modes/SyntheticPlace/RingLineSplit.lean` (reusing `CarryQuotient.lean`, `RingUnrolling.lean`, `ProductSpread.lean`).
 
 **Honest scope (§3.15).** Elementary (CRT, finite order of a unit). The corpus contributes the reading of the carry quotient as a closing ring (free) glued to an opening line (tied), the path back as the order of the wrap gain, and the two-place spread. Existence of the canonical split for every modulus (the (c)-primary part of (M)) is supplied as data, not proved; the two places of Corollary 53 are a valid spread, not shown to be optimal.
+
+# Phase 1 addendum, continued — the radix complex of a wrapped ring (§3.16)
+
+*(Phase 1, Fragment 2. Treats the free and tied parts of §3.15 as two branches of one radix complex — a closing ring and an open line — and asks how they meet. Reuses the split and its ring/line behaviour (Definition 234, Theorem 153), the finite radix spaces (Definition 2, Proposition 1), and the weights of the carry quotient (Definition 230).)*
+
+## 3.16 The radix complex of a wrapped ring (addendum, 2026-10-12)
+
+### Definition 235 (the branch idempotents)  [§3.16 · Phase 1, Fragment 2]
+
+For a free/tied split (M=M_1M_2) (Definition 234), write (uM_1+vM_2=1) (Bézout). The **free idempotent** is (\varepsilon_{\rm free}=vM_2) ((\equiv1) modulo (M_1), (\equiv0) modulo (M_2)); the **tied idempotent** is (\varepsilon_{\rm tied}=uM_1) ((\equiv0) modulo (M_1), (\equiv1) modulo (M_2)).
+
+### Theorem 155 (the helix in the quotient is a rho)  [§3.16 · Phase 1, Fragment 2]
+
+Read modulo (M), the weights (B_k) of the helix form a rho: past the depth (rN) of the tied line they are periodic, (B_{j+rN+LN}\equiv B_{j+rN}\pmod M), with (L\ge1) the closing time of the free ring (Theorem 153) — a tail (the line) running into a cycle (the ring). A sheet still carrying tied residue ((M_2\nmid B_k)) is never revisited: no weight past depth (rN) is congruent to it modulo (M).
+
+### Theorem 156 (the tied branch is a radix line)  [§3.16 · Phase 1, Fragment 2]
+
+(M_2\mid B_{rN}), so every residue modulo (M_2) is the value of a digit string on the open (unwrapped) line of the periodic schedule of depth (rN) — a finite radix space (Definition 2, Proposition 1). The tied branch is an ordinary mixed-radix line, truncated where its weights die.
+
+### Theorem 157 (the branches are orthogonal)  [§3.16 · Phase 1, Fragment 2]
+
+Modulo (M): (\varepsilon_{\rm free}+\varepsilon_{\rm tied}=1), (\varepsilon_{\rm free}\varepsilon_{\rm tied}=0), (\varepsilon^2=\varepsilon) for each, and these properties determine them. Every product splits by branch, (xy=(\varepsilon_{\rm free}x)(\varepsilon_{\rm free}y)+(\varepsilon_{\rm tied}x)(\varepsilon_{\rm tied}y)), and a free residue times a tied residue is zero: residue types do not couple through products; each multiplies on its own branch.
+
+### Corollary 54 (the path back is a hop)  [§3.16 · Phase 1, Fragment 2]
+
+For some (L\ge1) and every place (k), (B_k\equiv\varepsilon_{\rm free}\,B_{k+LN}+\varepsilon_{\rm tied}\,B_k\pmod M): the free share of a sheet returns around the ring after (L) laps while the tied share is held on the line. A path back to any sheet exists — through both branches of the complex, not along the helix alone.
+
+### Proposition 182 (the (2,3,2), c = −3 complex)  [§3.16 · Phase 1, Fragment 2]
+
+For the ((2,3,2)) ring with wrap gain (-3) ((M=15=5\cdot3)): the idempotents are (6) and (10); past depth (3) the weights repeat with period (12) modulo (15) ((12^5\equiv12)); the start (B_0=1) is never revisited ((3\nmid1)); the tied line has depth (3) ((3\mid B_3=12)), carried by the line (1,2,6) of radices ((2,3,2)).
+
+*Lean:* `FdrsFormal/Modes/SyntheticPlace/BranchComplex.lean` (reusing `RingLineSplit.lean`, `CarryQuotient.lean`, `Core/Finite/Bijection.lean`, `ProductSpread.lean`).
+
+**Honest scope (§3.16).** Elementary (CRT idempotents, eventually periodic sequences). The corpus contributes the reading of the carry quotient as a two-branch radix complex — a closing ring and an open line — the tied branch as a finite radix space, and the path back as a hop between branches. Several tied primes (several lines), coupling of branches through carries rather than products, and context-chosen radices for new branches are not covered.
