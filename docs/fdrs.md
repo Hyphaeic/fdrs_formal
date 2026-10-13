@@ -431,7 +431,7 @@ By Proposition 6, (\pi_L(\tau)=\pi_L(\tau')) implies (\operatorname{dec}(\tau)\e
 ]
 Apply Proposition 6 in reverse to conclude the first (L) digits (prefix) of the sums match. ∎
 
-This is the formal “multi-rate locality” statement: the first (L) digits of the result depend **only** on the first (L) digits of the inputs (no dependence on higher digits). *(Addenda §3.5–3.22 — multiplication as digit convolution and where it fails on variable schedules; address shears and digit interchange; multiplication on mixed schedules through residues and carry lines; carry networks and the radix lattice; carry streams; the holonomy cover; carrying around a frustrated ring; the carry quotient of a wrapped ring; multiplication on a mixed ring; products that do not close; rings and lines, the free/tied split; the radix complex of a wrapped ring; the hop; context branches; operation-driven branches; coupled branches; families of residue types; the canonical split — sit at the end of this document.)*
+This is the formal “multi-rate locality” statement: the first (L) digits of the result depend **only** on the first (L) digits of the inputs (no dependence on higher digits). *(Addenda §3.5–3.23 — multiplication as digit convolution and where it fails on variable schedules; address shears and digit interchange; multiplication on mixed schedules through residues and carry lines; carry networks and the radix lattice; carry streams; the holonomy cover; carrying around a frustrated ring; the carry quotient of a wrapped ring; multiplication on a mixed ring; products that do not close; rings and lines, the free/tied split; the radix complex of a wrapped ring; the hop; context branches; operation-driven branches; coupled branches; families of residue types; the canonical split; product defects of limb schedules — sit at the end of this document.)*
 
 ---
 
@@ -10287,3 +10287,29 @@ For the ring ((2,3,5)) with wrap gain (-180) ((M=210)): the canonical free part 
 *Lean:* `FdrsFormal/Modes/SyntheticPlace/CanonicalSplit.lean` (reusing `FamilyBranches.lean`, `CarryQuotient.lean`, Mathlib's prime factorization).
 
 **Honest scope (§3.22).** Elementary (unique factorization). The corpus contributes the identification of residue types with the prime-power parts of the carry modulus at the primes shared with the wrap gain, the forcing of the free and tied parts, and the resulting data-free pipeline from a wrapped ring to its family normal form. The balanced case (M=0) is excluded; prime factors are not evaluated by the kernel, so witnesses go through Theorem 173.
+
+# Phase 1 addendum, continued — product defects of limb schedules (§3.23)
+
+*(Phase 1, Fragment 2. Power-of-two limb schedules for arithmetic modulo (2^q-c): which schedules make schoolbook multiplication cheapest. Reuses product coefficients and product-closed rings (Definition 232, Theorem 150) and the 25519 weight ladder (Definition 212, Proposition 179).)*
+
+## 3.23 Product defects of limb schedules (addendum, 2026-10-13)
+
+### Definition 245 (limb schedules and their defects)  [§3.23 · Phase 1, Fragment 2]
+
+A **limb schedule** of (2^q) with (N) limbs is a sequence of bit positions (W_0=0) with lap (q): (W_{k+N}=W_k+q). The **defect** of the product of limbs (a,b) is (d(a,b)=W_a+W_b-W_{a+b}); the product coefficient is (\kappa(a,b)=2^{d(a,b)}), and the schedule is product-closed iff all defects are (\ge0). The **ceiling schedule** is (W_a=\lceil qa/N\rceil).
+
+### Theorem 174 (defect bounds)  [§3.23 · Phase 1, Fragment 2]
+
+Defects are periodic: (d(a,b)=d(a\bmod N,b\bmod N)). If every defect lies in ([0,\delta]) then (qa\le NW_a\le qa+(N-1)\delta) for every (a). In particular every product-closed schedule lies pointwise above the ceiling schedule.
+
+### Theorem 175 (Christoffel optimality)  [§3.23 · Phase 1, Fragment 2]
+
+The ceiling schedule is a schedule with all defects in ({0,1}), and it is the only one: a schedule all of whose product coefficients are (1) or (2) is the ceiling schedule. (Its limb widths form the balanced, or Christoffel, word of slope (q/N).)
+
+### Corollary 60 (why radix 2^25.5)  [§3.23 · Phase 1, Fragment 2]
+
+The 25519 weight ladder (W_k=\lceil25.5k\rceil) (widths (26,25,26,\dots)) is the ceiling schedule for (q=255), (N=10); hence any ten-limb schedule of (2^{255}) whose schoolbook products need at most a doubling is this ladder — the gains (2) and (38) are forced.
+
+*Lean:* `FdrsFormal/Modes/SyntheticPlace/ChristoffelSchedule.lean` (reusing `MixedRingProduct.lean`, `Field25519Carry.lean`).
+
+**Honest scope (§3.23).** The ceiling schedule (Crandall–Fagin 1994; Bernstein 2006; fiat-crypto) and balanced/Christoffel words (Morse–Hedlund; Berstel et al.) are classical. The characterization of the ceiling schedule as the unique schedule with product coefficients at most (2), and the pointwise lower bound for all product-closed schedules, were not found in the literature surveyed for this project; they are elementary.

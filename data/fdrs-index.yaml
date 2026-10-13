@@ -1,10 +1,10 @@
 metadata:
   spec_file: docs/fdrs.md
-  spec_lines: 10289
-  generated_at: '2026-10-12T20:28:40.299162'
-  total_items: 678
+  spec_lines: 10315
+  generated_at: '2026-10-13T03:39:12.348194'
+  total_items: 682
   status_summary:
-    proven: 673
+    proven: 677
     missing: 3
     scaffold: 2
   status_legend:
@@ -15896,14 +15896,75 @@ items:
     - canonTied_235
   fragment: '2'
   section: '3.22'
+- id: definition_245
+  type: definition
+  phase: 1
+  global_num: 245
+  title: limb schedules and their defects
+  line: 10297
+  status: proven
+  in_root_build: true
+  lean_files:
+  - path: FdrsFormal/Modes/SyntheticPlace/ChristoffelSchedule.lean
+    declarations:
+    - IsSchedule
+    - defect
+    - ceilSched
+  fragment: '2'
+  section: '3.23'
+- id: theorem_174
+  type: theorem
+  phase: 1
+  global_num: 174
+  title: defect bounds
+  line: 10301
+  status: proven
+  in_root_build: true
+  lean_files:
+  - path: FdrsFormal/Modes/SyntheticPlace/ChristoffelSchedule.lean
+    declarations:
+    - defect_mod
+    - defect_bounds
+    - above_ceiling
+  fragment: '2'
+  section: '3.23'
+- id: theorem_175
+  type: theorem
+  phase: 1
+  global_num: 175
+  title: Christoffel optimality
+  line: 10305
+  status: proven
+  in_root_build: true
+  lean_files:
+  - path: FdrsFormal/Modes/SyntheticPlace/ChristoffelSchedule.lean
+    declarations:
+    - christoffel_unique
+  fragment: '2'
+  section: '3.23'
+- id: corollary_60
+  type: corollary
+  phase: 1
+  global_num: 60
+  title: why radix 2^25.5
+  line: 10309
+  status: proven
+  in_root_build: true
+  lean_files:
+  - path: FdrsFormal/Modes/SyntheticPlace/ChristoffelSchedule.lean
+    declarations:
+    - weightBits_eq_ceil
+    - radix_25_5_unique
+  fragment: '2'
+  section: '3.23'
 lean_summary:
-  total_files: 342
+  total_files: 343
   total_axioms: 0
   axioms_true: 0
   total_sorries: 0
   sorry_files: []
-  total_theorems: 2926
-  total_defs: 1139
+  total_theorems: 2944
+  total_defs: 1143
   total_lemmas: 26
   total_stubs: 0
   stubs_by_kind:

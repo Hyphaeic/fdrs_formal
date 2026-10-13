@@ -1,10 +1,10 @@
 # FDRS Specification Index
 
-Auto-generated from `data/fdrs-index.yaml` (2026-10-12T20:28:40.299162)
+Auto-generated from `data/fdrs-index.yaml` (2026-10-13T03:39:12.348194)
 
-**678 items** from `docs/fdrs.md` (10289 lines)
+**682 items** from `docs/fdrs.md` (10315 lines)
 
-Status: missing: 3 | proven: 673 | scaffold: 2
+Status: missing: 3 | proven: 677 | scaffold: 2
 
 ## Phase 1
 
@@ -764,3 +764,7 @@ Status: missing: 3 | proven: 673 | scaffold: 2
 | theorem_173 | theorem | 173 | the free and tied parts are forced | 10275 | ✅ proven | FdrsFormal/Modes/SyntheticPlace/CanonicalSplit.lean |
 | corollary_59 | corollary | 59 | the rule closes the loop | 10279 | ✅ proven | FdrsFormal/Modes/SyntheticPlace/CanonicalSplit.lean |
 | proposition_190 | proposition | 190 | the canonical split of the (2,3,5 | 10283 | ✅ proven | FdrsFormal/Modes/SyntheticPlace/CanonicalSplit.lean |
+| definition_245 | definition | 245 | limb schedules and their defects | 10297 | ✅ proven | FdrsFormal/Modes/SyntheticPlace/ChristoffelSchedule.lean |
+| theorem_174 | theorem | 174 | defect bounds | 10301 | ✅ proven | FdrsFormal/Modes/SyntheticPlace/ChristoffelSchedule.lean |
+| theorem_175 | theorem | 175 | Christoffel optimality | 10305 | ✅ proven | FdrsFormal/Modes/SyntheticPlace/ChristoffelSchedule.lean |
+| corollary_60 | corollary | 60 | why radix 2^25.5 | 10309 | ✅ proven | FdrsFormal/Modes/SyntheticPlace/ChristoffelSchedule.lean |

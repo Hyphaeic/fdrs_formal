@@ -1,6 +1,6 @@
 metadata:
-  total_files: 342
-  total_edges: 728
+  total_files: 343
+  total_edges: 730
   total_modules: 19
 modules:
   Analysis:
@@ -184,6 +184,7 @@ modules:
   - FdrsFormal/Modes/SyntheticPlace/CanonicalSplit.lean
   - FdrsFormal/Modes/SyntheticPlace/CarryHop.lean
   - FdrsFormal/Modes/SyntheticPlace/CarryQuotient.lean
+  - FdrsFormal/Modes/SyntheticPlace/ChristoffelSchedule.lean
   - FdrsFormal/Modes/SyntheticPlace/CircleEmit.lean
   - FdrsFormal/Modes/SyntheticPlace/Composition.lean
   - FdrsFormal/Modes/SyntheticPlace/Conservation.lean
@@ -1156,6 +1157,8 @@ file_edges:
   to: FdrsFormal/Modes/SyntheticPlace/RingUnrolling.lean
 - from: FdrsFormal/Modes/SyntheticPlace/CarryQuotient.lean
   to: FdrsFormal/NumberTheory/Characters/Negacyclic.lean
+- from: FdrsFormal/Modes/SyntheticPlace/ChristoffelSchedule.lean
+  to: FdrsFormal/Modes/SyntheticPlace/MixedRingProduct.lean
 - from: FdrsFormal/Modes/SyntheticPlace/Composition.lean
   to: FdrsFormal/Modes/SyntheticPlace/GaugeUltrametric.lean
 - from: FdrsFormal/Modes/SyntheticPlace/Conservation.lean
@@ -1308,6 +1311,8 @@ file_edges:
   to: FdrsFormal/Modes/SyntheticPlace/FamilyBranches.lean
 - from: FdrsFormal/Modes/SyntheticPlace.lean
   to: FdrsFormal/Modes/SyntheticPlace/CanonicalSplit.lean
+- from: FdrsFormal/Modes/SyntheticPlace.lean
+  to: FdrsFormal/Modes/SyntheticPlace/ChristoffelSchedule.lean
 - from: FdrsFormal/Modes/SyntheticPlace.lean
   to: FdrsFormal/Modes/SyntheticPlace/CircleEmit.lean
 - from: FdrsFormal/Modes/SyntheticPlace.lean
