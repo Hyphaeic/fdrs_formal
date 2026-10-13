@@ -65,7 +65,7 @@ Contributions, in order of strength:
   The survey could not read several of these PDFs.
 - **Prove the cost law** N²(b−1)/(2b), in Lean or on paper.
 - **Formalize the valuation criterion** for arbitrary schedules (contribution 3).
-- **Evaluation.** A small schedule-search tool (Rust, alongside `tools/carry-lattice`) that, for a given q and word size, lists product-closed schedules with defects, doubled-product counts and accumulator headroom, and reproduces the table above. An optional micro-benchmark of 9- vs 10- vs 11-limb 25519 would strengthen an ARITH submission.
+- **Evaluation.** The schedule tool now exists: `tools/limb-schedule` (Rust, no dependencies), described in §7 below. An optional micro-benchmark of 9- vs 10- vs 11-limb 25519 would still strengthen an ARITH submission.
 - **Venue and dates.**
   - IEEE ARITH: 8 pages, IEEE format. The 2027 call has not been found yet.
   - Fallbacks: IEEE Transactions on Computers (journal), or a Lean-centred version at ITP 2027.
@@ -81,3 +81,15 @@ Contributions, in order of strength:
 - Lean: `FdrsFormal/Modes/SyntheticPlace/ChristoffelSchedule.lean` (§3.23); carry quotient in `CarryQuotient.lean` (§3.12); κ and product-closed rings in `MixedRingProduct.lean` (§3.13); landing criterion in `ProductSpread.lean` (§3.14).
 - Experiment: `docs/research/arith/schedule_experiment.py`.
 - Survey: `reports/Carry theory novelty survey.md` and `research_notes/Carry theory novelty survey/`.
+
+## 7. The evaluation tool (`tools/limb-schedule`)
+
+The tool has five commands:
+
+- `table` reports standard moduli.
+- `sweep` chooses the limb count N for a given modulus and word size.
+- `check` analyses any schedule, including real-world ones.
+- `verify` brute-forces Theorems 174–175 and the cost law. It enumerated 1,284,475 schedules (30,617 product-closed) and found 0 violations.
+- `radices` handles general radices, with the landing criterion.
+
+The first run produced a real-world finding: **poly1305-donna-64** uses limbs 44, 44, 42, which is not the ceiling schedule. Its defect is 2, giving a largest gain of 4·5 = 20, which matches the `5 << 2` constant in that code. The ceiling schedule 44, 43, 43 would need at most 2·5 = 10. This is the kind of concrete example an ARITH paper can lead with: Theorem 175 identifies the layout with the smallest constants, and the tool flags deployed code that departs from it. Whether 44, 44, 42 was chosen for other reasons, such as key clamping or alignment, should be checked before any claim of suboptimality.

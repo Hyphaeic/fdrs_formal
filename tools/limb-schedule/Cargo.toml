@@ -1,0 +1,7 @@
+[package]
+name = "limb-schedule"
+version = "0.1.0"
+edition = "2021"
+description = "Product coefficients, defects and Christoffel schedules for multi-limb arithmetic mod B - c (fdrs.md §3.12-3.14, §3.23)"
+
+[dependencies]
