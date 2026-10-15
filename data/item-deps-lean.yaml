@@ -1,11 +1,11 @@
 metadata:
-  total_file_edges: 891
-  total_raw_edges: 59617
-  total_item_edges: 11119
+  total_file_edges: 898
+  total_raw_edges: 59724
+  total_item_edges: 11182
   spurious_filtered: 2920
   unmapped_files: 58
-  decl_resolved: 4105
-  file_fallback: 55512
+  decl_resolved: 4172
+  file_fallback: 55552
   source: lean_environment_decl_level
 dependencies:
 - from: corollary_1
@@ -2611,6 +2611,42 @@ dependencies:
   source: lean
 - from: corollary_60
   to: theorem_99
+  source: lean
+- from: corollary_61
+  to: corollary_60
+  source: lean
+- from: corollary_61
+  to: definition_229
+  source: lean
+- from: corollary_61
+  to: definition_232
+  source: lean
+- from: corollary_61
+  to: definition_245
+  source: lean
+- from: corollary_61
+  to: proposition_174
+  source: lean
+- from: corollary_61
+  to: proposition_178
+  source: lean
+- from: corollary_61
+  to: proposition_179
+  source: lean
+- from: corollary_61
+  to: theorem_149
+  source: lean
+- from: corollary_61
+  to: theorem_150
+  source: lean
+- from: corollary_61
+  to: theorem_174
+  source: lean
+- from: corollary_61
+  to: theorem_175
+  source: lean
+- from: corollary_61
+  to: theorem_177
   source: lean
 - from: corollary_7
   to: definition_1
@@ -9604,6 +9640,39 @@ dependencies:
   source: lean
 - from: definition_246
   to: definition_245
+  source: lean
+- from: definition_247
+  to: corollary_60
+  source: lean
+- from: definition_247
+  to: definition_229
+  source: lean
+- from: definition_247
+  to: definition_232
+  source: lean
+- from: definition_247
+  to: definition_245
+  source: lean
+- from: definition_247
+  to: proposition_174
+  source: lean
+- from: definition_247
+  to: proposition_178
+  source: lean
+- from: definition_247
+  to: proposition_179
+  source: lean
+- from: definition_247
+  to: theorem_149
+  source: lean
+- from: definition_247
+  to: theorem_150
+  source: lean
+- from: definition_247
+  to: theorem_174
+  source: lean
+- from: definition_247
+  to: theorem_175
   source: lean
 - from: definition_25
   to: definition_1
@@ -19889,6 +19958,39 @@ dependencies:
 - from: proposition_190
   to: theorem_171
   source: lean
+- from: proposition_191
+  to: corollary_60
+  source: lean
+- from: proposition_191
+  to: definition_229
+  source: lean
+- from: proposition_191
+  to: definition_232
+  source: lean
+- from: proposition_191
+  to: definition_245
+  source: lean
+- from: proposition_191
+  to: proposition_174
+  source: lean
+- from: proposition_191
+  to: proposition_178
+  source: lean
+- from: proposition_191
+  to: proposition_179
+  source: lean
+- from: proposition_191
+  to: theorem_149
+  source: lean
+- from: proposition_191
+  to: theorem_150
+  source: lean
+- from: proposition_191
+  to: theorem_174
+  source: lean
+- from: proposition_191
+  to: theorem_175
+  source: lean
 - from: proposition_2
   to: corollary_25
   source: lean
@@ -28597,6 +28699,93 @@ dependencies:
   source: lean
 - from: theorem_177
   to: definition_245
+  source: lean
+- from: theorem_178
+  to: corollary_60
+  source: lean
+- from: theorem_178
+  to: definition_229
+  source: lean
+- from: theorem_178
+  to: definition_232
+  source: lean
+- from: theorem_178
+  to: definition_245
+  source: lean
+- from: theorem_178
+  to: proposition_174
+  source: lean
+- from: theorem_178
+  to: proposition_178
+  source: lean
+- from: theorem_178
+  to: proposition_179
+  source: lean
+- from: theorem_178
+  to: theorem_149
+  source: lean
+- from: theorem_178
+  to: theorem_150
+  source: lean
+- from: theorem_178
+  to: theorem_174
+  source: lean
+- from: theorem_178
+  to: theorem_175
+  source: lean
+- from: theorem_179
+  to: corollary_51
+  source: lean
+- from: theorem_179
+  to: corollary_60
+  source: lean
+- from: theorem_179
+  to: definition_229
+  source: lean
+- from: theorem_179
+  to: definition_230
+  source: lean
+- from: theorem_179
+  to: definition_231
+  source: lean
+- from: theorem_179
+  to: definition_232
+  source: lean
+- from: theorem_179
+  to: definition_245
+  source: lean
+- from: theorem_179
+  to: proposition_174
+  source: lean
+- from: theorem_179
+  to: proposition_176
+  source: lean
+- from: theorem_179
+  to: proposition_177
+  source: lean
+- from: theorem_179
+  to: proposition_178
+  source: lean
+- from: theorem_179
+  to: proposition_179
+  source: lean
+- from: theorem_179
+  to: theorem_147
+  source: lean
+- from: theorem_179
+  to: theorem_148
+  source: lean
+- from: theorem_179
+  to: theorem_149
+  source: lean
+- from: theorem_179
+  to: theorem_150
+  source: lean
+- from: theorem_179
+  to: theorem_174
+  source: lean
+- from: theorem_179
+  to: theorem_175
   source: lean
 - from: theorem_18
   to: corollary_10

@@ -431,7 +431,7 @@ By Proposition 6, (\pi_L(\tau)=\pi_L(\tau')) implies (\operatorname{dec}(\tau)\e
 ]
 Apply Proposition 6 in reverse to conclude the first (L) digits (prefix) of the sums match. ∎
 
-This is the formal “multi-rate locality” statement: the first (L) digits of the result depend **only** on the first (L) digits of the inputs (no dependence on higher digits). *(Addenda §3.5–3.24 — multiplication as digit convolution and where it fails on variable schedules; address shears and digit interchange; multiplication on mixed schedules through residues and carry lines; carry networks and the radix lattice; carry streams; the holonomy cover; carrying around a frustrated ring; the carry quotient of a wrapped ring; multiplication on a mixed ring; products that do not close; rings and lines, the free/tied split; the radix complex of a wrapped ring; the hop; context branches; operation-driven branches; coupled branches; families of residue types; the canonical split; product defects of limb schedules; the cost law — sit at the end of this document.)*
+This is the formal “multi-rate locality” statement: the first (L) digits of the result depend **only** on the first (L) digits of the inputs (no dependence on higher digits). *(Addenda §3.5–3.25 — multiplication as digit convolution and where it fails on variable schedules; address shears and digit interchange; multiplication on mixed schedules through residues and carry lines; carry networks and the radix lattice; carry streams; the holonomy cover; carrying around a frustrated ring; the carry quotient of a wrapped ring; multiplication on a mixed ring; products that do not close; rings and lines, the free/tied split; the radix complex of a wrapped ring; the hop; context branches; operation-driven branches; coupled branches; families of residue types; the canonical split; product defects of limb schedules; the cost law; product closure prime by prime — sit at the end of this document.)*
 
 ---
 
@@ -10339,3 +10339,33 @@ are doubled: (25) for Curve25519 ((q=255,N=10)), (36) for P-521 ((q=521,N=9)), (
 *Lean:* `FdrsFormal/Modes/SyntheticPlace/CostLaw.lean` (reusing `ChristoffelSchedule.lean`).
 
 **Honest scope (§3.24).** Elementary counting in (\mathbb Z/N). The closed form was first observed with `tools/limb-schedule` (it matches every brute-force case), then proved here.
+
+# Phase 1 addendum, continued — product closure prime by prime (§3.25)
+
+*(Phase 1, Fragment 2. Extends §3.23–3.24 from power-of-two schedules to arbitrary rings by splitting place values into primes. Reuses product-closed rings (Definition 232, Proposition 178), the holonomy (Proposition 174), schedules and defects (Definition 245, Theorems 174–175) and the cost law (Theorem 177).)*
+
+## 3.25 Product closure prime by prime (addendum, 2026-10-15)
+
+### Definition 247 (valuation schedules)  [§3.25 · Phase 1, Fragment 2]
+
+For a ring with (N) places, place values (B_k) of its periodic schedule and holonomy (h=B_N), the **(p)-valuation schedule** is (V_p(k)=v_p(B_k)); it is a limb schedule (Definition 245) with lap (e_p=v_p(h)) (its increments may be (0)). The product coefficient at all indices is (\kappa(a,b)=B_aB_b/B_{a+b}).
+
+### Theorem 178 (the valuation criterion)  [§3.25 · Phase 1, Fragment 2]
+
+(B_{a+b}\mid B_aB_b) iff (d_p(a,b)=V_p(a)+V_p(b)-V_p(a+b)\ge0) for every prime (p). Hence a ring is product-closed iff every valuation schedule has non-negative defects; then products land at every pair of indices, and (v_p(\kappa(a,b))=d_p(a,b)), i.e. (\kappa=\prod_p p^{d_p}).
+
+### Theorem 179 (Christoffel optimality prime by prime)  [§3.25 · Phase 1, Fragment 2]
+
+On a product-closed ring (v_p(B_k)\ge\lceil ke_p/N\rceil) for every (p,k). A ring is product-closed with every product coefficient squarefree iff every valuation schedule is the ceiling schedule of its lap: (v_p(B_k)=\lceil ke_p/N\rceil). Consequently two rings with the same (N) and holonomy, both product-closed with squarefree coefficients, are equal.
+
+### Corollary 61 (the cost law per prime)  [§3.25 · Phase 1, Fragment 2]
+
+On such a ring, for each prime (p) exactly (N(N-\gcd(e_p,N))/2) of the (N^2) products have a coefficient divisible by (p).
+
+### Proposition 191 (product closure prime by prime: witnesses)  [§3.25 · Phase 1, Fragment 2]
+
+The ring ((2,3)) has (v_2(B_k)=\lceil k/2\rceil) — 2-adically it is the ceiling schedule — and (d_3(1,1)=-1): its failure to close (Proposition 178) is entirely at (3). The ring ((12,6,2)), holonomy (144=2^4 3^2), is product-closed with coefficients in ({1,2,3,6}), its valuation schedules are (\lceil4k/3\rceil) and (\lceil2k/3\rceil), it is the unique three-place ring of holonomy (144) with squarefree coefficients, and three of its nine products carry a factor (2) and three a factor (3).
+
+*Lean:* `FdrsFormal/Modes/SyntheticPlace/ValuationClosure.lean` (reusing `MixedRingProduct.lean`, `RingUnrolling.lean`, `ChristoffelSchedule.lean`, `CostLaw.lean`).
+
+**Honest scope (§3.25).** Elementary (unique factorization applied to §3.23–3.24). The corpus contributes the reduction of product closure on arbitrary rings to prime-power schedules and the uniqueness of the ring with squarefree coefficients for a given holonomy. Existence of that ring (each step must be a jump of the ceiling schedule of some prime of (h)) is not formalized.

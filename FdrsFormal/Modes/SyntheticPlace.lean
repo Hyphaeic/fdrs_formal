@@ -64,6 +64,7 @@ import FdrsFormal.Modes.SyntheticPlace.FamilyBranches
 import FdrsFormal.Modes.SyntheticPlace.CanonicalSplit
 import FdrsFormal.Modes.SyntheticPlace.ChristoffelSchedule
 import FdrsFormal.Modes.SyntheticPlace.CostLaw
+import FdrsFormal.Modes.SyntheticPlace.ValuationClosure
 import FdrsFormal.Modes.SyntheticPlace.CircleEmit
 import FdrsFormal.Modes.SyntheticPlace.SE2Pose
 import FdrsFormal.Modes.SyntheticPlace.SE2Engine

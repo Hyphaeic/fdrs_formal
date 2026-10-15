@@ -1,10 +1,10 @@
 # FDRS Specification Index
 
-Auto-generated from `data/fdrs-index.yaml` (2026-10-15T19:00:28.033055)
+Auto-generated from `data/fdrs-index.yaml` (2026-10-15T20:03:20.220882)
 
-**685 items** from `docs/fdrs.md` (10341 lines)
+**690 items** from `docs/fdrs.md` (10371 lines)
 
-Status: missing: 3 | proven: 680 | scaffold: 2
+Status: missing: 3 | proven: 685 | scaffold: 2
 
 ## Phase 1
 
@@ -771,3 +771,8 @@ Status: missing: 3 | proven: 680 | scaffold: 2
 | definition_246 | definition | 246 | the lag | 10323 | ✅ proven | FdrsFormal/Modes/SyntheticPlace/CostLaw.lean |
 | theorem_176 | theorem | 176 | the defect law of the ceiling schedule | 10327 | ✅ proven | FdrsFormal/Modes/SyntheticPlace/CostLaw.lean |
 | theorem_177 | theorem | 177 | the cost law | 10331 | ✅ proven | FdrsFormal/Modes/SyntheticPlace/CostLaw.lean |
+| definition_247 | definition | 247 | valuation schedules | 10349 | ✅ proven | FdrsFormal/Modes/SyntheticPlace/ValuationClosure.lean |
+| theorem_178 | theorem | 178 | the valuation criterion | 10353 | ✅ proven | FdrsFormal/Modes/SyntheticPlace/ValuationClosure.lean |
+| theorem_179 | theorem | 179 | Christoffel optimality prime by prime | 10357 | ✅ proven | FdrsFormal/Modes/SyntheticPlace/ValuationClosure.lean |
+| corollary_61 | corollary | 61 | the cost law per prime | 10361 | ✅ proven | FdrsFormal/Modes/SyntheticPlace/ValuationClosure.lean |
+| proposition_191 | proposition | 191 | product closure prime by prime: witnesses | 10365 | ✅ proven | FdrsFormal/Modes/SyntheticPlace/ValuationClosure.lean |
