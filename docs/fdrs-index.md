@@ -1,10 +1,10 @@
 # FDRS Specification Index
 
-Auto-generated from `data/fdrs-index.yaml` (2026-10-13T03:39:12.348194)
+Auto-generated from `data/fdrs-index.yaml` (2026-10-15T19:00:28.033055)
 
-**682 items** from `docs/fdrs.md` (10315 lines)
+**685 items** from `docs/fdrs.md` (10341 lines)
 
-Status: missing: 3 | proven: 677 | scaffold: 2
+Status: missing: 3 | proven: 680 | scaffold: 2
 
 ## Phase 1
 
@@ -768,3 +768,6 @@ Status: missing: 3 | proven: 677 | scaffold: 2
 | theorem_174 | theorem | 174 | defect bounds | 10301 | ✅ proven | FdrsFormal/Modes/SyntheticPlace/ChristoffelSchedule.lean |
 | theorem_175 | theorem | 175 | Christoffel optimality | 10305 | ✅ proven | FdrsFormal/Modes/SyntheticPlace/ChristoffelSchedule.lean |
 | corollary_60 | corollary | 60 | why radix 2^25.5 | 10309 | ✅ proven | FdrsFormal/Modes/SyntheticPlace/ChristoffelSchedule.lean |
+| definition_246 | definition | 246 | the lag | 10323 | ✅ proven | FdrsFormal/Modes/SyntheticPlace/CostLaw.lean |
+| theorem_176 | theorem | 176 | the defect law of the ceiling schedule | 10327 | ✅ proven | FdrsFormal/Modes/SyntheticPlace/CostLaw.lean |
+| theorem_177 | theorem | 177 | the cost law | 10331 | ✅ proven | FdrsFormal/Modes/SyntheticPlace/CostLaw.lean |

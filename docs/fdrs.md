@@ -431,7 +431,7 @@ By Proposition 6, (\pi_L(\tau)=\pi_L(\tau')) implies (\operatorname{dec}(\tau)\e
 ]
 Apply Proposition 6 in reverse to conclude the first (L) digits (prefix) of the sums match. ∎
 
-This is the formal “multi-rate locality” statement: the first (L) digits of the result depend **only** on the first (L) digits of the inputs (no dependence on higher digits). *(Addenda §3.5–3.23 — multiplication as digit convolution and where it fails on variable schedules; address shears and digit interchange; multiplication on mixed schedules through residues and carry lines; carry networks and the radix lattice; carry streams; the holonomy cover; carrying around a frustrated ring; the carry quotient of a wrapped ring; multiplication on a mixed ring; products that do not close; rings and lines, the free/tied split; the radix complex of a wrapped ring; the hop; context branches; operation-driven branches; coupled branches; families of residue types; the canonical split; product defects of limb schedules — sit at the end of this document.)*
+This is the formal “multi-rate locality” statement: the first (L) digits of the result depend **only** on the first (L) digits of the inputs (no dependence on higher digits). *(Addenda §3.5–3.24 — multiplication as digit convolution and where it fails on variable schedules; address shears and digit interchange; multiplication on mixed schedules through residues and carry lines; carry networks and the radix lattice; carry streams; the holonomy cover; carrying around a frustrated ring; the carry quotient of a wrapped ring; multiplication on a mixed ring; products that do not close; rings and lines, the free/tied split; the radix complex of a wrapped ring; the hop; context branches; operation-driven branches; coupled branches; families of residue types; the canonical split; product defects of limb schedules; the cost law — sit at the end of this document.)*
 
 ---
 
@@ -10313,3 +10313,29 @@ The 25519 weight ladder (W_k=\lceil25.5k\rceil) (widths (26,25,26,\dots)) is the
 *Lean:* `FdrsFormal/Modes/SyntheticPlace/ChristoffelSchedule.lean` (reusing `MixedRingProduct.lean`, `Field25519Carry.lean`).
 
 **Honest scope (§3.23).** The ceiling schedule (Crandall–Fagin 1994; Bernstein 2006; fiat-crypto) and balanced/Christoffel words (Morse–Hedlund; Berstel et al.) are classical. The characterization of the ceiling schedule as the unique schedule with product coefficients at most (2), and the pointwise lower bound for all product-closed schedules, were not found in the literature surveyed for this project; they are elementary.
+
+# Phase 1 addendum, continued — the cost law of the ceiling schedule (§3.24)
+
+*(Phase 1, Fragment 2. Counts the doubled partial products of the ceiling schedule of §3.23. Reuses the ceiling schedule and defects (Definition 245, Theorem 175).)*
+
+## 3.24 The cost law of the ceiling schedule (addendum, 2026-10-15)
+
+### Definition 246 (the lag)  [§3.24 · Phase 1, Fragment 2]
+
+For a limb count (N) and lap (q), the **lag** of an index (x\in\mathbb Z/N) is (u(x)=(-qx)\bmod N\in[0,N)).
+
+### Theorem 176 (the defect law of the ceiling schedule)  [§3.24 · Phase 1, Fragment 2]
+
+(N\lceil qk/N\rceil=qk+u(k)) for every (k), and on the ceiling schedule the product of limbs (a,b) has defect (1) iff (u(a)+u(b)\ge N), and (0) otherwise.
+
+### Theorem 177 (the cost law)  [§3.24 · Phase 1, Fragment 2]
+
+Every lag value is taken equally often — as often as (0), and (\#\{x\in\mathbb Z/N: qx=0\}=\gcd(q,N)). The involution ((a,b)\mapsto(-a,-b)) exchanges (u(a)+u(b)\ge N) with (u(a)+u(b)\le N) on pairs of nonzero lags. Hence among the (N^2) partial products of a schoolbook multiplication on the ceiling schedule exactly
+[
+\frac{N\,(N-\gcd(q,N))}{2}
+]
+are doubled: (25) for Curve25519 ((q=255,N=10)), (36) for P-521 ((q=521,N=9)), (0) whenever (N\mid q).
+
+*Lean:* `FdrsFormal/Modes/SyntheticPlace/CostLaw.lean` (reusing `ChristoffelSchedule.lean`).
+
+**Honest scope (§3.24).** Elementary counting in (\mathbb Z/N). The closed form was first observed with `tools/limb-schedule` (it matches every brute-force case), then proved here.

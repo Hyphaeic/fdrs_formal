@@ -29,8 +29,9 @@ cargo run --release -- radices --r 2,3,2 --c 3                 # any radices: κ
 
 - **scaled**: how many partial products have a coefficient other than 1, i.e. how many need a
   shift or doubling before accumulation.
-- **cost law**: the conjectured count `N²(b−1)/(2b)`, where `b = N / gcd(q, N)`. It matches
-  every case in `verify` and in the table.
+- **cost law**: the count `N (N − gcd(q, N)) / 2`, equivalently `N²(b−1)/(2b)` with
+  `b = N / gcd(q, N)`. It was first observed with this tool and is now proved in Lean
+  (§3.24, `CostLaw.lean`, Theorem 177).
 - **col bits**: the largest column of the schoolbook product, in bits. It assumes every input
   limb is full, `--slack` extra bits per limb if given, and includes the gain `c` on wrapped
   terms.

@@ -1,10 +1,10 @@
 metadata:
   spec_file: docs/fdrs.md
-  spec_lines: 10315
-  generated_at: '2026-10-13T03:39:12.348194'
-  total_items: 682
+  spec_lines: 10341
+  generated_at: '2026-10-15T19:00:28.033055'
+  total_items: 685
   status_summary:
-    proven: 677
+    proven: 680
     missing: 3
     scaffold: 2
   status_legend:
@@ -15957,14 +15957,59 @@ items:
     - radix_25_5_unique
   fragment: '2'
   section: '3.23'
+- id: definition_246
+  type: definition
+  phase: 1
+  global_num: 246
+  title: the lag
+  line: 10323
+  status: proven
+  in_root_build: true
+  lean_files:
+  - path: FdrsFormal/Modes/SyntheticPlace/CostLaw.lean
+    declarations:
+    - lag
+  fragment: '2'
+  section: '3.24'
+- id: theorem_176
+  type: theorem
+  phase: 1
+  global_num: 176
+  title: the defect law of the ceiling schedule
+  line: 10327
+  status: proven
+  in_root_build: true
+  lean_files:
+  - path: FdrsFormal/Modes/SyntheticPlace/CostLaw.lean
+    declarations:
+    - ceil_lag
+    - ceil_defect
+  fragment: '2'
+  section: '3.24'
+- id: theorem_177
+  type: theorem
+  phase: 1
+  global_num: 177
+  title: the cost law
+  line: 10331
+  status: proven
+  in_root_build: true
+  lean_files:
+  - path: FdrsFormal/Modes/SyntheticPlace/CostLaw.lean
+    declarations:
+    - lag_fiber
+    - card_zeros
+    - cost_law
+  fragment: '2'
+  section: '3.24'
 lean_summary:
-  total_files: 343
+  total_files: 344
   total_axioms: 0
   axioms_true: 0
   total_sorries: 0
   sorry_files: []
-  total_theorems: 2944
-  total_defs: 1143
+  total_theorems: 2957
+  total_defs: 1145
   total_lemmas: 26
   total_stubs: 0
   stubs_by_kind:

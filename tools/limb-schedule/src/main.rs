@@ -123,8 +123,9 @@ fn gcd(a: u64, b: u64) -> u64 {
     }
 }
 
-/// The cost law: the ceiling schedule has `N²(b−1)/(2b)` scaled partial products,
-/// `b = N / gcd(q, N)`. Returned as an exact fraction `(num, den)`.
+/// The cost law (proved in Lean, §3.24 Theorem 177): the ceiling schedule has
+/// `N (N − gcd(q, N)) / 2 = N²(b−1)/(2b)` scaled partial products, `b = N / gcd(q, N)`.
+/// Returned as an exact fraction `(num, den)`.
 fn cost_law(q: i64, n: usize) -> (u64, u64) {
     let nn = n as u64;
     let b = nn / gcd(q as u64, nn);
