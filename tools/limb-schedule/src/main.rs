@@ -430,7 +430,7 @@ fn cmd_table() {
     println!("Real-world schedules that are not ceiling schedules:");
     let donna64 = Schedule::from_widths(&[44, 44, 42]);
     println!(
-        "  poly1305-donna-64 (44,44,42): defects [{}, {}] → largest gain 2^{}·5 = {} (ceiling 44,43,43 would need at most 10)",
+        "  poly1305-donna-64 (44,44,42): defects [{}, {}] → largest gain 2^{}·5 = {} (= its s = r·(5<<2)); ceiling 44,43,43 gives at most 10, but r is fixed per key so the gain is precomputed and costs nothing at run time",
         donna64.min_defect(),
         donna64.max_defect(),
         donna64.max_defect(),

@@ -53,9 +53,18 @@ P-521 = 2^521-1, 64-bit     521   1   9  58×8 57×1          36/81        36   
 - **Nine 32-bit limbs overflow.** For 2^255 − 19, nine limbs would need 64.6-bit columns,
   which does not fit a u64 accumulator. This is consistent with the 10-limb choice made in
   practice.
-- **poly1305-donna-64 is not a ceiling schedule.** It uses limbs 44, 44, 42, which `check`
-  shows has defect 2. Its largest gain is therefore `2²·5 = 20`, which matches the `5 << 2`
-  constant in that code. The ceiling schedule 44, 43, 43 would need at most `2·5 = 10`.
+- **poly1305-donna-64 is not a ceiling schedule, and that costs it nothing.** Its limbs are
+  44, 44, 42. Checked against the source (`poly1305-donna-64.h`, floodyberry/poly1305-donna,
+  master, 2026-10-15), the masks are `0xfffffffffff` (44 bits) and `0x3ffffffffff` (42 bits),
+  and the multiply uses `s1 = r1 * (5 << 2)` and `s2 = r2 * (5 << 2)`.
+  - The coefficient table from `check --widths 44,44,42 --c 5` reproduces donna's multiply
+    exactly: the 20s sit at `h1·r2` and `h2·r1` (into limb 0) and `h2·r2` (into limb 1).
+  - The ceiling schedule 44, 43, 43 would cap the gain at `2·5 = 10`.
+  - But `r` is fixed per key, so `s = r·20` is precomputed once. The larger gain has no run-time
+    cost; it costs about one bit of column headroom (91.5 vs 90.6 of 128 bits).
+  - The source and README give no rationale for 44, 44, 42.
+  - Lesson: a defect costs run time only when *both* operands vary (field multiplication in
+    ECC). There, deployed code uses the ceiling schedule, e.g. the 26/25 ladder of Curve25519.
 - **Brute-force evidence.** `verify --max-n 8` enumerates 1,284,475 schedules, 30,617 of them
   product-closed. It finds 0 violations of Theorem 174, Theorem 175 or the cost law.
 

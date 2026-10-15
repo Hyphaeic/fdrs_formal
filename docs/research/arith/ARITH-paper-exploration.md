@@ -92,4 +92,12 @@ The tool has five commands:
 - `verify` brute-forces Theorems 174–175 and the cost law. It enumerated 1,284,475 schedules (30,617 product-closed) and found 0 violations.
 - `radices` handles general radices, with the landing criterion.
 
-The first run produced a real-world finding: **poly1305-donna-64** uses limbs 44, 44, 42, which is not the ceiling schedule. Its defect is 2, giving a largest gain of 4·5 = 20, which matches the `5 << 2` constant in that code. The ceiling schedule 44, 43, 43 would need at most 2·5 = 10. This is the kind of concrete example an ARITH paper can lead with: Theorem 175 identifies the layout with the smallest constants, and the tool flags deployed code that departs from it. Whether 44, 44, 42 was chosen for other reasons, such as key clamping or alignment, should be checked before any claim of suboptimality.
+**Checked against the source (2026-10-15).** The first run flagged **poly1305-donna-64**, whose limbs 44, 44, 42 are not the ceiling schedule. Reading `poly1305-donna-64.h` (floodyberry/poly1305-donna, master) confirms the following:
+
+- The limb masks are 44, 44 and 42 bits.
+- The multiply precomputes `s1 = r1 * (5 << 2)` and `s2 = r2 * (5 << 2)`, a gain of 20 = 2²·5. That is exactly the defect-2 coefficient the tool predicts.
+- The tool's coefficient table matches donna's multiply term for term: the 20s sit at h1·r2 and h2·r1 (into limb 0) and h2·r2 (into limb 1).
+
+The ceiling layout 44, 43, 43 would cap the gain at 10. However, **this is not a suboptimality**: r is fixed per key, so the gain is folded into a one-time precomputation and costs nothing per block. It only costs about one bit of column headroom (91.5 vs 90.6 of 128 bits). The source and README give no rationale for 44, 44, 42.
+
+**Use in the paper.** Present donna-64 as a validation: the theory predicts the deployed constant 20 from the layout alone. Do not present it as a fix. The sharper point for an ARITH audience is *when* defects cost run time. A defect costs run time only when both operands vary, as in field multiplication for ECC: Curve25519's ×2 and ×19 multiplies are per-multiplication work. In exactly that setting, deployed code uses the ceiling schedule, and Theorem 175 says it must, if the gains are to stay at most 2.
