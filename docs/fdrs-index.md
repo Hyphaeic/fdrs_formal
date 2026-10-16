@@ -1,10 +1,10 @@
 # FDRS Specification Index
 
-Auto-generated from `data/fdrs-index.yaml` (2026-10-15T20:03:20.220882)
+Auto-generated from `data/fdrs-index.yaml` (2026-10-16T18:08:28.764788)
 
-**690 items** from `docs/fdrs.md` (10371 lines)
+**695 items** from `docs/fdrs.md` (10401 lines)
 
-Status: missing: 3 | proven: 685 | scaffold: 2
+Status: missing: 3 | proven: 690 | scaffold: 2
 
 ## Phase 1
 
@@ -776,3 +776,8 @@ Status: missing: 3 | proven: 685 | scaffold: 2
 | theorem_179 | theorem | 179 | Christoffel optimality prime by prime | 10357 | ✅ proven | FdrsFormal/Modes/SyntheticPlace/ValuationClosure.lean |
 | corollary_61 | corollary | 61 | the cost law per prime | 10361 | ✅ proven | FdrsFormal/Modes/SyntheticPlace/ValuationClosure.lean |
 | proposition_191 | proposition | 191 | product closure prime by prime: witnesses | 10365 | ✅ proven | FdrsFormal/Modes/SyntheticPlace/ValuationClosure.lean |
+| definition_248 | definition | 248 | the ceiling ring | 10379 | ✅ proven | FdrsFormal/Modes/SyntheticPlace/ChristoffelRing.lean |
+| theorem_180 | theorem | 180 | steps of a ceiling schedule | 10383 | ✅ proven | FdrsFormal/Modes/SyntheticPlace/ChristoffelRing.lean |
+| theorem_181 | theorem | 181 | the existence criterion | 10387 | ✅ proven | FdrsFormal/Modes/SyntheticPlace/ChristoffelRing.lean |
+| corollary_62 | corollary | 62 | first and last radix | 10391 | ✅ proven | FdrsFormal/Modes/SyntheticPlace/ChristoffelRing.lean |
+| proposition_192 | proposition | 192 | the existence criterion: witnesses | 10395 | ✅ proven | FdrsFormal/Modes/SyntheticPlace/ChristoffelRing.lean |

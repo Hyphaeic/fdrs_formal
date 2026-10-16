@@ -1,10 +1,10 @@
 metadata:
   spec_file: docs/fdrs.md
-  spec_lines: 10371
-  generated_at: '2026-10-15T20:03:20.220882'
-  total_items: 690
+  spec_lines: 10401
+  generated_at: '2026-10-16T18:08:28.764788'
+  total_items: 695
   status_summary:
-    proven: 685
+    proven: 690
     missing: 3
     scaffold: 2
   status_legend:
@@ -16081,14 +16081,92 @@ items:
     - ring1262_cost
   fragment: '2'
   section: '3.25'
+- id: definition_248
+  type: definition
+  phase: 1
+  global_num: 248
+  title: the ceiling ring
+  line: 10379
+  status: proven
+  in_root_build: true
+  lean_files:
+  - path: FdrsFormal/Modes/SyntheticPlace/ChristoffelRing.lean
+    declarations:
+    - expo
+    - C
+    - rad
+  fragment: '2'
+  section: '3.26'
+- id: theorem_180
+  type: theorem
+  phase: 1
+  global_num: 180
+  title: steps of a ceiling schedule
+  line: 10383
+  status: proven
+  in_root_build: true
+  lean_files:
+  - path: FdrsFormal/Modes/SyntheticPlace/ChristoffelRing.lean
+    declarations:
+    - jump_of_le
+    - le_of_last_jump
+  fragment: '2'
+  section: '3.26'
+- id: theorem_181
+  type: theorem
+  phase: 1
+  global_num: 181
+  title: the existence criterion
+  line: 10387
+  status: proven
+  in_root_build: true
+  lean_files:
+  - path: FdrsFormal/Modes/SyntheticPlace/ChristoffelRing.lean
+    declarations:
+    - rad_ge_two
+    - rad_christoffel
+    - exists_iff
+  fragment: '2'
+  section: '3.26'
+- id: corollary_62
+  type: corollary
+  phase: 1
+  global_num: 62
+  title: first and last radix
+  line: 10391
+  status: proven
+  in_root_build: true
+  lean_files:
+  - path: FdrsFormal/Modes/SyntheticPlace/ChristoffelRing.lean
+    declarations:
+    - first_radix_root
+    - last_radix_root
+  fragment: '2'
+  section: '3.26'
+- id: proposition_192
+  type: proposition
+  phase: 1
+  global_num: 192
+  title: 'the existence criterion: witnesses'
+  line: 10395
+  status: proven
+  in_root_build: true
+  lean_files:
+  - path: FdrsFormal/Modes/SyntheticPlace/ChristoffelRing.lean
+    declarations:
+    - no_ring_36
+    - ring1262_first
+    - ring1262_last
+  fragment: '2'
+  section: '3.26'
 lean_summary:
-  total_files: 345
+  total_files: 346
   total_axioms: 0
   axioms_true: 0
   total_sorries: 0
   sorry_files: []
-  total_theorems: 2982
-  total_defs: 1149
+  total_theorems: 3010
+  total_defs: 1152
   total_lemmas: 26
   total_stubs: 0
   stubs_by_kind:

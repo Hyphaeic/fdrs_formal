@@ -431,7 +431,7 @@ By Proposition 6, (\pi_L(\tau)=\pi_L(\tau')) implies (\operatorname{dec}(\tau)\e
 ]
 Apply Proposition 6 in reverse to conclude the first (L) digits (prefix) of the sums match. ∎
 
-This is the formal “multi-rate locality” statement: the first (L) digits of the result depend **only** on the first (L) digits of the inputs (no dependence on higher digits). *(Addenda §3.5–3.25 — multiplication as digit convolution and where it fails on variable schedules; address shears and digit interchange; multiplication on mixed schedules through residues and carry lines; carry networks and the radix lattice; carry streams; the holonomy cover; carrying around a frustrated ring; the carry quotient of a wrapped ring; multiplication on a mixed ring; products that do not close; rings and lines, the free/tied split; the radix complex of a wrapped ring; the hop; context branches; operation-driven branches; coupled branches; families of residue types; the canonical split; product defects of limb schedules; the cost law; product closure prime by prime — sit at the end of this document.)*
+This is the formal “multi-rate locality” statement: the first (L) digits of the result depend **only** on the first (L) digits of the inputs (no dependence on higher digits). *(Addenda §3.5–3.26 — multiplication as digit convolution and where it fails on variable schedules; address shears and digit interchange; multiplication on mixed schedules through residues and carry lines; carry networks and the radix lattice; carry streams; the holonomy cover; carrying around a frustrated ring; the carry quotient of a wrapped ring; multiplication on a mixed ring; products that do not close; rings and lines, the free/tied split; the radix complex of a wrapped ring; the hop; context branches; operation-driven branches; coupled branches; families of residue types; the canonical split; product defects of limb schedules; the cost law; product closure prime by prime; the Christoffel ring of a holonomy — sit at the end of this document.)*
 
 ---
 
@@ -10369,3 +10369,33 @@ The ring ((2,3)) has (v_2(B_k)=\lceil k/2\rceil) — 2-adically it is the ceilin
 *Lean:* `FdrsFormal/Modes/SyntheticPlace/ValuationClosure.lean` (reusing `MixedRingProduct.lean`, `RingUnrolling.lean`, `ChristoffelSchedule.lean`, `CostLaw.lean`).
 
 **Honest scope (§3.25).** Elementary (unique factorization applied to §3.23–3.24). The corpus contributes the reduction of product closure on arbitrary rings to prime-power schedules and the uniqueness of the ring with squarefree coefficients for a given holonomy. Existence of that ring (each step must be a jump of the ceiling schedule of some prime of (h)) is not formalized.
+
+# Phase 1 addendum, continued — the Christoffel ring of a holonomy (§3.26)
+
+*(Phase 1, Fragment 2. Decides when the ring of Theorem 179 exists. Reuses valuation schedules and Christoffel optimality prime by prime (Definition 247, Theorem 179), the ceiling schedule (Definition 245, Theorem 175) and the defect law (Theorem 176).)*
+
+## 3.26 The Christoffel ring of a holonomy (addendum, 2026-10-16)
+
+### Definition 248 (the ceiling ring)  [§3.26 · Phase 1, Fragment 2]
+
+For (N) places and a holonomy (h) with (e_p=v_p(h)), the **ceiling place values** are (C_k=\prod_{p\mid h}p^{\lceil ke_p/N\rceil}) and the **ceiling radices** are (\rho_k=C_{k+1}/C_k) for (k<N).
+
+### Theorem 180 (steps of a ceiling schedule)  [§3.26 · Phase 1, Fragment 2]
+
+(qk\le N\lceil qk/N\rceil<qk+N). If (q\ge N) the ceiling schedule rises at every step; it rises at the last step (k=N-1) only if (q\ge N).
+
+### Theorem 181 (the existence criterion)  [§3.26 · Phase 1, Fragment 2]
+
+An (N)-place ring of holonomy (h) that is product-closed with squarefree product coefficients exists iff (v_p(h)\ge N) for some prime (p), i.e. some (p^N) divides (h\neq0). It is then the ceiling ring of Definition 248 (unique by Theorem 179): the prime (p) makes every ceiling radix at least (2), and the last step of the ceiling schedule forces such a prime.
+
+### Corollary 62 (first and last radix)  [§3.26 · Phase 1, Fragment 2]
+
+On such a ring, for every (r\neq0): (h\mid r^N\iff\rho_0\mid r) and (r^N\mid h\iff r\mid\rho_{N-1}). The first radix is the ceiling (N)-th root of the holonomy and the last radix the floor (N)-th root, in the divisibility order; (v_p(\rho_0)=\lceil e_p/N\rceil) and (v_p(\rho_{N-1})=\lfloor e_p/N\rfloor).
+
+### Proposition 192 (the existence criterion: witnesses)  [§3.26 · Phase 1, Fragment 2]
+
+No three-place ring of holonomy (36=2^23^2) is product-closed with squarefree coefficients. For the ring ((12,6,2)) of §3.25: (144\mid r^3\iff12\mid r) and (r^3\mid144\iff r\mid2).
+
+*Lean:* `FdrsFormal/Modes/SyntheticPlace/ChristoffelRing.lean` (reusing `ValuationClosure.lean`, `ChristoffelSchedule.lean`, `CostLaw.lean`). *Check:* `tools/limb-schedule rings --verify` enumerates every ordered factorization of every (h\le3000) into (N\le7) radices and finds no exception to uniqueness, the construction, the criterion or the root formulas.
+
+**Honest scope (§3.26).** Elementary. The criterion was observed with the tool and then proved.

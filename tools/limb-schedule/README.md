@@ -13,6 +13,9 @@ It is the evaluation companion to these Lean modules:
 | §3.13 | `MixedRingProduct.lean` | Product coefficients `κ(m,j) = B_m B_j / B_{m+j}`, product-closed rings |
 | §3.14 | `ProductSpread.lean` | Landing criterion `gcd(ε·B_t, M) ∣ B_m B_j` |
 | §3.23 | `ChristoffelSchedule.lean` | The ceiling schedule `⌈qk/N⌉` is the unique power-of-two schedule with all `κ ∈ {1,2}`; every product-closed schedule lies above it |
+| §3.24 | `CostLaw.lean` | Exactly `N(N − gcd(q, N))/2` products are doubled on the ceiling schedule |
+| §3.25 | `ValuationClosure.lean` | Product closure prime by prime; squarefree `κ` ⇔ every `v_p(B_k)` is a ceiling schedule |
+| §3.26 | `ChristoffelRing.lean` | That ring exists iff some `p^N` divides the holonomy; first/last radix are the ceiling/floor `N`-th roots |
 
 ## Commands
 
@@ -23,6 +26,8 @@ cargo run --release -- check  --widths 44,44,42 --c 5 --word 64
 cargo run --release -- check  --q 521 --ceil 9 --c 1 --slack 2  # lazy-reduced inputs
 cargo run --release -- verify --max-n 8                        # brute-force check of Thms 174–175 and the cost law
 cargo run --release -- radices --r 2,3,2 --c 3                 # any radices: κ, residue landing, BLOCKED
+cargo run --release -- rings --h 144 --n 3                     # the ring of holonomy h with squarefree κ, if any
+cargo run --release -- rings --verify 1 --max-h 3000 --max-n 7 # brute-force check of §3.25–3.26
 ```
 
 ## Columns of the `table` and `sweep` output

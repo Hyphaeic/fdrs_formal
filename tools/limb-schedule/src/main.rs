@@ -316,6 +316,148 @@ impl Ring {
 }
 
 // ---------------------------------------------------------------------------------------
+// The Christoffel ring of a holonomy (§3.25–3.26)
+// ---------------------------------------------------------------------------------------
+
+/// Prime factorization `h = ∏ p^e` (trial division).
+fn factorize(mut h: u128) -> Vec<(u128, u32)> {
+    let mut out = Vec::new();
+    let mut p = 2u128;
+    while p * p <= h {
+        let mut e = 0;
+        while h % p == 0 {
+            h /= p;
+            e += 1;
+        }
+        if e > 0 {
+            out.push((p, e));
+        }
+        p += 1;
+    }
+    if h > 1 {
+        out.push((h, 1));
+    }
+    out
+}
+
+fn ceil_div(a: u64, b: u64) -> u64 {
+    a.div_ceil(b)
+}
+
+/// The candidate radices `ρ_k = ∏_p p^{⌈(k+1)e_p/N⌉ − ⌈k e_p/N⌉}`; `None` if some radix is `1`.
+fn christoffel_ring(h: u128, n: usize) -> Option<Vec<u128>> {
+    let f = factorize(h);
+    let n64 = n as u64;
+    let radices: Vec<u128> = (0..n as u64)
+        .map(|k| {
+            f.iter()
+                .map(|&(p, e)| {
+                    let e = e as u64;
+                    p.pow((ceil_div((k + 1) * e, n64) - ceil_div(k * e, n64)) as u32)
+                })
+                .product()
+        })
+        .collect();
+    if radices.iter().all(|&r| r >= 2) {
+        Some(radices)
+    } else {
+        None
+    }
+}
+
+fn squarefree(mut x: u128) -> bool {
+    let mut p = 2u128;
+    while p * p <= x {
+        if x % (p * p) == 0 {
+            return false;
+        }
+        if x % p == 0 {
+            x /= p;
+        }
+        p += 1;
+    }
+    true
+}
+
+/// Product-closed with every product coefficient squarefree.
+fn closed_squarefree(radices: &[u128]) -> bool {
+    let ring = Ring { radices: radices.to_vec(), c: 0 };
+    let n = ring.n();
+    let b = ring.place_values();
+    (0..n).all(|m| (0..n).all(|j| b[m] * b[j] % b[m + j] == 0 && squarefree(b[m] * b[j] / b[m + j])))
+}
+
+/// All ordered factorizations of `h` into `n` factors `≥ 2`.
+fn ordered_factorizations(h: u128, n: usize, prefix: &mut Vec<u128>, out: &mut Vec<Vec<u128>>) {
+    if n == 0 {
+        if h == 1 {
+            out.push(prefix.clone());
+        }
+        return;
+    }
+    for d in 2..=h {
+        if h % d == 0 {
+            prefix.push(d);
+            ordered_factorizations(h / d, n - 1, prefix, out);
+            prefix.pop();
+        }
+    }
+}
+
+/// Largest `r` with `r^N ∣ h` and smallest `r` with `h ∣ r^N`.
+fn roots(h: u128, n: usize) -> (u128, u128) {
+    let f = factorize(h);
+    let n = n as u32;
+    let floor = f.iter().map(|&(p, e)| p.pow(e / n)).product();
+    let ceil = f.iter().map(|&(p, e)| p.pow(e.div_ceil(n))).product();
+    (floor, ceil)
+}
+
+#[derive(Default)]
+struct RingStats {
+    cases: u64,
+    rings_enumerated: u64,
+    exist: u64,
+    uniqueness_violations: u64,
+    construction_violations: u64,
+    criterion_violations: u64,
+    root_violations: u64,
+}
+
+/// Brute-force check of §3.26 for holonomies `2..=max_h` and `N = 1..=max_n`.
+fn verify_rings(max_h: u128, max_n: usize) -> RingStats {
+    let mut st = RingStats::default();
+    for h in 2..=max_h {
+        let max_e = factorize(h).iter().map(|&(_, e)| e as usize).max().unwrap_or(0);
+        for n in 1..=max_n {
+            st.cases += 1;
+            let mut all = Vec::new();
+            ordered_factorizations(h, n, &mut Vec::new(), &mut all);
+            st.rings_enumerated += all.len() as u64;
+            let good: Vec<&Vec<u128>> = all.iter().filter(|r| closed_squarefree(r)).collect();
+            if good.len() > 1 {
+                st.uniqueness_violations += 1;
+            }
+            let cand = christoffel_ring(h, n);
+            if good.first().map(|r| (*r).clone()) != cand {
+                st.construction_violations += 1;
+            }
+            if good.is_empty() == (max_e >= n) {
+                st.criterion_violations += 1;
+            }
+            if let Some(r) = good.first() {
+                st.exist += 1;
+                let (floor, ceil) = roots(h, n);
+                if r[0] != ceil || r[n - 1] != floor {
+                    st.root_violations += 1;
+                }
+            }
+        }
+    }
+    st
+}
+
+// ---------------------------------------------------------------------------------------
 // Command line
 // ---------------------------------------------------------------------------------------
 
@@ -516,6 +658,38 @@ fn cmd_radices(map: &HashMap<String, String>) {
     }
 }
 
+fn cmd_rings(map: &HashMap<String, String>) {
+    if map.contains_key("verify") {
+        let max_h = get_i64(map, "max-h", 2000) as u128;
+        let max_n = get_i64(map, "max-n", 6) as usize;
+        let st = verify_rings(max_h, max_n);
+        println!("Brute force over holonomy h = 2..{max_h}, N = 1..{max_n} ({} cases):", st.cases);
+        println!("  rings enumerated (ordered factorizations) : {}", st.rings_enumerated);
+        println!("  cases with a closed squarefree ring       : {}", st.exist);
+        println!("  uniqueness (Thm 179)                      : {} violations", st.uniqueness_violations);
+        println!("  ring = ceiling construction               : {} violations", st.construction_violations);
+        println!("  exists ⇔ some p^N ∣ h                     : {} violations", st.criterion_violations);
+        println!("  ρ_0 = ⌈h^(1/N)⌉, ρ_(N−1) = ⌊h^(1/N)⌋        : {} violations", st.root_violations);
+        return;
+    }
+    let h = get_i64(map, "h", 144) as u128;
+    let n = get_i64(map, "n", 3) as usize;
+    let f = factorize(h);
+    println!("holonomy h = {h} = {:?}, N = {n}", f);
+    match christoffel_ring(h, n) {
+        Some(r) => {
+            println!("Christoffel ring: radices {:?}", r);
+            let ring = Ring { radices: r.clone(), c: 0 };
+            let b = ring.place_values();
+            for m in 0..n {
+                let row: Vec<String> = (0..n).map(|j| format!("{}", b[m] * b[j] / b[m + j])).collect();
+                println!("  κ {:>2}: {}", m, row.join("\t"));
+            }
+        }
+        None => println!("no ring: no prime power p^{n} divides {h}"),
+    }
+}
+
 fn main() {
     let args: Vec<String> = env::args().collect();
     let cmd = args.get(1).map(String::as_str).unwrap_or("table");
@@ -526,8 +700,9 @@ fn main() {
         "check" => cmd_check(&map),
         "verify" => cmd_verify(&map),
         "radices" => cmd_radices(&map),
+        "rings" => cmd_rings(&map),
         _ => {
-            eprintln!("usage: limb-schedule [table | sweep | check | verify | radices] [--options]");
+            eprintln!("usage: limb-schedule [table | sweep | check | verify | radices | rings] [--options]");
             std::process::exit(2);
         }
     }
@@ -576,6 +751,17 @@ mod tests {
         let ceil = Schedule::ceiling(130, 3);
         assert_eq!(ceil.widths(), vec![44, 43, 43]);
         assert_eq!(ceil.max_defect(), 1);
+    }
+
+    #[test]
+    fn christoffel_rings_small() {
+        assert_eq!(christoffel_ring(144, 3), Some(vec![12, 6, 2]));
+        assert_eq!(christoffel_ring(6, 2), None);
+        let st = verify_rings(300, 5);
+        assert_eq!(st.uniqueness_violations, 0);
+        assert_eq!(st.construction_violations, 0);
+        assert_eq!(st.criterion_violations, 0);
+        assert_eq!(st.root_violations, 0);
     }
 
     #[test]
